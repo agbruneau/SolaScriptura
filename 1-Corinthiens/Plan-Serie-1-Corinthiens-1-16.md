@@ -113,8 +113,8 @@ Quatrième lettre canonique de Paul selon la chronologie de John MacArthur (apr�
 
 ### I. La méthode apostolique : le Christ crucifié et la démonstration de l'Esprit (2.1-5)
 
-- **Une détermination exclusive et une faiblesse assumée (2.1-3) :** « Moi-même j’étais auprès de vous dans un état de faiblesse, de crainte, et de grand tremblement; » (2.3). Arrivé de Philippe, de Thessalonique et d'Athènes le corps meurtri et le cœur conscient de l'enjeu, Paul rejette toute supériorité de langage (*huperochē logou*, 2.1; 1815).
-- **Une preuve judiciaire irréfutable (2.4-5) :** « et ma parole et ma prédication ne reposaient pas sur les discours persuasifs de la sagesse, mais sur une démonstration d’Esprit et de puissance, afin que votre foi soit fondée, non sur la sagesse des hommes, mais sur la puissance de Dieu. » (2.4-5). Le mot *apodeixis* (« démonstration ») désigne la preuve légale décisive devant un tribunal : seule l'action régénératrice de l'Esprit Saint ancre la foi dans la puissance (*dunamis*) de Dieu et non dans la persuasion psychologique des hommes (1815; Recherche, mots-clés).
+- **Une détermination exclusive et une faiblesse assumée (2.1-3) :** « Moi-même j’étais auprès de vous dans un état de faiblesse, de crainte, et de grand tremblement; » (2.3). Chassé de Philippes et de Thessalonique, à bout de forces après Athènes, Paul rejette toute supériorité de langage (*huperochē logou*, 2.1; 1815).
+- **Une preuve judiciaire irréfutable (2.4-5) :** « et ma parole et ma prédication ne reposaient pas sur les discours persuasifs de la sagesse, mais sur une démonstration d’Esprit et de puissance, afin que votre foi soit fondée, non sur la sagesse des hommes, mais sur la puissance de Dieu. » (2.4-5). La foi doit reposer non sur la sagesse des hommes mais sur la puissance (*dunamis*) de Dieu, manifestée par « une démonstration d'Esprit et de puissance » (*apodeixis* : Recherche, mots-clés; 1815).
 
 ### II. Le mystère de la sagesse divine révélé et inspiré par le Saint-Esprit (2.6-13)
 
