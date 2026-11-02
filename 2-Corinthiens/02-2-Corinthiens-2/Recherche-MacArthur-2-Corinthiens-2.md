@@ -152,7 +152,7 @@ Dieu nous fait toujours triompher en Christ et répand par nous en tout lieu l'o
 
 **Ancrage doctrinal**
 
-Souveraineté de Dieu dans l'évangélisation, efficacité infaillible de la Parole (És 55.11) et double prédestination / responsabilité humaine devant l'Évangile.
+Souveraineté de Dieu dans l'évangélisation, efficacité infaillible de la Parole (És 55.11) et élection souveraine conjuguée à la pleine responsabilité humaine devant l'Évangile.
 
 **Révélation progressive**
 

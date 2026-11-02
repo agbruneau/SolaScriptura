@@ -321,7 +321,7 @@ Aux chapitres 11 à 14, Paul enseigne que tous les croyants ont été baptisés 
 
 **Ancrage doctrinal**
 
-Ecclésiologie du corps de Christ, souveraineté trinitaire dans la distribution des charismes (12.4-6), cessation des dons miraculeux de signes et de révélation à l'achèvement de l'ère apostolique (13.8-10), et primauté de la proclamation intelligible de l'Écriture dans le culte.
+Ecclésiologie du corps de Christ, souveraineté trinitaire dans la distribution des charismes (12.4-6), cessation des dons miraculeux de signes à l'achèvement de l'ère apostolique (les langues « cesseront » d'elles-mêmes, 13.8), abolition de toute connaissance partielle à la venue de « ce qui est parfait », l'état éternel (13.10-12), et primauté de la proclamation intelligible de l'Écriture dans le culte.
 
 **Révélation progressive**
 
