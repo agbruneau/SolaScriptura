@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Corinthiens 13 · La voie par excellence : la nécessité, le caractère et la permanence éternelle de l&#x27;amour · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Corinthiens 13 dans la perspective de John MacArthur : La voie par excellence : la nécessité, le caractère et la permanence éternelle de l&#x27;amour.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">1 Corinthiens 13</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">1 Corinthiens 13</span></p>
+    <h1 class="hero__title">La voie par excellence : la nécessité, le caractère et la permanence éternelle de l'amour</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Maintenant donc ces trois choses demeurent: la foi, l’espérance, l’amour; mais la plus grande de ces choses, c’est l’amour.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">1 Corinthiens 13.13 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 2 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">1 Corinthiens 13</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Annoncé par la dernière phrase du chapitre 12 (« Et je vais encore vous montrer une voie par excellence », 12.31b) et repris dès le premier mot du chapitre 14 (« Recherchez l'amour », 14.1a), le chapitre 13 n'est pas un poème lyrique indépendant inséré par hasard : il constitue le pivot théologique et éthique de toute la section sur les dons spirituels (chapitres 12 à 14). Aux Corinthiens qui s'enorgueillissaient de leurs charismes spectaculaires tout en se jalousant, en se poursuivant en justice et en méprisant les pauvres lors de la Cène, Paul démontre que l'exercice des dons les plus extraordinaires sans l'amour <i>agapē</i> équivaut à un zéro spirituel absolu.</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Quand je parlerais les langues des hommes et des anges, si je n’ai pas l’amour, je suis un airain qui résonne, ou une cymbale qui retentit. Et quand j’aurais le don de prophétie, la science de tous les mystères et toute la connaissance, quand j’aurais même toute la foi jusqu’à transporter des montagnes, si je n’ai pas l’amour, je ne suis rien. Et quand je distribuerais tous mes biens pour la nourriture des pauvres, quand je livrerais même mon corps pour être brûlé, si je n’ai pas l’amour, cela ne me sert à rien.</p><cite class="verse__ref">1 Corinthiens 13.1-⁠3 · NEG</cite></figure><figure class="verse"><p class="verse__text">L’amour est patient, il est plein de bonté; l’amour n’est point envieux; l’amour ne se vante point, il ne s’enfle point d’orgueil, il ne fait rien de malhonnête, il ne cherche point son intérêt, il ne s’irrite point, il ne soupçonne point le mal, il ne se réjouit point de l’injustice, mais il se réjouit de la vérité; il excuse tout, il croit tout, il espère tout, il supporte tout.</p><cite class="verse__ref">1 Corinthiens 13.4-⁠7 · NEG</cite></figure><figure class="verse"><p class="verse__text">L’amour ne périt jamais. Les prophéties seront abolies, les langues cesseront, la connaissance sera abolie.</p><cite class="verse__ref">1 Corinthiens 13.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">mais quand ce qui est parfait sera venu, ce qui est partiel sera aboli.</p><cite class="verse__ref">1 Corinthiens 13.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Aujourd’hui nous voyons au moyen d’un miroir, d’une manière obscure, mais alors nous verrons face à face; aujourd’hui je connais en partie, mais alors je connaîtrai comme j’ai été connu.</p><cite class="verse__ref">1 Corinthiens 13.12 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire de ce chapitre unit l'éloge encomiastique élevé au niveau de la révélation apostolique, la parénèse corrective et l'eschatologie des charismes. Sa structure tripartite est d'une symétrie cristalline : 1) la prééminence indispensable de l'amour, sans lequel les dons de parole, de puissance et de sacrifice ne sont que bruit, néant et inutilité (13.1-⁠3); 2) la description concrète et active du caractère de l'amour à travers quinze verbes au présent (13.4-⁠7); 3) la permanence éternelle de l'amour face au caractère partiel et temporaire des dons spirituels qui prendront fin dans la vision face à face de la gloire (13.8-⁠13).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">1 Corinthiens 13</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Dans le monde grec antique, Corinthe était mondialement renommée pour ses fonderies d'airain : le « bronze de Corinthe » (<i>aes Corinthium</i>, en grec <i>chalkos</i>, 13.1), alliage précieux d'or, d'argent et de cuivre né selon la tradition lors de l'incendie de la ville en 146 av. J.-C., servait à fabriquer des vases de résonance acoustique placés dans les théâtres ainsi que des gongs et des cymbales retentissantes (<i>kymbalon alalazon</i>) que l'on frappait à l'entrée des temples païens de Cybèle, de Dionysos et d'Apollon pour accompagner les transes extatiques.</p><div class="body"><p>De même, au verset 12 (« Aujourd'hui nous voyons au moyen d'un miroir, d'une manière obscure »), Paul fait allusion à l'autre grande industrie de luxe de Corinthe : la fabrication des miroirs en bronze poli. Aussi finement travaillé fût-il par les artisans corinthiens, un miroir de métal ne renvoyait jamais qu'un reflet imparfait et voilé en comparaison de la contemplation directe « face à face » (<i>prosōpon pros prosōpon</i>).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Les quatre hyperboles des versets 1 à 3.</b> Aux versets 1 à 3, Paul emploie une série de subjonctifs éventuels poussés jusqu'à l'hyperbole ultime (<i>ean...</i>, « quand même je parlerais... ») couvrant toute la gamme des prétentions spirituelles de Corinthe : 1) l'éloquence suprême (« les langues des hommes et même des anges », v. 1); 2) l'omniscience prophétique et la foi thaumaturgique capable de déplacer les montagnes (v. 2); 3) la philanthropie totale consistant à distribuer tous ses biens bouchée par bouchée (<i>psōmisō</i>, donner par petits morceaux) aux indigents (v. 3a); 4) le sacrifice suprême de son propre corps (v. 3b). Sans l'amour <i>agapē</i>, le premier n'est qu'un vacarme de gong, le deuxième est un néant ontologique (« je ne suis rien », <i>outhen eimi</i>), et les derniers ne procurent aucun profit spirituel (MacArthur, 1862-⁠1863).</li><li><b>Quinze verbes d'action et aucun adjectif abstrait (13.4-⁠7).</b> Comme le souligne John MacArthur (1864), dans le texte grec des versets 4 à 7, aucune des quinze qualités de l'amour n'est exprimée par un adjectif statique : toutes les quinze sont des formes verbales d'action au présent ! Pour le Nouveau Testament, l'amour <i>agapē</i> n'est ni un sentiment romantique ni une émotion passive, mais un comportement volontaire et sacrificiel qui fait exactement l'inverse de ce que faisaient les Corinthiens (qui étaient impatients, envieux, vantards, enflés d'orgueil [<i>physioō</i>, v. 4, même verbe qu'en 4.6; 5.2; 8.1], égoïstes dans les procès [<i>ou zētei ta heautēs</i>, v. 5] et prompts à se réjouir du scandale).</li><li><b>La cessation des langues (pausontai) et la venue de « ce qui est parfait » (13.8-⁠12).</b> En 13.8-⁠10, Paul distingue le mode de cessation des dons : tandis que les prophéties et la connaissance révélationnelle « seront abolies / rendues inopérantes » (futur passif <i>katargēthēsontai</i>) par un agent extérieur lorsque « ce qui est parfait » (<i>to teleion</i>, v. 10) sera venu, les langues « cesseront d'elles-mêmes » (futur moyen <i>pausontai</i>). Dans son exégèse détaillée (1868-⁠1870), MacArthur montre que le verbe moyen <i>pausontai</i> indique que le don des langues s'arrête de lui-même une fois son rôle de signe fondationnel accompli à l'ère apostolique (cf. 14.21-⁠22), tandis que <i>to teleion</i> (« ce qui est parfait », v. 10) désigne l'état éternel glorieux où nous verrons le Seigneur « face à face » et connaîtrons comme nous avons été connus (v. 12).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">1 Corinthiens 13</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">1 Corinthiens 13.3</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>kai ean paradō to sōma mou hina kauchēsōmai</i> (« quand je livrerais même mon corps pour m'en glorifier / en tirer fierté », 𝔓46, א, A, B, SBLGNT, Westcott et Hort), ou <i>hina kauthēsōmai / kauthēsomai</i> (« pour être brûlé », C, D, F, G, L, Ψ, texte byzantin, Textus Receptus, Nestle 1904).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« quand je livrerais même mon corps pour être brûlé » : la NEG79, la LSG, la S21 et la Darby suivent <i>kauthēsōmai</i>; la NBS traduit « pour en tirer fierté ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Différence d'une seule lettre grecque (<i>theta</i> vs <i>chi</i>). MacArthur (1863) mentionne les deux leçons en montrant qu'elles expriment toutes deux le sacrifice ultime de sa vie accompli sans amour véritable.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Corinthiens 13.5</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>ou zētei ta heautēs</i> (« il ne cherche point son propre intérêt », א, A, B, C, D, Ψ, texte byzantin, Textus Receptus, SBLGNT, Westcott et Hort, Nestle 1904), ou <i>ou zētei to mē heautēs</i> (« il ne réclame pas ce qui ne lui appartient pas », 𝔓46, Clément d'Alexandrie).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« il ne cherche point son intérêt » : toutes les versions françaises suivent la leçon unanime des onciaux.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee"><i>Ou zētei ta heautēs</i> reprend mot pour mot le principe d'abnégation déjà formulé par Paul en 10.24 et 10.33.</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique (lus aux 13 versets du chapitre)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus (Bible Hub)</li><li>Septante et hébreu massorétique pour Nombres 12.8</li><li>versions françaises : NEG79, LSG, S21, Darby, NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart de numérotation des 13 versets entre la NEG79, le grec et le texte anglais de MacArthur.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">1 Corinthiens 13</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>13.1–3</span></p><div class="plan__corps"><p class="plan__titre">La nécessité absolue de l'amour : sans lui, les langues, la prophétie, la science, la foi miraculeuse et le sacrifice de soi ne sont rien.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Triple conditionnelle éventuelle <i>Ean tais glōssais... kai ean echō prophēteian... kan psōmisō</i> (v. 1-⁠3) scandée par le refrain <i>agapēn de mē echō</i>.</p></div></li><li><p class="plan__ref"><span>13.4–7</span></p><div class="plan__corps"><p class="plan__titre">Le caractère actif de l'amour : quinze verbes décrivant sa patience, sa bonté, son humilité, son désintéressement, sa joie dans la vérité et sa persévérance.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Ouverture positive <i>Hē agapē makrothymei, chrēsteuetai</i> (v. 4), huit négations correctives (v. 4b-6a) et point d'orgue du quadruple <i>panta</i> (v. 7).</p></div></li><li><p class="plan__ref"><span>13.8–13</span></p><div class="plan__corps"><p class="plan__titre">La permanence éternelle de l'amour : la cessation des dons partiels lors de la venue de ce qui est parfait et la suprématie finale de l'amour.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Thèse d'ouverture <i>Hē agapē oudepote piptei</i> (v. 8), double contraste <i>arti... tote de</i> (« aujourd'hui... mais alors », v. 12) et triade finale <i>pistis, elpis, agapē</i> (v. 13).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>13.1-⁠2</dt><dd>Les propositions conditionnelles introduites par <i>ean</i> avec le subjonctif présent ou aoriste (<i>Ean... lalō... kai ean echō...</i>) posent des hypothèses théoriques poussées à l'extrême (comme « les langues des anges » ou « connaître tous les mystères ») sans affirmer que Paul ou les Corinthiens possédaient réellement un langage angélique : l'apôtre raisonne par l'absurde pour montrer que même le sommet imaginable des dons est nul sans l'amour.</dd></div><div><dt>13.5</dt><dd>La locution comptable <i>ou logizetai to kakon</i> (« il ne soupçonne point le mal / il ne tient pas de registre du mal subi ») emploie le verbe financier et théologique <i>logizomai</i> (imputer sur un livre de comptes, cf. Rm 4.8; 2 Co 5.19) : l'amour refuse de tenir une comptabilité rancunière des offenses passées.</dd></div><div><dt>13.8</dt><dd>Le changement délibéré de voix et de lexème entre le futur passif <i>katargēthēsontai</i> (employé pour la prophétie et la connaissance : « elles seront rendues caduques / abolies ») et le futur moyen déponent <i>pausontai</i> (employé uniquement pour les langues : « elles s'arrêteront d'elles-mêmes ») souligne le caractère intrinsèquement transitoire du don des langues.</dd></div><div><dt>13.12</dt><dd>Le passage du verbe simple <i>ginōskō ek merous</i> (« aujourd'hui je connais en partie ») au composé intensif au futur suivis de l'aoriste passif - <i>tote de <b>epignōsomai</b> kathōs kai <b>epegnōsthēn</b></i> (« mais alors je connaîtrai pleinement, comme aussi j'ai été pleinement connu ») - exprime la plénitude sans voile de la connaissance céleste à la mesure de l'omniscience aimante dont Dieu nous a connus dès l'éternité.</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Quatre mots-clés</p></header>
+<p class="lead">Quatre mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">μακροθυμέω</a><a href="#mot-2">χρηστεύομαι</a><a href="#mot-3">καταργέω</a><a href="#mot-4">αἴνιγμα</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">μακροθυμέω</h3><p class="mot__translit">makrothymeō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>avoir le souffle long, être lent à la colère, patienter longuement envers les personnes</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>makrothymeō</i> (composé de <i>makros</i>, long, et de <i>thymos</i>, ardeur, courroux) se distingue dans le Nouveau Testament de <i>hypomenō</i> (v. 7, endurer les circonstances et les épreuves) : <i>makrothymeō</i> désigne spécifiquement la longanimité patiente envers les personnes qui nous offensent, nous irritent ou nous font du tort sans chercher à se venger (Mt 18.26, 29; Rm 2.4; 1 Co 13.4; 1 Th 5.14).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En plaçant <i>Hē agapē makrothymei</i> (« L'amour est patient ») en toute première position du portrait de l'amour en 1 Corinthiens 13.4, Paul nomme la vertu qui manquait le plus aux Corinthiens pressés de se quereller et de s'attaquer en justice : l'amour supporte longuement les faiblesses d'autrui comme Dieu use de patience envers nous (MacArthur, 1864).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> l’amour ne se vante pas, il ne s’enfle pas d’orgueil, (13.4)</li><li><b>NEG79</b> l’amour ne se vante point, il ne s’enfle point d’orgueil, (13.4)</li><li class="ecart"><b>Darby</b> il ne s’enfle pas d’orgueil (13.4)</li><li class="ecart"><b>LSG</b> la charité ne se vante point, elle ne s’enfle point d’orgueil, (13.4)</li><li class="ecart"><b>NBS</b> l'amour ne se vante pas, il ne se gonfle pas d'orgueil, (13.4)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">χρηστεύομαι</h3><p class="mot__translit">chrēsteuomai</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>se montrer bon, serviable, bienveillant et doux en actes</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, le verbe déponent <i>chrēsteuomai</i> (hapax du Nouveau Testament en 1 Co 13.4, formé sur l'adjectif <i>chrēstos</i>, utile, bon, bienveillant, doux, employé pour la bonté de Dieu en Rm 2.4 et le joug doux de Christ en Mt 11.30) exprime la contrepartie active de la patience.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 1 Corinthiens 13.4, tandis que <i>makrothymei</i> (« il est patient ») encaisse les blessures sans rendre le mal, <i>chrēsteuetai</i> (« il est plein de bonté ») prend l'initiative de faire activement du bien à celui-là même qui nous a offensés, répondant à l'injure par un service concret et gracieux (MacArthur, 1864).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> l’amour ne se vante pas, il ne s’enfle pas d’orgueil, (13.4)</li><li><b>NEG79</b> l’amour ne se vante point, il ne s’enfle point d’orgueil, (13.4)</li><li class="ecart"><b>Darby</b> il ne s’enfle pas d’orgueil (13.4)</li><li class="ecart"><b>LSG</b> la charité ne se vante point, elle ne s’enfle point d’orgueil, (13.4)</li><li class="ecart"><b>NBS</b> l'amour ne se vante pas, il ne se gonfle pas d'orgueil, (13.4)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">καταργέω</h3><p class="mot__translit">katargeō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>rendre inactif, rendre caduc, abolir, faire disparaître</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie précisée par Thayer, <i>katargeō</i> (formé de <i>kata</i> intensif et de <i>argos</i> [de <i>a-ergon</i>], sans œuvre, inopérant) est un verbe de prédilection de Paul (25 de ses 27 occurrences néotestamentaires, dont neuf dans 1 Corinthiens : 1.28; 2.6; 6.13; 13.8 [2x], 10, 11; 15.24, 26). Il signifie rendre une chose désormais inutile, caduque ou sans fonction parce qu'une réalité supérieure l'a remplacée.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 1 Corinthiens 13.8, 10 et 11, Paul emploie quatre fois <i>katargeō</i> : les prophéties et la connaissance partielle « seront abolies / rendues caduques » (v. 8, 10), tout comme l'homme devenu adulte « a fait disparaître » (<i>katērgēka</i>) ce qui était de l'enfant (v. 11). Dans la gloire éternelle, nous n'aurons plus besoin de révélations partielles puisque nous verrons le Seigneur face à face.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> L’amour ne meurt jamais. Les prophéties disparaîtront, les langues cesseront, la connaissance disparaîtra. (13.8)</li><li><b>NEG79</b> L’amour ne périt jamais. Les prophéties seront abolies, les langues cesseront, la connaissance sera abolie. (13.8)</li><li class="ecart"><b>Darby</b> L’amour ne périt jamais. Or y a-t-il des prophéties ? elles auront leur fin. Y a-t-il des langues ? elles... (13.8)</li><li class="ecart"><b>LSG</b> La charité ne périt jamais. Les prophéties prendront fin, les langues cesseront, la connaissance disparaîtra. (13.8)</li><li class="ecart"><b>NBS</b> la connaissance ? elle sera abolie. (13.8)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">αἴνιγμα</h3><p class="mot__translit">ainigma</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>énigme, parole ou image voilée et obscure</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie relevée par Thayer, <i>ainigma</i> (dérivé de <i>ainissomai</i>, parler à mots couverts, faire allusion, de <i>ainos</i>; unique occurrence dans le NT en 1 Co 13.12) traduit dans la Septante l'hébreu <i>chidah</i> (notamment en Nombres 12.8 où Dieu parle à Moïse « bouche à bouche, et non par des énigmes [<i>di' ainigmatōn</i>] »).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 1 Corinthiens 13.12 (« Aujourd'hui nous voyons au moyen d'un miroir, d'une manière obscure [<i>en ainigmati</i>], mais alors nous verrons face à face »), Paul rappelle avec humilité que même la révélation biblique la plus pure demeure, dans notre condition terrestre actuelle, comparable au reflet indirect d'un miroir de bronze, en attendant l'illumination directe et immédiate de la présence glorieuse de Christ (MacArthur, 1870).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> aujourd’hui je connais partiellement, mais alors je connaîtrai complètement, tout comme j’ai été connu. (13.12)</li><li><b>NEG79</b> aujourd’hui je connais en partie, mais alors je connaîtrai comme j’ai été connu. (13.12)</li><li class="ecart"><b>Darby</b> maintenant je connais en partie, mais alors je connaîtrai à fond comme aussi j’ai été connu. (13.12)</li><li><b>LSG</b> aujourd’hui je connais en partie, mais alors je connaîtrai comme j’ai été connu. (13.12)</li><li class="ecart"><b>NBS</b> Aujourd'hui nous voyons au moyen d'un miroir, d'une manière confuse, mais alors ce sera face à face.... (13.12)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">1 Corinthiens 13</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans sa série de neuf prédications sur le chapitre 13 (<i>1862</i> à <i>1870</i>), John MacArthur insiste d'abord sur le contexte polémique et pastoral de cet « hymne à l'amour ». On lit souvent 1 Corinthiens 13 lors des mariages comme une douce poésie sentimentale, alors qu'il s'agit en réalité de la réprimande la plus tranchante que Paul ait adressée à une Église charnelle obsédée par les phénomènes charismatiques ! Dans les sermons <i>1862</i> et <i>1863</i> (sur 13.1-⁠3), Paul prend un à un les dons dont les Corinthiens tiraient le plus d'orgueil : parler les langues des hommes ou même (par hyperbole) celles des anges sans amour ne produit pas plus de spiritualité que le fracas assourdissant d'un gong de bronze ou d'une cymbale païenne (13.1). Posséder le don de prophétie, sonder tous les mystères, maîtriser toute la théologie et avoir la foi miraculeuse qui transporte les montagnes sans amour fait de moi un « rien » spirituel (13.2). Même distribuer tous ses biens bouchée par bouchée aux pauvres et livrer son corps au martyre sans amour ne sert absolument à rien (13.3). Les dons ne sont jamais un signe de maturité spirituelle; seul le fruit de l'Esprit qu'est l'amour (Ga 5.22) atteste la maturité.</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : neuf sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur 1 Corinthiens 13.1 à 13.13 (1862 à 1870, série « 1 Corinthians », mai à juillet 1976)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">1862</span></th><td><a href="https://www.gty.org/sermons/1862" target="_blank" rel="noopener">Languages Without Love</a></td><td>1 Co 13.1</td></tr><tr><th scope="row"><span class="mot-fr">1863</span></th><td><a href="https://www.gty.org/sermons/1863" target="_blank" rel="noopener">The Prominence of Love</a></td><td>1 Co 13.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">1864</span></th><td><a href="https://www.gty.org/sermons/1864" target="_blank" rel="noopener">The Qualities of True Love, Part 1</a></td><td>1 Co 13.4</td></tr><tr><th scope="row"><span class="mot-fr">1865</span></th><td><a href="https://www.gty.org/sermons/1865" target="_blank" rel="noopener">The Qualities of True Love, Part 2</a></td><td>1 Co 13.4</td></tr><tr><th scope="row"><span class="mot-fr">1866</span></th><td><a href="https://www.gty.org/sermons/1866" target="_blank" rel="noopener">The Qualities of True Love, Part 3</a></td><td>1 Co 13.5-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">1867</span></th><td><a href="https://www.gty.org/sermons/1867" target="_blank" rel="noopener">The Qualities of True Love, Part 4</a></td><td>1 Co 13.7</td></tr><tr><th scope="row"><span class="mot-fr">1868</span></th><td><a href="https://www.gty.org/sermons/1868" target="_blank" rel="noopener">The Permanence of Love, Part 1</a></td><td>1 Co 13.8</td></tr><tr><th scope="row"><span class="mot-fr">1869</span></th><td><a href="https://www.gty.org/sermons/1869" target="_blank" rel="noopener">The Permanence of Love, Part 2</a></td><td>1 Co 13.8</td></tr><tr><th scope="row"><span class="mot-fr">1870</span></th><td><a href="https://www.gty.org/sermons/1870" target="_blank" rel="noopener">The Permanence of Love, Part 3</a></td><td>1 Co 13.8-⁠13</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p>Dans les quatre sermons consacrés aux versets 4 à 7 (<i>1864</i> à <i>1867</i>), MacArthur analyse chacune des quinze propriétés verbales de l'amour <i>agapē</i> en montrant comment elles corrigent point par point les péchés de Corinthe : l'amour est patient envers ceux qui l'offensent (<i>makrothymei</i>) et activement serviable (<i>chrēsteuetai</i>); il ignore la jalousie partisane (<i>ou zēloi</i>, cf. 3.3), ne fanfaronne pas (<i>ou perpereuetai</i>) et ne se gonfle pas d'orgueil (<i>ou physioutai</i>, cf. 4.6, 18; 5.2; 8.1). Il ne commet rien d'indécent dans le culte ou la morale (<i>ouk aschēmonei</i>, cf. 11.2-⁠22), ne revendique pas ses propres droits en justice ou à table (<i>ou zētei ta heautēs</i>, cf. 6.1-⁠8; 10.24), ne s'emporte pas (<i>ou paroxynetai</i>) et ne tient pas de livre de comptes des torts subis (<i>ou logizetai to kakon</i>). Il ne se réjouit jamais du scandale ou de l'injustice (<i>ou chairei epi tē adikia</i>, cf. 5.1-⁠2), mais se réjouit avec la vérité doctrinale et morale (<i>synchairei de tē alētheia</i>). Enfin, il couvre et protège tout (<i>panta stegei</i>), croit tout sans soupçon malveillant, espère tout et endure tout comme un soldat qui tient sa position (<i>panta hypomenei</i>, 13.7).</p><p>Dans les sermons <i>1868</i>, <i>1869</i> et <i>1870</i> (sur 13.8-⁠13), MacArthur traite la question cruciale de la cessation des dons de signes et de la permanence de l'amour. Tandis que l'amour ne s'effondre jamais (13.8a), les dons de révélation et de signes appartiennent uniquement à l'âge présent d'imperfection et de croissance : Paul distingue soigneusement la prophétie et la connaissance qui « seront abolies » (passif <i>katargēthēsontai</i>) lors de l'avènement de « ce qui est parfait » (<i>to teleion</i>, 13.10 - que MacArthur identifie à l'état éternel céleste où nous verrons Christ « face à face » et connaîtrons parfaitement, v. 12), et les langues qui « cesseront d'elles-mêmes » (moyen <i>pausontai</i>, v. 8) dès la fin de l'âge apostolique une fois leur fonction de signe judiciaire pour Israël accomplie (14.21-⁠22). Dans l'éternité, même la foi fera place à la vue et l'espérance à la pleine possession, mais l'amour demeurera à jamais comme la plus grande de toutes les vertus, parce que « Dieu est amour » (13.13; 1 Jn 4.8).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>13.1-⁠3.</b> La triple répétition de la conditionnelle négative <i>agapēn de mē echō</i> (« mais si je n'ai pas l'amour », v. 1, 2, 3) suivie des trois verdicts gradués - <i>chalkos ēchōn</i> (bruit creux, v. 1), <i>outhen eimi</i> (je ne suis rien, v. 2) et <i>ouden ōpheloumai</i> (cela ne me sert à rien, v. 3) - structure mathématiquement le réquisitoire contre un exercice des dons privé de charité.</li><li><b>13.4-⁠7.</b> Le fait que sept des quinze verbes décrivant l'amour aux versets 4 à 6 (<i>ou zēloi, ou perpereuetai, ou physioutai, ouk aschēmonei, ou zētei ta heautēs, ou paroxynetai, ou logizetai to kakon</i>) reprennent directement les fautes déjà reprochées aux Corinthiens aux chapitres 1 à 11 prouve que ce portrait est un miroir pastoral dressé devant l'assemblée de Corinthe.</li><li><b>13.7.</b> Le quatrain final rythmé par l'anaphore quadruple de l'accusatif neutre <i>panta</i> - <i><b>panta</b> stegei, <b>panta</b> pisteuei, <b>panta</b> elpizei, <b>panta</b> hypomenei</i> (« il excuse/couvre tout, il croit tout, il espère tout, il supporte tout ») - porte à son apogée l'endurance invincible de l'amour chrétien.</li><li><b>13.8, 13.</b> L'inclusion encadrant la dernière strophe entre <i>Hē agapē oudepote piptei</i> (« L'amour ne périt / ne tombe jamais », v. 8a) et <i>meizōn de toutōn hē agapē</i> (« mais la plus grande de ces choses, c'est l'amour », v. 13b) établit la supériorité eschatologique de l'amour sur tous les charismes (qui prendront fin) et même sur la foi et l'espérance (qui s'accompliront dans la vue et la possession).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Sept passages</p></header>
+<p class="lead">Sept passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 7.22-⁠23; 17.20</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Avertissement de Jésus correspondant directement à 1 Corinthiens 13.1-⁠2 : plusieurs auront prophétisé, chassé des démons et fait beaucoup de miracles en son nom sans avoir jamais connu ni aimé le Seigneur.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Galates 5.6, 22; Colossiens 3.12-⁠14</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Parallèles pauliniens montrant que seule « la foi qui agit par l'amour » a de la valeur et que l'amour, premier fruit de l'Esprit (suivi de la patience et de la bonté comme en 1 Co 13.4), est « le lien de la perfection ».</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Pierre 4.8; Proverbes 10.12</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Éclairage direct sur l'affirmation « l'amour excuse / couvre tout » (<i>panta stegei</i>) en 1 Corinthiens 13.7 : « Avant tout, ayez les uns pour les autres un ardent amour, car l'amour couvre une multitude de péchés ».</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Jean 1-⁠4; Philippiens 1.9; Éphésiens 4.15</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Alliance indissoluble de l'amour et de la vérité affirmée en 1 Corinthiens 13.6 (« il ne se réjouit point de l'injustice, mais il se réjouit de la vérité ») : le véritable amour biblique professe la vérité dans l'amour.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Nombres 12.8</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Arrière-plan vétérotestamentaire de 1 Corinthiens 13.12 (« d'une manière obscure [<i>en ainigmati</i>], mais alors nous verrons face à face ») : Paul reprend le vocabulaire grec de la Septante (LXX) traduisant l'hébreu de Nombres 12.8 où Dieu parlait à Moïse « bouche à bouche, et non par des énigmes (<i>di' ainigmatōn</i>) ».</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Jean 3.2; Apocalypse 22.4</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Accomplissement eschatologique de la promesse de 1 Corinthiens 13.12 (« mais alors nous verrons face à face; aujourd'hui je connais en partie, mais alors je connaîtrai comme j'ai été connu ») : « nous le verrons tel qu'il est » et « ils verront sa face ».</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 1.3; 5.8; Colossiens 1.4-⁠5</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">La triade apostolique de la foi, de l'espérance et de l'amour qui couronne 1 Corinthiens 13.13 et structure toute la vie chrétienne dans les épîtres de Paul.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Trois axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">L'inutilité spirituelle des dons et des sacrifices sans l'amour</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En 13.1-⁠3, Paul déclare que parler les langues des hommes et des anges, prophétiser, connaître tous les mystères, posséder une foi qui transporte les montagnes, distribuer tous ses biens aux pauvres et livrer son corps sans avoir l'amour ne fait de l'homme qu'un airain résonnant et un néant sans aucun profit.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Distinction fondamentale entre les charismes de service et le fruit sanctifiant de l'Esprit, et primauté absolue de la motivation du cœur devant Dieu.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>De la réprobation prophétique des sacrifices rituels accomplis sans amour ni droiture (1 S 15.22; És 1.11-⁠17) au reproche adressé par le Christ glorifié à l'Église d'Éphèse qui avait abandonné son premier amour malgré son orthodoxie et sa persévérance (Ap 2.2-⁠4), Dieu sonde toujours l'amour qui anime nos œuvres.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Nous ne devons jamais confondre l'éloquence, l'érudition théologique ou l'activisme religieux avec la spiritualité : tout service accompli sans amour pour Christ et pour nos frères a une valeur nulle devant Dieu.</p></div></div></section><section class="theme"><h3 class="theme__title">La nature active, humble et sainte de l'amour agapē</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En 13.4-⁠7, l'amour est défini par quinze actions concrètes : il est patient et bon, exempt d'envie, de vantardise, d'orgueil, d'indécence, d'égoïsme, d'irritation et de rancune; il ne se réjouit pas de l'injustice mais se réjouit de la vérité, et il couvre, croit, espère et supporte tout.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Éthique christocentrique de la charité (<i>agapē</i>) comme don de soi volontaire, et harmonie indissoluble entre l'amour et la vérité biblique (13.6).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Incarné parfaitement dans la personne terrestre de Jésus-Christ (qui a aimé les siens jusqu'au bout en lavant leurs pieds et en portant leurs péchés sur la croix, Jn 13.1, 34), cet amour est répandu dans nos cœurs par le Saint-Esprit qui nous a été donné (Rm 5.5).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Contre la définition mondaine qui réduit l'amour à une émotion complaisante tolérant l'erreur et le péché, l'amour biblique se réjouit exclusivement de la vérité tout en pardonnant et en supportant patiemment les offenses personnelles.</p></div></div></section><section class="theme"><h3 class="theme__title">Le caractère temporaire des charismes et l'éternité de l'amour</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En 13.8-⁠13, tandis que les prophéties et la connaissance partielle seront abolies et que les langues cesseront, l'amour ne périt jamais : lorsque ce qui est parfait sera venu et que nous verrons face à face, la foi, l'espérance et l'amour demeurent, mais la plus grande de ces choses est l'amour.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Cessation des dons de signes (langues) à l'achèvement de leur rôle fondationnel et abolition de toute connaissance partielle lors de la vision béatifique dans la gloire éternelle, où l'amour régnera sans fin.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>De la connaissance voilée des prophètes et du miroir de l'âge de l'Église, l'histoire de la rédemption s'achemine vers le jour éternel où les rachetés contempleront la face de l'Agneau dans une communion d'amour parfaite (1 Jn 3.2; Ap 22.4).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Plutôt que de rechercher avec fièvre des expériences temporaires et partielles, le croyant sage investit toute sa vie dans ce qui traversera les portes de l'éternité : l'amour pour Dieu et pour son peuple.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Pourquoi Paul place-t-il ce chapitre sur l'amour précisément entre le chapitre 12 (la doctrine des dons spirituels) et le chapitre 14 (la pratique des dons dans l'assemblée) ?</li><li>En quoi les versets 1 à 3 remettent-ils radicalement en question la tendance à mesurer la maturité spirituelle d'un chrétien à ses dons visibles, à son savoir théologique ou à son activisme ?</li><li>Lorsque vous remplacez le mot « l'amour » en 13.4-⁠7 par votre propre prénom, laquelle des quinze actions verbales met le plus en lumière votre besoin actuel de repentance et de croissance ?</li><li>Comment le verset 6 (« il ne se réjouit point de l'injustice, mais il se réjouit de la vérité ») réfute-t-il l'idée moderne selon laquelle aimer quelqu'un consisterait à approuver son péché ou son erreur doctrinale ?</li><li>Pourquoi l'amour est-il plus grand même que la foi et l'espérance (13.13) au regard de l'éternité qui nous attend lorsque nous verrons le Seigneur « face à face » (13.12) ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 1 Corinthiens 13 · 2 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-1-Corinthiens-13.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
