@@ -81,7 +81,7 @@ Niveau 1 : sermons Grace to You sur 1 Corinthiens 7.1 à 7.40 (1828 à 1832, sé
 
 **Couverture des sources**
 
-Les cinq sermons (1828 à 1832) couvrent l'intégralité des 40 versets du chapitre 7 : 1828 (« God's Plan for Marriage », 7.1-7) expose le devoir conjugal réciproque contre l'ascétisme et le don particulier du célibat ou du mariage; 1829 (« Marriage, Divorce, and Singleness », 7.8-16) traite le conseil aux non-mariés et veuves, l'indissolubilité du mariage entre croyants et le cas des mariages mixtes avec un conjoint non croyant; 1830 (« Bloom Where You Are Planted », 7.17-24) déploie le principe directeur de demeurer dans l'état où Dieu nous a appelés (circoncision, esclavage); 1831 et 1832 (« To Marry or Not to Marry, Parts 1 & 2 », 7.25-40) analysent les avantages du célibat pour servir le Seigneur sans distraction face à la détresse présente ainsi que la liberté de se marier « seulement dans le Seigneur ».
+Les cinq sermons (1828 à 1832) couvrent l'intégralité des 40 versets du chapitre 7 : 1828 (« To Marry or Not to Marry », 7.1-7) expose le devoir conjugal réciproque contre l'ascétisme et le don particulier du célibat ou du mariage; 1829 (« Divine Guidelines for Marriage », 7.8-16) traite le conseil aux non-mariés et veuves, l'indissolubilité du mariage entre croyants et le cas des mariages mixtes avec un conjoint non croyant; 1830 (« Bloom Where You Are Planted », 7.17-24) déploie le principe directeur de demeurer dans l'état où Dieu nous a appelés (circoncision, esclavage); 1831 et 1832 (« To Marry or Not to Marry, Parts 1 & 2 », 7.25-40) analysent les avantages du célibat pour servir le Seigneur sans distraction face à la détresse présente ainsi que la liberté de se marier « seulement dans le Seigneur ».
 
 **Sermons Grace to You**
 

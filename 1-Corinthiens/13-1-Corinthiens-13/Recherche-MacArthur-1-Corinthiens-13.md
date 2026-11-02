@@ -77,7 +77,7 @@ Niveau 1 : sermons Grace to You sur 1 Corinthiens 13.1 à 13.13 (1862 à 1870, s
 
 **Couverture des sources**
 
-Neuf sermons (1862 à 1870) couvrent de manière approfondie les 13 versets du chapitre 13 : 1862 et 1863 exposent la vanité absolue des dons de langues, de prophétie, de foi miraculeuse et de sacrifice personnel sans l'amour (13.1-3); 1864 à 1867 analysent une à une les quinze propriétés actives de l'amour (13.4-7); 1868 et 1869 (« Are the Sign Gifts for Today? », 13.8) démontrent l'impérissabilité de l'amour et la cessation des dons de prophétie, de langues et de connaissance révélationnelle; 1870 (« The Greatest of These », 13.8-13) explique la venue de « ce qui est parfait » (l'état éternel face à face) et la suprématie de l'amour sur la foi et l'espérance.
+Neuf sermons (1862 à 1870) couvrent de manière approfondie les 13 versets du chapitre 13 : 1862 et 1863 exposent la vanité absolue des dons de langues, de prophétie, de foi miraculeuse et de sacrifice personnel sans l'amour (13.1-3); 1864 à 1867 analysent une à une les quinze propriétés actives de l'amour (13.4-7); 1868 et 1869 (« The Permanence of Love, Parts 1 & 2 », 13.8) démontrent l'impérissabilité de l'amour et la cessation des dons de prophétie, de langues et de connaissance révélationnelle; 1870 (« The Permanence of Love, Part 3 », 13.8-13) explique la venue de « ce qui est parfait » (l'état éternel face à face) et la suprématie de l'amour sur la foi et l'espérance.
 
 **Sermons Grace to You**
 
