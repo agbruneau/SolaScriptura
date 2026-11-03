@@ -12,7 +12,7 @@
 
 ## Idée de la série
 
-Septième lettre canonique de Paul selon la chronologie de John MacArthur (rédigée depuis sa première captivité à Rome vers 60-62 apr. J.-C. et confiée à Tychique en même temps que Colossiens et Philémon, 6.21-22), l'épître aux Éphésiens déploie les « richesses insondables de Christ » (3.8) accordées à l'Église, corps et épouse du Seigneur (1901, 1906). Beaucoup de croyants vivent dans la pauvreté spirituelle parce qu'ils ignorent les ressources infinies que le Père, le Fils et le Saint-Esprit ont déposées à leur compte dans les lieux célestes, ou parce qu'ils dissocient leur identité céleste de leur marche quotidienne sur la terre.
+Septième lettre canonique de Paul selon la chronologie de John MacArthur (rédigée depuis sa première captivité à Rome vers 60-62 apr. J.-C. et confiée à Tychique en même temps que Colossiens et Philémon, 6.21-22), l'épître aux Éphésiens déploie les « richesses incompréhensibles de Christ » (3.8) accordées à l'Église, corps et épouse du Seigneur (1901, 1906). Beaucoup de croyants vivent dans la pauvreté spirituelle parce qu'ils ignorent les ressources infinies que le Père, le Fils et le Saint-Esprit ont déposées à leur compte dans les lieux célestes, ou parce qu'ils dissocient leur identité céleste de leur marche quotidienne sur la terre.
 
 **Phrase de la série :** *Bénis de toute bénédiction céleste en Christ, marchons d'une manière digne de notre appel dans la plénitude de l'Esprit et tenons ferme avec toutes les armes de Dieu.*
 
@@ -55,7 +55,7 @@ Septième lettre canonique de Paul selon la chronologie de John MacArthur (rédi
 
 ### I. L'élection du Père et la rédemption du Fils (1.3-12)
 
-- **Le choix souverain du Père (1.4-6) :** « En lui Dieu nous a élus avant la fondation du monde, pour que nous soyons saints et irréprochables devant lui; il nous a prédestinés dans son amour à être ses enfants d’adoption par Jésus-Christ, selon le bon plaisir de sa volonté, » (1.4-5). Avant la création du monde, le Père nous a choisis pour lui-même (*exelesato*, voix moyenne) avec un but moral (être saints et irrépréhensibles) et un but filial (l'adoption par Jésus-Christ), « à la louange de la gloire de sa grâce » (1902, 1903).
+- **Le choix souverain du Père (1.4-6) :** « En lui Dieu nous a élus avant la fondation du monde, pour que nous soyons saints et irréprochables devant lui; il nous a prédestinés dans son amour à être ses enfants d’adoption par Jésus-Christ, selon le bon plaisir de sa volonté, » (1.4-5). Avant la création du monde, le Père nous a choisis pour lui-même (*exelesato*, voix moyenne) avec un but moral (être saints et irréprochables) et un but filial (l'adoption par Jésus-Christ), « pour célébrer la gloire de sa grâce » (1902, 1903).
 - **Le rachat et le mystère dans le Fils (1.7-12) :** « En lui nous avons la rédemption par son sang, le pardon des péchés, selon la richesse de sa grâce, » (1.7). Par le sang de Christ, l'esclave du péché est affranchi (*apolytrōsis*), ses offenses sont pardonnées, et Dieu lui révèle le mystère de sa volonté : réunir toutes choses en Christ sous un seul Chef (1.9-10; 1904).
 
 ### II. Le sceau et les arrhes du Saint-Esprit (1.13-14)
@@ -129,7 +129,7 @@ Septième lettre canonique de Paul selon la chronologie de John MacArthur (rédi
 | III. La prière à genoux pour la plénitude de Dieu et la doxologie | Éphésiens 3.14-21 |
 | Conclusion et appel | Éphésiens 3.20-21 |
 
-**Introduction.** Enchaîné à Rome, Paul s'intitule « le prisonnier de Jésus-Christ pour vous païens » (3.1) : loin d'être un échec, ses chaînes accomplissent le dessein éternel de Dieu (1912).
+**Introduction.** Enchaîné à Rome, Paul s'intitule « le prisonnier de Christ pour vous païens » (3.1) : loin d'être un échec, ses chaînes accomplissent le dessein éternel de Dieu (1912).
 
 ### I. Le mystère révélé : un seul corps cohéritier de la promesse (3.1-6)
 
@@ -253,7 +253,7 @@ Septième lettre canonique de Paul selon la chronologie de John MacArthur (rédi
 ### I. La plénitude de l'Esprit chez les enfants, les parents et au travail (6.1-9)
 
 - **Enfants et pères (6.1-4) :** « Enfants, obéissez à vos parents, selon le Seigneur, car cela est juste. » (6.1) et « Et vous, pères, n’irritez pas vos enfants, mais élevez-les en les corrigeant et en les instruisant selon le Seigneur. » (6.4). Les enfants obéissent et honorent leurs parents selon la promesse du cinquième commandement; les pères n'irritent pas leurs enfants mais les élèvent dans la discipline (*paideia*) et l'instruction (*nouthesia*) du Seigneur (1948-1950B).
-- **Serviteurs et maîtres (6.5-9) :** servir avec bonne volonté « comme au Seigneur et non aux hommes » et diriger avec justice sous le regard du Maître céleste impartial (1951).
+- **Serviteurs et maîtres (6.5-9) :** servir avec bonne volonté « comme servant le Seigneur et non des hommes » et diriger avec justice sous le regard du Maître céleste impartial (1951).
 
 ### II. L'ennemi invisible et les six pièces de l'armure de Dieu (6.10-17)
 
