@@ -1,0 +1,200 @@
+# Recherche exégétique (perspective MacArthur) : Romains 13
+
+**La soumission du chrétien aux autorités civiles instituées de Dieu, l'accomplissement de la loi par l'amour et le réveil eschatologique**
+
+> « Que toute personne soit soumise aux autorités supérieures; car il n’y a point d’autorité qui ne vienne de Dieu, et les autorités qui existent ont été instituées de Dieu. » (Romains 13.1, NEG)
+
+3 novembre 2026 · André-Guy Bruneau
+
+---
+
+## Contexte du passage
+
+> « Que toute personne soit soumise aux autorités supérieures; car il n’y a point d’autorité qui ne vienne de Dieu, et les autorités qui existent ont été instituées de Dieu. C’est pourquoi celui qui s’oppose à l’autorité résiste à l’ordre que Dieu a établi, et ceux qui résistent attireront une condamnation sur eux-mêmes. » (Romains 13.1-2, NEG)
+
+> « Ce n’est pas pour une bonne action, c’est pour une mauvaise, que les magistrats sont à redouter. Veux-tu ne pas craindre l’autorité? Fais le bien, et tu auras son approbation. Le magistrat est serviteur de Dieu pour ton bien. Mais si tu fais le mal, crains; car ce n’est pas en vain qu’il porte l’épée, étant serviteur de Dieu pour exercer la vengeance et punir celui qui fait le mal. » (Romains 13.3-4, NEG)
+
+> « C’est aussi pour cela que vous payez les impôts. Car les magistrats sont des ministres de Dieu entièrement appliqués à cette fonction. Rendez à tous ce qui leur est dû: l’impôt à qui vous devez l’impôt, le tribut à qui vous devez le tribut, la crainte à qui vous devez la crainte, l’honneur à qui vous devez l’honneur. » (Romains 13.6-7, NEG)
+
+> « Ne devez rien à personne, si ce n’est de vous aimer les uns les autres; car celui qui aime les autres a accompli la loi. En effet, les commandements: Tu ne commettras point d’adultère, tu ne tueras point, tu ne déroberas point, tu ne convoiteras point, et ceux qu’il peut encore y avoir, se résument dans cette parole: Tu aimeras ton prochain comme toi-même. L’amour ne fait point de mal au prochain: l’amour est donc l’accomplissement de la loi. » (Romains 13.8-10, NEG)
+
+> « Cela importe d’autant plus que vous savez en quel temps nous sommes: c’est l’heure de vous réveiller enfin du sommeil, car maintenant le salut est plus près de nous que lorsque nous avons cru. La nuit est avancée, le jour approche. Dépouillons-nous donc des œuvres des ténèbres, et revêtons les armes de la lumière. » (Romains 13.11-12, NEG)
+
+> « Marchons honnêtement, comme en plein jour, loin des orgies et de l’ivrognerie, de la luxure et de la débauche, des querelles et des jalousies. Mais revêtez-vous du Seigneur Jésus-Christ, et n’ayez pas soin de la chair pour en satisfaire les convoitises. » (Romains 13.13-14, NEG)
+
+Poursuivant la grande section pratique inaugurée par le sacrifice vivant de 12.1-2, le chapitre 13 élargit la marche chrétienne de la vie ecclésiale et relationnelle (chapitre 12) à la vie **civique, sociale et eschatologique** au cœur de la capitale de l'Empire : 1) comment le citoyen du royaume des cieux doit-il se comporter envers l'État séculier qui porte l'épée et lève l'impôt (13.1-7, en continuité directe avec l'interdiction de la vengeance privée en 12.17-21, puisque Dieu délègue sa colère temporelle au magistrat en 13.4) ? 2) quelle est la loi royale qui règle toutes nos dettes envers le prochain (13.8-10) ? 3) quelle vigilance morale s'impose à l'approche du jour du salut (13.11-14) ?
+
+Le genre littéraire du chapitre associe l'instruction civique et politique (*Haustafel* étendue à l'État, v. 1-7), la parénèse éthique sur le Décalogue et l'amour (v. 8-10) et la proclamation prophétique de réveil eschatologique (v. 11-14).
+
+## Arrière-plan historique et culturel
+
+Lorsque Paul rédige Romains 13 au début de l'année 56 ou 57 apr. J.-C., l'empereur régnant à Rome n'est autre que **Néron** (54-68 apr. J.-C.), monté sur le trône à dix-sept ans après l'empoisonnement de Claude par Agrippine et gouvernant alors sous la tutelle de Sénèque et du préfet du prétoire Burrus avant de sombrer dans la tyrannie sanglante qui coûtera la vie à Paul lui-même (45-97). Parallèlement, la communauté juive de Rome avait déjà été expulsée par Claude en l'an 49 en raison de troubles incessants (Suétone, *Claude* 25.4; Actes 18.2), le mouvement zélote attisait la révolte fiscale et armée en Judée, et dès l'an 58 une agitation populaire contre la cupidité des publicains (collecteurs des impôts indirects, *vectigalia* et *portoria*) allait éclater à Rome même (Tacite, *Annales* XIII, 50-51; 45-102).
+
+C'est dans ce climat explosif que Paul ordonne aux croyants de Rome de se soumettre aux autorités établies et de payer tant le *phoros* (le tribut direct sur les personnes et les terres administré par les fonctionnaires impériaux) que le *telos* (les droits de douane et taxes indirectes affermés aux publicains, 13.6-7). Enfin, les versets 13 et 14 ont marqué l'histoire de l'Église : c'est en lisant Romains 13.13-14 dans un jardin de Milan à l'été 386 qu'Augustin d'Hippone fut terrassé par la conviction du Saint-Esprit et se convertit à Christ (*Confessions* VIII, 12.29; 45-107).
+
+Trois détails échappent au lecteur moderne.
+
+- **Sept raisons bibliques de se soumettre aux autorités civiles et la seule limite à l'obéissance (13.1-5).** Dans les sermons 45-97 à 45-101, John MacArthur dégage des versets 1 à 5 sept motifs théologiques qui commandent la soumission du croyant aux autorités civiles : 1) l'**institution divine** de tout gouvernement humain (« il n'y a point d'autorité qui ne vienne de Dieu », v. 1); 2) le **péché de rébellion contre Dieu lui-même** (« celui qui s'oppose à l'autorité résiste à l'ordre que Dieu a établi », v. 2a); 3) la **condamnation temporelle** qu'attire l'insoumission (v. 2b); 4) la **fonction protectrice** du magistrat pour ceux qui font le bien (v. 3-4a); 5) le **ministère judiciaire du glaive** (*machaira*, incluant légitimement la peine capitale instituée dès Genèse 9.6) exercé par le magistrat comme « serviteur de Dieu » (*diakonos*) pour « exercer la vengeance et punir celui qui fait le mal » (v. 4b); 6) la **crainte du châtiment** (*dia tēn orgēn*, v. 5a); 7) le **motif supérieur de la conscience** éclairée par la parole de Dieu (*dia tēn syneidēsin*, v. 5b). Dans le sermon 45-101, MacArthur précise la seule exception scripturaire à cette soumission : lorsque l'État ordonne directement ce que Dieu interdit ou interdit ce que Dieu commande (Ac 4.19-20; 5.29; Dn 3.16-18; 6.10).
+- **La dette perpétuelle de l'amour qui accomplit toute la seconde table de la loi (13.8-10).** Après avoir prescrit en 13.7 de s'acquitter intégralement de toutes ses dettes fiscales et civiques (« Rendez à tous ce qui leur est dû »), Paul formule en 13.8-10 (sermons 45-104 et 45-105) le principe financier et moral du chrétien : « Ne devez rien à personne (*Mēdeni mēden opheilete* - ce qui n'interdit pas un emprunt contractuel remboursé fidèlement à échéance selon Mt 5.42 et Lc 6.35, mais condamne tout manquement à une obligation échue), **si ce n'est de vous aimer les uns les autres** ». L'amour *agapē* est une dette que nous ne finissons jamais de rembourser; et parce que l'amour ne fait jamais de mal au prochain (ni adultère, ni meurtre, ni vol, ni convoitise, citant Ex 20.13-17 et Lv 19.18), « l'amour est donc l'accomplissement (*plērōma*) de la loi » (v. 10).
+- **Le réveil de l'aurore et l'impératif de « revêtir le Seigneur Jésus-Christ » (13.11-14).** Aux versets 11 à 14 (sermons 45-106 et 45-107), Paul fonde la sainteté pratique sur l'horloge eschatologique de Dieu : « notre salut [dans sa consommation finale, la glorification corporelle de 8.23] est plus près de nous que lorsque nous avons cru; la nuit [du présent siècle mauvais] est avancée, le jour [du retour de Christ] approche » (v. 11-12). Devant cette aube imminente, le croyant doit : 1) se réveiller de la léthargie spirituelle (v. 11); 2) dépouiller comme des vêtements souillés les œuvres des ténèbres - orgies (*kōmois*), ivrogneries (*methais*), débauches sexuelles (*koitais*), impudicités (*aselgeiais*), querelles (*eridi*) et jalousies (*zēlō*) (v. 12-13); 3) revêtir les armes de la lumière, c'est-à-dire « **vous revêtir du Seigneur Jésus-Christ** » dans une intimité quotidienne avec sa personne qui coupe court aux convoitises de la chair (v. 14).
+
+## État du texte
+
+Sources consultées : grec : SBLGNT et son apparat critique (lus aux 14 versets du chapitre); grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus (Bible Hub); Septante et hébreu massorétique pour Exode 20.13-17; Deutéronome 5.17-21; Lévitique 19.18; versions françaises : NEG79, LSG, S21, Darby, NBS. **Numérotation.** Aucun écart de numérotation des 14 versets entre la NEG79, le grec et la NASB de MacArthur.
+
+- **Romains 13.9.** Quatre commandements cités (adultère, meurtre, vol, convoitise : 𝔓46, א, B, D, F, G, SBLGNT, Westcott et Hort, Nestle 1904), ou insertion d'un cinquième commandement *Ou pseudomartyrēseis* (« Tu ne porteras point de faux témoignage », A, P, Ψ, texte byzantin, Textus Receptus). **NEG79.** La NEG79, la LSG et la Darby incluent « Tu ne porteras point de faux témoignage »; la S21 et la NBS suivent le texte court. **Portée.** Addition d'harmonisation avec le Décalogue (Ex 20.16), sans aucune incidence sur l'argument de Paul qui ajoute aussitôt : « et s'il y a quelque autre commandement » (*kai ei tis hetera entolē*, 45-105).
+
+## Structure et grammaire
+
+**Plan de la péricope**
+
+- **13.1–7.** La soumission du chrétien aux autorités civiles instituées par Dieu : leur origine divine, leur ministère judiciaire du glaive et le paiement loyal des impôts et de l'honneur. Marqueur : Impératif universel *Pasa psychē exousiais hyperechousais hypotassesthō* (v. 1) et conclusion pratique *Apodote pasin tas opheilas* (v. 7).
+- **13.8–10.** La dette inépuisable de l'amour mutuel, récapitulation de tous les commandements de la loi envers le prochain. Marqueur : Impératif *Mēdeni mēden opheilete ei mē to allēlous agapan* (v. 8) et inclusion sur l'accomplissement de la loi (*plēroō* v. 8 / *plērōma* v. 10).
+- **13.11–14.** Le réveil eschatologique à l'approche du jour du salut : dépouiller les œuvres des ténèbres et revêtir le Seigneur Jésus-Christ. Marqueur : Transition temporelle *Kai touto eidotes ton kairon* (v. 11) et double impératif final *endysasthe ton Kyrion Iēsoun Christon...* (v. 14).
+
+**Observations grammaticales**
+
+- **13.1.** L'expression hébraïsante *Pasa psychē* (« Toute âme / Toute personne ») placée en tête du chapitre avec l'impératif présent passif/moyen *hypotassesthō* (« se soumette continuellement ») n'admet aucune exemption d'élite spirituelle : aucun croyant, sous prétexte de sa citoyenneté céleste ou de la corruption de l'Empire romain, n'est au-dessus des lois civiles (45-97).
+- **13.4.** Dans *ou gar eikē tēn machairan phorei* (« car ce n'est pas en vain qu'il porte l'épée »), le substantif *machaira* désigne le glaive court d'exécution que les licteurs portaient devant les magistrats romains détenteurs du *jus gladii* (le droit de vie et de mort) : le verbe *phorei* (« porter habituellement comme insigne de fonction ») atteste que Dieu confère à l'État le droit d'exercer la force coercitive jusqu'à la peine capitale pour réprimer les malfaiteurs (45-100).
+- **13.8.** Le parfait actif *peplērōken* dans *ho gar agapōn ton heteron nomon **peplērōken*** (« car celui qui aime les autres a accompli la loi ») exprime un état complet : là où l'amour véritable gouverne le cœur envers autrui, l'intention morale de toute la seconde table de la loi se trouve pleinement réalisée (45-104).
+- **13.14.** Dans *kai tēs sarkos pronoian mē poieisthe eis epithymias* (« et n'ayez pas soin de la chair pour en satisfaire les convoitises »), le nom *pronoia* (« prévoyance, planification anticipée ») interdit au croyant de planifier, d'organiser ou de ménager des occasions qui nourrissent les désirs pécheurs de la chair (45-107).
+
+## Étude des mots-clés
+
+Le sens vient du lexique; les versions montrent des rendus, non le sens.
+
+| Français | Translit. | Sens littéral | Lexique et lecture retenue | Traductions comparées |
+|---|---|---|---|---|
+| **ὑποτάσσω** | *hypotassō* | ranger sous; se placer volontairement sous l'autorité établie | **Lexique (Thayer).** Selon l'étymologie indiquée par Thayer, *hypotassō* (composé de *hypo*, sous, et *tassō*, ranger en ordre militaire, assigner un poste; 38 occurrences dans le NT dont Rm 8.7, 20; 10.3; 13.1, 5) signifie à l'origine disposer des troupes sous le commandement d'un chef, puis au moyen/passif se subordonner volontairement et avec ordre aux autorités instituées par Dieu. **Lecture retenue.** En Romains 13.1 et 5 (*hypotassesthō... hypotassesthai*), MacArthur (45-97) souligne que la soumission civique ne suppose aucune infériorité de valeur (Christ lui-même s'est soumis à Joseph et Marie en Luc 2.51), mais le respect de l'ordre fonctionnel que Dieu a établi pour préserver la société humaine de l'anarchie. | *S21* Que chacun se soumette aux autorités qui nous gouvernent, car toute autorité vient de Dieu, et celles qui... (13.1) · *NEG79* car il n’y a point d’autorité qui ne vienne de Dieu, et les autorités qui existent ont été instituées de Dieu. (13.1) · *Darby* et celles qui existent sont ordonnées de Dieu (13.1) · *LSG* car il n’y a point d’autorité qui ne vienne de Dieu, et les autorités qui existent ont été instituées de Dieu. (13.1) · *NBS* car il n'y a pas d'autorité qui ne vienne de Dieu, et celles qui existent ont été instituées par Dieu. (13.1) |
+| **ἐξουσία** | *exousia* | droit légitime d'agir; autorité déléguée; pouvoir gouvernant | **Lexique (Thayer).** Selon l'étymologie précisée par Thayer, *exousia* (dérivé de l'impersonnel *exestin*, il est permis, il est légitime; 102 occurrences dans le NT dont 4 en Rm 13.1-3) désigne l'autorité légitime et déléguée (par distinction avec la simple force brute, *dynamis*), et par métonymie les magistrats revêtus de cette autorité publique. **Lecture retenue.** En Romains 13.1-3 (« il n'y a point d'autorité [*exousia*] qui ne vienne de Dieu »), tout gouvernement humain n'exerce qu'une intendance déléguée d'en haut (cf. Jn 19.11) dont il rendra compte au Roi des rois (MacArthur, 45-97, 45-98). | *S21* Que chacun se soumette aux autorités qui nous gouvernent, car toute autorité vient de Dieu, et celles qui... (13.1) · *NEG79* car il n’y a point d’autorité qui ne vienne de Dieu, et les autorités qui existent ont été instituées de Dieu. (13.1) · *Darby* et celles qui existent sont ordonnées de Dieu (13.1) · *LSG* car il n’y a point d’autorité qui ne vienne de Dieu, et les autorités qui existent ont été instituées de Dieu. (13.1) · *NBS* car il n'y a pas d'autorité qui ne vienne de Dieu, et celles qui existent ont été instituées par Dieu. (13.1) |
+| **λειτουργός** | *leitourgos* | serviteur public; ministre accomplissant un office sacré | **Lexique (Thayer).** Selon l'étymologie donnée par Thayer, *leitourgos* (composé de *laos/leōs*, peuple, et *ergon*, œuvre; 5 occurrences dans le NT : Rm 13.6; 15.16; Ph 2.25; Hé 1.7; 8.2) désignait à l'origine à Athènes un citoyen assumant à ses frais une charge publique, puis dans la Septante le service sacré du sanctuaire. **Lecture retenue.** En Romains 13.6, Paul qualifie les gouvernants séculiers qui perçoivent l'impôt et maintiennent l'ordre public de *leitourgoi Theou* (« ministres de Dieu ») : payer honnêtement ses impôts est donc un acte d'obéissance envers Dieu qui soutient ses serviteurs civils (MacArthur, 45-102). | *S21* C’est aussi pour cela que vous payez des impôts, car les magistrats sont des serviteurs de Dieu qui... (13.6) · *NEG79* C’est aussi pour cela que vous payez les impôts. Car les magistrats sont des ministres de Dieu entièrement... (13.6) · *Darby* -car ils sont ministres de Dieu, s’employant constamment à cela même. (13.6) · *LSG* C’est aussi pour cela que vous payez les impôts. Car les magistrats sont des ministres de Dieu entièrement... (13.6) · *NBS* C'est aussi pour cela que vous payez des impôts. Car les gouvernants sont attachés au service de Dieu pour... (13.6) |
+| **ἐνδύω** | *endyō* | entrer dans un vêtement; revêtir | **Lexique (Thayer).** Selon l'étymologie relevée par Thayer, *endyō* (formé de *en*, dans, et *dyō*, plonger, pénétrer; 27 occurrences dans le NT dont Rm 13.12, 14) signifie s'envelopper d'un vêtement ou d'une armure, et au figuré entrer dans le caractère, la vie et la puissance d'une personne. **Lecture retenue.** En Romains 13.12 et 14 (« revêtons [*endysōmetha*] les armes de la lumière... mais revêtez-vous [*endysasthe*] du Seigneur Jésus-Christ »), le chrétien déjà revêtu de Christ par la foi justifiante (Ga 3.27) est appelé à s'envelopper quotidiennement de la présence et de la sainteté de son Seigneur (MacArthur, 45-107). | *S21* Mais revêtez-vous du Seigneur Jésus-Christ et ne vous préoccupez pas de votre nature propre pour satisfaire... (13.14) · *NEG79* Mais revêtez-vous du Seigneur Jésus-Christ, et n’ayez pas soin de la chair pour en satisfaire les convoitises. (13.14) · *Darby* Mais revêtez le Seigneur Jésus Christ, et ne prenez pas soin de la chair pour satisfaire à ses convoitises. (13.14) · *LSG* Mais revêtez-vous du Seigneur Jésus-Christ, et n’ayez pas soin de la chair pour en satisfaire les convoitises. (13.14) · *NBS* Mais revêtez le Seigneur Jésus-Christ, et ne vous préoccupez pas de la chair pour en satisfaire les désirs. (13.14) |
+
+## Apports des commentateurs
+
+**Niveau de source**
+
+Niveau 1 : sermons Grace to You sur Romains 13.1 à 13.14 (45-97 à 45-107, série « Romans », janvier à avril 1985, 11 prédications)
+
+**Couverture des sources**
+
+Onze sermons (45-97 à 45-107) couvrent l'intégralité des 14 versets du chapitre 13 en quatre volets : 1) la responsabilité du chrétien envers le gouvernement civil, son origine divine, son rôle de terreur contre le mal et les cas de conscience (45-97 à 45-101, 13.1-5); 2) le paiement loyal des impôts, des taxes, de la crainte et de l'honneur dus aux magistrats comme ministres de Dieu (45-102 et 45-103, 13.6-7); 3) la dette permanente de l'amour fraternel qui accomplit toute la loi morale (45-104 et 45-105, 13.8-10); 4) l'urgence eschatologique de se réveiller du sommeil spirituel, de revêtir les armes de la lumière et de se revêtir du Seigneur Jésus-Christ (45-106 et 45-107, 13.11-14).
+
+**Sermons Grace to You**
+
+| Code | Sermon | Passage |
+|---|---|---|
+| 45-97 | [The Christian's Responsibility to Government, Part 1](https://www.gty.org/sermons/45-97) | Rm 13.1 |
+| 45-98 | [The Christian's Responsibility to Government, Part 2](https://www.gty.org/sermons/45-98) | Rm 13.1-3a |
+| 45-99 | [The Christian's Responsibility to Government Part 3](https://www.gty.org/sermons/45-99) | Rm 13.1-2 |
+| 45-100 | [The Christian's Responsibility to Government Part 4](https://www.gty.org/sermons/45-100) | Rm 13.3-5 |
+| 45-101 | [Answering Tough Questions About the Christian and Government](https://www.gty.org/sermons/45-101) | Rm 13.1-5 |
+| 45-102 | [Paying Your Taxes, Part 1](https://www.gty.org/sermons/45-102) | Rm 13.6 |
+| 45-103 | [Paying Your Taxes, Part 2](https://www.gty.org/sermons/45-103) | Rm 13.6-7 |
+| 45-104 | [Love Fulfills the Law, Part 1](https://www.gty.org/sermons/45-104) | Rm 13.8 |
+| 45-105 | [Love Fulfills the Law, Part 2](https://www.gty.org/sermons/45-105) | Rm 13.8-10 |
+| 45-106 | [Put on the Lord Jesus Christ, Part 1](https://www.gty.org/sermons/45-106) | Rm 13.11-12 |
+| 45-107 | [Put on the Lord Jesus Christ, Part 2](https://www.gty.org/sermons/45-107) | Rm 13.12-14 |
+
+Dans ses onze prédications sur le chapitre 13 (*45-97* à *45-107*), John MacArthur montre comment le sacrifice vivant de 12.1-2 s'incarne au cœur de la cité terrestre. Dans les sermons *45-97* à *45-101* (sur 13.1-5), Paul ordonne à toute personne de se soumettre aux autorités supérieures, alors même que Néron occupe le trône impérial ! Pourquoi ? Parce que l'institution gouvernementale vient de Dieu pour réprimer le chaos du péché : résister à l'autorité légitime, c'est résister à l'ordre que Dieu a établi (v. 1-2). Le magistrat est par deux fois appelé « le serviteur de Dieu » (*Theou diakonos*) : il protège le citoyen paisible et ne porte pas en vain l'épée (*machaira*, incluant la peine capitale instituée en Genèse 9.6) pour punir le malfaiteur (v. 3-4). Le chrétien obéit donc non seulement par crainte de la colère pénale, mais aussi par motif de conscience (v. 5), avec une seule limite infranchissable : si l'État commande de désobéir à Dieu, « il faut obéir à Dieu plutôt qu'aux hommes » (Ac 5.29; 45-101).
+
+Dans les sermons *45-102* et *45-103* (sur 13.6-7), cette soumission se traduit par l'intégrité fiscale : puisque les magistrats sont « les ministres de Dieu » (*leitourgoi Theou*), le croyant paie fidèlement le tribut (*phoros*) et les taxes (*telos*), et rend la crainte et l'honneur à qui ils sont dus. Puis, dans les sermons *45-104* et *45-105* (sur 13.8-10), Paul passe des dettes civiques à la dette éternelle : « Ne devez rien à personne, si ce n'est de vous aimer les uns les autres; car celui qui aime les autres a accompli la loi. » Loin d'abolir la loi morale de Dieu, l'amour *agapē* qui ne fait aucun mal au prochain en est le plein accomplissement (*plērōma*).
+
+Enfin, dans les sermons *45-106* et *45-107* (sur 13.11-14), Paul sonne le réveil eschatologique : l'heure de notre salut final est plus proche que lorsque nous avons cru, la nuit du siècle présent s'achève et le jour du retour de Christ approche (v. 11-12). Il est temps de dépouiller les vêtements souillés des ténèbres (orgies, ivrogneries, impudicités, querelles et jalousies, v. 13) et de se revêtir du Seigneur Jésus-Christ sans ménager à la chair la moindre occasion de convoitise (v. 14).
+
+**Indices du texte**
+
+- **13.1-2.** Le martèlement lexical de la famille du verbe grec *tassō* (« ranger en ordre, ordonner, instituer ») en deux versets - *hypo-tassesthō* (« soit soumise », v. 1), *tetagmenai* (« ont été instituées », v. 1), *antitassomenos* (« celui qui s'oppose », v. 2), *diatagē* (« à l'ordre établi », v. 2) - fonde toute la théologie biblique de l'État sur le Dieu d'ordre.
+- **13.4, 6.** Par une audace remarquable sous le règne de Néron, Paul donne par trois fois aux magistrats séculiers les titres sacrés du service divin : deux fois *Theou diakonos estin* (« il est le serviteur de Dieu », v. 4a et 4b) et une fois *leitourgoi Theou eisin* (« ils sont les ministres publics de Dieu », v. 6).
+- **13.7-8.** Le pont lexical sur la racine *opheilō* (« devoir une dette ») assure la transition entre le devoir civique et le devoir fraternel : *Apodote pasin tas **opheilas*** (« Rendez à tous vos dettes », v. 7) -> *Mēdeni mēden **opheilete** ei mē to allēlous agapan* (« Ne devez rien à personne, si ce n'est de vous aimer les uns les autres », v. 8).
+- **13.12-13.** Le parallélisme antithétique entre la nuit et le jour structure toute la péricope finale : « la nuit est avancée » / « le jour approche » (v. 12a); « dépouillons les œuvres des ténèbres » / « revêtons les armes de la lumière » (v. 12b); « marchons honnêtement, comme en plein jour » / six péchés nocturnes groupés en trois paires (v. 13).
+
+## Renvois et passages parallèles
+
+**Daniel 2.21; 4.17; Genèse 9.5-6** · *Arrière-plan AT*
+
+Révèlent que Dieu « renverse et établit les rois » et qu'il a institué dès la sortie de l'arche de Noé l'autorité judiciaire humaine chargée de réprimer le meurtre par l'épée (45-98, 45-100).
+
+**Matthieu 22.17-21; 1 Pierre 2.13-17; Tite 3.1** · *Parallèle direct*
+
+Forment avec Romains 13.1-7 l'enseignement unanime de Jésus, de Pierre et de Paul sur la soumission civique, le paiement du tribut à César et l'honneur dû au roi (45-97, 45-102).
+
+**Actes 4.19-20; 5.29** · *Lien thématique*
+
+Établissent la frontière infranchissable de la soumission aux autorités humaines : « Il faut obéir à Dieu plutôt qu'aux hommes » dès qu'un gouvernement ordonne de désobéir à la Parole de Dieu (45-101).
+
+**Exode 20.13-17; Lévitique 19.18** · *Citation ou allusion*
+
+Cités en Romains 13.9 selon le texte grec de la Septante (LXX) fidèle à l'hébreu massorétique : tous les commandements de la seconde table du Décalogue se résument dans le commandement royal de Lévitique 19.18, « Tu aimeras ton prochain comme toi-même » (45-105).
+
+**Galates 5.14; Jacques 2.8** · *Parallèle direct*
+
+Confirment la thèse de Romains 13.8-10 : « Car toute la loi est accomplie dans une seule parole, dans celle-ci : Tu aimeras ton prochain comme toi-même » (45-105).
+
+**1 Thessaloniciens 5.4-8; Éphésiens 5.8-14; Galates 3.27** · *Parallèle direct*
+
+Déploient la même antithèse eschatologique entre la nuit de l'ivrognerie et le jour de la vigilance où les fils de la lumière revêtent l'armure de Dieu et se revêtent de Christ (45-106, 45-107).
+
+## Thèmes théologiques
+
+### L'origine divine et la mission limitée de l'État civil
+
+**Dans le texte**
+
+Il n'y a point d'autorité qui ne vienne de Dieu, et les autorités qui existent ont été instituées de Dieu : le magistrat est le serviteur (*diakonos*, *leitourgos*) de Dieu pour le bien et ne porte pas en vain l'épée pour punir celui qui fait le mal (13.1-7).
+
+**Ancrage doctrinal**
+
+Théologie de l'État et de la grâce commune : institution divine du gouvernement civil et légitimité de la justice pénale.
+
+**Révélation progressive**
+
+Depuis l'alliance noachique (Gn 9.6) jusqu'au règne futur du Messie, Dieu maintient l'ordre civique par le glaive du magistrat tandis qu'il confie à son Église le ministère de la Parole et de la réconciliation.
+
+**Pour votre assemblée**
+
+Soyons les citoyens les plus intègres, respectueux des lois et honnêtes dans nos impôts, tout en n'accordant qu'à Dieu seul l'obéissance absolue de notre conscience.
+
+### L'amour chrétien comme accomplissement de la loi morale
+
+**Dans le texte**
+
+Ne devez rien à personne, si ce n'est de vous aimer les uns les autres; car l'amour ne fait point de mal au prochain : l'amour est donc l'accomplissement (*plērōma*) de la loi (13.8-10).
+
+**Ancrage doctrinal**
+
+Éthique biblique et harmonie de l'amour et de la loi morale de Dieu.
+
+**Révélation progressive**
+
+Impuissante à justifier le pécheur (Rm 3.20) ou à sanctifier par la chair (Rm 7.14-24), la sainte loi de Dieu voit sa juste exigence accomplie dans les croyants qui marchent par l'amour de l'Esprit (Rm 8.4; 13.8-10).
+
+**Pour votre assemblée**
+
+Ne prétendons jamais aimer tout en violant les commandements de Dieu : l'amour véritable protège toujours la pureté, la vie, les biens et la réputation du prochain.
+
+### L'espérance eschatologique comme moteur de la sanctification quotidienne
+
+**Dans le texte**
+
+La nuit est avancée, le jour approche : dépouillons donc les œuvres des ténèbres, revêtons les armes de la lumière et revêtons-nous du Seigneur Jésus-Christ, sans avoir soin de la chair pour en satisfaire les convoitises (13.11-14).
+
+**Ancrage doctrinal**
+
+Eschatologie pratique et sanctification progressive par la mortification de la chair et l'imitation de Christ.
+
+**Révélation progressive**
+
+Chaque jour qui passe rapproche l'Église de sa délivrance corporelle finale (8.23) et appelle les rachetés à vivre dès maintenant dans la lumière du jour éternel.
+
+**Pour votre assemblée**
+
+Réveillons-nous de toute tiédeur spirituelle et coupons court dès la racine à toute planification (*pronoia*) qui donnerait prise aux tentations de la chair.
+
+## Pistes de réflexion
+
+1. Comment la conscience que Paul écrivait Romains 13.1-7 sous le règne de Néron transforme-t-elle notre attitude et notre langage envers les autorités civiles de notre propre pays ?
+2. Selon quel critère précis les Écritures distinguent-elles la soumission normale due à l'État (Romains 13.1-5) et le devoir de désobéissance civile pacifique (Actes 4.19; 5.29) ?
+3. En quoi notre exactitude et notre honnêteté dans le paiement de nos impôts et de nos dettes (13.6-8) témoignent-elles concrètement de la seigneurie de Christ sur nos biens ?
+4. Pourquoi Paul affirme-t-il que l'amour envers le prochain est une dette dont nous ne pourrons jamais dire : « J'ai fini de payer » (13.8-10) ?
+5. Concrètement, que signifie dans nos choix quotidiens « ne pas avoir soin de la chair (*pronoia*) pour en satisfaire les convoitises » et « se revêtir du Seigneur Jésus-Christ » (13.14) ?

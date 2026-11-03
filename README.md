@@ -17,7 +17,7 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | 3 | 2 Thessaloniciens | fin 51 ou début 52 | Corinthe | étudiée : [2 Thessaloniciens](2-Thessaloniciens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2th) |
 | 4 | 1 Corinthiens | très probablement dans la première moitié de 55 | Éphèse | étudiée : [1 Corinthiens](1-Corinthiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/1co) |
 | 5 | 2 Corinthiens | très probablement fin 55 ou tout début 56 | peut-être Philippes, en Macédoine | étudiée : [2 Corinthiens](2-Corinthiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2co) |
-| 6 | Romains | très probablement en 56 | Corinthe | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/rom) |
+| 6 | Romains | très probablement en 56 | Corinthe | étudiée : [Romains](Romains/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/rom) |
 | 7 | Éphésiens | entre 60 et 62 | Rome, première captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/eph) |
 | 8 | Colossiens | vers 60-62 | Rome, première captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
 | 9 | Philémon | vers 60-62 | Rome, première captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |

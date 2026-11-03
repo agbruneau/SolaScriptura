@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Romains 7 · Morts à la loi pour appartenir à Christ et le combat intérieur du croyant contre le péché résiduel · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Romains 7 dans la perspective de John MacArthur : Morts à la loi pour appartenir à Christ et le combat intérieur du croyant contre le péché résiduel.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Romains 7</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Romains 7</span></p>
+    <h1 class="hero__title">Morts à la loi pour appartenir à Christ et le combat intérieur du croyant contre le péché résiduel</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Misérable que je suis! Qui me délivrera de ce corps de mort?… Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur!… Ainsi donc, moi-même, je suis par l’entendement esclave de la loi de Dieu, et je suis par la chair esclave de la loi du péché.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Romains 7.24-⁠25 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 3 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Romains 7</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Deuxième volet de la grande section sur la sanctification (chapitres 6 à 8), le chapitre 7 fait pour **la loi** ce que le chapitre 6 vient de faire pour **le péché** : après avoir déclaré en 6.14 que « vous êtes non sous la loi, mais sous la grâce », Paul explique pourquoi et comment le croyant est mort à la loi pour être uni à un autre Époux, Jésus-Christ ressuscité (7.1-⁠6), puis il défend la sainteté de la loi mosaïque tout en démontrant son impuissance totale à la fois pour **justifier** le pécheur (7.7-⁠13, aux temps du passé) et pour **sanctifier** le croyant régénéré (7.14-⁠25, aux temps du présent), préparant ainsi le triomphe du Saint-Esprit au chapitre 8.</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">De même, mes frères, vous aussi vous avez été, par le corps de Christ, mis à mort en ce qui concerne la loi, pour que vous apparteniez à un autre, à celui qui est ressuscité des morts, afin que nous portions des fruits pour Dieu.</p><cite class="verse__ref">Romains 7.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais maintenant, nous avons été dégagés de la loi, étant morts à cette loi sous laquelle nous étions retenus, de sorte que nous servons sous le régime nouveau de l’Esprit, et non selon la lettre qui a vieilli.</p><cite class="verse__ref">Romains 7.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">La loi donc est sainte, et le commandement est saint, juste et bon.</p><cite class="verse__ref">Romains 7.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous savons, en effet, que la loi est spirituelle; mais moi, je suis charnel, vendu au péché. Car je ne sais pas ce que je fais: je ne fais point ce que je veux, et je fais ce que je hais.</p><cite class="verse__ref">Romains 7.14-⁠15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car je prends plaisir à la loi de Dieu, selon l’homme intérieur; mais je vois dans mes membres une autre loi qui lutte contre la loi de mon entendement, et qui me rend captif de la loi du péché qui est dans mes membres. Misérable que je suis! Qui me délivrera de ce corps de mort?… Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur!… Ainsi donc, moi-même, je suis par l’entendement esclave de la loi de Dieu, et je suis par la chair esclave de la loi du péché.</p><cite class="verse__ref">Romains 7.22-⁠25 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire du chapitre combine l'analogie juridique tirée du droit matrimonial (7.1-⁠6), l'apologie doctrinale et autobiographique de la loi (7.7-⁠13) et la confession spirituelle intime à la première personne du singulier (« je / moi », répété près de trente fois en 7.14-⁠25).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Romains 7</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">En 7.1 (« Ignorez-vous, frères, - car je parle à des gens qui connaissent la loi... »), Paul s'adresse aux croyants de Rome familiers tant avec la loi mosaïque (Dt 24.1-⁠4) qu'avec le principe universel du droit romain : la juridiction de la loi ne s'exerce sur un homme qu'aussi longtemps qu'il vit; la mort dissout instantanément tout lien légal et conjugal (45-⁠50).</p><div class="body"><p>Au verset 24, le cri d'angoisse « Misérable que je suis ! Qui me délivrera du corps de cette mort ? » (<i>Talaipōros egō anthrōpos· tis me rhysetai ek tou sōmatos tou thanatou toutou ?</i>) évoque, selon plusieurs commentateurs cités par MacArthur (45-⁠53), une coutume pénale antique rapportée par Virgile (<i>Énéide</i> VIII, 485-⁠488) dans laquelle un meurtrier condamné était attaché face à face à un cadavre en décomposition dont la putréfaction finissait par l'infecter : telle est l'horreur qu'éprouve l'homme nouveau régénéré d'être encore lié, jusqu'à la résurrection ou l'enlèvement, à sa chair mortelle non rachetée où loge le péché résiduel.</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Trois preuves décisives que Romains 7.14-⁠25 décrit un croyant régénéré et mûr.</b> Face aux interprètes qui voient en 7.14-⁠25 un inconverti sous la loi, John MacArthur (45-⁠52, 45-⁠53), à la suite d'Augustin, des réformateurs et des puritains, démontre par le texte que seule une âme régénérée (Paul lui-même au sommet de sa maturité spirituelle !) peut tenir ce langage : 1) le brusque **changement des temps verbaux**, passant des aoristes et imparfaits historiques en 7.7-⁠13 (qui décrivaient l'éveil de sa conscience avant sa conversion) aux **indicatifs présents** continus en 7.14-⁠25; 2) les **dispositions de son homme intérieur**, qui hait le mal (v. 15), veut faire le bien (v. 18-⁠21), « prend plaisir à la loi de Dieu selon l'homme intérieur » (<i>synēdomai gar tō nomō tou Theou kata ton esō anthrōpon</i>, v. 22 - ce qu'aucun inconverti ne peut faire selon Rm 8.7 et 1 Co 2.14 !) et sert par l'entendement la loi de Dieu (v. 25); 3) la distinction entre son **moi profond régénéré** et le péché qui habite encore dans sa chair (« ce n'est plus moi qui le fais, mais c'est le péché qui habite en moi », v. 17, 20).</li><li><b>Pourquoi le dixième commandement (« Tu ne convoiteras point ») a-t-il tué l'orgueil du pharisien (7.7-⁠11) ?.</b> En 7.7-⁠11 (sermons 45-⁠51A, 45-⁠51B), Paul explique comment la loi démasque le péché : tant qu'un pharisien comme Saul de Tarse réduisait les neuf premiers commandements à des actes purement extérieurs (ne pas tuer physiquement, ne pas commettre d'adultère physique), il se croyait « irréprochable à l'égard de la justice de la loi » (Ph 3.6) et « vivait » dans une fausse sécurité (v. 9). Mais lorsque le dixième commandement - « Tu ne convoiteras point » (Ex 20.17; Dt 5.21), qui sonde directement les désirs secrets du cœur - a frappé sa conscience, le péché a pris vie et son illusion de propre justice est morte sur-le-champ !</li><li><b>Les quatre lamentations du croyant aux prises avec la chair (7.14-⁠25).</b> Dans les sermons 45-⁠52 et 45-⁠53, MacArthur observe la symétrie des trois cycles de 7.14-⁠25 (v. 14-⁠17; v. 18-⁠20; v. 21-⁠25), où chaque cycle comporte : 1) la **plainte** devant l'écart entre le désir saint et la réalisation imparfaite (v. 14, 18a, 21); 2) la **preuve** par le conflit quotidien (v. 15-⁠16, 18b-19, 22-⁠23); 3) la **source** du problème identifiée dans le péché résiduel logé dans la chair non encore glorifiée (v. 17, 20, 23-⁠24), débouchant sur le cri de délivrance et l'action de grâces par Jésus-Christ notre Seigneur (v. 24-⁠25).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Romains 7</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Romains 7.6</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>nyni de katērgēthēmen apo tou nomou, apothanontes en hō kateichometha</i> (« Mais maintenant, nous avons été dégagés de la loi, étant morts à cette loi sous laquelle nous étions retenus », א, A, B, C, K, L, P, Ψ, SBLGNT, Westcott et Hort, Nestle 1904, texte byzantin), ou <i>tou thanatou en hō kateichometha</i> (D, F, G), ou <i>apothanontos en hō kateichometha</i> (« ce dans quoi nous étions retenus étant mort », conjecture adoptée par Bèze et le Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« étant morts à cette loi sous laquelle nous étions retenus » : les cinq versions françaises suivent la leçon unanime des manuscrits anciens <i>apothanontes</i> (ce n'est pas la loi qui est morte, c'est nous qui sommes morts à la loi par le corps de Christ, cf. v. 4 !).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Confirme la cohérence avec le verset 4 : « vous aussi, vous avez été, par le corps de Christ, mis à mort en ce qui concerne la loi » (45-⁠50).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Romains 7.25</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>Charis de tō Theō dia Iēsou Christou tou Kyriou hēmōn</i> (« Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! », א*, A, K, L, P, Ψ, SBLGNT, NA28; B a <i>Charis tō Theō</i>), ou <i>Eucharistō tō Theō...</i> (« Je rends grâces à Dieu... », א2, C2, D, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! » : la NEG79, la LSG, la S21 et la NBS suivent <i>Charis tō Theō</i>; la Darby traduit « Je rends grâces à Dieu ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Les deux formules expriment exactement la même explosion de gratitude envers le Libérateur divin (45-⁠53).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique (lus aux 25 versets du chapitre)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus (Bible Hub)</li><li>Septante et hébreu massorétique pour Exode 20.17</li><li>Deutéronome 5.21</li><li>versions françaises : NEG79, LSG, S21, Darby, NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart de numérotation des 25 versets entre la NEG79, le grec et la NASB de MacArthur.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Romains 7</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>7.1–6</span></p><div class="plan__corps"><p class="plan__titre">Affranchis de la loi par notre mort avec Christ : l'illustration du mariage et le passage de l'ancien régime de la lettre au régime nouveau de l'Esprit.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Principe <i>ho nomos kyrieuei tou anthrōpou eph' hoson chronon zē</i> (v. 1-⁠3) et application <i>Hōste, adelphoi mou, kai hymeis ethanatōthēte tō nomō dia tou sōmatos tou Christou</i> (v. 4-⁠6).</p></div></li><li><p class="plan__ref"><span>7.7–13</span></p><div class="plan__corps"><p class="plan__titre">La sainteté de la loi et la perversité mortelle du péché : comment le commandement « Tu ne convoiteras point » a démasqué le péché et frappé à mort l'illusion du propre-juste.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Première apologie <i>Ho nomos hamartia ? Mē genoito</i> (v. 7-⁠12) et seconde apologie <i>To oun agathon emoi egeneto thanatos ? Mē genoito</i> (v. 13).</p></div></li><li><p class="plan__ref"><span>7.14–20</span></p><div class="plan__corps"><p class="plan__titre">La réalité du conflit intérieur chez le croyant : l'homme spirituel vendu dans sa chair mortelle et la distinction entre son moi nouveau qui veut le bien et le péché qui habite en lui.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Constat <i>Oidamen gar hoti ho nomos pneumatikos estin, egō de sarkinos eimi</i> (v. 14) et double refrain <i>nyni de ouketi egō katergazomai auto alla hē oikousa en emoi hamartia</i> (v. 17, 20).</p></div></li><li><p class="plan__ref"><span>7.21–25</span></p><div class="plan__corps"><p class="plan__titre">Le plaisir pris à la loi de Dieu dans l'homme intérieur et le cri de victoire : l'attente de la rédemption du corps de cette mort par Jésus-Christ notre Seigneur.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Confession <i>synēdomai gar tō nomō tou Theou kata ton esō anthrōpon</i> (v. 22) et cri <i>Talaipōros egō anthrōpos... Charis de tō Theō dia Iēsou Christou</i> (v. 24-⁠25).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>7.4</dt><dd>L'aoriste passif <i>kai hymeis <b>ethanatōthēte</b> tō nomō dia tou sōmatos tou Christou, eis to genesthai hymas heterō, tō ek nekrōn egerthenti</i> (« vous aussi, vous avez été mis à mort en ce qui concerne la loi par le corps de Christ, pour appartenir à un autre, à celui qui est ressuscité des morts ») résout l'asymétrie apparente de l'illustration des versets 2 et 3 : puisque la loi de Dieu est éternelle et ne peut mourir, c'est *nous* qui sommes morts en Christ sur la croix afin d'être légalement libres d'épouser Christ ressuscité (45-⁠50).</dd></div><div><dt>7.13</dt><dd>Dans la proposition finale <i>hina kath' hyperbolēn hamartōlos hē hamartia <b>genētai</b> dia tēs entolēs</i> (« afin que, par le commandement, le péché devînt / apparût excessivement pécheur »), Paul emploie le substantif <i>hamartōlos</i> comme adjectif qualifiant <i>hē hamartia</i> : faute d'adjectif assez noir dans la langue grecque pour qualifier l'horreur du péché, il l'appelle « le péché outre mesure pécheur » (45-⁠51B).</dd></div><div><dt>7.14</dt><dd>L'emploi de l'adjectif <i>sarkinos</i> (en <i>-inos</i>, « fait de chair, charnel dans sa constitution corporelle mortelle », 𝔓46, א, A, B, C, D, SBLGNT) suivi du participe parfait passif <i>pepramenos hypo tēn hamartian</i> (« vendu sous le péché ») décrit la condition du croyant tant qu'il habite un corps non encore glorifié : son homme intérieur est régénéré (v. 22), mais son enveloppe corporelle demeure sujette aux assauts du péché résiduel (en contraste avec l'impie comme Achab qui *s'était vendu lui-même* volontairement pour faire le mal en 1 R 21.20; 45-⁠52).</dd></div><div><dt>7.17, 20</dt><dd>L'adverbe temporel et logique <i>nyni de ouketi egō katergazomai auto alla hē oikousa en emoi hamartia</i> (« Maintenant donc, ce n'est plus moi qui fais cela, mais c'est le péché qui habite en moi ») ne constitue nullement une excuse pour fuir sa responsabilité morale (puisque Paul s'en désole amèrement au v. 24 !), mais l'affirmation théologique que la nature profonde du croyant régénéré (<i>egō</i>, l'homme intérieur nouveau) n'est plus définie par le péché, lequel n'est plus qu'un squatteur indésirable logé dans ses membres (45-⁠52).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Quatre mots-clés</p></header>
+<p class="lead">Quatre mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">καινότης</a><a href="#mot-2">συνήδομαι</a><a href="#mot-3">ταλαίπωρος</a><a href="#mot-4">σάρξ</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">καινότης</h3><p class="mot__translit">kainotēs</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>nouveauté de nature et de qualité, fraîcheur d'une vie régénérée</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>kainotēs</i> (dérivé de <i>kainos</i>, nouveau par sa qualité et son espèce, par opposition à <i>neos</i>, récent dans le temps, et à <i>palaiotēs</i>, ce qui est usé et périmé; 2 occurrences seulement dans le NT : Rm 6.4 [<i>en kainotēti zōēs</i>] et Rm 7.6 [<i>en kainotēti pneumatos</i>]) désigne le caractère entièrement nouveau de la vie communiquée par le Saint-Esprit.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 7.6 (« de sorte que nous servons sous le régime nouveau de l'Esprit [<i>en kainotēti pneumatos</i>], et non selon la lettre qui a vieilli [<i>palaiotēti grammatos</i>] »), l'obéissance chrétienne ne jaillit plus de la contrainte extérieure d'un code gravé sur la pierre, mais de l'élan intérieur et nouveau du Saint-Esprit (MacArthur, 45-⁠50).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Mais maintenant nous avons été libérés de la loi, car nous sommes morts à ce qui nous retenait prisonniers,... (7.6)</li><li><b>NEG79</b> Mais maintenant, nous avons été dégagés de la loi, étant morts à cette loi sous laquelle nous étions retenus,... (7.6)</li><li class="ecart"><b>Darby</b> mais maintenant nous avons été déliés de la loi, étant morts dans ce en quoi nous étions tenus, en sorte que... (7.6)</li><li><b>LSG</b> Mais maintenant, nous avons été dégagés de la loi, étant morts à cette loi sous laquelle nous étions retenus,... (7.6)</li><li class="ecart"><b>NBS</b> Mais maintenant, nous sommes dégagés de la loi, car nous sommes morts à ce qui nous tenait captifs, de sorte... (7.6)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">συνήδομαι</h3><p class="mot__translit">synēdomai</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>se réjouir intimement avec, prendre un vif plaisir intérieur à</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie précisée par Thayer, <i>synēdomai</i> (composé de <i>syn</i>, avec, et de <i>hēdomai</i>, éprouver de la joie, prendre plaisir à; hapax du Nouveau Testament en Rm 7.22) exprime une communion joyeuse et cordiale de l'âme avec ce qu'elle aime.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 7.22 (« Car je prends plaisir [<i>synēdomai</i>] à la loi de Dieu, selon l'homme intérieur »), Paul livre la signature indélébile de l'homme régénéré, faisant écho aux Psaumes 1.2 et 119.97 (« Combien j'aime ta loi ! »), alors que l'homme non régénéré a une affection de la chair qui est inimitié contre Dieu et ne se soumet pas à sa loi (Rm 8.7; MacArthur, 45-⁠53).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> En effet, je prends plaisir à la loi de Dieu, dans mon être intérieur, (7.22)</li><li><b>NEG79</b> Car je prends plaisir à la loi de Dieu, selon l’homme intérieur; (7.22)</li><li class="ecart"><b>Darby</b> Car je prends plaisir à la loi de Dieu selon l’homme intérieur ; (7.22)</li><li class="ecart"><b>LSG</b> Car je prends plaisir à la loi de Dieu, selon l’homme intérieur ; (7.22)</li><li class="ecart"><b>NBS</b> Car, pour ce qui est de l'homme que je suis intérieurement, je prends plaisir à la loi de Dieu, (7.22)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">ταλαίπωρος</h3><p class="mot__translit">talaipōros</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>épuisé par un dur labeur ou un long combat; misérable, affligé, accablé</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>talaipōros</i> (formé de la racine <i>tlaō</i>, endurer, supporter un fardeau, et de <i>pōros</i>, cal ou pierre dure; 2 occurrences dans le NT : Rm 7.24; Ap 3.17) décrit l'épuisement douloureux d'un soldat au cœur d'une lutte incessante.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 7.24 (« Misérable [<i>talaipōros</i>] que je suis ! Qui me délivrera du corps de cette mort ? »), plus un croyant grandit dans la sainteté et dans la proximité de la lumière de Dieu (comme Ésaïe en És 6.5 ou Pierre en Lc 5.8), plus il ressent douloureusement la misère de la moindre trace de péché qui subsiste dans sa chair et soupire après la glorification finale (MacArthur, 45-⁠53).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Malheureux être humain que je suis ! Qui me délivrera de ce corps de mort ? (7.24)</li><li><b>NEG79</b> Misérable que je suis! Qui me délivrera de ce corps de mort?… (7.24)</li><li class="ecart"><b>Darby</b> Misérable homme que je suis, qui me délivrera de ce corps de mort ? (7.24)</li><li class="ecart"><b>LSG</b> Misérable que je suis ! Qui me délivrera du corps de cette mort ?… (7.24)</li><li class="ecart"><b>NBS</b> Misérable que je suis ! Qui me délivrera de ce corps de mort ? (7.24)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">σάρξ</h3><p class="mot__translit">sarx</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>chair; corps physique mortel ou nature humaine non rachetée en tant que siège des convoitises</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie relevée par Thayer, <i>sarx</i> (147 occurrences dans le NT dont 26 dans Romains, concentrées aux chapitres 7 et 8 : 7.5, 18, 25; 8.3-⁠13) désigne chez Paul non seulement la substance matérielle du corps, mais, au sens éthique, l'humanité déchue séparée de Dieu et, chez le croyant, ses facultés corporelles et psychiques non encore glorifiées par lesquelles le péché résiduel tente d'agir.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 7.18 (« Ce qui est bon, je le sais, n'habite pas en moi, c'est-à-dire dans ma chair »), Paul apporte lui-même le correctif crucial (« c'est-à-dire dans ma chair ») : son homme intérieur régénéré appartient à Dieu (v. 22), mais sa chair non encore rachetée (cf. 8.23) demeure le terrain de bataille où loge le péché jusqu'à la résurrection (MacArthur, 45-⁠53).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> j’ai la volonté de faire le bien, mais je ne parviens pas à l’accomplir. (7.18)</li><li><b>NEG79</b> j’ai la volonté, mais non le pouvoir de faire le bien. (7.18)</li><li class="ecart"><b>Darby</b> car le vouloir est avec moi, mais accomplir le bien, cela je ne le trouve pas. (7.18)</li><li><b>LSG</b> j’ai la volonté, mais non le pouvoir de faire le bien. (7.18)</li><li class="ecart"><b>NBS</b> Je le sais, rien de bon n'habite en moi, c'est-à-dire dans ma chair. Car il est à ma portée de vouloir, mais... (7.18)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Romains 7</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans ses cinq prédications sur le chapitre 7 (<i>45-⁠50</i> à <i>45-⁠53</i>), John MacArthur éclaire l'un des chapitres les plus débattus du Nouveau Testament en montrant l'unité parfaite de son argument sur le rôle et les limites de la loi. Dans le sermon <i>45-⁠50</i> (sur 7.1-⁠6), Paul explique par l'illustration du mariage comment le croyant a été libéré de la juridiction condamnatrice de la loi : de même que la mort du mari libère légalement l'épouse pour qu'elle puisse appartenir à un autre sans être adultère (v. 1-⁠3), de même « vous aussi, mes frères, vous avez été, par le corps de Christ, mis à mort en ce qui concerne la loi, pour que vous apparteniez à un autre, à celui qui est ressuscité des morts, afin que nous portions des fruits pour Dieu » (v. 4). Le légalisme ne produit que « des fruits pour la mort » en excitant les passions rebelles (v. 5); seule notre union d'amour avec Christ ressuscité nous fait servir dans la nouveauté de l'Esprit (v. 6).</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : cinq sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur Romains 7.1 à 7.25 (45-⁠50 à 45-⁠53, incluant 45-⁠51A et 45-⁠51B, série « Romans », février à mars 1983, 5 prédications)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">45-50</span></th><td><a href="https://www.gty.org/sermons/45-50" target="_blank" rel="noopener">Dead to the Law</a></td><td>Rm 7.1-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">45-51A</span></th><td><a href="https://www.gty.org/sermons/45-51A" target="_blank" rel="noopener">Sin and the Law, Part 1</a></td><td>Rm 7.7-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">45-51B</span></th><td><a href="https://www.gty.org/sermons/45-51B" target="_blank" rel="noopener">Sin and the Law, Part 2</a></td><td>Rm 7.7-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">45-52</span></th><td><a href="https://www.gty.org/sermons/45-52" target="_blank" rel="noopener">The Believer and Indwelling Sin, Part 1</a></td><td>Rm 7.14-⁠17</td></tr><tr><th scope="row"><span class="mot-fr">45-53</span></th><td><a href="https://www.gty.org/sermons/45-53" target="_blank" rel="noopener">The Believer and Indwelling Sin, Part 2</a></td><td>Rm 7.18-⁠25</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p>Dans les sermons <i>45-⁠51A</i> et <i>45-⁠51B</i> (sur 7.7-⁠13), MacArthur montre pourquoi la loi, bien qu'incapable de sauver, n'est nullement mauvaise : « la loi est sainte, et le commandement est saint, juste et bon » (v. 12). La loi accomplit quatre fonctions indispensables envers le pécheur : elle **révèle** la nature intérieure du péché (comme la convoitise du cœur au v. 7), elle **provoque** et fait sortir au grand jour la rébellion latente de la chair (v. 8), elle **dévaste** l'illusion de propre justice du pécheur religieux (« le commandement étant venu, le péché a pris vie, et moi je suis mort », v. 9-⁠11), et elle **dévoile** l'horreur mortelle du péché (« afin que, par le commandement, le péché devînt outre mesure pécheur », v. 13).</p><p>Enfin, dans les sermons <i>45-⁠52</i> et <i>45-⁠53</i> (sur 7.14-⁠25), MacArthur démontre que la seconde moitié du chapitre décrit l'expérience universelle du **croyant régénéré** qui découvre que la loi, impuissante à le justifier (v. 7-⁠13), est tout aussi impuissante à le sanctifier par ses propres forces (v. 14-⁠25). En tant qu'homme nouveau (« selon l'homme intérieur », v. 22; « par l'entendement », v. 25), Paul aime passionnément la loi de Dieu, veut le bien et hait le mal; mais tant qu'il habite « le corps de cette mort » non encore glorifié, il constate la présence d'un principe de péché résiduel dans ses membres qui lui livre une guerre continuelle. Cette sainte douleur du chrétien mûr l'arrache à tout orgueil perfectionniste et le jette dans les bras de Jésus-Christ notre Seigneur (v. 24-⁠25) et dans la dépendance du Saint-Esprit déployée au chapitre 8.</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>7.4, 6.</b> Le parallélisme de finalité entre 7.4 (<i>hina <b>karpophorēsōmen tō Theō</b></i>, « afin que nous portions des fruits pour Dieu », en contraste avec « porter des fruits pour la mort » au v. 5) et 7.6 (<i>hōste douleuein hēmas <b>en kainotēti pneumatos kai ou palaiotēti grammatos</b></i>, « de sorte que nous servons sous le régime nouveau de l'Esprit, et non selon la lettre qui a vieilli ») montre que l'affranchissement de la loi produit la vraie fécondité spirituelle.</li><li><b>7.7, 13.</b> Les deux questions d'indignation introduites par <i>Ti oun eroumen ?</i> et suivies de <i>Mē genoito</i> aux versets 7 (« La loi est-elle péché ? Loin de là ! ») et 13 (« Ce qui est bon a-t-il donc été pour moi une cause de mort ? Loin de là ! ») disculpent entièrement la loi (qui est sainte, juste, bonne et spirituelle, v. 12, 14) et rejettent toute la faute sur le péché qui habite en nous.</li><li><b>7.14-⁠25.</b> Le contraste saisissant entre les aoristes du passé en 7.7-⁠11 (<i>ouk egnōn... kateirgasato... ezōn... anezēsen... apethanon... exēpatēsen... apekteinen</i>) et les vingt-quatre indicatifs présents de 7.14-⁠25 (<i>oida... eimi... katergazomai... thelō... prassō... misō... poiō... synēdomai... blepō... douleuō</i>) marque le passage de la conviction passée de Paul lors de sa conversion à son expérience présente d'apôtre régénéré.</li><li><b>7.21-⁠25.</b> Le jeu sur les « quatre lois » en 7.21-⁠25 - 1) « cette loi » ou principe constant du conflit (v. 21); 2) « la loi de Dieu » à laquelle l'homme intérieur prend plaisir (v. 22, 25); 3) « la loi de mon entendement » régénéré (v. 23a); 4) « la loi du péché qui est dans mes membres » (v. 23b, 25) - prépare directement l'intervention décisive de « la loi de l'Esprit de vie en Jésus-Christ » en 8.2.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Cinq passages</p></header>
+<p class="lead">Cinq passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Galates 2.19; 5.18; 2 Corinthiens 3.6</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Parallèles pauliniens directs de Romains 7.4-⁠6 : « Car c'est par la loi que je suis mort à la loi, afin de vivre pour Dieu » (Ga 2.19), marchant sous le régime nouveau de l'Esprit qui vivifie et non selon la lettre qui a vieilli (2 Co 3.6).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Exode 20.17; Deutéronome 5.21; Matthieu 5.27-⁠28</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">En Romains 7.7 (« Tu ne convoiteras point », <i>Ouk epithymēseis</i>), Paul cite mot pour mot le grec de la Septante et l'hébreu massorétique (<i>lo' tachmod</i>) du dixième commandement du Décalogue (Ex 20.17; Dt 5.21), qui juge directement les pensées et les désirs intérieurs du cœur (cf. Mt 5.28).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Galates 5.16-⁠17; 1 Pierre 2.11</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Parallèle exact du conflit intérieur du croyant décrit en Romains 7.14-⁠23 : « Car la chair a des désirs contraires à ceux de l'Esprit, et l'Esprit en a de contraires à ceux de la chair; ils sont opposés entre eux, afin que vous ne fassiez point ce que vous voudriez » (Ga 5.17).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 1.2; 119.16, 24, 35, 47, 97; 2 Corinthiens 4.16; Éphésiens 3.16</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">L'expression « je prends plaisir à la loi de Dieu, selon l'homme intérieur » (<i>kata ton esō anthrōpon</i>, Rm 7.22) unit la délectation du psalmiste régénéré dans la loi de l'Éternel (Ps 1.2; 119.97) à la terminologie paulinienne de « l'homme intérieur » renouvelé de jour en jour (2 Co 4.16; Ép 3.16).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 8.23; Philippiens 3.20-⁠21; 1 Corinthiens 15.54-⁠57</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">La réponse eschatologique au cri de Romains 7.24-⁠25 (« Qui me délivrera du corps de cette mort ? Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! ») se trouve en Romains 8.23 (« nous soupirons en nous-mêmes, en attendant l'adoption, la rédemption de notre corps ») et en 1 Corinthiens 15.57.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Trois axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">L'affranchissement de la loi pour appartenir à Christ ressuscité</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Nous avons été mis à mort en ce qui concerne la loi par le corps de Christ, pour appartenir à un autre, à celui qui est ressuscité des morts, afin que nous portions des fruits pour Dieu et que nous servions sous le régime nouveau de l'Esprit et non selon la lettre qui a vieilli (7.4, 6).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Rapport du chrétien à la loi : délivrance de la loi comme alliance de condamnation et d'effort charnel, remplacée par l'union conjugale avec Christ et l'habitation de l'Esprit.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>L'ancienne alliance du Sinaï commandait la sainteté de l'extérieur mais laissait le pécheur sous la malédiction (Ga 3.10); la mort de Christ éteint la créance de la loi et inaugure la fécondité de l'Esprit.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le légalisme est spirituellement stérile et n'engendre que des fruits pour la mort (7.5); seule l'intimité d'amour avec notre Époux ressuscité porte des fruits à la gloire de Dieu.</p></div></div></section><section class="theme"><h3 class="theme__title">La sainteté de la loi morale et le caractère excessivement pécheur du péché</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>La loi n'est point péché : elle est sainte, et le commandement est saint, juste et bon; mais le péché a saisi l'occasion par le commandement « Tu ne convoiteras point » pour produire en nous toute sorte de convoitises et meurtrir notre fausse assurance, afin que le péché apparût outre mesure pécheur (7.7-⁠13).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sainteté de la loi morale de Dieu, reflet de son propre caractère, et perversité radicale du péché qui transforme même le commandement saint en tremplin de rébellion.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Donnée au Sinaï non pour donner la vie (Ga 3.21), mais pour démasquer la convoitise secrète du cœur, la loi brise l'orgueil du pharisien et le prépare à recevoir le Sauveur.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Ne blâmons jamais les exigences saintes de la Parole de Dieu pour nos chutes : la loi est le miroir pur qui révèle la profondeur du mal logé dans notre cœur.</p></div></div></section><section class="theme"><h3 class="theme__title">La lutte présente du croyant régénéré contre le péché résiduel</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Tandis que l'homme intérieur régénéré prend plaisir à la loi de Dieu, veut le bien et hait le mal, il voit dans ses membres une autre loi qui lutte contre la loi de son entendement, ce qui lui arrache le cri : « Misérable que je suis ! Qui me délivrera du corps de cette mort ? Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! » (7.14-⁠25).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Imperfection de la sanctification en cette vie (contre le perfectionnisme) et distinction entre le nouvel homme régénéré et la chair mortelle où subsiste le péché résiduel jusqu'à la glorification.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Déjà affranchi de la *pénalité* du péché (justification, ch. 3-⁠5) et de la *tyrannie* du péché (régénération, ch. 6), le croyant lutte contre la *présence* du péché (ch. 7) en attendant d'en être délivré à jamais lors de la rédemption de son corps (8.23).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le fait même que vous haïssiez votre péché, que vous preniez plaisir à la loi de Dieu et que vous pleuriez sur vos manquements n'est pas le signe que vous êtes inconverti, mais la preuve certaine que l'Esprit de Dieu habite en vous !</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>En quoi l'image du nouveau mariage avec Christ ressuscité en 7.4 transforme-t-elle notre motivation à obéir à Dieu (l'amour pour un Époux vivant plutôt que la terreur d'un juge implacable) ?</li><li>Comment le dixième commandement (« Tu ne convoiteras point », 7.7) a-t-il brisé l'illusion de propre justice de Saul de Tarse, et comment sonde-t-il encore nos propres motivations secrètes aujourd'hui ?</li><li>Pourquoi est-il si réconfortant pour un croyant sincère de savoir que l'apôtre Paul lui-même, au sommet de sa maturité spirituelle, connaissait la lutte décrite en 7.14-⁠25 ?</li><li>Comment 7.17 et 7.22 (« ce n'est plus moi qui le fais, mais c'est le péché qui habite en moi... je prends plaisir à la loi de Dieu selon l'homme intérieur ») définissent-ils la véritable identité profonde de l'enfant de Dieu ?</li><li>En quoi l'impuissance de nos seules résolutions humaines constatée en 7.18-⁠24 nous prépare-t-elle directement à marcher par la puissance du Saint-Esprit en Romains 8 ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Romains 7 · 3 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Romains-7.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
