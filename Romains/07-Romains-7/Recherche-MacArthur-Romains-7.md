@@ -10,15 +10,55 @@
 
 ## Contexte du passage
 
+> « Ignorez-vous, frères – car je parle à des gens qui connaissent la loi – que la loi exerce son pouvoir sur l’homme aussi longtemps qu’il vit? » (Romains 7.1, NEG)
+
+> « Ainsi, une femme mariée est liée par la loi à son mari tant qu’il est vivant; mais si le mari meurt, elle est dégagée de la loi qui la liait à son mari. » (Romains 7.2, NEG)
+
+> « Si donc, du vivant de son mari, elle devient la femme d’un autre homme, elle sera appelée adultère; mais si le mari meurt, elle est affranchie de la loi, de sorte qu’elle n’est point adultère en devenant la femme d’un autre. » (Romains 7.3, NEG)
+
 > « De même, mes frères, vous aussi vous avez été, par le corps de Christ, mis à mort en ce qui concerne la loi, pour que vous apparteniez à un autre, à celui qui est ressuscité des morts, afin que nous portions des fruits pour Dieu. » (Romains 7.4, NEG)
+
+> « Car, lorsque nous étions dans la chair, les passions des péchés provoquées par la loi agissaient dans nos membres, de sorte que nous portions des fruits pour la mort. » (Romains 7.5, NEG)
 
 > « Mais maintenant, nous avons été dégagés de la loi, étant morts à cette loi sous laquelle nous étions retenus, de sorte que nous servons sous le régime nouveau de l’Esprit, et non selon la lettre qui a vieilli. » (Romains 7.6, NEG)
 
+> « Que dirons-nous donc? La loi est-elle péché? Loin de là! Mais je n’ai connu le péché que par la loi. Car je n’aurais pas connu la convoitise, si la loi n’avait dit: Tu ne convoiteras point. » (Romains 7.7, NEG)
+
+> « Et le péché, saisissant l’occasion, produisit en moi par le commandement toutes sortes de convoitises; car sans loi le péché est mort. » (Romains 7.8, NEG)
+
+> « Pour moi, étant autrefois sans loi, je vivais; mais quand le commandement vint, le péché reprit vie, et moi je mourus. » (Romains 7.9, NEG)
+
+> « Ainsi, le commandement qui conduit à la vie se trouva pour moi conduire à la mort. » (Romains 7.10, NEG)
+
+> « Car le péché saisissant l’occasion, me séduisit par le commandement, et par lui me fit mourir. » (Romains 7.11, NEG)
+
 > « La loi donc est sainte, et le commandement est saint, juste et bon. » (Romains 7.12, NEG)
 
-> « Nous savons, en effet, que la loi est spirituelle; mais moi, je suis charnel, vendu au péché. Car je ne sais pas ce que je fais: je ne fais point ce que je veux, et je fais ce que je hais. » (Romains 7.14-15, NEG)
+> « Ce qui est bon a-t-il donc été pour moi une cause de mort? Loin de là! Mais c’est le péché, afin qu’il se manifeste comme péché en me donnant la mort par ce qui est bon, et que, par le commandement, il devienne condamnable au plus haut point. » (Romains 7.13, NEG)
 
-> « Car je prends plaisir à la loi de Dieu, selon l’homme intérieur; mais je vois dans mes membres une autre loi qui lutte contre la loi de mon entendement, et qui me rend captif de la loi du péché qui est dans mes membres. Misérable que je suis! Qui me délivrera de ce corps de mort?… Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur!… Ainsi donc, moi-même, je suis par l’entendement esclave de la loi de Dieu, et je suis par la chair esclave de la loi du péché. » (Romains 7.22-25, NEG)
+> « Nous savons, en effet, que la loi est spirituelle; mais moi, je suis charnel, vendu au péché. » (Romains 7.14, NEG)
+
+> « Car je ne sais pas ce que je fais: je ne fais point ce que je veux, et je fais ce que je hais. » (Romains 7.15, NEG)
+
+> « Or, si je fais ce que je ne veux pas, je reconnais par là que la loi est bonne. » (Romains 7.16, NEG)
+
+> « Et maintenant ce n’est plus moi qui le fais, mais c’est le péché qui habite en moi. » (Romains 7.17, NEG)
+
+> « Ce qui est bon, je le sais, n’habite pas en moi, c’est-à-dire dans ma chair: j’ai la volonté, mais non le pouvoir de faire le bien. » (Romains 7.18, NEG)
+
+> « Car je ne fais pas le bien que je veux, et je fais le mal que je ne veux pas. » (Romains 7.19, NEG)
+
+> « Et si je fais ce que je ne veux pas, ce n’est plus moi qui le fais, c’est le péché qui habite en moi. » (Romains 7.20, NEG)
+
+> « Je trouve donc en moi cette loi: quand je veux faire le bien, le mal est attaché à moi. » (Romains 7.21, NEG)
+
+> « Car je prends plaisir à la loi de Dieu, selon l’homme intérieur; » (Romains 7.22, NEG)
+
+> « mais je vois dans mes membres une autre loi qui lutte contre la loi de mon entendement, et qui me rend captif de la loi du péché qui est dans mes membres. » (Romains 7.23, NEG)
+
+> « Misérable que je suis! Qui me délivrera de ce corps de mort?… » (Romains 7.24, NEG)
+
+> « Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur!… Ainsi donc, moi-même, je suis par l’entendement esclave de la loi de Dieu, et je suis par la chair esclave de la loi du péché. » (Romains 7.25, NEG)
 
 Deuxième volet de la grande section sur la sanctification (chapitres 6 à 8), le chapitre 7 fait pour **la loi** ce que le chapitre 6 vient de faire pour **le péché** : après avoir déclaré en 6.14 que « vous êtes non sous la loi, mais sous la grâce », Paul explique pourquoi et comment le croyant est mort à la loi pour être uni à un autre Époux, Jésus-Christ ressuscité (7.1-6), puis il défend la sainteté de la loi mosaïque tout en démontrant son impuissance totale à la fois pour **justifier** le pécheur (7.7-13, aux temps du passé) et pour **sanctifier** le croyant régénéré (7.14-25, aux temps du présent), préparant ainsi le triomphe du Saint-Esprit au chapitre 8.
 
@@ -28,7 +68,7 @@ Le genre littéraire du chapitre combine l'analogie juridique tirée du droit ma
 
 En 7.1 (« Ignorez-vous, frères, - car je parle à des gens qui connaissent la loi... »), Paul s'adresse aux croyants de Rome familiers tant avec la loi mosaïque (Dt 24.1-4) qu'avec le principe universel du droit romain : la juridiction de la loi ne s'exerce sur un homme qu'aussi longtemps qu'il vit; la mort dissout instantanément tout lien légal et conjugal (45-50).
 
-Au verset 24, le cri d'angoisse « Misérable que je suis ! Qui me délivrera du corps de cette mort ? » (*Talaipōros egō anthrōpos· tis me rhysetai ek tou sōmatos tou thanatou toutou ?*) évoque, selon plusieurs commentateurs cités par MacArthur (45-53), une coutume pénale antique rapportée par Virgile (*Énéide* VIII, 485-488) dans laquelle un meurtrier condamné était attaché face à face à un cadavre en décomposition dont la putréfaction finissait par l'infecter : telle est l'horreur qu'éprouve l'homme nouveau régénéré d'être encore lié, jusqu'à la résurrection ou l'enlèvement, à sa chair mortelle non rachetée où loge le péché résiduel.
+Au verset 24, le cri d'angoisse « Misérable que je suis ! Qui me délivrera de ce corps de mort ? » (*Talaipōros egō anthrōpos· tis me rhysetai ek tou sōmatos tou thanatou toutou ?*) évoque, selon plusieurs commentateurs cités par MacArthur (45-53), une coutume pénale antique rapportée par Virgile (*Énéide* VIII, 485-488) dans laquelle un meurtrier condamné était attaché face à face à un cadavre en décomposition dont la putréfaction finissait par l'infecter : telle est l'horreur qu'éprouve l'homme nouveau régénéré d'être encore lié, jusqu'à la résurrection ou l'enlèvement, à sa chair mortelle non rachetée où loge le péché résiduel.
 
 Trois détails échappent au lecteur moderne.
 
@@ -50,7 +90,7 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 25 versets 
 - **7.1–6.** Affranchis de la loi par notre mort avec Christ : l'illustration du mariage et le passage de l'ancien régime de la lettre au régime nouveau de l'Esprit. Marqueur : Principe *ho nomos kyrieuei tou anthrōpou eph' hoson chronon zē* (v. 1-3) et application *Hōste, adelphoi mou, kai hymeis ethanatōthēte tō nomō dia tou sōmatos tou Christou* (v. 4-6).
 - **7.7–13.** La sainteté de la loi et la perversité mortelle du péché : comment le commandement « Tu ne convoiteras point » a démasqué le péché et frappé à mort l'illusion du propre-juste. Marqueur : Première apologie *Ho nomos hamartia ? Mē genoito* (v. 7-12) et seconde apologie *To oun agathon emoi egeneto thanatos ? Mē genoito* (v. 13).
 - **7.14–20.** La réalité du conflit intérieur chez le croyant : l'homme spirituel vendu dans sa chair mortelle et la distinction entre son moi nouveau qui veut le bien et le péché qui habite en lui. Marqueur : Constat *Oidamen gar hoti ho nomos pneumatikos estin, egō de sarkinos eimi* (v. 14) et double refrain *nyni de ouketi egō katergazomai auto alla hē oikousa en emoi hamartia* (v. 17, 20).
-- **7.21–25.** Le plaisir pris à la loi de Dieu dans l'homme intérieur et le cri de victoire : l'attente de la rédemption du corps de cette mort par Jésus-Christ notre Seigneur. Marqueur : Confession *synēdomai gar tō nomō tou Theou kata ton esō anthrōpon* (v. 22) et cri *Talaipōros egō anthrōpos... Charis de tō Theō dia Iēsou Christou* (v. 24-25).
+- **7.21–25.** Le plaisir pris à la loi de Dieu dans l'homme intérieur et le cri de victoire : l'attente de la rédemption de ce corps de mort par Jésus-Christ notre Seigneur. Marqueur : Confession *synēdomai gar tō nomō tou Theou kata ton esō anthrōpon* (v. 22) et cri *Talaipōros egō anthrōpos... Charis de tō Theō dia Iēsou Christou* (v. 24-25).
 
 **Observations grammaticales**
 
@@ -65,10 +105,10 @@ Le sens vient du lexique; les versions montrent des rendus, non le sens.
 
 | Français | Translit. | Sens littéral | Lexique et lecture retenue | Traductions comparées |
 |---|---|---|---|---|
-| **καινότης** | *kainotēs* | nouveauté de nature et de qualité, fraîcheur d'une vie régénérée | **Lexique (Thayer).** Selon l'étymologie indiquée par Thayer, *kainotēs* (dérivé de *kainos*, nouveau par sa qualité et son espèce, par opposition à *neos*, récent dans le temps, et à *palaiotēs*, ce qui est usé et périmé; 2 occurrences seulement dans le NT : Rm 6.4 [*en kainotēti zōēs*] et Rm 7.6 [*en kainotēti pneumatos*]) désigne le caractère entièrement nouveau de la vie communiquée par le Saint-Esprit. **Lecture retenue.** En Romains 7.6 (« de sorte que nous servons sous le régime nouveau de l'Esprit [*en kainotēti pneumatos*], et non selon la lettre qui a vieilli [*palaiotēti grammatos*] »), l'obéissance chrétienne ne jaillit plus de la contrainte extérieure d'un code gravé sur la pierre, mais de l'élan intérieur et nouveau du Saint-Esprit (MacArthur, 45-50). | *S21* Mais maintenant nous avons été libérés de la loi, car nous sommes morts à ce qui nous retenait prisonniers,... (7.6) · *NEG79* Mais maintenant, nous avons été dégagés de la loi, étant morts à cette loi sous laquelle nous étions retenus,... (7.6) · *Darby* mais maintenant nous avons été déliés de la loi, étant morts dans ce en quoi nous étions tenus, en sorte que... (7.6) · *LSG* Mais maintenant, nous avons été dégagés de la loi, étant morts à cette loi sous laquelle nous étions retenus,... (7.6) · *NBS* Mais maintenant, nous sommes dégagés de la loi, car nous sommes morts à ce qui nous tenait captifs, de sorte... (7.6) |
-| **συνήδομαι** | *synēdomai* | se réjouir intimement avec, prendre un vif plaisir intérieur à | **Lexique (Thayer).** Selon l'étymologie précisée par Thayer, *synēdomai* (composé de *syn*, avec, et de *hēdomai*, éprouver de la joie, prendre plaisir à; hapax du Nouveau Testament en Rm 7.22) exprime une communion joyeuse et cordiale de l'âme avec ce qu'elle aime. **Lecture retenue.** En Romains 7.22 (« Car je prends plaisir [*synēdomai*] à la loi de Dieu, selon l'homme intérieur »), Paul livre la signature indélébile de l'homme régénéré, faisant écho aux Psaumes 1.2 et 119.97 (« Combien j'aime ta loi ! »), alors que l'homme non régénéré a une affection de la chair qui est inimitié contre Dieu et ne se soumet pas à sa loi (Rm 8.7; MacArthur, 45-53). | *S21* En effet, je prends plaisir à la loi de Dieu, dans mon être intérieur, (7.22) · *NEG79* Car je prends plaisir à la loi de Dieu, selon l’homme intérieur; (7.22) · *Darby* Car je prends plaisir à la loi de Dieu selon l’homme intérieur ; (7.22) · *LSG* Car je prends plaisir à la loi de Dieu, selon l’homme intérieur ; (7.22) · *NBS* Car, pour ce qui est de l'homme que je suis intérieurement, je prends plaisir à la loi de Dieu, (7.22) |
-| **ταλαίπωρος** | *talaipōros* | épuisé par un dur labeur ou un long combat; misérable, affligé, accablé | **Lexique (Thayer).** Selon l'étymologie donnée par Thayer, *talaipōros* (formé de la racine *tlaō*, endurer, supporter un fardeau, et de *pōros*, cal ou pierre dure; 2 occurrences dans le NT : Rm 7.24; Ap 3.17) décrit l'épuisement douloureux d'un soldat au cœur d'une lutte incessante. **Lecture retenue.** En Romains 7.24 (« Misérable [*talaipōros*] que je suis ! Qui me délivrera du corps de cette mort ? »), plus un croyant grandit dans la sainteté et dans la proximité de la lumière de Dieu (comme Ésaïe en És 6.5 ou Pierre en Lc 5.8), plus il ressent douloureusement la misère de la moindre trace de péché qui subsiste dans sa chair et soupire après la glorification finale (MacArthur, 45-53). | *S21* Malheureux être humain que je suis ! Qui me délivrera de ce corps de mort ? (7.24) · *NEG79* Misérable que je suis! Qui me délivrera de ce corps de mort?… (7.24) · *Darby* Misérable homme que je suis, qui me délivrera de ce corps de mort ? (7.24) · *LSG* Misérable que je suis ! Qui me délivrera du corps de cette mort ?… (7.24) · *NBS* Misérable que je suis ! Qui me délivrera de ce corps de mort ? (7.24) |
-| **σάρξ** | *sarx* | chair; corps physique mortel ou nature humaine non rachetée en tant que siège des convoitises | **Lexique (Thayer).** Selon l'étymologie relevée par Thayer, *sarx* (147 occurrences dans le NT dont 26 dans Romains, concentrées aux chapitres 7 et 8 : 7.5, 18, 25; 8.3-13) désigne chez Paul non seulement la substance matérielle du corps, mais, au sens éthique, l'humanité déchue séparée de Dieu et, chez le croyant, ses facultés corporelles et psychiques non encore glorifiées par lesquelles le péché résiduel tente d'agir. **Lecture retenue.** En Romains 7.18 (« Ce qui est bon, je le sais, n'habite pas en moi, c'est-à-dire dans ma chair »), Paul apporte lui-même le correctif crucial (« c'est-à-dire dans ma chair ») : son homme intérieur régénéré appartient à Dieu (v. 22), mais sa chair non encore rachetée (cf. 8.23) demeure le terrain de bataille où loge le péché jusqu'à la résurrection (MacArthur, 45-53). | *S21* j’ai la volonté de faire le bien, mais je ne parviens pas à l’accomplir. (7.18) · *NEG79* j’ai la volonté, mais non le pouvoir de faire le bien. (7.18) · *Darby* car le vouloir est avec moi, mais accomplir le bien, cela je ne le trouve pas. (7.18) · *LSG* j’ai la volonté, mais non le pouvoir de faire le bien. (7.18) · *NBS* Je le sais, rien de bon n'habite en moi, c'est-à-dire dans ma chair. Car il est à ma portée de vouloir, mais... (7.18) |
+| **καινότης** | *kainotēs* | nouveauté de nature et de qualité, fraîcheur d'une vie régénérée | **Lexique (Thayer).** Selon l'étymologie indiquée par Thayer, *kainotēs* (dérivé de *kainos*, nouveau par sa qualité et son espèce, par opposition à *neos*, récent dans le temps, et à *palaiotēs*, ce qui est usé et périmé; 2 occurrences seulement dans le NT : Rm 6.4 [*en kainotēti zōēs*] et Rm 7.6 [*en kainotēti pneumatos*]) désigne le caractère entièrement nouveau de la vie communiquée par le Saint-Esprit. **Lecture retenue.** En Romains 7.6 (« de sorte que nous servons sous le régime nouveau de l'Esprit [*en kainotēti pneumatos*], et non selon la lettre qui a vieilli [*palaiotēti grammatos*] »), l'obéissance chrétienne ne jaillit plus de la contrainte extérieure d'un code gravé sur la pierre, mais de l'élan intérieur et nouveau du Saint-Esprit (MacArthur, 45-50). | *S21* nous servons sous le régime nouveau de l’Esprit (7.6) · *NEG79* nous servons sous le régime nouveau de l’Esprit (7.6) · *Darby* que nous servions en nouveauté d’esprit (7.6) · *LSG* nous servons dans un esprit nouveau (7.6) · *NBS* sous le régime nouveau de l'Esprit (7.6) |
+| **συνήδομαι** | *synēdomai* | se réjouir intimement avec, prendre un vif plaisir intérieur à | **Lexique (Thayer).** Selon l'étymologie précisée par Thayer, *synēdomai* (composé de *syn*, avec, et de *hēdomai*, éprouver de la joie, prendre plaisir à; hapax du Nouveau Testament en Rm 7.22) exprime une communion joyeuse et cordiale de l'âme avec ce qu'elle aime. **Lecture retenue.** En Romains 7.22 (« Car je prends plaisir [*synēdomai*] à la loi de Dieu, selon l'homme intérieur »), Paul livre la signature indélébile de l'homme régénéré, faisant écho aux Psaumes 1.2 et 119.97 (« Combien j'aime ta loi ! »), alors que l'homme non régénéré a une affection de la chair qui est inimitié contre Dieu et ne se soumet pas à sa loi (Rm 8.7; MacArthur, 45-53). | *S21* je prends plaisir à la loi de Dieu, dans mon être intérieur (7.22) · *NEG79* je prends plaisir à la loi de Dieu, selon l’homme intérieur (7.22) · *Darby* je prends plaisir à la loi de Dieu selon l’homme intérieur (7.22) · *LSG* je prends plaisir à la loi de Dieu, selon l’homme intérieur (7.22) · *NBS* je prends plaisir à la loi de Dieu (7.22) |
+| **ταλαίπωρος** | *talaipōros* | épuisé par un dur labeur ou un long combat; misérable, affligé, accablé | **Lexique (Thayer).** Selon l'étymologie donnée par Thayer, *talaipōros* (formé de la racine *tlaō*, endurer, supporter un fardeau, et de *pōros*, cal ou pierre dure; 2 occurrences dans le NT : Rm 7.24; Ap 3.17) décrit l'épuisement douloureux d'un soldat au cœur d'une lutte incessante. **Lecture retenue.** En Romains 7.24 (« Misérable [*talaipōros*] que je suis ! Qui me délivrera de ce corps de mort ? »), plus un croyant grandit dans la sainteté et dans la proximité de la lumière de Dieu (comme Ésaïe en És 6.5 ou Pierre en Lc 5.8), plus il ressent douloureusement la misère de la moindre trace de péché qui subsiste dans sa chair et soupire après la glorification finale (MacArthur, 45-53). | *S21* Malheureux être humain que je suis ! (7.24) · *NEG79* Misérable que je suis! (7.24) · *Darby* Misérable homme que je suis (7.24) · *LSG* Misérable que je suis ! (7.24) · *NBS* Misérable que je suis ! (7.24) |
+| **σάρξ** | *sarx* | chair; corps physique mortel ou nature humaine non rachetée en tant que siège des convoitises | **Lexique (Thayer).** Selon l'étymologie relevée par Thayer, *sarx* (147 occurrences dans le NT dont 26 dans Romains, concentrées aux chapitres 7 et 8 : 7.5, 18, 25; 8.3-13) désigne chez Paul non seulement la substance matérielle du corps, mais, au sens éthique, l'humanité déchue séparée de Dieu et, chez le croyant, ses facultés corporelles et psychiques non encore glorifiées par lesquelles le péché résiduel tente d'agir. **Lecture retenue.** En Romains 7.18 (« Ce qui est bon, je le sais, n'habite pas en moi, c'est-à-dire dans ma chair »), Paul apporte lui-même le correctif crucial (« c'est-à-dire dans ma chair ») : son homme intérieur régénéré appartient à Dieu (v. 22), mais sa chair non encore rachetée (cf. 8.23) demeure le terrain de bataille où loge le péché jusqu'à la résurrection (MacArthur, 45-53). | *S21* le bien n’habite pas en moi, c’est-à-dire dans ma nature propre (7.18) · *NEG79* n’habite pas en moi, c’est-à-dire dans ma chair (7.18) · *Darby* en moi, c’est-à-dire en ma chair, il n’habite point de bien (7.18) · *LSG* n’habite pas en moi, c’est-à-dire dans ma chair (7.18) · *NBS* rien de bon n'habite en moi, c'est-à-dire dans ma chair (7.18) |
 
 ## Apports des commentateurs
 
@@ -90,11 +130,19 @@ Cinq sermons (45-50 à 45-53, incluant les deux parties 45-51A et 45-51B) couvre
 | 45-52 | [The Believer and Indwelling Sin, Part 1](https://www.gty.org/sermons/45-52) | Rm 7.14-17 |
 | 45-53 | [The Believer and Indwelling Sin, Part 2](https://www.gty.org/sermons/45-53) | Rm 7.18-25 |
 
-Dans ses cinq prédications sur le chapitre 7 (*45-50* à *45-53*), John MacArthur éclaire l'un des chapitres les plus débattus du Nouveau Testament en montrant l'unité parfaite de son argument sur le rôle et les limites de la loi. Dans le sermon *45-50* (sur 7.1-6), Paul explique par l'illustration du mariage comment le croyant a été libéré de la juridiction condamnatrice de la loi : de même que la mort du mari libère légalement l'épouse pour qu'elle puisse appartenir à un autre sans être adultère (v. 1-3), de même « vous aussi, mes frères, vous avez été, par le corps de Christ, mis à mort en ce qui concerne la loi, pour que vous apparteniez à un autre, à celui qui est ressuscité des morts, afin que nous portions des fruits pour Dieu » (v. 4). Le légalisme ne produit que « des fruits pour la mort » en excitant les passions rebelles (v. 5); seule notre union d'amour avec Christ ressuscité nous fait servir dans la nouveauté de l'Esprit (v. 6).
+Dans ses cinq prédications sur le chapitre 7 (*45-50* à *45-53*), John MacArthur éclaire l'un des chapitres les plus débattus du Nouveau Testament en montrant l'unité parfaite de son argument sur le rôle et les limites de la loi.
+
+### Romains 7.1-6 · morts à la loi par le corps de Christ pour appartenir à un autre
+
+Dans le sermon *45-50* (sur 7.1-6), Paul explique par l'illustration du mariage comment le croyant a été libéré de la juridiction condamnatrice de la loi : de même que la mort du mari libère légalement l'épouse pour qu'elle puisse appartenir à un autre sans être adultère (v. 1-3), de même « mes frères, vous aussi vous avez été, par le corps de Christ, mis à mort en ce qui concerne la loi, pour appartenir à un autre, à celui qui est ressuscité des morts, afin que nous portions des fruits pour Dieu » (v. 4). Le légalisme ne produit que « des fruits pour la mort » en excitant les passions rebelles (v. 5); seule notre union d'amour avec Christ ressuscité nous fait servir dans la nouveauté de l'Esprit (v. 6).
+
+### Romains 7.7-13 · la sainteté de la loi qui démasque l'horreur du péché
 
 Dans les sermons *45-51A* et *45-51B* (sur 7.7-13), MacArthur montre pourquoi la loi, bien qu'incapable de sauver, n'est nullement mauvaise : « la loi est sainte, et le commandement est saint, juste et bon » (v. 12). La loi accomplit quatre fonctions indispensables envers le pécheur : elle **révèle** la nature intérieure du péché (comme la convoitise du cœur au v. 7), elle **provoque** et fait sortir au grand jour la rébellion latente de la chair (v. 8), elle **dévaste** l'illusion de propre justice du pécheur religieux (« le commandement étant venu, le péché a pris vie, et moi je suis mort », v. 9-11), et elle **dévoile** l'horreur mortelle du péché (« afin que, par le commandement, le péché devînt outre mesure pécheur », v. 13).
 
-Enfin, dans les sermons *45-52* et *45-53* (sur 7.14-25), MacArthur démontre que la seconde moitié du chapitre décrit l'expérience universelle du **croyant régénéré** qui découvre que la loi, impuissante à le justifier (v. 7-13), est tout aussi impuissante à le sanctifier par ses propres forces (v. 14-25). En tant qu'homme nouveau (« selon l'homme intérieur », v. 22; « par l'entendement », v. 25), Paul aime passionnément la loi de Dieu, veut le bien et hait le mal; mais tant qu'il habite « le corps de cette mort » non encore glorifié, il constate la présence d'un principe de péché résiduel dans ses membres qui lui livre une guerre continuelle. Cette sainte douleur du chrétien mûr l'arrache à tout orgueil perfectionniste et le jette dans les bras de Jésus-Christ notre Seigneur (v. 24-25) et dans la dépendance du Saint-Esprit déployée au chapitre 8.
+### Romains 7.14-25 · le combat intérieur du croyant régénéré dans son corps mortel
+
+Enfin, dans les sermons *45-52* et *45-53* (sur 7.14-25), MacArthur démontre que la seconde moitié du chapitre décrit l'expérience universelle du **croyant régénéré** qui découvre que la loi, impuissante à le justifier (v. 7-13), est tout aussi impuissante à le sanctifier par ses propres forces (v. 14-25). En tant qu'homme nouveau (« selon l'homme intérieur », v. 22; « par l'entendement », v. 25), Paul aime passionnément la loi de Dieu, veut le bien et hait le mal; mais tant qu'il habite « ce corps de mort » non encore glorifié, il constate la présence d'un principe de péché résiduel dans ses membres qui lui livre une guerre continuelle. Cette sainte douleur du chrétien mûr l'arrache à tout orgueil perfectionniste et le jette dans les bras de Jésus-Christ notre Seigneur (v. 24-25) et dans la dépendance du Saint-Esprit déployée au chapitre 8.
 
 **Indices du texte**
 
@@ -123,7 +171,7 @@ L'expression « je prends plaisir à la loi de Dieu, selon l'homme intérieur »
 
 **Romains 8.23; Philippiens 3.20-21; 1 Corinthiens 15.54-57** · *Parallèle direct*
 
-La réponse eschatologique au cri de Romains 7.24-25 (« Qui me délivrera du corps de cette mort ? Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! ») se trouve en Romains 8.23 (« nous soupirons en nous-mêmes, en attendant l'adoption, la rédemption de notre corps ») et en 1 Corinthiens 15.57.
+La réponse eschatologique au cri de Romains 7.24-25 (« Qui me délivrera de ce corps de mort ? Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! ») se trouve en Romains 8.23 (« nous soupirons en nous-mêmes, en attendant l'adoption, la rédemption de notre corps ») et en 1 Corinthiens 15.57.
 
 ## Thèmes théologiques
 
@@ -167,7 +215,7 @@ Ne blâmons jamais les exigences saintes de la Parole de Dieu pour nos chutes : 
 
 **Dans le texte**
 
-Tandis que l'homme intérieur régénéré prend plaisir à la loi de Dieu, veut le bien et hait le mal, il voit dans ses membres une autre loi qui lutte contre la loi de son entendement, ce qui lui arrache le cri : « Misérable que je suis ! Qui me délivrera du corps de cette mort ? Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! » (7.14-25).
+Tandis que l'homme intérieur régénéré prend plaisir à la loi de Dieu, veut le bien et hait le mal, il voit dans ses membres une autre loi qui lutte contre la loi de son entendement, ce qui lui arrache le cri : « Misérable que je suis ! Qui me délivrera de ce corps de mort ? Grâces soient rendues à Dieu par Jésus-Christ notre Seigneur ! » (7.14-25).
 
 **Ancrage doctrinal**
 
