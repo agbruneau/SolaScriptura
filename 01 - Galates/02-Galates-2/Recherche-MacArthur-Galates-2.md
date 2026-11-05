@@ -195,7 +195,7 @@ Sotériologie : la justification, déclaration judiciaire de Dieu, fondée sur l
 
 **Révélation progressive**
 
-Job demandait déjà : « Comment l’homme serait-il juste devant Dieu? » (Job 9.2), et le psalmiste reconnaissait : « aucun vivant n’est juste devant toi » (Psaume 143.2). Galates 2.16 donne la réponse en Christ, et Romains 3.20-28 la développe en exposé suivi.
+Job demandait déjà : « Comment l’homme serait-il juste devant Dieu? » (Job 9.2; cf. Bildad en Job 25.4, cité en 48-10), et le psalmiste reconnaissait : « aucun vivant n’est juste devant toi » (Psaume 143.2). Galates 2.16 donne la réponse en Christ, et Romains 3.20-28 la développe en exposé suivi.
 
 **Pour votre assemblée**
 

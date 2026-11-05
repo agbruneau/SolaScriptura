@@ -162,7 +162,7 @@ Galates 1.15-16 reprend la langue des vocations prophétiques. L'hébreu d'Ésa�
 
 **Job 9.2** · *Lien thématique*
 
-« Comment l’homme serait-il juste devant Dieu? » (NEG79). En ouvrant la série, MacArthur cite cette question de Job, homme intègre qui ne trouvait pas comment être en règle avec Dieu, et par la réponse de Bildad, être pur et droit, qu'il appelle la réponse de toute religion (48-1). Galates 1 donne la réponse de l'Évangile : Christ « s’est donné lui-même pour nos péchés » (1.4).
+« Comment l’homme serait-il juste devant Dieu? » (NEG79). En ouvrant la série, MacArthur cite cette question de Job, homme intègre qui ne trouvait pas comment être en règle avec Dieu, et la réponse de Bildad (Job 8.6), être pur et droit, qu'il appelle la réponse de toute religion (48-1). Galates 1 donne la réponse de l'Évangile : Christ « s’est donné lui-même pour nos péchés » (1.4).
 
 ## Thèmes théologiques
 
