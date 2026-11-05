@@ -99,7 +99,7 @@ Sources consultées : grec : SBLGNT et son apparat critique (lu sur Philippiens 
 **Plan de la péricope**
 
 - **2.1 – 2.4.** La formule spirituelle de l'unité fraternelle : les quatre motifs de consolation et de communion en Christ (2.1), l'objectif d'une joie parfaite dans l'harmonie des pensées et de l'amour (2.2), et le moyen pratique de l'humilité qui rejette tout esprit de parti pour veiller aux intérêts des autres (2.3-4). Marqueur : Protase à quatre *ei tis / ei ti* (2.1), impératif principal *plērōsate mou tēn charan* (2.2) et antithèse *mēden kat' eritheian... alla tē tapeinophrosynē* (2.3-4).
-- **2.5 – 2.11.** Le modèle suprême de l'humilité : l'abaissement kénotique et la souveraine exaltation de Jésus-Christ : l'appel à revêtir les sentiments de Christ (2.5), son renoncement aux prérogatives de son égalité divine pour prendre la forme d'esclave et mourir sur la croix (2.6-8), et son couronnement par le Père comme Seigneur de tout l'univers (2.9-11). Marqueur : Impératif de transition *Touto phroneite en hymin* (2.5), pronom relatif hymne *hos en morphē Theou hyparchōn* (2.6-8) et pivot consécutif *dio kai ho Theos auton hyperypsōsen* (2.9-11).
+- **2.5 – 2.11.** Le modèle suprême de l'humilité : l'abaissement volontaire et la souveraine exaltation de Jésus-Christ : l'appel à revêtir les sentiments de Christ (2.5), son renoncement aux prérogatives de son égalité divine pour prendre la forme d'esclave et mourir sur la croix (2.6-8), et son couronnement par le Père comme Seigneur de tout l'univers (2.9-11). Marqueur : Impératif de transition *Touto phroneite en hymin* (2.5), pronom relatif hymne *hos en morphē Theou hyparchōn* (2.6-8) et pivot consécutif *dio kai ho Theos auton hyperypsōsen* (2.9-11).
 - **2.12 – 2.18.** L'application pratique dans la sanctification et le témoignage : mettre en œuvre son salut avec crainte et tremblement par l'énergie souveraine de Dieu (2.12-13), bannir tout murmure pour briller comme des flambeaux portant la Parole de vie dans un monde ténébreux (2.14-16), et partager la joie sacrificielle de la libation apostolique (2.17-18). Marqueur : Conjonction inférentielle *Hōste, agapētoi mou... katergazesthe* (2.12), causale divine *Theos gar estin ho energōn* (2.13), impératif *Panta poieite chōris gongysmōn* (2.14) et joie partagée *chairō kai synchairō* (2.17-18).
 - **2.19 – 2.30.** Les modèles vivants du service humble et désintéressé : l'envoi prochain de Timothée, l'âme sœur qui cherche les intérêts de Jésus-Christ avec une fidélité filiale éprouvée (2.19-24), et le retour d'Épaphrodite, le compagnon de combat qui a exposé sa vie jusqu'aux portes de la mort pour l'œuvre de Christ (2.25-30). Marqueur : Deux verbes d'envoi symétriques : *Elpizō de en Kyriō Iēsou Timotheon tacheōs pempsai* (2.19-24) et *Anankaion de hēgēsamēn Epaphroditon... pempsai* (2.25-30).
 
@@ -129,7 +129,7 @@ Niveau 1 : sermons Grace to You sur Philippiens 2.1 à 2.30 (50-12 à 50-26, 15 
 
 **Couverture des sources**
 
-Quinze sermons (50-12 à 50-26) couvrent intégralement les trente versets de Philippiens 2 : la formule spirituelle de l'unité par l'humilité (2.1-4, 50-12 à 50-14), l'humiliation volontaire et l'incarnation kénotique de Jésus-Christ jusqu'à la mort de la croix (2.5-8, 50-15 et 50-16), la souveraine exaltation de Christ par le Père et la confession universelle de sa seigneurie (2.9-11, 50-17 et 50-18), la mise en œuvre du salut par l'énergie souveraine de Dieu (2.12-13, 50-19 à 50-21), l'exhortation à cesser tout murmure pour briller comme des flambeaux portant la Parole de vie (2.14-16, 50-22 et 50-23), et les trois serviteurs spirituels modèles que sont Paul, Timothée et Épaphrodite (2.17-30, 50-24 à 50-26).
+Quinze sermons (50-12 à 50-26) couvrent intégralement les trente versets de Philippiens 2 : la formule spirituelle de l'unité par l'humilité (2.1-4, 50-12 à 50-14), l'humiliation volontaire et l'incarnation de Jésus-Christ jusqu'à la mort de la croix (2.5-8, 50-15 et 50-16), la souveraine exaltation de Christ par le Père et la confession universelle de sa seigneurie (2.9-11, 50-17 et 50-18), la mise en œuvre du salut par l'énergie souveraine de Dieu (2.12-13, 50-19 à 50-21), l'exhortation à cesser tout murmure pour briller comme des flambeaux portant la Parole de vie (2.14-16, 50-22 et 50-23), et les trois serviteurs spirituels modèles que sont Paul, Timothée et Épaphrodite (2.17-30, 50-24 à 50-26).
 
 **Sermons Grace to You**
 
@@ -192,7 +192,7 @@ L'offrande de libation instituée dans la Loi mosaïque (Nb 15.5, 7, 10) éclair
 
 ## Thèmes théologiques
 
-### L'incarnation kénotique et les deux natures de Jésus-Christ
+### Le dépouillement volontaire du Fils et les deux natures de Jésus-Christ
 
 **Dans le texte**
 

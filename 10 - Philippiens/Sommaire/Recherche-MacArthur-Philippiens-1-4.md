@@ -90,7 +90,7 @@ Niveau 1 : sermons Grace to You sur Philippiens 1.1 à 4.23 (50-1 à 50-46, 46 p
 
 **Couverture des sources**
 
-Quarante-six sermons (50-1 à 50-46) couvrent intégralement les quatre chapitres (104 versets) de l'épître aux Philippiens : la salutation, les éléments de la communion joyeuse, la prière pour une croissance dans la piété, la joie du ministère au milieu des chaînes, le cri de foi « Christ est ma vie » et la conduite de citoyens dignes de l'Évangile (ch. 1, 50-1 à 50-11), la formule de l'unité spirituelle, l'hymne à l'humiliation kénotique et à l'exaltation souveraine de Christ, la mise en œuvre du salut sans murmures et les trois serviteurs spirituels modèles (ch. 2, 50-12 à 50-26), les marques distinctives du vrai chrétien, la perte de tout mérite charnel pour la justice de la foi et la course vers le prix céleste (ch. 3, 50-27 à 50-36), ainsi que les principes de la stabilité spirituelle, le secret du contentement et les salutations des saints de la maison de César (ch. 4, 50-37 à 50-46).
+Quarante-six sermons (50-1 à 50-46) couvrent intégralement les quatre chapitres (104 versets) de l'épître aux Philippiens : la salutation, les éléments de la communion joyeuse, la prière pour une croissance dans la piété, la joie du ministère au milieu des chaînes, le cri de foi « Christ est ma vie » et la conduite de citoyens dignes de l'Évangile (ch. 1, 50-1 à 50-11), la formule de l'unité spirituelle, l'hymne à l'humiliation volontaire et à l'exaltation souveraine de Christ, la mise en œuvre du salut sans murmures et les trois serviteurs spirituels modèles (ch. 2, 50-12 à 50-26), les marques distinctives du vrai chrétien, la perte de tout mérite charnel pour la justice de la foi et la course vers le prix céleste (ch. 3, 50-27 à 50-36), ainsi que les principes de la stabilité spirituelle, le secret du contentement et les salutations des saints de la maison de César (ch. 4, 50-37 à 50-46).
 
 **Sermons Grace to You**
 
@@ -182,7 +182,7 @@ L'image sacrificielle de la libation (*spendomai*, Ph 2.17) et la métaphore ath
 
 ## Thèmes théologiques
 
-### La déité préexistante, l'incarnation kénotique et la seigneurie universelle de Jésus-Christ
+### La déité préexistante, l'abaissement volontaire et la seigneurie universelle de Jésus-Christ
 
 **Dans le texte**
 

@@ -20,7 +20,7 @@ Dans son introduction et son sermon d'ouverture (`50-1`), John MacArthur dégage
 1. **Exprimer sa reconnaissance spirituelle** pour le don financier des Philippiens tout en leur dévoilant le secret du contentement en Christ (4.10-19).
 2. **Expliquer le retour anticipé d'Épaphrodite** afin que l'Église l'accueille avec joie et l'honore comme un serviteur héroïque qui a exposé sa vie pour l'œuvre de Christ (2.25-30).
 3. **Rassurer l'Église sur ses propres circonstances à Rome**, en montrant que ses chaînes et même la jalousie de prédicateurs rivaux ont contribué au progrès de l'Évangile jusque dans la garde prétorienne et la maison de César (1.12-26 ; 4.22).
-4. **Exhorter l'assemblée à préserver son unité spirituelle par l'humilité** face aux tensions internes (notamment entre Évodie et Syntyche) et aux persécutions externes, en contemplant l'abaissement kénotique et l'exaltation souveraine de Jésus-Christ (1.27-2.18 ; 4.2-3).
+4. **Exhorter l'assemblée à préserver son unité spirituelle par l'humilité** face aux tensions internes (notamment entre Évodie et Syntyche) et aux persécutions externes, en contemplant l'abaissement volontaire et l'exaltation souveraine de Jésus-Christ (1.27-2.18 ; 4.2-3).
 5. **Prémunir les croyants contre la double menace des faux docteurs** : le légalisme rituel des judaïsants (« les chiens, les mauvais ouvriers, les faux circoncis », 3.2-11) et le libertinage terrestre des antinomiens (« les ennemis de la croix de Christ », 3.17-4.1).
 
 ### 2. Fil conducteur et phrase de la série
