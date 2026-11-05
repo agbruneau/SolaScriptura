@@ -21,7 +21,7 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | 7 | Éphésiens | entre 60 et 62 | Rome, première captivité | étudiée : [Éphésiens](Ephesiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/eph) |
 | 8 | Colossiens | vers 60-62 | Rome, première captivité | étudiée : [Colossiens](Colossiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
 | 9 | Philémon | vers 60-62 | Rome, première captivité | étudiée : [Philémon](Philemon/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |
-| 10 | Philippiens | vers 61, sur la fin des deux ans de captivité | Rome, première captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/phi) |
+| 10 | Philippiens | vers 61, sur la fin des deux ans de captivité | Rome, première captivité | étudiée : [Philippiens](Philippiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/phi) |
 | 11 | 1 Timothée | vers 62-64 | Macédoine | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
 | 12 | Tite | entre 62 et 64 | Corinthe ou Nicopolis | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/tit) |
 | 13 | 2 Timothée | vers 67 | Rome, seconde captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
