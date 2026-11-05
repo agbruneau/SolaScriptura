@@ -28,7 +28,7 @@ Le genre littéraire de ce chapitre monumental - le plus vaste traité sur la r�
 
 ## Arrière-plan historique et culturel
 
-Dans la pensée philosophique grecque dominante à Corinthe - qu'elle fût platonicienne, stoïcienne ou épicurienne  - , la matière était considérée comme la source de l'imperfection et de la corruption; le salut philosophique consistait pour l'âme immortelle à s'échapper définitivement de la prison du corps à la mort. C'est pourquoi, quelques mois plus tôt à l'Aréopage d'Athènes, dès que Paul avait prononcé les mots « résurrection des morts » (*anastasis nekrōn*), ses auditeurs grecs s'étaient moqués de lui (Ac 17.32).
+Dans la pensée philosophique grecque dominante à Corinthe - qu'elle fût platonicienne, stoïcienne ou épicurienne -, la matière était considérée comme la source de l'imperfection et de la corruption; le salut philosophique consistait pour l'âme immortelle à s'échapper définitivement de la prison du corps à la mort. C'est pourquoi, quelques mois plus tôt à l'Aréopage d'Athènes, dès que Paul avait prononcé les mots « résurrection des morts » (*anastasis nekrōn*), ses auditeurs grecs s'étaient moqués de lui (Ac 17.32).
 
 De plus, cette négation de la résurrection corporelle nourrissait directement les deux dérives morales de Corinthe : soit l'ascétisme extrême (chapitre 7), soit le libertinage hédoniste résumé au verset 32 par la maxime épicurienne : « Mangeons et buvons, car demain nous mourrons ! » Si le corps est destiné au néant, ce qu'on fait avec son corps n'a plus aucune importance éternelle.
 

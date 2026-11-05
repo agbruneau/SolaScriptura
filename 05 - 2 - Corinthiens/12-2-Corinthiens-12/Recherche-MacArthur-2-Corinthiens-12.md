@@ -47,7 +47,7 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 21 versets 
 
 **Plan de la péricope**
 
-- **12.1-6.** Les visions et révélations du Seigneur : le ravissement au troisième ciel et le refus de Paul de se glorifier autrement que dans ses faiblesses. Marqueur : Transition *Kauchasthai dei, ou sympherōn men, eleusomai de eis optasias kai apokalypseis Kyriou* (v. 1-6).
+- **12.1-6.** Les visions et révélations du Seigneur : le ravissement au troisième ciel et le refus de Paul de se glorifier autrement que dans ses faiblesses. Marqueur : Transition *Kauchasthai dei, ou sympheron men, eleusomai de eis optasias kai apokalypseis Kyriou* (v. 1-6).
 - **12.7-10.** L'écharde dans la chair et l'oracle du Seigneur : la grâce suffisante et la puissance de Christ qui dresse sa tente sur la faiblesse du croyant. Marqueur : Explication causale *Kai tē hyperbolē tōn apokalypseōn, dio hina mē hyperairōmai, edothē moi skolops tē sarki* (v. 7-8) et oracle parfait *kai eirēken moi· Arkei soi hē charis mou* (v. 9-10).
 - **12.11-13.** Conclusion du « discours de folie » : les signes miraculeux d'un apôtre produits à Corinthe avec une patience à toute épreuve. Marqueur : Récapitulation *Gegona aphrōn· hymeis me ēnankasate... ta men sēmeia tou apostolou kateirgasthē en hymin* (v. 11-13).
 - **12.14-21.** L'annonce de la troisième visite : l'amour désintéressé d'un père qui se dépense pour ses enfants et la crainte de devoir pleurer sur les impénitents. Marqueur : Annonce *Idou triton touto hetoimōs echō elthein pros hymas...* (v. 14-18) et souci d'édification et de repentance *ta de panta, agapētoi, hyper tēs hymōn oikodomēs* (v. 19-21).
