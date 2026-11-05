@@ -52,7 +52,7 @@ Conformément aux conventions du dépôt, la série compte quatre prédications 
 
 - **Texte de prédication :** Philippiens 1.1 à 30 (30 versets)
 - **Verset clé :** « car Christ est ma vie, et mourir m’est un gain. » (Philippiens 1.21, NEG79)
-- **Sermons GTY de référence :** `50-1` (*Perspective on Philippians*, 1.1-2), `50-2` à `50-4` (*The Joy of Fellowship, Parts 1-3*, 1.3-8), `50-5` et `50-6` (*Essentials for Growth in Godliness, Parts 1-2*, 1.9-11), `50-7` à `50-10` (*The Joy of Ministry, Parts 1-4*, 1.12-26), `50-11` (*Fighting the Good Fight*, 1.27-30).
+- **Sermons GTY de référence :** `50-1` (*The Epistle of Joy*, 1.1-2), `50-2` à `50-4` (*Elements of Joy, Parts 1-3*, 1.3-8), `50-5` et `50-6` (*Essentials for Growth in Godliness, Parts 1-2*, 1.9-11), `50-7` à `50-10` (*Joy in Spite of Trouble*, *of Detractors*, *of Death*, *of the Flesh*, 1.12-26), `50-11` (*Conduct Worthy of the Church*, 1.27-30).
 - **Textes d'appui :** Actes 16.12-40 ; 28.16, 30-31 ; Job 13.15-16 ; Romains 8.28-30 ; 2 Corinthiens 5.1-8 ; Galates 2.20.
 - **Dossier de recherche du chapitre :** [MD](01-Philippiens-1/Recherche-MacArthur-Philippiens-1.md) · [HTML](01-Philippiens-1/Recherche-MacArthur-Philippiens-1.html) · [PDF](01-Philippiens-1/Recherche-MacArthur-Philippiens-1.pdf) · [JSON](01-Philippiens-1/Recherche-MacArthur-Philippiens-1.json)
 
@@ -103,7 +103,7 @@ L'appel solennel de `1.27-30` à tenir ferme « dans un même esprit, combattant
 
 - **Texte de prédication :** Philippiens 2.1 à 30 (30 versets)
 - **Verset clé :** « C’est pourquoi aussi Dieu l’a souverainement élevé, et lui a donné le nom qui est au-dessus de tout nom, afin qu’au nom de Jésus tout genou fléchisse dans les cieux, sur la terre et sous la terre, et que toute langue confesse que Jésus-Christ est Seigneur, à la gloire de Dieu le Père. » (Philippiens 2.9-11, NEG79)
-- **Sermons GTY de référence :** `50-12` à `50-14` (*The Formula for Spiritual Unity, Parts 1-3*, 2.1-4), `50-15` et `50-16` (*The Humiliation of Christ, Parts 1-2*, 2.5-8), `50-17` et `50-18` (*God's Exaltation of Christ / Exalting Jesus as Lord*, 2.9-11), `50-19` à `50-21` (*Working Out Your Salvation, Parts 1-3*, 2.12-13), `50-22` et `50-23` (*Stop Complaining, Parts 1-2*, 2.14-16), `50-24` à `50-26` (*Model Spiritual Servants: Paul, Timothy, Epaphroditus*, 2.17-30).
+- **Sermons GTY de référence :** `50-12` à `50-14` (*The Motives*, *The Marks* et *The Means to Spiritual Unity*, 2.1-5), `50-15` et `50-16` (*The Model of Spiritual Unity* ; *The Humiliation of Christ*, 2.5-8), `50-17` et `50-18` (*The Exaltation of Christ, Parts 1-2*, 2.9-11), `50-19` à `50-21` (*God at Work in You, Parts 1-3*, 2.12-13), `50-22` et `50-23` (*Stop Complaining, Parts 1-2*, 2.14-16), `50-24` à `50-26` (*Model Spiritual Servants, Parts 1-3: Paul, Timothy, Epaphroditus*, 2.17-30).
 - **Textes d'appui :** Ésaïe 45.22-24 ; 52.13-53.12 ; Deutéronome 32.5 ; Jean 1.1, 14 ; 13.3-17 ; 17.5 ; 2 Corinthiens 8.9 ; Nombres 15.5-10.
 - **Dossier de recherche du chapitre :** [MD](02-Philippiens-2/Recherche-MacArthur-Philippiens-2.md) · [HTML](02-Philippiens-2/Recherche-MacArthur-Philippiens-2.html) · [PDF](02-Philippiens-2/Recherche-MacArthur-Philippiens-2.pdf) · [JSON](02-Philippiens-2/Recherche-MacArthur-Philippiens-2.json)
 
@@ -155,8 +155,8 @@ Après avoir contemplé au chapitre 2 l'humilité de Christ et son incarnation d
 
 - **Texte de prédication :** Philippiens 3.1 à 21 (21 versets)
 - **Verset clé :** « Et même je regarde toutes choses comme une perte, à cause de l’excellence de la connaissance de Jésus-Christ mon Seigneur, pour lequel j’ai renoncé à tout; je les regarde comme de la boue, afin de gagner Christ, et d’être trouvé en lui, non avec ma justice, celle qui vient de la loi, mais avec celle qui s’obtient par la foi en Christ, la justice qui vient de Dieu par la foi. » (Philippiens 3.8-9, NEG79)
-- **Sermons GTY de référence :** `50-27` à `50-30` (*The Distinctive Qualities of the True Christian, Parts 1-4*, 3.1-3), `50-31` (*Counting All Things Loss for Christ, Part 1*, 3.4-7), `50-32` (*The Surpassing Value of Knowing Christ, Part 2*, 3.8-11), `50-33` à `50-35` (*Pursuing the Prize, Parts 1-3*, 3.12-16), `50-36` (*Pursuing the Prize, Part 4*, 3.17-21).
-- **Textes d'appui :** Jérémie 9.22-23 ; Deutéronome 30.6 ; Romains 2.28-29 ; 3.21-28 ; Actes 9.1-16 ; 1 Corinthiens 9.24-27 ; 15.42-54.
+- **Sermons GTY de référence :** `50-27` à `50-30` (*The Distinctive Qualities of the True Christian, Parts 1-4*, 3.1-3), `50-31` (*Religious Credits that Don't Impress God*, 3.4-8), `50-32` (*The Surpassing Value of Knowing Christ*, 3.8-11), `50-33` (*Reaching for the Prize*, 3.12-16), `50-34` à `50-36` (*Following Godly Examples* ; *Fleeing from Enemies* ; *Focusing on Expectations*, 3.17-21).
+- **Textes d'appui :** Jérémie 9.23-24 ; Deutéronome 30.6 ; Romains 2.28-29 ; 3.21-28 ; Actes 9.1-16 ; 1 Corinthiens 9.24-27 ; 15.42-54.
 - **Dossier de recherche du chapitre :** [MD](03-Philippiens-3/Recherche-MacArthur-Philippiens-3.md) · [HTML](03-Philippiens-3/Recherche-MacArthur-Philippiens-3.html) · [PDF](03-Philippiens-3/Recherche-MacArthur-Philippiens-3.pdf) · [JSON](03-Philippiens-3/Recherche-MacArthur-Philippiens-3.json)
 
 #### Idée centrale (thèse exégétique et homilétique)
@@ -175,7 +175,7 @@ Dépouiller les auditeurs de toute auto-justice religieuse en les ancrant dans l
 2. **L'autobiographie spirituelle de Paul :** Pour protéger l'Église contre les judaïsants (3.2) et contre les ennemis de la croix (3.18), l'ancien pharisien ouvre son grand livre de comptes et retrace le passé/présent de sa justification (3.1-11), le présent de sa course de sanctification (3.12-16) et le futur de sa glorification céleste (3.17-21).
 
 ##### I. La vraie circoncision spirituelle et la faillite des mérites charnels devant l'excellence de Christ (3.1-11)
-1. **Le rempart de la joie et la triple marque du vrai chrétien (3.1-3) :** Se réjouir dans le Seigneur est une sauvegarde doctrinale. Face au triple avertissement contre « les chiens, les mauvais ouvriers, les faux circoncis / mutilés (*katatomē*, `G2699`) » (3.2), les vrais circoncis de cœur (*peritomē*, Dt 30.6) se reconnaissent à trois signes : ils rendent leur culte par l'Esprit de Dieu, ils se glorifient uniquement en Jésus-Christ (Jr 9.23), et ils ne mettent aucune confiance dans la chair (3.3).
+1. **Le rempart de la joie et la triple marque du vrai chrétien (3.1-3) :** Se réjouir dans le Seigneur est une sauvegarde doctrinale. Face au triple avertissement contre « les chiens, les mauvais ouvriers, les faux circoncis / mutilés (*katatomē*, `G2699`) » (3.2), les vrais circoncis de cœur (*peritomē*, Dt 30.6) se reconnaissent à trois signes : ils rendent leur culte par l'Esprit de Dieu, ils se glorifient uniquement en Jésus-Christ (Jr 9.24), et ils ne mettent aucune confiance dans la chair (3.3).
 2. **Les sept joyaux du bilan pharisien virés au passif (3.4-7) :** Circoncis le huitième jour, de la race d'Israël, de la tribu de Benjamin, Hébreu né d'Hébreux, pharisien quant à la loi, persécuteur zélé de l'Église, irréprochable quant à la justice légale externe : sur le chemin de Damas, Paul a pris l'ensemble de ses « gains » (*kerdē*) et les a comptabilisés comme une « perte » ruineuse (*zēmian*, 3.7).
 3. **De la boue (*skybala*) au gain suprême de la justice par la foi et de la résurrection (3.8-11) :**
    - Paul regarde toutes choses comme des ordures nauséabondes (*skybala*, `G4657`) à cause de l'excellence de la connaissance personnelle de Jésus-Christ son Seigneur, afin de gagner Christ (3.8).
@@ -200,7 +200,7 @@ Le contraste saisissant de `3.17-21` entre la perdition des ennemis de la croix 
 
 - **Texte de prédication :** Philippiens 4.1 à 23 (23 versets)
 - **Verset clé :** « Ne vous inquiétez de rien; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications, avec des actions de grâces. Et la paix de Dieu, qui surpasse toute intelligence, gardera vos cœurs et vos pensées en Jésus-Christ. » (Philippiens 4.6-7, NEG79)
-- **Sermons GTY de référence :** `50-37` à `50-42` (*Spiritual Stability, Parts 1-6*, 4.1-9), `50-43` à `50-45` (*The Secret of Contentment, Parts 1-3*, 4.10-19), `50-46` (*Closing Salutations*, 4.20-23).
+- **Sermons GTY de référence :** `50-37` à `50-42` (*Spiritual Stability, Parts 1-6*, 4.1-9), `50-43` à `50-45` (*The Secret of Contentment, Parts 1-3*, 4.10-19), `50-46` (*The Saints of God*, 4.20-23).
 - **Textes d'appui :** Matthieu 6.25-34 ; Ésaïe 26.3 ; Genèse 8.21 ; Exode 29.18 ; Psaume 69.29 ; 2 Corinthiens 9.6-15 ; 12.9-10 ; 1 Timothée 6.6-8.
 - **Dossier de recherche du chapitre :** [MD](04-Philippiens-4/Recherche-MacArthur-Philippiens-4.md) · [HTML](04-Philippiens-4/Recherche-MacArthur-Philippiens-4.html) · [PDF](04-Philippiens-4/Recherche-MacArthur-Philippiens-4.pdf) · [JSON](04-Philippiens-4/Recherche-MacArthur-Philippiens-4.json)
 
