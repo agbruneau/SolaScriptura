@@ -46,7 +46,7 @@
 
 > « car, du fait qu’il a souffert lui-même et qu’il a été tenté, il peut secourir ceux qui sont tentés. » (Hébreux 2.18, NEG)
 
-Après avoir établi au chapitre 1 la divinité et la prééminence cosmique du Fils sur tous les anges, l'auteur d'Hébreux tire dès 2.1-4 la première grande application pastorale de son livre (« C'est pourquoi nous devons d'autant plus nous attacher aux choses que nous avons entendues »), avant de répondre en 2.5-18 à l'objection majeure qui troublait l'esprit juif : si Jésus est supérieur aux anges, pourquoi s'est-il abaissé en devenant un homme souffrant et mortel sur une croix (1604, 1605, 1606)? Le genre littéraire mêle la parénèse pressante (l'avertissement par argument *a fortiori* en 2.1-4) et le commentaire midrashique et christologique du Psaume 8.5-7 et d'Ésaïe 8.17-18 (2.5-18). Ce genre commande de lire l'incarnation et la mort de Jésus non comme une défaite qui infirmerait sa divinité, mais comme le plan souverain de Dieu pour reconquérir le royaume promis à l'homme etqualifier un Souverain Sacrificateur fraternel (1605, 1606).
+Après avoir établi au chapitre 1 la divinité et la prééminence cosmique du Fils sur tous les anges, l'auteur d'Hébreux tire dès 2.1-4 la première grande application pastorale de son livre (« C'est pourquoi nous devons d'autant plus nous attacher aux choses que nous avons entendues »), avant de répondre en 2.5-18 à l'objection majeure qui troublait l'esprit juif : si Jésus est supérieur aux anges, pourquoi s'est-il abaissé en devenant un homme souffrant et mortel sur une croix (1604, 1605, 1606)? Le genre littéraire mêle la parénèse pressante (l'avertissement par argument *a fortiori* en 2.1-4) et le commentaire midrashique et christologique du Psaume 8.5-7 et d'Ésaïe 8.17-18 (2.5-18). Ce genre commande de lire l'incarnation et la mort de Jésus non comme une défaite qui infirmerait sa divinité, mais comme le plan souverain de Dieu pour reconquérir le royaume promis à l'homme et qualifier un Souverain Sacrificateur fraternel (1605, 1606).
 
 Dans l'architecture de l'épître, Hébreux 2 occupe une place stratégique à double titre. D'une part, les versets 1 à 4 constituent le premier des cinq passages d'avertissement adressés aux Juifs intellectuellement convaincus de l'Évangile mais qui tardent à s'engager par la foi salvatrice, au risque de dériver loin du port (1604). D'autre part, les versets 5 à 18 forment le pendant indispensable du chapitre 1 : alors qu'Hébreux 1 proclamait que Jésus est pleinement Dieu, Hébreux 2 démontre qu'il est pleinement homme, ayant participé au sang et à la chair (2.14) pour mourir à notre place, détruire le diable et secourir ceux qui sont tentés (1605, 1606).
 
@@ -70,7 +70,7 @@ Trois détails échappent au lecteur moderne.
 
 Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp d'Hébreux 2, LogosBible); grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub); interlinéaire morphologique de Bible Hub; versions françaises : NEG79, LSG, S21, Darby et NBS. **Numérotation.** Dix-huit versets dans toutes les éditions grecques et versions françaises consultées. Aucun écart de numérotation avec les sermons de MacArthur.
 
-- **Hébreux 2.7.** Inclusion de *kai katestēsas auton epi ta erga tōn cheirōn sou*, « et tu l'as établi sur les œuvres de tes mains » (א, A, C, D*, P46, Tischendorf, Textus Receptus), ou omission de cette clause (B, D², Ψ, SBLGNT, Westcott et Hort, NA28, Texte Majoritaire). **NEG79.** « Tu l'as couronné de gloire et d'honneur, Tu l'as établi sur les œuvres de tes mains » : la NEG79, la LSG et la Darby retiennent la clause issue de la Septante du Psaume 8.7; la S21 la place en note et la NBS l'omet. **Portée.** MacArthur cite et commente la clause qui fait partie intégrante du Psaume 8 pour souligner la souveraineté originelle confiée à l'homme sur toute la création (1605). Le verset 8 (« Tu as mis toutes choses sous ses pieds ») exprime immédiatement la même vérité.
+- **Hébreux 2.7.** Inclusion de *kai katestēsas auton epi ta erga tōn cheirōn sou*, « et tu l'as établi sur les œuvres de tes mains » (א, A, C, D*, Ψ, Tischendorf, Westcott et Hort, Textus Receptus), ou omission de cette clause (P46, B, D², SBLGNT, Nestle 1904, NA28, Texte Majoritaire). **NEG79.** « Tu l'as couronné de gloire et d'honneur, Tu l'as établi sur les œuvres de tes mains » : la NEG79, la LSG et la Darby retiennent la clause issue de la Septante du Psaume 8.7; la S21 la place en note et la NBS l'omet. **Portée.** MacArthur cite et commente la clause qui fait partie intégrante du Psaume 8 pour souligner la souveraineté originelle confiée à l'homme sur toute la création (1605). Le verset 8 (« Tu as mis toutes choses sous ses pieds ») exprime immédiatement la même vérité.
 - **Hébreux 2.9.** *chariti theou*, par la grâce de Dieu (P46, א, A, B, C, D, SBLGNT, Westcott et Hort, NA28, Texte Majoritaire, Textus Receptus), ou *chōris theou*, sans Dieu / excepté Dieu (minuscule 1739, 0243c, Peshitta, mentionné par Origène et Jérôme). **NEG79.** « afin que, par la grâce de Dieu, il souffrît la mort pour tous » : les cinq versions françaises suivent la leçon largement attestée *chariti theou*. **Portée.** MacArthur retient *chariti theou* tout en signalant que la variante *chōris theou* (née soit d'une glose marginale renvoyant à 1 Corinthiens 15.27 sur le verset 8, soit d'une allusion à l'abandon du Christ sur la croix en Matthieu 27.46) exprime elle aussi une vérité biblique, mais que le contexte du verset 10 célèbre la grâce souveraine de Dieu dans la mort substitutive de Jésus (1605).
 
 ## Structure et grammaire
@@ -115,9 +115,9 @@ Les trois prédications couvrent intégralement les dix-huit versets du chapitre
 
 | Code | Sermon | Passage |
 |---|---|---|
-| 1604 | [The Tragedy of Neglecting Salvation](https://www.gty.org/sermons/1604) | Hé 2.1-4 |
-| 1605 | [The Rediscovery of Man's Lost Destiny](https://www.gty.org/sermons/1605) | Hé 2.5-9 |
-| 1606 | [Our Perfect Savior](https://www.gty.org/sermons/1606) | Hé 2.9-18 |
+| 1604 | [The Tragedy of Neglecting Salvation](https://www.gty.org/sermons/1604) | He 2.1-4 |
+| 1605 | [The Rediscovery of Man's Lost Destiny](https://www.gty.org/sermons/1605) | He 2.5-9 |
+| 1606 | [Our Perfect Savior](https://www.gty.org/sermons/1606) | He 2.9-18 |
 
 Dans ses trois sermons sur Hébreux 2 (1604 à 1606), John MacArthur expose d'abord la solennité du premier avertissement adressé aux sympathisants juifs qui dérivent par négligence loin du salut (2.1-4), puis dévoile la grandeur du mystère de l'incarnation : pourquoi le Fils de Dieu prééminent s'est abaissé pour un peu de temps au-dessous des anges afin de reconquérir la destinée royale perdue par Adam (2.5-9) et d'accomplir, par sa mort substitutive, les quatre œuvres de notre parfait Sauveur et Souverain Sacrificateur (2.9-18) (1604 à 1606).
 
@@ -146,7 +146,7 @@ MacArthur dégage des versets 9 à 18 les quatre motifs rédempteurs pour lesque
 
 La loi a été donnée ensuite à cause des transgressions et promulguée par des anges : MacArthur rapproche ce texte (ainsi qu'Actes 7.53 et Deutéronome 33.2) d'Hébreux 2.2 pour expliquer la médiation angélique au Sinaï et la force de l'argument *a fortiori* (1604).
 
-**Psaume 8.4-6** · *Citation ou allusion*
+**Psaume 8.5-7** · *Citation ou allusion*
 
 Cité en Hébreux 2.6-8 selon la version grecque des Septante (qui traduit l'hébreu massorétique *me'at me'elohim* par *brachy ti par' angelous*, « de peu, ou pour un peu de temps, inférieur aux anges »), ce psaume décrit la royauté originelle d'Adam sur la création que Jésus reconquiert par son incarnation et sa croix (1605).
 
@@ -154,9 +154,9 @@ Cité en Hébreux 2.6-8 selon la version grecque des Septante (qui traduit l'hé
 
 Paul applique lui aussi le Psaume 8.7 au règne de Christ, le dernier Adam, qui doit mettre tous ses ennemis sous ses pieds et détruire la mort : MacArthur relie ce passage à Hébreux 2.8-9, 14 pour éclairer la reconquête eschatologique du royaume par Christ (1605, 1606).
 
-**Psaume 22.22** · *Citation ou allusion*
+**Psaume 22.23** · *Citation ou allusion*
 
-Citée en Hébreux 2.12 selon la Septante grecque (qui emploie *apangelō* pour traduire le texte massorétique hébreu « J'annoncerai ton nom à mes frères, je te célébrerai au milieu de l'assemblée »), cette parole prononcée par le Messie ressuscité au sortir des souffrances de la croix (v. 1-21) prouve qu'il appelle les rachetés ses frères (1606).
+Citée en Hébreux 2.12 selon la Septante grecque (qui emploie *apangelō* pour traduire le texte massorétique hébreu « J'annoncerai ton nom à mes frères, je te célébrerai au milieu de l'assemblée »), cette parole prononcée par le Messie ressuscité au sortir des souffrances de la croix (v. 2-22) prouve qu'il appelle les rachetés ses frères (1606).
 
 **Ésaïe 8.17-18** · *Citation ou allusion*
 

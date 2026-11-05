@@ -62,7 +62,7 @@ Trois détails échappent au lecteur moderne.
 
 Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp d'Hébreux 5, LogosBible); grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub); interlinéaire morphologique de Bible Hub; versions françaises : NEG79, LSG, S21, Darby et NBS. **Numérotation.** Quatorze versets dans toutes les éditions grecques et versions françaises consultées. Aucun écart de numérotation avec les sermons de MacArthur.
 
-- **Hébreux 5.3.** *di' autēn opheilei, kathōs peri tou laou, houtōs kai peri heautou prospherein peri hamartiōn*, avec *di' autēn* (« à cause d'elle », c'est-à-dire de cette faiblesse) et *peri hamartiōn* (P46, א, A, B, C*, D*, SBLGNT, Westcott et Hort, NA28), ou *dia tautēn* et *hyper hamartiōn* (Ccorr, D², Ψ, Texte Majoritaire, Textus Receptus). **NEG79.** « Et c'est à cause de cette faiblesse qu'il doit offrir des sacrifices pour ses propres péchés, comme pour ceux du peuple » : les cinq versions françaises rendent unaniment le sens identique des deux variantes. **Portée.** MacArthur souligne le contraste décisif avec Christ : tout sacrificateur d'Aaron, étant pécheur, devait d'abord offrir pour ses propres péchés (Lévitique 16.6), tandis que Christ sans péché s'est offert uniquement pour nous (7.27) (1611).
+- **Hébreux 5.3.** *di' autēn opheilei, kathōs peri tou laou, houtōs kai peri heautou prospherein peri hamartiōn*, avec *di' autēn* (« à cause d'elle », c'est-à-dire de cette faiblesse) et *peri hamartiōn* (P46, א, A, B, C*, D*, SBLGNT, Westcott et Hort, NA28), ou *dia tautēn* et *hyper hamartiōn* (Ccorr, D², Ψ, Texte Majoritaire, Textus Receptus). **NEG79.** « Et c'est à cause de cette faiblesse qu'il doit offrir des sacrifices pour ses propres péchés, comme pour ceux du peuple » : les cinq versions françaises rendent unanimement le sens identique des deux variantes. **Portée.** MacArthur souligne le contraste décisif avec Christ : tout sacrificateur d'Aaron, étant pécheur, devait d'abord offrir pour ses propres péchés (Lévitique 16.6), tandis que Christ sans péché s'est offert uniquement pour nous (7.27) (1611).
 - **Hébreux 5.4.** *kathōsper kai Aarōn*, tout comme aussi Aaron (P46, א, A, B, C*, D*, SBLGNT, Westcott et Hort, NA28), ou *kathaper kai ho Aarōn* (Ccorr, D², Ψ, Texte Majoritaire, Textus Receptus). **NEG79.** « comme le fut Aaron » : simple variante orthographique de la conjonction comparative grecque, sans aucune incidence sur la traduction ni l'exégèse. **Portée.** MacArthur montre qu'Aaron demeure le modèle de l'appel souverain de Dieu sous l'Ancienne Alliance (Exode 28.1) (1611).
 
 ## Structure et grammaire
@@ -105,8 +105,8 @@ Les deux prédications couvrent intégralement les quatorze versets du chapitre 
 
 | Code | Sermon | Passage |
 |---|---|---|
-| 1611 | [Jesus Christ, the Perfect Priest](https://www.gty.org/sermons/1611) | Hé 5.1-9 |
-| 1612 | [The Tragedy of Rejecting Full Revelation, Part 1](https://www.gty.org/sermons/1612) | Hé 5.10-14 |
+| 1611 | [Jesus Christ, the Perfect Priest](https://www.gty.org/sermons/1611) | He 5.1-9 |
+| 1612 | [The Tragedy of Rejecting Full Revelation, Part 1](https://www.gty.org/sermons/1612) | He 5.10-14 |
 
 Dans ses deux sermons sur Hébreux 5 (1611 et 1612), John MacArthur démontre d'abord comment Jésus-Christ accomplit de manière infiniment supérieure toutes les qualifications du souverain sacrificateur (5.1-10), puis expose le début du troisième avertissement (5.11-14) en identifiant la tragédie de ceux qui restent bloqués aux rudiments préparatoires de l'Ancien Testament au lieu d'embrasser la justice de Christ (1611, 1612).
 

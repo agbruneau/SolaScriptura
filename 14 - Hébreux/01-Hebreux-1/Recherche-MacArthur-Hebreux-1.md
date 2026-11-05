@@ -50,7 +50,7 @@ L'épître s'adresse à une communauté d'Hébreux établis hors de Palestine (v
 
 Au sein de cette assemblée éprouvée coexistaient des chrétiens juifs authentiques, tentés par le découragement de nostalgie envers les formes mosaïques, et des Juifs sympathisants qui reconnaissaient intellectuellement que Jésus accomplissait les prophéties, mais hésitaient à rompre définitivement avec l'Ancienne Alliance (1600). L'ouverture abrupte du chapitre 1 répond directement à cette crise : loin d'opposer le Dieu d'Israël à l'Évangile, l'auteur affirme que c'est le même Dieu qui a parlé autrefois aux « pères » par les prophètes et qui parle maintenant « dans ces derniers jours » (l'ère messianique inaugurée par la venue du Christ) dans le Fils (1600).
 
-Toutes les citations scripturaires d'Hébreux 1.5-13 (Psaume 2.7; 2 Samuel 7.14; Deutéronome 32.43 LXX / Psaume 97.7; Psaume 104.4; Psaume 45.6-7; Psaume 102.25-27; Psaume 110.1) sont tirées de la version grecque des Septante, la Bible familière des Juifs de la Diaspora (1602, 1603). En rassemblant des textes issus des trois divisions de la Bible hébraïque (la Loi, les Prophètes et les Psaumes), l'auteur démontre à ses compatriotes que leurs propres Écritures témoignent unanimement de la divinité éternelle du Fils.
+Toutes les citations scripturaires d'Hébreux 1.5-13 (Psaume 2.7; 2 Samuel 7.14; Deutéronome 32.43 LXX / Psaume 97.7; Psaume 104.4; Psaume 45.7-8; Psaume 102.26-28; Psaume 110.1) sont tirées de la version grecque des Septante, la Bible familière des Juifs de la Diaspora (1602, 1603). En rassemblant des textes issus des trois divisions de la Bible hébraïque (la Loi, les Prophètes et les Psaumes), l'auteur démontre à ses compatriotes que leurs propres Écritures témoignent unanimement de la divinité éternelle du Fils.
 
 Trois détails échappent au lecteur moderne.
 
@@ -62,7 +62,7 @@ Trois détails échappent au lecteur moderne.
 
 Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp d'Hébreux 1, LogosBible); grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub); interlinéaire morphologique de Bible Hub; versions françaises : NEG79, LSG, S21, Darby et NBS. **Numérotation.** Quatorze versets dans toutes les éditions grecques et versions françaises consultées. Aucun écart de numérotation avec les quatre sermons de MacArthur.
 
-- **Hébreux 1.3.** *katharismon tōn hamartiōn poiēsamenos*, ayant fait la purification des péchés (א, A, B, D*, P46, SBLGNT, Westcott et Hort, NA28), ou *di' heautou katharismon poiesamenos tōn hamartiōn hēmōn*, ayant fait par lui-même la purification de nos péchés (D², Ψ, Texte Majoritaire, Textus Receptus). **NEG79.** « après avoir fait la purification des péchés » : la NEG79, la LSG, la S21 et la NBS suivent la leçon concise des plus anciens manuscrits; la Darby (« ayant fait par lui-même la purification des péchés ») retient *di' heautou*. **Portée.** MacArthur souligne que la voix moyenne du participe aoriste *poiēsamenos* exprime déjà grammaticalement que le Fils a accompli cette purification par lui-même et par son propre sacrifice (1601).
+- **Hébreux 1.3.** *katharismon tōn hamartiōn poiēsamenos*, ayant fait la purification des péchés (א, A, B, SBLGNT, Westcott et Hort, NA28), ou *di' heautou katharismon poiēsamenos tōn hamartiōn hēmōn*, ayant fait par lui-même la purification de nos péchés (D², Ψ, Texte Majoritaire, Textus Receptus), 𝔓46 et D* portant déjà *di' autou* (« par lui-même ») sans *hēmōn*. **NEG79.** « Il a fait la purification des péchés » : la NEG79, la LSG, la S21 et la NBS suivent la leçon concise des plus anciens manuscrits; la Darby (« ayant fait par lui-même la purification des péchés ») retient *di' heautou*. **Portée.** MacArthur souligne que la voix moyenne du participe aoriste *poiēsamenos* exprime déjà grammaticalement que le Fils a accompli cette purification par lui-même et par son propre sacrifice (1601).
 - **Hébreux 1.8.** *kai hē rhabdos tēs euthytētos rhabdos tēs basileias sou*, et le sceptre de droiture est le sceptre de ton règne (A, D, Texte Majoritaire, Textus Receptus, SBLGNT), ou *autou* (« de son règne ») au lieu de *sou* (P46, א, B, Westcott et Hort, NA28). **NEG79.** « Le sceptre de ton règne est un sceptre d'équité » : les cinq versions françaises suivent la deuxième personne *sou* (« ton règne »), conforme à la Septante du Psaume 45.7. **Portée.** MacArthur lit « ton règne » conformément au vocatif *ho theos* (« Ô Dieu, ton trône est éternel ») par lequel le Père s'adresse directement au Fils (1603).
 - **Hébreux 1.12.** *hōsei peribolaion helixeis autous, hōs himation kai allagēsontai*, avec addition de *hōs himation* (« comme un vêtement ») après *autous* (P46, א, A, B, D*, SBLGNT, Westcott et Hort, NA28), ou omission de *hōs himation* (D², Texte Majoritaire, Textus Receptus). **NEG79.** « Tu les rouleras comme un manteau et ils seront changés » : la NEG79, la LSG et la Darby suivent le texte court du Psaume 102.27; la S21 et la NBS traduisent l'addition *hōs himation* (« ils seront changés comme un vêtement »). **Portée.** MacArthur expose l'image du manteau usé qu'on roule et qu'on remplace lors de la destruction eschatologique de l'univers actuel (2 Pierre 3.10) face à l'immutabilité éternelle du Fils (1603). Le sens reste identique.
 
@@ -108,10 +108,10 @@ Les quatre prédications couvrent les quatorze versets du chapitre sans lacune, 
 
 | Code | Sermon | Passage |
 |---|---|---|
-| 1600 | [Introduction to Hebrews](https://www.gty.org/sermons/1600) | Hé 1.1-2 |
-| 1601 | [The Preeminence of Christ](https://www.gty.org/sermons/1601) | Hé 1.2-3 |
-| 1602 | [Jesus Christ, Superior to Angels, Part 1](https://www.gty.org/sermons/1602) | Hé 1.4-6 |
-| 1603 | [Jesus Christ, Superior to Angels, Part 2](https://www.gty.org/sermons/1603) | Hé 1.7-14 |
+| 1600 | [Introduction to Hebrews](https://www.gty.org/sermons/1600) | He 1.1-2 |
+| 1601 | [The Preeminence of Christ](https://www.gty.org/sermons/1601) | He 1.2-3 |
+| 1602 | [Jesus Christ, Superior to Angels, Part 1](https://www.gty.org/sermons/1602) | He 1.4-6 |
+| 1603 | [Jesus Christ, Superior to Angels, Part 2](https://www.gty.org/sermons/1603) | He 1.7-14 |
 
 Dans ses quatre prédications sur Hébreux 1 (1600 à 1603), John MacArthur montre comment l'auteur inspiré saisit immédiatement son auditoire juif en plaçant Jésus-Christ au sommet de toute la révélation et de toute la création. Face à des Hébreux tentés de retourner aux ombres de l'Ancienne Alliance ou séduits par la vénération des anges, le chapitre 1 démontre que le Fils est la parole finale de Dieu (1.1-2a), le Seigneur prééminent revêtu de sept perfections divines (1.2b-3) et le Roi-Dieu infiniment supérieur à tous les anges (1.4-14) (1600 à 1603).
 
@@ -129,7 +129,7 @@ Pour prouver que la révélation dans le Fils est insurpassable, l'auteur déplo
 
 ### Hébreux 1.7-14 · Le Fils Dieu, Roi et Créateur immuable face aux anges serviteurs
 
-La démonstration se poursuit par trois contrastes supplémentaires (1603) : troisièmement, quant à leur nature et leur fonction (1.7-9), les anges sont des serviteurs muables que Dieu transforme en vents ou en flammes de feu selon les besoins de leur mission (Psaume 104.4), tandis qu'au Fils le Père déclare selon le Psaume 45.6-7 : « Ton trône, ô Dieu, est éternel », l'oignant d'une huile de joie au-dessus de ses compagnons parce qu'il a aimé la justice et haï l'iniquité (1603). Quatrièmement, quant à l'éternité créatrice (1.10-12), le Père applique directement au Fils l'invocation adressée à Yahvé au Psaume 102.25-27 : c'est Jésus qui a fondé la terre et les cieux au commencement, et lorsque l'univers actuel vieillira et sera roulé comme un manteau lors du jugement final, lui seul demeure « le même » (*ho autos*) et ses années ne finiront point (1603). Cinquièmement, quant à la destinée finale (1.13-14), c'est au Fils seul que Dieu dit selon le Psaume 110.1 : « Assieds-toi à ma droite, jusqu'à ce que je fasse de tes ennemis ton marchepied », tandis que tous les anges sont des esprits au service de Dieu, envoyés pour exercer un ministère en faveur des élus qui doivent hériter du salut complet (1603).
+La démonstration se poursuit par trois contrastes supplémentaires (1603) : troisièmement, quant à leur nature et leur fonction (1.7-9), les anges sont des serviteurs muables que Dieu transforme en vents ou en flammes de feu selon les besoins de leur mission (Psaume 104.4), tandis qu'au Fils le Père déclare selon le Psaume 45.7-8 : « Ton trône, ô Dieu, est éternel », l'oignant d'une huile de joie au-dessus de ses compagnons parce qu'il a aimé la justice et haï l'iniquité (1603). Quatrièmement, quant à l'éternité créatrice (1.10-12), le Père applique directement au Fils l'invocation adressée à Yahvé au Psaume 102.26-28 : c'est Jésus qui a fondé la terre et les cieux au commencement, et lorsque l'univers actuel vieillira et sera roulé comme un manteau lors du jugement final, lui seul demeure « le même » (*ho autos*) et ses années ne finiront point (1603). Cinquièmement, quant à la destinée finale (1.13-14), c'est au Fils seul que Dieu dit selon le Psaume 110.1 : « Assieds-toi à ma droite, jusqu'à ce que je fasse de tes ennemis ton marchepied », tandis que tous les anges sont des esprits au service de Dieu, envoyés pour exercer un ministère en faveur des élus qui doivent hériter du salut complet (1603).
 
 **Indices du texte**
 
@@ -156,11 +156,11 @@ Citée en Hébreux 1.5b dans la forme exacte de la Septante grecque et du texte 
 
 Citée en Hébreux 1.6 (« Que tous les anges de Dieu l'adorent ! ») selon le texte grec de la Septante de Deutéronome 32.43 (confirmé par le manuscrit hébreu 4QDeutq de Qumrân, et parallèle au Psaume 97.7 où la Septante traduit l'hébreu *elohim* par « ses anges »), cette injonction prouve que le Fils a droit à l'adoration réservée à Dieu seul (1602).
 
-**Psaume 45.6-7** · *Citation ou allusion*
+**Psaume 45.7-8** · *Citation ou allusion*
 
 Citée en Hébreux 1.8-9 selon la Septante grecque qui traduit fidèlement l'hébreu massorétique (« Ton trône, ô Dieu, est à toujours »), cette acclamation royale montre Dieu le Père saluant lui-même son Fils du titre de Dieu et d'Oint suprême (1603).
 
-**Psaume 102.25-27** · *Citation ou allusion*
+**Psaume 102.26-28** · *Citation ou allusion*
 
 Cité en Hébreux 1.10-12 selon la version grecque des Septante (qui explicite le vocatif « Toi, Seigneur », *Sy kat' archas, Kyrie*, adressé à Yahvé dans le texte massorétique hébreu des versets précédents), ce psaume attribue au Fils la création originelle des cieux et de la terre ainsi que l'immutabilité divine (1603).
 

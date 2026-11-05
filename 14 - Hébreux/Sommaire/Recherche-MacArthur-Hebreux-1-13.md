@@ -88,12 +88,12 @@ Trois détails échappent au lecteur moderne.
 
 ## État du texte
 
-Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique complet (sblgntapp d'Hébreux, LogosBible), lus sur les treize chapitres; grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante; analyse morphologique : interlinéaire grecque de Bible Hub; versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues sur toute l'épître. **Numérotation.** Trois cent trois versets répartis en treize chapitres dans toutes les éditions grecques et versions françaises consultées (ch. 1 : 14 v.; ch. 2 : 18 v.; ch. 3 : 19 v.; ch. 4 : 16 v.; ch. 5 : 14 v.; ch. 6 : 20 v.; ch. 7 : 28 v.; ch. 8 : 13 v.; ch. 9 : 28 v.; ch. 10 : 39 v.; ch. 11 : 40 v.; ch. 12 : 29 v.; ch. 13 : 25 v.). En 10.30, la NEG79 et la LSG incluent la proposition « Le Seigneur jugera son peuple » que le texte reçu ajoute en 10.30a avant « Le Seigneur jugera son peuple ». Aucun décalage de numérotation de versets avec les sermons de MacArthur.
+Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique complet (sblgntapp d'Hébreux, LogosBible), lus sur les treize chapitres; grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante; analyse morphologique : interlinéaire grecque de Bible Hub; versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues sur toute l'épître. **Numérotation.** Trois cent trois versets répartis en treize chapitres dans toutes les éditions grecques et versions françaises consultées (ch. 1 : 14 v.; ch. 2 : 18 v.; ch. 3 : 19 v.; ch. 4 : 16 v.; ch. 5 : 14 v.; ch. 6 : 20 v.; ch. 7 : 28 v.; ch. 8 : 13 v.; ch. 9 : 28 v.; ch. 10 : 39 v.; ch. 11 : 40 v.; ch. 12 : 29 v.; ch. 13 : 25 v.). En 10.30, le texte reçu ajoute « dit le Seigneur » (*legei kyrios*) après « à moi la rétribution »; la NEG79 et la LSG suivent le texte court. Aucun décalage de numérotation de versets avec les sermons de MacArthur.
 
 - **Hébreux 2.9.** *chariti theou*, par la grâce de Dieu (P46, א, A, B, C, D, SBLGNT, Westcott et Hort, NA28, Texte Majoritaire), ou *chōris theou*, sans Dieu / excepté Dieu (minuscule 1739, 0243c, Peshitta, Origène). **NEG79.** « afin que, par la grâce de Dieu, il souffrît la mort pour tous » : les cinq versions françaises suivent la leçon unanime des grands onciaux *chariti theou*. **Portée.** MacArthur expose *chariti theou* tout en mentionnant la variante marginale *chōris theou* (issue soit d'une glose sur 1 Corinthiens 15.27 au v. 8, soit du cri du Psaume 22.2) : l'expiation substitutive de Christ procède de la grâce souveraine de Dieu (1605).
 - **Hébreux 4.2.** *synkekerasmenous*, accusatif pluriel rapporté aux auditeurs (P46, B, C, D, SBLGNT, Westcott et Hort, Texte Majoritaire), ou *synkekerasmenos*, nominatif singulier rapporté à la parole entendue (א, Tregelles, Textus Receptus). **NEG79.** « parce qu'elle ne trouva pas de la foi chez ceux qui l'entendirent » : la NEG79, la LSG et la Darby traduisent le sens du nominatif singulier, tandis que la S21 et la NBS rendent l'accusatif pluriel (« ils ne se sont pas unis par la foi à ceux qui ont écouté »). **Portée.** MacArthur explique l'image de *synkerannymi* (mélanger intimement) selon les deux constructions : l'audition extérieure de la Parole reste stérile pour le salut tant qu'elle n'est pas mêlée à une foi personnelle (1609).
-- **Hébreux 10.34.** *tois desmiois*, aux prisonniers (P46, א, A, D*, 1739, SBLGNT, Westcott et Hort, NA28), ou *tois desmois mou*, à mes liens / mes chaînes (D², Ψ, Texte Majoritaire, Textus Receptus). **NEG79.** « vous avez compati aux prisonniers » : la NEG79, la LSG, la S21 et la NBS suivent le texte critique *tois desmiois*; la Darby (« vous avez pris part à mes liens ») suit le Textus Receptus. **Portée.** MacArthur lit « aux prisonniers » (*tois desmiois*), en harmonie avec 13.3 (« Souvenez-vous des prisonniers ») et avec le fait que Paul n'est pas l'auteur de l'épître (1600, 1625, 1639).
-- **Hébreux 12.3.** *eis heauton*, contre lui-même (P46corr, אcorr, D², Ψ, Texte Majoritaire, Textus Receptus), ou *eis heautous* / *hautous*, contre eux-mêmes (P46*, א*, A, D*, SBLGNT, Westcott et Hort). **NEG79.** « qui a supporté contre sa personne une telle opposition de la part des pécheurs » : les cinq versions françaises suivent le singulier réflexif rapporté à Jésus. **Portée.** MacArthur suit le singulier (« contre lui-même ») : les pécheurs se sont opposés directement à la personne de Jésus jusqu'à la croix (1635).
+- **Hébreux 10.34.** *tois desmiois*, aux prisonniers (A, D*, 1739, SBLGNT, Westcott et Hort, NA28), ou *tois desmois mou*, à mes liens / mes chaînes (א, D², Texte Majoritaire, Textus Receptus). **NEG79.** « vous avez compati aux prisonniers » : la NEG79, la LSG, la S21 et la NBS suivent le texte critique *tois desmiois*; la Darby (« vous avez pris part à mes liens ») suit le Textus Receptus. **Portée.** MacArthur lit « aux prisonniers » (*tois desmiois*), en harmonie avec 13.3 (« Souvenez-vous des prisonniers ») et avec le fait que Paul n'est pas l'auteur de l'épître (1600, 1625, 1639).
+- **Hébreux 12.3.** *eis heauton* ou *eis auton*, contre lui-même (Nestle 1904, NA28; Texte Majoritaire, Textus Receptus), ou *eis heautous*, contre eux-mêmes (P46, א*, SBLGNT, Westcott et Hort). **NEG79.** « qui a supporté contre sa personne une telle opposition de la part des pécheurs » : les cinq versions françaises suivent le singulier réflexif rapporté à Jésus. **Portée.** MacArthur suit le singulier (« contre lui-même ») : les pécheurs se sont opposés directement à la personne de Jésus jusqu'à la croix (1635).
 
 ## Structure et grammaire
 
@@ -103,7 +103,7 @@ Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique comple
 - **Hébreux 4.14-7.28.** La supériorité du sacerdoce de Christ selon l'ordre royal et éternel de Melchisédek, encadrant le troisième avertissement contre l'immaturité spirituelle et l'apostasie. Marqueur : *Echontes oun archierea megan* (4.14), *kata tēn taxin Melchisedek* (5.6, 10; 6.20; 7.17), *epi tēn teleiotēta pherōmetha* (6.1), *kreittonos diathēkēs gegonen engyos Iēsous* (7.22), *pantote zōn eis to entynchanein* (7.25).
 - **Hébreux 8.1-10.18.** La supériorité du ministère sacerdotal de Christ : un meilleur sanctuaire céleste, une meilleure alliance fondée sur de meilleures promesses et un sacrifice unique une fois pour toutes. Marqueur : *Kephalaion de epi tois legomenois* (8.1), *kreittonos estin diathēkēs mesitēs* (8.6), *dia de tou idiou haimatos eisēlthen ephapax* (9.12), *hēgiasmenoi esmen dia tēs prosphoras tou sōmatos Iēsou Christou ephapax* (10.10), *mia gar prosphora teteleiōken eis to diēnekes* (10.14).
 - **Hébreux 10.19-12.29.** L'appel à la foi persévérante : l'accès au sanctuaire, les quatrième et cinquième avertissements, la galerie des héros de la foi et la course d'endurance vers la montagne de Sion. Marqueur : *Echontes oun ... parrēsian eis tēn eisodon tōn hagiōn* (10.19), *ho de dikaios mou ek pisteōs zēsetai* (10.38), *Estin de pistis elpizomenōn hypostasis* (11.1), *trechōmen ton prokeimenon hēmin agōna aphorōntes eis ton tēs pisteōs archēgon* (12.1-2), *proselēlythate Siōn orei* (12.22).
-- **Hébreux 13.1-25.** Le couronnement éthique de la Nouvelle Alliance : amour fraternel, pureté conjugale, contentement, séparation hors du camp, sacrifices spirituels et bénédiction du grand pasteur des brebis. Marqueur : *Hē philadelphia menetō* (13.1), *Iēsous Christos echthes kai sēmeron ho autos kai eis tous aiōnas* (13.8), *exerchōmetha oun pros auton exō tēs παρεμβολῆς* (13.13), *Ho de theos tēs eirēnēs ... katartisai hymas en panti agathō* (13.20-21).
+- **Hébreux 13.1-25.** Le couronnement éthique de la Nouvelle Alliance : amour fraternel, pureté conjugale, contentement, séparation hors du camp, sacrifices spirituels et bénédiction du grand pasteur des brebis. Marqueur : *Hē philadelphia menetō* (13.1), *Iēsous Christos echthes kai sēmeron ho autos kai eis tous aiōnas* (13.8), *exerchōmetha oun pros auton exō tēs parembolēs* (13.13), *Ho de theos tēs eirēnēs ... katartisai hymas en panti agathō* (13.20-21).
 
 **Observations grammaticales**
 
@@ -119,7 +119,7 @@ Le sens vient du lexique; les versions montrent des rendus, non le sens.
 
 | Français | Translit. | Sens littéral | Lexique et lecture retenue | Traductions comparées |
 |---|---|---|---|---|
-| **plus excellente / meilleure** | *kreittōn* | plus fort, supérieur en valeur, meilleur | **Lexique (Thayer).** Thayer en donne l'étymologie (comparatif de *agathos* apparenté à *kratos*, force) : plus utile, plus avantageux, plus excellent, supérieur en rang, en nature et en efficacité; employé treize fois dans Hébreux pour opposer les réalités célestes de la Nouvelle Alliance aux ombres de la loi mosaïque (1.4; 6.9; 7.7, 19, 22; 8.6; 9.23; 10.34; 11.16, 35, 40; 12.24). **Lecture retenue.** MacArthur voit dans *kreittōn* le mot-clé de toute l'épître (1600, 1602, 1619) : face à des Juifs tentés de retourner au temple, l'auteur ne oppose pas le bon au mauvais, mais démontre que Jésus-Christ est infiniment meilleur que les anges (1.4), Moïse (3.3) et Aaron (7.7), et qu'il apporte une meilleure espérance qui donne accès à Dieu (7.19), une meilleure alliance dont il est le garant et le médiateur sur de meilleures promesses (7.22; 8.6), un meilleur sacrifice (9.23), une meilleure patrie (11.16), une meilleure résurrection (11.35) et un sang qui parle mieux que celui d'Abel (12.24). Sa lecture rejoint pleinement Thayer. | *S21* l'alliance ... supérieure ... sur de meilleures promesses · *NEG79* d'une plus excellente alliance ... sur de meilleures promesses · *Darby* d'une meilleure alliance ... sur de meilleures promesses · *LSG* d'une plus excellente alliance ... sur de meilleures promesses · *NBS* d'une alliance supérieure ... sur de meilleures promesses |
+| **plus excellente / meilleure** | *kreittōn* | plus fort, supérieur en valeur, meilleur | **Lexique (Thayer).** Thayer en donne l'étymologie (comparatif de *agathos* apparenté à *kratos*, force) : plus utile, plus avantageux, plus excellent, supérieur en rang, en nature et en efficacité; employé treize fois dans Hébreux pour opposer les réalités célestes de la Nouvelle Alliance aux ombres de la loi mosaïque (1.4; 6.9; 7.7, 19, 22; 8.6; 9.23; 10.34; 11.16, 35, 40; 12.24). **Lecture retenue.** MacArthur voit dans *kreittōn* le mot-clé de toute l'épître (1600, 1602, 1619) : face à des Juifs tentés de retourner au temple, l'auteur n'oppose pas le bon au mauvais, mais démontre que Jésus-Christ est infiniment meilleur que les anges (1.4), Moïse (3.3) et Aaron (7.7), et qu'il apporte une meilleure espérance qui donne accès à Dieu (7.19), une meilleure alliance dont il est le garant et le médiateur sur de meilleures promesses (7.22; 8.6), un meilleur sacrifice (9.23), une meilleure patrie (11.16), une meilleure résurrection (11.35) et un sang qui parle mieux que celui d'Abel (12.24). Sa lecture rejoint pleinement Thayer. | *S21* l'alliance ... supérieure ... sur de meilleures promesses · *NEG79* d'une plus excellente alliance ... sur de meilleures promesses · *Darby* d'une meilleure alliance ... sur de meilleures promesses · *LSG* d'une plus excellente alliance ... sur de meilleures promesses · *NBS* d'une alliance supérieure ... sur de meilleures promesses |
 | **amené à la perfection** | *teleioō (teleiōsis, teleiōtēs)* | mener à son terme, accomplir pleinement | **Lexique (Thayer).** Thayer en précise l'étymologie (dérivé de *telos*, but atteint, fin) : mener jusqu'à la fin, rendre complet; dans Hébreux, élever Christ à l'accomplissement plénier de son office par ses souffrances (2.10; 5.9; 7.28), et conférer aux croyants une position complète et une conscience purifiée leur donnant libre accès à Dieu, ce que la loi ne pouvait faire (7.11, 19; 9.9; 10.1, 14; 11.40; 12.23). **Lecture retenue.** MacArthur insiste sur le fait que dans Hébreux, la famille de *teleioō* ne désigne pas la perfection morale sans péché dans cette vie, mais deux réalités rédemptrices : pour Christ, l'accomplissement expérimental de tout ce qui le qualifiait comme Sauveur et Souverain Sacrificateur compatissant (2.10; 5.9) (1606, 1611); pour l'adorateur, l'accès complet à Dieu et le pardon définitif des péchés que le sacerdoce lévitique n'a jamais pu procurer (7.11, 19), mais que l'offrande unique de Christ a acquis pour toujours (10.14) (1617, 1622). Sa lecture concorde exactement avec Thayer. | *S21* il a mené à la perfection · *NEG79* il a amené à la perfection · *Darby* il a rendu parfaits · *LSG* il a amené à la perfection · *NBS* il a mené à l'accomplissement |
 | **une fois pour toutes** | *ephapax (hapax)* | une seule fois de manière définitive | **Lexique (Thayer).** Thayer en donne l'étymologie (composé de *epi* et de *hapax*, une seule fois) : une fois pour toutes, d'une validité perpétuelle ne nécessitant jamais de répétition (7.27; 9.12; 10.10; cf. *hapax* en 9.26, 28). **Lecture retenue.** MacArthur fait de *ephapax* le sceau de la suffisance du sacrifice de Golgotha (1618, 1620, 1621, 1622) : alors que les sacrificateurs d'Aaron offraient des victimes chaque jour sans jamais pouvoir ôter le péché, Christ s'est offert lui-même *ephapax* (7.27), est entré *ephapax* dans le lieu très saint céleste par son propre sang (9.12) et nous a sanctifiés *ephapax* par l'offrande de son corps (10.10), ce qui condamne à la fois le retour au judaïsme et le dogme romain de la messe qui prétend réitérer le sacrifice du Christ (1621, 1622). Sa lecture suit Thayer. | *S21* une fois pour toutes · *NEG79* une fois pour toutes · *Darby* une fois pour toutes · *LSG* une fois pour toutes · *NBS* une fois pour toutes |
 | **ferme assurance / personne** | *hypostasis* | ce qui se tient dessous, fondement, réalité substantielle, assurance | **Lexique (Thayer).** Thayer en indique l'étymologie (de *hypo*, sous, et *histēmi*, placer ou se tenir debout) : 1) soubassement, essence réelle, être substantiel (1.3, l'essence même de Dieu); 2) fermeté d'âme, résolution, confiance inébranlable (3.14); 3) garantie substantielle, acte de propriété donnant réalité aux choses espérées (11.1). **Lecture retenue.** MacArthur déploie les trois emplois d'*hypostasis* dans l'épître : en 1.3, le Fils est l'empreinte exacte de l'essence substantielle (*hypostasis*) du Père, partageant sa nature divine (1601); en 3.14, la persévérance maintient jusqu'à la fin l'assurance (*hypostasis*) du commencement (1608); en 11.1, la foi est la « substance » présente et le titre de propriété (*hypostasis*) des réalités futures que nous espérons (1626). Sa lecture embrasse les trois sens distingués par Thayer. | *S21* une ferme assurance · *NEG79* une ferme assurance · *Darby* l'assurance · *LSG* une ferme assurance · *NBS* la réalité |
@@ -139,49 +139,49 @@ Les quarante-trois prédications couvrent intégralement les treize chapitres et
 
 | Code | Sermon | Passage |
 |---|---|---|
-| 1600 | [Introduction to Hebrews](https://www.gty.org/sermons/1600) | Hé 1.1-2 |
-| 1601 | [The Preeminence of Christ](https://www.gty.org/sermons/1601) | Hé 1.2-3 |
-| 1602 | [Jesus Christ, Superior to Angels, Part 1](https://www.gty.org/sermons/1602) | Hé 1.4-6 |
-| 1603 | [Jesus Christ, Superior to Angels, Part 2](https://www.gty.org/sermons/1603) | Hé 1.7-14 |
-| 1604 | [The Tragedy of Neglecting Salvation](https://www.gty.org/sermons/1604) | Hé 2.1-4 |
-| 1605 | [The Rediscovery of Man's Lost Destiny](https://www.gty.org/sermons/1605) | Hé 2.5-9 |
-| 1606 | [Our Perfect Savior](https://www.gty.org/sermons/1606) | Hé 2.9-18 |
-| 1607 | [Jesus Christ, Greater than Moses](https://www.gty.org/sermons/1607) | Hé 3.1-6 |
-| 1608 | [Harden Not Your Hearts](https://www.gty.org/sermons/1608) | Hé 3.7-19 |
-| 1609 | [Entering into God's Rest](https://www.gty.org/sermons/1609) | Hé 4.1-13 |
-| 1610 | [Our Great High Priest](https://www.gty.org/sermons/1610) | Hé 4.14-16 |
-| 1611 | [Jesus Christ, the Perfect Priest](https://www.gty.org/sermons/1611) | Hé 5.1-9 |
-| 1612 | [The Tragedy of Rejecting Full Revelation, Part 1](https://www.gty.org/sermons/1612) | Hé 5.10-14 |
-| 1613 | [The Tragedy of Rejecting Full Revelation, Part 2](https://www.gty.org/sermons/1613) | Hé 6.1-8 |
-| 1614 | [The Tragedy of Rejecting Full Revelation, Part 3](https://www.gty.org/sermons/1614) | Hé 6.9-12 |
-| 1615 | [The Securities of God's Promise](https://www.gty.org/sermons/1615) | Hé 6.13-20 |
-| 1616 | [Melchizedek: A Type of Christ](https://www.gty.org/sermons/1616) | Hé 7.1-10 |
-| 1617 | [Jesus: The Superior Priest](https://www.gty.org/sermons/1617) | Hé 7.11-19 |
-| 1618 | [Jesus: The Guarantee of a Better Covenant](https://www.gty.org/sermons/1618) | Hé 7.20-28 |
-| 1619 | [The New Covenant, Part 1](https://www.gty.org/sermons/1619) | Hé 8.1-13 |
-| 1620 | [The New Covenant, Part 2](https://www.gty.org/sermons/1620) | Hé 9.1-14 |
-| 1621 | [The New Covenant, Part 3](https://www.gty.org/sermons/1621) | Hé 9.15-28 |
-| 1622 | [Christ: The Living Sacrifice](https://www.gty.org/sermons/1622) | Hé 10.1-18 |
-| 1623 | [Responding to the New Covenant](https://www.gty.org/sermons/1623) | Hé 10.19-25 |
-| 1624 | [Apostasy, Part 1](https://www.gty.org/sermons/1624) | Hé 10.26-27 |
-| 1625 | [Apostasy, Part 2](https://www.gty.org/sermons/1625) | Hé 10.28-39 |
-| 1626 | [What Is Faith?](https://www.gty.org/sermons/1626) | Hé 11.1-3 |
-| 1627 | [Abel and the Life of Faith](https://www.gty.org/sermons/1627) | Hé 11.4 |
-| 1628 | [Enoch and the Walk of Faith](https://www.gty.org/sermons/1628) | Hé 11.5-6 |
-| 1629 | [Noah and the Obedience of Faith](https://www.gty.org/sermons/1629) | Hé 11.7 |
-| 1630 | [The Faith of Abraham](https://www.gty.org/sermons/1630) | Hé 11.8-19 |
-| 1631 | [Faith in the Face of Death](https://www.gty.org/sermons/1631) | Hé 11.20-22 |
-| 1632 | [Things Faith Accepts and Rejects, Part 1](https://www.gty.org/sermons/1632) | Hé 11.23-25 |
-| 1633 | [Things Faith Accepts and Rejects, Part 2](https://www.gty.org/sermons/1633) | Hé 11.26-29 |
-| 1634 | [The Pinnacle of Faith](https://www.gty.org/sermons/1634) | Hé 11.30-40 |
-| 1635 | [Run for Your Life](https://www.gty.org/sermons/1635) | Hé 12.1-4 |
-| 1636 | [The Discipline of God](https://www.gty.org/sermons/1636) | Hé 12.5-11 |
-| 1637 | [Falling Short of the Grace of God](https://www.gty.org/sermons/1637) | Hé 12.12-17 |
-| 1638 | [Mount Sinai and Mount Zion](https://www.gty.org/sermons/1638) | Hé 12.18-29 |
-| 1639 | [Christian Ethics, Part 1: Love, Sex, and Marriage](https://www.gty.org/sermons/1639) | Hé 13.1-4 |
-| 1640 | [Christian Ethics, Part 2: The Principles of Contentment](https://www.gty.org/sermons/1640) | Hé 13.5-6 |
-| 1641 | [Christian Ethics, Part 3: Steadfastness, Separation, and Sacrifice](https://www.gty.org/sermons/1641) | Hé 13.7-16 |
-| 1642 | [Christian Ethics, Part 4: Submission and Supplication](https://www.gty.org/sermons/1642) | Hé 13.7-8, 17-25 |
+| 1600 | [Introduction to Hebrews](https://www.gty.org/sermons/1600) | He 1.1-2 |
+| 1601 | [The Preeminence of Christ](https://www.gty.org/sermons/1601) | He 1.2-3 |
+| 1602 | [Jesus Christ, Superior to Angels, Part 1](https://www.gty.org/sermons/1602) | He 1.4-6 |
+| 1603 | [Jesus Christ, Superior to Angels, Part 2](https://www.gty.org/sermons/1603) | He 1.7-14 |
+| 1604 | [The Tragedy of Neglecting Salvation](https://www.gty.org/sermons/1604) | He 2.1-4 |
+| 1605 | [The Rediscovery of Man's Lost Destiny](https://www.gty.org/sermons/1605) | He 2.5-9 |
+| 1606 | [Our Perfect Savior](https://www.gty.org/sermons/1606) | He 2.9-18 |
+| 1607 | [Jesus Christ, Greater than Moses](https://www.gty.org/sermons/1607) | He 3.1-6 |
+| 1608 | [Harden Not Your Hearts](https://www.gty.org/sermons/1608) | He 3.7-19 |
+| 1609 | [Entering into God's Rest](https://www.gty.org/sermons/1609) | He 4.1-13 |
+| 1610 | [Our Great High Priest](https://www.gty.org/sermons/1610) | He 4.14-16 |
+| 1611 | [Jesus Christ, the Perfect Priest](https://www.gty.org/sermons/1611) | He 5.1-9 |
+| 1612 | [The Tragedy of Rejecting Full Revelation, Part 1](https://www.gty.org/sermons/1612) | He 5.10-14 |
+| 1613 | [The Tragedy of Rejecting Full Revelation, Part 2](https://www.gty.org/sermons/1613) | He 6.1-8 |
+| 1614 | [The Tragedy of Rejecting Full Revelation, Part 3](https://www.gty.org/sermons/1614) | He 6.9-12 |
+| 1615 | [The Securities of God's Promise](https://www.gty.org/sermons/1615) | He 6.13-20 |
+| 1616 | [Melchizedek: A Type of Christ](https://www.gty.org/sermons/1616) | He 7.1-10 |
+| 1617 | [Jesus: The Superior Priest](https://www.gty.org/sermons/1617) | He 7.11-19 |
+| 1618 | [Jesus: The Guarantee of a Better Covenant](https://www.gty.org/sermons/1618) | He 7.20-28 |
+| 1619 | [The New Covenant, Part 1](https://www.gty.org/sermons/1619) | He 8.1-13 |
+| 1620 | [The New Covenant, Part 2](https://www.gty.org/sermons/1620) | He 9.1-14 |
+| 1621 | [The New Covenant, Part 3](https://www.gty.org/sermons/1621) | He 9.15-28 |
+| 1622 | [Christ: The Living Sacrifice](https://www.gty.org/sermons/1622) | He 10.1-18 |
+| 1623 | [Responding to the New Covenant](https://www.gty.org/sermons/1623) | He 10.19-25 |
+| 1624 | [Apostasy, Part 1](https://www.gty.org/sermons/1624) | He 10.26-27 |
+| 1625 | [Apostasy, Part 2](https://www.gty.org/sermons/1625) | He 10.28-39 |
+| 1626 | [What Is Faith?](https://www.gty.org/sermons/1626) | He 11.1-3 |
+| 1627 | [Abel and the Life of Faith](https://www.gty.org/sermons/1627) | He 11.4 |
+| 1628 | [Enoch and the Walk of Faith](https://www.gty.org/sermons/1628) | He 11.5-6 |
+| 1629 | [Noah and the Obedience of Faith](https://www.gty.org/sermons/1629) | He 11.7 |
+| 1630 | [The Faith of Abraham](https://www.gty.org/sermons/1630) | He 11.8-19 |
+| 1631 | [Faith in the Face of Death](https://www.gty.org/sermons/1631) | He 11.20-22 |
+| 1632 | [Things Faith Accepts and Rejects, Part 1](https://www.gty.org/sermons/1632) | He 11.23-25 |
+| 1633 | [Things Faith Accepts and Rejects, Part 2](https://www.gty.org/sermons/1633) | He 11.26-29 |
+| 1634 | [The Pinnacle of Faith](https://www.gty.org/sermons/1634) | He 11.30-40 |
+| 1635 | [Run for Your Life](https://www.gty.org/sermons/1635) | He 12.1-4 |
+| 1636 | [The Discipline of God](https://www.gty.org/sermons/1636) | He 12.5-11 |
+| 1637 | [Falling Short of the Grace of God](https://www.gty.org/sermons/1637) | He 12.12-17 |
+| 1638 | [Mount Sinai and Mount Zion](https://www.gty.org/sermons/1638) | He 12.18-29 |
+| 1639 | [Christian Ethics, Part 1: Love, Sex, and Marriage](https://www.gty.org/sermons/1639) | He 13.1-4 |
+| 1640 | [Christian Ethics, Part 2: The Principles of Contentment](https://www.gty.org/sermons/1640) | He 13.5-6 |
+| 1641 | [Christian Ethics, Part 3: Steadfastness, Separation, and Sacrifice](https://www.gty.org/sermons/1641) | He 13.7-16 |
+| 1642 | [Christian Ethics, Part 4: Submission and Supplication](https://www.gty.org/sermons/1642) | He 13.7-8, 17-25 |
 
 Dans quarante-trois sermons prêchés du 23 janvier 1972 au 27 mai 1973 (1600 à 1642), John MacArthur expose l'épître aux Hébreux comme un chef-d'œuvre doctrinal et pastoral adressé à une communauté juive pour démontrer que Jésus-Christ et la Nouvelle Alliance sont infiniment supérieurs aux ombres de l'Ancienne Alliance (1600). Dès l'introduction, il pose le principe herméneutique qui éclaire tout le livre : l'assemblée destinataire comprend trois groupes, à savoir de vrais croyants hébreux tentés par la persécution de se replier vers le ritualisme lévitique, des Juifs intellectuellement convaincus de la messianité de Jésus mais non encore régénérés (auxquels s'adressent directement les cinq grands avertissements d'apostasie), et des Juifs incrédules (1600, 1604, 1612).
 
@@ -195,7 +195,7 @@ Christ réunit les trois qualifications du souverain sacrificateur : choisi par 
 
 ### Hébreux 8 à 10 · Le sanctuaire céleste, la Nouvelle Alliance et le sacrifice unique
 
-Le point capital (*kephalaion*) est que notre Souverain Sacrificateur s'est assis dans le vrai sanctuaire céleste et qu'il est le médiateur de la Nouvelle Alliance promise en Jérémie 31.31-34, une alliance intérieure, personnelle et fondée sur le pardon complet des péchés qui rend caduque la première alliance (8.1-13; 1619). Alors que le tabernacle terrestre et le rituel annuel de Yom Kippour enseignaient par le Saint-Esprit que l'accès à Dieu restait fermé et que le sang animal ne purifiait jamais la conscience (9.1-10), Christ est entré une fois pour toutes (*ephapax*) avec son propre sang pour obtenir une rédemption éternelle et purifier notre conscience des œuvres mortes (9.11-14; 1620). Sa mort rachète rétroactivement les transgressions des saints de l'Ancien Testament (sauvés « à crédit », 9.15), valide le testament, inaugure l'alliance par l'effusion du sang et abolit le péché en une seule offrande avant son retour glorieux (9.15-28; 1621). Par l'offrande de son corps préparé selon le Psaume 40.6-8 (Septante), il remplace tous les sacrifices lévitiques et amène pour toujours à la perfection ceux qui sont sanctifiés (10.1-18; 1622). Cela appelle une triple réponse de foi, d'espérance et d'amour fraternel dans l'assemblée (10.19-25; 1623), suivie du quatrième avertissement contre le péché volontaire de ceux qui foulent aux pieds le Fils de Dieu et outragent l'Esprit de la grâce, tandis que les vrais croyants persévèrent par la foi pour le salut de leur âme (10.26-39; 1624, 1625).
+Le point capital (*kephalaion*) est que notre Souverain Sacrificateur s'est assis dans le vrai sanctuaire céleste et qu'il est le médiateur de la Nouvelle Alliance promise en Jérémie 31.31-34, une alliance intérieure, personnelle et fondée sur le pardon complet des péchés qui rend caduque la première alliance (8.1-13; 1619). Alors que le tabernacle terrestre et le rituel annuel de Yom Kippour enseignaient par le Saint-Esprit que l'accès à Dieu restait fermé et que le sang animal ne purifiait jamais la conscience (9.1-10), Christ est entré une fois pour toutes (*ephapax*) avec son propre sang pour obtenir une rédemption éternelle et purifier notre conscience des œuvres mortes (9.11-14; 1620). Sa mort rachète rétroactivement les transgressions des saints de l'Ancien Testament (sauvés « à crédit », 9.15), valide le testament, inaugure l'alliance par l'effusion du sang et abolit le péché en une seule offrande avant son retour glorieux (9.15-28; 1621). Par l'offrande de son corps préparé selon le Psaume 40.7-9 (Septante), il remplace tous les sacrifices lévitiques et amène pour toujours à la perfection ceux qui sont sanctifiés (10.1-18; 1622). Cela appelle une triple réponse de foi, d'espérance et d'amour fraternel dans l'assemblée (10.19-25; 1623), suivie du quatrième avertissement contre le péché volontaire de ceux qui foulent aux pieds le Fils de Dieu et outragent l'Esprit de la grâce, tandis que les vrais croyants persévèrent par la foi pour le salut de leur âme (10.26-39; 1624, 1625).
 
 ### Hébreux 11 à 13 · Les héros de la foi, la course vers Sion et l'éthique hors du camp
 
@@ -233,7 +233,7 @@ Citée en Hébreux 10.37-38 selon la Septante grecque (« si quelqu'un se retire
 
 **1 Jean 2.19** · *Parallèle direct*
 
-Ceux qui sont sortis du milieu de nous n'étaient pas des nôtres : MacArthur appuie sur ce principe apostolique son explication des cinq passages d'avertissement d'Hébreux (3.6, 14; 6.4-9; 10.26-39), où l'apostasie manifeste l'absence de nouvelle naissance et non la perte du salut (1607, 1613, 1625).
+Ceux qui sont sortis du milieu de nous n'étaient pas des nôtres : MacArthur appuie sur ce principe apostolique son explication des passages d'avertissement d'Hébreux (3.6, 14; 6.4-9; 10.26-39), où l'apostasie manifeste l'absence de nouvelle naissance et non la perte du salut (1607, 1613, 1625).
 
 **Romains 8.34** · *Parallèle direct*
 
@@ -253,7 +253,7 @@ MacArthur expose dans les chapitres 1 et 2 l'union en une seule personne de la p
 
 **Révélation progressive**
 
-La semence de la femme doit écraser la tête du serpent (Genèse 3.15); le Fils engendré et le Roi-Dieu est intronisé par l'Éternel (Psaumes 2.7; 45.6-7; 110.1); la Parole faite chair habite parmi nous pleine de grâce et de vérité (Jean 1.1, 14; Philippiens 2.6-11) (1601, 1603, 1606).
+La semence de la femme doit écraser la tête du serpent (Genèse 3.15); le Fils engendré et le Roi-Dieu est intronisé par l'Éternel (Psaumes 2.7; 45.7-8; 110.1); la Parole faite chair habite parmi nous pleine de grâce et de vérité (Jean 1.1, 14; Philippiens 2.6-11) (1601, 1603, 1606).
 
 **Pour votre assemblée**
 

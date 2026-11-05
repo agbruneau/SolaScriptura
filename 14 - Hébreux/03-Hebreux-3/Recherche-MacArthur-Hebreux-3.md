@@ -73,7 +73,7 @@ Trois détails échappent au lecteur moderne.
 Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp d'Hébreux 3, LogosBible); grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub); interlinéaire morphologique de Bible Hub; versions françaises : NEG79, LSG, S21, Darby et NBS. **Numérotation.** Dix-neuf versets dans toutes les éditions grecques et versions françaises consultées. Aucun écart de numérotation avec les sermons de MacArthur.
 
 - **Hébreux 3.1.** *Iēsoun*, Jésus (P46, א, A, B, C*, D*, SBLGNT, Westcott et Hort, NA28), ou *Christon Iēsoun*, le Christ Jésus (Ccorr, D², Ψ, Texte Majoritaire, Textus Receptus). **NEG79.** « considérez l'apôtre et le souverain sacrificateur de la foi que nous professons, Jésus » : les cinq versions françaises suivent la leçon ancienne *Iēsoun* sans l'addition *Christon*. **Portée.** MacArthur souligne que le nom personnel humain « Jésus », placé à la fin de la proposition grecque pour créer un effet d'emphase maximale (comme en 2.9), fixe le regard sur la personne historique du Fils incarné (1607).
-- **Hébreux 3.6.** *eanper tēn parrēsian kai to kauchēma tēs elpidos mechri telous bebaian kataschōmen*, avec *mechri telous bebaian* (« ferme jusqu'à la fin ») (א, A, C, D, Texte Majoritaire, Textus Receptus, SBLGNT), ou omission de *mechri telous bebaian* par homéotéleute avec 3.14 (P46, B). **NEG79.** « pourvu que nous retenions fermement jusqu'à la fin la confiance et l'espérance dont nous nous glorifions » : la NEG79, la LSG, la S21 et la Darby traduisent la clause complète; la NBS suit la leçon courte de P46 et B. **Portée.** MacArthur lit et expose la clause complète en parallèle direct avec 3.14 (« jusqu'à la fin ») : la persévérance jusqu'au bout est la marque distinctive des vrais membres de la maison de Dieu (1607).
+- **Hébreux 3.6.** *eanper tēn parrēsian kai to kauchēma tēs elpidos mechri telous bebaian kataschōmen*, avec *mechri telous bebaian* (« ferme jusqu'à la fin ») (א, A, C, D, Nestle 1904, Westcott et Hort, Texte Majoritaire, Textus Receptus), ou omission de *mechri telous bebaian* par homéotéleute avec 3.14 (P46, B, SBLGNT). **NEG79.** « pourvu que nous retenions fermement jusqu'à la fin la confiance et l'espérance dont nous nous glorifions » : la NEG79, la LSG, la S21 et la Darby traduisent la clause complète; la NBS suit la leçon courte de P46 et B. **Portée.** MacArthur lit et expose la clause complète en parallèle direct avec 3.14 (« jusqu'à la fin ») : la persévérance jusqu'au bout est la marque distinctive des vrais membres de la maison de Dieu (1607).
 
 ## Structure et grammaire
 
@@ -82,7 +82,7 @@ Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgn
 - **Hébreux 3.1-6.** La supériorité de Jésus-Christ sur Moïse : Apôtre et Souverain Sacrificateur, Créateur et Bâtisseur de la maison, et Fils établi sur sa propre maison dont nous sommes membres. Marqueur : *katanoēsate ton apostolon kai archierea tēs homologias hēmōn Iēsoun* (3.1), *pleionos gar houtos doxēs para Mōysēn ēxiōtai* (3.3), *Christos de hōs huios epi ton oikon autou* (3.6).
 - **Hébreux 3.7-11.** L'illustration scripturaire du deuxième avertissement : la voix du Saint-Esprit au Psaume 95 rappelant l'endurcissement et l'exclusion de la génération du désert. Marqueur : *Dio, kathōs legei to pneuma to hagion, Sēmeron ean tēs phōnēs autou akousēte, mē sklērynēte tas kardias hymōn* (3.7-8), *Ei eiseleusontai eis tēn katapausin mou* (3.11).
 - **Hébreux 3.12-15.** L'avertissement et l'exhortation mutuelle : veiller contre un cœur mauvais et incrédule qui se détourne du Dieu vivant, et retenir fermement l'assurance jusqu'à la fin. Marqueur : *Blepete, adelphoi, mēpote estai en tini hymōn kardia ponēra apistias en tō apostēnai apo theou zōntos* (3.12), *alla parakaleite heautous kath' hekastēn hēmeran* (3.13), *metochoi gar tou Christou gegonamen* (3.14).
-- **Hébreux 3.16-19.** Le diagnostic final de la tragédie du désert : par trois questions pressantes, l'auteur démontre que c'est l'incrédulité seule qui les a empêchés d'entrer dans le repos de Dieu. Marqueur : *tines gar akousantes parepikranan* (3.16), *tisin de prosōchthisen tessarakonta etē* (3.17), *kai blepomen hoti ouk ēdynēthēsan eiselthein δι' apistian* (3.19).
+- **Hébreux 3.16-19.** Le diagnostic final de la tragédie du désert : par trois questions pressantes, l'auteur démontre que c'est l'incrédulité seule qui les a empêchés d'entrer dans le repos de Dieu. Marqueur : *tines gar akousantes parepikranan* (3.16), *tisin de prosōchthisen tessarakonta etē* (3.17), *kai blepomen hoti ouk ēdynēthēsan eiselthein di' apistian* (3.19).
 
 **Observations grammaticales**
 
@@ -116,8 +116,8 @@ Les deux prédications couvrent intégralement les dix-neuf versets du chapitre 
 
 | Code | Sermon | Passage |
 |---|---|---|
-| 1607 | [Jesus Christ, Greater than Moses](https://www.gty.org/sermons/1607) | Hé 3.1-6 |
-| 1608 | [Harden Not Your Hearts](https://www.gty.org/sermons/1608) | Hé 3.7-19 |
+| 1607 | [Jesus Christ, Greater than Moses](https://www.gty.org/sermons/1607) | He 3.1-6 |
+| 1608 | [Harden Not Your Hearts](https://www.gty.org/sermons/1608) | He 3.7-19 |
 
 Dans ses deux sermons sur Hébreux 3 (1607 et 1608), John MacArthur montre comment l'auteur élève Jésus-Christ bien au-dessus de Moïse (3.1-6), puis applique à son auditoire juif l'avertissement dramatique du Psaume 95 contre l'endurcissement du cœur et l'apostasie (3.7-19) (1607, 1608).
 

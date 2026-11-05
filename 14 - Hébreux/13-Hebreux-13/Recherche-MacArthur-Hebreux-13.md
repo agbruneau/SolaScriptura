@@ -84,7 +84,7 @@ Trois détails échappent au lecteur moderne.
 
 Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp d'Hébreux 13, LogosBible); grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub); interlinéaire morphologique de Bible Hub; versions françaises : NEG79, LSG, S21, Darby et NBS. **Numérotation.** Vingt-cinq versets dans toutes les éditions grecques et versions françaises consultées. Aucun écart de numérotation avec les quatre sermons de MacArthur.
 
-- **Hébreux 13.4.** *Pornoi gar kai moichous krinei ho theos*, avec la conjonction causale *gar* (« car Dieu jugera les impudiques et les adultères ») (P46, א*, A, C, D*, Ψ, SBLGNT, Westcott et Hort, NA28), ou *Pornous de kai moichous krinei ho theos*, avec la particule adversative *de* (« mais Dieu jugera... ») (א², D², Texte Majoritaire, Textus Receptus). **NEG79.** « car Dieu jugera les impudiques et les adultères » : la NEG79, la LSG, la S21 et la NBS suivent toutes *gar* (« car »); la Darby traduit « mais Dieu jugera ». **Portée.** Aucune incidence doctrinale : *gar* souligne que le jugement certain de Dieu contre toute immoralité sexuelle hors du mariage (*pornous*) et toute infidélité dans le mariage (*moichous*) est le motif solennel qui commande d'honorer le mariage (1639).
+- **Hébreux 13.4.** *Pornous gar kai moichous krinei ho theos*, avec la conjonction causale *gar* (« car Dieu jugera les impudiques et les adultères ») (P46, א*, A, C, D*, Ψ, SBLGNT, Westcott et Hort, NA28), ou *Pornous de kai moichous krinei ho theos*, avec la particule adversative *de* (« mais Dieu jugera... ») (א², D², Texte Majoritaire, Textus Receptus). **NEG79.** « car Dieu jugera les impudiques et les adultères » : la NEG79, la LSG, la S21 et la NBS suivent toutes *gar* (« car »); la Darby traduit « mais Dieu jugera ». **Portée.** Aucune incidence doctrinale : *gar* souligne que le jugement certain de Dieu contre toute immoralité sexuelle hors du mariage (*pornous*) et toute infidélité dans le mariage (*moichous*) est le motif solennel qui commande d'honorer le mariage (1639).
 - **Hébreux 13.9.** *Didachais poikilais kai xenais mē parapheresthe*, « Ne vous laissez pas emporter de côté par des doctrines diverses et étrangères » (P46, א, A, C, D, SBLGNT, Westcott et Hort, NA28, Texte Majoritaire), ou *peripheresthe*, « tourner en tout sens » (Ψ, Textus Receptus). **NEG79.** « Ne vous laissez pas entraîner par des doctrines diverses et étrangères » : les cinq versions françaises traduisent *parapheresthe* par « entraîner / égarer / emporter çà et là ». **Portée.** Aucune incidence sur le sens : comme l'enseigne MacArthur, le croyant ancré dans la vérité immuable de Jésus-Christ (v. 8) refuse de se laisser détourner de sa course par des enseignements étrangers à la grâce (1641).
 - **Hébreux 13.21.** *katartisai hymas en panti agathō*, « vous rende capables de tout bien » sans le mot *ergō* (P46, א*, D*, SBLGNT, Westcott et Hort, NA28), ou *en panti ergō agathō*, « de toute bonne œuvre » (א², A, C, D², Ψ, Texte Majoritaire, Textus Receptus); et après *poiōn en hēmin* (« faisant en nous », P46, א, C, Ψ, SBLGNT, Westcott et Hort, NA28, Texte Majoritaire, Textus Receptus) ou *poiōn en hymin* (« en vous », A, D*). **NEG79.** « vous rende capables de toute bonne œuvre pour l'accomplissement de sa volonté, et fasse en vous ce qui lui est agréable » : la NEG79, la LSG et la Darby retiennent « toute bonne œuvre »; la S21 (« tout bien ») et la NBS (« tout ce qui est bon ») suivent le texte court, avec « en nous » ou « en vous ». **Portée.** Aucune incidence exégétique : que *ergō* soit explicite ou sous-entendu dans l'adjectif substantivé *panti agathō*, et que le pronom soit « en nous » ou « en vous », MacArthur souligne la même vérité glorieuse : c'est Dieu lui-même qui nous équipe et opère intérieurement en nous ce qui lui plaît (1642).
 
@@ -94,7 +94,7 @@ Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgn
 
 - **Hébreux 13.1-3.** L'éthique envers les frères : persévérer dans l'amour fraternel, exercer l'hospitalité envers les étrangers et partager la souffrance des prisonniers et des maltraités. Marqueur : *Hē philadelphia menetō. Tēs philoxenias mē epilanthanesthe ... Mimnēskesthe tōn desmiōn hōs syndedemenoi* (13.1-3).
 - **Hébreux 13.4-9.** L'éthique personnelle et l'exemple immuable : pureté du mariage, contentement fondé sur la présence de Dieu, souvenir des anciens conducteurs et immuabilité de Jésus-Christ. Marqueur : *Timios ho gamos en pasin ... Aphilargyros ho tropos, arkoumenoi tois parousin ... Mnēmoneuete tōn hēgoumenōn hymōn ... Iēsous Christos echthes kai sēmeron ho autos kai eis tous aiōnas* (13.4-8).
-- **Hébreux 13.10-16.** La séparation et les vrais sacrifices : sortir vers Jésus hors du camp en portant son opprobre et offrir par lui les sacrifices de louange, de bienfaisance et de libéralité. Marqueur : *Echomen thysiastērion ex hou phagein ouk echousin exousian hoi tē skēnē latreuontes ... Toinyn exerchōmetha pros auton exō tēs παρεμβολῆς ton oneidismon autou pherontes* (13.10, 13), *Di' autou oun anapherōmen thysian aineseōs dia pantos tō theō* (13.15).
+- **Hébreux 13.10-16.** La séparation et les vrais sacrifices : sortir vers Jésus hors du camp en portant son opprobre et offrir par lui les sacrifices de louange, de bienfaisance et de libéralité. Marqueur : *Echomen thysiastērion ex hou phagein ouk echousin exousian hoi tē skēnē latreuontes ... Toinyn exerchōmetha pros auton exō tēs parembolēs ton oneidismon autou pherontes* (13.10, 13), *Di' autou oun anapherōmen thysian aineseōs dia pantos tō theō* (13.15).
 - **Hébreux 13.17-19.** L'éthique dans l'assemblée locale : obéir et se soumettre aux conducteurs spirituels qui veillent sur nos âmes, et prier pour les serviteurs de Dieu. Marqueur : *Peithesthe tois hēgoumenois hymōn kai hypeikete, autoi gar agrypnousin hyper tōn psychōn hymōn ... Proseuchesthe peri hēmōn* (13.17-18).
 - **Hébreux 13.20-25.** La grande bénédiction finale et le post-scriptum : l'énergie du Dieu de paix qui a ramené d'entre les morts le grand pasteur des brebis par le sang d'une alliance éternelle. Marqueur : *Ho de theos tēs eirēnēs, ho anagagōn ek nekrōn ton poimena tōn probatōn ton megan en haimati diathēkēs aiōniou ... katartisai hymas en panti agathō* (13.20-21), *Hē charis meta pantōn hymōn* (13.25).
 
@@ -130,10 +130,10 @@ Les quatre prédications couvrent intégralement les vingt-cinq versets du chapi
 
 | Code | Sermon | Passage |
 |---|---|---|
-| 1639 | [Christian Ethics, Part 1: Love, Sex, and Marriage](https://www.gty.org/sermons/1639) | Hé 13.1-4 |
-| 1640 | [Christian Ethics, Part 2: The Principles of Contentment](https://www.gty.org/sermons/1640) | Hé 13.5-6 |
-| 1641 | [Christian Ethics, Part 3: Steadfastness, Separation, and Sacrifice](https://www.gty.org/sermons/1641) | Hé 13.7-16 |
-| 1642 | [Christian Ethics, Part 4: Submission and Supplication](https://www.gty.org/sermons/1642) | Hé 13.7-8, 17-25 |
+| 1639 | [Christian Ethics, Part 1: Love, Sex, and Marriage](https://www.gty.org/sermons/1639) | He 13.1-4 |
+| 1640 | [Christian Ethics, Part 2: The Principles of Contentment](https://www.gty.org/sermons/1640) | He 13.5-6 |
+| 1641 | [Christian Ethics, Part 3: Steadfastness, Separation, and Sacrifice](https://www.gty.org/sermons/1641) | He 13.7-16 |
+| 1642 | [Christian Ethics, Part 4: Submission and Supplication](https://www.gty.org/sermons/1642) | He 13.7-8, 17-25 |
 
 Dans ses quatre sermons de clôture sur Hébreux 13 (1639 à 1642), John MacArthur expose le couronnement pratique de l'épître selon trois axes complémentaires : l'éthique chrétienne (v. 1-6, 9-19), l'exemple chrétien (v. 7-8) et l'énergie chrétienne (v. 20-25) (1639 à 1642).
 
@@ -168,7 +168,7 @@ Citée à la première personne du singulier en Hébreux 13.5 (« Car Dieu lui-m
 
 **Psaume 118.6** · *Citation ou allusion*
 
-Cité mot à mot en Hébreux 13.6 selon la version grecque des Septante (Psaume 117.6 LXX : *Kyrios emoi boēthos, kai ou phobēthēsomai, ti poiēsei moi anthrōpos*) en parfait accord avec l'hébreu massorétique, ce chant de confiance est la réponse joyeuse du croyant à la promesse de Dieu au verset 5 (1640).
+Cité en Hébreux 13.6 selon la version grecque des Septante (Psaume 117.6 LXX : *Kyrios emoi boēthos, kai ou phobēthēsomai, ti poiēsei moi anthrōpos*) en parfait accord avec l'hébreu massorétique, ce chant de confiance est la réponse joyeuse du croyant à la promesse de Dieu au verset 5 (1640).
 
 **Lévitique 16.27 / Exode 33.7** · *Arrière-plan AT*
 
@@ -180,7 +180,7 @@ L'expression « le fruit de lèvres qui confessent son nom » en Hébreux 13.15 
 
 **Ésaïe 63.11 / Zacharie 9.11** · *Citation ou allusion*
 
-La bénédiction d'Hébreux 13.20 unit la mention d'Ésaïe 63.11 dans la Septante grecque et l'hébreu massorétique (« Où est celui qui a fait monter de la terre le berger des brebis? », *ho anagagōn ek tēs gēs ton poimena tōn probatōn*) et l'expression de Zacharie 9.11 (« par le sang de ton alliance », *en haimati diathēkēs sou*) pour célébrer la résurrection de Jésus, le grand pasteur des brebis (cf. Jean 10.11; 1 Pierre 5.4) (1642).
+La bénédiction d'Hébreux 13.20 unit la mention d'Ésaïe 63.11 dans la Septante grecque et l'hébreu massorétique (« Où est celui qui les fit monter de la mer, avec le berger de son troupeau? », *ho anabibasas ek tēs thalassēs ton poimena tōn probatōn*) et l'expression de Zacharie 9.11 (« par le sang de ton alliance », *en haimati diathēkēs sou*) pour célébrer la résurrection de Jésus, le grand pasteur des brebis (cf. Jean 10.11; 1 Pierre 5.4) (1642).
 
 ## Thèmes théologiques
 
