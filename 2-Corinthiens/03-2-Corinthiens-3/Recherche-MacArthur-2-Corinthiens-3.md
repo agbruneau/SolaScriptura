@@ -47,10 +47,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 18 versets 
 
 **Plan de la péricope**
 
-- **3.1–3.** La lettre de recommandation vivante de l'apôtre : l'Église de Corinthe, épître de Christ écrite par l'Esprit du Dieu vivant sur des cœurs de chair. Marqueur : Questions rhétoriques *Archometha palin heautous synistanai...* (v. 1) et métaphore épistolaire *Hē epistolē hēmōn hymeis este* (v. 2-3).
-- **3.4–6.** La source de la compétence ministérielle : l'incapacité naturelle de l'homme et la qualification divine des ministres de la nouvelle alliance de l'Esprit qui vivifie. Marqueur : Déclaration d'assurance *Pepoithēsin de τοιαύτην echomen...* (v. 4) et antithèse *to gar gramma apokteinei, to de Pneuma zōopoiei* (v. 5-6).
-- **3.7–11.** La gloire supérieure et permanente de la nouvelle alliance : triple démonstration a fortiori face au ministère mosaïque de la mort, de la condamnation et de ce qui est passager. Marqueur : Trois propositions conditionnelles *Ei de hē diakonia tou thanatou...* (v. 7-8), *ei gar tē diakonia tēs katakriseōs...* (v. 9-10) et *ei gar to katargoumenon...* (v. 11).
-- **3.12–18.** La franchise apostolique et le visage dévoilé : le voile d'endurcissement d'Israël ôté en Christ et la transformation des croyants de gloire en gloire par le Seigneur l'Esprit. Marqueur : Conclusion déductive *Echontes oun toiautēn elpida pollē parrēsia chrōmetha* (v. 12-17) et sommet *Hēmeis de pantes anakekalymmenō prosōpō...* (v. 18).
+- **3.1-3.** La lettre de recommandation vivante de l'apôtre : l'Église de Corinthe, épître de Christ écrite par l'Esprit du Dieu vivant sur des cœurs de chair. Marqueur : Questions rhétoriques *Archometha palin heautous synistanai...* (v. 1) et métaphore épistolaire *Hē epistolē hēmōn hymeis este* (v. 2-3).
+- **3.4-6.** La source de la compétence ministérielle : l'incapacité naturelle de l'homme et la qualification divine des ministres de la nouvelle alliance de l'Esprit qui vivifie. Marqueur : Déclaration d'assurance *Pepoithēsin de τοιαύτην echomen...* (v. 4) et antithèse *to gar gramma apokteinei, to de Pneuma zōopoiei* (v. 5-6).
+- **3.7-11.** La gloire supérieure et permanente de la nouvelle alliance : triple démonstration a fortiori face au ministère mosaïque de la mort, de la condamnation et de ce qui est passager. Marqueur : Trois propositions conditionnelles *Ei de hē diakonia tou thanatou...* (v. 7-8), *ei gar tē diakonia tēs katakriseōs...* (v. 9-10) et *ei gar to katargoumenon...* (v. 11).
+- **3.12-18.** La franchise apostolique et le visage dévoilé : le voile d'endurcissement d'Israël ôté en Christ et la transformation des croyants de gloire en gloire par le Seigneur l'Esprit. Marqueur : Conclusion déductive *Echontes oun toiautēn elpida pollē parrēsia chrōmetha* (v. 12-17) et sommet *Hēmeis de pantes anakekalymmenō prosōpō...* (v. 18).
 
 **Observations grammaticales**
 
@@ -167,7 +167,7 @@ Théologie des alliances et sotériologie (régénération et imputation de la j
 
 **Révélation progressive**
 
-Des tables de pierre brisées et remplacées au Sinaï (Ex 32–34) aux prophéties de Jérémie 31 et d'Ézéchiel 36, l'histoire du salut culmine dans le sacrifice de Christ qui inaugure la nouvelle alliance en son sang (1 Co 11.25) et dans l'effusion de l'Esprit.
+Des tables de pierre brisées et remplacées au Sinaï (Ex 32-34) aux prophéties de Jérémie 31 et d'Ézéchiel 36, l'histoire du salut culmine dans le sacrifice de Christ qui inaugure la nouvelle alliance en son sang (1 Co 11.25) et dans l'effusion de l'Esprit.
 
 **Pour votre assemblée**
 

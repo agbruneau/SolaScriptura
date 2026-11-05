@@ -47,10 +47,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 24 versets 
 
 **Plan de la péricope**
 
-- **1.1–2.** La salutation apostolique : l'autorité de Paul, apôtre par la volonté de Dieu, et le vœu de grâce et de paix à l'Église de Corinthe et aux saints de toute l'Achaïe. Marqueur : Formule d'ouverture *Paulos apostolos Christou Iēsou dia thelēmatos Theou...* (v. 1-2).
-- **1.3–11.** La bénédiction du Dieu de toute consolation : la chaîne de la consolation dans l'épreuve et la délivrance miraculeuse de l'arrêt de mort en Asie par le Dieu qui ressuscite les morts. Marqueur : Eulogie *Eulogētos ho Theos kai Patēr...* (v. 3-7) et témoignage *Ou gar thelomen hymas agnoein, adelphoi, hyper tēs thlipseōs hēmōn* (v. 8-11).
-- **1.12–14.** Le sujet de gloire de l'apôtre : le témoignage d'une conscience pure, sainte et sincère devant Dieu et envers les Corinthiens jusqu'au jour du Seigneur Jésus. Marqueur : Déclaration programmatique *Hē gar kauchēsis hēmōn hautē estin, to martyrion tēs syneidēseōs hēmōn* (v. 12).
-- **1.15–24.** La défense de l'intégrité pastorale de Paul : le « Oui » et l'« Amen » de Dieu en Christ, le sceau de l'Esprit et le souci d'épargner les Corinthiens pour contribuer à leur joie. Marqueur : Récit des projets de voyage (v. 15-17), serment de véracité *Pistos de ho Theos* (v. 18-22) et prise de Dieu à témoin *Egō de martyra ton Theon epikaloumai* (v. 23-24).
+- **1.1-2.** La salutation apostolique : l'autorité de Paul, apôtre par la volonté de Dieu, et le vœu de grâce et de paix à l'Église de Corinthe et aux saints de toute l'Achaïe. Marqueur : Formule d'ouverture *Paulos apostolos Christou Iēsou dia thelēmatos Theou...* (v. 1-2).
+- **1.3-11.** La bénédiction du Dieu de toute consolation : la chaîne de la consolation dans l'épreuve et la délivrance miraculeuse de l'arrêt de mort en Asie par le Dieu qui ressuscite les morts. Marqueur : Eulogie *Eulogētos ho Theos kai Patēr...* (v. 3-7) et témoignage *Ou gar thelomen hymas agnoein, adelphoi, hyper tēs thlipseōs hēmōn* (v. 8-11).
+- **1.12-14.** Le sujet de gloire de l'apôtre : le témoignage d'une conscience pure, sainte et sincère devant Dieu et envers les Corinthiens jusqu'au jour du Seigneur Jésus. Marqueur : Déclaration programmatique *Hē gar kauchēsis hēmōn hautē estin, to martyrion tēs syneidēseōs hēmōn* (v. 12).
+- **1.15-24.** La défense de l'intégrité pastorale de Paul : le « Oui » et l'« Amen » de Dieu en Christ, le sceau de l'Esprit et le souci d'épargner les Corinthiens pour contribuer à leur joie. Marqueur : Récit des projets de voyage (v. 15-17), serment de véracité *Pistos de ho Theos* (v. 18-22) et prise de Dieu à témoin *Egō de martyra ton Theon epikaloumai* (v. 23-24).
 
 **Observations grammaticales**
 

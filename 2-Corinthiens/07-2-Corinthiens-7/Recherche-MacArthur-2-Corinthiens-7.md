@@ -20,7 +20,7 @@
 
 > « C’est pourquoi nous avons été consolés. Mais, outre notre consolation, nous avons été réjouis beaucoup plus encore par la joie de Tite, dont l’esprit a été tranquillisé par vous tous. Et si devant lui je me suis un peu glorifié à votre sujet, je n’en ai point eu de confusion; mais, comme nous vous avons toujours parlé selon la vérité, ce dont nous nous sommes glorifiés auprès de Tite s’est trouvé être aussi la vérité. Il éprouve pour vous un redoublement d’affection, au souvenir de votre obéissance à tous, et de l’accueil que vous lui avez réservé avec crainte et tremblement. Je me réjouis de pouvoir en toutes choses me confier en vous. » (2 Corinthiens 7.13-16, NEG)
 
-Le chapitre 7 clôt la première grande section de l'épître (ch. 1–7) en ramenant à leur dénouement trois fils majeurs : 1) le verset 1 achève directement l'exhortation de 6.14-18 en tirant des promesses d'alliance de Dieu l'appel à se purifier de toute souillure de la chair et de l'esprit; 2) les versets 2 à 4 reprennent le plaidoyer d'affection paternelle ouvert en 6.11-13 (« Donnez-nous une place dans vos cœurs ! »); 3) les versets 5 à 16 renouent enfin le fil narratif interrompu en 2.13 (après la grande parenthèse apologétique de 2.14 à 7.4) : arrivé en Macédoine le cœur rongé d'inquiétude, Paul est consolé par l'arrivée de Tite qui lui annonce que la « lettre de larmes » a produit chez les Corinthiens la tristesse selon Dieu menant à une repentance authentique.
+Le chapitre 7 clôt la première grande section de l'épître (ch. 1-7) en ramenant à leur dénouement trois fils majeurs : 1) le verset 1 achève directement l'exhortation de 6.14-18 en tirant des promesses d'alliance de Dieu l'appel à se purifier de toute souillure de la chair et de l'esprit; 2) les versets 2 à 4 reprennent le plaidoyer d'affection paternelle ouvert en 6.11-13 (« Donnez-nous une place dans vos cœurs ! »); 3) les versets 5 à 16 renouent enfin le fil narratif interrompu en 2.13 (après la grande parenthèse apologétique de 2.14 à 7.4) : arrivé en Macédoine le cœur rongé d'inquiétude, Paul est consolé par l'arrivée de Tite qui lui annonce que la « lettre de larmes » a produit chez les Corinthiens la tristesse selon Dieu menant à une repentance authentique.
 
 Le genre littéraire de ce chapitre unit la conclusion parénétique de sainteté (7.1), le plaidoyer pastoral d'amitié (7.2-4), le récit autobiographique de retrouvailles (7.5-7, 13-16) et le traité doctrinal et pastoral sur la distinction entre la tristesse selon Dieu et la tristesse du monde (7.8-12).
 
@@ -48,9 +48,9 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 16 versets 
 **Plan de la péricope**
 
 - **7.1.** Conclusion de l'appel à la séparation sainte : se purifier de toute souillure de la chair et de l'esprit pour achever la sainteté dans la crainte de Dieu. Marqueur : Participe déductif concluant 6.14-18 : *Tautas oun echontes tas epangelias, agapētoi, katharisōmen heautous...* (v. 1).
-- **7.2–4.** Reprise du plaidoyer d'affection paternelle : l'intégrité irréprochable de Paul et sa joie débordante au milieu de toutes ses tribulations. Marqueur : Impératif affectueux *Chōrēsate hēmas* (v. 2-3, reprenant 6.11-13) et transition *Pollē moi parrēsia pros hymas...* (v. 4).
-- **7.5–7.** La consolation du pasteur abattu : l'angoisse de Paul en Macédoine soulagée par l'arrivée de Tite et le témoignage de l'affection des Corinthiens. Marqueur : Récit historique reprenant 2.13 : *Kai gar elthontōn hēmōn eis Makedonian... all' ho parakalōn tous tapeinous παρεκάλεσεν ἡμᾶς* (v. 5-7).
-- **7.8–16.** L'anatomie de la vraie repentance et le rétablissement complet de la joie : la tristesse selon Dieu opposée à la tristesse du monde, les sept fruits du repentir corinthien et le rafraîchissement de l'esprit de Tite. Marqueur : Explication *Hoti ei kai elypēsa hymas en tē epistolē...* (v. 8-12) et conclusion joyeuse *Dia touto parakeklēmetha... Chairō hoti en panti tharrō en hymin* (v. 13-16).
+- **7.2-4.** Reprise du plaidoyer d'affection paternelle : l'intégrité irréprochable de Paul et sa joie débordante au milieu de toutes ses tribulations. Marqueur : Impératif affectueux *Chōrēsate hēmas* (v. 2-3, reprenant 6.11-13) et transition *Pollē moi parrēsia pros hymas...* (v. 4).
+- **7.5-7.** La consolation du pasteur abattu : l'angoisse de Paul en Macédoine soulagée par l'arrivée de Tite et le témoignage de l'affection des Corinthiens. Marqueur : Récit historique reprenant 2.13 : *Kai gar elthontōn hēmōn eis Makedonian... all' ho parakalōn tous tapeinous παρεκάλεσεν ἡμᾶς* (v. 5-7).
+- **7.8-16.** L'anatomie de la vraie repentance et le rétablissement complet de la joie : la tristesse selon Dieu opposée à la tristesse du monde, les sept fruits du repentir corinthien et le rafraîchissement de l'esprit de Tite. Marqueur : Explication *Hoti ei kai elypēsa hymas en tē epistolē...* (v. 8-12) et conclusion joyeuse *Dia touto parakeklēmetha... Chairō hoti en panti tharrō en hymin* (v. 13-16).
 
 **Observations grammaticales**
 
@@ -78,7 +78,7 @@ Niveau 1 : sermons Grace to You sur 2 Corinthiens 7.1 à 7.16 (47-43 à 47-50, s
 
 **Couverture des sources**
 
-Huit sermons (47-43 à 47-50) couvrent l'intégralité des 16 versets du chapitre 7 : une prédication sur l'appel à l'affection mutuelle couvrant 6.11-13 et 7.2-4 (« Accents of Love », 47-43); quatre prédications sur la séparation d'avec les incrédules culminant en 7.1 par l'exhortation à se purifier de toute souillure pour achever la sainteté dans la crainte de Dieu (« Separating from Unbelievers », 47-44 à 47-47, charnière 6.14–7.1); et trois prédications sur le retour de Tite en Macédoine et l'anatomie biblique de la vraie repentance née de la tristesse selon Dieu (« Restoring the Grieving Pastor's Joy », 47-48 à 47-50, 7.5-16).
+Huit sermons (47-43 à 47-50) couvrent l'intégralité des 16 versets du chapitre 7 : une prédication sur l'appel à l'affection mutuelle couvrant 6.11-13 et 7.2-4 (« Accents of Love », 47-43); quatre prédications sur la séparation d'avec les incrédules culminant en 7.1 par l'exhortation à se purifier de toute souillure pour achever la sainteté dans la crainte de Dieu (« Separating from Unbelievers », 47-44 à 47-47, charnière 6.14-7.1); et trois prédications sur le retour de Tite en Macédoine et l'anatomie biblique de la vraie repentance née de la tristesse selon Dieu (« Restoring the Grieving Pastor's Joy », 47-48 à 47-50, 7.5-16).
 
 **Sermons Grace to You**
 
@@ -142,7 +142,7 @@ Doctrine de la sanctification progressive : loin d'encourager la passivité ou l
 
 **Révélation progressive**
 
-Des ablutions rituelles du sanctuaire mosaïque qui enseignaient la pureté requise pour s'approcher du Dieu trois fois saint jusqu'à la purification morale quotidienne de l'Église, temple de l'Esprit (2 Co 6.16–7.1).
+Des ablutions rituelles du sanctuaire mosaïque qui enseignaient la pureté requise pour s'approcher du Dieu trois fois saint jusqu'à la purification morale quotidienne de l'Église, temple de l'Esprit (2 Co 6.16-7.1).
 
 **Pour votre assemblée**
 
