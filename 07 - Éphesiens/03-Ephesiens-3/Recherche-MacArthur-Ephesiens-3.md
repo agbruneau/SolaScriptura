@@ -63,7 +63,7 @@ Les chrétiens d'Asie Mineure risquaient de se décourager en apprenant que leur
 Deux détails échappent au lecteur moderne.
 
 - **Les trois néologismes en syn- de 3.6 : synklēronoma, syssōma, symmetocha.** Pour exprimer en 3.6 le contenu précis du mystère révélé aux apôtres et prophètes du Nouveau Testament, Paul aligne trois adjectifs commençant par *syn-* (dont *syssōma* est un néologisme forgé par Paul lui-même) : les païens convertis sont *cohéritiers* (*synklēronoma*), *membres du même corps* (*syssōma*) et *coparticipants* (*symmetocha*) de la promesse en Jésus-Christ par l'Évangile (1913).
-- **L'Église comme université des anges (3.10) et le super-comparatif dePaul (3.8, 20).** En 3.8, Paul forge le comparatif d'un superlatif *elachistoterō pantōn hagiōn* (« à moi, qui suis plus petit que le plus petit de tous les saints »); en 3.10, il révèle que l'Église est le théâtre par lequel la sagesse « infiniment variée » (*polypoikilos*, aux mille nuances comme une tapisserie brodée) de Dieu est enseignée aux dominations et aux autorités célestes; et en 3.20, il forge le double composé *hyperekperissou* (« infiniment au-delà de toute mesure », 1914, 1918).
+- **L'Église comme université des anges (3.10) et le super-comparatif de Paul (3.8, 20).** En 3.8, Paul forge le comparatif d'un superlatif *elachistoterō pantōn hagiōn* (« à moi, qui suis plus petit que le plus petit de tous les saints »); en 3.10, il révèle que l'Église est le théâtre par lequel la sagesse « infiniment variée » (*polypoikilos*, aux mille nuances comme une tapisserie brodée) de Dieu est enseignée aux dominations et aux autorités célestes; et en 3.20, il forge le double composé *hyperekperissou* (« infiniment au-delà de toute mesure », 1914, 1918).
 
 ## État du texte
 

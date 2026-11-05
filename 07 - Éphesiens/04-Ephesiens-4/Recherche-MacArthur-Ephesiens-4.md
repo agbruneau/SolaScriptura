@@ -105,7 +105,7 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus pour Ép 4.1-32
 
 **Observations grammaticales**
 
-- **4.11.** Dans *tous de poimenas kai didaskalous* (« les autres comme pasteurs et docteurs »), un seul article défini pluriel *tous* gouverne les deux substantifs coordonnés par *kai* (règle de Granville Sharp appliquée aux pluriels désignant une fonction unique) : dans le Nouveau Testament, le pasteur et le docteur constituent un seul et même office pastoral d'enseignement et de berger (MacArthur, 1926).
+- **4.11.** Dans *tous de poimenas kai didaskalous* (« les autres comme pasteurs et docteurs »), un seul article défini pluriel *tous* gouverne les deux substantifs coordonnés par *kai* (construction qui, sans relever de la règle de Granville Sharp, réservée au singulier, unit étroitement les deux termes) : dans le Nouveau Testament, le pasteur et le docteur constituent un seul et même office pastoral d'enseignement et de berger (MacArthur, 1926).
 - **4.22-24.** Les deux infinitifs aoristes moyens ***apothesthai** hymas... ton palaion anthrōpon* (« avoir dépouillé le vieil homme », v. 22) et *kai **endysasthai** ton kainon anthrōpon* (« et avoir revêtu l'homme nouveau », v. 24) encadrent l'infinitif présent passif ***ananeousthai** de tō pneumati tou noos hymōn* (« et d'être continuellement renouvelés dans l'esprit de votre intelligence », v. 23).
 
 ## Étude des mots-clés
