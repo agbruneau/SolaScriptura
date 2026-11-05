@@ -52,7 +52,7 @@
 
 > « afin que, comme le péché a régné par la mort, ainsi la grâce règne par la justice pour la vie éternelle, par Jésus-Christ notre Seigneur. » (Romains 5.21, NEG)
 
-Couronnement de la grande section sur la justification (3.21–5.21) et pont théologique vers la section sur la sanctification et la glorification (6.1–8.39), le chapitre 5 répond à une question décisive : celui qui a été déclaré juste par la foi seule (3.21–4.25) peut-il jamais perdre ce salut et retomber sous la colère de Dieu ? John MacArthur (45-40) montre que tout le chapitre 5 est un traité sur la **sécurité éternelle du croyant**, démontrée d'abord par les conséquences irréversibles de la justification et de la réconciliation (5.1-11), puis par le transfert fédéral du croyant hors de la solidarité condamnée d'Adam vers la solidarité victorieuse de Jésus-Christ (5.12-21).
+Couronnement de la grande section sur la justification (3.21-5.21) et pont théologique vers la section sur la sanctification et la glorification (6.1-8.39), le chapitre 5 répond à une question décisive : celui qui a été déclaré juste par la foi seule (3.21-4.25) peut-il jamais perdre ce salut et retomber sous la colère de Dieu ? John MacArthur (45-40) montre que tout le chapitre 5 est un traité sur la **sécurité éternelle du croyant**, démontrée d'abord par les conséquences irréversibles de la justification et de la réconciliation (5.1-11), puis par le transfert fédéral du croyant hors de la solidarité condamnée d'Adam vers la solidarité victorieuse de Jésus-Christ (5.12-21).
 
 Le genre littéraire du chapitre unit l'exhortation doxologique à la première personne du pluriel (« nous avons la paix... nous nous glorifions », 5.1-11, qui anticipe terme à terme le chapitre 8) et le grand parallèle typologique et fédéral entre les deux chefs représentatifs de l'humanité, Adam et Christ (5.12-21).
 
@@ -79,10 +79,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 21 versets 
 
 **Plan de la péricope**
 
-- **5.1–5.** Les bénédictions présentes de la justification : la paix avec Dieu, la position permanente dans la grâce, l'espérance de la gloire affermie par l'épreuve et l'amour de Dieu répandu par l'Esprit. Marqueur : Ouverture conclusive *Dikaiōthentes oun ek pisteōs eirēnēn echomen pros ton Theon* (v. 1-5).
-- **5.6–11.** Le fondement objectif de l'assurance éternelle : l'amour de Dieu prouvé par la mort de Christ pour des ennemis et la certitude absolue d'être sauvés de la colère par sa vie. Marqueur : Démonstration historique *Eti gar Christos ontōn hēmōn asthenōn...* (v. 6-8) et double *pollō oun mallon* (v. 9-11).
-- **5.12–14.** Le règne universel du péché et de la mort par un seul homme : l'imputation de la faute d'Adam à toute sa postérité, attestée par la mort universelle de d'Adam à Moïse. Marqueur : Comparaison inaugurale *Dia touto hōsper di' henos anthrōpou hē hamartia eis ton kosmon eisēlthen* (v. 12-14).
-- **5.15–21.** Le règne surabondant de la grâce et de la vie par un seul homme, Jésus-Christ : l'obéissance du dernier Adam qui constitue justes les siens et triomphe là où le péché avait abondé. Marqueur : Contraste *All' ouch hōs to paraptōma, houtōs kai to charisma* (v. 15-17) et récapitulation *Ara oun hōs di' henos...* (v. 18-21).
+- **5.1-5.** Les bénédictions présentes de la justification : la paix avec Dieu, la position permanente dans la grâce, l'espérance de la gloire affermie par l'épreuve et l'amour de Dieu répandu par l'Esprit. Marqueur : Ouverture conclusive *Dikaiōthentes oun ek pisteōs eirēnēn echomen pros ton Theon* (v. 1-5).
+- **5.6-11.** Le fondement objectif de l'assurance éternelle : l'amour de Dieu prouvé par la mort de Christ pour des ennemis et la certitude absolue d'être sauvés de la colère par sa vie. Marqueur : Démonstration historique *Eti gar Christos ontōn hēmōn asthenōn...* (v. 6-8) et double *pollō oun mallon* (v. 9-11).
+- **5.12-14.** Le règne universel du péché et de la mort par un seul homme : l'imputation de la faute d'Adam à toute sa postérité, attestée par la mort universelle de d'Adam à Moïse. Marqueur : Comparaison inaugurale *Dia touto hōsper di' henos anthrōpou hē hamartia eis ton kosmon eisēlthen* (v. 12-14).
+- **5.15-21.** Le règne surabondant de la grâce et de la vie par un seul homme, Jésus-Christ : l'obéissance du dernier Adam qui constitue justes les siens et triomphe là où le péché avait abondé. Marqueur : Contraste *All' ouch hōs to paraptōma, houtōs kai to charisma* (v. 15-17) et récapitulation *Ara oun hōs di' henos...* (v. 18-21).
 
 **Observations grammaticales**
 

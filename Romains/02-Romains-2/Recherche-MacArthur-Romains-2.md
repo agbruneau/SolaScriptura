@@ -68,13 +68,13 @@
 
 > « Mais le Juif, c’est celui qui l’est intérieurement; et la circoncision, c’est celle du cœur, selon l’Esprit et non selon la lettre. La louange de ce Juif ne vient pas des hommes, mais de Dieu. » (Romains 2.29, NEG)
 
-Deuxième volet du réquisitoire universel de 1.18–3.20, le chapitre 2 se tourne brusquement vers le lecteur moraliste (païen philosophe ou Juif propre-juste) qui applaudissait avec suffisance la condamnation des païens dépravés du chapitre 1 tout en se croyant lui-même à l'abri de la colère divine. Passant de la troisième personne du pluriel (« ils » en 1.18-32) à la deuxième personne du singulier (« O homme, qui que tu sois, toi qui juges », 2.1), Paul démontre que le moraliste hypocrite (2.1-16) et le Juif fier de ses privilèges religieux (2.17-29) sont tout aussi inexcusables et condamnés devant le tribunal impartial de Dieu.
+Deuxième volet du réquisitoire universel de 1.18-3.20, le chapitre 2 se tourne brusquement vers le lecteur moraliste (païen philosophe ou Juif propre-juste) qui applaudissait avec suffisance la condamnation des païens dépravés du chapitre 1 tout en se croyant lui-même à l'abri de la colère divine. Passant de la troisième personne du pluriel (« ils » en 1.18-32) à la deuxième personne du singulier (« O homme, qui que tu sois, toi qui juges », 2.1), Paul démontre que le moraliste hypocrite (2.1-16) et le Juif fier de ses privilèges religieux (2.17-29) sont tout aussi inexcusables et condamnés devant le tribunal impartial de Dieu.
 
 Le genre littéraire du chapitre est un chef-d'œuvre de la diatribe judiciaire antique : Paul interpelle directement un interlocuteur fictif (« O homme », 2.1, 3; « Mais si toi, tu portes le nom de Juif », 2.17), expose les principes immuables du jugement dernier et démantèle l'une après l'autre toutes les fausses sécurités religieuses.
 
 ## Arrière-plan historique et culturel
 
-Dans le judaïsme du Second Temple (illustré par la littérature rabbinique, le livre des Jubilés et les écrits de Philon), il était couramment enseigné qu'aucun Israélite circoncis ne descendrait dans la géhenne - certains rabbins affirmant même qu'Abraham se tenait assis à la porte de l'enfer pour empêcher tout Juif circoncis d'y entrer, et que Dieu jugeait les nations avec sévérité mais Israël avec indulgence (cf. Sagesse de Salomon 11–15; 45-17, 45-22).
+Dans le judaïsme du Second Temple (illustré par la littérature rabbinique, le livre des Jubilés et les écrits de Philon), il était couramment enseigné qu'aucun Israélite circoncis ne descendrait dans la géhenne - certains rabbins affirmant même qu'Abraham se tenait assis à la porte de l'enfer pour empêcher tout Juif circoncis d'y entrer, et que Dieu jugeait les nations avec sévérité mais Israël avec indulgence (cf. Sagesse de Salomon 11-15; 45-17, 45-22).
 
 De même, les moralistes gréco-romains (comme le stoïcien Sénèque, contemporain de Paul à Rome) fustigeaient les vices grossiers de la populace dans leurs traités tout en les pratiquant eux-mêmes en secret. Paul abat d'un seul coup ce double rempart d'autosuffisance morale et ethnique en proclamant que « devant Dieu il n'y a point de favoritisme » (2.11).
 
@@ -94,10 +94,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 29 versets 
 
 **Plan de la péricope**
 
-- **2.1–5.** Le jugement selon la vérité et la culpabilité accumulée : l'hypocrisie du moraliste qui condamne autrui tout en méprisant les richesses de la bonté et de la patience de Dieu. Marqueur : Apostrophe *Dio anapologētos ei, ō anthrōpe pas ho krinōn* (v. 1) et avertissement sur le « jour de la colère » (v. 5).
-- **2.6–11.** Le jugement selon les œuvres et sans favoritisme (sans acception de personnes) : la rétribution impartiale du Juif premièrement, puis du Grec. Marqueur : Citation du Psaume 62.13 (*hos apodōsei hekastō kata ta erga autou*, v. 6) et axiome d'impartialité (v. 11).
-- **2.12–16.** Le jugement selon la pratique de la loi et les secrets du cœur : la condamnation de ceux qui ont péché sans la loi ou sous la loi au jour où Dieu jugera par Jésus-Christ. Marqueur : Parallélisme *Hosoi gar anomōs hēmarton... kai hosoi en nomō hēmarton* (v. 12) et conclusion eschatologique *en hēmera hote krinei ho Theos ta krypta tōn anthrōpōn* (v. 16).
-- **2.17–29.** La démolition de la fausse sécurité du Juif religieux : l'insuffisance du nom, du savoir théorique et de la circoncision charnelle face à la circoncision du cœur par l'Esprit. Marqueur : Interpellation *Ei de sy Ioudaios eponomazē* (v. 17-24) et antithèse *Ou gar ho en tō phanerō Ioudaios estin... all' ho en tō kryptō Ioudaios* (v. 25-29).
+- **2.1-5.** Le jugement selon la vérité et la culpabilité accumulée : l'hypocrisie du moraliste qui condamne autrui tout en méprisant les richesses de la bonté et de la patience de Dieu. Marqueur : Apostrophe *Dio anapologētos ei, ō anthrōpe pas ho krinōn* (v. 1) et avertissement sur le « jour de la colère » (v. 5).
+- **2.6-11.** Le jugement selon les œuvres et sans favoritisme (sans acception de personnes) : la rétribution impartiale du Juif premièrement, puis du Grec. Marqueur : Citation du Psaume 62.13 (*hos apodōsei hekastō kata ta erga autou*, v. 6) et axiome d'impartialité (v. 11).
+- **2.12-16.** Le jugement selon la pratique de la loi et les secrets du cœur : la condamnation de ceux qui ont péché sans la loi ou sous la loi au jour où Dieu jugera par Jésus-Christ. Marqueur : Parallélisme *Hosoi gar anomōs hēmarton... kai hosoi en nomō hēmarton* (v. 12) et conclusion eschatologique *en hēmera hote krinei ho Theos ta krypta tōn anthrōpōn* (v. 16).
+- **2.17-29.** La démolition de la fausse sécurité du Juif religieux : l'insuffisance du nom, du savoir théorique et de la circoncision charnelle face à la circoncision du cœur par l'Esprit. Marqueur : Interpellation *Ei de sy Ioudaios eponomazē* (v. 17-24) et antithèse *Ou gar ho en tō phanerō Ioudaios estin... all' ho en tō kryptō Ioudaios* (v. 25-29).
 
 **Observations grammaticales**
 

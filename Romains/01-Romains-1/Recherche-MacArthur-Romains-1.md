@@ -74,7 +74,7 @@
 
 > « Et, bien qu’ils connaissent le jugement de Dieu, déclarant dignes de mort ceux qui commettent de telles choses, non seulement ils les font, mais encore ils approuvent ceux qui les font. » (Romains 1.32, NEG)
 
-Chapitre d'ouverture de la plus grande lettre doctrinale du Nouveau Testament, Romains 1 pose à la fois le cadre apostolique, le thème directeur de toute l'épître (1.16-17) et le premier acte du réquisitoire universel de Dieu contre le péché humain (1.18-32, début de la grande section 1.18–3.20 sur la condamnation). Avant d'exposer comment Dieu justifie le pécheur par la foi seule (ch. 3.21–5.21), Paul démontre pourquoi l'humanité entière se trouve sous la colère de Dieu et dans l'impossibilité absolue de se sauver elle-même.
+Chapitre d'ouverture de la plus grande lettre doctrinale du Nouveau Testament, Romains 1 pose à la fois le cadre apostolique, le thème directeur de toute l'épître (1.16-17) et le premier acte du réquisitoire universel de Dieu contre le péché humain (1.18-32, début de la grande section 1.18-3.20 sur la condamnation). Avant d'exposer comment Dieu justifie le pécheur par la foi seule (ch. 3.21-5.21), Paul démontre pourquoi l'humanité entière se trouve sous la colère de Dieu et dans l'impossibilité absolue de se sauver elle-même.
 
 Le genre littéraire du chapitre unit la salutation épistolaire la plus développée de tout le corpus paulinien (une phrase unique de 93 mots grecs en 1.1-7), l'action de grâces et le propos missionnaire personnel (1.8-15), la proposition rhétorique ou thèse (*propositio*) de l'épître (1.16-17) et le réquisitoire prophétique et judiciaire contre l'idolâtrie et la dépravation païennes (1.18-32).
 
@@ -101,10 +101,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 32 versets 
 
 **Plan de la péricope**
 
-- **1.1–7.** La salutation apostolique : Paul, serviteur mis à part pour l'Évangile de Dieu promis par les prophètes et accompli en Jésus-Christ, Fils de David et Fils de Dieu ressuscité. Marqueur : Période inaugurale de 93 mots grecs *Paulos doulos Christou Iēsou, klētos apostolos aphōrismenos eis euangelion Theou...* (v. 1-7).
-- **1.8–15.** Le cœur pastoral et missionnaire de l'apôtre : son action de grâces, son intercession incessante, son désir d'affermir les Romains et sa dette envers tous les hommes. Marqueur : Ouverture *Prōton men eucharistō tō Theō mou* (v. 8-12) et déclaration d'obligation *Hellēsin te kai barbarois... opheiletēs eimi* (v. 13-15).
-- **1.16–17.** La proposition thématique de l'épître : l'Évangile est la puissance de Dieu pour le salut de quiconque croit, car en lui est révélée la justice de Dieu par la foi. Marqueur : Confession solennelle *Ou gar epaischynomai to euangelion* et citation d'Habacuc 2.4 (v. 16-17).
-- **1.18–32.** La révélation de la colère de Dieu contre l'impiété païenne : l'étouffement de la vérité révélée dans la création, la folie idolâtre et le triple abandon divin à la corruption. Marqueur : Annonce *Apokalyptetai gar orgē Theou ap' ouranou* (v. 18-23) et triple refrain *paredōken autous ho Theos* (v. 24-32).
+- **1.1-7.** La salutation apostolique : Paul, serviteur mis à part pour l'Évangile de Dieu promis par les prophètes et accompli en Jésus-Christ, Fils de David et Fils de Dieu ressuscité. Marqueur : Période inaugurale de 93 mots grecs *Paulos doulos Christou Iēsou, klētos apostolos aphōrismenos eis euangelion Theou...* (v. 1-7).
+- **1.8-15.** Le cœur pastoral et missionnaire de l'apôtre : son action de grâces, son intercession incessante, son désir d'affermir les Romains et sa dette envers tous les hommes. Marqueur : Ouverture *Prōton men eucharistō tō Theō mou* (v. 8-12) et déclaration d'obligation *Hellēsin te kai barbarois... opheiletēs eimi* (v. 13-15).
+- **1.16-17.** La proposition thématique de l'épître : l'Évangile est la puissance de Dieu pour le salut de quiconque croit, car en lui est révélée la justice de Dieu par la foi. Marqueur : Confession solennelle *Ou gar epaischynomai to euangelion* et citation d'Habacuc 2.4 (v. 16-17).
+- **1.18-32.** La révélation de la colère de Dieu contre l'impiété païenne : l'étouffement de la vérité révélée dans la création, la folie idolâtre et le triple abandon divin à la corruption. Marqueur : Annonce *Apokalyptetai gar orgē Theou ap' ouranou* (v. 18-23) et triple refrain *paredōken autous ho Theos* (v. 24-32).
 
 **Observations grammaticales**
 

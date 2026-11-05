@@ -79,10 +79,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 21 versets 
 
 **Plan de la péricope**
 
-- **12.1–2.** Le sacrifice vivant et l'intelligence renouvelée : l'appel fondé sur les compassions de Dieu à offrir nos corps et à être transfigurés pour discerner sa volonté parfaite. Marqueur : Exhortation cardinale *Parakalō oun hymas, adelphoi, dia tōn oiktirmōn tou Theou...* (v. 1-2).
-- **12.3–8.** L'humilité et le service dans le corps de Christ : l'unité dans la diversité des membres et l'exercice fidèle des sept dons de la grâce. Marqueur : Instruction *Legō gar dia tēs charitos tēs dotheisēs moi panti tō onti en hymin...* (v. 3-8).
-- **12.9–13.** L'amour sans hypocrisie au sein de la famille de Dieu : l'horreur du mal, la tendresse fraternelle, la ferveur, la persévérance dans la prière et l'hospitalité. Marqueur : Titre programmatique *Hē agapē anypokritos* suivi des participes d'édification mutuelle (v. 9-13).
-- **12.14–21.** L'amour chrétien face au monde hostile : bénir ses persécuteurs, rechercher la paix, remettre la vengeance à Dieu et vaincre le mal par le bien. Marqueur : Double impératif *Eulogeite tous diōkontas hymas, eulogeite kai mē katarasthe* (v. 14) et maxime finale *Mē nikō hypo tou kakou...* (v. 21).
+- **12.1-2.** Le sacrifice vivant et l'intelligence renouvelée : l'appel fondé sur les compassions de Dieu à offrir nos corps et à être transfigurés pour discerner sa volonté parfaite. Marqueur : Exhortation cardinale *Parakalō oun hymas, adelphoi, dia tōn oiktirmōn tou Theou...* (v. 1-2).
+- **12.3-8.** L'humilité et le service dans le corps de Christ : l'unité dans la diversité des membres et l'exercice fidèle des sept dons de la grâce. Marqueur : Instruction *Legō gar dia tēs charitos tēs dotheisēs moi panti tō onti en hymin...* (v. 3-8).
+- **12.9-13.** L'amour sans hypocrisie au sein de la famille de Dieu : l'horreur du mal, la tendresse fraternelle, la ferveur, la persévérance dans la prière et l'hospitalité. Marqueur : Titre programmatique *Hē agapē anypokritos* suivi des participes d'édification mutuelle (v. 9-13).
+- **12.14-21.** L'amour chrétien face au monde hostile : bénir ses persécuteurs, rechercher la paix, remettre la vengeance à Dieu et vaincre le mal par le bien. Marqueur : Double impératif *Eulogeite tous diōkontas hymas, eulogeite kai mē katarasthe* (v. 14) et maxime finale *Mē nikō hypo tou kakou...* (v. 21).
 
 **Observations grammaticales**
 

@@ -64,9 +64,9 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 14 versets 
 
 **Plan de la péricope**
 
-- **13.1–7.** La soumission du chrétien aux autorités civiles instituées par Dieu : leur origine divine, leur ministère judiciaire du glaive et le paiement loyal des impôts et de l'honneur. Marqueur : Impératif universel *Pasa psychē exousiais hyperechousais hypotassesthō* (v. 1) et conclusion pratique *Apodote pasin tas opheilas* (v. 7).
-- **13.8–10.** La dette inépuisable de l'amour mutuel, récapitulation de tous les commandements de la loi envers le prochain. Marqueur : Impératif *Mēdeni mēden opheilete ei mē to allēlous agapan* (v. 8) et inclusion sur l'accomplissement de la loi (*plēroō* v. 8 / *plērōma* v. 10).
-- **13.11–14.** Le réveil eschatologique à l'approche du jour du salut : dépouiller les œuvres des ténèbres et revêtir le Seigneur Jésus-Christ. Marqueur : Transition temporelle *Kai touto eidotes ton kairon* (v. 11) et double impératif final *endysasthe ton Kyrion Iēsoun Christon...* (v. 14).
+- **13.1-7.** La soumission du chrétien aux autorités civiles instituées par Dieu : leur origine divine, leur ministère judiciaire du glaive et le paiement loyal des impôts et de l'honneur. Marqueur : Impératif universel *Pasa psychē exousiais hyperechousais hypotassesthō* (v. 1) et conclusion pratique *Apodote pasin tas opheilas* (v. 7).
+- **13.8-10.** La dette inépuisable de l'amour mutuel, récapitulation de tous les commandements de la loi envers le prochain. Marqueur : Impératif *Mēdeni mēden opheilete ei mē to allēlous agapan* (v. 8) et inclusion sur l'accomplissement de la loi (*plēroō* v. 8 / *plērōma* v. 10).
+- **13.11-14.** Le réveil eschatologique à l'approche du jour du salut : dépouiller les œuvres des ténèbres et revêtir le Seigneur Jésus-Christ. Marqueur : Transition temporelle *Kai touto eidotes ton kairon* (v. 11) et double impératif final *endysasthe ton Kyrion Iēsoun Christon...* (v. 14).
 
 **Observations grammaticales**
 

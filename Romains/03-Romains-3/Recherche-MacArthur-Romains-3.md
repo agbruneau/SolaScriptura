@@ -72,7 +72,7 @@
 
 > « Annulons-nous donc la loi par la foi? Loin de là! Au contraire, nous confirmons la loi. » (Romains 3.31, NEG)
 
-Chapitre charnière de toute l'épître aux Romains - et de toute la Bible -, Romains 3 rassemble à la fois le point le plus sombre du réquisitoire contre le péché humain (3.1-20, conclusion de la première grande section 1.18–3.20) et l'aurore éblouissante de la justification par la foi seule (3.21-31, ouverture de la deuxième grande section 3.21–5.21). Après avoir répondu aux quatre objections soulevées par l'incrédulité juive (3.1-8) et dressé le réquisitoire scripturaire qui déclare le monde entier coupable devant Dieu (3.9-20), Paul prononce au verset 21 les deux mots qui changent le destin éternel du pécheur : « Mais maintenant » (*Nyni de*), sans la loi est manifestée la justice de Dieu.
+Chapitre charnière de toute l'épître aux Romains - et de toute la Bible -, Romains 3 rassemble à la fois le point le plus sombre du réquisitoire contre le péché humain (3.1-20, conclusion de la première grande section 1.18-3.20) et l'aurore éblouissante de la justification par la foi seule (3.21-31, ouverture de la deuxième grande section 3.21-5.21). Après avoir répondu aux quatre objections soulevées par l'incrédulité juive (3.1-8) et dressé le réquisitoire scripturaire qui déclare le monde entier coupable devant Dieu (3.9-20), Paul prononce au verset 21 les deux mots qui changent le destin éternel du pécheur : « Mais maintenant » (*Nyni de*), sans la loi est manifestée la justice de Dieu.
 
 Le genre littéraire du chapitre unit la diatribe apologétique (quatre paires de questions-réponses rapides en 3.1-8 et trois autres en 3.27-31), le florilège biblique en chaîne (*haraz* de six textes de l'Ancien Testament en 3.10-18) et l'exposé dogmatique et sotériologique le plus dense de l'Écriture (3.21-26).
 
@@ -99,10 +99,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 31 versets 
 
 **Plan de la péricope**
 
-- **3.1–8.** La réponse aux quatre objections juives : l'avantage des oracles divins, la fidélité immuable de Dieu malgré l'infidélité de l'homme et le juste jugement des calomniateurs. Marqueur : Quatre questions rhétoriques *Ti oun to perisson tou Ioudaiou...* (v. 1, 3, 5, 7) ponctuées par *mē genoito* (v. 4, 6).
-- **3.9–20.** Le verdict final de condamnation universelle : Juifs et Grecs sont tous sous l'empire du péché, toute bouche est fermée et nul n'est justifié par les œuvres de la loi. Marqueur : Accusation *proētiometha gar Ioudaious te kai Hellēnas pantas hyph' hamartian einai* (v. 9), chaîne de citations (v. 10-18) et sentence (v. 19-20).
-- **3.21–26.** La manifestation de la justice de Dieu sans la loi : la justification gratuite par la grâce, au moyen de la rédemption et de la propitiation dans le sang de Jésus-Christ. Marqueur : Pivot eschatologique et sotériologique *Nyni de chōris nomou dikaiosynē Theou pephanerōtai* (v. 21-26).
-- **3.27–31.** Les conséquences de la justification par la foi seule : l'exclusion de toute vantardise, l'unicité du Dieu des Juifs et des païens et l'affermissement de la loi. Marqueur : Dialogue final *Pou oun hē kauchēsis ? Exekleisthē* (v. 27-31).
+- **3.1-8.** La réponse aux quatre objections juives : l'avantage des oracles divins, la fidélité immuable de Dieu malgré l'infidélité de l'homme et le juste jugement des calomniateurs. Marqueur : Quatre questions rhétoriques *Ti oun to perisson tou Ioudaiou...* (v. 1, 3, 5, 7) ponctuées par *mē genoito* (v. 4, 6).
+- **3.9-20.** Le verdict final de condamnation universelle : Juifs et Grecs sont tous sous l'empire du péché, toute bouche est fermée et nul n'est justifié par les œuvres de la loi. Marqueur : Accusation *proētiometha gar Ioudaious te kai Hellēnas pantas hyph' hamartian einai* (v. 9), chaîne de citations (v. 10-18) et sentence (v. 19-20).
+- **3.21-26.** La manifestation de la justice de Dieu sans la loi : la justification gratuite par la grâce, au moyen de la rédemption et de la propitiation dans le sang de Jésus-Christ. Marqueur : Pivot eschatologique et sotériologique *Nyni de chōris nomou dikaiosynē Theou pephanerōtai* (v. 21-26).
+- **3.27-31.** Les conséquences de la justification par la foi seule : l'exclusion de toute vantardise, l'unicité du Dieu des Juifs et des païens et l'affermissement de la loi. Marqueur : Dialogue final *Pou oun hē kauchēsis ? Exekleisthē* (v. 27-31).
 
 **Observations grammaticales**
 

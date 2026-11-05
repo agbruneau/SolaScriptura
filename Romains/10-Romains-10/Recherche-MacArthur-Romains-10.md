@@ -79,10 +79,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 21 versets 
 
 **Plan de la péricope**
 
-- **10.1–4.** La prière de Paul et la cause de l'échec d'Israël : un zèle sans intelligence qui cherche à établir sa propre justice au lieu de se soumettre à Christ, la fin de la loi. Marqueur : Vœu d'intercession *Adelphoi, hē men eudokia tēs emēs kardias...* (v. 1-3) et déclaration *telos gar nomou Christos* (v. 4).
-- **10.5–10.** Le contraste entre la justice de la loi et la justice de la foi : la parole de la foi tout près de nous dans la confession du Seigneur Jésus et la foi en sa résurrection. Marqueur : Opposition *Mōysēs gar graphei... hē de ek pisteōs dikaiosynē houtōs legei* (v. 5-8) et confession du salut (v. 9-10).
-- **10.11–15.** L'offre universelle du salut et la nécessité de la prédication missionnaire : quiconque invoquera le nom du Seigneur sera sauvé, mais comment entendront-ils sans prédicateur ?. Marqueur : Citations d'Ésaïe 28.16 et Joël 2.32 (v. 11-13) et quatre questions *Pōs oun...* couronnées par Ésaïe 52.7 (v. 14-15).
-- **10.16–21.** L'incrédulité inexcusable d'Israël : bien qu'ayant entendu et compris la parole de Christ, la nation rebelle a rejeté les mains tendues de Dieu. Marqueur : Constat *All' ou pantes hypēkousan tō euangeliō* (v. 16-17) et double objection *Alla legō, mē ouk ēkousan ?... mē Israēl ouk egnō ?* (v. 18-21).
+- **10.1-4.** La prière de Paul et la cause de l'échec d'Israël : un zèle sans intelligence qui cherche à établir sa propre justice au lieu de se soumettre à Christ, la fin de la loi. Marqueur : Vœu d'intercession *Adelphoi, hē men eudokia tēs emēs kardias...* (v. 1-3) et déclaration *telos gar nomou Christos* (v. 4).
+- **10.5-10.** Le contraste entre la justice de la loi et la justice de la foi : la parole de la foi tout près de nous dans la confession du Seigneur Jésus et la foi en sa résurrection. Marqueur : Opposition *Mōysēs gar graphei... hē de ek pisteōs dikaiosynē houtōs legei* (v. 5-8) et confession du salut (v. 9-10).
+- **10.11-15.** L'offre universelle du salut et la nécessité de la prédication missionnaire : quiconque invoquera le nom du Seigneur sera sauvé, mais comment entendront-ils sans prédicateur ?. Marqueur : Citations d'Ésaïe 28.16 et Joël 2.32 (v. 11-13) et quatre questions *Pōs oun...* couronnées par Ésaïe 52.7 (v. 14-15).
+- **10.16-21.** L'incrédulité inexcusable d'Israël : bien qu'ayant entendu et compris la parole de Christ, la nation rebelle a rejeté les mains tendues de Dieu. Marqueur : Constat *All' ou pantes hypēkousan tō euangeliō* (v. 16-17) et double objection *Alla legō, mē ouk ēkousan ?... mē Israēl ouk egnō ?* (v. 18-21).
 
 **Observations grammaticales**
 

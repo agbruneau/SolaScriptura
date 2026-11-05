@@ -83,8 +83,8 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 23 versets 
 
 **Plan de la péricope**
 
-- **14.1–12.** Accueillir son frère sans le mépriser ni le juger : Dieu l'a accueilli, Christ est le seul Seigneur des vivants et des morts, et chacun comparaîtra devant le tribunal de Dieu. Marqueur : Impératif d'ouverture *Ton de asthenounta tē pistei proslambanesthe* (v. 1) et conclusion judiciaire *ara oun hekastos hēmōn peri heautou logon dōsei tō Theō* (v. 12).
-- **14.13–23.** Édifier son frère sans le faire trébucher : renoncer par amour à sa liberté alimentaire, chercher la justice, la paix et la joie du royaume, et ne jamais violer sa conscience. Marqueur : Pivot *Mēketi oun allēlous krinōmen, alla touto krinate mallon...* (v. 13) et maxime finale sur la conscience (*pan de ho ouk ek pisteōs hamartia estin*, v. 23).
+- **14.1-12.** Accueillir son frère sans le mépriser ni le juger : Dieu l'a accueilli, Christ est le seul Seigneur des vivants et des morts, et chacun comparaîtra devant le tribunal de Dieu. Marqueur : Impératif d'ouverture *Ton de asthenounta tē pistei proslambanesthe* (v. 1) et conclusion judiciaire *ara oun hekastos hēmōn peri heautou logon dōsei tō Theō* (v. 12).
+- **14.13-23.** Édifier son frère sans le faire trébucher : renoncer par amour à sa liberté alimentaire, chercher la justice, la paix et la joie du royaume, et ne jamais violer sa conscience. Marqueur : Pivot *Mēketi oun allēlous krinōmen, alla touto krinate mallon...* (v. 13) et maxime finale sur la conscience (*pan de ho ouk ek pisteōs hamartia estin*, v. 23).
 
 **Observations grammaticales**
 

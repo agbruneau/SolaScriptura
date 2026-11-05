@@ -83,10 +83,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 23 versets 
 
 **Plan de la péricope**
 
-- **6.1–10.** Le fait accompli de notre union avec Christ : morts au péché, ensevelis avec Christ et ressuscités pour marcher en nouveauté de vie, le vieil homme ayant été crucifié. Marqueur : Question *Epimenōmen tē hamartia... Mē genoito. Hoitines apethanomen tē hamartia, pōs eti zēsomen en autē ?* (v. 1-10).
-- **6.11–14.** Le premier appel à l'action de l'épître : se regarder comme morts au péché et vivants pour Dieu, refuser le règne du péché et livrer ses membres à Dieu sous la grâce. Marqueur : Quatre impératifs *logizesthe... mē basileuetō... mēde paristanete... alla parastēsate* (v. 11-14).
-- **6.15–18.** Le changement de maître : affranchis de l'esclavage du péché grâce à l'obéissance de cœur à la saine doctrine, nous sommes devenus esclaves de la justice. Marqueur : Seconde question *Hamartēsōmen, hoti ouk esmen hypo nomon all' hypo charin ? Mē genoito* et action de grâces *charis de tō Theō* (v. 15-18).
-- **6.19–23.** Les deux fruits et les deux salaires : de la honte et de la mort produites par l'esclavage du péché au fruit de la sainteté et au don gratuit de la vie éternelle en Jésus-Christ. Marqueur : Exhortation *houtōs nyn parastēsate ta melē hymōn doula tē dikaiosynē eis hagiasmon* (v. 19) et sentence finale (v. 23).
+- **6.1-10.** Le fait accompli de notre union avec Christ : morts au péché, ensevelis avec Christ et ressuscités pour marcher en nouveauté de vie, le vieil homme ayant été crucifié. Marqueur : Question *Epimenōmen tē hamartia... Mē genoito. Hoitines apethanomen tē hamartia, pōs eti zēsomen en autē ?* (v. 1-10).
+- **6.11-14.** Le premier appel à l'action de l'épître : se regarder comme morts au péché et vivants pour Dieu, refuser le règne du péché et livrer ses membres à Dieu sous la grâce. Marqueur : Quatre impératifs *logizesthe... mē basileuetō... mēde paristanete... alla parastēsate* (v. 11-14).
+- **6.15-18.** Le changement de maître : affranchis de l'esclavage du péché grâce à l'obéissance de cœur à la saine doctrine, nous sommes devenus esclaves de la justice. Marqueur : Seconde question *Hamartēsōmen, hoti ouk esmen hypo nomon all' hypo charin ? Mē genoito* et action de grâces *charis de tō Theō* (v. 15-18).
+- **6.19-23.** Les deux fruits et les deux salaires : de la honte et de la mort produites par l'esclavage du péché au fruit de la sainteté et au don gratuit de la vie éternelle en Jésus-Christ. Marqueur : Exhortation *houtōs nyn parastēsate ta melē hymōn doula tē dikaiosynē eis hagiasmon* (v. 19) et sentence finale (v. 23).
 
 **Observations grammaticales**
 
@@ -215,7 +215,7 @@ Seigneurie de Christ dans le salut et nécessité de la persévérance dans la s
 
 **Révélation progressive**
 
-Rachetés de la servitude d'Égypte pour servir l'Éternel (Ex 19–20), les croyants de la nouvelle alliance sont affranchis du tyran Péché pour appartenir corps et âme à leur Sauveur (1 Co 6.19-20).
+Rachetés de la servitude d'Égypte pour servir l'Éternel (Ex 19-20), les croyants de la nouvelle alliance sont affranchis du tyran Péché pour appartenir corps et âme à leur Sauveur (1 Co 6.19-20).
 
 **Pour votre assemblée**
 
