@@ -159,7 +159,7 @@ En 3.6-15 (53-14 à 53-16), après deux avertissements antérieurs (lors de sa v
 
 **1 Thessaloniciens 3.10-13 et 4.11-5.14** · *Parallèle direct*
 
-toile de fond directe de toute la seconde épître : 2 Thessaloniciens 1.3-4 constate l'exaucement des prières de 1 Thessaloniciens 3.10-12 pour la croissance de leur foi et de leur amour; 2 Thessaloniciens 2.1-14 clarifie l'ordre entre l'enlèvement de 1 Thessaloniciens 4.13-18 et le jour du Seigneur de 5.1-9; et 2 Thessaloniciens 3.6-15 porte au stade disciplinaire les exhortations au travail paisible de 1 Thessaloniciens 4.11-12 et 5.14 (53-1, 53-8, 53-14).
+Toile de fond directe de toute la seconde épître : 2 Thessaloniciens 1.3-4 constate l'exaucement des prières de 1 Thessaloniciens 3.10-12 pour la croissance de leur foi et de leur amour; 2 Thessaloniciens 2.1-14 clarifie l'ordre entre l'enlèvement de 1 Thessaloniciens 4.13-18 et le jour du Seigneur de 5.1-9; et 2 Thessaloniciens 3.6-15 porte au stade disciplinaire les exhortations au travail paisible de 1 Thessaloniciens 4.11-12 et 5.14 (53-1, 53-8, 53-14).
 
 **Ésaïe 66.15 et 2.10, 19, 21** · *Citation ou allusion*
 
