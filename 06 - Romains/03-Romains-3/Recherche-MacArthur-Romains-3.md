@@ -167,7 +167,7 @@ Après avoir dénoncé dans le sermon *45-28* les sept faux éléments que les r
 - **3.4, 6, 31.** Le triple cri d'indignation apostolique *mē genoito* (« Loin de là ! », v. 4, 6, 31) encadre le chapitre : il défend successivement la véracité de Dieu (v. 4 : « Que Dieu, au contraire, soit reconnu pour vrai, et tout homme pour menteur »), la justice du Juge du monde (v. 6) et la sainteté de la loi confirmée par la foi (v. 31).
 - **3.10-12.** La sextuple négation universelle martelée en trois versets - ***ouk estin** dikaios **oude heis**, **ouk estin** ho syniōn, **ouk estin** ho ekzētōn ton Theon... **ouk estin** ho poiōn chrēstotēta, **ouk estin** heōs henos* (« Il n'y a point de juste, pas même un seul; nul n'est intelligent, nul ne cherche Dieu... il n'en est aucun qui fasse le bien, pas même un seul ») - détruit à la racine tout pélagianisme ou semi-pélagianisme.
 - **3.20, 21, 28.** La répétition stratégique de l'expression *chōris nomou / chōris ergōn nomou* (« sans la loi », v. 21; « sans les œuvres de la loi », v. 28) en réponse à *ex ergōn nomou ou dikaiōthēsetai pasa sarx* (« nul ne sera justifié devant lui par les œuvres de la loi », v. 20) exclut radicalement toute contribution des œuvres humaines à la justification.
-- **3.21-26.** En une seule phrase monumentale (v. 21-26), Paul réunit cinq fois la racine *dik-* : ***dikaiosynē** Theou* (v. 21, 22), ***dikaioumenoi** dōrean* (v. 24), *endeixin tēs **dikaiosynēs** autou* (v. 25, 26), aboutissant au paradoxe glorieux du v. 26 : *eis to einai auton **dikaion** kai **dikaiounta** ton ek pisteōs Iēsou* (« de manière à être **juste** tout en **justifiant** celui qui a la foi en Jésus »).
+- **3.21-26.** En une seule phrase monumentale (v. 21-26), Paul réunit sept fois la racine *dik-* : ***dikaiosynē** Theou* (v. 21, 22), ***dikaioumenoi** dōrean* (v. 24), *endeixin tēs **dikaiosynēs** autou* (v. 25, 26), aboutissant au paradoxe glorieux du v. 26 : *eis to einai auton **dikaion** kai **dikaiounta** ton ek pisteōs Iēsou* (« de manière à être **juste** tout en **justifiant** celui qui a la foi en Jésus »).
 
 ## Renvois et passages parallèles
 
@@ -177,7 +177,7 @@ En Romains 3.4, Paul cite mot pour mot le grec de la Septante du Psaume 50.6 (h�
 
 **Psaumes 14.1-3; 53.2-4; 5.10; 140.4; 10.7; Ésaïe 59.7-8; Psaume 36.2** · *Citation ou allusion*
 
-En Romains 3.10-18, Paul tisse ensemble six passages de la Septante grecque et de l'hébreu massorétique (Ps 14.1-3 [v. 10-12]; Ps 5.10 [v. 13a]; Ps 140.4 [v. 13b]; Ps 10.7 [v. 14]; És 59.7-8 [v. 15-17]; Ps 36.2 [v. 18]) pour établir par les trois parties du canon hébraïque la corruption universelle de l'homme.
+En Romains 3.10-18, Paul tisse ensemble six passages de la Septante grecque et de l'hébreu massorétique (Ps 14.1-3 [v. 10-12]; Ps 5.10 [v. 13a]; Ps 140.4 [v. 13b]; Ps 10.7 [v. 14]; És 59.7-8 [v. 15-17]; Ps 36.2 [v. 18]) pour établir par les Psaumes et les Prophètes la corruption universelle de l'homme.
 
 **Psaume 143.2; Galates 2.16; 3.10-11** · *Citation ou allusion*
 
