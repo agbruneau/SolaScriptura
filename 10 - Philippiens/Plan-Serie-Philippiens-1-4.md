@@ -69,7 +69,7 @@ Affermir l'assurance et la joie des croyants au milieu des épreuves en les amen
 
 ##### Introduction
 1. **Accroche et paradoxe de l'épître :** Comment un homme enchaîné vingt-quatre heures sur vingt-quatre à un soldat prétorien, privé de sa liberté depuis des années, calomnié par des prédicateurs jaloux à Rome et attendant un verdict impérial de vie ou de mort peut-il écrire la lettre la plus joyeuse du Nouveau Testament ?
-2. **Arrière-plan de Actes 16 à Rome :** De la rivière Gangitès (conversion de Lydie) et des ceps de la prison de Philippes (chants à minuit et conversion du geôlier) jusqu'au logement loué de Rome (Actes 28.30-31), le fil d'or de la *koinōnia* (partenariat dans l'Évangile).
+2. **Arrière-plan d'Actes 16 à Rome :** De la rivière Gangitès (conversion de Lydie) et des ceps de la prison de Philippes (chants à minuit et conversion du geôlier) jusqu'au logement loué de Rome (Actes 28.30-31), le fil d'or de la *koinōnia* (partenariat dans l'Évangile).
 3. **Annonce des trois mouvements du chapitre 1 :** La joie de la communion fraternelle et de la prière (1.1-11) ; la joie du ministère au milieu des chaînes et devant la mort (1.12-26) ; l'appel civique à combattre d'une même âme pour la foi de l'Évangile (1.27-30).
 
 ##### I. La reconnaissance et la prière apostoliques pour une communion croissante dans la piété (1.1-11)
