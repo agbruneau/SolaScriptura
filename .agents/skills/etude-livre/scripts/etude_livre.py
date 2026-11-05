@@ -511,7 +511,7 @@ def render_pdf_from_md(md_path: Path, title: str) -> Path:
 
 def cmd_render(args: argparse.Namespace) -> None:
     """Rend le PDF d'un fichier Plan-Serie Markdown et vérifie l'absence de tiret cadratin."""
-    md_path = Path(args.plan_md)
+    md_path = Path(args.plan_md).resolve()
     if not md_path.exists():
         raise FileNotFoundError(f"Fichier Markdown introuvable : {md_path}")
     txt = md_path.read_text(encoding="utf-8").replace("\u2014", "-")
