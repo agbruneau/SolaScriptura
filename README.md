@@ -19,7 +19,7 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | 5 | 2 Corinthiens | très probablement fin 55 ou tout début 56 | peut-être Philippes, en Macédoine | étudiée : [2 Corinthiens](2-Corinthiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2co) |
 | 6 | Romains | très probablement en 56 | Corinthe | étudiée : [Romains](Romains/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/rom) |
 | 7 | Éphésiens | entre 60 et 62 | Rome, première captivité | étudiée : [Éphésiens](Ephesiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/eph) |
-| 8 | Colossiens | vers 60-62 | Rome, première captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
+| 8 | Colossiens | vers 60-62 | Rome, première captivité | étudiée : [Colossiens](Colossiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
 | 9 | Philémon | vers 60-62 | Rome, première captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |
 | 10 | Philippiens | vers 61, sur la fin des deux ans de captivité | Rome, première captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/phi) |
 | 11 | 1 Timothée | vers 62-64 | Macédoine | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
