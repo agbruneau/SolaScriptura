@@ -12,40 +12,40 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 
 | Rang | Épître | Date (apr. J.-C.) | Lieu de rédaction | État dans le dépôt | Source |
 |---:|---|---|---|---|---|
-| 1 | Galates | probablement vers 49-50 | non précisé par MacArthur | étudiée : [Galates](Galates/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/gal) |
-| 2 | 1 Thessaloniciens | vers 51 | Corinthe | étudiée : [1 Thessaloniciens](1-Thessaloniciens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/1th) |
-| 3 | 2 Thessaloniciens | fin 51 ou début 52 | Corinthe | étudiée : [2 Thessaloniciens](2-Thessaloniciens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2th) |
-| 4 | 1 Corinthiens | très probablement dans la première moitié de 55 | Éphèse | étudiée : [1 Corinthiens](1-Corinthiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/1co) |
-| 5 | 2 Corinthiens | très probablement fin 55 ou tout début 56 | peut-être Philippes, en Macédoine | étudiée : [2 Corinthiens](2-Corinthiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2co) |
-| 6 | Romains | très probablement en 56 | Corinthe | étudiée : [Romains](Romains/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/rom) |
-| 7 | Éphésiens | entre 60 et 62 | Rome, première captivité | étudiée : [Éphésiens](Ephesiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/eph) |
-| 8 | Colossiens | vers 60-62 | Rome, première captivité | étudiée : [Colossiens](Colossiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
-| 9 | Philémon | vers 60-62 | Rome, première captivité | étudiée : [Philémon](Philemon/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |
-| 10 | Philippiens | vers 61, sur la fin des deux ans de captivité | Rome, première captivité | étudiée : [Philippiens](Philippiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/phi) |
-| 11 | 1 Timothée | vers 62-64 | Macédoine | étudiée : [1 Timothée](1-Timothee/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
-| 12 | Tite | entre 62 et 64 | Corinthe ou Nicopolis | étudiée : [Tite](Tite/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/tit) |
-| 13 | 2 Timothée | vers 67 | Rome, seconde captivité | étudiée : [2 Timothée](2-Timothee/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
-| 14 | Hébreux | entre 67 et 69 (avant 70) | non précisé (salutations de ceux d'Italie, 13.24) | étudiée : [Hébreux](Hebreux/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/heb) |
+| 1 | Galates | probablement vers 49-50 | non précisé par MacArthur | étudiée : [Galates](<01 - Galates/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/gal) |
+| 2 | 1 Thessaloniciens | vers 51 | Corinthe | étudiée : [1 Thessaloniciens](<02 - 1-Thessaloniciens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1th) |
+| 3 | 2 Thessaloniciens | fin 51 ou début 52 | Corinthe | étudiée : [2 Thessaloniciens](<03 - 2-Thessaloniciens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2th) |
+| 4 | 1 Corinthiens | très probablement dans la première moitié de 55 | Éphèse | étudiée : [1 Corinthiens](<04 - 1-Corinthiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1co) |
+| 5 | 2 Corinthiens | très probablement fin 55 ou tout début 56 | peut-être Philippes, en Macédoine | étudiée : [2 Corinthiens](<05 - 2 - Corinthiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2co) |
+| 6 | Romains | très probablement en 56 | Corinthe | étudiée : [Romains](<06 - Romains/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/rom) |
+| 7 | Éphésiens | entre 60 et 62 | Rome, première captivité | étudiée : [Éphésiens](<07 - Éphesiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/eph) |
+| 8 | Colossiens | vers 60-62 | Rome, première captivité | étudiée : [Colossiens](<08 - Colossiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
+| 9 | Philémon | vers 60-62 | Rome, première captivité | étudiée : [Philémon](<09 - Philemon/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |
+| 10 | Philippiens | vers 61, sur la fin des deux ans de captivité | Rome, première captivité | étudiée : [Philippiens](<10 - Philippiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/phi) |
+| 11 | 1 Timothée | vers 62-64 | Macédoine | étudiée : [1 Timothée](<11 - 1 - Timothée/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
+| 12 | Tite | entre 62 et 64 | Corinthe ou Nicopolis | étudiée : [Tite](<12 - Tite/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/tit) |
+| 13 | 2 Timothée | vers 67 | Rome, seconde captivité | étudiée : [2 Timothée](<13 - 2 - Timothée/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
+| 14 | Hébreux | entre 67 et 69 (avant 70) | non précisé (salutations de ceux d'Italie, 13.24) | étudiée : [Hébreux](<14 - Hébreux/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/heb) |
 
 Les dates, approximatives, et les lieux sont ceux des introductions de MacArthur, et l'ordre les suit. Quand ces introductions ne tranchent pas entre des lettres d'une même période (rangs 7 à 9, puis 11 et 12), l'ordre canonique les départage. Philippiens (rang 10) suit les trois autres lettres de la captivité parce que MacArthur la date de la fin de celle-ci, sans la situer par rapport à elles. Hébreux (rang 14), dont l'auteur humain anonyme appartient au cercle apostolique entourant Paul et Timothée (13.23), prolonge la série à la veille de la destruction du temple de Jérusalem en 70.
 
 ## Dossier d'une épître
 
-Chaque épître aura son dossier à la racine du dépôt, sur le modèle de `Galates/` :
+Chaque épître a son dossier à la racine du dépôt, préfixé de son rang dans la table chronologique ci-dessus (`01 - Galates/` à `14 - Hébreux/`); à l'intérieur, les noms de fichiers gardent le nom court du livre (`Plan-Serie-Galates-1-6.md`). Modèle, `01 - Galates/` :
 
-- [`index.html`](Galates/index.html) : page d'accueil de l'étude.
-- [`Plan-Serie-Galates-1-6.md`](Galates/Plan-Serie-Galates-1-6.md) ([PDF](Galates/Plan-Serie-Galates-1-6.pdf)) : plan de série en six sermons, un par chapitre, regroupés selon les trois blocs de MacArthur (1-2, 3-4, 5-6). Pour chaque sermon : idée centrale, phrase à faire retenir, but, étapes, appuis exégétiques, application, puis transition vers le sermon suivant ou, au sixième, conclusion de la série.
-- `Sommaire/` : recherche sur l'épître entière, base du plan de série ([MD](Galates/Sommaire/Recherche-MacArthur-Galates-1-6.md) · [HTML](Galates/Sommaire/Recherche-MacArthur-Galates-1-6.html) · [PDF](Galates/Sommaire/Recherche-MacArthur-Galates-1-6.pdf) · [JSON](Galates/Sommaire/Recherche-MacArthur-Galates-1-6.json)).
+- [`index.html`](<01 - Galates/index.html>) : page d'accueil de l'étude.
+- [`Plan-Serie-Galates-1-6.md`](<01 - Galates/Plan-Serie-Galates-1-6.md>) ([PDF](<01 - Galates/Plan-Serie-Galates-1-6.pdf>)) : plan de série en six sermons, un par chapitre, regroupés selon les trois blocs de MacArthur (1-2, 3-4, 5-6). Pour chaque sermon : idée centrale, phrase à faire retenir, but, étapes, appuis exégétiques, application, puis transition vers le sermon suivant ou, au sixième, conclusion de la série.
+- `Sommaire/` : recherche sur l'épître entière, base du plan de série ([MD](<01 - Galates/Sommaire/Recherche-MacArthur-Galates-1-6.md>) · [HTML](<01 - Galates/Sommaire/Recherche-MacArthur-Galates-1-6.html>) · [PDF](<01 - Galates/Sommaire/Recherche-MacArthur-Galates-1-6.pdf>) · [JSON](<01 - Galates/Sommaire/Recherche-MacArthur-Galates-1-6.json>)).
 - `01-Galates-1/` à `06-Galates-6/` : un dossier par sermon, dans l'ordre de la série (tableau ci-dessous).
 
 | Sermon | Texte | Titre | Sermons GTY | Recherche |
 |---:|---|---|---|---|
-| 1 | Galates 1 | Aucun autre Évangile | 48-1 à 48-6 | [MD](Galates/01-Galates-1/Recherche-MacArthur-Galates-1.md) · [HTML](Galates/01-Galates-1/Recherche-MacArthur-Galates-1.html) · [PDF](Galates/01-Galates-1/Recherche-MacArthur-Galates-1.pdf) · [JSON](Galates/01-Galates-1/Recherche-MacArthur-Galates-1.json) |
-| 2 | Galates 2 | Justifié par la foi en Christ | 48-7 à 48-10 | [MD](Galates/02-Galates-2/Recherche-MacArthur-Galates-2.md) · [HTML](Galates/02-Galates-2/Recherche-MacArthur-Galates-2.html) · [PDF](Galates/02-Galates-2/Recherche-MacArthur-Galates-2.pdf) · [JSON](Galates/02-Galates-2/Recherche-MacArthur-Galates-2.json) |
-| 3 | Galates 3 | La promesse avant la loi | 48-11 à 48-18 | [MD](Galates/03-Galates-3/Recherche-MacArthur-Galates-3.md) · [HTML](Galates/03-Galates-3/Recherche-MacArthur-Galates-3.html) · [PDF](Galates/03-Galates-3/Recherche-MacArthur-Galates-3.pdf) · [JSON](Galates/03-Galates-3/Recherche-MacArthur-Galates-3.json) |
-| 4 | Galates 4 | Fils, et non plus esclave | 48-19 à 48-27 | [MD](Galates/04-Galates-4/Recherche-MacArthur-Galates-4.md) · [HTML](Galates/04-Galates-4/Recherche-MacArthur-Galates-4.html) · [PDF](Galates/04-Galates-4/Recherche-MacArthur-Galates-4.pdf) · [JSON](Galates/04-Galates-4/Recherche-MacArthur-Galates-4.json) |
-| 5 | Galates 5 | La liberté qui marche selon l'Esprit | 48-28 à 48-39 | [MD](Galates/05-Galates-5/Recherche-MacArthur-Galates-5.md) · [HTML](Galates/05-Galates-5/Recherche-MacArthur-Galates-5.html) · [PDF](Galates/05-Galates-5/Recherche-MacArthur-Galates-5.pdf) · [JSON](Galates/05-Galates-5/Recherche-MacArthur-Galates-5.json) |
-| 6 | Galates 6 | Se glorifier de la croix seule | 48-40 à 48-42 | [MD](Galates/06-Galates-6/Recherche-MacArthur-Galates-6.md) · [HTML](Galates/06-Galates-6/Recherche-MacArthur-Galates-6.html) · [PDF](Galates/06-Galates-6/Recherche-MacArthur-Galates-6.pdf) · [JSON](Galates/06-Galates-6/Recherche-MacArthur-Galates-6.json) |
+| 1 | Galates 1 | Aucun autre Évangile | 48-1 à 48-6 | [MD](<01 - Galates/01-Galates-1/Recherche-MacArthur-Galates-1.md>) · [HTML](<01 - Galates/01-Galates-1/Recherche-MacArthur-Galates-1.html>) · [PDF](<01 - Galates/01-Galates-1/Recherche-MacArthur-Galates-1.pdf>) · [JSON](<01 - Galates/01-Galates-1/Recherche-MacArthur-Galates-1.json>) |
+| 2 | Galates 2 | Justifié par la foi en Christ | 48-7 à 48-10 | [MD](<01 - Galates/02-Galates-2/Recherche-MacArthur-Galates-2.md>) · [HTML](<01 - Galates/02-Galates-2/Recherche-MacArthur-Galates-2.html>) · [PDF](<01 - Galates/02-Galates-2/Recherche-MacArthur-Galates-2.pdf>) · [JSON](<01 - Galates/02-Galates-2/Recherche-MacArthur-Galates-2.json>) |
+| 3 | Galates 3 | La promesse avant la loi | 48-11 à 48-18 | [MD](<01 - Galates/03-Galates-3/Recherche-MacArthur-Galates-3.md>) · [HTML](<01 - Galates/03-Galates-3/Recherche-MacArthur-Galates-3.html>) · [PDF](<01 - Galates/03-Galates-3/Recherche-MacArthur-Galates-3.pdf>) · [JSON](<01 - Galates/03-Galates-3/Recherche-MacArthur-Galates-3.json>) |
+| 4 | Galates 4 | Fils, et non plus esclave | 48-19 à 48-27 | [MD](<01 - Galates/04-Galates-4/Recherche-MacArthur-Galates-4.md>) · [HTML](<01 - Galates/04-Galates-4/Recherche-MacArthur-Galates-4.html>) · [PDF](<01 - Galates/04-Galates-4/Recherche-MacArthur-Galates-4.pdf>) · [JSON](<01 - Galates/04-Galates-4/Recherche-MacArthur-Galates-4.json>) |
+| 5 | Galates 5 | La liberté qui marche selon l'Esprit | 48-28 à 48-39 | [MD](<01 - Galates/05-Galates-5/Recherche-MacArthur-Galates-5.md>) · [HTML](<01 - Galates/05-Galates-5/Recherche-MacArthur-Galates-5.html>) · [PDF](<01 - Galates/05-Galates-5/Recherche-MacArthur-Galates-5.pdf>) · [JSON](<01 - Galates/05-Galates-5/Recherche-MacArthur-Galates-5.json>) |
+| 6 | Galates 6 | Se glorifier de la croix seule | 48-40 à 48-42 | [MD](<01 - Galates/06-Galates-6/Recherche-MacArthur-Galates-6.md>) · [HTML](<01 - Galates/06-Galates-6/Recherche-MacArthur-Galates-6.html>) · [PDF](<01 - Galates/06-Galates-6/Recherche-MacArthur-Galates-6.pdf>) · [JSON](<01 - Galates/06-Galates-6/Recherche-MacArthur-Galates-6.json>) |
 
 Chaque recherche existe en quatre formats. Le JSON fait foi : il porte le contenu champ par champ, et les trois autres formats en sont produits; une correction se fait donc dans le JSON, puis les autres formats sont régénérés. Le Markdown se lit directement dans le dépôt, le HTML à l'écran, en grands caractères, et le PDF sert à l'impression.
 
