@@ -22,9 +22,9 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | 8 | Colossiens | vers 60-62 | Rome, première captivité | étudiée : [Colossiens](Colossiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
 | 9 | Philémon | vers 60-62 | Rome, première captivité | étudiée : [Philémon](Philemon/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |
 | 10 | Philippiens | vers 61, sur la fin des deux ans de captivité | Rome, première captivité | étudiée : [Philippiens](Philippiens/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/phi) |
-| 11 | 1 Timothée | vers 62-64 | Macédoine | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
+| 11 | 1 Timothée | vers 62-64 | Macédoine | étudiée : [1 Timothée](1-Timothee/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
 | 12 | Tite | entre 62 et 64 | Corinthe ou Nicopolis | étudiée : [Tite](Tite/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/tit) |
-| 13 | 2 Timothée | vers 67 | Rome, seconde captivité | à venir | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
+| 13 | 2 Timothée | vers 67 | Rome, seconde captivité | étudiée : [2 Timothée](2-Timothee/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
 
 Les dates, approximatives, et les lieux sont ceux des introductions de MacArthur, et l'ordre les suit. Quand ces introductions ne tranchent pas entre des lettres d'une même période (rangs 7 à 9, puis 11 et 12), l'ordre canonique les départage. Philippiens (rang 10) suit les trois autres lettres de la captivité parce que MacArthur la date de la fin de celle-ci, sans la situer par rapport à elles.
 

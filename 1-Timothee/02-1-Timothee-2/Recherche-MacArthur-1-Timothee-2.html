@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Timothée 2 · La prière pour tous, l&#x27;unique médiateur et la vocation des femmes dans l&#x27;assemblée · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Timothée 2 dans la perspective de John MacArthur : La prière pour tous, l&#x27;unique médiateur et la vocation des femmes dans l&#x27;assemblée.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">1 Timothée 2</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">1 Timothée 2</span></p>
+    <h1 class="hero__title">La prière pour tous, l'unique médiateur et la vocation des femmes dans l'assemblée</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car il y a un seul Dieu, et aussi un seul médiateur entre Dieu et les hommes, Jésus-Christ homme, qui s’est donné lui-même en rançon pour tous. C’est là le témoignage rendu en son propre temps,&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">1 Timothée 2.5-⁠6 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 5 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">1 Timothée 2</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le chapitre 2 ouvre la troisième partie de l'épître selon l'introduction de la <i>MacArthur Study Bible</i> : les instructions sur l'Église (2.1-⁠3.16), qui commencent par l'importance de la prière (2.1-⁠8) et le rôle des femmes (2.9-⁠15) avant les qualifications des conducteurs (3.1-⁠13). Le connecteur « donc » rattache ces instructions à la recommandation confiée à Timothée en 1.18, et « avant toutes choses » marque une priorité : pour MacArthur, le manuel de l'ordre de l'Église commence par la prière pour les perdus, parce que la raison d'être de l'Église dans le monde est d'atteindre ceux qui sont perdus (54-⁠11).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">J’exhorte donc, avant toutes choses, à faire des prières, des supplications, des requêtes, des actions de grâces, pour tous les hommes,</p><cite class="verse__ref">1 Timothée 2.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">pour les rois et pour tous ceux qui sont élevés en dignité, afin que nous menions une vie paisible et tranquille, en toute piété et honnêteté.</p><cite class="verse__ref">1 Timothée 2.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Cela est bon et agréable devant Dieu notre Sauveur,</p><cite class="verse__ref">1 Timothée 2.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">qui veut que tous les hommes soient sauvés et parviennent à la connaissance de la vérité.</p><cite class="verse__ref">1 Timothée 2.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car il y a un seul Dieu, et aussi un seul médiateur entre Dieu et les hommes, Jésus-Christ homme,</p><cite class="verse__ref">1 Timothée 2.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">qui s’est donné lui-même en rançon pour tous. C’est là le témoignage rendu en son propre temps,</p><cite class="verse__ref">1 Timothée 2.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">et pour lequel j’ai été établi prédicateur et apôtre – je dis la vérité, je ne mens pas – chargé d’instruire les païens dans la foi et la vérité.</p><cite class="verse__ref">1 Timothée 2.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je veux donc que les hommes prient en tout lieu, en élevant des mains pures, sans colère ni mauvaises pensées.</p><cite class="verse__ref">1 Timothée 2.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je veux aussi que les femmes, vêtues d’une manière décente, avec pudeur et modestie, ne se parent ni de tresses, ni d’or, ni de perles, ni d’habits somptueux,</p><cite class="verse__ref">1 Timothée 2.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">mais qu’elles se parent de bonnes œuvres, comme il convient à des femmes qui font profession de servir Dieu.</p><cite class="verse__ref">1 Timothée 2.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que la femme écoute l’instruction en silence, avec une entière soumission.</p><cite class="verse__ref">1 Timothée 2.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je ne permets pas à la femme d’enseigner, ni de prendre de l’autorité sur l’homme; mais elle doit demeurer dans le silence.</p><cite class="verse__ref">1 Timothée 2.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car Adam a été formé le premier, Eve ensuite;</p><cite class="verse__ref">1 Timothée 2.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Adam n’a pas été séduit, mais la femme, séduite, s’est rendue coupable de transgression.</p><cite class="verse__ref">1 Timothée 2.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Elle sera néanmoins sauvée en devenant mère, si elle persévère avec modestie dans la foi, dans l’amour, et dans la sainteté.</p><cite class="verse__ref">1 Timothée 2.15 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire est celui de l'instruction pastorale sur l'ordre de l'assemblée, appuyée sur des fondements doctrinaux : le dessein salvifique de Dieu (2.3-⁠7) et l'ordre de la création et de la chute (2.13-⁠14). Ce genre commande de lire les exhortations à partir des motifs qui les fondent et de tenir compte de l'occasion. MacArthur souligne le caractère polémique de la section : on peut déduire ce qui n'allait pas à Éphèse de ce que Paul y prescrit (54-⁠11). L'Église ne priait pas pour tous et ne croyait pas que Dieu veut le salut de tous; certaines femmes profanaient le culte par leur parure et cherchaient à enseigner et à diriger les hommes (54-⁠11, 54-⁠14, 54-⁠15).</p><p>Le chapitre suit deux mouvements, chacun ouvert par un verbe de volonté : la prière pour tous les hommes, fondée sur la volonté de Dieu notre Sauveur, sur l'unicité de Dieu et du médiateur, et sur la mission de Paul (2.1-⁠8); puis, avec <i>hōsautōs</i> (« de même », 2.9), la conduite des femmes dans l'assemblée, fondée sur l'ordre de la création et sur la séduction d'Ève, et couronnée par la promesse de 2.15 (54-⁠14, 54-⁠17).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">1 Timothée 2</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">MacArthur reconstitue deux exclusivismes à Éphèse : celui de Juifs qui réservaient le salut aux observateurs de la loi (1.7-⁠11), et celui d'une pensée païenne qui deviendra le gnosticisme, réservant le salut à une élite initiée à une connaissance mystique (54-⁠11). Il en conclut : « la plus grande erreur était une erreur sur l'étendue du salut » (54-⁠11). Israël lui-même, selon lui, s'était pensé comme « une impasse plutôt qu'une grande route, un seau plutôt qu'un canal », à l'image de Jonas qui refusait que Ninive soit épargnée (54-⁠11). Au moment de la lettre, l'empereur était Néron : prier pour les rois, c'était prier pour un persécuteur (54-⁠11). Dans le monde romain, César se faisait appeler <i>sōtēr</i>, « sauveur », ce qui donne une portée polémique à l'expression « Dieu notre Sauveur » (54-⁠12).</p><div class="body"><p>La section sur les femmes s'inscrit dans une culture où l'on étalait sa richesse et sa séduction par la parure. MacArthur cite Juvénal sur les femmes chargées d'émeraudes et de perles, Philon sur la parure de la prostituée, et Pline sur Lollia Paulina, couverte de bijoux d'une valeur immense; une robe coûteuse pouvait valoir jusqu'à 7 000 deniers, le denier étant le salaire d'une journée, et les perles valaient environ trois fois l'or (54-⁠14). Comme les femmes étaient vêtues du cou aux pieds, la richesse se montrait dans la chevelure, où l'on tressait l'or, les perles et les peignes d'écaille (54-⁠17). À Éphèse dominait le temple d'Artémis; MacArthur évoque ses prêtresses et la vie recluse de la femme grecque respectable, et il rappelle que la tradition juive de l'époque tenait l'instruction des femmes pour sans importance (54-⁠15, 54-⁠16).</p><p>Dans ce contexte, des femmes converties, juives ou païennes, réagissaient à leur abaissement passé en cherchant à prendre la place des docteurs, tandis que d'autres venaient au culte pour attirer l'attention sur elles; MacArthur rattache ces désordres à l'impureté décrite en 5.6, 11-⁠15 et en 2 Timothée 3.6 (54-⁠14, 54-⁠15, 54-⁠16).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Prier en élevant les mains (2.8).</b> Les Juifs priaient debout, les mains levées vers Dieu (1 Rois 8.22; Néhémie 8.6; Psaumes 134.2; 141.2). MacArthur précise que Paul ne prescrit pas une posture : la main est le symbole des actes de la vie, et les « mains pures » désignent une vie pure, comme les mains innocentes et le cœur pur du Psaume 24.4 (54-⁠13). L'adjectif <i>hosios</i>, plutôt que <i>hagios</i>, signifie selon lui « non souillé » (54-⁠13).</li><li><b>Tresses, or et perles (2.9).</b> Paul ne condamne pas le soin de l'apparence, mais l'étalage d'une fortune et la séduction au culte : les tresses où l'on entrelaçait l'or, les perles et les bijoux étaient le moyen d'afficher sa richesse; MacArthur rappelle que le Cantique des cantiques (1.9-⁠11) et la femme de Proverbes 31.22 montrent une parure légitime, et que 1 Pierre 3.3 interdirait aussi de porter des vêtements si on le lisait comme une prohibition absolue (54-⁠14).</li><li><b>César « sauveur » et « Dieu notre Sauveur » (2.3).</b> Le culte impérial donnait à César le titre de <i>sōtēr</i> : il était le sauveur qui procurait la paix, l'ordre et la prospérité. MacArthur voit dans « Dieu notre Sauveur », expression propre aux pastorales, une réponse implicite : l'Église a son Sauveur, qui est Dieu, et il veut que tous les hommes soient sauvés (54-⁠12).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">1 Timothée 2</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">1 Timothée 2.7</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>alētheian legō, ou pseudomai</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, NA28), ou <i>alētheian legō en Christō, ou pseudomai</i> (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« je dis la vérité, je ne mens pas » (NEG79, LSG, Darby, NBS); la S21 ajoute entre crochets « je dis la vérité [devant Christ] ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur lit le texte long, « I speak the truth in Christ and lie not », et y voit peut-être une réplique à ceux qui contestaient la portée universelle de son apostolat (54-⁠13). Le sens ne change pas.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 2.14</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hē de gunē exapatētheisa</i>, avec le composé <i>exapataō</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, NA28), ou <i>hē de gunē apatētheisa</i>, avec le verbe simple, comme pour Adam dans la même phrase (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Adam n’a pas été séduit, mais la femme, séduite, s’est rendue coupable de transgression » : la NEG79 rend les deux verbes de la même façon, comme la LSG (« séduit », « séduite »), la S21, la Darby et la NBS (« trompé », « trompée »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La leçon du texte critique oppose le simple et le composé. MacArthur s'appuie sur elle : la préposition ajoutée signifie que la femme a été pleinement, complètement trompée (54-⁠17); Thayer confirme que la préposition renforce le verbe simple. Avec la leçon byzantine, le contraste repose sur la seule négation.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 2.3, 8, 9 et 12</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Variantes mineures : ajout de <i>gar</i> (texte byzantin, Textus Receptus) en 2.3; <i>dialogismou</i> ou <i>dialogismōn</i> (pluriel, Westcott et Hort) en 2.8; <i>kai</i> ajouté ou non avant <i>gunaikas</i>, <i>kai</i> ou <i>ē</i>, <i>chrusiō</i> ou <i>chrusō</i> en 2.9; ordre <i>didaskein de gunaiki</i> ou <i>gunaiki de didaskein</i> (texte byzantin, Textus Receptus) en 2.12.</dd></div><div><dt class="mot__label">NEG79</dt><dd>La NEG79 rend « Cela est bon » sans conjonction en 2.3 (la Darby suit le texte byzantin : « car cela est bon »), et « sans colère ni mauvaises pensées » en 2.8.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Aucune de ces variantes ne touche le sens. En 2.12, le texte critique place « enseigner » en tête de la phrase (texte seul).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de 1 Timothée, LogosBible), lus aux quinze versets du chapitre</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante (2.3, 7, 8, 9, 12, 14)</li><li>analyse morphologique : interlinéaire de Bible Hub</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues sur tout le chapitre</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart de numérotation entre les éditions grecques, la NEG79, les autres versions françaises consultées et le texte anglais commenté par MacArthur : quinze versets.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">1 Timothée 2</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>1 Timothée</span> <span>2.1-⁠2</span></p><div class="plan__corps"><p class="plan__titre">L'exhortation à prier pour tous les hommes, et d'abord pour les rois et les autorités, afin que l'Église mène une vie paisible</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Parakalō oun prōton pantōn poieisthai deēseis, proseuchas, enteuxeis, eucharistias huper pantōn anthrōpōn</i> (2.1), <i>huper basileōn</i> et la finale <i>hina ... diagōmen</i> (2.2).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>2.3-⁠7</span></p><div class="plan__corps"><p class="plan__titre">Les motifs de cette prière : la volonté salvifique de Dieu, l'unicité de Dieu et du médiateur, la rançon pour tous et la mission de Paul</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>touto kalon kai apodekton</i> (2.3), relative <i>hos pantas anthrōpous thelei sōthēnai</i> (2.4), <i>heis gar theos, heis kai mesitēs</i> (2.5), <i>ho dous heauton antilutron huper pantōn</i> (2.6) et <i>eis ho etethēn egō kērux kai apostolos</i> (2.7).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>2.8</span></p><div class="plan__corps"><p class="plan__titre">La conclusion pratique pour les hommes : prier dans l'assemblée avec des mains pures et un cœur sans colère</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Boulomai oun proseuchesthai tous andras en panti topō</i>, participe <i>epairontas hosious cheiras</i> et <i>chōris orgēs kai dialogismou</i>.</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>2.9-⁠10</span></p><div class="plan__corps"><p class="plan__titre">La parure des femmes : une tenue décente, la pudeur et la modestie, et les bonnes œuvres qui conviennent à la piété professée</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Transition <i>hōsautōs</i> (2.9), qui dépend du même <i>boulomai</i>, antithèse <i>mē en plegmasin ... all' ... di' ergōn agathōn</i> (2.9-⁠10).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>2.11-⁠12</span></p><div class="plan__corps"><p class="plan__titre">Le rôle des femmes dans l'assemblée : apprendre en silence et en soumission, sans enseigner ni dominer sur l'homme</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Inclusion <i>en hēsuchia</i> (2.11) / <i>einai en hēsuchia</i> (2.12), impératif <i>manthanetō</i> (2.11) et <i>ouk epitrepō</i> (2.12).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>2.13-⁠15</span></p><div class="plan__corps"><p class="plan__titre">Les fondements dans la création et dans la chute, et la promesse faite aux femmes qui persévèrent</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Adam gar prōtos eplasthē, eita Heua</i> (2.13), antithèse <i>Adam ouk ēpatēthē, hē de gunē exapatētheisa</i> (2.14) et <i>sōthēsetai de dia tēs teknogonias, ean meinōsin</i> (2.15).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>1 Timothée 2.1-⁠2</dt><dd>Le verbe <i>parakalō</i> (présent) suivi de l'infinitif présent <i>poieisthai</i> introduit une exhortation durable; MacArthur oppose l'exhortation, qui porte la passion, au commandement, qui porte l'autorité (54-⁠11). Les quatre noms <i>deēseis, proseuchas, enteuxeis, eucharistias</i> sont presque synonymes, mais MacArthur en dégage des nuances : le besoin, l'adoration, la compassion et la reconnaissance (54-⁠11). En 2.2, la finale <i>hina ... diagōmen</i> (subjonctif présent) dit le bienfait : une vie <i>ēremon kai hēsuchion</i>, sans trouble extérieur ni agitation intérieure, selon MacArthur (54-⁠12).</dd></div><div><dt>1 Timothée 2.3-⁠4 et 2.8</dt><dd>En 2.4, Dieu « veut » (<i>thelei</i>, présent de <i>thelō</i>) que tous les hommes soient sauvés (<i>sōthēnai</i>, infinitif aoriste passif) et parviennent (<i>elthein</i>) à la connaissance de la vérité. En 2.8, Paul « veut » avec <i>boulomai</i>. MacArthur distingue les deux verbes : <i>thelō</i> exprime selon lui la volonté de désir, née de l'inclination, et <i>boulomai</i> la volonté de détermination précise; en 2.8, Paul commande (54-⁠12, 54-⁠13). La distinction est une décision d'interprétation : le texte emploie bien deux verbes, mais leur nuance se décide par le contexte.</dd></div><div><dt>1 Timothée 2.5-⁠6</dt><dd>La phrase repose sur une double affirmation numérale, <i>heis gar theos, heis kai mesitēs theou kai anthrōpōn</i>; le dernier terme, <i>anthrōpos Christos Iēsous</i>, est sans article, que MacArthur rend « Christ Jésus, lui-même homme » (54-⁠13). En 2.6, le participe aoriste <i>ho dous heauton</i> (« qui s'est donné lui-même ») et le composé <i>antilutron</i> suivi de <i>huper pantōn</i> forment, selon MacArthur, l'expression d'une rançon substitutive (54-⁠13). L'apposition <i>to marturion kairois idiois</i> fait de cette rançon le témoignage rendu au temps fixé.</dd></div><div><dt>1 Timothée 2.9-⁠10</dt><dd><i>Hōsautōs</i> (« de même ») ne commence pas un nouveau sujet indépendant : l'infinitif <i>kosmein</i> dépend encore du <i>boulomai</i> de 2.8, si bien que l'ordre adressé aux hommes et celui adressé aux femmes forment une seule prescription (54-⁠14). MacArthur relève que la même transition marque, en 3.8 et 3.11, le passage des anciens aux diacres, puis aux femmes (54-⁠14). Le jeu de mots <i>kosmein</i>, « parer », et <i>kosmios</i>, « bien ordonné », suggère, selon lui, l'ordre opposé au chaos (54-⁠14).</dd></div><div><dt>1 Timothée 2.11-⁠12</dt><dd><i>Manthanetō</i> est un impératif présent de troisième personne : MacArthur y lit un commandement, « qu'elle soit enseignée », contre une tradition qui négligeait l'instruction des femmes (54-⁠15). Le groupe <i>en hēsuchia</i> ouvre 2.11 et ferme 2.12 : MacArthur voit dans cette inclusion l'idée dominante, et définit le silence et la soumission par les deux infinitifs présents de 2.12, <i>didaskein</i> et <i>authentein</i> : ne pas tenir le rôle de docteur et ne pas exercer l'autorité sur l'homme (54-⁠16, 54-⁠17). Le verbe <i>epitrepō</i> (présent) suppose, selon lui, un désir que Paul n'autorise pas (54-⁠17).</dd></div><div><dt>1 Timothée 2.14-⁠15</dt><dd>L'aoriste passif <i>ēpatēthē</i> (« séduit ») s'oppose au participe aoriste passif du composé <i>exapatētheisa</i>; le parfait <i>en parabasei gegonen</i> présente la transgression comme un état. En 2.15, le futur passif <i>sōthēsetai</i> a pour sujet la femme au singulier, mais la condition <i>ean meinōsin</i> est au pluriel (subjonctif aoriste) : la NEG79 harmonise en « si elle persévère », tandis que la Darby garde le pluriel (« si elles persévèrent »). MacArthur s'appuie sur ce futur et ce pluriel pour exclure qu'il s'agisse d'Ève ou de Marie : il s'agit des femmes en général (54-⁠17).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">médiateur</a><a href="#mot-2">rançon</a><a href="#mot-3">silence</a><a href="#mot-4">prendre de l'autorité sur</a><a href="#mot-5">en devenant mère</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">médiateur</h3><p class="mot__translit">mesitēs</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>celui qui se tient au milieu, intermédiaire</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : celui qui intervient entre deux parties pour faire ou rétablir la paix et l'amitié, pour conclure un accord ou ratifier une alliance; un arbitre. Il cite Moïse (Galates 3.19-⁠20), Christ « médiateur entre Dieu et les hommes » parce qu'il est intervenu par sa mort et a rétabli l'harmonie que le péché avait rompue (1 Timothée 2.5), et le médiateur de l'alliance (Hébreux 8.6; 9.15; 12.24); la Septante n'emploie le mot qu'une fois, en Job 9.33.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur part du cri de Job, qui ne trouvait pas d'arbitre pour poser la main sur Dieu et sur lui (Job 9.32-⁠33) : Christ est ce médiateur, l'unique (54-⁠13). Il n'y a pas de degrés de divinités à franchir, comme l'enseignaient peut-être les éons des protognostiques, ni de médiation des anges, des saints ou de Marie (54-⁠13). Parce qu'il n'y a qu'un Dieu et qu'un médiateur, tous les hommes doivent venir par Christ à Dieu (Actes 4.12), d'où la prière pour tous (54-⁠13). Sa lecture rejoint Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> un seul médiateur</li><li><b>NEG79</b> un seul médiateur</li><li class="ecart"><b>Darby</b> le médiateur</li><li><b>LSG</b> un seul médiateur</li><li><b>NBS</b> un seul médiateur</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">rançon</h3><p class="mot__translit">antilutron</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>rançon donnée en échange</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : ce qui est donné en échange d'un autre comme prix de sa rédemption, une rançon; il ne cite que 1 Timothée 2.6 dans le Nouveau Testament, et un traducteur ancien du Psaume 48.9 de la Septante.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur souligne que Paul n'emploie pas le simple <i>lutron</i>, mais <i>antilutron</i> suivi de <i>huper</i> : une rançon substitutive, comme un père qui se livrerait lui-même aux ravisseurs pour libérer son enfant; « Christ a échangé sa vie contre nos vies » (54-⁠13). Il insiste sur « pour tous » : Paul ne donne pas ici un traité de l'expiation, son point est le « tous », fondement de la prière et de la mission universelles (54-⁠13). La lecture substitutive rejoint le sens d'échange que donne Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> en rançon</li><li><b>NEG79</b> en rançon</li><li><b>Darby</b> en rançon</li><li><b>LSG</b> en rançon</li><li><b>NBS</b> en rançon</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">silence</h3><p class="mot__translit">hēsuchia</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>tranquillité, calme; silence</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer distingue deux sens : la tranquillité de celui qui reste chez lui à faire son travail sans se mêler des affaires d'autrui (2 Thessaloniciens 3.12), et le silence (Actes 22.2; 1 Timothée 2.11-⁠12).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur refuse deux extrêmes : réduire le mot à un esprit doux et tranquille qui permettrait aux femmes de prêcher, ou en faire un mutisme total dans l'Église (54-⁠16). Le contexte le définit : le silence consiste à ne pas tenir le rôle de docteur, la soumission à ne pas exercer l'autorité sur les hommes dans l'assemblée réunie (54-⁠16). Une femme peut chanter, prier en un lieu approprié, poser une question quand on l'y invite; elle ne prend pas la place du prédicateur (54-⁠16, 54-⁠17). Son choix du sens « silence » suit le classement de Thayer pour 2.11-⁠12; la délimitation à l'assemblée est une décision d'interprétation, appuyée sur 2.8 et sur 1 Corinthiens 14.34.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> paisiblement (2.11); une attitude paisible (2.12)</li><li><b>NEG79</b> en silence (2.11); dans le silence (2.12)</li><li class="ecart"><b>Darby</b> dans le silence (2.11, 12)</li><li><b>LSG</b> en silence (2.11); dans le silence (2.12)</li><li><b>NBS</b> en silence (2.11); dans le silence (2.12)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">prendre de l'autorité sur</h3><p class="mot__translit">authentein (authenteō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>agir de sa propre autorité, exercer la domination</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en donne l'étymologie : <i>authentēs</i> désigne d'abord celui qui tue de sa propre main, puis, dans le grec plus tardif, l'auteur d'un acte, celui qui agit de sa propre autorité, le maître absolu; d'où le sens de gouverner quelqu'un, d'exercer la domination sur lui, avec le génitif, en 1 Timothée 2.12, seul emploi du Nouveau Testament.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur cite l'étude de George Knight dans <i>New Testament Studies</i>, selon laquelle l'usage courant hors de la Bible est simplement « avoir autorité sur » (54-⁠17). Il rejette la lecture « exercer une autorité abusive » : si Paul visait l'abus, l'interdiction vaudrait aussi pour les hommes (54-⁠17). Il rejette aussi la limitation de l'interdiction à la seule Éphèse, puisque Paul la fonde sur la création (2.13) (54-⁠17). La sobriété du sens retenu correspond au dernier sens de Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> dominer sur</li><li><b>NEG79</b> prendre de l’autorité sur</li><li class="ecart"><b>Darby</b> user d’autorité sur</li><li><b>LSG</b> prendre de l’autorité sur</li><li class="ecart"><b>NBS</b> dominer</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">en devenant mère</h3><p class="mot__translit">teknogonias (teknogonia)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>le fait d'enfanter, la maternité</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : l'enfantement, la maternité (1 Timothée 2.15, seul emploi du Nouveau Testament; Aristote).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur écarte le salut de l'âme par la maternité, Ève (le verbe est au futur) et Marie (le pluriel de la condition vise les femmes en général) (54-⁠17). Le mot « sauver » a ici le sens de délivrer : les femmes sont délivrées de l'opprobre d'avoir entraîné l'humanité dans la chute, parce que Dieu leur donne le privilège d'élever une postérité pieuse; « les femmes ont conduit la race dans le péché, mais, Dieu soit béni, Dieu leur a donné le privilège de la conduire hors du péché vers la piété » (54-⁠17). La promesse dépend de la persévérance dans la foi, l'amour, la sainteté et la modestie, et ne nie pas la vocation des femmes célibataires ou stériles (1 Corinthiens 7) (54-⁠17). Le sens « délivrance de l'opprobre » dépasse le lexique : c'est une décision d'interprétation, appuyée sur l'enchaînement de 2.14 à 2.15.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> à travers sa descendance</li><li><b>NEG79</b> en devenant mère</li><li class="ecart"><b>Darby</b> en enfantant</li><li><b>LSG</b> en devenant mère</li><li><b>NBS</b> en devenant mère</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">1 Timothée 2</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans sept sermons prêchés de janvier à mars 1986 (54-⁠11 à 54-⁠17), John MacArthur lit le chapitre 2 comme le début du manuel de l'ordre de l'Église : Paul y corrige d'abord une théologie qui limitait le salut à une élite, puis une conduite des femmes qui profanait le culte et renversait l'ordre voulu par Dieu (54-⁠11, 54-⁠14). Il confie avoir été convaincu, en étudiant ce texte, de sa propre négligence à prier pour les perdus (54-⁠11).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-1-timothee-2-1-7-la-priere-d-evangelisation-et-le-dessein-universel-de-dieu"><span class="sommaire__ref">1 Timothée 2.1-⁠7</span><span class="sommaire__lib">La prière d'évangélisation et le dessein universel de Dieu</span></a></li><li><a href="#t2-1-timothee-2-8-des-hommes-aux-mains-pures"><span class="sommaire__ref">1 Timothée 2.8</span><span class="sommaire__lib">Des hommes aux mains pures</span></a></li><li><a href="#t3-1-timothee-2-9-10-la-parure-de-la-piete"><span class="sommaire__ref">1 Timothée 2.9-⁠10</span><span class="sommaire__lib">La parure de la piété</span></a></li><li><a href="#t4-1-timothee-2-11-15-le-role-de-la-femme-dans-l-assemblee-la-creation-et-la-maternite"><span class="sommaire__ref">1 Timothée 2.11-⁠15</span><span class="sommaire__lib">Le rôle de la femme dans l'assemblée, la création et la maternité</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : sept sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sept sermons Grace to You sur 1 Timothée 2.1 à 2.15 (54-⁠11 à 54-⁠17, série « 1 Timothy », janvier à mars 1986) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">54-11</span></th><td><a href="https://www.gty.org/sermons/54-11" target="_blank" rel="noopener">Evangelistic Praying, Part 1</a></td><td>1 Ti 2.1</td></tr><tr><th scope="row"><span class="mot-fr">54-12</span></th><td><a href="https://www.gty.org/sermons/54-12" target="_blank" rel="noopener">Evangelistic Praying, Part 2</a></td><td>1 Ti 2.2-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">54-13</span></th><td><a href="https://www.gty.org/sermons/54-13" target="_blank" rel="noopener">Evangelistic Praying, Part 3</a></td><td>1 Ti 2.5-⁠8</td></tr><tr><th scope="row"><span class="mot-fr">54-14</span></th><td><a href="https://www.gty.org/sermons/54-14" target="_blank" rel="noopener">God's High Calling for Women, Part 1</a></td><td>1 Ti 2.9</td></tr><tr><th scope="row"><span class="mot-fr">54-15</span></th><td><a href="https://www.gty.org/sermons/54-15" target="_blank" rel="noopener">God's High Calling for Women, Part 2</a></td><td>1 Ti 2.10-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">54-16</span></th><td><a href="https://www.gty.org/sermons/54-16" target="_blank" rel="noopener">God's High Calling for Women, Part 3</a></td><td>1 Ti 2.11</td></tr><tr><th scope="row"><span class="mot-fr">54-17</span></th><td><a href="https://www.gty.org/sermons/54-17" target="_blank" rel="noopener">God's High Calling for Women, Part 4</a></td><td>1 Ti 2.12-⁠15</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-1-timothee-2-1-7-la-priere-d-evangelisation-et-le-dessein-universel-de-dieu"><span class="intertitre__ref">1 Timothée 2.1-⁠7</span>La prière d'évangélisation et le dessein universel de Dieu</h3><p>MacArthur dégage cinq éléments de la prière pour les perdus : sa nature, sa portée, son bienfait, sa raison et son attitude (54-⁠11, 54-⁠12). Sa nature tient dans les quatre mots de 2.1 : la supplication naît du besoin, la prière s'adresse à Dieu seul et vise sa gloire, l'intercession entre avec compassion dans la détresse d'autrui, et l'action de grâces accepte la réponse de Dieu (54-⁠11). Sa portée est « tous les hommes », y compris les rois et les autorités, dont Paul demande non la destitution mais le salut, à l'époque de Néron; MacArthur en tire une critique de l'activisme politique des chrétiens : « La réponse pour changer une nation, c'est la prière » (54-⁠11). Son bienfait est une vie paisible et tranquille dans la piété : l'Église ne doit jamais être l'agitatrice de la société, et si elle est persécutée, que ce soit pour sa foi (54-⁠12). Sa raison est quadruple : c'est bon; c'est agréable à Dieu notre Sauveur, qui veut que tous soient sauvés (Ézéchiel 18.23; 33.11; Ésaïe 45.22); c'est conforme à l'unicité de Dieu et de l'unique médiateur, Christ Jésus homme; c'est l'intention de la rançon donnée pour tous; et c'est la raison même de l'apostolat de Paul auprès des nations (54-⁠12, 54-⁠13).</p><p>Sur 2.4, MacArthur distingue la volonté de désir de Dieu (<i>thelō</i>) et sa volonté de détermination souveraine : Dieu désire le salut de tous, comme il désire que nul ne pèche, et pourtant les hommes pèchent; « s'il en est qui vont en enfer, ce n'est pas à cause du choix prédéterminé de Dieu, mais à cause du rejet de Jésus-Christ » (54-⁠12). Il ajoute aussitôt : « Je crois à la souveraineté de Dieu. Je crois à l'élection. Je crois à la prédestination », et laisse au ciel l'harmonisation de ces vérités (54-⁠12). Sur 2.6, il dit : « Christ est-il mort pour quelques-uns? Il est mort pour tous. C'est ce que dit le texte », tout en précisant que Paul ne donne pas ici un traité de l'expiation et que son point est le « tous » (54-⁠13).</p><h3 class="intertitre" id="t2-1-timothee-2-8-des-hommes-aux-mains-pures"><span class="intertitre__ref">1 Timothée 2.8</span>Des hommes aux mains pures</h3><p>Avec <i>boulomai</i>, Paul commande : dans l'assemblée réunie, « en tout lieu » selon un usage que MacArthur rattache au culte officiel (1 Corinthiens 1.2; 1 Thessaloniciens 1.8), ce sont les hommes, au sens d'hommes et non d'êtres humains, qui conduisent la prière publique (54-⁠13). Les mains pures désignent une vie pure, et l'absence de colère et de mauvaises pensées un cœur pur; le modèle est le Christ, qui a intercédé pour les transgresseurs (Ésaïe 53.12; Luc 23.34) (54-⁠13).</p><h3 class="intertitre" id="t3-1-timothee-2-9-10-la-parure-de-la-piete"><span class="intertitre__ref">1 Timothée 2.9-⁠10</span>La parure de la piété</h3><p>La femme se prépare au culte : MacArthur ne prône ni le négligé ni le dénuement, mais une tenue ordonnée qui attire l'attention sur Dieu et non sur elle-même (54-⁠14). Paul interdit de s'habiller pour afficher sa richesse, éveiller la convoitise, détourner un homme de sa femme ou manifester l'insoumission (54-⁠14, 54-⁠15). L'attitude intérieure est la pudeur, un sens de la honte à l'idée de causer une pensée impure ou de détourner du culte, et la modestie, la maîtrise de ses désirs (54-⁠14). La femme qui professe la piété la confirme par de bonnes œuvres; MacArthur y voit une contradiction chez celle qui dit vouloir servir Dieu tout en changeant ce que Dieu prescrit (54-⁠15).</p><h3 class="intertitre" id="t4-1-timothee-2-11-15-le-role-de-la-femme-dans-l-assemblee-la-creation-et-la-maternite"><span class="intertitre__ref">1 Timothée 2.11-⁠15</span>Le rôle de la femme dans l'assemblée, la création et la maternité</h3><p>L'impératif <i>manthanetō</i>, « qu'elle s'instruise », est un commandement : contre une tradition qui méprisait l'instruction des femmes, Paul affirme leur égalité spirituelle, que l'Ancien Testament établissait déjà (Exode 19-⁠20; Deutéronome 6; Nombres 6.2) et que Galates 3.28 confirme pour le salut (54-⁠15). Mais l'égalité spirituelle n'efface pas la différence des rôles : il n'y eut ni reine en Israël, ni femme prêtre, ni auteur féminin de l'Écriture, ni ministère prophétique continu exercé par une femme, et le Nouveau Testament ne connaît ni femme apôtre, ni pasteur, ni ancienne (54-⁠15, 54-⁠16). Le silence et la soumission sont définis par 2.12 : ne pas enseigner l'Église assemblée et ne pas y exercer l'autorité, ce que confirme 1 Corinthiens 14.34-⁠35, tandis que 1 Corinthiens 11.5 vise selon MacArthur des réunions autres que le culte officiel (54-⁠16). Les femmes ont des dons d'enseignement et de direction, qu'elles exercent auprès des femmes et des enfants, et Priscille instruisit Apollos avec son mari (Actes 18.26) (54-⁠17). Le fondement n'est pas culturel : Adam a été formé le premier, et la chute a renversé l'ordre de la création, Ève agissant sans son chef et Adam la suivant; « nous ne sommes pas moins défectueux que les femmes; nous le sommes autrement » (54-⁠17). Enfin, 2.15 rend aux femmes leur dignité : délivrées de l'opprobre de la chute, elles reçoivent l'immense privilège d'élever une génération pieuse, si elles persévèrent dans la foi, l'amour, la sainteté et la modestie (54-⁠17). MacArthur conclut : « La soumission n'est pas une punition, c'est un privilège » (54-⁠17).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>1 Timothée 2.1, 4 et 6.</b> La triple mention de « tous » (<i>huper pantōn anthrōpōn</i>, <i>pantas anthrōpous thelei sōthēnai</i>, <i>antilutron huper pantōn</i>) fonde la lecture de MacArthur pour qui le passage combat un exclusivisme du salut (54-⁠11, 54-⁠13).</li><li><b>1 Timothée 2.4 et 2.8.</b> Le contraste entre <i>thelei</i> (2.4) et <i>boulomai</i> (2.8) appuie la distinction que MacArthur fait entre la volonté de désir de Dieu et le commandement de l'apôtre (54-⁠12, 54-⁠13).</li><li><b>1 Timothée 2.5.</b> La double affirmation <i>heis ... heis</i> lie l'unicité de Dieu à celle du médiateur : un seul chemin de salut, d'où la nécessité d'annoncer et de prier pour tous (54-⁠13).</li><li><b>1 Timothée 2.11-⁠12.</b> L'inclusion <i>en hēsuchia</i> et le parallèle entre « silence » et « enseigner », « soumission » et « dominer » permettent à MacArthur de définir le silence par le texte même (54-⁠16, 54-⁠17).</li><li><b>1 Timothée 2.13-⁠14.</b> Le connecteur <i>gar</i> et les références à la formation d'Adam et à la séduction d'Ève fondent l'enseignement sur la création et la chute, non sur une coutume locale (54-⁠17).</li><li><b>1 Timothée 2.15.</b> Le passage du singulier <i>sōthēsetai</i> au pluriel <i>meinōsin</i> soutient la lecture des femmes en général plutôt que d'Ève ou de Marie (54-⁠17).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ézéchiel 33.11</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Dieu déclare ne prendre aucun plaisir à la mort du méchant, mais vouloir qu'il se détourne de sa voie et qu'il vive : MacArthur s'en sert, avec Ézéchiel 18.23 et 30-⁠32, pour montrer que la volonté de Dieu en 2.4 est un désir sincère du salut des pécheurs (54-⁠12).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 45.21-⁠22</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Le Dieu juste et sauveur, en dehors duquel il n'y en a point, appelle toutes les extrémités de la terre à se tourner vers lui : l'unicité de Dieu fonde l'appel universel, comme en 2.4-⁠5 (54-⁠12, 54-⁠13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Job 9.32-⁠33</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Job regrette qu'il n'y ait pas d'arbitre pour poser la main sur Dieu et sur lui; Thayer note que la Septante y emploie <i>mesitēs</i>, et MacArthur y voit le cri auquel répond l'unique médiateur de 2.5 (54-⁠13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 4.12</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Il n'y a de salut en aucun autre, car il n'y a sous le ciel aucun autre nom par lequel nous devions être sauvés : c'est la conséquence que MacArthur tire de l'unique médiateur (54-⁠13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Pierre 3.1-⁠6</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Pierre oppose, lui aussi, la parure extérieure des cheveux tressés, de l'or et des vêtements à la parure intérieure d'un esprit doux et paisible; MacArthur montre que le texte ne prohibe pas toute parure, sans quoi il interdirait aussi les vêtements (54-⁠14).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 14.33-⁠36</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Les femmes se taisent dans les assemblées : MacArthur lit ce texte, dans le contexte des désordres de Corinthe et des oracles de Delphes, comme l'interdiction de prendre la parole publique dans le culte, parallèle au silence de 2.11-⁠12 (54-⁠16).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 11.3-⁠12</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Christ est le chef de l'homme, l'homme le chef de la femme, et la femme a été tirée de l'homme et créée pour lui : même fondement dans la création qu'en 2.13; MacArthur situe la prière et la prophétie des femmes de 11.5 hors du culte officiel (54-⁠16, 54-⁠17).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 2.18-⁠23; 3.1-⁠6, 16</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">La création de l'homme avant la femme, faite pour lui être une aide, puis la séduction d'Ève et la sentence de 3.16 fondent 2.13-⁠14; MacArthur rapproche le « désir » de 3.16 de Genèse 4.7 pour y voir un désir de dominer (54-⁠17).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">Dieu notre Sauveur veut que tous les hommes soient sauvés</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul exhorte à prier pour tous les hommes, car cela est bon et agréable devant Dieu notre Sauveur, qui veut que tous les hommes soient sauvés et parviennent à la connaissance de la vérité (2.1-⁠4); il a été établi prédicateur et apôtre, chargé d'instruire les païens (2.7).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur lit 2.4 comme l'expression du désir sincère de Dieu, qui ne prend pas plaisir à la mort du méchant, distinct de sa détermination souveraine; il affirme à la fois l'élection et la responsabilité de ceux qui rejettent Christ, dont il laisse l'harmonisation au mystère de Dieu (54-⁠12). Rattachement : sotériologie (la volonté de Dieu, l'élection et l'appel universel de l'Évangile) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Les prophètes appelaient déjà les extrémités de la terre au Dieu unique (Ésaïe 45.22; 49.6) et refusaient que Dieu se plaise à la mort du méchant (Ézéchiel 33.11); la mission aux nations confiée par Christ (Marc 16.15) en est l'accomplissement, que l'exclusivisme d'Éphèse trahissait (54-⁠11, 54-⁠12).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Une Église qui croit que Dieu veut le salut de tous prie pour tous, y compris pour ses gouvernants, et porte l'Évangile jusqu'aux nations (54-⁠11).</p></div></div></section><section class="theme"><h3 class="theme__title">Un seul Dieu, un seul médiateur, une rançon pour tous</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Il y a un seul Dieu et un seul médiateur entre Dieu et les hommes, Jésus-Christ homme, qui s'est donné lui-même en rançon pour tous; c'est le témoignage rendu en son propre temps (2.5-⁠6).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur voit dans l'unicité de Dieu et du médiateur le fondement de l'universalité de l'Évangile, et dans <i>antilutron</i> une rançon substitutive : Christ a pris la place des captifs (54-⁠13). Rattachement : christologie (l'humanité et la divinité du médiateur) et sotériologie (l'expiation substitutive) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Job cherchait un arbitre entre Dieu et lui (Job 9.33), et l'épître aux Hébreux fait de Christ le médiateur de la nouvelle alliance (Hébreux 8.6; 9.15) (54-⁠13); Jésus avait dit être venu donner sa vie en rançon (Marc 10.45; texte seul).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Puisque nul ne vient à Dieu sans Christ, la prière et l'annonce de l'Évangile ne connaissent aucune frontière de peuple ou de religion (54-⁠13).</p></div></div></section><section class="theme"><h3 class="theme__title">La prière pour les autorités et la vie paisible de l'Église</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul demande des prières pour les rois et pour tous ceux qui sont élevés en dignité, afin que nous menions une vie paisible et tranquille, en toute piété et honnêteté (2.2).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur y voit la vocation de l'Église à prier pour le salut des gouvernants plutôt qu'à les combattre par des moyens politiques, et à vivre en citoyens modèles; ses armes sont spirituelles (2 Corinthiens 10.4) (54-⁠11, 54-⁠12). Rattachement : ecclésiologie (l'Église et l'État, Romains 13.1-⁠7; 1 Pierre 2.13-⁠17) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Jérémie demandait aux exilés de rechercher la paix de la ville où ils étaient (Jérémie 29.7; texte seul); Paul applique ce devoir de prière à l'Église sous Néron, et les Pères de l'Église, comme Tertullien et Théophile d'Antioche, priaient pour l'empereur (54-⁠11).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant combat d'abord par la prière : il prie pour le salut de ceux qui le gouvernent, même s'il désapprouve leurs choix (54-⁠11, 54-⁠12).</p></div></div></section><section class="theme"><h3 class="theme__title">L'ordre de l'assemblée fondé sur la création</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul veut que les hommes prient en tout lieu en élevant des mains pures (2.8); il ne permet pas à la femme d'enseigner ni de prendre de l'autorité sur l'homme, car Adam a été formé le premier, Ève ensuite, et ce n'est pas Adam qui a été séduit (2.11-⁠14).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme l'égalité spirituelle de l'homme et de la femme et la différence de leurs rôles : dans l'assemblée, la prière publique, l'enseignement et l'autorité reviennent aux hommes, parce que cet ordre vient de la création et que la chute l'a renversé (54-⁠15, 54-⁠16, 54-⁠17). Rattachement : anthropologie (l'homme et la femme créés à l'image de Dieu) et ecclésiologie (la direction de l'Église par des hommes qualifiés) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Genèse 2 établit l'ordre de la création et Genèse 3 en montre le renversement; l'Ancien Testament ne connaît ni reine en Israël ni prêtresse; 1 Corinthiens 11 et 14 appliquent le même ordre à Corinthe (54-⁠15, 54-⁠16, 54-⁠17).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La soumission n'est pas une punition mais un privilège, et les hommes doivent exercer une direction qui protège, nourrit et sert (54-⁠16, 54-⁠17).</p></div></div></section><section class="theme"><h3 class="theme__title">La parure de la piété et la vocation de mère</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Les femmes se parent avec pudeur et modestie, non de tresses, d'or, de perles ou d'habits somptueux, mais de bonnes œuvres, comme il convient à des femmes qui font profession de servir Dieu; elles seront sauvées en devenant mères si elles persévèrent dans la foi, l'amour et la sainteté (2.9-⁠10, 15).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur voit dans 2.15 la délivrance de l'opprobre de la chute par le privilège d'élever une postérité pieuse, à condition de persévérer dans la foi, l'amour, la sainteté et la modestie, c'est-à-dire d'être une femme pieuse (54-⁠17). Rattachement : sanctification et théologie de la famille dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>La femme de Genèse 3.16 reçoit la douleur de l'enfantement; Proverbes 31 et l'exemple de Loïs et d'Eunice (2 Timothée 1.5) montrent l'influence d'une mère pieuse; Tite 2.3-⁠5 prolonge l'enseignement (54-⁠14, 54-⁠17).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La vraie beauté d'une femme est un cœur pur et paisible, et l'influence d'une mère qui craint Dieu peut marquer toute une génération (54-⁠14, 54-⁠17).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>MacArthur avoue avoir négligé la prière pour les perdus (54-⁠11) : la prière publique de notre assemblée porte-t-elle sur les nations, les gouvernants et les incroyants, ou seulement sur nos besoins?</li><li>Le texte demande de prier pour le salut des rois, à l'époque de Néron (2.1-⁠2; 54-⁠11) : qu'est-ce que cette exigence change dans la manière dont nous parlons de nos dirigeants et dans nos engagements publics?</li><li>Comment prêcher 2.4 (Dieu veut que tous soient sauvés) sans l'affaiblir et sans contredire la souveraineté de Dieu que MacArthur affirme aussi (54-⁠12)?</li><li>L'unicité du médiateur (2.5) heurte une culture qui juge toutes les religions équivalentes : où notre prédication s'excuse-t-elle de cette exclusivité au lieu d'en faire le motif de la mission (54-⁠13)?</li><li>La parure dont parle Paul visait l'étalage de la richesse et la séduction dans le culte (54-⁠14) : quelles formes ces tentations prennent-elles chez nous, pour les femmes comme pour les hommes?</li><li>MacArthur fonde 2.12 sur la création et non sur la culture (54-⁠17) : comment notre Église honore-t-elle à la fois l'égalité spirituelle des femmes et la différence des rôles, sans mépris ni démission des hommes?</li><li>« sauvée en devenant mère » (2.15) : comment présenter cette promesse sans blesser les femmes célibataires ou sans enfants, que MacArthur ne veut pas exclure (54-⁠17)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 1 Timothée 2 · 5 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-1-Timothee-2.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

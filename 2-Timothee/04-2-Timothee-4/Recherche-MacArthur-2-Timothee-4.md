@@ -1,0 +1,303 @@
+# Recherche exégétique (perspective MacArthur) : 2 Timothée 4
+
+**Prêche la parole : le bon combat et la couronne de justice**
+
+> « prêche la parole, insiste en toute occasion, favorable ou non, reprends, censure, exhorte, avec toute douceur et en instruisant. » (2 Timothée 4.2, NEG)
+
+5 novembre 2026 · André-Guy Bruneau
+
+---
+
+## Contexte du passage
+
+> « Je t’en conjure devant Dieu et devant Jésus-Christ, qui doit juger les vivants et les morts, et au nom de son avènement et de son royaume, » (2 Timothée 4.1, NEG)
+
+> « prêche la parole, insiste en toute occasion, favorable ou non, reprends, censure, exhorte, avec toute douceur et en instruisant. » (2 Timothée 4.2, NEG)
+
+> « Car il viendra un temps où les hommes ne supporteront pas la saine doctrine; mais, ayant la démangeaison d’entendre des choses agréables, ils se donneront une foule de docteurs selon leurs propres désirs, » (2 Timothée 4.3, NEG)
+
+> « détourneront l’oreille de la vérité, et se tourneront vers les fables. » (2 Timothée 4.4, NEG)
+
+> « Mais toi, sois sobre en toutes choses, supporte les souffrances, fais l’œuvre d’un évangéliste, remplis bien ton ministère. » (2 Timothée 4.5, NEG)
+
+> « Car pour moi, je sers déjà de libation, et le moment de mon départ approche. » (2 Timothée 4.6, NEG)
+
+> « J’ai combattu le bon combat, j’ai achevé la course, j’ai gardé la foi. » (2 Timothée 4.7, NEG)
+
+> « Désormais, la couronne de justice m’est réservée; le Seigneur, le juste juge, me la donnera dans ce jour-là, et non seulement à moi, mais encore à tous ceux qui auront aimé son avènement. » (2 Timothée 4.8, NEG)
+
+> « Viens au plus tôt vers moi; » (2 Timothée 4.9, NEG)
+
+> « car Démas m’a abandonné, par amour pour le siècle présent, et il est parti pour Thessalonique; Crescens est allé en Galatie, Tite en Dalmatie. » (2 Timothée 4.10, NEG)
+
+> « Luc seul est avec moi. Prends Marc, et amène-le avec toi, car il m’est utile pour le ministère. » (2 Timothée 4.11, NEG)
+
+> « J’ai envoyé Tychique à Ephèse. » (2 Timothée 4.12, NEG)
+
+> « Quand tu viendras, apporte le manteau que j’ai laissé à Troas chez Carpus, et les livres, surtout les parchemins. » (2 Timothée 4.13, NEG)
+
+> « Alexandre, le forgeron, m’a fait beaucoup de mal. Le Seigneur lui rendra selon ses œuvres. » (2 Timothée 4.14, NEG)
+
+> « Garde-toi aussi de lui, car il s’est fortement opposé à nos paroles. » (2 Timothée 4.15, NEG)
+
+> « Dans ma première défense, personne ne m’a assisté, mais tous m’ont abandonné. Que cela ne leur soit point imputé! » (2 Timothée 4.16, NEG)
+
+> « C’est le Seigneur qui m’a assisté et qui m’a fortifié, afin que la prédication soit accomplie par moi et que tous les païens l’entendent. Et j’ai été délivré de la gueule du lion. » (2 Timothée 4.17, NEG)
+
+> « Le Seigneur me délivrera de toute œuvre mauvaise, et il me sauvera pour me faire entrer dans son royaume céleste. A lui soit la gloire aux siècles des siècles! Amen! » (2 Timothée 4.18, NEG)
+
+> « Salue Prisca et Aquilas, et la famille d’Onésiphore. » (2 Timothée 4.19, NEG)
+
+> « Eraste est resté à Corinthe, et j’ai laissé Trophime malade à Milet. » (2 Timothée 4.20, NEG)
+
+> « Tâche de venir avant l’hiver. Eubulus, Pudens, Linus, Claudia, et tous les frères te saluent. » (2 Timothée 4.21, NEG)
+
+> « Que le Seigneur soit avec ton esprit! Que la grâce soit avec vous! » (2 Timothée 4.22, NEG)
+
+Le chapitre 4 forme les trois dernières parties de l'épître selon l'introduction de la *MacArthur Study Bible* : la prédication de l'homme de Dieu, avec la charge de prêcher (4.1-2) et le besoin de la prédication (4.3-5), les remarques finales, le triomphe de Paul (4.6-8) et ses besoins (4.9-18), puis les salutations (4.19-22). Cette introduction tient « prêche la parole » (4.2) pour l'exhortation principale de la dernière partie de la lettre. MacArthur rappelle que ce sont les dernières lignes que Paul ait écrites (55-20).
+
+Le genre littéraire reste celui de la lettre personnelle d'exhortation, mais il prend ici la forme d'une charge solennelle, formulée comme une citation en justice, puis d'un testament : MacArthur compte neuf impératifs en cinq versets, des ordres et non des suggestions (55-20). Ce genre commande de lire 4.1-5 comme un portrait du prédicateur fidèle, que l'Église doit aussi connaître pour l'en tenir responsable (55-20), et de lire 4.9-22 non comme des détails secondaires, mais comme l'image d'un ministère qui dépend de personnes (55-27).
+
+Le chapitre suit trois mouvements. D'abord, la charge : sa gravité devant le Christ juge, son contenu, la Parole, son étendue, en toute occasion, son urgence devant ceux qui ne supporteront plus la saine doctrine, et l'attitude, le prix, l'extension et le but qu'elle exige (4.1-5) (55-20 à 55-23). Ensuite, l'épitaphe de Paul : prêt à mourir, fidèle jusqu'au bout et attendant la couronne de justice (4.6-8) (55-24 à 55-26). Enfin, l'entourage de l'apôtre, fidèles et infidèles, amis et ennemis, et le Seigneur qui seul l'a assisté (4.9-22) (55-27).
+
+## Arrière-plan historique et culturel
+
+Selon l'introduction de la *MacArthur Study Bible*, Paul écrit vers 67 depuis un cachot froid (4.13), sans espoir de libération (4.6), abandonné de presque tous (4.9-12, 16); on ignore si Timothée a pu le rejoindre avant son exécution, et la tradition rapporte son martyre. MacArthur situe la scène dans la prison Mamertine, un cachot humide et sans hygiène, où il imagine Paul avec de nombreux détenus (55-27). La persécution de Néron avait suivi l'incendie de Rome : des chrétiens furent cousus dans des peaux de bêtes et livrés aux chiens, d'autres enduits de poix et brûlés pour éclairer ses jardins, si bien que prendre la défense de Paul pouvait être mortel (55-27).
+
+MacArthur rapporte que la procédure romaine comportait une première audience, d'enquête préliminaire, puis une seconde, et que Paul, déjà passé par la première sans aucun défenseur, attendait la seconde (55-24, 55-27). Il a pu être jugé devant Néron lui-même ou devant un haut magistrat, dans une basilique pleine de spectateurs (55-27). Paul pense vivre encore un peu, puisqu'il réclame son manteau et ses livres et demande à Timothée de venir avant l'hiver, quand la navigation devient trop dangereuse (55-24, 55-27).
+
+Timothée, à la fin de la trentaine, doit prendre la relève dans une Église d'Éphèse déjà en déclin doctrinal et moral, sous la menace d'une persécution étendue à l'empire (55-20). MacArthur tire d'Hébreux 13.23 que Timothée fut plus tard emprisonné et relâché, peut-être peu après cette lettre, et qu'il tint bon (55-23), inférence qu'il présente avec prudence.
+
+Trois détails échappent au lecteur moderne.
+
+- **La libation (4.6).** MacArthur renvoie à Nombres 15.1-10 : chaque sacrifice comportait l'animal offert en holocauste, une offrande de fleur de farine pétrie à l'huile, puis une libation de vin versée en dernier, en quantité proportionnée à la victime (55-24). Paul se voit dans ce dernier acte : sa vie déjà offerte en sacrifice vivant, son ministère comme l'offrande, et maintenant son sang répandu par la décapitation, puisqu'un citoyen romain ne pouvait être crucifié (55-24).
+- **Le manteau, les livres et les parchemins (4.13).** Le manteau était, selon MacArthur, un lourd vêtement de laine en forme de couverture percée pour la tête, qui protégeait du froid et de la pluie et servait de couche (55-27). Les livres désigneraient des rouleaux de papyrus, les parchemins des rouleaux de peau : peut-être des livres de l'Ancien Testament, des copies de ses lettres ou des feuilles vierges; Paul n'avait fini ni de lire ni d'écrire (55-27). MacArthur évoque l'hypothèse d'une arrestation à Troas, qui expliquerait ces affaires laissées chez Carpus, en précisant qu'on ne le sait pas (55-27).
+- **Les compagnons de Paul (4.10-12, 19-21).** Démas apparaît en Colossiens 4.14 et Philémon 24 comme collaborateur pendant la première captivité; Luc, le médecin bien-aimé, a écrit l'Évangile et les Actes; Marc, qui avait abandonné Paul et Barnabas (Actes 13.13) et causé leur séparation (Actes 15.37-39), est de nouveau auprès de Paul en Colossiens 4.10 (55-27). Tychique portait les lettres de Paul (Éphésiens 6.21; Colossiens 4.7) et porte sans doute celle-ci; Prisca et Aquilas, rencontrés à Corinthe (Actes 18.2), ont servi à Éphèse et à Rome; Eubulus, Pudens, Linus et Claudia portent des noms latins et appartiennent à l'Église de Rome (55-27).
+
+## État du texte
+
+Sources consultées : grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de 2 Timothée, LogosBible), lus aux vingt-deux versets du chapitre; grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante (4.1, 3, 6, 7, 10, 13, 14, 15, 16, 17, 18, 20, 22); analyse morphologique : interlinéaire de Bible Hub; versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues sur tout le chapitre. **Numérotation.** Vingt-deux versets dans toutes les éditions grecques et les versions consultées, sans écart de découpage.
+
+- **2 Timothée 4.1.** *Diamarturomai enōpion tou theou kai Christou Iēsou ... kai tēn epiphaneian autou* (SBLGNT, Westcott et Hort, Tregelles, NA28), ou *Diamarturomai oun egō ... kai tou kuriou Iēsou Christou ... kata tēn epiphaneian autou* (texte byzantin, Textus Receptus). **NEG79.** « Je t’en conjure devant Dieu et devant Jésus-Christ » et « au nom de son avènement » : la NEG79, la LSG, la Darby et la NBS suivent *kai tēn epiphaneian*, un accusatif de serment; la S21 suit la leçon byzantine, avec « [C’est pourquoi] », « [le Seigneur] » et « au moment de sa venue ». **Portée.** MacArthur lit avec sa version anglaise *and by His appearing*, mais en tire le moment du jugement, qui a lieu à l'apparition du Christ et dans son royaume (55-20). Les deux leçons rattachent la charge au retour du Christ.
+- **2 Timothée 4.14.** *apodōsei*, futur, il rendra (SBLGNT, Westcott et Hort, Tregelles, NA28), ou *apodōē*, optatif, qu'il rende (texte byzantin, Textus Receptus). **NEG79.** « Le Seigneur lui rendra selon ses œuvres » : la NEG79, la LSG, la Darby et la NBS suivent le futur; la S21 (« Le Seigneur le traitera conformément à ses actes ») aussi. **Portée.** MacArthur y lit une simple prédiction au futur : aucun adversaire de l'Évangile n'échappera au jugement, et Paul laisse la vengeance à Dieu sans rancune (55-27). L'optatif byzantin en ferait un souhait.
+- **2 Timothée 4.16, 4.17 et 4.22.** En 4.16, *paregeneto* (SBLGNT, Westcott et Hort, NA28) ou *sumparegeneto* (texte byzantin); en 4.17, *akousōsin panta ta ethnē* ou *akousē* (texte byzantin); en 4.22, *ho kurios* ou *ho kurios Iēsous Christos* (texte byzantin), avec *amēn* final. Autres variantes mineures en 4.3, 6, 7, 10, 13, 15, 18 et 20 (ordre des mots, orthographe). **NEG79.** « personne ne m’a assisté » (4.16), « que tous les païens l’entendent » (4.17), « Que le Seigneur soit avec ton esprit! » (4.22) : la NEG79 suit le texte court en 4.22, comme la LSG et la NBS; la S21 met « [Jésus-Christ] » entre crochets et la Darby l'inclut. **Portée.** Aucune incidence sur le sens.
+
+## Structure et grammaire
+
+**Plan de la péricope**
+
+- **2 Timothée 4.1.** La charge solennelle, devant Dieu et le Christ qui doit juger les vivants et les morts. Marqueur : *Diamarturomai enōpion tou theou kai Christou Iēsou*, *tou mellontos krinein zōntas kai nekrous*, *kai tēn epiphaneian autou kai tēn basileian autou* (4.1).
+- **2 Timothée 4.2.** Prêcher la parole en toute occasion : reprendre, censurer et exhorter avec patience et enseignement. Marqueur : Cinq impératifs aoristes : *kēruxon ton logon, epistēthi eukairōs akairōs, elenxon, epitimēson, parakaleson*, puis *en pasē makrothumia kai didachē* (4.2).
+- **2 Timothée 4.3-4.** Le temps où l'on ne supportera plus la saine doctrine, où l'on se donnera des docteurs selon ses désirs et se tournera vers les fables. Marqueur : *estai gar kairos hote ... ouk anexontai*, *episōreusousin didaskalous knēthomenoi tēn akoēn* (4.3), *apostrepsousin* et *ektrapēsontai* (4.4).
+- **2 Timothée 4.5.** Être sobre, supporter les souffrances, faire l'œuvre d'un évangéliste, remplir son ministère. Marqueur : *su de*, quatre impératifs : *nēphe, kakopathēson, ergon poiēson euangelistou, tēn diakonian sou plērophorēson* (4.5).
+- **2 Timothée 4.6-8.** L'épitaphe de Paul : déjà versé en libation, il a achevé sa course et attend la couronne de justice. Marqueur : *Egō gar ēdē spendomai* et *ephestēken* (4.6), trois parfaits *ēgōnismai, teteleka, tetērēka* (4.7), *loipon apokeitai moi ho tēs dikaiosunēs stephanos* (4.8).
+- **2 Timothée 4.9-15.** Les compagnons dispersés ou infidèles, Marc rendu utile, le manteau et les livres, et Alexandre l'adversaire. Marqueur : *Spoudason elthein* (4.9), *Dēmas gar me enkatelipen* (4.10), *Loukas estin monos* et *estin gar moi euchrēstos* (4.11), *apodōsei autō ho kurios* (4.14).
+- **2 Timothée 4.16-18.** La première défense : abandonné de tous, assisté et fortifié par le Seigneur, qui le sauvera pour son royaume céleste. Marqueur : *oudeis moi paregeneto, alla pantes me enkatelipon* (4.16), *ho de kurios moi parestē kai enedunamōsen me, hina* (4.17), doxologie *hō hē doxa* (4.18).
+- **2 Timothée 4.19-22.** Les salutations, l'appel à venir avant l'hiver et la bénédiction finale. Marqueur : *Aspasai* (4.19), *Spoudason pro cheimōnos elthein* (4.21), *Ho kurios meta tou pneumatos sou. hē charis meth' humōn* (4.22).
+
+**Observations grammaticales**
+
+- **2 Timothée 4.1.** *Diamarturomai* désigne un témoignage pressant et un ordre solennel (55-20). Avec un seul article pour *tou theou kai Christou Iēsou*, MacArthur préfère lire « devant Dieu, à savoir le Christ Jésus », sans être dogmatique, car le Christ est celui qui juge (Jean 5.22) (55-20); la NEG79, qui répète « devant », distingue les deux, décision d'interprétation. Il rapproche la formule des citations en justice des papyrus : une assignation du ministre devant son juge (55-20). *Tou mellontos krinein* marque l'imminence, et *krinein* désigne pour les croyants une évaluation, non une condamnation (55-20), décision d'interprétation. Il prend *zōntas kai nekrous* au sens propre : ni la vie ni la mort ne soustraient au jugement (55-20).
+- **2 Timothée 4.2.** Les cinq impératifs aoristes ouvrent les neuf ordres de 4.1-5 (55-20). *Kēruxon* renvoie à la fonction du héraut, et *ton logon* à toute l'Écriture de 3.15-16 (55-21). *Epistēthi* évoque la sentinelle toujours à son poste, et l'asyndète *eukairōs akairōs* couvre les occasions favorables ou non (55-21). MacArthur distingue *elenxon*, qui s'adresse à l'intelligence en montrant l'erreur par l'Écriture, et *epitimēson*, qui atteint le cœur en convainquant le pécheur; *parakaleson* encourage ensuite au relèvement (55-21). *Makrothumia* est la patience envers les personnes, et *didachē* le contenu qui accompagne la réprimande (55-21).
+- **2 Timothée 4.3-4.** *Kairos* désigne une époque, comme en 3.1, et le futur *anexontai* le refus de tolérer un enseignement sain (55-22). MacArthur inclut dans le sujet sous-entendu non seulement le monde, mais aussi des chrétiens de profession (55-22), décision d'interprétation. Le pronom *heautois* et l'expression *kata tas idias epithumias* montrent qu'ils choisissent leurs docteurs pour eux-mêmes, et le participe passif *knēthomenoi* en donne le motif (55-22). En 4.4, l'actif *apostrepsousin* décrit un refus délibéré, et le passif *ektrapēsontai* fait d'eux les victimes de ce refus : on ne vit pas dans le vide (55-22).
+- **2 Timothée 4.5.** *Su de* oppose Timothée à ceux de 4.3-4 (55-22). L'impératif présent *nēphe* décrit, selon MacArthur, un état stable et maître de soi, dont toutes les facultés sont en éveil (55-22). *Kakopathēson* reprend 2.3 : souffrir le mal (55-23). *Euangelistou*, sans article, ne fait pas de Timothée un évangéliste au sens d'Éphésiens 4.11, mais lui demande un travail d'évangéliste (55-23). *Plērophorēson* signifie remplir entièrement son service, que Thayer rend par accomplir le ministère à tous égards (55-23).
+- **2 Timothée 4.6-8.** *Egō gar*, emphatique, répond au *su de* de 4.5 : Timothée doit agir parce que Paul s'en va (55-24). *Ēdē* signifie déjà, comme en Romains 13.11, et le présent passif *spendomai* fait de la mort imminente le dernier acte du sacrifice (55-24). Le parfait *ephestēken* dit que le moment est arrivé et demeure (55-24). En 4.7, les compléments précèdent les verbes, et les trois parfaits disent une œuvre achevée aux effets durables (55-24, 55-25). En 4.8, *loipon* signifie ce qui reste, *apokeitai* un prix mis en réserve, et le parfait *tois ēgapēkosi* un amour passé qui demeure (55-26). MacArthur lit *ho tēs dikaiosunēs stephanos* comme un génitif d'apposition, la couronne qui est la justice (55-26); c'est une décision d'interprétation (voir l'étude du mot).
+- **2 Timothée 4.9-22.** *Spoudason* (4.9, 21) presse Timothée de venir vite (55-27). *Enkatelipen*, composé de deux prépositions, signifie abandonner quelqu'un dans la détresse (55-27), sens que donne aussi Thayer; le même verbe revient en 4.16. *Agapēsas ton nun aiōna* (4.10) fait contraste avec *tois ēgapēkosi tēn epiphaneian autou* (4.8) (texte seul). MacArthur suggère de lire *apesteila* (4.12) comme un aoriste épistolaire : Tychique porterait la lettre (55-27). En 4.16, *paregeneto* peut désigner l'avocat ou le témoin qui se tient aux côtés de l'accusé, et l'optatif *mē autois logistheiē* exprime un vœu de pardon (55-27). En 4.17, *enedunamōsen* reprend le verbe de 2.1 (texte seul), et *hina* donne le but : que la proclamation soit pleinement accomplie (55-27). Le pluriel *humōn* (4.22) suppose que l'Église lirait la lettre (55-27).
+
+## Étude des mots-clés
+
+Le sens vient du lexique; les versions montrent des rendus, non le sens.
+
+| Français | Translit. | Sens littéral | Lexique et lecture retenue | Traductions comparées |
+|---|---|---|---|---|
+| **prêche** | *kēruxon (kērussō)* | proclamer en héraut | **Lexique (Thayer).** Thayer : être héraut, proclamer à la manière d'un héraut, toujours avec une idée de solennité, de gravité et d'une autorité qu'il faut écouter et à laquelle il faut obéir; a. publier, proclamer ouvertement ce qui a été fait ou ce qui doit se faire (Marc 7.36; Romains 2.21); b. en particulier, la proclamation publique de l'Évangile par Jean-Baptiste, par Jésus, par les apôtres et les autres docteurs chrétiens (Matthieu 11.1; Marc 3.14; Romains 10.15). **Lecture retenue.** MacArthur rappelle le héraut impérial qui, faute d'autres moyens, proclamait publiquement le message de l'empereur (55-21). Le verbe dit la fonction, le nom le contenu : toute l'Écriture (55-21). Prêcher la Parole laisse parler Dieu plutôt que l'homme, met le prédicateur en contact avec la pensée de l'Esprit, oblige à tout prêcher, favorise la connaissance biblique, porte l'autorité suprême et transforme le prédicateur (55-21). D'où son choix de la prédication expositive, livre après livre (55-21). Sa lecture rejoint la solennité et l'autorité que Thayer attache au mot. | *S21* prêche la parole · *NEG79* prêche la parole · *Darby* prêche la parole · *LSG* prêche la parole · *NBS* proclame la Parole |
+| **ayant la démangeaison** | *knēthomenoi (knēthō)* | gratter, chatouiller; au passif, avoir des démangeaisons | **Lexique (Thayer).** Thayer : gratter, chatouiller, faire démanger; au passif, éprouver une démangeaison : *knēthomenoi tēn akoēn*, c'est-à-dire désireux d'entendre quelque chose d'agréable, selon la glose d'Hésychius (2 Timothée 4.3); Aristote emploie le moyen pour l'âne qui frotte ses plaies contre les épines. **Lecture retenue.** MacArthur y voit le motif de tout le refus : des gens qui ne veulent être ni confrontés ni convaincus, mais divertis, et qui recherchent des paroles qui produisent des sensations agréables (55-22). « L'Évangile ne chatouille pas les oreilles. Il les frappe » (55-22). Ils accumulent des docteurs selon leurs désirs, et le prédicateur qu'on aime le moins entendre est souvent celui qui apporte le message dont on a le plus besoin (55-22). Il cite Vincent : si les gens veulent un veau à adorer, on trouve aisément un fabricant de veau dans le ministère (55-22). Sa lecture correspond à la glose que rapporte Thayer. | *S21* ayant la démangeaison d’entendre des choses agréables · *NEG79* ayant la démangeaison d’entendre des choses agréables · *Darby* ayant des oreilles qui leur démangent · *LSG* ayant la démangeaison d’entendre des choses agréables · *NBS* avec une démangeaison d'entendre |
+| **je sers déjà de libation** | *spendomai (spendō)* | verser en libation | **Lexique (Thayer).** Thayer : verser comme offrande liquide, faire une libation; au passif, dans le Nouveau Testament, être offert en libation, au figuré de celui dont le sang est répandu dans une mort violente pour la cause de Dieu (Philippiens 2.17; 2 Timothée 4.6). **Lecture retenue.** MacArthur lit le mot à la lumière de Nombres 15 : après l'holocauste et l'offrande de farine venait la libation, dernier acte du sacrifice (55-24). Paul a déjà offert sa vie et son ministère; il ne lui reste qu'à verser son sang (55-24). Ce qui n'était en Philippiens 2.17 qu'une possibilité est devenu une certitude (55-24). Personne ne lui prend sa vie : comme le Christ (Jean 10.18), il la donne, puisqu'il aurait pu se dérober en compromettant l'Évangile (55-24). Sa lecture correspond au sens figuré que donne Thayer pour ces deux textes. | *S21* je suis déjà comme sacrifié · *NEG79* je sers déjà de libation · *Darby* je sers déjà de libation · *LSG* je sers déjà de libation · *NBS* je suis déjà répandu en libation |
+| **départ** | *analuseōs (analusis)* | action de délier, départ | **Lexique (Thayer).** Thayer : 1. l'action de délier, de dissoudre en parties; 2. le départ, métaphore tirée de l'action de larguer les amarres avant de prendre la mer, ou, selon d'autres, de lever le camp (Lightfoot sur Philippiens 1.23); en 2 Timothée 4.6, le départ de la vie, comme chez Philon et Clément de Rome. **Lecture retenue.** MacArthur note que Paul n'appelle pas la mort une mort, mais un départ, et retient quatre images du mot : dételer l'animal, et c'est le repos après le labeur; délier le prisonnier, et c'est la liberté hors des chaînes et du péché; défaire la tente, pour la dernière fois, en vue de la maison du Père; larguer les amarres du navire, pour gagner le port du ciel (55-24, 55-25). Qui craindrait une telle mort? (55-24). Deux de ses images correspondent aux métaphores que relève Thayer, les amarres et le camp levé. | *S21* le moment de mon départ · *NEG79* le moment de mon départ · *Darby* le temps de mon départ · *LSG* le moment de mon départ · *NBS* le temps de mon départ |
+| **la couronne de justice** | *ho tēs dikaiosunēs stephanos (stephanos)* | couronne, guirlande | **Lexique (Thayer).** Thayer : couronne qui ceint la tête; a. au propre, marque d'un rang élevé (Matthieu 27.29; Apocalypse 4.4), ou guirlande donnée au vainqueur des jeux (1 Corinthiens 9.25; cf. 2 Timothée 2.5); b. au figuré, la félicité éternelle donnée en prix aux vrais serviteurs de Dieu : en 2 Timothée 4.8, la couronne qui est la récompense de la justice, et, avec un génitif épexégétique, la couronne qui est la vie (Jacques 1.12; Apocalypse 2.10) ou la gloire (1 Pierre 5.4). **Lecture retenue.** MacArthur distingue le *stephanos*, guirlande des vainqueurs, des magistrats honorés et des fêtes, du diadème royal (55-26). Il écarte le génitif de source, la couronne que mérite la justice, peu conforme à l'humilité de Paul, et retient le génitif d'apposition : la couronne qui est la justice parfaite, l'absence définitive du péché que le croyant affamé de justice désire (Matthieu 5.6; Galates 5.5) (55-26). Comme la couronne de vie et la couronne de gloire, elle est promise à tous ceux qui aiment l'apparition du Christ, c'est-à-dire à tous les vrais croyants; des récompenses particulières de service s'y ajoutent (1 Corinthiens 3.12-15) (55-26). Pour 2 Timothée 4.8, sa lecture diffère de celle de Thayer, qui y voit la récompense de la justice et réserve le génitif épexégétique aux autres textes : c'est une décision d'interprétation. | *S21* la couronne de justice · *NEG79* la couronne de justice · *Darby* la couronne de justice · *LSG* la couronne de justice · *NBS* la couronne de justice |
+
+## Apports des commentateurs
+
+**Niveau de source**
+
+Niveau 1 : huit sermons Grace to You sur 2 Timothée 4.1 à 4.22 (55-20 à 55-27, série « 2 Timothy », janvier à mars 1988) et introduction de la MacArthur Study Bible
+
+**Couverture des sources**
+
+Les huit prédications couvrent les vingt-deux versets du chapitre, selon les plages affichées par gty.org et recoupées dans les transcriptions : 55-20 à 55-23 (« Marks of the Faithful Preacher », parties 1 à 4 : 4.1, 4.2, 4.3-4, 4.5) dégagent huit marques du prédicateur fidèle, la gravité, le contenu, l'étendue, l'urgence, l'attitude, le prix, l'extension et le but de sa charge; 55-22 commente déjà le premier ordre de 4.5, et 55-23 traite aussi de l'appel au ministère; 55-24 à 55-26 (« The Triumphant Epitaph of Paul », parties 1 à 3 : 4.6, 4.7, 4.8) lisent l'épitaphe de Paul selon le présent, le passé et l'avenir; 55-27 (« Friends and Foes », 4.9-22) passe en revue treize personnes ou groupes de son entourage. Aucun sermon n'enjambe une frontière de chapitre, mais plusieurs charnières se signalent : la charge de 4.1 est la troisième de ce genre, après 1 Timothée 5.21 et 6.13 (55-20); l'annonce de 4.3 est la troisième prophétie adressée à Timothée, après 1 Timothée 4.1 et 2 Timothée 3.1 (55-22); « Mais toi » (4.5) et « Car pour moi » (4.6) lient l'exhortation à l'épitaphe (55-24); « ce jour-là » reprend 1.12 et 1.18 (55-26); la maison d'Onésiphore renvoie à 1.16-18 (55-27). Une position absente de ces transcriptions n'est pas rapportée.
+
+**Sermons Grace to You**
+
+| Code | Sermon | Passage |
+|---|---|---|
+| 55-20 | [Marks of the Faithful Preacher, Part 1](https://www.gty.org/sermons/55-20) | 2 Ti 4.1 |
+| 55-21 | [Marks of the Faithful Preacher, Part 2](https://www.gty.org/sermons/55-21) | 2 Ti 4.2 |
+| 55-22 | [Marks of the Faithful Preacher, Part 3](https://www.gty.org/sermons/55-22) | 2 Ti 4.3-4 |
+| 55-23 | [Marks of the Faithful Preacher, Part 4](https://www.gty.org/sermons/55-23) | 2 Ti 4.5 |
+| 55-24 | [The Triumphant Epitaph of Paul, Part 1](https://www.gty.org/sermons/55-24) | 2 Ti 4.6 |
+| 55-25 | [The Triumphant Epitaph of Paul, Part 2](https://www.gty.org/sermons/55-25) | 2 Ti 4.7 |
+| 55-26 | [The Triumphant Epitaph of Paul, Part 3](https://www.gty.org/sermons/55-26) | 2 Ti 4.8 |
+| 55-27 | [Friends and Foes](https://www.gty.org/sermons/55-27) | 2 Ti 4.9-22 |
+
+Dans huit sermons prêchés de janvier à mars 1988 (55-20 à 55-27), John MacArthur lit le chapitre 4 comme le dernier appel de Paul à celui qui prend sa place : il passe le flambeau à un homme moral et vertueux, mais plus timide que lui (55-20). Ce qui est vrai du prédicateur, l'assemblée doit en tenir le prédicateur responsable (55-20).
+
+### 2 Timothée 4.1-2 · La gravité, le contenu et l'étendue de la charge
+
+La première marque du prédicateur fidèle est de comprendre la gravité de sa charge : il sert sous le regard de celui qui le jugera et qui sait déjà tout, si bien qu'au tribunal il n'y aura ni témoins, ni avocats, ni explications (55-20). MacArthur rattache ce jugement au tribunal du Christ, où les œuvres des croyants seront évaluées pour la récompense (1 Corinthiens 3.12-15; 2 Corinthiens 5.10), et rappelle l'image de l'empereur dont on préparait la visite : il faut servir pour plaire au Christ quand il paraîtra (55-20). La deuxième marque est le contenu : « prêche la parole », l'ordre que son père inscrivit dans la Bible qu'il lui offrit (55-21). La troisième est l'étendue de la charge : être prêt en tout temps, comme une sentinelle, car « il n'y a pas de saison fermée pour la prédication »; reprendre l'erreur et convaincre le pécheur, puis encourager, avec patience et enseignement, car la réprimande sans enseignement laisse sans direction (55-21). MacArthur cite Spurgeon : celui qui, après vingt ans au même endroit, est plus vivant que jamais est grand débiteur de l'Esprit vivifiant (55-21).
+
+### 2 Timothée 4.3-5 · L'urgence, l'attitude, le prix, l'extension et le but
+
+Ce qui compte n'est pas le succès, mais l'excellence : le succès cherche le statut et plaire aux hommes, l'excellence cherche à faire de son mieux devant Dieu (55-22). La quatrième marque est l'urgence : viendront des époques où l'on ne tolérera plus l'enseignement sain, même dans l'Église, et où l'on s'entourera de docteurs qui flattent les désirs (Jérémie 5.30-31; Ézéchiel 33.30-32); il faut prêcher pendant qu'on écoute encore (55-22). La cinquième est l'attitude : la sobriété, une stabilité qui ne cède ni aux modes ni à la foule (55-22). MacArthur s'arrête ensuite sur l'appel au ministère, qui se reconnaît à une contrainte intérieure, non à l'ambition, à des dons et des circonstances que Dieu ordonne, à l'approbation de l'Église qui envoie et qui reçoit, et à l'efficacité du ministère (55-23). La sixième marque est le prix : on pourrait évaluer tout prédicateur sur deux choses, sa fidélité à la Parole et la souffrance qu'il est capable d'endurer (55-23). La septième est l'extension : faire un travail d'évangéliste, avec clarté et sans manipuler, sans musique ni lumières pour forcer une décision, car croire est une œuvre de Dieu (55-23). La huitième est le but : remplir son ministère jusqu'au bout, ce qui suppose de courir vite tout au long de la course (55-23).
+
+### 2 Timothée 4.6-8 · L'épitaphe triomphante de Paul
+
+Paul regarde le présent, le passé et l'avenir (55-24). Le présent : il est prêt; sa vie s'achève comme la libation qui couronne le sacrifice, et la mort n'est qu'un départ (55-24). Le passé : il a été fidèle, sans regret ni inachèvement; « ce n'est pas une symphonie inachevée » (55-24). MacArthur en tire cinq principes pour bien finir : se savoir dans un combat qui exige un effort extrême, en connaître la noblesse, éviter les détours, c'est-à-dire les fardeaux inutiles et le péché (Hébreux 12.1), chérir le temps, et garder la Parole comme un dépôt sacré (55-25). Il conclut sur William Borden, mort en route vers la Chine : « pas de réserve, pas de retraite, pas de regret » (55-25). L'avenir : il sera récompensé; désirer cette récompense n'est pas égoïste, puisque Dieu l'a promise et qu'il jugera les motifs (1 Corinthiens 4.5), et la couronne de justice sera donnée à tous ceux qui ont aimé l'apparition du Christ, la marque la plus sûre du vrai croyant étant l'amour pour Dieu et pour le Christ (55-26).
+
+### 2 Timothée 4.9-22 · Amis et adversaires
+
+Au seuil de la mort, Paul pense aux personnes, non aux programmes (55-27). MacArthur passe en revue treize personnes ou groupes : Timothée, le fils fidèle; Démas, qui a aimé le siècle présent et n'était sans doute pas un vrai chrétien; Crescens, le fidèle inconnu; Tite, le bâtisseur de responsables; Luc, le compagnon fidèle; Marc, autrefois infidèle et maintenant utile; Tychique, le messager; Carpus, l'hôte; Alexandre, l'adversaire dont Paul laisse la rétribution au Seigneur; les anonymes qui l'ont abandonné à sa première défense, à qui il pardonne comme Étienne (Actes 7.60); puis le Seigneur fidèle, qui l'a assisté et fortifié pour qu'il proclame pleinement l'Évangile devant tous les païens (55-27). Viennent enfin les vieux amis, Prisca, Aquilas, la maison d'Onésiphore, Éraste et Trophime, et les nouveaux amis de Rome (55-27). MacArthur voit dans Trophime laissé malade une illustration de la cessation des dons de signes à la fin de l'époque apostolique (55-27). La dernière parole de Paul est une bénédiction pour Timothée et pour l'Église : « Que la grâce soit avec vous! » (55-27).
+
+**Indices du texte**
+
+- **2 Timothée 4.1.** La suite *Diamarturomai enōpion* et *tou mellontos krinein* fonde la lecture d'une charge donnée sous le regard du juge, comme une assignation au tribunal (55-20).
+- **2 Timothée 4.2.** L'accumulation de cinq impératifs aoristes, avec *eukairōs akairōs*, fonde la lecture d'un ministère de la Parole sans saison fermée, à la fois négatif et positif (55-21).
+- **2 Timothée 4.3-4.** Le passage de l'actif *apostrepsousin* au passif *ektrapēsontai* soutient la lecture d'un refus délibéré de la vérité qui livre ensuite à l'erreur (55-22).
+- **2 Timothée 4.5-6.** Le parallèle *su de* / *egō gar* fonde le lien entre les ordres de 4.5 et le départ imminent de Paul : Timothée doit prendre la relève (55-24).
+- **2 Timothée 4.7.** Les trois parfaits *ēgōnismai, teteleka, tetērēka*, avec les compléments en tête, fondent la lecture d'une vie achevée sans regret (55-24, 55-25).
+- **2 Timothée 4.16-17.** L'opposition entre *oudeis moi paregeneto* et *ho de kurios moi parestē* fonde la lecture du Seigneur fidèle au milieu de l'abandon (55-27).
+
+## Renvois et passages parallèles
+
+**1 Timothée 6.13-14** · *Parallèle direct*
+
+Paul ordonnait déjà à Timothée, devant Dieu et devant le Christ, de garder le commandement jusqu'à l'apparition du Seigneur : MacArthur y voit la deuxième des trois charges solennelles, dont 4.1 est la dernière (55-20).
+
+**2 Corinthiens 5.9-10** · *Lien thématique*
+
+Tous doivent comparaître devant le tribunal du Christ pour recevoir selon ce qu'ils ont fait : MacArthur y voit l'évaluation que désigne *krinein* en 4.1 et la récompense de 4.8 (55-20, 55-26).
+
+**Jérémie 5.30-31** · *Arrière-plan AT*
+
+Les prophètes prophétisent avec fausseté, et le peuple prend plaisir à cela : MacArthur y voit le même goût pour les docteurs qui flattent qu'en 4.3 (55-22).
+
+**Nombres 15.1-10** · *Arrière-plan AT*
+
+L'holocauste s'accompagne d'une offrande de farine et d'une libation de vin : MacArthur lit la libation de 4.6 comme le dernier acte de ce sacrifice complet (55-24).
+
+**Philippiens 2.17** · *Parallèle direct*
+
+Paul se réjouit même s'il doit servir de libation pour le sacrifice de la foi des Philippiens : MacArthur note que la possibilité envisagée alors est devenue en 4.6 une certitude (55-24).
+
+**Jacques 1.12** · *Lien thématique*
+
+Celui qui endure l'épreuve recevra la couronne de vie promise à ceux qui aiment Dieu : MacArthur y trouve le même génitif d'apposition qu'en 4.8 et la même promesse faite à ceux qui aiment le Seigneur (55-26).
+
+**Colossiens 4.10-14** · *Parallèle direct*
+
+Pendant la première captivité, Marc, Luc et Démas étaient avec Paul : MacArthur en tire la restauration de Marc et la chute de Démas, qui l'a ensuite abandonné (4.10-11) (55-27).
+
+**Actes 15.37-39** · *Lien thématique*
+
+Paul refuse de reprendre Marc, qui les avait quittés en Pamphylie, et se sépare de Barnabas : MacArthur y mesure le chemin parcouru par Marc, devenu utile au ministère (4.11) (55-27).
+
+## Thèmes théologiques
+
+### La prédication de la Parole au centre du ministère
+
+**Dans le texte**
+
+Paul conjure Timothée, devant Dieu et devant Jésus-Christ, de prêcher la parole, d'insister en toute occasion, favorable ou non, de reprendre, censurer et exhorter avec toute douceur et en instruisant (4.1-2).
+
+**Ancrage doctrinal**
+
+MacArthur fait de la prédication de toute l'Écriture le contenu même de la charge du ministre : elle laisse parler Dieu, porte son autorité et transforme prédicateur et auditeurs; d'où la prédication expositive, qui explique et applique le texte (55-21). Rattachement : ecclésiologie (le ministère pastoral et la prédication) et bibliologie (l'autorité de l'Écriture) dans *Biblical Doctrine*.
+
+**Révélation progressive**
+
+Noé fut prédicateur de la justice (2 Pierre 2.5); Jonas proclama le jugement à Ninive (Jonas 3.4); la foi vient de ce qu'on entend la parole du Christ, par ceux qu'on envoie prêcher (Romains 10.14-17); Paul n'a voulu savoir que Jésus-Christ crucifié (1 Corinthiens 2.1-4) (55-21).
+
+**Pour votre assemblée**
+
+L'Église attend de ses prédicateurs l'exposition fidèle de toute l'Écriture et les en tient responsables, et chaque croyant transmet la Parole à son niveau (55-20, 55-21).
+
+### Le Christ juge et les récompenses de ses serviteurs
+
+**Dans le texte**
+
+Le Christ doit juger les vivants et les morts; la couronne de justice est réservée à Paul, et le Seigneur, le juste juge, la lui donnera dans ce jour-là, ainsi qu'à tous ceux qui auront aimé son avènement (4.1, 8).
+
+**Ancrage doctrinal**
+
+MacArthur enseigne que tout jugement est remis au Fils, que les croyants comparaîtront au tribunal du Christ, après l'enlèvement de l'Église, non pour être condamnés, mais pour que leurs œuvres et leurs motifs soient évalués, et que tous recevront la justice, la vie et la gloire éternelles, avec des récompenses de service proportionnées à leur fidélité (55-20, 55-26). Rattachement : eschatologie (le tribunal du Christ, les récompenses, le jugement dernier) et christologie (le Christ juge) dans *Biblical Doctrine*.
+
+**Révélation progressive**
+
+Le Père a remis tout jugement au Fils (Jean 5.22); Dieu jugera le monde par l'homme qu'il a ressuscité (Actes 17.31); les œuvres de chacun seront éprouvées par le feu (1 Corinthiens 3.12-15); le Christ vient, et sa rétribution est avec lui (Apocalypse 22.12) (55-20, 55-26).
+
+**Pour votre assemblée**
+
+Le serviteur travaille pour l'approbation de son juge, non pour celle des hommes, et désire sans égoïsme la récompense promise (55-20, 55-26).
+
+### Le refus de la saine doctrine
+
+**Dans le texte**
+
+Il viendra un temps où les hommes ne supporteront pas la saine doctrine; ayant la démangeaison d'entendre des choses agréables, ils se donneront une foule de docteurs selon leurs propres désirs, détourneront l'oreille de la vérité et se tourneront vers les fables (4.3-4).
+
+**Ancrage doctrinal**
+
+MacArthur voit dans ce refus une constante des époques de l'Église, qui atteint aussi les chrétiens de profession : ceux qui se détournent de la vérité deviennent les victimes de l'erreur, car on ne vit pas dans le vide; la seule réponse est de prêcher pendant qu'on écoute encore (55-22). Rattachement : bibliologie (la saine doctrine) et hamartiologie (le refus de la vérité) dans *Biblical Doctrine*.
+
+**Révélation progressive**
+
+Ésaïe est envoyé à un peuple aux oreilles fermées (Ésaïe 6.9-10); le peuple aime les prophètes menteurs (Jérémie 5.31); on écoute Ézéchiel comme un chant d'amour sans pratiquer sa parole (Ézéchiel 33.30-32); l'Esprit annonce l'abandon de la foi (1 Timothée 4.1) (55-22).
+
+**Pour votre assemblée**
+
+Le croyant se défie des enseignements qui flattent ses désirs, et le prédicateur reste ferme quand on lui demande de plaire (55-22).
+
+### La mort du croyant, offrande et départ
+
+**Dans le texte**
+
+Paul sert déjà de libation, le moment de son départ approche; il a combattu le bon combat, achevé la course, gardé la foi (4.6-7).
+
+**Ancrage doctrinal**
+
+MacArthur présente la mort du croyant fidèle comme le dernier acte d'une vie offerte à Dieu et comme un départ vers la présence du Christ : la fin du labeur, la délivrance des chaînes et du péché, l'entrée dans la maison du Père (55-24, 55-25). Rattachement : eschatologie individuelle (la mort et l'état intermédiaire) et sanctification (la persévérance jusqu'au bout) dans *Biblical Doctrine*.
+
+**Révélation progressive**
+
+Le Christ donne lui-même sa vie (Jean 10.18); Paul juge la mort un gain et désire s'en aller pour être avec Christ (Philippiens 1.21-23); il préfère quitter ce corps pour demeurer auprès du Seigneur (2 Corinthiens 5.8); Pierre sait que le moment de quitter sa tente approche (2 Pierre 1.14) (55-24, 55-25).
+
+**Pour votre assemblée**
+
+Le croyant vit de manière à finir sans regret, en combattant, en restant sur la piste, en chérissant le temps et en gardant la Parole (55-25).
+
+### Le Seigneur fidèle au milieu de l'abandon
+
+**Dans le texte**
+
+Dans sa première défense, personne n'a assisté Paul et tous l'ont abandonné; c'est le Seigneur qui l'a assisté et fortifié, et il le délivrera de toute œuvre mauvaise et le sauvera pour son royaume céleste (4.16-18).
+
+**Ancrage doctrinal**
+
+MacArthur souligne que le Seigneur se tient aux côtés de son serviteur quand les hommes l'abandonnent, qu'il lui donne la force de proclamer pleinement l'Évangile, qu'il le préservera jusqu'à son salut final, et que la vengeance lui appartient (55-27). Rattachement : providence (la préservation) et sotériologie (le salut final) dans *Biblical Doctrine*.
+
+**Révélation progressive**
+
+La vengeance appartient à l'Éternel (Deutéronome 32.35; Romains 12.19); Étienne prie pour ses meurtriers (Actes 7.60), comme Jésus sur la croix (Luc 23.34); le salut est plus près qu'au moment où nous avons cru (Romains 13.11) (55-27).
+
+**Pour votre assemblée**
+
+Le serviteur pardonne à ceux qui l'abandonnent, laisse au Seigneur le sort de ses adversaires et compte sur sa présence pour accomplir sa tâche (55-27).
+
+## Pistes de réflexion
+
+1. Notre ministère serait-il différent si nous pensions chaque semaine que notre juge voit déjà tout ce que nous faisons (4.1; 55-20)?
+2. Notre prédication expose-t-elle vraiment la Parole, ou s'en sert-elle pour soutenir nos propres idées (4.2; 55-21)?
+3. Savons-nous reprendre l'erreur et convaincre le pécheur, puis encourager avec patience et enseignement, sans nous arrêter à la réprimande (4.2; 55-21)?
+4. Cherchons-nous le succès que le monde reconnaît, ou l'excellence que Dieu seul voit (4.3-5; 55-22)?
+5. Qu'est-ce qui, dans notre vie, ressemble à un fardeau inutile ou à un péché qui nous détourne de la course (4.7; 55-25)?
+6. Aimons-nous l'apparition du Christ au point que cette attente oriente nos décisions (4.8; 55-26)?
+7. Qui, dans notre entourage, est un Démas, un Marc à restaurer ou un Onésiphore, et comment le traitons-nous (4.9-22; 55-27)?
