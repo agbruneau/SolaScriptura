@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hébreux 11 · La nature et le triomphe de la foi : la grande galerie des témoins d&#x27;Abel aux martyrs · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Hébreux 11 dans la perspective de John MacArthur : La nature et le triomphe de la foi : la grande galerie des témoins d&#x27;Abel aux martyrs.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Hébreux 11</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Hébreux 11</span></p>
+    <h1 class="hero__title">La nature et le triomphe de la foi : la grande galerie des témoins d'Abel aux martyrs</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Or, la foi est une ferme assurance des choses qu’on espère, une démonstration de celles qu’on ne voit pas. Pour l’avoir possédée, les anciens ont obtenu un témoignage favorable.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Hébreux 11.1-⁠2 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 5 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Hébreux 11</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Ayant proclamé à la fin du chapitre 10, avec le prophète Habacuc, que « le juste vivra par la foi » et que les vrais rachetés possèdent « la foi pour sauver leur âme » (10.38-⁠39), l'auteur consacre l'intégralité du chapitre 11 à définir et à illustrer par toute l'histoire de l'Ancien Testament ce qu'est véritablement cette foi salvatrice et persévérante (1626). Le genre littéraire est celui de l'éloge historique et exemplaire (<i>enkomion</i> biblique scandé dix-huit fois par l'anaphore rhétorique <i>Pistei</i>, « C'est par la foi que... »), qui retrace l'histoire rédemptrice depuis la création et l'ère pré-diluvienne jusqu'aux patriarches, à l'Exode, à la conquête, aux juges, aux rois, aux prophètes et aux martyrs intertestamentaires. Ce genre commande de lire ces quarante versets non comme une collection d'exploits héroïques à la gloire de l'homme, mais comme la démonstration que sous l'Ancienne Alliance comme sous la Nouvelle, personne n'a jamais été agréable à Dieu par les œuvres de la loi, mais uniquement par la foi qui s'empare des promesses invisibles de Dieu (1626, 1628, 1634).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Or, la foi est une ferme assurance des choses qu’on espère, une démonstration de celles qu’on ne voit pas.</p><cite class="verse__ref">Hébreux 11.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">Pour l’avoir possédée, les anciens ont obtenu un témoignage favorable.</p><cite class="verse__ref">Hébreux 11.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que nous reconnaissons que l’univers a été formé par la parole de Dieu, en sorte que ce qu’on voit n’a pas été fait de choses visibles.</p><cite class="verse__ref">Hébreux 11.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’Abel offrit à Dieu un sacrifice plus excellent que celui de Caïn; c’est par elle qu’il fut déclaré juste, Dieu approuvant ses offrandes; et c’est par elle qu’il parle encore, quoique mort.</p><cite class="verse__ref">Hébreux 11.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’Hénoc fut enlevé pour qu’il ne voie point la mort, et il ne parut plus parce que Dieu l’avait enlevé; car, avant son enlèvement, il avait reçu le témoignage qu’il était agréable à Dieu.</p><cite class="verse__ref">Hébreux 11.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">Or, sans la foi, il est impossible de lui être agréable; car il faut que celui qui s’approche de Dieu croie que Dieu existe, et qu’il est le rémunérateur de ceux qui le cherchent.</p><cite class="verse__ref">Hébreux 11.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que Noé, divinement averti des choses qu’on ne voyait pas encore, et saisi d’une crainte respectueuse, construisit une arche pour sauver sa famille; c’est par elle qu’il condamna le monde, et devint héritier de la justice qui s’obtient par la foi.</p><cite class="verse__ref">Hébreux 11.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’Abraham, lors de sa vocation, obéit et partit pour un lieu qu’il devait recevoir en héritage, et qu’il partit sans savoir où il allait.</p><cite class="verse__ref">Hébreux 11.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’il vint s’établir dans la terre promise comme dans une terre étrangère, habitant sous des tentes, ainsi qu’Isaac et Jacob, les cohéritiers de la même promesse.</p><cite class="verse__ref">Hébreux 11.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car il attendait la cité qui a de solides fondements, celle dont Dieu est l’architecte et le constructeur.</p><cite class="verse__ref">Hébreux 11.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que Sara elle-même, malgré son âge avancé, fut rendue capable d’avoir une postérité, parce qu’elle crut à la fidélité de celui qui avait fait la promesse.</p><cite class="verse__ref">Hébreux 11.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pourquoi d’un seul homme, déjà usé de corps, naquit une postérité nombreuse comme les étoiles du ciel, comme le sable qui est sur le bord de la mer et qu’on ne peut compter.</p><cite class="verse__ref">Hébreux 11.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est dans la foi qu’ils sont tous morts, sans avoir obtenu les choses promises; mais ils les ont vues et saluées de loin, reconnaissant qu’ils étaient étrangers et voyageurs sur la terre.</p><cite class="verse__ref">Hébreux 11.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ceux qui parlent ainsi montrent qu’ils cherchent une patrie.</p><cite class="verse__ref">Hébreux 11.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">S’ils avaient eu en vue celle d’où ils étaient sortis, ils auraient eu le temps d’y retourner.</p><cite class="verse__ref">Hébreux 11.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais maintenant ils en désirent une meilleure, c’est-à-dire une céleste. C’est pourquoi Dieu n’a pas honte d’être appelé leur Dieu, car il leur a préparé une cité.</p><cite class="verse__ref">Hébreux 11.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’Abraham offrit Isaac, lorsqu’il fut mis à l’épreuve, et qu’il offrit son fils unique, lui qui avait reçu les promesses,</p><cite class="verse__ref">Hébreux 11.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">et à qui il avait été dit: En Isaac, tu auras une postérité appelée de ton nom.</p><cite class="verse__ref">Hébreux 11.18 · NEG</cite></figure><figure class="verse"><p class="verse__text">Il pensait que Dieu est puissant, même pour ressusciter les morts; aussi, il retrouva son fils, ce qui est une préfiguration.</p><cite class="verse__ref">Hébreux 11.19 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’Isaac bénit Jacob et Esaü, en vue des choses à venir.</p><cite class="verse__ref">Hébreux 11.20 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que Jacob mourant bénit chacun des fils de Joseph, et qu’il adora, appuyé sur l’extrémité de son bâton.</p><cite class="verse__ref">Hébreux 11.21 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que Joseph mourant fit mention de la sortie des fils d’Israël, et qu’il donna des ordres au sujet de ses os.</p><cite class="verse__ref">Hébreux 11.22 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que Moïse, à sa naissance, fut caché pendant trois mois par ses parents, parce qu’ils virent que l’enfant était beau, et qu’ils ne craignirent pas l’ordre du roi.</p><cite class="verse__ref">Hébreux 11.23 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que Moïse, devenu grand, refusa d’être appelé fils de la fille de Pharaon;</p><cite class="verse__ref">Hébreux 11.24 · NEG</cite></figure><figure class="verse"><p class="verse__text">il préféra être maltraité avec le peuple de Dieu que d’avoir pour un temps la jouissance du péché;</p><cite class="verse__ref">Hébreux 11.25 · NEG</cite></figure><figure class="verse"><p class="verse__text">il regarda l’opprobre de Christ comme une richesse plus grande que les trésors de l’Egypte, car il avait les yeux fixés sur la rémunération.</p><cite class="verse__ref">Hébreux 11.26 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’il quitta l’Egypte, sans être effrayé de la colère du roi; car il se montra ferme, comme voyant celui qui est invisible.</p><cite class="verse__ref">Hébreux 11.27 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’il immola la Pâque et fit l’aspersion du sang, afin que l’exterminateur ne touche pas aux premiers-nés des Israélites.</p><cite class="verse__ref">Hébreux 11.28 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi qu’ils traversèrent la mer Rouge, comme un lieu sec, tandis que les Egyptiens qui tentèrent de passer furent engloutis.</p><cite class="verse__ref">Hébreux 11.29 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que les murailles de Jéricho tombèrent, après qu’on en eut fait le tour pendant sept jours.</p><cite class="verse__ref">Hébreux 11.30 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est par la foi que Rahab la prostituée ne périt pas avec les rebelles, parce qu’elle avait reçu les espions avec bienveillance.</p><cite class="verse__ref">Hébreux 11.31 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et que dirai-je encore? Car le temps me manquerait pour parler de Gédéon, de Barak, de Samson, de Jephthé, de David, de Samuel, et des prophètes,</p><cite class="verse__ref">Hébreux 11.32 · NEG</cite></figure><figure class="verse"><p class="verse__text">qui, par la foi, vainquirent des royaumes, exercèrent la justice, obtinrent des promesses, fermèrent la gueule des lions,</p><cite class="verse__ref">Hébreux 11.33 · NEG</cite></figure><figure class="verse"><p class="verse__text">éteignirent la puissance du feu, échappèrent au tranchant de l’épée, guérirent de leurs maladies, furent vaillants à la guerre, mirent en fuite des armées étrangères.</p><cite class="verse__ref">Hébreux 11.34 · NEG</cite></figure><figure class="verse"><p class="verse__text">Des femmes recouvrèrent leurs morts par la résurrection; d’autres furent livrés aux tourments, et n’acceptèrent point de délivrance, afin d’obtenir une meilleure résurrection;</p><cite class="verse__ref">Hébreux 11.35 · NEG</cite></figure><figure class="verse"><p class="verse__text">d’autres subirent les moqueries et le fouet, les chaînes et la prison;</p><cite class="verse__ref">Hébreux 11.36 · NEG</cite></figure><figure class="verse"><p class="verse__text">ils furent lapidés, sciés, torturés; ils moururent tués par l’épée; ils allèrent çà et là, vêtus de peaux de brebis et de peaux de chèvres, dénués de tout, persécutés, maltraités</p><cite class="verse__ref">Hébreux 11.37 · NEG</cite></figure><figure class="verse"><p class="verse__text">– eux dont le monde n’était pas digne – errants dans les déserts et les montagnes, dans les cavernes et les antres de la terre.</p><cite class="verse__ref">Hébreux 11.38 · NEG</cite></figure><figure class="verse"><p class="verse__text">Tous ceux-là, à la foi desquels il a été rendu témoignage, n’ont pas obtenu ce qui leur était promis,</p><cite class="verse__ref">Hébreux 11.39 · NEG</cite></figure><figure class="verse"><p class="verse__text">Dieu ayant en vue quelque chose de meilleur pour nous, afin qu’ils ne parviennent pas sans nous à la perfection.</p><cite class="verse__ref">Hébreux 11.40 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Dans l'argumentation adressée aux destinataires hébreux, MacArthur souligne la portée apologétique décisive de ce chapitre (1626). Les Juifs incrédules accusaient les chrétiens de trahir les pères d'Israël en prêchant le salut par la foi seule sans les rituels mosaïques. L'auteur retourne magistralement l'argument : tous les « anciens » (<i>hoi presbyteroi</i>, 11.2) les plus vénérés d'Israël (Abel, Hénoc, Noé, Abraham, Sara, Isaac, Jacob, Joseph, Moïse, Josué, Rahab, Gédéon, David, Samuel et les prophètes) ont vécu, combattu, souffert et triomphé par la foi seule, en regardant au-delà des ombres terrestres vers la patrie céleste et vers l'opprobre du Christ (11.10, 16, 26) (1626, 1630, 1633).</p><p>La progression interne du chapitre suit l'ordre chronologique de la Genèse aux livres historiques et prophétiques en six grands tableaux : le prologue sur la nature de la foi et la création (11.1-⁠3); les trois témoins antédiluviens qui dessinent l'adoration (Abel), la marche (Hénoc) et l'obéissance (Noé) de la foi (11.4-⁠7); l'époque patriarcale d'Abraham à Joseph tournée vers la cité céleste jusque dans la mort (11.8-⁠22); les choix décisifs de Moïse renonçant à l'Égypte (11.23-⁠29); la conquête de Canaan avec Jéricho et Rahab (11.30-⁠31); et enfin le crescendo final des conquérants (11.32-⁠35a) et des martyrs torturés qui n'acceptèrent point de délivrance afin d'obtenir une meilleure résurrection (11.35b-38), tous attendant l'œuvre achevée de Christ pour parvenir avec nous à la perfection (11.39-⁠40) (1626 à 1634).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Hébreux 11</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Les exemples rassemblés en Hébreux 11 couvrent plus de quatre millénaires d'histoire biblique, depuis la création de l'univers ex nihilo (Genèse 1; Hébreux 11.3) et le premier sacrifice d'Abel aux portes d'Éden (Genèse 4; Hébreux 11.4) jusqu'aux persécutions sanglantes subies par les prophètes d'Israël et les fidèles de l'époque maccabéenne au deuxième siècle avant J.-C. (11.35-⁠38) (1626, 1627, 1634). L'auteur puise ses citations et ses allusions dans la Septante grecque (comme en 11.5 où le grec traduit « Hénoc marcha avec Dieu » de Genèse 5.22, 24 par « il fut agréable à Dieu », <i>euarestēkenai tō theō</i>, et en 11.21 où Jacob adore appuyé sur le bout de son bâton, <i>epi to akron tēs rhabdou autou</i>) (1628, 1631).</p><div class="body"><p>Aux versets 35 à 38, les références historiques deviennent particulièrement poignantes pour des lecteurs confrontés à la menace de la persécution néronienne (1634) : « D'autres furent livrés aux tourments (<i>etympanisthēsan</i>), et n'acceptèrent point de délivrance, afin d'obtenir une meilleure résurrection » renvoie directement au martyre d'Éléazar et des sept frères avec leur mère sous le roi séleucide Antiochus IV Épiphane vers 167 av. J.-C. (rapporté en 2 Maccabées 6.18-⁠7.42), à qui le tyran offrait la vie sauve s'ils mangeaient de la viande sacrifiée aux idoles et violaient la loi de Dieu, mais qui préférèrent mourir sous le supplice du tambour (<i>tympanon</i>) en confessant leur foi en la résurrection des justes (1634).</p><p>De même, au verset 37, « ils furent lapidés » rappelle le meurtre du prophète Zacharie, fils de Jehojada, lapidé dans le parvis du temple sur l'ordre du roi Joas (2 Chroniques 24.20-⁠21; Luc 11.51); « ils furent sciés » (<i>epristhēsan</i>) renvoie à la tradition juive ancienne selon laquelle le prophète Ésaïe fut scié en deux dans un tronc de cèdre sous le règne impie de Manassé; et « couverts de peaux de brebis et de chèvres, dénués de tout, persécutés, maltraités... errants dans les déserts et les montagnes, dans les cavernes et les antres de la terre » évoque le ministère d'Élie, d'Élisée et des cent prophètes cachés par Abdias dans des cavernes sous la terreur d'Achab et de Jézabel (1 Rois 18.4, 13; 19.9) (1634).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Le titre de propriété (hypostasis) dans les papyrus grecs et la définition de la foi (11.1).</b> Les découvertes papyrologiques en Égypte (Moulton et Milligan) ont montré que dans la langue juridique quotidienne du premier siècle, le nom grec <i>hypostasis</i> (« ferme assurance / substance », 11.1) désignait l'acte de propriété officiel ou le dossier de titres légaux qui garantissait à un citoyen la possession légitime d'un domaine, même s'il ne l'avait pas encore vu de ses yeux (1626). MacArthur souligne que la foi biblique n'est jamais un saut aveugle dans le vide ni un vœu pieux subjectif : c'est le titre de propriété spirituel donné par Dieu qui confère dès le présent une réalité substantielle aux promesses futures que nous espérons, et une conviction (<i>elenchos</i>) inébranlable des réalités célestes invisibles (1626).</li><li><b>Le bâton de pèlerin de Jacob mourant en Genèse 47.31 et Hébreux 11.21.</b> En Genèse 47.31, les consonnes hébraïques non vocalisées <i>M-T-H</i> peuvent se lire soit <i>mitah</i> (« le lit » : « Israël se prosterna sur le chevet de son lit », lecture retenue par les massorètes), soit <i>matteh</i> (« le bâton » : « Israël adora, appuyé sur l'extrémité de son bâton », lecture de la Septante grecque reprise en Hébreux 11.21) (1631). MacArthur relève la beauté de l'image retenue par le Saint-Esprit en 11.21 : alors qu'il bénit par la foi les deux fils de Joseph (Éphraïm et Manassé, en croisant les mains selon le choix souverain de Dieu en Genèse 48.13-⁠20), le vieux patriarche Jacob s'appuie pour adorer sur le bout de son bâton de berger et de pèlerin, le même bâton avec lequel il avait autrefois traversé le Jourdain (Genèse 32.10), attestant jusqu'à son dernier souffle qu'il meurt en voyageur en route vers la patrie céleste (1631).</li><li><b>Le supplice de la roue ou du tambour (tympanizō) et le refus de la délivrance (11.35).</b> Le verbe passif <i>etympanisthēsan</i> (« furent livrés aux tourments », 11.35, unique occurrence dans le NT) dérive de <i>tympanon</i>, un instrument de torture en forme de roue ou de tambour sur lequel on tendait les membres du condamné jusqu'à les disloquer, exactement comme une peau tendue sur un tambour, avant de le frapper à mort à coups de bâtons ou de lanières plombées (1634). Alors qu'un seul mot de compromis ou d'apostasie leur aurait immédiatement procuré la « délivrance » (<i>apolytrōsin</i>, la libération physique sur le lieu d'exécution), ces héros de la foi refusèrent de renier Dieu afin d'obtenir « une meilleure résurrection » (la résurrection pour la vie éternelle, par opposition au retour temporaire à la vie mortelle des fils des veuves d'Élie et d'Élisée au v. 35a) (1634).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Hébreux 11</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Hébreux 11.4</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>martyrountōs epi tois dōrois autou tou theou</i>, Dieu rendant témoignage à ses offrandes (P46, א, A, D*, SBLGNT, Westcott et Hort, NA28), ou <i>martyrountōs epi tois dōrois autou tō theō</i> (Texte Majoritaire, Textus Receptus); et à la fin <i>apothanōn eti lalei</i>, voix active « il parle encore » (P46, א, A, D*, SBLGNT, Westcott et Hort, NA28), ou <i>laleitai</i>, passif « on parle encore de lui » (D², Ψ, Texte Majoritaire, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Dieu rendant témoignage à ses offrandes; et c'est par elle qu'il parle encore, quoique mort » : les cinq versions françaises suivent l'actif <i>lalei</i> et le génitif <i>tou theou</i> des plus anciens manuscrits.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur souligne l'actif <i>lalei</i> (« il parle encore », faisant écho à Genèse 4.10 et préparant Hébreux 12.24) : à travers les siècles, le sacrifice sanglant d'Abel continue de proclamer que l'on ne s'approche de Dieu que par la foi dans le sang versé (1627).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Hébreux 11.11</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>Pistei kai autē Sarra steira dynamin eis katabolēn spermatos elaben</i>, avec l'adjectif <i>steira</i> (« stérile ») (A, D*, Ψ, P46c, SBLGNT, Texte Majoritaire, Textus Receptus), ou omission de <i>steira</i> (P46*, א, D², Westcott et Hort, NA28).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« C'est par la foi que Sara elle-même, malgré son âge avancé, fut rendue capable d'avoir une postérité » : la NEG79, la LSG et la Darby suivent le texte sans traduire séparément <i>steira</i>; la S21 (« bien que stérile ») et la NBS (« qui était stérile ») le traduisent.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Que l'adjectif <i>steira</i> soit explicite au verset 11 ou repris au verset 12 (« d'un seul homme, déjà usé de corps »), MacArthur montre que la foi d'Abraham et celle de Sara se sont unies pour s'appuyer sur la fidélité de Celui qui avait promis l'impossible (1630).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Hébreux 11.37</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>Elithasthēsan, epristhēsan, epeirasthēsan, en phonō machairēs apethanon</i>, avec <i>epeirasthēsan</i> (« ils furent tentés / mis à l'épreuve ») (א, A, Dcorr, Ψ, SBLGNT, Westcott et Hort, NA28, Texte Majoritaire, Textus Receptus), ou omission de <i>epeirasthēsan</i> (P46).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« ils furent lapidés, sciés, torturés, ils moururent tués par l'épée » : la NEG79, la LSG et la S21 rendent ce troisième verbe par « torturés »; la Darby et la NBS traduisent littéralement « tentés / mis à l'épreuve ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur explique que au milieu de la lapidation et de la scie, la tentation suprême (<i>epeirasthēsan</i>) consistait dans l'offre pressante des bourreaux d'épargner leur vie s'ils reniaient leur foi (comme au v. 35) (1634).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp d'Hébreux 11, LogosBible)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub)</li><li>interlinéaire morphologique de Bible Hub</li><li>versions françaises : NEG79, LSG, S21, Darby et NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Quarante versets dans toutes les éditions grecques et versions françaises consultées. Aucun écart de numérotation avec les neuf sermons de MacArthur.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Hébreux 11</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Hébreux</span> <span>11.1-⁠3</span></p><div class="plan__corps"><p class="plan__titre">La définition de la foi : substance des choses espérées, démonstration des réalités invisibles et intelligence de la création de l'univers par la parole de Dieu</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Estin de pistis elpizomenōn hypostasis, pragmatōn elenchos ou blepomenōn</i> (11.1), <i>Pistei nooumen katērtisthai tous aiōnas rhēmati theou</i> (11.3).</p></div></li><li><p class="plan__ref"><span>Hébreux</span> <span>11.4-⁠7</span></p><div class="plan__corps"><p class="plan__titre">La foi à l'ère antédiluvienne : l'adoration par le sacrifice chez Abel, la marche agréable à Dieu chez Hénoc et l'obéissance révérencieuse chez Noé</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Pistei pleiona thysian Abel para Kain προσήνεγκεν</i> (11.4), <i>chōris de pisteōs adynaton euarestēsai</i> (11.6), <i>Pistei chrēmatistheis Nōe ... eulabētheis kataskeuasen kibōton</i> (11.7).</p></div></li><li><p class="plan__ref"><span>Hébreux</span> <span>11.8-⁠22</span></p><div class="plan__corps"><p class="plan__titre">La foi des patriarches d'Abraham à Joseph : vivre en étrangers en attendant la cité céleste, offrir Isaac en comptant sur la résurrection et bénir à l'heure de la mort</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Pistei kaloumenos Abraam hypēkousen ... exēlthen mē epistamenos pou erchetai</i> (11.8), <i>exedecheto gar tēn tous themelious echousan polin</i> (11.10), <i>Kata pistin apethanon houtoi pantes ... homologēsantes hoti xenoi kai parepidēmoi eisin epi tēs gēs</i> (11.13), <i>Pistei prosenēnochen Abraam ton Isaak peirazomenos</i> (11.17).</p></div></li><li><p class="plan__ref"><span>Hébreux</span> <span>11.23-⁠31</span></p><div class="plan__corps"><p class="plan__titre">La foi de l'Exode et de la conquête : Moïse préférant l'opprobre de Christ aux trésors de l'Égypte, la Pâque, la mer Rouge, la chute de Jéricho et le salut de Rahab</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Pistei Mōysēs megas genomenos ērnēsato legesthai huios thygatros Pharaō</i> (11.24), <i>meizona plouton hēgēsamenos tōn Aigyptou thēsaurōn ton oneidismon tou Christou</i> (11.26), <i>Pistei teichē Ierichō epesan</i> (11.30).</p></div></li><li><p class="plan__ref"><span>Hébreux</span> <span>11.32-⁠40</span></p><div class="plan__corps"><p class="plan__titre">Le sommet de la foi chez les juges, les rois, les prophètes et les martyrs : vaincre des royaumes, refuser la délivrance pour une meilleure résurrection et attendre la perfection avec nous</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Kai ti eti legō ... hoi dia pisteōs katēgōnisanto basileias</i> (11.32-⁠33), <i>alloi de etympanisthēsan, ou prosdexamenoi tēn apolytrōsin, hina kreittonos anastaseōs tychōsin</i> (11.35), <i>hina mē chōris hēmōn teleiōthōsin</i> (11.40).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Hébreux 11.1</dt><dd>Le verbe substantif <i>Estin</i> (« Or la foi <b>est</b>... ») est placé en toute première position de la phrase grecque avec son accent d'existence réelle : il ne donne pas une définition philosophique abstraite de la foi, mais décrit son opération concrète comme <i>elpizomenōn hypostasis</i> (la possession substantielle anticipée des promesses futures espérées) et <i>pragmatōn elenchos ou blepomenōn</i> (la conviction démonstrative des réalités invisibles) (1626).</dd></div><div><dt>Hébreux 11.8-⁠9, 17</dt><dd>Dans le portrait d'Abraham, les temps verbaux distinguent avec précision ses actes décisifs et sa disposition durable : au v. 8, l'aoriste <i>hypēkousen</i> (« il obéit » immédiatement à l'appel) et l'aoriste <i>exēlthen</i> (« il partit »); aux v. 9-⁠10, l'aoriste <i>parōkēsen</i> (« il séjourna en étranger ») soutenu par l'imparfait duratif <i>exedecheto</i> (« car il attendait continuellement la cité qui a de solides fondements »); enfin au v. 17, le parfait de l'indicatif <i>prosenēnochen Abraam ton Isaak peirazomenos, kai ton monogenē prosepheren</i> combine le parfait (<i>prosenēnochen</i>, l'offrande d'Isaac demeure dans l'Écriture comme un acte pleinement accompli dans le cœur d'Abraham) et l'imparfait conatif (<i>prosepheren</i>, « il était en train d'offrir son fils unique » lorsque l'ange arrêta son bras) (1630).</dd></div><div><dt>Hébreux 11.24-⁠27</dt><dd>Le choix décisif de Moïse à quarante ans s'articule autour de quatre verbes aoristes (<i>ērnēsato</i>, « il refusa » d'être appelé fils de la fille de Pharaon; <i>helomenos</i>, « ayant choisi » d'être maltraité avec le peuple de Dieu; <i>hēgēsamenos</i>, « ayant estimé » l'opprobre de Christ comme une richesse plus grande; <i>katelipen</i>, « il quitta » l'Égypte), tous gouvernés et expliqués par un seul verbe à l'imparfait d'habitude continue : <i>apeblepen gar eis tēn misthapodosian</i> (« car il détournait constamment les yeux de l'Égypte pour les fixer sur la rémunération », v. 26) et par le parfait <i>ekarterēsen</i> (« il tint ferme comme voyant Celui qui est invisible », v. 27) (1632, 1633).</dd></div><div><dt>Hébreux 11.13, 39-⁠40</dt><dd>Aux versets 13 et 39, l'auteur souligne que tous ces héros, bien qu'ayant reçu un témoignage favorable par leur foi (participe aoriste passif <i>martyrēthentes</i>), « n'ont pas obtenu ce qui leur était promis » (<i>ouk ἐκομίσαντο τὴν ἐπαγγελίαν</i>, aoriste négatif), Dieu ayant en vue quelque chose de meilleur pour nous, « afin qu'ils ne parvinssent pas sans nous à la perfection » (<i>hina mē chōris hēmōn teleiōthōsin</i>, subjonctif aoriste passif) : leur conscience et leur salut n'ont été pleinement parachevés (<i>teleioō</i>) que lorsque Christ a offert son sang sur la croix pour eux comme pour nous (cf. 9.15; 12.23 : « les esprits des justes parvenus à la perfection ») (1630, 1634).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Quatre mots-clés</p></header>
+<p class="lead">Quatre mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">démonstration / conviction</a><a href="#mot-2">rémunérateur</a><a href="#mot-3">étrangers et voyageurs</a><a href="#mot-4">l'opprobre</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">démonstration / conviction</h3><p class="mot__translit">elenchos</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>preuve probante, vérification qui produit une conviction intérieure</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en donne l'étymologie (de <i>elenchō</i>, prouver, convaincre, mettre en évidence) : une preuve par laquelle une chose invisible est démontrée et vérifiée, d'où la conviction intérieure inébranlable produite par cette preuve divine (Hébreux 11.1; 2 Timothée 3.16).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur montre que <i>elenchos</i> complète <i>hypostasis</i> en 11.1 : la foi donne à l'âme une telle certitude de la Parole de Dieu qu'elle agit sur la base des réalités spirituelles invisibles (la création au v. 3, le déluge futur au v. 7, la cité céleste au v. 10, le Dieu invisible au v. 27) avec plus d'assurance que sur ce que voient les yeux de la chair (1626). Sa lecture rejoint exactement Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> une démonstration</li><li><b>NEG79</b> une démonstration</li><li class="ecart"><b>Darby</b> la conviction</li><li><b>LSG</b> une démonstration</li><li class="ecart"><b>NBS</b> l'attestation</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">rémunérateur</h3><p class="mot__translit">misthapodotēs</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>celui qui acquitte fidèlement la récompense promise</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en indique l'étymologie (composé de <i>misthos</i>, salaire ou récompense, et de <i>apodidōmi</i>, rendre, payer ce qui est dû) : celui qui récompense, rémunérateur (Hébreux 11.6, unique occurrence dans le NT; cf. <i>misthapodosia</i> en 2.2; 10.35; 11.26).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur souligne les deux articles fondamentaux de la foi salvatrice résumés en 11.6 à propos d'Hénoc : pour s'approcher de Dieu et lui être agréable (<i>euarestēsai</i>), il faut croire premièrement « que Dieu existe » (le vrai Dieu tel qu'il s'est révélé), et deuxièmement « qu'il est le rémunérateur (<i>misthapodotēs</i>) de ceux qui le cherchent », c'est-à-dire qu'il accorde par grâce le pardon, la vie éternelle et sa propre présence à quiconque le cherche de tout son cœur par la foi (comme il le dit à Abraham en Genèse 15.1 : « ta récompense sera très grande ») (1628). Sa lecture suit Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> qu'il récompense</li><li><b>NEG79</b> le rémunérateur</li><li><b>Darby</b> le rémunérateur</li><li><b>LSG</b> le rémunérateur</li><li class="ecart"><b>NBS</b> qu'il récompense</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">étrangers et voyageurs</h3><p class="mot__translit">xenoi kai parepidēmoi</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>hôtes étrangers et résidents de passage sans droit de cité</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : <i>xenos</i> désigne un étranger appartenant à une autre nation; <i>parepidēmos</i> (dont l'étymologie unit <i>para</i>, auprès de, <i>epi</i> et <i>dēmos</i>, peuple) désigne celui qui séjourne temporairement dans un pays étranger sans y fixer sa demeure permanente (Genèse 23.4 LXX; 1 Pierre 1.1; 2.11; Hébreux 11.13).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur rappelle qu'Abraham, Isaac et Jacob ont vécu sous des tentes au cœur même de la terre promise sans jamais y bâtir de ville (le seul terrain qu'Abraham ait jamais possédé en Canaan fut la caverne funéraire de Macpéla en Genèse 23.4, où il se déclare lui-même <i>paroikos kai parepidēmos</i>, étranger et habitant de passage) : ils confessaient ainsi que leur véritable citoyenneté n'était pas sur cette terre maudite, mais dans « une meilleure patrie, c'est-à-dire une patrie céleste » dont Dieu est l'architecte (<i>technitēs</i>) et le constructeur (<i>dēmiourgos</i>) (11.10, 13-⁠16) (1630). Sa lecture concorde avec Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> étrangers et voyageurs</li><li><b>NEG79</b> étrangers et voyageurs</li><li class="ecart"><b>Darby</b> étrangers et forains</li><li><b>LSG</b> étrangers et voyageurs</li><li class="ecart"><b>NBS</b> étrangers et résidents temporaires</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">l'opprobre</h3><p class="mot__translit">ton oneidismon (oneidismos)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>insulte jetée au visage, outrage, disgrâce publique</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en donne l'étymologie (de <i>oneidizō</i>, injurier, couvrir de honte ou de reproches) : injure, insulte, opprobre subi à cause de sa fidélité à Dieu et à son Messie (Romains 15.3 citant Psaume 69.10; Hébreux 10.33; 11.26; 13.13).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur fait remarquer l'expression saisissante de 11.26 : quinze siècles avant la naissance de Jésus à Bethléhem, Moïse a estimé « l'opprobre de Christ » (<i>ton oneidismon tou Christou</i>) comme une richesse plus grande que tous les trésors royaux de l'Égypte ! En s'identifiant au peuple méprisé de l'alliance messianique et au Rédempteur promis, Moïse a porté par avance le même opprobre que les croyants sont appelés à porter en sortant vers Jésus hors du camp en 13.13 (1633, 1641). Sa lecture rejoint Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> l'opprobre lié au Messie</li><li><b>NEG79</b> l'opprobre de Christ</li><li class="ecart"><b>Darby</b> l'opprobre du Christ</li><li><b>LSG</b> l'opprobre de Christ</li><li class="ecart"><b>NBS</b> l'opprobre du Christ</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Hébreux 11</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans sa grande série de neuf sermons sur Hébreux 11 (1626 à 1634), John MacArthur parcourt toute l'histoire des héros de la foi pour montrer que la vraie foi salvatrice n'est jamais une abstraction stérile, mais une conviction vivante qui obéit à la Parole de Dieu, renonce au monde présent et endure tout jusqu'à la mort les yeux fixés sur la promesse céleste (1626 à 1634).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-hebreux-11-8-22-la-foi-des-patriarches-abraham-sara-isaac-jacob-et-joseph"><span class="sommaire__ref">Hébreux 11.8-⁠22</span><span class="sommaire__lib">La foi des patriarches (Abraham, Sara, Isaac, Jacob et Joseph)</span></a></li><li><a href="#t2-hebreux-11-23-40-les-decisions-de-moise-et-le-sommet-du-courage-des-martyrs"><span class="sommaire__ref">Hébreux 11.23-⁠40</span><span class="sommaire__lib">Les décisions de Moïse et le sommet du courage des martyrs</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : neuf sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : neuf sermons Grace to You sur Hébreux 11.1 à 11.40 (1626 à 1634, du 3 décembre 1972 au 18 février 1973) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">1626</span></th><td><a href="https://www.gty.org/sermons/1626" target="_blank" rel="noopener">What Is Faith?</a></td><td>Hé 11.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">1627</span></th><td><a href="https://www.gty.org/sermons/1627" target="_blank" rel="noopener">Abel and the Life of Faith</a></td><td>Hé 11.4</td></tr><tr><th scope="row"><span class="mot-fr">1628</span></th><td><a href="https://www.gty.org/sermons/1628" target="_blank" rel="noopener">Enoch and the Walk of Faith</a></td><td>Hé 11.5-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">1629</span></th><td><a href="https://www.gty.org/sermons/1629" target="_blank" rel="noopener">Noah and the Obedience of Faith</a></td><td>Hé 11.7</td></tr><tr><th scope="row"><span class="mot-fr">1630</span></th><td><a href="https://www.gty.org/sermons/1630" target="_blank" rel="noopener">The Faith of Abraham</a></td><td>Hé 11.8-⁠19</td></tr><tr><th scope="row"><span class="mot-fr">1631</span></th><td><a href="https://www.gty.org/sermons/1631" target="_blank" rel="noopener">Faith in the Face of Death</a></td><td>Hé 11.20-⁠22</td></tr><tr><th scope="row"><span class="mot-fr">1632</span></th><td><a href="https://www.gty.org/sermons/1632" target="_blank" rel="noopener">Things Faith Accepts and Rejects, Part 1</a></td><td>Hé 11.23-⁠25</td></tr><tr><th scope="row"><span class="mot-fr">1633</span></th><td><a href="https://www.gty.org/sermons/1633" target="_blank" rel="noopener">Things Faith Accepts and Rejects, Part 2</a></td><td>Hé 11.26-⁠29</td></tr><tr><th scope="row"><span class="mot-fr">1634</span></th><td><a href="https://www.gty.org/sermons/1634" target="_blank" rel="noopener">The Pinnacle of Faith</a></td><td>Hé 11.30-⁠40</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p class="p-cle"><b>Hébreux 11.1-⁠7 · La nature de la foi et les trois témoins antédiluviens (Abel, Hénoc, Noé)</b></p><p>MacArthur expose d'abord ce qu'est la foi (11.1-⁠3; 1626) : elle est la substance ou l'acte de propriété (<i>hypostasis</i>) qui rend présentes les choses espérées, et la conviction probante (<i>elenchos</i>) des réalités invisibles (v. 1); c'est par elle seule que les anciens de l'Ancien Testament ont reçu l'approbation de Dieu (v. 2), et que nous comprenons que l'univers entier a été formé à partir de rien par la seule parole (<i>rhēmati</i>) de Dieu, réfutant tout évolutionnisme matérialiste (v. 3) (1626). Puis viennent les trois étapes de la vie de foi avant le déluge : 1) L'adoration de la foi chez Abel (11.4; 1627) : alors que Caïn inaugura toutes les fausses religions des œuvres humaines en apportant avec orgueil les fruits de son travail sans effusion de sang, Abel obéit à la révélation divine en offrant par la foi un sacrifice sanglant plus excellent, fut déclaré juste par Dieu et parle encore aujourd'hui (1627); 2) La marche de la foi chez Hénoc (11.5-⁠6; 1628) : ayant marché en communion intime avec Dieu pendant trois cents ans au milieu d'une génération corrompue (Genèse 5.21-⁠24; Jude 14-⁠15), Hénoc reçut le témoignage qu'il était agréable à Dieu et fut enlevé au ciel sans voir la mort; car sans la foi il est impossible de lui être agréable, puisqu'il faut croire que Dieu existe et qu'il récompense ceux qui le cherchent (1628); 3) L'obéissance de la foi chez Noé (11.7; 1629) : divinement averti de réalités encore invisibles (la pluie et le déluge universel), Noé fut saisi d'une crainte révérencieuse (<i>eulabētheis</i>), construisit l'arche pendant cent vingt ans sous les moqueries des incrédules, condamna le monde par sa vie et sa prédication de la justice (2 Pierre 2.5) et devint héritier de la justice qui s'obtient par la foi (1629).</p><h3 class="intertitre" id="t1-hebreux-11-8-22-la-foi-des-patriarches-abraham-sara-isaac-jacob-et-joseph"><span class="intertitre__ref">Hébreux 11.8-⁠22</span>La foi des patriarches (Abraham, Sara, Isaac, Jacob et Joseph)</h3><p>Dans son sermon sur Abraham et Sara (11.8-⁠19; 1630), MacArthur dégage cinq marques du modèle patriarcal de la foi : 1) Le pèlerinage de la séparation (v. 8 : quitter Ur des Chaldéens sans savoir où l'on va, en comptant uniquement sur l'appel de Dieu); 2) La patience céleste (v. 9-⁠10 : habiter sous des tentes en terre promise parce qu'on attend la cité aux solides fondements dont Dieu est l'architecte et le constructeur); 3) La puissance dans l'impossible (v. 11-⁠12 : Sara et Abraham recevant la force d'engendrer Isaac malgré leur stérilité et leur vieillesse, donnant naissance à une postérité innombrable); 4) La confession du voyageur (v. 13-⁠16 : mourir dans la foi en saluant de loin les promesses et en confessant être étrangers et voyageurs sur la terre en route vers une meilleure patrie céleste, si bien que Dieu n'a pas honte d'être appelé leur Dieu); 5) L'épreuve suprême (v. 17-⁠19 : sur le mont Morija en Genèse 22, Abraham n'hésite pas à offrir Isaac, le fils unique de la promesse, parce qu'il calcule que Dieu est assez puissant même pour ressusciter un mort, première foi en la résurrection dans la Bible, d'où il le recouvra par une sorte de résurrection en figure, <i>en parabolē</i>) (1630). Aux versets 20 à 22 (1631), la foi triomphe face à la mort chez les trois patriarches suivants : Isaac (v. 20), qui malgré sa faiblesse charnelle initiale voulant bénir le profane Ésaü en Genèse 27, se soumet finalement par la foi au décret souverain de Dieu sur Jacob (« Oui, et il restera béni ! », Genèse 27.33); Jacob mourant (v. 21), qui bénit les deux fils de Joseph en croisant les mains et adore appuyé sur le bout de son bâton de pèlerin; et Joseph à la fin de sa vie (v. 22), qui ignore toute sa gloire égyptienne pour annoncer par la foi l'Exode futur d'Israël et ordonner qu'on emporte ses os en terre promise (Genèse 50.24-⁠25; Josué 24.32) (1631).</p><h3 class="intertitre" id="t2-hebreux-11-23-40-les-decisions-de-moise-et-le-sommet-du-courage-des-martyrs"><span class="intertitre__ref">Hébreux 11.23-⁠40</span>Les décisions de Moïse et le sommet du courage des martyrs</h3><p>Sur Moïse et ses parents Amram et Jokébed (11.23-⁠29; 1632, 1633), MacArthur montre d'abord ce que la foi rejette du monde (v. 24-⁠27) : devenu grand à quarante ans au sommet de la cour d'Égypte (Actes 7.22-⁠23), Moïse rejette 1) le prestige du monde (refusant d'être appelé fils de la fille de Pharaon, v. 24), 2) les plaisirs éphémères du péché (préférant être maltraité avec le peuple de Dieu, v. 25), 3) les trésors du monde (estimant l'opprobre de Christ comme une plus grande richesse parce qu'il avait les yeux fixés sur la rémunération céleste, v. 26), et 4) la peur de la colère du roi (quittant l'Égypte avec fermeté comme voyant Celui qui est invisible, v. 27) (1632, 1633). Il montre ensuite ce que la foi accepte de Dieu (v. 23, 28-⁠29) : les plans de Dieu (les parents cachant l'enfant « beau aux yeux de Dieu », v. 23), la provision du sang rédempteur (célébrant la Pâque et l'aspersion du sang contre le destructeur, v. 28) et la promesse de délivrance dans l'impasse (traversant la mer Rouge comme à sec tandis que les Égyptiens présomptueux sont engloutis, v. 29) (1633). Enfin, les versets 30 à 40 nous conduisent au sommet absolu (<i>pinnacle</i>) de la foi (1634) : 1) Le courage de vaincre dans la lutte (v. 30-⁠35a : la chute des murailles de Jéricho après sept jours de marche muette de la foi; le salut par grâce de Rahab la prostituée cananéenne devenue ancêtre du Messie; les exploits de Gédéon, Barak, Samson, Jephté, David, Samuel et les prophètes, Daniel fermant la gueule des lions, les trois Hébreux éteignant la puissance du feu, et les femmes recouvrant leurs morts par la résurrection); 2) Le courage plus grand encore de persévérer dans la souffrance sans délivrance terrestre (v. 35b-38 : torturés sur le <i>tympanon</i> sans accepter de compromis afin d'obtenir une meilleure résurrection, moqués, battus de verges, enchaînés, lapidés comme Zacharie, sciés comme Ésaïe, errants dans le dénuement, « eux dont le monde n'était pas digne »); 3) L'unité finale du peuple de Dieu (v. 39-⁠40) : tous ont été approuvés pour leur foi, mais ont dû attendre « quelque chose de meilleur » (l'œuvre expiatoire achevée de Jésus sous la Nouvelle Alliance) pour parvenir avec nous à la perfection (<i>teleiōthōsin</i>) (1634).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Hébreux 10.38-⁠39; 11.1-⁠40.</b> Le mot <i>pistis</i> introduit en 10.38-⁠39 (« mon juste vivra par la foi... de ceux qui ont la foi ») est immédiatement défini en 11.1 (<i>Estin de pistis</i>) puis répété vingt-quatre fois dans le chapitre 11 (dont dix-huit fois au datif instrumental <i>Pistei</i> en tête de proposition), démontrant l'unité organique des chapitres 10 et 11 (1625, 1626).</li><li><b>Hébreux 11.1, 3, 7, 10, 13-⁠16, 26-⁠27.</b> Tout au long du chapitre, les héros agissent en fonction de réalités invisibles qui vérifient la définition de 11.1 (<i>pragmatōn elenchos ou blepomenōn</i>) : l'univers né de l'invisible (<i>mē ek phainomenōn</i>, v. 3), le déluge encore invisible (<i>medepō blepomenōn</i>, v. 7), la cité céleste (v. 10, 16), les promesses vues de loin (<i>porrōthen autas idontes</i>, v. 13) et le Dieu invisible (<i>ton aoraton hōs horōn</i>, v. 27) (1626, 1629, 1630, 1633).</li><li><b>Hébreux 11.13, 39-⁠40.</b> L'inclusion formée entre le verset 13 (<i>Kata pistin apethanon houtoi pantes, mē labontes tas epangelias</i>) et les versets 39-⁠40 (<i>Kai houtoi pantes martyrēthentes dia tēs pisteōs ouk ekomisanto tēn epangelian ... hina mē chōris hēmōn teleiōthōsin</i>) relie tous les saints de l'Ancien Testament à l'accomplissement supérieur (<i>kreitton ti</i>) de la Nouvelle Alliance en Christ (1630, 1634).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Six passages</p></header>
+<p class="lead">Six passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 1.1 / Psaume 33.6, 9</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Les cieux ont été faits par la parole de l'Éternel, car il dit et la chose arrive : cet enseignement de la Genèse et des Psaumes fonde Hébreux 11.3, où la foi reconnaît que l'univers a été formé par la parole de Dieu à partir de ce qui est invisible (<i>ex nihilo</i>) (1626).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 4.4, 10</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Abel offrit des premiers-nés de son troupeau et de leur graisse, et l'Éternel porta un regard favorable sur Abel et sur son offrande, puis dit à Caïn « La voix du sang de ton frère crie de la terre jusqu'à moi » : ce récit éclaire directement le sacrifice d'Abel et le fait qu'il « parle encore, quoique mort » en Hébreux 11.4 (1627).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 5.22, 24</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Cité et résumé en Hébreux 11.5 selon la version grecque des Septante (qui traduit l'hébreu massorétique <i>vayyithhallekh Chanokh 'eth-ha'Elohim</i>, « Hénoc marcha avec Dieu », par <i>euērestēsen Henōch tō theō</i>, « Hénoc fut agréable à Dieu », et <i>ouk ērisketo hoti metethēken auton ho theos</i>), ce texte prouve que marcher par la foi est l'unique moyen de plaire à Dieu (1628).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 22.1-⁠18 / Romains 4.17-⁠21</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Le récit de l'offrande d'Isaac sur le mont Morija (où Abraham déclare à ses serviteurs au verset 5 : « Nous irons jusque-là, nous adorerons, et <b>nous</b> reviendrons auprès de vous ») et le commentaire paulinien sur le Dieu qui ressuscite les morts expliquent Hébreux 11.17-⁠19 (1630).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 47.31 / 48.14-⁠20</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Cité en Hébreux 11.21 selon la Septante grecque qui lit la consonne hébraïque <i>M-T-H</i> comme <i>matteh</i> (« et il se prosterna sur le bout de son bâton », <i>epi to akron tēs rhabdou autou</i>, là où la vocalisation massorétique tardive lit <i>mitah</i>, « son lit »), ce geste de Jacob mourant manifeste sa foi de pèlerin (1631).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Exode 2.10-⁠15 / Actes 7.20-⁠29</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Le discours d'Étienne en Actes 7 complète le récit d'Exode 2 en précisant que Moïse était « divinement beau » (<i>asteios tō theō</i>, Hébreux 11.23) et qu'il avait quarante ans lorsqu'il choisit de visiter ses frères et de renoncer au trône d'Égypte (Hébreux 11.24-⁠26) (1632, 1633).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Trois axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">L'unité du salut par la foi seule dans l'Ancien et le Nouveau Testament</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Or la foi est une ferme assurance des choses qu'on espère, une démonstration de celles qu'on ne voit pas; pour l'avoir possédée, les anciens ont obtenu un témoignage favorable, car sans la foi il est impossible d'être agréable à Dieu, et Noé devint héritier de la justice qui s'obtient par la foi (11.1-⁠2, 6-⁠7).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur démontre que Dieu n'a jamais eu deux voies de salut : depuis Abel aux portes d'Éden jusqu'à la fin des temps, nul pécheur n'a jamais été justifié ou déclaré agréable à Dieu par ses propres œuvres ou par la loi, mais exclusivement par la foi qui croit en la Parole de Dieu et s'approche de Lui par le sacrifice expiatoire qu'Il a pourvu (1626, 1627, 1628, 1629). Rattachement : sotériologie (la justification par la foi seule à travers l'histoire rédemptrice) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Abram crut à l'Éternel, qui le lui imputa à justice (Genèse 15.6); le juste vivra par sa foi (Habacuc 2.4); David exprime le bonheur de l'homme à qui Dieu impute la justice sans les œuvres (Romains 4.6; Psaume 32.1-⁠2) (1626, 1629, 1630).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Nous lisons tout l'Ancien Testament non comme une religion légaliste étrangère à l'Évangile, mais comme le témoignage unanime de la foi qui attendait le Messie (1626, 1634).</p></div></div></section><section class="theme"><h3 class="theme__title">La foi pèlerine : renoncer au monde présent pour la cité céleste</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>C'est dans la foi qu'ils sont tous morts, confessant qu'ils étaient étrangers et voyageurs sur la terre et qu'ils désiraient une meilleure patrie, c'est-à-dire une patrie céleste; et c'est par la foi que Moïse aima mieux être maltraité avec le peuple de Dieu que d'avoir pour un temps la jouissance du péché, regardant l'opprobre de Christ comme une richesse plus grande que les trésors de l'Égypte (11.13, 16, 25-⁠26).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur enseigne que la vraie foi salvatrice opère un renversement complet des valeurs : parce qu'elle voit Celui qui est invisible (11.27) et attend la cité céleste bâtie par Dieu (11.10), elle détache le cœur du prestige, des plaisirs éphémères et des richesses de ce monde pour embrasser avec joie l'opprobre du Christ (1630, 1632, 1633). Rattachement : sotériologie (la foi et la sanctification) et eschatologie (la Jérusalem céleste) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Je suis un étranger sur la terre (Psaume 119.19); n'aimez point le monde, ni les choses qui sont dans le monde, car le monde passe et sa convoitise aussi (1 Jean 2.15-⁠17); notre cité à nous est dans les cieux (Philippiens 3.20; 1 Pierre 2.11) (1630, 1632).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le chrétien évalue chaque choix de sa vie non selon le confort ou la réussite immédiate dans cette « Égypte » terrestre, mais à la lumière de la rémunération éternelle promise par le Seigneur (1632, 1633).</p></div></div></section><section class="theme"><h3 class="theme__title">La souveraineté de Dieu dans la délivrance miraculeuse comme dans l'épreuve du martyre</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Par la foi, les uns vainquirent des royaumes, fermèrent la gueule des lions, éteignirent la puissance du feu, échappèrent au tranchant de l'épée; mais d'autres furent livrés aux tourments et n'acceptèrent point de délivrance, afin d'obtenir une meilleure résurrection, furent lapidés, sciés, tués par l'épée, eux dont le monde n'était pas digne (11.33-⁠38).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur réfute vigoureusement le faux évangile de la prospérité qui prétend qu'une foi assez forte garantit toujours la santé, le succès ou la délivrance physique : en Hébreux 11.35b-38, le sommet absolu de la foi est atteint précisément par ceux que Dieu n'a pas délivrés de la souffrance ni de la mort terrestre, mais à qui il a donné la grâce d'endurer le martyre sans fléchir en vue de la résurrection glorieuse (1634). Rattachement : providence divine (la souffrance des justes) et eschatologie (la résurrection des corps) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Daniel est délivré des lions et ses trois compagnons déclarent à Nebucadnetsar : « Notre Dieu peut nous délivrer de la fournaise, et même s'il ne le fait pas, nous ne servirons pas tes dieux » (Daniel 3.17-⁠18; 6.22); Paul glorifie Christ dans sa chair, soit par sa vie, soit par sa mort (Philippiens 1.20) (1634).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Que Dieu choisisse dans sa sagesse souveraine de nous accorder une délivrance miraculeuse ou de nous faire traverser le creuset de l'affliction jusqu'à la mort, notre foi demeure également triomphante et inébranlable (1634).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Hébreux 11.4 oppose le sacrifice sanglant offert par la foi d'Abel à l'offrande des œuvres humaines de Caïn : de quelles manières l'esprit de Caïn tente-t-il encore de s'infiltrer dans notre approche de Dieu (1627)?</li><li>Hénoc a reçu le témoignage qu'il était « agréable à Dieu » (11.5-⁠6) parce qu'il a marché par la foi avec Lui pendant trois siècles au milieu d'un monde pervers : notre communion quotidienne avec le Seigneur a-t-elle pour ambition première de Lui plaire en toutes choses (1628)?</li><li>Abraham, Isaac et Jacob ont vécu sous des tentes en confessant qu'ils étaient « étrangers et voyageurs sur la terre » (11.9, 13) : notre manière d'habiter ce monde montre-t-elle à notre entourage que nous sommes des pèlerins en route vers la cité céleste, ou des résidents installés (1630)?</li><li>À quarante ans, Moïse a renoncé au prestige, aux plaisirs passagers du péché et aux trésors de l'Égypte en estimant « l'opprobre de Christ comme une richesse plus grande » (11.24-⁠26) : quel attrait du monde le Seigneur nous appelle-t-il à abandonner résolument aujourd'hui (1632, 1633)?</li><li>En lisant que le sommet de la foi en 11.35b-38 appartient à ceux qui ont souffert le dénuement et le martyre sans délivrance terrestre (« eux dont le monde n'était pas digne »), comment cela corrige-t-il notre manière de mesurer la bénédiction de Dieu dans les temps d'épreuve (1634)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Hébreux 11 · 5 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Hebreux-11.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

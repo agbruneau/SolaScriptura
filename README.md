@@ -25,8 +25,9 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | 11 | 1 Timothée | vers 62-64 | Macédoine | étudiée : [1 Timothée](1-Timothee/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
 | 12 | Tite | entre 62 et 64 | Corinthe ou Nicopolis | étudiée : [Tite](Tite/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/tit) |
 | 13 | 2 Timothée | vers 67 | Rome, seconde captivité | étudiée : [2 Timothée](2-Timothee/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
+| 14 | Hébreux | entre 67 et 69 (avant 70) | non précisé (salutations de ceux d'Italie, 13.24) | étudiée : [Hébreux](Hebreux/index.html) | [introduction](https://www.myopenbible.com/bible/intro/gty/heb) |
 
-Les dates, approximatives, et les lieux sont ceux des introductions de MacArthur, et l'ordre les suit. Quand ces introductions ne tranchent pas entre des lettres d'une même période (rangs 7 à 9, puis 11 et 12), l'ordre canonique les départage. Philippiens (rang 10) suit les trois autres lettres de la captivité parce que MacArthur la date de la fin de celle-ci, sans la situer par rapport à elles.
+Les dates, approximatives, et les lieux sont ceux des introductions de MacArthur, et l'ordre les suit. Quand ces introductions ne tranchent pas entre des lettres d'une même période (rangs 7 à 9, puis 11 et 12), l'ordre canonique les départage. Philippiens (rang 10) suit les trois autres lettres de la captivité parce que MacArthur la date de la fin de celle-ci, sans la situer par rapport à elles. Hébreux (rang 14), dont l'auteur humain anonyme appartient au cercle apostolique entourant Paul et Timothée (13.23), prolonge la série à la veille de la destruction du temple de Jérusalem en 70.
 
 ## Dossier d'une épître
 
