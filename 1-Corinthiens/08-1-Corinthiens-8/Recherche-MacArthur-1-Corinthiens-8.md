@@ -45,9 +45,9 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 13 versets 
 
 **Plan de la péricope**
 
-- **8.1–3.** Le principe régulateur : l'insuffisance de la connaissance orgueilleuse face à l'amour qui édifie et qui aime Dieu. Marqueur : Formule thématique *Peri de tōn eidōlothytōn* (v. 1) et maxime finale sur l'amour de Dieu (v. 3).
-- **8.4–6.** La vérité théologique objective : le néant des idoles et la confession monothéiste d'un seul Dieu le Père et d'un seul Seigneur Jésus-Christ. Marqueur : Reprise de l'objet *Peri tēs brōseōs oun tōn eidōlothytōn* (v. 4) et confession bipartite *all' hēmin heis Theos ho Patēr... kai heis Kyrios Iēsous Christos* (v. 6).
-- **8.7–13.** L'impératif pastoral de la charité : ne jamais transformer sa liberté en pierre d'achoppement qui blesse la conscience du frère faible et pèche contre Christ. Marqueur : Adversatif pastoral *All' ouk en pasin hē gnōsis* (v. 7), avertissement *Blepete de mē pōs hē exousia hymōn hautē proskomma genētai* (v. 9) et résolution personnelle de Paul *Dioper ei brōma skandalizei ton adelphon mou* (v. 13).
+- **8.1-3.** Le principe régulateur : l'insuffisance de la connaissance orgueilleuse face à l'amour qui édifie et qui aime Dieu. Marqueur : Formule thématique *Peri de tōn eidōlothytōn* (v. 1) et maxime finale sur l'amour de Dieu (v. 3).
+- **8.4-6.** La vérité théologique objective : le néant des idoles et la confession monothéiste d'un seul Dieu le Père et d'un seul Seigneur Jésus-Christ. Marqueur : Reprise de l'objet *Peri tēs brōseōs oun tōn eidōlothytōn* (v. 4) et confession bipartite *all' hēmin heis Theos ho Patēr... kai heis Kyrios Iēsous Christos* (v. 6).
+- **8.7-13.** L'impératif pastoral de la charité : ne jamais transformer sa liberté en pierre d'achoppement qui blesse la conscience du frère faible et pèche contre Christ. Marqueur : Adversatif pastoral *All' ouk en pasin hē gnōsis* (v. 7), avertissement *Blepete de mē pōs hē exousia hymōn hautē proskomma genētai* (v. 9) et résolution personnelle de Paul *Dioper ei brōma skandalizei ton adelphon mou* (v. 13).
 
 **Observations grammaticales**
 
@@ -104,7 +104,7 @@ La conclusion du verset 13 fournit la règle d'or de la liberté chrétienne : s
 
 Contexte néotestamentaire de la question des viandes sacrifiées aux idoles (*eidōlothyta*) abordée en 1 Corinthiens 8.1 : le décret de Jérusalem demandait déjà aux croyants d'origine païenne de s'en abstenir pour ne pas scandaliser les consciences juives et fuir les banquets idolâtres.
 
-**Romains 14.1–15.3** · *Parallèle direct*
+**Romains 14.1-15.3** · *Parallèle direct*
 
 Développement paulinien parallèle et complémentaire à 1 Corinthiens 8 : « Il est bien de ne pas manger de viande, de ne pas boire de vin, et de s'abstenir de ce qui peut être pour ton frère une occasion de chute » (Rm 14.21; cf. 1 Co 8.13).
 

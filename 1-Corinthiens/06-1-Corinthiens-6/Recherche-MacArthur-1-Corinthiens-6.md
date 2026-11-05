@@ -47,9 +47,9 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 20 versets 
 
 **Plan de la péricope**
 
-- **6.1–8.** Condamnation des procès entre frères devant les tribunaux païens : la vocation eschatologique des saints et le devoir de souffrir plutôt l'injustice. Marqueur : Question d'indignation *Tolma tis hymōn pragma echōn pros ton heteron krinesthai epi tōn adikōn* (v. 1) et reproche final *Alla hymeis adikeite kai apostereite* (v. 8).
-- **6.9–11.** Avertissement solennel sur l'exclusion des injustes du royaume de Dieu et rappel triomphant de la purification, de la sanctification et de la justification des croyants. Marqueur : Question *Ē ouk oidate hoti adikoi Theou basileian ou klēronomēsousin;* (v. 9) et triple adversatif *alla apelousasthe, alla hēgiasthēte, alla edikaiōthēte* (v. 11).
-- **6.12–20.** Réfutation du libertinage sexuel par la théologie du corps : promis à la résurrection, membre de Christ, sanctuaire du Saint-Esprit et racheté à grand prix. Marqueur : Citation du slogan *Panta moi exestin* (v. 12), impératif central *Pheugete tēn porneian* (v. 18) et conclusion impérative *doxasate dē ton Theon en tō sōmati hymōn* (v. 20).
+- **6.1-8.** Condamnation des procès entre frères devant les tribunaux païens : la vocation eschatologique des saints et le devoir de souffrir plutôt l'injustice. Marqueur : Question d'indignation *Tolma tis hymōn pragma echōn pros ton heteron krinesthai epi tōn adikōn* (v. 1) et reproche final *Alla hymeis adikeite kai apostereite* (v. 8).
+- **6.9-11.** Avertissement solennel sur l'exclusion des injustes du royaume de Dieu et rappel triomphant de la purification, de la sanctification et de la justification des croyants. Marqueur : Question *Ē ouk oidate hoti adikoi Theou basileian ou klēronomēsousin;* (v. 9) et triple adversatif *alla apelousasthe, alla hēgiasthēte, alla edikaiōthēte* (v. 11).
+- **6.12-20.** Réfutation du libertinage sexuel par la théologie du corps : promis à la résurrection, membre de Christ, sanctuaire du Saint-Esprit et racheté à grand prix. Marqueur : Citation du slogan *Panta moi exestin* (v. 12), impératif central *Pheugete tēn porneian* (v. 18) et conclusion impérative *doxasate dē ton Theon en tō sōmati hymōn* (v. 20).
 
 **Observations grammaticales**
 

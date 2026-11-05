@@ -49,9 +49,9 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 21 versets 
 
 **Plan de la péricope**
 
-- **4.1–5.** Le vrai statut des ministres et leur seul Juge : rameurs de Christ et intendants des mystères de Dieu, évalués au seul retour du Seigneur. Marqueur : Adverbe récapitulatif *Houtōs hēmas logizesthō anthrōpos* (v. 1) et conclusion eschatologique *Hōste mē pro kairou ti krinete* (v. 5).
-- **4.6–13.** L'ironie apostolique contre l'arrogance corinthienne : la suffisance illusoire des disciples confrontée au défilé d'humiliation et de souffrance des apôtres. Marqueur : Déclaration méthodologique *Tauta de, adelphoi, meteschēmatisa* (v. 6) et point d'orgue tragique *hōs perikatharmata tou kosmou egenēthēmen, pantōn peripsēma heōs arti* (v. 13).
-- **4.14–21.** L'appel paternel et l'avertissement final : imiter le père spirituel qui les a engendrés par l'Évangile, accueillir Timothée et craindre la discipline apostolique. Marqueur : Adoucissement pastoral *Ouk entrepōn hymas graphō tauta* (v. 14) et question finale *Ti thelete; en rhabdō elthō pros hymas, ē en agapē pneumati te prautētos;* (v. 21).
+- **4.1-5.** Le vrai statut des ministres et leur seul Juge : rameurs de Christ et intendants des mystères de Dieu, évalués au seul retour du Seigneur. Marqueur : Adverbe récapitulatif *Houtōs hēmas logizesthō anthrōpos* (v. 1) et conclusion eschatologique *Hōste mē pro kairou ti krinete* (v. 5).
+- **4.6-13.** L'ironie apostolique contre l'arrogance corinthienne : la suffisance illusoire des disciples confrontée au défilé d'humiliation et de souffrance des apôtres. Marqueur : Déclaration méthodologique *Tauta de, adelphoi, meteschēmatisa* (v. 6) et point d'orgue tragique *hōs perikatharmata tou kosmou egenēthēmen, pantōn peripsēma heōs arti* (v. 13).
+- **4.14-21.** L'appel paternel et l'avertissement final : imiter le père spirituel qui les a engendrés par l'Évangile, accueillir Timothée et craindre la discipline apostolique. Marqueur : Adoucissement pastoral *Ouk entrepōn hymas graphō tauta* (v. 14) et question finale *Ti thelete; en rhabdō elthō pros hymas, ē en agapē pneumati te prautētos;* (v. 21).
 
 **Observations grammaticales**
 

@@ -47,10 +47,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 24 versets 
 
 **Plan de la péricope**
 
-- **16.1–4.** La générosité ordonnée de l'amour : l'organisation hebdomadaire, personnelle, proportionnelle et intègre de la collecte pour les saints de Jérusalem. Marqueur : Formule thématique *Peri de tēs logias tēs eis tous hagious* (v. 1) et impératif distributif *kata mian sabbatou hekastos hymōn par' heautō tithetō* (v. 2).
-- **16.5–12.** La coopération dans l'œuvre du Seigneur : les projets de voyage de Paul soumis à la volonté divine, la porte ouverte à Éphèse et le ministère de Timothée et d'Apollos. Marqueur : Futur d'intention *eleusomai de pros hymas* (v. 5) subordonné à la condition *ean ho Kyrios epitrepsē* (v. 7), et notice *Peri de Apollō tou adelphou* (v. 12).
-- **16.13–18.** La maturité spirituelle et l'honneur dû aux serviteurs fidèles : les cinq commandements de vigilance et d'amour, et la reconnaissance envers la maison de Stéphanas, Fortunatus et Achaïcus. Marqueur : Quintuple impératif *Grēgoreite, stēkete...* (v. 13-14) et exhortation pastorale *Parakalō de hymas, adelphoi...* (v. 15-18).
-- **16.19–24.** Les salutations fraternelles et la signature autographe de l'apôtre : le salut des Églises d'Asie, d'Aquilas et Priscille, l'avertissement d'anathème, le cri « Maranatha » et la bénédiction finale. Marqueur : Triple *Aspazontai hymas... Aspazesthe allēlous* (v. 19-20), signature *Ho aspasmos tē emē cheiri Paulou* (v. 21) et clausule *Hē agapē mou meta pantōn hymōn en Christō Iēsou* (v. 24).
+- **16.1-4.** La générosité ordonnée de l'amour : l'organisation hebdomadaire, personnelle, proportionnelle et intègre de la collecte pour les saints de Jérusalem. Marqueur : Formule thématique *Peri de tēs logias tēs eis tous hagious* (v. 1) et impératif distributif *kata mian sabbatou hekastos hymōn par' heautō tithetō* (v. 2).
+- **16.5-12.** La coopération dans l'œuvre du Seigneur : les projets de voyage de Paul soumis à la volonté divine, la porte ouverte à Éphèse et le ministère de Timothée et d'Apollos. Marqueur : Futur d'intention *eleusomai de pros hymas* (v. 5) subordonné à la condition *ean ho Kyrios epitrepsē* (v. 7), et notice *Peri de Apollō tou adelphou* (v. 12).
+- **16.13-18.** La maturité spirituelle et l'honneur dû aux serviteurs fidèles : les cinq commandements de vigilance et d'amour, et la reconnaissance envers la maison de Stéphanas, Fortunatus et Achaïcus. Marqueur : Quintuple impératif *Grēgoreite, stēkete...* (v. 13-14) et exhortation pastorale *Parakalō de hymas, adelphoi...* (v. 15-18).
+- **16.19-24.** Les salutations fraternelles et la signature autographe de l'apôtre : le salut des Églises d'Asie, d'Aquilas et Priscille, l'avertissement d'anathème, le cri « Maranatha » et la bénédiction finale. Marqueur : Triple *Aspazontai hymas... Aspazesthe allēlous* (v. 19-20), signature *Ho aspasmos tē emē cheiri Paulou* (v. 21) et clausule *Hē agapē mou meta pantōn hymōn en Christō Iēsou* (v. 24).
 
 **Observations grammaticales**
 
@@ -112,7 +112,7 @@ Dans le sermon *1888* (sur 16.13-14), MacArthur analyse la quintuple exhortation
 
 En 1 Corinthiens 16.13, le couple d'impératifs *andrizesthe, krataiousthe* (« soyez des hommes, fortifiez-vous ») reprend mot pour mot le grec de la Septante du Psaume 30.25 (hébreu massorétique Ps 31.25 : *chizqu ve-ya'amets levavkhem*, « fortifiez-vous et que votre cœur s'affermisse ») ainsi que l'exhortation divine adressée à Josué dans la Septante de Deutéronome 31.6, 7, 23 et Josué 1.6, 7, 9.
 
-**2 Corinthiens 8.1–9.15; Romains 15.25-28; Galates 2.10** · *Parallèle direct*
+**2 Corinthiens 8.1-9.15; Romains 15.25-28; Galates 2.10** · *Parallèle direct*
 
 Parallèles pauliniens directs sur la collecte pour les saints de Jérusalem mentionnée en 1 Corinthiens 16.1-4 : Galates 2.10 rapporte l'engagement initial de Paul à se souvenir des pauvres; 2 Corinthiens 8 et 9 développe une année plus tard la théologie complète de la grâce libérale auprès de ces mêmes Corinthiens; et Romains 15.25-28 (écrit de Corinthe à la fin de l'hiver 56-57) atteste l'achèvement de la collecte de la Macédoine et de l'Achaïe avant le départ de Paul pour Jérusalem.
 

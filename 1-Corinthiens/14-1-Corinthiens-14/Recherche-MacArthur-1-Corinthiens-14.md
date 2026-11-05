@@ -24,7 +24,7 @@
 
 > « car Dieu n’est pas un Dieu de désordre, mais de paix. Comme dans toutes les Eglises des saints, que les femmes se taisent dans les assemblées, car il ne leur est pas permis d’y parler; mais qu’elles soient soumises, comme le dit aussi la loi. » (1 Corinthiens 14.33-34, NEG)
 
-Point d'aboutissement de la trilogie sur les dons spirituels (chapitres 12 à 14) et de toute la section sur les rassemblements de l'Église (11.2–14.40), le chapitre 14 s'ouvre par la charnière impérative *Diōkete tēn agapēn, zēloute de ta pneumatika, mallon de hina prophēteuēte* (« Recherchez l'amour. Aspirez aussi aux dons spirituels, mais surtout à celui de prophétie », 14.1). Appliquant la loi de l'amour exposée au chapitre 13 au problème brûlant du culte corinthien, Paul corrige l'engouement désordonné des Corinthiens pour le parler en langues en lui opposant la primauté de la prophétie (la proclamation intelligible de la Parole de Dieu).
+Point d'aboutissement de la trilogie sur les dons spirituels (chapitres 12 à 14) et de toute la section sur les rassemblements de l'Église (11.2-14.40), le chapitre 14 s'ouvre par la charnière impérative *Diōkete tēn agapēn, zēloute de ta pneumatika, mallon de hina prophēteuēte* (« Recherchez l'amour. Aspirez aussi aux dons spirituels, mais surtout à celui de prophétie », 14.1). Appliquant la loi de l'amour exposée au chapitre 13 au problème brûlant du culte corinthien, Paul corrige l'engouement désordonné des Corinthiens pour le parler en langues en lui opposant la primauté de la prophétie (la proclamation intelligible de la Parole de Dieu).
 
 Le genre littéraire de ce chapitre unit l'argumentation comparative et apologétique (14.1-25) à la réglementation liturgique et disciplinaire de l'assemblée (14.26-40). Toute la démonstration de Paul repose sur un critère maître répété sept fois dans le chapitre (v. 3, 4 [2x], 5, 12, 17, 26) : l'**édification** (*oikodomē* / *oikodomeō*) de l'Église par l'intelligence (*nous*, répété cinq fois aux v. 14, 15 [2x], 19). Une parole qui n'est pas comprise par l'intelligence ne peut édifier personne; c'est pourquoi tout dans l'assemblée doit se faire pour l'édification (v. 26), dans la paix (v. 33) et « avec bienséance et avec ordre » (v. 40).
 
@@ -51,10 +51,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 40 versets 
 
 **Plan de la péricope**
 
-- **14.1–5.** La supériorité de la prophétie sur les langues : parler de manière intelligible pour édifier, exhorter et consoler l'Église. Marqueur : Double impératif d'ouverture *Diōkete tēn agapēn, zēloute de ta pneumatika* (v. 1) et principe de conclusion *hina hē ekklēsia oikodomēn labē* (v. 5).
-- **14.6–19.** La nécessité de l'intelligibilité dans l'assemblée : les analogies des instruments de musique, de la trompette et des langues étrangères, et la primauté de l'intelligence. Marqueur : Question rhétorique *Nyn de, adelphoi... ti hymas ōphelēsō* (v. 6) et déclaration personnelle sur les cinq paroles intelligibles contre dix mille en langue (v. 18-19).
-- **14.20–25.** Le but scripturaire des langues et de la prophétie : les langues comme signe judiciaire pour les incrédules (Ésaïe 28) et la prophétie comme moyen de conviction menant à l'adoration. Marqueur : Appel à la maturité de jugement *Adelphoi, mē paidia ginesthe tais phresin* (v. 20), citation d'Ésaïe 28.11-12 (v. 21) et prosternation finale du converti (v. 25).
-- **14.26–40.** Règlements pratiques pour l'ordre du culte public : limitation et interprétation des langues, discernement des prophètes, silence des femmes et règle finale de bienséance et d'ordre. Marqueur : Question pratique *Ti oun estin, adelphoi; hotan synerchēsthe* (v. 26), sceau de l'autorité du Seigneur (v. 37) et conclusion *panta de euschēmonōs kai kata taxin ginesthō* (v. 40).
+- **14.1-5.** La supériorité de la prophétie sur les langues : parler de manière intelligible pour édifier, exhorter et consoler l'Église. Marqueur : Double impératif d'ouverture *Diōkete tēn agapēn, zēloute de ta pneumatika* (v. 1) et principe de conclusion *hina hē ekklēsia oikodomēn labē* (v. 5).
+- **14.6-19.** La nécessité de l'intelligibilité dans l'assemblée : les analogies des instruments de musique, de la trompette et des langues étrangères, et la primauté de l'intelligence. Marqueur : Question rhétorique *Nyn de, adelphoi... ti hymas ōphelēsō* (v. 6) et déclaration personnelle sur les cinq paroles intelligibles contre dix mille en langue (v. 18-19).
+- **14.20-25.** Le but scripturaire des langues et de la prophétie : les langues comme signe judiciaire pour les incrédules (Ésaïe 28) et la prophétie comme moyen de conviction menant à l'adoration. Marqueur : Appel à la maturité de jugement *Adelphoi, mē paidia ginesthe tais phresin* (v. 20), citation d'Ésaïe 28.11-12 (v. 21) et prosternation finale du converti (v. 25).
+- **14.26-40.** Règlements pratiques pour l'ordre du culte public : limitation et interprétation des langues, discernement des prophètes, silence des femmes et règle finale de bienséance et d'ordre. Marqueur : Question pratique *Ti oun estin, adelphoi; hotan synerchēsthe* (v. 26), sceau de l'autorité du Seigneur (v. 37) et conclusion *panta de euschēmonōs kai kata taxin ginesthō* (v. 40).
 
 **Observations grammaticales**
 
@@ -132,7 +132,7 @@ Parallèle direct à l'effet de la Parole prophétique décrit en 1 Corinthiens 
 
 **1 Timothée 2.11-14; Genèse 3.16** · *Parallèle direct*
 
-Parallèle paulinien direct et explicite à 1 Corinthiens 14.34-35 : « Que la femme écoute l'instruction en silence, avec une entière soumission. Je ne permets pas à la femme d'enseigner, ni de prendre de l'autorité sur l'homme; mais elle doit demeurer dans le silence », fondé sur la Loi (Genèse 2–3).
+Parallèle paulinien direct et explicite à 1 Corinthiens 14.34-35 : « Que la femme écoute l'instruction en silence, avec une entière soumission. Je ne permets pas à la femme d'enseigner, ni de prendre de l'autorité sur l'homme; mais elle doit demeurer dans le silence », fondé sur la Loi (Genèse 2-3).
 
 **Colossiens 2.5** · *Lien thématique*
 
@@ -188,7 +188,7 @@ Dieu de paix et d'ordre (14.33), maîtrise de soi des serviteurs remplis de l'Es
 
 **Révélation progressive**
 
-De l'ordonnance minutieuse du tabernacle et des tours de service lévitiques dans l'Ancien Testament (1 Ch 23–25) jusqu'à la liturgie céleste de l'Apocalypse (Ap 4–5), l'adoration du vrai Dieu reflète toujours sa majesté harmonieuse et ordonnée.
+De l'ordonnance minutieuse du tabernacle et des tours de service lévitiques dans l'Ancien Testament (1 Ch 23-25) jusqu'à la liturgie céleste de l'Apocalypse (Ap 4-5), l'adoration du vrai Dieu reflète toujours sa majesté harmonieuse et ordonnée.
 
 **Pour votre assemblée**
 

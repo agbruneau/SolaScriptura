@@ -47,10 +47,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 27 versets 
 
 **Plan de la péricope**
 
-- **9.1–14.** La revendication du droit apostolique : les preuves de l'apostolat de Paul et les six arguments établissant le droit légitime au soutien pastoral. Marqueur : Quatre questions rhétoriques initiales *Ouk eimi eleutheros; ouk eimi apostolos;* (v. 1) et conclusion par l'ordre du Seigneur *Houtōs kai ho Kyrios diētaxen* (v. 14).
-- **9.15–18.** Le renoncement volontaire au droit financier : la nécessité intérieure de prêcher l'Évangile et la joie d'annoncer la grâce gratuitement. Marqueur : Pronom emphatique d'opposition *Egō de ouk echrēsamēn oudeni toutōn* (v. 15) et question-réponse sur la récompense *Tis oun mou estin ho misthos;* (v. 18).
-- **9.19–23.** L'asservissement volontaire par amour missionnaire : libre à l'égard de tous, Paul se fait l'esclave de tous et « tout à tous » pour gagner les perdus. Marqueur : Paradoxe programmatique *Eleutheros gar ōn ek pantōn pasin emauton edoulōsa* (v. 19) et déclaration finale de participation à l'Évangile (v. 23).
-- **9.24–27.** La discipline athlétique du serviteur : courir de manière à remporter la couronne incorruptible et assujettir son corps de peur d'être disqualifié. Marqueur : Appel au savoir commun *Ouk oidate hoti hoi en stadiō trechontes* (v. 24) et résolution finale *alla hypōpiazō mou to sōma kai doulagōgō* (v. 27).
+- **9.1-14.** La revendication du droit apostolique : les preuves de l'apostolat de Paul et les six arguments établissant le droit légitime au soutien pastoral. Marqueur : Quatre questions rhétoriques initiales *Ouk eimi eleutheros; ouk eimi apostolos;* (v. 1) et conclusion par l'ordre du Seigneur *Houtōs kai ho Kyrios diētaxen* (v. 14).
+- **9.15-18.** Le renoncement volontaire au droit financier : la nécessité intérieure de prêcher l'Évangile et la joie d'annoncer la grâce gratuitement. Marqueur : Pronom emphatique d'opposition *Egō de ouk echrēsamēn oudeni toutōn* (v. 15) et question-réponse sur la récompense *Tis oun mou estin ho misthos;* (v. 18).
+- **9.19-23.** L'asservissement volontaire par amour missionnaire : libre à l'égard de tous, Paul se fait l'esclave de tous et « tout à tous » pour gagner les perdus. Marqueur : Paradoxe programmatique *Eleutheros gar ōn ek pantōn pasin emauton edoulōsa* (v. 19) et déclaration finale de participation à l'Évangile (v. 23).
+- **9.24-27.** La discipline athlétique du serviteur : courir de manière à remporter la couronne incorruptible et assujettir son corps de peur d'être disqualifié. Marqueur : Appel au savoir commun *Ouk oidate hoti hoi en stadiō trechontes* (v. 24) et résolution finale *alla hypōpiazō mou to sōma kai doulagōgō* (v. 27).
 
 **Observations grammaticales**
 

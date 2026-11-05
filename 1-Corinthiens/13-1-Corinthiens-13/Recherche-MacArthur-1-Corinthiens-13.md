@@ -47,9 +47,9 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 13 versets 
 
 **Plan de la péricope**
 
-- **13.1–3.** La nécessité absolue de l'amour : sans lui, les langues, la prophétie, la science, la foi miraculeuse et le sacrifice de soi ne sont rien. Marqueur : Triple conditionnelle éventuelle *Ean tais glōssais... kai ean echō prophēteian... kan psōmisō* (v. 1-3) scandée par le refrain *agapēn de mē echō*.
-- **13.4–7.** Le caractère actif de l'amour : quinze verbes décrivant sa patience, sa bonté, son humilité, son désintéressement, sa joie dans la vérité et sa persévérance. Marqueur : Ouverture positive *Hē agapē makrothymei, chrēsteuetai* (v. 4), huit négations correctives (v. 4b-6a) et point d'orgue du quadruple *panta* (v. 7).
-- **13.8–13.** La permanence éternelle de l'amour : la cessation des dons partiels lors de la venue de ce qui est parfait et la suprématie finale de l'amour. Marqueur : Thèse d'ouverture *Hē agapē oudepote piptei* (v. 8), double contraste *arti... tote de* (« aujourd'hui... mais alors », v. 12) et triade finale *pistis, elpis, agapē* (v. 13).
+- **13.1-3.** La nécessité absolue de l'amour : sans lui, les langues, la prophétie, la science, la foi miraculeuse et le sacrifice de soi ne sont rien. Marqueur : Triple conditionnelle éventuelle *Ean tais glōssais... kai ean echō prophēteian... kan psōmisō* (v. 1-3) scandée par le refrain *agapēn de mē echō*.
+- **13.4-7.** Le caractère actif de l'amour : quinze verbes décrivant sa patience, sa bonté, son humilité, son désintéressement, sa joie dans la vérité et sa persévérance. Marqueur : Ouverture positive *Hē agapē makrothymei, chrēsteuetai* (v. 4), huit négations correctives (v. 4b-6a) et point d'orgue du quadruple *panta* (v. 7).
+- **13.8-13.** La permanence éternelle de l'amour : la cessation des dons partiels lors de la venue de ce qui est parfait et la suprématie finale de l'amour. Marqueur : Thèse d'ouverture *Hē agapē oudepote piptei* (v. 8), double contraste *arti... tote de* (« aujourd'hui... mais alors », v. 12) et triade finale *pistis, elpis, agapē* (v. 13).
 
 **Observations grammaticales**
 

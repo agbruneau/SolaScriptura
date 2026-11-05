@@ -47,9 +47,9 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 13 versets 
 
 **Plan de la péricope**
 
-- **5.1–5.** Le scandale de l'inceste et la sentence apostolique : l'orgueil coupable de l'assemblée et l'ordre de livrer l'incestueux à Satan en vue de son salut final. Marqueur : Constat d'ouverture *Holōs akouetai en hymin porneia* (v. 1) et proposition finale de salut eschatologique *hina to pneuma sōthē en tē hēmera tou Kyriou* (v. 5).
-- **5.6–8.** Le fondement typologique et rédempteur : ôter le vieux levain du péché parce que Christ, notre Pâque, a été immolé. Marqueur : Avertissement *Ou kalon to kauchēma hymōn* (v. 6), rappel *Ouk oidate hoti* et exhortation pascale *hōste heortazōmen* (v. 8).
-- **5.9–13.** La règle pratique de la séparation disciplinaire : ne pas fuir les inconvertis du monde, mais rompre toute communion fraternelle avec un prétendu frère impénitent. Marqueur : Rappel épistolaire *Egrapsa hymin en tē epistolē* (v. 9), rectification *nyn de egrapsa hymin* (v. 11) et ordre final tiré de Deutéronome 17.7 (*Exarate ton ponēron ex hymōn autōn*, v. 13).
+- **5.1-5.** Le scandale de l'inceste et la sentence apostolique : l'orgueil coupable de l'assemblée et l'ordre de livrer l'incestueux à Satan en vue de son salut final. Marqueur : Constat d'ouverture *Holōs akouetai en hymin porneia* (v. 1) et proposition finale de salut eschatologique *hina to pneuma sōthē en tē hēmera tou Kyriou* (v. 5).
+- **5.6-8.** Le fondement typologique et rédempteur : ôter le vieux levain du péché parce que Christ, notre Pâque, a été immolé. Marqueur : Avertissement *Ou kalon to kauchēma hymōn* (v. 6), rappel *Ouk oidate hoti* et exhortation pascale *hōste heortazōmen* (v. 8).
+- **5.9-13.** La règle pratique de la séparation disciplinaire : ne pas fuir les inconvertis du monde, mais rompre toute communion fraternelle avec un prétendu frère impénitent. Marqueur : Rappel épistolaire *Egrapsa hymin en tē epistolē* (v. 9), rectification *nyn de egrapsa hymin* (v. 11) et ordre final tiré de Deutéronome 17.7 (*Exarate ton ponēron ex hymōn autōn*, v. 13).
 
 **Observations grammaticales**
 

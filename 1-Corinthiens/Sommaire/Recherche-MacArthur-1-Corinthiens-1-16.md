@@ -80,14 +80,14 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 437 versets
 
 **Plan de la péricope**
 
-- **1.1–9.** Salutation apostolique et action de grâces pour la position des Corinthiens en Christ : appelés à la sainteté, enrichis de tout don et affermis jusqu'au jour du Seigneur. Marqueur : Adresse épistolaire (*Paulos klētos apostolos*, v. 1) et période eucharistique (*Eucharistō tō Theō mou pantote*, v. 4) établissant le fondement de la grâce avant toute réprimande.
-- **1.10–4.21.** Réponse au rapport de la maison de Chloé : condamnation des divisions partisanes par la folie de la croix, la révélation de l'Esprit et la véritable nature des serviteurs de Dieu. Marqueur : Exhortation solennelle d'ouverture (*Parakalō de hymas, adelphoi*, 1.10) et inclusion paternelle finale (*Parakalō oun hymas, mimētai mou ginesthe*, 4.16).
-- **5.1–6.20.** Réponse aux rapports d'immoralité et d'injustice : discipline de l'incestueux, interdiction des procès devant les païens et sanctification du corps comme temple du Saint-Esprit. Marqueur : Transition abrupte par le constat public (*Holōs akouetai en hymin porneia*, 5.1) et conclusion impérative à l'aoriste (*doxasate dē ton Theon en tō sōmati hymōn*, 6.20).
-- **7.1–40.** Première réponse aux questions écrites : principes bibliques régissant le mariage, le célibat, le divorce, le maintien dans l'état de son appel et le remariage des veuves. Marqueur : Première formule de transition structurelle *Peri de hōn egrapsate* (« Pour ce qui concerne les choses au sujet desquelles vous m'avez écrit », 7.1; reprise en 7.25).
-- **8.1–11.1.** Deuxième réponse aux questions écrites : les viandes sacrifiées aux idoles, la subordination de la liberté chrétienne à l'édification du faible (illustrée par le renoncement de Paul) et l'avertissement contre l'idolâtrie. Marqueur : Formule *Peri de tōn eidōlothytōn* (8.1) et conclusion récapitulative qui clôt tout le développement en 11.1 (*Mimētai mou ginesthe, kathōs kagō Christou*).
-- **11.2–14.40.** Rectification des désordres dans le culte public de l'assemblée : autorité et tenue lors de la prière, célébration digne de la Cène, unité du corps dans la diversité des dons, suprématie de l'amour et ordre prophétique. Marqueur : Transition élogieuse sur les traditions (*Epainō de hymas*, 11.2), formule *Peri de tōn pneumatikōn* (12.1) et règle finale d'ordre ecclésial (*panta de euschēmonōs kai kata taxin ginesthō*, 14.40).
-- **15.1–58.** Apologie magistrale et exposition doctrinale de la résurrection corporelle : historicité du kérygme, nécessité théologique, ordre eschatologique, nature du corps glorifié et victoire finale sur la mort. Marqueur : Introduction solennelle de rappel de l'Évangile (*Gnōrizō de hymin, adelphoi, to euangelion*, 15.1) et exhortation conclusive (*Hōste, adelphoi mou agapētoi, hedraioi ginesthe*, 15.58).
-- **16.1–24.** Dernières instructions pratiques sur la collecte pour les saints, projets d'itinéraire de Paul, recommandations ministérielles et salutations autographes finales. Marqueur : Dernière formule *Peri de tēs logias tēs eis tous hagious* (16.1) et signature autographe de Paul avec anathème, *Maranatha* et bénédiction (16.21-24).
+- **1.1-9.** Salutation apostolique et action de grâces pour la position des Corinthiens en Christ : appelés à la sainteté, enrichis de tout don et affermis jusqu'au jour du Seigneur. Marqueur : Adresse épistolaire (*Paulos klētos apostolos*, v. 1) et période eucharistique (*Eucharistō tō Theō mou pantote*, v. 4) établissant le fondement de la grâce avant toute réprimande.
+- **1.10-4.21.** Réponse au rapport de la maison de Chloé : condamnation des divisions partisanes par la folie de la croix, la révélation de l'Esprit et la véritable nature des serviteurs de Dieu. Marqueur : Exhortation solennelle d'ouverture (*Parakalō de hymas, adelphoi*, 1.10) et inclusion paternelle finale (*Parakalō oun hymas, mimētai mou ginesthe*, 4.16).
+- **5.1-6.20.** Réponse aux rapports d'immoralité et d'injustice : discipline de l'incestueux, interdiction des procès devant les païens et sanctification du corps comme temple du Saint-Esprit. Marqueur : Transition abrupte par le constat public (*Holōs akouetai en hymin porneia*, 5.1) et conclusion impérative à l'aoriste (*doxasate dē ton Theon en tō sōmati hymōn*, 6.20).
+- **7.1-40.** Première réponse aux questions écrites : principes bibliques régissant le mariage, le célibat, le divorce, le maintien dans l'état de son appel et le remariage des veuves. Marqueur : Première formule de transition structurelle *Peri de hōn egrapsate* (« Pour ce qui concerne les choses au sujet desquelles vous m'avez écrit », 7.1; reprise en 7.25).
+- **8.1-11.1.** Deuxième réponse aux questions écrites : les viandes sacrifiées aux idoles, la subordination de la liberté chrétienne à l'édification du faible (illustrée par le renoncement de Paul) et l'avertissement contre l'idolâtrie. Marqueur : Formule *Peri de tōn eidōlothytōn* (8.1) et conclusion récapitulative qui clôt tout le développement en 11.1 (*Mimētai mou ginesthe, kathōs kagō Christou*).
+- **11.2-14.40.** Rectification des désordres dans le culte public de l'assemblée : autorité et tenue lors de la prière, célébration digne de la Cène, unité du corps dans la diversité des dons, suprématie de l'amour et ordre prophétique. Marqueur : Transition élogieuse sur les traditions (*Epainō de hymas*, 11.2), formule *Peri de tōn pneumatikōn* (12.1) et règle finale d'ordre ecclésial (*panta de euschēmonōs kai kata taxin ginesthō*, 14.40).
+- **15.1-58.** Apologie magistrale et exposition doctrinale de la résurrection corporelle : historicité du kérygme, nécessité théologique, ordre eschatologique, nature du corps glorifié et victoire finale sur la mort. Marqueur : Introduction solennelle de rappel de l'Évangile (*Gnōrizō de hymin, adelphoi, to euangelion*, 15.1) et exhortation conclusive (*Hōste, adelphoi mou agapētoi, hedraioi ginesthe*, 15.58).
+- **16.1-24.** Dernières instructions pratiques sur la collecte pour les saints, projets d'itinéraire de Paul, recommandations ministérielles et salutations autographes finales. Marqueur : Dernière formule *Peri de tēs logias tēs eis tous hagious* (16.1) et signature autographe de Paul avec anathème, *Maranatha* et bénédiction (16.21-24).
 
 **Observations grammaticales**
 
@@ -249,9 +249,9 @@ Fondement typologique d'Israël au désert développé en 1 Corinthiens 10.1-11 
 
 Fondement créationnel invoqué par Paul tant pour condamner l'union avec une prostituée qui profane le mystère d'une seule chair (1 Co 6.16) que pour établir l'ordre de création, l'autorité masculine et la complémentarité mutuelle de l'homme et de la femme dans le culte public (1 Co 11.7-12).
 
-**Romains 12.3-13; 14.1–15.3** · *Lien thématique*
+**Romains 12.3-13; 14.1-15.3** · *Lien thématique*
 
-Parallèle paulinien direct rédigé depuis Corinthe quelques mois après 1 Corinthiens : Paul y reprend la doctrine de l'unité organique du corps de Christ dans la diversité des charismes (Rm 12.3-8; cf. 1 Co 12) ainsi que le devoir d'amour du fort envers la conscience du faible concernant les aliments (Rm 14; cf. 1 Co 8–10).
+Parallèle paulinien direct rédigé depuis Corinthe quelques mois après 1 Corinthiens : Paul y reprend la doctrine de l'unité organique du corps de Christ dans la diversité des charismes (Rm 12.3-8; cf. 1 Co 12) ainsi que le devoir d'amour du fort envers la conscience du faible concernant les aliments (Rm 14; cf. 1 Co 8-10).
 
 **Ésaïe 25.8; Osée 13.14** · *Citation ou allusion*
 
@@ -263,7 +263,7 @@ Double citation prophétique qui couronne l'hymne de la résurrection en 1 Corin
 
 **Dans le texte**
 
-En 1 Corinthiens 1.18–2.16, Paul oppose frontalement « la parole de la croix » aux spéculations philosophiques des Grecs et aux exigences de signes des Juifs. Ce que le monde juge faible et insensé est en réalité la puissance et la sagesse de Dieu, révélées par le Saint-Esprit et incarnées en Jésus-Christ, qui a été fait pour nous sagesse, justice, sanctification et rédemption (1.30).
+En 1 Corinthiens 1.18-2.16, Paul oppose frontalement « la parole de la croix » aux spéculations philosophiques des Grecs et aux exigences de signes des Juifs. Ce que le monde juge faible et insensé est en réalité la puissance et la sagesse de Dieu, révélées par le Saint-Esprit et incarnées en Jésus-Christ, qui a été fait pour nous sagesse, justice, sanctification et rédemption (1.30).
 
 **Ancrage doctrinal**
 
@@ -307,7 +307,7 @@ Dans les chapitres 8 à 10, Paul établit que si l'idole n'est rien en elle-mêm
 
 **Révélation progressive**
 
-Enracinée dans la loi royale d'aimer son prochain comme soi-même (Lv 19.18) et accomplie par le Fils de l'homme venu non pour être servi mais pour servir et donner sa vie (Mc 10.45), cette éthique du renoncement volontaire caractérise toute la vie de l'Église du Nouveau Testament (Rm 14.1–15.3; Ph 2.1-8).
+Enracinée dans la loi royale d'aimer son prochain comme soi-même (Lv 19.18) et accomplie par le Fils de l'homme venu non pour être servi mais pour servir et donner sa vie (Mc 10.45), cette éthique du renoncement volontaire caractérise toute la vie de l'Église du Nouveau Testament (Rm 14.1-15.3; Ph 2.1-8).
 
 **Pour votre assemblée**
 
@@ -339,11 +339,11 @@ Au chapitre 15, Paul démontre que la mort expiatoire et la résurrection corpor
 
 **Ancrage doctrinal**
 
-Historicité et nécessité sotériologique de la résurrection corporelle, fédéralisme représentatif des deux Adams (15.21-22, 45-49), enlèvement et transformation des croyants (15.51-54), et soumission finale du royaume médiatorial au Père (15.24-28).
+Historicité et nécessité sotériologique de la résurrection corporelle, fédéralisme représentatif des deux Adams (15.21-22, 45-49), enlèvement et transformation des croyants (15.51-54), règne millénaire de Christ et soumission finale du royaume médiatorial au Père (15.24-28).
 
 **Révélation progressive**
 
-Espérée par les patriarches et prophètes de l'Ancien Testament (Jb 19.25-27; És 25.8; 26.19; Dn 12.2; Os 13.14), inaugurée historiquement au matin de Pâques par le tombeau vide du Ressuscité, la résurrection s'achèvera lors de la parousie de Christ et de l'établissement des nouveaux cieux et de la nouvelle terre (Ap 20–21).
+Espérée par les patriarches et prophètes de l'Ancien Testament (Jb 19.25-27; És 25.8; 26.19; Dn 12.2; Os 13.14), inaugurée historiquement au matin de Pâques par le tombeau vide du Ressuscité, la résurrection de ceux qui appartiennent à Christ aura lieu à son avènement (l'Église à l'enlèvement, les saints de la tribulation à la fin de celle-ci), puis viendra la fin, au terme du règne millénaire, lorsque la mort sera détruite et le royaume remis au Père, avant les nouveaux cieux et la nouvelle terre (15.23-28; Ap 20-21; MacArthur, 1879).
 
 **Pour votre assemblée**
 

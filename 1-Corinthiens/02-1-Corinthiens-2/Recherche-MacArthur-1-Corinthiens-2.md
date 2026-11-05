@@ -45,10 +45,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 16 versets 
 
 **Plan de la péricope**
 
-- **2.1–5.** Le témoignage du prédicateur : le refus délibéré des artifices de la rhétorique au profit de Christ crucifié et de la démonstration de l'Esprit. Marqueur : Pronom emphatique *Kagō elthōn pros hymas, adelphoi* (v. 1) et proposition finale sur le fondement de la foi (v. 5).
-- **2.6–9.** La nature transcendante de la vraie sagesse : le mystère éternel de Dieu ignoré des chefs de ce siècle et inaccessible aux sens humains. Marqueur : Adversatif de transition *Sophian de laloumen en tois teleiois* (v. 6) et citation scripturaire introduite par *alla kathōs gegraptai* (v. 9).
-- **2.10–13.** La transmission de la sagesse divine : révélée par l'Esprit qui sonde les profondeurs de Dieu et exprimée en paroles enseignées par l'Esprit. Marqueur : Adversatif emphatique en tête de phrase *Hēmin de apekalypsen ho Theos dia tou Pneumatos* (v. 10) et déclaration sur le langage inspiré *ha kai laloumen* (v. 13).
-- **2.14–16.** La réception de la sagesse divine : l'aveuglement de l'homme naturel (psychikos) face au discernement de l'homme spirituel (pneumatikos) qui a la pensée de Christ. Marqueur : Contraste antithétique entre *Psychikos de anthrōpos* (v. 14) et *ho de pneumatikos* (v. 15), couronné par la citation d'Ésaïe 40.13 et l'affirmation *hēmeis de noun Christou echomen* (v. 16).
+- **2.1-5.** Le témoignage du prédicateur : le refus délibéré des artifices de la rhétorique au profit de Christ crucifié et de la démonstration de l'Esprit. Marqueur : Pronom emphatique *Kagō elthōn pros hymas, adelphoi* (v. 1) et proposition finale sur le fondement de la foi (v. 5).
+- **2.6-9.** La nature transcendante de la vraie sagesse : le mystère éternel de Dieu ignoré des chefs de ce siècle et inaccessible aux sens humains. Marqueur : Adversatif de transition *Sophian de laloumen en tois teleiois* (v. 6) et citation scripturaire introduite par *alla kathōs gegraptai* (v. 9).
+- **2.10-13.** La transmission de la sagesse divine : révélée par l'Esprit qui sonde les profondeurs de Dieu et exprimée en paroles enseignées par l'Esprit. Marqueur : Adversatif emphatique en tête de phrase *Hēmin de apekalypsen ho Theos dia tou Pneumatos* (v. 10) et déclaration sur le langage inspiré *ha kai laloumen* (v. 13).
+- **2.14-16.** La réception de la sagesse divine : l'aveuglement de l'homme naturel (psychikos) face au discernement de l'homme spirituel (pneumatikos) qui a la pensée de Christ. Marqueur : Contraste antithétique entre *Psychikos de anthrōpos* (v. 14) et *ho de pneumatikos* (v. 15), couronné par la citation d'Ésaïe 40.13 et l'affirmation *hēmeis de noun Christou echomen* (v. 16).
 
 **Observations grammaticales**
 

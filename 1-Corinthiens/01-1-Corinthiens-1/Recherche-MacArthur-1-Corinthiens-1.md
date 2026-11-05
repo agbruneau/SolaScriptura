@@ -45,11 +45,11 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 31 versets 
 
 **Plan de la péricope**
 
-- **1.1–3.** Salutation apostolique : l'appel souverain de Paul et la sainteté positionnelle de l'Église de Dieu à Corinthe. Marqueur : Formule épistolaire d'ouverture *Paulos klētos apostolos Christou Iēsou dia thelēmatos Theou* (v. 1) close par le souhait de grâce et de paix (v. 3).
-- **1.4–9.** Action de grâces pour les richesses spirituelles passées, présentes et futures des Corinthiens, garanties par la fidélité de Dieu. Marqueur : Verbe principal *Eucharistō tō Theō mou pantote* (v. 4) et déclaration finale de fidélité *pistos ho Theos* (v. 9).
-- **1.10–17.** Dénonciation des quatre factions partisanes rapportées par les gens de Chloé et subordination du baptême à la prédication de la croix. Marqueur : Exhortation solennelle *Parakalō de hymas, adelphoi* (v. 10) débouchant sur l'énoncé programmatique *hina mē kenōthē ho stauros tou Christou* (v. 17).
-- **1.18–25.** Opposition irréductible entre la sagesse du monde qui périt et la parole de la croix, folie pour les hommes mais puissance et sagesse de Dieu. Marqueur : Conjonction explicative *Ho logos gar ho tou staurou* (v. 18) et sentence récapitulative *hoti to mōron tou Theou sophōteron tōn anthrōpōn estin* (v. 25).
-- **1.26–31.** Preuve par la vocation même des Corinthiens : l'élection souveraine des humbles et l'œuvre complète de Christ pour que toute gloire revienne au Seigneur seul. Marqueur : Impératif d'observation *Blepete gar tēn klēsin hymōn, adelphoi* (v. 26) et citation finale de Jérémie 9.23 (*Ho kauchōmenos en Kyriō kauchasthō*, v. 31).
+- **1.1-3.** Salutation apostolique : l'appel souverain de Paul et la sainteté positionnelle de l'Église de Dieu à Corinthe. Marqueur : Formule épistolaire d'ouverture *Paulos klētos apostolos Christou Iēsou dia thelēmatos Theou* (v. 1) close par le souhait de grâce et de paix (v. 3).
+- **1.4-9.** Action de grâces pour les richesses spirituelles passées, présentes et futures des Corinthiens, garanties par la fidélité de Dieu. Marqueur : Verbe principal *Eucharistō tō Theō mou pantote* (v. 4) et déclaration finale de fidélité *pistos ho Theos* (v. 9).
+- **1.10-17.** Dénonciation des quatre factions partisanes rapportées par les gens de Chloé et subordination du baptême à la prédication de la croix. Marqueur : Exhortation solennelle *Parakalō de hymas, adelphoi* (v. 10) débouchant sur l'énoncé programmatique *hina mē kenōthē ho stauros tou Christou* (v. 17).
+- **1.18-25.** Opposition irréductible entre la sagesse du monde qui périt et la parole de la croix, folie pour les hommes mais puissance et sagesse de Dieu. Marqueur : Conjonction explicative *Ho logos gar ho tou staurou* (v. 18) et sentence récapitulative *hoti to mōron tou Theou sophōteron tōn anthrōpōn estin* (v. 25).
+- **1.26-31.** Preuve par la vocation même des Corinthiens : l'élection souveraine des humbles et l'œuvre complète de Christ pour que toute gloire revienne au Seigneur seul. Marqueur : Impératif d'observation *Blepete gar tēn klēsin hymōn, adelphoi* (v. 26) et citation finale de Jérémie 9.23 (*Ho kauchōmenos en Kyriō kauchasthō*, v. 31).
 
 **Observations grammaticales**
 

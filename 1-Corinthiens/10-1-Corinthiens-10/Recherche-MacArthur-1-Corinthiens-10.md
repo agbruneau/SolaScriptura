@@ -49,10 +49,10 @@ Sources consultées : grec : SBLGNT et son apparat critique (lus aux 33 versets 
 
 **Plan de la péricope**
 
-- **10.1–5.** Les privilèges surnaturels d'Israël lors de l'Exode et leur chute tragique dans le désert. Marqueur : Formule solennelle d'introduction *Ou thelō gar hymas agnoein, adelphoi* (v. 1) et constat de jugement *katestrōthēsan gar en tē erēmō* (v. 5).
-- **10.6–13.** L'application typologique à l'Église : fuir les quatre péchés du désert, craindre la présomption et s'appuyer sur la fidélité de Dieu dans l'épreuve. Marqueur : Déclaration typologique *Tauta de typoi hēmōn egenēthēsan* (v. 6), avertissement *Hōste ho dokōn hestanai blepetō mē pesē* (v. 12) et promesse *pistos de ho Theos* (v. 13).
-- **10.14–22.** L'interdiction absolue des banquets idolâtres : l'incompatibilité entre la communion au corps et au sang de Christ et la table des démons. Marqueur : Impératif catégorique *Dioper, agapētoi mou, pheugete apo tēs eidōlolatrias* (v. 14) et double négation d'impossibilité *ou dynasthe...* (v. 21).
-- **10.23–11.1.** Directives pratiques pour le marché et les repas privés, et principe suprême : chercher l'avantage d'autrui et tout faire pour la gloire de Dieu à l'imitation de Christ. Marqueur : Maxime récapitulative *Panta exestin, all' ou panta oikodomei* (v. 23), commandement universel *panta eis doxan Theou poieite* (v. 31) et charnière finale *Mimētai mou ginesthe, kathōs kagō Christou* (11.1).
+- **10.1-5.** Les privilèges surnaturels d'Israël lors de l'Exode et leur chute tragique dans le désert. Marqueur : Formule solennelle d'introduction *Ou thelō gar hymas agnoein, adelphoi* (v. 1) et constat de jugement *katestrōthēsan gar en tē erēmō* (v. 5).
+- **10.6-13.** L'application typologique à l'Église : fuir les quatre péchés du désert, craindre la présomption et s'appuyer sur la fidélité de Dieu dans l'épreuve. Marqueur : Déclaration typologique *Tauta de typoi hēmōn egenēthēsan* (v. 6), avertissement *Hōste ho dokōn hestanai blepetō mē pesē* (v. 12) et promesse *pistos de ho Theos* (v. 13).
+- **10.14-22.** L'interdiction absolue des banquets idolâtres : l'incompatibilité entre la communion au corps et au sang de Christ et la table des démons. Marqueur : Impératif catégorique *Dioper, agapētoi mou, pheugete apo tēs eidōlolatrias* (v. 14) et double négation d'impossibilité *ou dynasthe...* (v. 21).
+- **10.23-11.1.** Directives pratiques pour le marché et les repas privés, et principe suprême : chercher l'avantage d'autrui et tout faire pour la gloire de Dieu à l'imitation de Christ. Marqueur : Maxime récapitulative *Panta exestin, all' ou panta oikodomei* (v. 23), commandement universel *panta eis doxan Theou poieite* (v. 31) et charnière finale *Mimētai mou ginesthe, kathōs kagō Christou* (11.1).
 
 **Observations grammaticales**
 
@@ -107,7 +107,7 @@ Enfin, dans le sermon charnière *1843* (« Principles of Christian Freedom », 
 - **10.1-5.** La quintuple anaphore de l'adjectif *pantes* (« nos pères ont *tous* été sous la nuée, ils ont *tous* passé au travers de la mer, ils ont *tous* été baptisés... ils ont *tous* mangé le même aliment... ils ont *tous* bu le même breuvage », v. 1-4) suivie du brutal adversatif *All' ouk en tois pleiosin autōn eudokēsen ho Theos* (« Mais la plupart d'entre eux ne furent point agréables à Dieu », v. 5) produit un choc rhétorique saisissant contre toute sécurité présomptueuse.
 - **10.6, 11.** L'inclusion formée par le nom *typoi* au verset 6 (*Tauta de typoi hēmōn egenēthēsan*) et l'adverbe *typikōs* au verset 11 (*tauta de typikōs synebainen ekeinois, egraphē de pros nouthesian hēmōn*) établit explicitement la légitimité herméneutique de la typologie biblique : l'histoire réelle de l'Ancien Testament a été écrite pour l'avertissement de l'Église de la nouvelle alliance.
 - **10.13.** L'attribut mis en relief *pistos de ho Theos* (« et Dieu, qui est fidèle... », reprenant mot pour mot 1.9) ancre la promesse de victoire dans la tentation non pas dans la force de l'homme, mais dans le caractère immuable de Dieu qui proportionne l'épreuve et prépare toujours « l'issue » (*tēn ekbasin*).
-- **10.23–11.1.** La reprise au verset 23 de la maxime de 6.12 (*Panta exestin, all' ou panta sympherei· panta exestin, all' ou panta oikodomei*) suivie de la règle d'or de 10.31 (*panta eis doxan Theou poieite*) et de l'appel de 11.1 (*Mimētai mou ginesthe, kathōs kagō Christou*) scelle la conclusion magistrale de tout le bloc des chapitres 8 à 10.
+- **10.23-11.1.** La reprise au verset 23 de la maxime de 6.12 (*Panta exestin, all' ou panta sympherei· panta exestin, all' ou panta oikodomei*) suivie de la règle d'or de 10.31 (*panta eis doxan Theou poieite*) et de l'appel de 11.1 (*Mimētai mou ginesthe, kathōs kagō Christou*) scelle la conclusion magistrale de tout le bloc des chapitres 8 à 10.
 
 ## Renvois et passages parallèles
 
@@ -185,7 +185,7 @@ En 10.14-22, Paul ordonne de fuir l'idolâtrie, car la coupe et le pain de la C�
 
 **Ancrage doctrinal**
 
-Réalité spirituelle de la communion eucharistique (sans transsubstantiation charnelle), existence réelle des démons derrière les fausses religions, et sainteté jalouse du Seigneur (10.22).
+Communion spirituelle réelle avec Christ à la table du Seigneur, dont le pain et la coupe ne sont que des symboles (MacArthur écarte la transsubstantiation comme la consubstantiation, 1842), existence réelle des démons derrière les fausses religions, et sainteté jalouse du Seigneur (10.22).
 
 **Révélation progressive**
 
@@ -199,7 +199,7 @@ Tout syncrétisme religieux et toute participation active à des cultes ou prati
 
 **Dans le texte**
 
-En 10.23–11.1, Paul subordonne toute liberté chrétienne à l'édification et au bien du prochain, ordonnant que dans le manger, le boire ou toute autre action, nous fassions tout pour la gloire de Dieu (*Soli Deo Gloria*) à l'imitation de Christ.
+En 10.23-11.1, Paul subordonne toute liberté chrétienne à l'édification et au bien du prochain, ordonnant que dans le manger, le boire ou toute autre action, nous fassions tout pour la gloire de Dieu (*Soli Deo Gloria*) à l'imitation de Christ.
 
 **Ancrage doctrinal**
 
