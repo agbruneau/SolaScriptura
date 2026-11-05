@@ -1,6 +1,6 @@
 # Recherche exégétique (perspective MacArthur) : 2 Corinthiens 9
 
-**La loi dessemailles et de la moisson, le donateur joyeux et le don inexprimable de Dieu**
+**La loi des semailles et de la moisson, le donateur joyeux et le don inexprimable de Dieu**
 
 > « Que chacun donne comme il l’a résolu en son cœur, sans tristesse ni contrainte; car Dieu aime celui qui donne avec joie. Et Dieu peut vous combler de toutes ses grâces, afin que, possédant toujours en toutes choses de quoi satisfaire à tous vos besoins, vous ayez encore en abondance pour toute bonne œuvre, » (2 Corinthiens 9.7-8, NEG)
 
