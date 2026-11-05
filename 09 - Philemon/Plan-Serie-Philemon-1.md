@@ -68,12 +68,12 @@
 
 ### III. Les motifs de celui qui pardonne (1.19-25)
 
-- **Une dette impayable (1.19) :** « Moi Paul, je l’écris de ma propre main, je paierai, pour ne pas te dire que tu te dois toi-même à moi. » (1.19). Paul signe la reconnaissance de dette, puis rappelle à Philémon qu'il doit davantage : Onésime lui doit une dette matérielle, lui doit à Paul une dette spirituelle (57-4).
+- **Une dette impayable (1.19) :** « Moi Paul, je l’écris de ma propre main, je paierai, pour ne pas te dire que tu te dois toi-même à moi. » (1.19). Paul signe la reconnaissance de dette, puis rappelle à Philémon qu'il doit davantage : Onésime lui doit une dette matérielle, et lui-même doit à Paul une dette spirituelle (57-4).
 - **La joie à donner (1.20) :** « Oui, frère, que j’obtienne de toi cet avantage, dans le Seigneur; tranquillise mon cœur en Christ. » (1.20). Le verbe *onaimēn* prolonge le jeu sur le nom d'Onésime, et *anapauson* reprend 1.7 : celui qui a rafraîchi les saints est prié de rafraîchir Paul (57-4; Recherche, grammaire).
 - **L'obéissance au Seigneur (1.21) :** « C’est en comptant sur ton obéissance que je t’écris, sachant que tu feras même au-delà de ce que je dis. » (1.21). Philémon sait que Dieu commande de pardonner (Matthieu 18.21-22; Luc 17.3-4); le « plus » attendu est un pardon plus généreux encore, non un appel à l'affranchissement (57-4).
 - **La responsabilité et la prière (1.22) :** « En même temps, prépare-moi un logement, car j’espère vous être rendu, grâce à vos prières. » (1.22). La visite annoncée rend Philémon responsable devant son conducteur spirituel, et la souveraineté de Dieu accomplit ses desseins par la prière (57-4).
 - **La communion (1.23-24) :** « Epaphras, mon compagnon de captivité en Jésus-Christ, te salue, ainsi que Marc, Aristarque, Démas, Luc, mes compagnons d’œuvre. » (1.23-24). Cinq hommes qui connaissent Philémon attendent de lui ce pardon; le refuser briserait la communion (57-4).
-- **La grâce (1.25) :** « Que la grâce de notre Seigneur Jésus-Christ soit avec votre esprit! » (1.25). La bénédiction est une prière : le pardon que la chair refuse et que la loi n'exige pas devient possible par la grâce de Christ (57-4).
+- **La grâce (1.25) :** « Que la grâce de notre Seigneur Jésus-Christ soit avec votre esprit! » (1.25). La bénédiction est une prière : le pardon que la chair refuse et que la loi romaine n'exige pas devient possible par la grâce de Christ (57-4).
 
 **Application.** *Principe :* le pardon est « une promesse de ne jamais se venger » : ne plus en parler à l'offenseur, ni à d'autres, ni à soi-même (57-4; Recherche, thèmes et pistes 4 et 6). Qui devons-nous recevoir à nouveau? Quelle dette continuons-nous de réclamer à quelqu'un qui ne peut pas la payer?
 
