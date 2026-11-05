@@ -253,7 +253,7 @@ MacArthur affirme que la vraie richesse est le contentement, fruit de la piété
 
 **Révélation progressive**
 
-L'homme sort nu du sein maternel (Job 1.21; Ecclésiaste 5.14); le sage demande ni pauvreté ni richesse (Proverbes 30.8-9); Jésus avertit qu'on ne peut servir Dieu et l'argent (Matthieu 6.24) et que la vie ne dépend pas des biens (Luc 12.15), et l'épître aux Hébreux fonde le contentement sur la présence de Dieu (Hébreux 13.5) (54-46).
+L'homme sort nu du sein maternel (Job 1.21; Ecclésiaste 5.14); le sage ne demande ni pauvreté ni richesse (Proverbes 30.8-9); Jésus avertit qu'on ne peut servir Dieu et l'argent (Matthieu 6.24) et que la vie ne dépend pas des biens (Luc 12.15), et l'épître aux Hébreux fonde le contentement sur la présence de Dieu (Hébreux 13.5) (54-46).
 
 **Pour votre assemblée**
 
