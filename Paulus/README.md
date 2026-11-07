@@ -4,6 +4,14 @@ Préparation de prédications expositives : recherches exégétiques dans la per
 
 Auteur : André-Guy Bruneau
 
+## Point d'entrée
+
+[`index.html`](index.html), à ouvrir dans un navigateur, est la page d'accueil du dossier. Elle reprend la synthèse [`Apôtre Paul - Histoire.pdf`](<Apôtre Paul - Histoire.pdf>) : cinq constats, chronologie de 33 à 67/68, vie et ministère, épîtres de la captivité, portrait. Elle mène aussi aux portails des quatorze études, de Galates à Hébreux, rangés selon les périodes de la vie de Paul et datés d'après MacArthur.
+
+La page suit la synthèse, à quelques ajustements près. Les citations bibliques y sont alignées sur la NEG79 (Phœbé « diaconesse », Alexandre « le forgeron »). Évodie et Syntyche y sont rattachées à Philippiens 4.2-3, et non à Romains 16. Le grand-prêtre de 36 n'y est plus nommé Ananias, qui ne l'était pas encore. Enfin, le sens de la croix y est formulé d'après Galates 3.13.
+
+La page est autonome comme les portails (CSS et JS en ligne, aucune ressource externe) et se maintient à la main : un nouveau livre, ou un titre de série modifié, doit y être reporté.
+
 ## Ressources générales sur l'apôtre Paul
 
 Deux documents de synthèse à la racine du dépôt fournissent le contexte biographique, chronologique et historique en appui à l'ensemble du corpus paulinien :

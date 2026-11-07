@@ -7,7 +7,7 @@ un cadre baptiste réformé conforme à la théologie de John MacArthur, sur le 
 | Projet | Contenu | Point d'entrée |
 |---|---|---|
 | [`CoramDeo/`](CoramDeo) | Ressource de l'Église Baptiste de Charlesbourg (Québec) en trois volets : **Vision** (4 traités de doctrine), **Mission** (4 pages sur la vie de l'homme racheté) et **Pérégrination** (886 péricopes en exposition suivie : le Nouveau Testament au complet, 27 livres et 848 péricopes, et 38 péricopes de l'Ancien Testament en trois séries : Genèse 1-11, Psaume 19, Psaume 119). | [`CoramDeo/index.html`](CoramDeo/index.html) |
-| [`Paulus/`](Paulus) | Les épîtres de Paul, et Hébreux, dans l'ordre chronologique de rédaction selon MacArthur (14 livres, de Galates à Hébreux) : pour chaque livre, une recherche globale, une recherche par chapitre (100 au total), un plan de série à raison d'un sermon par chapitre et un portail HTML. S'y ajoutent deux synthèses sur la vie de l'apôtre. | [`Paulus/README.md`](Paulus/README.md), puis `index.html` de chaque livre |
+| [`Paulus/`](Paulus) | Les épîtres de Paul, et Hébreux, dans l'ordre chronologique de rédaction selon MacArthur (14 livres, de Galates à Hébreux) : pour chaque livre, une recherche globale, une recherche par chapitre (100 au total), un plan de série à raison d'un sermon par chapitre et un portail HTML. S'y ajoutent deux synthèses sur la vie de l'apôtre et une page d'accueil qui reprend la synthèse historique et mène aux quatorze portails. | [`Paulus/index.html`](Paulus/index.html) |
 
 Le détail de chaque projet (méthode, sources, conventions, couverture, audits) se trouve dans son
 propre README : [`CoramDeo/README.md`](CoramDeo/README.md) et [`Paulus/README.md`](Paulus/README.md).
@@ -30,6 +30,7 @@ SolaScriptura/
 │   ├── .claude/skills/       skills sermon-research et sermon-series
 │   └── LICENSE
 └── Paulus/
+    ├── index.html            accueil : vie de Paul, chronologie, accès aux 14 études
     ├── 01 - Galates/ … 14 - Hébreux/
     │   ├── index.html        portail de l'étude
     │   ├── Plan-Serie-*.md   plan de série (et PDF)
@@ -43,7 +44,7 @@ SolaScriptura/
 ## Consultation
 
 Les pages sont des fichiers HTML autonomes : il suffit d'ouvrir un `index.html` dans un navigateur,
-sans serveur ni installation. Les recherches existent aussi en Markdown, lisible directement sur
+sans serveur ni installation (`CoramDeo/index.html` ou `Paulus/index.html` pour commencer). Les recherches existent aussi en Markdown, lisible directement sur
 GitHub, et en PDF pour l'impression.
 
 ## Production et contrôle
