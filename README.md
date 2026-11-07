@@ -18,6 +18,7 @@ Les conventions de production de Paulus sont dans [`Paulus/AGENTS.md`](Paulus/AG
 ```
 SolaScriptura/
 ├── README.md
+├── LICENSE                   licence de tout le dépôt
 ├── .gitattributes            PDF et images traités en binaire
 ├── .gitignore                caches Python
 ├── CoramDeo/
@@ -70,9 +71,19 @@ Ils sont désormais maintenus ici.
 Les `.gitignore` de chaque dossier continuent de s'appliquer. Les sources protégées de CoramDeo
 (textes sous licence d'usage personnel) restent hors dépôt.
 
-## Licences
+## Licence
 
-- **CoramDeo** : contenu sous CC BY-NC-ND 4.0, code (`tools/`, `.claude/`, `*.py`) sous MIT. La
-  confession de foi de l'Église, les logos et les citations bibliques en sont exclus. Voir
-  [`CoramDeo/LICENSE`](CoramDeo/LICENSE).
-- **Paulus** : aucun fichier de licence.
+Une licence unique couvre tout le dépôt, CoramDeo et Paulus compris : texte complet dans
+[`LICENSE`](LICENSE).
+
+- **Contenu** (pages, recherches, plans de série, présentations) :
+  [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.fr), © 2026 André-Guy
+  Bruneau.
+- **Code** (fichiers `*.py`, `CoramDeo/tools/`, `CoramDeo/.claude/`, `Paulus/.agents/`) : MIT. Les
+  polices de `CoramDeo/.claude/shared/fonts/` restent sous SIL OFL 1.1.
+- **Exclus** : la confession de foi et les logos appartiennent à leurs titulaires, et les
+  citations bibliques et celles de John MacArthur restent sous le droit de leurs éditeurs.
+
+**Réserve.** Les pages condensent et paraphrasent des ouvrages protégés. La licence CC ne vaut que
+pour l'apport propre de l'auteur, dans les limites de l'utilisation équitable. Il faut obtenir
+l'avis des éditeurs concernés avant toute republication publique.

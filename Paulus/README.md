@@ -68,3 +68,7 @@ Une recherche suit toujours les mêmes sections : contexte du passage, arrière-
 - **Mots-clés.** Le sens vient du lexique (Thayer); les versions montrent des rendus, non le sens.
 - **Interprétation.** Ce qui dépasse le texte ou le lexique est signalé comme « décision d'interprétation ». Dans le plan, « Recherche » renvoie aux sections de la recherche sur l'épître, et *texte seul* marque une observation tirée du texte sans appui dans celle-ci.
 - **Vérification des citations.** MacArthur est cité en français, dans une traduction de ses transcriptions anglaises. Les citations des recherches par chapitre sont recoupées par script avec la NEG79, les versions, Thayer et, mot pour mot, avec les extraits anglais des transcriptions : de 186 à 234 citations par chapitre, toutes retrouvées. Les citations NEG79 du plan de série sont recoupées une à une avec le texte de BibleGateway; celles de MacArthur sont retrouvées dans la recherche sur l'épître ou, pour les corrections tirées des recherches par chapitre, dans le texte anglais des sermons.
+
+## Licence
+
+Ce dossier relève de la licence du dépôt SolaScriptura : voir [`LICENSE`](../LICENSE) à la racine (contenu sous CC BY-NC-ND 4.0, code sous MIT, avec les exclusions qui y sont énumérées).
