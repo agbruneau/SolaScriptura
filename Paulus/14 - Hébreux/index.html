@@ -56,9 +56,16 @@
   .barre__liens a{display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;padding:0 .75rem;border-radius:5px;font-size:1.1rem;line-height:1.2;color:var(--encre);white-space:nowrap;}
   .barre__liens a:hover{color:var(--or-clair);background:rgba(232,132,60,.1);}
   .barre__liens a[aria-current]{color:var(--or-clair);box-shadow:inset 0 -2px 0 var(--or);}
-  .barre__puces{grid-column:1 / -1;display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:.2rem;}
-  .barre__puces li{display:flex;align-items:center;justify-content:center;min-width:0;}
-  .barre__puces a{display:inline-flex;align-items:center;justify-content:center;width:min(2.75rem,100%);height:2.75rem;border:1px solid var(--filet-fort);border-radius:50%;font-family:var(--titre);font-weight:600;font-size:1.35rem;line-height:1;color:var(--encre);}
+  .barre__puces{grid-column:1 / -1;display:flex;position:relative;gap:.2rem;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--filet-fort) transparent;}
+  .barre__puces li{display:flex;align-items:center;justify-content:center;flex:1 0 2.75rem;}
+  .barre__puces a{display:inline-flex;align-items:center;justify-content:center;flex:none;width:2.75rem;height:2.75rem;border:1px solid var(--filet-fort);border-radius:50%;font-family:var(--titre);font-weight:600;font-size:1.35rem;line-height:1;color:var(--encre);}
+  /* Contour de focus à l'intérieur : la rangée défilante rognerait un contour extérieur */
+  .barre__puces a:focus-visible{outline-offset:-4px;}
+  .barre__puces a[aria-current]:focus-visible{outline-color:var(--nuit);}
+  /* Bord estompé du côté où des pastilles sont cachées (attribut posé par le script) */
+  .barre__puces[data-defile="d"]{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 2rem),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 2rem),transparent);}
+  .barre__puces[data-defile="g"]{-webkit-mask-image:linear-gradient(90deg,transparent,#000 2rem);mask-image:linear-gradient(90deg,transparent,#000 2rem);}
+  .barre__puces[data-defile="gd"]{-webkit-mask-image:linear-gradient(90deg,transparent,#000 2rem,#000 calc(100% - 2rem),transparent);mask-image:linear-gradient(90deg,transparent,#000 2rem,#000 calc(100% - 2rem),transparent);}
   .barre__puces a:hover{border-color:var(--or);color:var(--or-clair);background:rgba(232,132,60,.12);}
   .barre__puces a[aria-current]{background:var(--or);border-color:var(--or);color:var(--nuit);}
   @supports (aspect-ratio:1){.barre__puces a{height:auto;aspect-ratio:1;}}
@@ -71,8 +78,8 @@
   @media (min-width:48rem){
     .barre__in{display:flex;gap:.5rem 1rem;}
     .barre__marque{margin-right:auto;}
-    .barre__puces{display:flex;flex-wrap:wrap;gap:.3rem;}
-    .barre__puces a{width:2.75rem;}
+    .barre__puces{flex:0 1 auto;gap:.3rem;}
+    .barre__puces li{flex:0 0 auto;}
   }
   .tete{max-width:var(--max);margin:0 auto;padding:clamp(1rem,2.5vw,1.8rem) var(--gout) 0;}
   .tete__cadre{position:relative;text-align:center;padding:clamp(1.8rem,4.5vw,3.2rem) clamp(1rem,4vw,3rem) clamp(1.7rem,4vw,2.8rem);border:1px solid var(--filet);background:radial-gradient(80% 60% at 50% 0%, rgba(240,182,89,.06), transparent 70%);}
@@ -141,7 +148,7 @@
   .mv__lib{display:block;line-height:1.5;color:var(--encre);}
   .sommaire{display:grid;gap:1rem 1.4rem;margin:1.8rem 0 .4rem;padding:0;list-style:none;}
   .sommaire__bloc{min-width:0;}
-  @media (min-width:60rem){
+  @media (min-width:69rem){
     .sommaire{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;}
     .sommaire__bloc{display:grid;grid-template-rows:subgrid;grid-row:span 2;row-gap:0;}
     .sommaire__nom{align-self:end;}
@@ -203,7 +210,7 @@
   .repli > summary:hover{border-color:var(--or);color:var(--feuille-vif);background:rgba(232,132,60,.08);}
   .repli__corps{margin-top:.7rem;padding:1rem 1.1rem;border:1px solid var(--filet);border-radius:8px;background:rgba(10,10,10,.35);}
   .gty{list-style:none;margin:0;padding:0;display:grid;gap:.55rem 2rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));}
-  .gty li{display:grid;grid-template-columns:3.6em minmax(0,1fr);column-gap:.5rem;line-height:1.4;}
+  .gty li{display:grid;grid-template-columns:4.2em minmax(0,1fr);column-gap:.5rem;line-height:1.4;}
   .gty__code{color:var(--or-clair);font-weight:600;}
   .gty__titre{color:var(--encre);}
   .gty__ref{display:block;font-size:.88em;color:var(--encre-doux);}
@@ -240,6 +247,7 @@
   .pied p{margin:.25rem 0;font-size:.92em;line-height:1.55;color:var(--encre-doux);}
   .pied .pied__nom{margin-bottom:.4rem;font-family:var(--titre);font-weight:600;font-size:1.6rem;color:var(--encre);}
   .pied .pied__sdg{margin-top:1.3rem;font-size:var(--etiq);letter-spacing:.36em;text-transform:uppercase;color:var(--or);}
+  @media (max-width:25.99rem){.mv__ref .nw,.carte__question .nw,.gty__ref .nw,figcaption .nw{white-space:normal;}}
   @media (max-width:19.99rem){
     .nw{white-space:normal;}
     .actions,.s-docs{grid-template-columns:minmax(0,1fr);}
@@ -387,6 +395,32 @@
   <p class="pied__sdg" lang="la">Soli Deo Gloria</p>
 </footer>
 <script>
+(function(){
+  /* Pastilles : estompe le bord qui cache des pastilles, fait défiler la rangée à la molette
+     et garde visible la pastille du sermon en cours de lecture. */
+  var p=document.querySelector('.barre__puces');
+  if(!p)return;
+  function bords(){
+    var g=p.scrollLeft>1,d=p.scrollLeft+p.clientWidth<p.scrollWidth-1,v=(g?'g':'')+(d?'d':'');
+    if(v)p.setAttribute('data-defile',v);else p.removeAttribute('data-defile');
+  }
+  p.addEventListener('scroll',bords,{passive:true});
+  window.addEventListener('resize',bords);
+  p.addEventListener('wheel',function(e){
+    var dy=e.deltaMode===1?e.deltaY*16:e.deltaY;
+    if(p.scrollWidth<=p.clientWidth||Math.abs(dy)<=Math.abs(e.deltaX))return;
+    var avant=p.scrollLeft;p.scrollLeft+=dy;
+    if(p.scrollLeft!==avant)e.preventDefault();
+  },{passive:false});
+  if('MutationObserver' in window){
+    new MutationObserver(function(ms){ms.forEach(function(m){
+      var a=m.target;if(!a.hasAttribute('aria-current'))return;
+      var pr=p.getBoundingClientRect(),ar=a.getBoundingClientRect();
+      p.scrollLeft+=(ar.left+ar.width/2)-(pr.left+pr.width/2);
+    });}).observe(p,{subtree:true,attributes:true,attributeFilter:['aria-current']});
+  }
+  bords();
+})();
 (function(){
   var barre=document.querySelector('.barre');
   if(!barre||!('IntersectionObserver' in window))return;

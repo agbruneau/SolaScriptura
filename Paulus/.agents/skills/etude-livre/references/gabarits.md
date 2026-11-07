@@ -79,81 +79,64 @@ Pour un livre de l'Ancien Testament où Grace to You ne compte aucun sermon séq
 
 ---
 
-## 2. Schéma JSON pour `etude_livre.py portal`
+## 2. Spécification JSON pour `etude_livre.py portal`
 
-La sous-commande `portal` prend un fichier JSON (`--spec`) et génère `<Livre>/index.html` avec la feuille de style sombre et orange (`#0a0a0a` / `#e8843c`), les grilles adaptatives `--n-puces` et `--n-blocs`, et le script `IntersectionObserver` :
+La sous-commande `portal` lit une spécification JSON (`--spec`) et écrit `<Livre>/index.html` : un portail autonome sombre et orange (`#0a0a0a` / `#e8843c`), avec CSS et JS en ligne. Le gabarit règle seul la mise en page qui dépend du livre :
 
-```json
-{
-  "book": "2 Thessaloniciens",
-  "date_fr": "19 avril 2026",
-  "series_title": "Debout dans la vérité face au jour du Seigneur",
-  "series_phrase": "Parce que le Seigneur Jésus-Christ manifestera sa juste rétribution lors de sa révélation glorieuse et anéantira l'homme du péché après l'apostasie, l'Église persécutée ne doit ni se laisser ébranler par les contrefaçons eschatologiques ni sombrer dans l'oisiveté, mais demeurer ferme dans la vérité apostolique et travailler dans la paix.",
-  "sommaire": {
-    "key_verse_text": "Ainsi donc, frères, demeurez fermes, et retenez les instructions que nous vous avons données, soit de vive voix, soit par notre lettre.",
-    "key_verse_ref": "2\u00a0Thessaloniciens 2.15",
-    "lead": "Synthèse historique, textuelle, lexicale et théologique de la deuxième épître (Corinthe, vers 51-52 apr.\u00a0J.-C.)\u00a0: la consolation dans la fournaise des persécutions, le programme prophétique du jour du Seigneur et la discipline fraternelle face aux désordonnés.",
-    "meta": "10\u00a0sermons GTY (<span class=\"nw\">53-1</span> à <span class=\"nw\">53-10</span>) · 9\u00a0mots-clés grecs · 7\u00a0axes doctrinaux"
-  },
-  "movements": [
-    {
-      "ref": "Ch.\u00a01",
-      "label": "<strong>La consolation eschatologique</strong> dans la persécution (la rétribution au retour de Christ)"
-    },
-    {
-      "ref": "Ch.\u00a02",
-      "label": "<strong>La correction doctrinale</strong> sur le jour du Seigneur (l'apostasie, l'homme du péché et l'élection)"
-    },
-    {
-      "ref": "Ch.\u00a03",
-      "label": "<strong>La conduite pratique</strong> dans l'attente du retour (la prière, la discipline et le travail paisible)"
-    }
-  ],
-  "blocks": [
-    {
-      "ch_label": "Chapitre\u00a01",
-      "short_title": "Consolation dans la persécution",
-      "full_title": "La consolation eschatologique dans la persécution",
-      "subtitle": "Chapitre\u00a01 · Sermons GTY <span class=\"nw\">53-1</span> à <span class=\"nw\">53-3</span> · L'endurance des saints et la juste rétribution de Christ",
-      "sermons": [
-        {
-          "num": 1,
-          "span_label": "2\u00a0Thessaloniciens 1.1-12",
-          "verses_count": 12,
-          "title": "La gloire de Dieu dans la fournaise de l'affliction",
-          "key_verse_text": "C'est pourquoi aussi nous prions continuellement pour vous, afin que notre Dieu vous juge dignes de la vocation, et qu'il accomplisse par sa puissance tous les desseins bienveillants de sa bonté, et l'œuvre de votre foi",
-          "key_verse_ref": "2\u00a0Thessaloniciens 1.11",
-          "phrase": "Le feu de la persécution ne trahit jamais l'abandon de Dieu\u00a0: il révèle l'authenticité de notre foi aujourd'hui et prépare la révélation glorieuse de Christ qui rendra justice à son peuple.",
-          "idea": "Dans l'attente de la révélation flamboyante du Seigneur Jésus, Dieu fait grandir la foi et la charité de son Église éprouvée, promettant le repos éternel aux croyants affligés et la juste rétribution à leurs persécuteurs afin que le nom de Christ soit glorifié en ses saints.",
-          "steps": [
-            {
-              "title": "Une croissance spirituelle qui honore Dieu au cœur de la fournaise",
-              "ref": "1.1-4"
-            },
-            {
-              "title": "Une justice eschatologique qui rétribue chaque camp au retour de Christ",
-              "ref": "1.5-10"
-            },
-            {
-              "title": "Une intercession apostolique qui soutient l'Église jusqu'à la gloire",
-              "ref": "1.11-12"
-            }
-          ],
-          "gty_sermons": [
-            {
-              "code": "53-1",
-              "title": "Thanking God for Persecuted Believers",
-              "ref": "1.1-4"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+- **Barre collante.** Une pastille de 44 px par sermon, sur une seule rangée. Quand les pastilles ne tiennent pas (13 ou 16 chapitres sur téléphone), la rangée défile horizontalement. Le bord qui cache des pastilles s'estompe, la molette fait défiler la rangée, et la pastille du sermon en cours reste visible.
+- **Sommaire de la série.** Au plus trois colonnes, en rangées équilibrées (6 blocs : 3 + 3; 5 : 3 + 2; 4 : 2 + 2). Trois colonnes à partir de 69 rem, une ou deux à partir de 60 rem.
+- **Lien de retour.** Lien vers l'accueil de la collection, en tête et en pied : `--accueil` (défaut `../index.html`; chaîne vide pour l'omettre) et `--accueil-libelle` (défaut `Paulus`).
+
+**Exemple complet et exécutable :** [`portal_spec.exemple.json`](portal_spec.exemple.json). C'est la spécification de `12 - Tite/index.html` (trois blocs d'un sermon chacun, avec transitions et sermons GTY). La régénérer reproduit ce portail à l'identique, ce qui vérifie que le schéma décrit ici et le générateur concordent :
+
+```powershell
+uv run python .agents/skills/etude-livre/scripts/etude_livre.py portal `
+  --spec .agents/skills/etude-livre/references/portal_spec.exemple.json `
+  --output "$env:TEMP\portail-tite\index.html"
+# puis comparer à "12 - Tite/index.html" (fins de ligne mises à part)
 ```
 
-### Règles de formatage dans `spec.json`
-- Le champ `"gty_sermons"` d'un sermon est optionnel (utile pour les chapitres de l'Ancien Testament sans sermon GTY séquentiel).
-- Le nombre de sermons à travers l'ensemble de `"blocks"` doit être égal au nombre de chapitres du livre (`1` à `N` dans l'ordre).
-- Les références bibliques ou codes susceptibles d'être coupés en fin de ligne peuvent utiliser `\u00a0` (espace insécable) ou `<span class="nw">...</span>`.
+### Champs de premier niveau
+
+Les champs « HTML » acceptent du balisage en ligne (`<strong>`, `<em>`, `<abbr>`, `<span class="nw">`), inséré tel quel. Les autres sont du texte.
+
+| Champ | Contenu | Emplacement dans le portail |
+|---|---|---|
+| `book` | nom du livre, résolu par la table canonique (`"Tite"`, `"1 Timothée"`) | titres, liens et noms de fichiers |
+| `date_fr` | date du plan de série (`"11 avril 2026"`) | carte du plan et pied de page |
+| `meta_description` | *facultatif*; texte | `<meta name="description">` (sinon, phrase générique) |
+| `series_title` | HTML | `<h1>` |
+| `series_phrase` | HTML | phrase de la série, en tête et en conclusion |
+| `header_verse` | `{"text", "ref"}` : verset NEG79 sans guillemets, référence | verset de l'en-tête |
+| `book_card` | `{"summary_html", "question_html"}` : HTML | carte « Recherche sur tout le livre » |
+| `plan_card` | `{"heading", "summary_html"}` : texte, HTML | carte « Plan de série » |
+| `movements_heading` | texte | titre de l'encadré des mouvements |
+| `movements` | liste de `{"ref", "label"}` : référence, HTML | mouvements numérotés de la lettre |
+| `sermons_section` | `{"heading", "lead_html", "question_html"}` : texte, HTML, HTML | en-tête de la section des sermons |
+| `blocks` | liste des blocs structurels (tableau suivant) | sommaire et sections par bloc |
+| `conclusion` | `{"heading", "benediction": {"text", "ref"}}` | conclusion et bénédiction finale |
+
+### Blocs et sermons
+
+| Champ | Contenu |
+|---|---|
+| `blocks[].ch_label` | étiquette du bloc (`"Chapitre\u00a01"`, `"Chapitres 1 et 2"`) |
+| `blocks[].short_title` | titre court, dans le sommaire de la série |
+| `blocks[].full_title` | titre complet, en tête de la section du bloc |
+| `blocks[].sermons[]` | sermons du bloc, dans l'ordre (champs ci-dessous) |
+| `num` | numéro du sermon, égal au numéro du chapitre (entier) |
+| `title` | titre du sermon (HTML) |
+| `gty_range` | ligne des sermons GTY (HTML), p. ex. `"11 sermons GTY (56-1 à 56-11) · Tite 1.1-16 (16 versets)"` |
+| `phrase` | phrase à faire retenir, sans guillemets |
+| `key_verse` | `{"text", "ref"}` : verset clé NEG79 sans guillemets, référence |
+| `central_idea` | idée centrale (HTML) |
+| `steps[]` | `{"num", "name", "ref"}` : étiquette (`"I."`, `"Intro."`, `"Concl."`), intitulé (HTML), référence (`"(1.1-4)"`) |
+| `gty_sermons[]` | *facultatif* : `{"code", "title", "ref"}`, soit le code GTY, le titre anglais et le passage |
+| `transition` | `null` (ou absent) pour le dernier sermon, sinon `{"text", "next_num", "next_title"}` |
+| `rappel_short` | titre court repris dans le rappel de la conclusion |
+
+### Règles de formatage
+- Le nombre de sermons, tous blocs confondus, est égal au nombre de chapitres, numérotés de `1` à `N` dans l'ordre. Le générateur ne le contrôle pas : `etude_livre.py verify` signale ensuite tout fichier de chapitre manquant.
+- Le gabarit ajoute lui-même les guillemets « » autour des versets et de la phrase à faire retenir : ne pas les mettre dans le JSON.
+- Les références à ne pas couper prennent `\u00a0` (espace insécable) ou `<span class="nw">...</span>`. Sur téléphone étroit (moins de 26 rem), le gabarit laisse toutefois passer à la ligne les références longues des mouvements, des questions, des légendes et des sermons GTY.
+- Aucun tiret cadratin (`\u2014`) : `verify` le refuse dans les `.json`, `.md` et `.html`.
