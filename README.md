@@ -20,9 +20,8 @@ Les deux dossiers ont été intégrés en entier le 7 novembre 2026, à partir d
 conservé. Ils sont désormais maintenus ici.
 
 Les `.gitignore` de chaque dossier continuent de s'appliquer. Les sources protégées de CoramDeo
-(licence d'usage personnel) restent hors dépôt. Le workflow
-`CoramDeo/.github/workflows/check.yml` ne s'exécute pas depuis un sous-dossier : GitHub Actions
-ne lit que le `.github/` à la racine.
+(licence d'usage personnel) restent hors dépôt. Le dépôt n'a pas d'intégration continue : les
+contrôles de CoramDeo (`python tools/check.py`, depuis `CoramDeo/`) se lancent localement.
 
 ## Production
 

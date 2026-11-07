@@ -290,8 +290,8 @@ Python standard, plus `reportlab` pour les PDF.
   (`--footers`), avec l'état de vérification lu dans [`tools/couverture.json`](tools/couverture.json).
 - **[`tools/check.py`](tools/check.py)** : liens internes, structure des pages et des recherches,
   noms accessibles, ligatures, empreinte des dérivés, déclaration, niveau de source, codes de sermon,
-  sections interdites des séries, comptes du README. Exécuté à chaque poussée par
-  [`.github/workflows/check.yml`](.github/workflows/check.yml).
+  sections interdites des séries, comptes du README. À lancer localement avant une poussée, avec
+  `python tools/pages.py --selftest` (aucune intégration continue).
 
 ---
 
