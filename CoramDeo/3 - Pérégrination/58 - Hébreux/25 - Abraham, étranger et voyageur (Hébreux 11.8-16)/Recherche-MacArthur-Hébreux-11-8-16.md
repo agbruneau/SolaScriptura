@@ -69,7 +69,7 @@ Récit de la vocation d'Abraham, sortie de son pays vers la terre que Dieu lui m
 
 **Genèse 23.4** · _Arrière-plan AT_
 
-Abraham se déclare étranger et habitant parmi les fils de Heth en achetant une sépulture pour Sara. Source directe, selon MacArthur, du vocabulaire d'étrangers et voyageurs sur la terre de Hébreux 11.13 : le père de la promesse ne possède pas même une tombe.
+Abraham se déclare étranger et habitant parmi les fils de Heth en achetant une sépulture pour Sara. Source directe, selon MacArthur, du vocabulaire d'étrangers et voyageurs sur la terre d'Hébreux 11.13 : le père de la promesse ne possède pas même une tombe.
 
 **Genèse 15.5-6** · _Arrière-plan AT_
 
@@ -157,4 +157,4 @@ MacArthur lit le chapitre 11 comme la galerie des héros de la foi, qui attesten
 6. Dieu n'a pas honte d'être appelé leur Dieu (11.16). Comment fonder l'assurance du croyant sur la fidélité immuable de Dieu, et non sur la force de sa propre foi, à partir de ce verset et de 10.23?
 7. Le chapitre 13.14 reprend pour l'Église le statut de pèlerin d'Abraham : nous cherchons la cité à venir. Comment cette identité d'étranger et de voyageur doit-elle façonner concrètement les choix, les priorités et les espérances de votre communauté?
 
-<!-- source_hash: 6f47629c74110085 -->
+<!-- source_hash: 278a3f02efb4a707 -->

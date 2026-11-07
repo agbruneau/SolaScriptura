@@ -80,11 +80,11 @@ Josué fait entrer Israël dans la terre promise et le Seigneur lui accorde le r
 
 **Matthieu 11.28-29** · _Lien thématique_
 
-« Venez à moi, et je vous donnerai du repos. » Le repos que Christ offre à qui prend son joug par la foi est précisément le repos spirituel de Hébreux 4 : paix, assurance et cessation de l'effort propre pour gagner sa justice.
+« Venez à moi, et je vous donnerai du repos. » Le repos que Christ offre à qui prend son joug par la foi est précisément le repos spirituel d'Hébreux 4 : paix, assurance et cessation de l'effort propre pour gagner sa justice.
 
 **1 Corinthiens 10.5-13** · _Lien thématique_
 
-Paul tire de la chute d'Israël au désert le même avertissement que Hébreux 4 : ces événements arrivèrent comme exemples, afin que celui qui croit être debout prenne garde de tomber. Parallèle apostolique direct sur l'incrédulité du désert.
+Paul tire de la chute d'Israël au désert le même avertissement qu'Hébreux 4 : ces événements arrivèrent comme exemples, afin que celui qui croit être debout prenne garde de tomber. Parallèle apostolique direct sur l'incrédulité du désert.
 
 **2 Corinthiens 13.5** · _Lien thématique_
 
@@ -92,7 +92,7 @@ Paul tire de la chute d'Israël au désert le même avertissement que Hébreux 4
 
 **Jean 10.27-29** · _Lien thématique_
 
-Les brebis de Christ ne périront jamais et nul ne les ravira de sa main. Texte décisif contre toute lecture des avertissements de Hébreux comme perte possible du salut : la sécurité éternelle du vrai croyant qui entre dans le repos demeure garantie.
+Les brebis de Christ ne périront jamais et nul ne les ravira de sa main. Texte décisif contre toute lecture des avertissements d'Hébreux comme perte possible du salut : la sécurité éternelle du vrai croyant qui entre dans le repos demeure garantie.
 
 ## Thèmes théologiques
 
@@ -156,4 +156,4 @@ La promesse du repos demeure ouverte, mais la fenêtre est aujourd'hui : repouss
 6. Comment l'urgence de l'aujourd'hui (4.7) interpelle-t-elle une assemblée tentée d'ajourner sa réponse de foi, et comment l'illustrer par l'endurcissement progressif d'Israël au désert?
 7. En quoi la doctrine de la Parole vivante et efficace (4.12) doit-elle façonner votre propre confiance dans la prédication, en laissant l'Écriture, et non la rhétorique, sonder les cœurs de vos auditeurs?
 
-<!-- source_hash: 4bad523d945e1409 -->
+<!-- source_hash: 08363b09b488a0ed -->

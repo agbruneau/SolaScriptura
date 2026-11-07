@@ -66,7 +66,7 @@ Le commandement nouveau et le signe distinctif du disciple : à l'amour mutuel l
 
 **Romains 12.13** · _Parallèle direct_
 
-Pourvoir aux besoins des saints et pratiquer l'hospitalité : le même couple solidarité-accueil que Hébreux 13.1-2, cité par MacArthur comme appui de la philoxenia.
+Pourvoir aux besoins des saints et pratiquer l'hospitalité : le même couple solidarité-accueil qu'Hébreux 13.1-2, cité par MacArthur comme appui de la philoxenia.
 
 **1 Timothée 3.2** · _Lien thématique_
 
@@ -82,7 +82,7 @@ Abraham reçoit trois visiteurs célestes sans d'abord les reconnaître; premier
 
 **Juges 13.6-20** · _Arrière-plan AT_
 
-Manoach et sa femme accueillent l'ange de l'Éternel sans le discerner aussitôt; exemple cité par MacArthur en regard de Hébreux 13.2.
+Manoach et sa femme accueillent l'ange de l'Éternel sans le discerner aussitôt; exemple cité par MacArthur en regard d'Hébreux 13.2.
 
 **Hébreux 10.32-34** · _Lien thématique_
 
@@ -152,6 +152,6 @@ Pour MacArthur, l'amour des frères ne gagne pas le salut : il le présuppose et
 4. Se souvenir d'un prisonnier au sens biblique, c'est agir pour lui comme si l'on partageait sa chaîne. Votre Église connaît-elle nommément ses frères persécutés aujourd'hui, et que fait-elle concrètement pour eux plutôt que de les évoquer de loin?
 5. Comment relier cette éthique pratique à toute la doctrine des douze chapitres précédents, de sorte que l'amour concret apparaisse comme le fruit de la suprématie de Christ et non comme une morale ajoutée après coup?
 6. En quoi l'amour fraternel qui persévère sert-il de preuve diagnostique distinguant le vrai croyant de l'apostat que l'épître avertit (6.4-6; 10.26-29), sans glisser vers l'idée que cet amour gagnerait ou conserverait le salut?
-7. Si votre prédication laisse l'assemblée admirer la doctrine de Hébreux sans ouvrir une seule porte, partager une seule table ni visiter un seul prisonnier, avez-vous prêché 13.1-3 ou seulement commenté son vocabulaire?
+7. Si votre prédication laisse l'assemblée admirer la doctrine d'Hébreux sans ouvrir une seule porte, partager une seule table ni visiter un seul prisonnier, avez-vous prêché 13.1-3 ou seulement commenté son vocabulaire?
 
-<!-- source_hash: df642b85d6b185c8 -->
+<!-- source_hash: b8c091debb7fab75 -->

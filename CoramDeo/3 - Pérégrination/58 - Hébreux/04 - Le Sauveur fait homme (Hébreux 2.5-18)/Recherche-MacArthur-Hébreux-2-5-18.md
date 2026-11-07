@@ -150,8 +150,8 @@ L'humanité éprouvée de Jésus n'est pas seulement le fondement juridique de l
 2. MacArthur lit le monde à venir (v. 5) comme le royaume millénaire confié à l'homme racheté et non aux anges. En quoi cette espérance d'un règne futur et littéral console-t-elle des croyants persécutés qui ne voient pas encore toutes choses soumises à Christ?
 3. Christ a participé au sang et à la chair par un acte libre et délibéré (v. 14), endossant une nature qui n'était pas la sienne. Comment cette gratuité de l'incarnation approfondit-elle notre adoration et notre assurance du salut?
 4. Le Sauveur est venu dans l'intention expresse de mourir pour réduire le diable à l'impuissance (v. 14). Comment annoncer la victoire de la croix de façon à délivrer concrètement les auditeurs retenus par la crainte de la mort (v. 15)?
-5. MacArthur précise que il a souffert la mort pour tous (v. 9) vise tous ceux qui croient. Comment garder cette précision sans glisser vers l'universalisme d'un côté, ni vers une présentation froide de l'expiation de l'autre?
+5. MacArthur précise qu'il a souffert la mort pour tous (v. 9) vise tous ceux qui croient. Comment garder cette précision sans glisser vers l'universalisme d'un côté, ni vers une présentation froide de l'expiation de l'autre?
 6. La perfection du verset 10 concerne la nature humaine de Christ perfectionnée par les souffrances, non sa divinité. Comment ce point nourrit-il la compassion pastorale envers les membres de l'assemblée qui souffrent et sont tentés?
 7. Christ n'a pas honte d'appeler les croyants ses frères (v. 11), après avoir payé le prix de leur salut. Comment cette fraternité avec le Fils ressuscité transforme-t-elle l'identité et l'assurance du chrétien dans l'épreuve?
 
-<!-- source_hash: 4519fa6ac82d4d4c -->
+<!-- source_hash: 196383d9950fcf0d -->

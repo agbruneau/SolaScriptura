@@ -22,7 +22,7 @@ Adam n'est pas, pour Paul, un mythe étiologique ni un symbole littéraire de l'
 
 Trois réalités d'arrière-plan commandent la lecture du passage.
 
-La solidarité corporative. Le concept clé d'arrière-plan est celui de la solidarité corporative, étrangère à l'individualisme moderne mais centrale dans la pensée hébraïque. L'Ancien Testament connaît bien la représentation : Acan pèche et tout Israël en porte les conséquences (Josué 7); Lévi paie la dîme dans les reins d'Abraham (Hébreux 7.7-10). C'est ce dernier texte que MacArthur convoque pour expliquer le verset 12 : lorsque Adam pécha, tous les hommes péchèrent dans ses reins, car toute l'humanité existait séminalement en lui et a hérité de sa nature déchue par procréation.
+La solidarité corporative. Le concept clé d'arrière-plan est celui de la solidarité corporative, étrangère à l'individualisme moderne mais centrale dans la pensée hébraïque. L'Ancien Testament connaît bien la représentation : Acan pèche et tout Israël en porte les conséquences (Josué 7); Lévi paie la dîme dans les reins d'Abraham (Hébreux 7.7-10). C'est ce dernier texte que MacArthur convoque pour expliquer le verset 12 : lorsqu'Adam pécha, tous les hommes péchèrent dans ses reins, car toute l'humanité existait séminalement en lui et a hérité de sa nature déchue par procréation.
 
 Pécheur avant de pécher. De là le renversement décisif : les hommes ne sont pas pécheurs parce qu'ils pèchent, mais ils pèchent parce qu'ils sont pécheurs. La dépravation est antérieure à l'acte; elle est de naissance, présente dès la conception (Psaume 51.7). C'est l'état hérité d'Adam, et non d'abord les fautes personnelles, qui fonde la condamnation universelle.
 
@@ -161,4 +161,4 @@ Contre toute religion qui prétend sauver par l'observance de la loi, MacArthur 
 6. Comment situer la loi à sa juste place (elle accuse et conduit à Christ, elle ne sauve pas) pour préserver l'auditoire à la fois du légalisme et de l'antinomisme qui croirait que la surabondance de la grâce autorise le péché?
 7. Quelle place donner au verset 21, qui oppose le règne du péché par la mort au règne de la grâce par la justice, pour montrer que le chrétien est passé d'un royaume à un autre sous une nouvelle tête, et non simplement pardonné?
 
-<!-- source_hash: 8b048d6af3c02cfb -->
+<!-- source_hash: faf048275c608078 -->

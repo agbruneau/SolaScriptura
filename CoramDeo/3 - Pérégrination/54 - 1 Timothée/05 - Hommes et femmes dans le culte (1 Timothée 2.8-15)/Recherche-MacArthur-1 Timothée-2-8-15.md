@@ -12,7 +12,7 @@ Notre péricope referme la première grande consigne que Paul donne à Timothée
 
 Le contexte immédiat explique la vigueur du propos. Certaines femmes d'Éphèse vivaient de façon impure et égocentrique, et cela perturbait les cultes, où elles devenaient un sujet de distraction pour les fidèles. Paul exhorte donc Timothée à régler ce désordre du culte, qui faisait partie des problèmes que l'apôtre avait laissé son collaborateur résoudre dans cette Église, aux côtés des fausses doctrines, du besoin de conducteurs qualifiés et du matérialisme. La consigne n'est donc pas une digression sur les mœurs féminines, mais une instruction sur l'ordre de l'adoration.
 
-Le cœur doctrinal du passage se trouve aux versets 12 à 14 : Paul ne permet pas à la femme d'enseigner ni de prendre de l'autorité sur l'homme dans l'assemblée. Loin d'appuyer cette consigne sur la culture de son temps, il la fonde sur deux faits permanents et antérieurs à toute culture : l'ordre de la création, puisque Adam a été formé le premier et Ève ensuite (2.13), et le déroulement de la chute, puisque c'est la femme qui fut séduite (2.14). Le verset 15, enfin, console et oriente : la femme sera préservée en devenant mère, si elle persévère dans la foi, l'amour et la sainteté.
+Le cœur doctrinal du passage se trouve aux versets 12 à 14 : Paul ne permet pas à la femme d'enseigner ni de prendre de l'autorité sur l'homme dans l'assemblée. Loin d'appuyer cette consigne sur la culture de son temps, il la fonde sur deux faits permanents et antérieurs à toute culture : l'ordre de la création, puisqu'Adam a été formé le premier et Ève ensuite (2.13), et le déroulement de la chute, puisque c'est la femme qui fut séduite (2.14). Le verset 15, enfin, console et oriente : la femme sera préservée en devenant mère, si elle persévère dans la foi, l'amour et la sainteté.
 
 ## Arrière-plan historique et culturel
 
@@ -160,4 +160,4 @@ Selon la sotériologie de la grâce seule, le salut s'obtient par la foi seule e
 6. Le verset 15 distingue être préservée et être sauvée éternellement. Comment prêcher la haute vocation de la maternité sans jamais suggérer un salut par les œuvres, et que dire des femmes célibataires ou sans enfants de votre assemblée?
 7. Dans une culture qui tient la distinction des rôles pour une oppression, comment présenter le complémentarisme de ce passage comme une bonté de Dieu, ordonnée pour la protection et la joie de son peuple?
 
-<!-- source_hash: 790f10b3a154fa33 -->
+<!-- source_hash: f1db180c2f74305c -->

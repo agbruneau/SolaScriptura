@@ -26,7 +26,7 @@ La nuée glorieuse et la théophanie du Sinaï. La nuée qui vint couvrir la mon
 
 Les trois tentes et l'attente messianique. La proposition de Pierre de dresser trois tentes plonge ses racines dans l'attente juive. Sa réaction trahit l'idée que le royaume messianique terrestre allait peut-être s'inaugurer sur-le-champ, attente nourrie par la prophétie de Zacharie 14.16 associant la fête des Tabernacles à la venue glorieuse du Seigneur. Le réflexe de Pierre, qui veut retenir la gloire sans passer par la souffrance annoncée, sera aussitôt corrigé par la voix du Père.
 
-La question d'Élie et l'enseignement des scribes. La question d'Élie au verset 11 reflète l'enseignement des scribes fondé non sur la tradition rabbinique mais sur l'Écriture elle-même : Malachie 3.1 et 4.5 annonçaient le retour d'Élie avant le grand jour. Les adversaires de Jésus argumentaient sans doute qu'il ne pouvait être le Messie puisque Élie n'avait pas reparu; les disciples, désorientés, cherchaient à concilier cette attente avec ce qu'ils venaient de voir sur la montagne. La réponse de Jésus désigne Jean-Baptiste, venu avec l'esprit et la puissance d'Élie, sans réincarnation aucune, comme l'aperçu de l'Élie qui doit encore venir avant le grand jour.
+La question d'Élie et l'enseignement des scribes. La question d'Élie au verset 11 reflète l'enseignement des scribes fondé non sur la tradition rabbinique mais sur l'Écriture elle-même : Malachie 3.1 et 4.5 annonçaient le retour d'Élie avant le grand jour. Les adversaires de Jésus argumentaient sans doute qu'il ne pouvait être le Messie puisqu'Élie n'avait pas reparu; les disciples, désorientés, cherchaient à concilier cette attente avec ce qu'ils venaient de voir sur la montagne. La réponse de Jésus désigne Jean-Baptiste, venu avec l'esprit et la puissance d'Élie, sans réincarnation aucune, comme l'aperçu de l'Élie qui doit encore venir avant le grand jour.
 
 ## Étude des mots-clés
 
@@ -158,4 +158,4 @@ Dieu accomplit ses promesses de façon souveraine et selon un mode typologique; 
 6. Les disciples ne comprenaient toujours pas qu'un Messie doive mourir et ressusciter (9.10). Quelles vérités de l'Évangile préférons-nous contourner parce qu'elles heurtent nos attentes?
 7. Jean-Baptiste, l'Élie venu, fut traité selon le bon vouloir des hommes avant que le Fils ne soit méprisé à son tour. Comment cette logique du précurseur rejeté éclaire-t-elle le coût de la fidélité aujourd'hui?
 
-<!-- source_hash: e3623af26856ed3b -->
+<!-- source_hash: 98138699e6c1ffb7 -->

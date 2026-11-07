@@ -89,7 +89,7 @@ Même expression que le verset 11, le fruit de justice. Le fruit paisible de la 
 
 **Apocalypse 3.19** · _Lien thématique_
 
-Je reprends et je châtie tous ceux que j'aime. Christ glorifié énonce à l'Église de Laodicée le même principe que Hébreux 12.6 : la correction est une preuve d'amour appelant à la repentance.
+Je reprends et je châtie tous ceux que j'aime. Christ glorifié énonce à l'Église de Laodicée le même principe qu'Hébreux 12.6 : la correction est une preuve d'amour appelant à la repentance.
 
 **Hébreux 5.14** · _Lien thématique_
 
@@ -151,4 +151,4 @@ Le texte interdit l'endurcissement révolté qui méprise la correction et s'emp
 6. Les versets 12-13 commandent de fortifier des mains languissantes et de raffermir ce qui est boiteux. Concrètement, comment un membre éprouvé de l'assemblée peut-il être affermi par les autres pour ne pas dévier de la course?
 7. En quoi la doctrine de la persévérance des saints transforme-t-elle radicalement la lecture de nos souffrances : non comme une menace pesant sur notre salut, mais comme la preuve fidèle que le Père nous garde jusqu'au bout?
 
-<!-- source_hash: 99a9f4bbe0934cab -->
+<!-- source_hash: 3fbaed2d9121d692 -->

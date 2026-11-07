@@ -76,7 +76,7 @@ Institution des villes de refuge dont le terme grec des Septante éclaire le ref
 
 **Lévitique 16.2-15** · _Arrière-plan AT_
 
-Le jour des expiations où le souverain sacrificateur franchit seul le voile vers le lieu très saint; l'ombre que Hébreux 6.19-20 déclare accomplie par Christ entré au-delà du voile céleste.
+Le jour des expiations où le souverain sacrificateur franchit seul le voile vers le lieu très saint; l'ombre qu'Hébreux 6.19-20 déclare accomplie par Christ entré au-delà du voile céleste.
 
 **Psaume 110.4** · _Arrière-plan AT_
 
@@ -156,4 +156,4 @@ Selon MacArthur, l'espérance est l'attente confiante de l'accomplissement des p
 6. Les versets 19 et 20 ramènent au sacerdoce de Melchisédek. Pourquoi l'espérance ne peut-elle être prêchée de façon vague ou sentimentale, mais doit être ancrée dans la personne et l'office précis du Christ souverain sacrificateur?
 7. À des Hébreux tentés de revenir au système lévitique, l'auteur oppose Abraham, le héros même du judaïsme. Comment montrer à un auditeur tenté par un retour à la religion des rites que le fondement de toute vraie espérance n'a jamais été le temple, mais la parole jurée de Dieu accomplie en Christ?
 
-<!-- source_hash: b208f6d733bec048 -->
+<!-- source_hash: 6a6fbf38dc5137f7 -->

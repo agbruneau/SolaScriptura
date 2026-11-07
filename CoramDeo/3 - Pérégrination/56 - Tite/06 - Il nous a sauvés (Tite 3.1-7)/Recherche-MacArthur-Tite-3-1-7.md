@@ -154,8 +154,8 @@ Selon la doctrine de la dépravation et de la grâce souveraine, sans la grâce 
 2. Le verset 5 exclut « les œuvres de justice que nous aurions faites » avant même de nommer le bain de la régénération. En quoi cet ordre des mots interdit-il de lire le baptême d'eau comme cause du salut, et comment l'exposer clairement à une assemblée habituée à confondre signe et chose signifiée?
 3. MacArthur entend « le bain de la régénération » comme la purification de la nouvelle naissance, opérée par Dieu au moyen de sa Parole. Comment honorer le baptême d'eau comme commandement et témoignage, tout en réfutant fermement la régénération baptismale, sans donner l'impression de mépriser le sacrement?
 4. Le salut décrit aux versets 5-7 est entièrement monergique : Dieu manifeste, régénère, répand, justifie, fait héritier. Où, dans votre prédication, êtes-vous tenté de réintroduire subtilement une contribution de l'homme, et comment laisser le texte gouverner?
-5. « Justifiés par sa grâce » (3.7) est un verdict forensique. Comment aider vos auditeurs à distinguer être déclaré juste de être rendu progressivement meilleur, afin que leur assurance repose sur l'acquittement de Dieu et non sur leur croissance?
+5. « Justifiés par sa grâce » (3.7) est un verdict forensique. Comment aider vos auditeurs à distinguer être déclaré juste d'être rendu progressivement meilleur, afin que leur assurance repose sur l'acquittement de Dieu et non sur leur croissance?
 6. Le passage culmine sur l'héritage de la vie éternelle (3.7). Comment relier cette espérance assurée à la vie concrète des versets 1-2, de sorte que la certitude de l'héritage libère pour le service plutôt qu'elle n'endorme dans la passivité?
 7. Le verset 3 affirme que nous étions « dignes d'être haïs et nous haïssant les uns les autres ». Comment ce souvenir de notre propre passé doit-il transformer la manière dont votre assemblée regarde et aborde les incroyants les plus hostiles ou les plus dégradés autour d'elle?
 
-<!-- source_hash: f5982bdeccdfbd16 -->
+<!-- source_hash: 547781c84de152eb -->
