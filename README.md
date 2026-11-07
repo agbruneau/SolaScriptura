@@ -19,6 +19,7 @@ Les conventions de production de Paulus sont dans [`Paulus/AGENTS.md`](Paulus/AG
 SolaScriptura/
 ├── README.md
 ├── .gitattributes            PDF et images traités en binaire
+├── .gitignore                caches Python
 ├── CoramDeo/
 │   ├── index.html            index de navigation
 │   ├── 1 - Vision/           bibliologie, christologie, pneumatologie, ecclésiologie
