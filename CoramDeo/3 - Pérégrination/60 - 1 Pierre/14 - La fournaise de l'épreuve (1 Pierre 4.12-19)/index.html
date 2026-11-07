@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Pierre 4.12-19 · La fournaise de l'épreuve · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Pierre 4.12-19 : la fournaise de l'épreuve ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">1 Pierre 4.12-19</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 1 Pierre 4.12-19</p>
+    <h1 class="hero__title">La fournaise de l'épreuve</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Réjouissez-vous, au contraire, de la part que vous avez aux souffrances de Christ.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">1 Pierre 4.13 · NEG</p>
+    <p class="hero__series">Série : <b>1 Pierre : l'espérance dans l'épreuve</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">1 Pierre 4.12-19</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mes bien-aimés, ne trouvez pas étrange d'être dans la fournaise de l'épreuve, comme s'il vous arrivait quelque chose d'extraordinaire.</p>
+        <cite class="verse__ref">1 Pierre 4.12 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Ainsi, que ceux qui souffrent selon la volonté de Dieu remettent leur âme au fidèle Créateur, en faisant ce qui est bien.</p>
+        <cite class="verse__ref">1 Pierre 4.19 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La péricope s'inscrit dans la troisième grande partie de l'épître, le rappel du retour du Seigneur&nbsp;: elle reprend le thème central de la souffrance, mais cette fois pour en montrer la récompense, et conduit le croyant éprouvé de l'étonnement devant la fournaise à la remise paisible de son âme entre les mains de Dieu.</p>
+    <div class="body">
+      <p>Le passage appartient à la troisième grande partie de l'épître, le rappel du retour du Seigneur (4.7 à 5.11). Après avoir établi les responsabilités de la vie chrétienne à la lumière de la fin de toutes choses qui est proche (4.7-11), Pierre revient à son thème central, la souffrance, mais cette fois pour en montrer la récompense. Le plan que MacArthur reçoit de la Bible d'étude intitule cette section la souffrance mais des récompenses (4.12-19). La péricope forme donc une unité serrée qui répond à la question fondamentale de toute la lettre, comment le chrétien doit-il réagir face à l'hostilité dont il est l'objet.</p>
+      <p>La péricope s'ouvre par une adresse affectueuse, <i>Mes bien-aimés</i>, et par un impératif négatif, ne trouvez pas étrange d'être dans la fournaise de l'épreuve, comme s'il vous arrivait quelque chose d'extraordinaire (v. 12). Elle se referme au verset 19 par une exhortation finale qui condense tout le passage, que ceux qui souffrent selon la volonté de Dieu remettent leur âme au fidèle Créateur, en faisant ce qui est bien. Entre ces deux bornes, l'apôtre conduit le lecteur de l'attitude juste devant l'épreuve, ne pas s'en étonner, à la disposition finale du croyant, déposer son âme entre les mains de Dieu.</p>
+      <p>Selon la note de MacArthur sur le verset 12, Pierre présente quatre attitudes nécessaires pour remporter la victoire dans la persécution, et ces quatre attitudes structurent la péricope. Il faut s'y attendre, et ne pas trouver étrange l'épreuve (v. 12)&nbsp;; il faut s'en réjouir, et participer aux souffrances de Christ (vv. 13-14)&nbsp;; il faut en discerner l'origine, et reconnaître que le jugement purificateur commence par la maison de Dieu (vv. 15-18)&nbsp;; il faut enfin se remettre à Dieu, et confier son âme au fidèle Créateur (v. 19). Cette progression mène le croyant éprouvé de l'étonnement à la confiance, de la perplexité devant la fournaise à la remise paisible de toute sa personne au Dieu qui l'a créé.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">1 Pierre 4.12 · 4.14 · 4.16</p>
+    </header>
+    <p class="lead">La fournaise de l'épreuve n'est pas une image abstraite, mais la réalité quotidienne d'une communauté calomniée et menacée, à l'aube de la persécution néronienne&nbsp;: le creuset où Dieu éprouve, lave et purifie la foi de son peuple.</p>
+    <div class="body">
+      <p>Pierre écrivit probablement cette lettre peu avant ou peu après l'incendie de Rome de juillet 64, au moment où s'ouvrait une persécution dirigée contre les chrétiens. Selon la note de MacArthur sur le verset 12, cette persécution dura deux cents ans. Quand la ville de Rome brûla, les Romains soupçonnèrent leur propre empereur, Néron, d'avoir ordonné l'incendie afin de reconstruire selon ses désirs. Pour détourner l'hostilité du peuple, Néron choisit les chrétiens comme boucs émissaires et répandit la rumeur qu'ils avaient mis le feu à la ville. On les détestait déjà, parce qu'on les associait aux Juifs et qu'on les percevait comme hostiles à la culture romaine.</p>
+      <p>Les destinataires, dispersés dans le Pont, la Galatie, la Cappadoce, l'Asie et la Bithynie, soit les Églises de la Turquie actuelle, vivaient comme des étrangers et des voyageurs sur la terre. Probablement d'origine païenne pour la plupart, ils avaient besoin d'être fortifiés spirituellement dans ce contexte de souffrance grandissante. Comme le rappelle la note de MacArthur sur 2.12, les premiers chrétiens furent injustement accusés de rébellion contre le gouvernement, de terrorisme à cause de l'incendie de Rome, d'athéisme parce qu'ils refusaient les idoles et le culte de l'empereur, de cannibalisme à cause de rumeurs sur le repas du Seigneur, et d'immoralité à cause de leur amour fraternel. La fournaise de l'épreuve n'est donc pas une image abstraite, mais la réalité quotidienne d'une communauté calomniée et menacée.</p>
+      <p>L'image de la fournaise est nourrie par l'Ancien Testament, où le creuset sert à éprouver et à purifier les métaux précieux. Pierre avait déjà employé cette comparaison au chapitre 1, l'épreuve de votre foi, plus précieuse que l'or périssable qui cependant est éprouvé par le feu (1.7). Selon la note de MacArthur sur le verset 12, la persécution n'arrive pas par hasard, mais Dieu la permet, et elle est destinée à éprouver le croyant, à le laver et à le purifier. Le verbe traduit par arrivait signifie littéralement tombait par hasard, et l'apôtre le récuse précisément, car rien dans l'épreuve du chrétien n'est laissé au hasard.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du passage&nbsp;: de la <i>purōsis</i> qui affine la foi au creuset, jusqu'au <i>paratithēmi</i> qui dépose l'âme entre les mains du fidèle Créateur, en passant par le <i>krima</i> qui purifie la maison de Dieu sans la condamner.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">fournaise</span><span class="mot-gr">purōsis</span></th>
+            <td class="col-sens">embrasement, combustion, action de mettre au feu&nbsp;; par image, l'épreuve ardente qui passe le métal au creuset pour l'affiner</td>
+            <td>Le mot grec dérive du feu (<i>pur</i>) et désigne l'embrasement, mais aussi, dans l'usage figuré, l'opération par laquelle on soumet un métal au feu pour le purifier de ses scories. C'est le même registre que l'or éprouvé par le feu de 1.7. Selon la note de MacArthur sur le verset 12, la persécution est destinée à éprouver le croyant, à le laver et à le purifier&nbsp;; la fournaise n'est donc pas une menace de destruction, mais le creuset où la foi authentique est démontrée et affinée. L'auteur observe que l'image renverse la perplexité du croyant, ce qui pourrait sembler un malheur insensé est en réalité une œuvre maîtrisée et bienfaisante de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> épreuve du feu</span><span><b>NEG79</b> fournaise de l'épreuve</span><span><b>Darby</b> épreuve ardente</span><span><b>LSG</b> fournaise qui est au milieu de vous</span><span><b>KJF</b> épreuve ardente</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">trouvez étrange</span><span class="mot-gr">xenizō</span></th>
+            <td class="col-sens">recevoir comme un hôte, traiter en étranger&nbsp;; à la voix passive, être surpris ou déconcerté par quelque chose d'inhabituel, comme devant un fait étranger à l'expérience</td>
+            <td>Le verbe signifie d'abord accueillir un étranger, puis, par extension, être frappé d'étonnement devant ce qui paraît insolite. Pierre l'emploie deux fois dans le contexte, ici (v. 12) et au verset 4 du même chapitre, où les païens trouvent étrange que les croyants ne se précipitent plus dans la débauche. L'auteur observe que l'apôtre commande de ne pas considérer la persécution comme un événement anormal ou imprévu pour le chrétien&nbsp;; au contraire, la souffrance pour la justice est la condition ordinaire du disciple en ce monde hostile. Tenir l'épreuve pour étrange, c'est la mal comprendre.</td>
+            <td><span class="trad"><span><b>S21</b> ne soyez pas surpris</span><span><b>NEG79</b> ne trouvez pas étrange</span><span><b>Darby</b> ne trouvez pas étrange</span><span><b>LSG</b> ne soyez pas surpris</span><span><b>KJF</b> ne pensez pas que ce soit étrange</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">réjouissez-vous</span><span class="mot-gr">chairō</span></th>
+            <td class="col-sens">se réjouir, être dans la joie&nbsp;; éprouver une joie intérieure qui ne dépend pas des circonstances extérieures</td>
+            <td>Le verbe exprime la joie chrétienne, distincte du simple agrément des sens. Pierre l'associe au verbe <i>agalliaō</i>, exulter, au verset 13, et MacArthur, dans sa note sur ce verset, parle de se réjouir et d'exulter d'une joie rayonnante. Selon cette même note, le chrétien persécuté pour la justice dans cette vie connaîtra une joie débordante dans l'au-delà grâce à sa récompense, et cette conscience de la joie future lui permet de se réjouir dans le moment présent. L'auteur observe que la joie commandée ici n'est pas un déni de la douleur, mais l'orientation de l'âme vers la gloire à venir au milieu même de la fournaise.</td>
+            <td><span class="trad"><span><b>S21</b> réjouissez-vous</span><span><b>NEG79</b> réjouissez-vous</span><span><b>Darby</b> réjouissez-vous</span><span><b>LSG</b> réjouissez-vous</span><span><b>KJF</b> réjouissez-vous</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">jugement</span><span class="mot-gr">krima</span></th>
+            <td class="col-sens">sentence, jugement&nbsp;; l'acte de juger et son résultat, ici l'action discriminante de Dieu qui sépare et purifie</td>
+            <td>Le terme désigne ordinairement la sentence judiciaire, mais le contexte en précise le sens. Selon la note de MacArthur sur le verset 17, il ne s'agit pas de la condamnation, mais de l'épuration et de la purification de l'Église par la main aimante de Dieu. Le jugement qui commence par la maison de Dieu n'est donc pas la colère destructrice réservée aux impies, mais la discipline corrective qui fortifie l'Église pour l'avancement du règne de Christ. L'auteur observe le contraste voulu par l'apôtre, si Dieu purifie ainsi son Église qu'il aime, la fin de ceux qui n'obéissent pas à l'Évangile sera incomparablement plus terrible.</td>
+            <td><span class="trad"><span><b>S21</b> le jugement</span><span><b>NEG79</b> le jugement</span><span><b>Darby</b> le jugement</span><span><b>LSG</b> le jugement</span><span><b>KJF</b> le jugement</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">remettent</span><span class="mot-gr">paratithēmi</span></th>
+            <td class="col-sens">placer auprès, déposer entre les mains de quelqu'un pour qu'il le garde&nbsp;; confier un bien précieux à la garde d'un dépositaire fidèle</td>
+            <td>Le verbe a un usage technique. Selon la note de MacArthur sur le verset 19, remettre était un terme du vocabulaire bancaire signifiant déposer pour assurer sa sécurité. Le chrétien éprouvé confie donc son âme à Dieu comme on dépose un trésor entre les mains d'un dépositaire absolument sûr. C'est le même verbe que Jésus prononça sur la croix, Père, je remets mon esprit entre tes mains (Lu 23.46). L'auteur observe que le motif du fidèle Créateur, selon la note de MacArthur sur le verset 19, fonde cette confiance, car en donnant leur vie à Dieu les croyants lui rendent simplement ce qu'il avait créé, et le Créateur connaît mieux que tout autre les besoins de ses créatures bien-aimées.</td>
+            <td><span class="trad"><span><b>S21</b> confient</span><span><b>NEG79</b> remettent</span><span><b>Darby</b> remettent</span><span><b>LSG</b> remettent</span><span><b>KJF</b> confient</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">1 Pierre 4.12-19</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 1 Pierre 4.12-19 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 1 P 4.12, 4.13, 4.14, 4.15, 4.16, 4.17, 4.18, 4.19.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">60-44</span></th>
+            <td><a href="https://www.gty.org/sermons/60-44" target="_blank" rel="noopener">The Fiery Trial, Part 1</a></td>
+            <td>1 Pierre 4.12-14</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">60-45</span></th>
+            <td><a href="https://www.gty.org/sermons/60-45" target="_blank" rel="noopener">The Fiery Trial, Part 2</a></td>
+            <td>1 Pierre 4.15-19</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit la péricope comme un manuel de victoire dans la persécution, structuré par quatre attitudes&nbsp;: s'attendre à la fournaise, s'en réjouir, en discerner l'origine, et se remettre au fidèle Créateur.</p>
+    <div class="body">
+      <p>MacArthur lit la péricope comme un manuel de victoire dans la persécution. Selon sa note sur le verset 12, Pierre y expose quatre attitudes nécessaires pour remporter la victoire dans l'épreuve, et ces quatre attitudes commandent toute la lecture du passage. La première est de s'attendre à la fournaise. Le croyant ne doit pas la trouver étrange, comme s'il lui arrivait quelque chose d'extraordinaire, parce que la souffrance pour la justice est le lot normal du disciple en ce monde hostile. Selon la note de MacArthur sur le verset 12, le verbe traduit par arrivait signifie tombait par hasard&nbsp;; or la persécution n'arrive pas par hasard, mais Dieu la permet, et elle est destinée à éprouver le croyant, à le laver et à le purifier. L'épreuve n'est donc ni un accident ni une anomalie, mais une œuvre voulue et maîtrisée de Dieu.</p>
+      <p>La deuxième attitude est de se réjouir. Pierre commande, réjouissez-vous, au contraire, de la part que vous avez aux souffrances de Christ (v. 13). Selon la note de MacArthur sur le verset 13, le chrétien persécuté pour sa foi participe au même genre de souffrances que Jésus, car il souffre en faisant ce qui est juste. La joie ne naît pas de la douleur elle-même, mais de la solidarité avec Christ et de la perspective de la gloire à venir. Selon la même note, il s'agit de se réjouir et d'exulter d'une joie rayonnante, et le croyant persécuté pour la justice connaîtra une joie débordante dans l'au-delà grâce à sa récompense, conscience qui lui permet déjà de se réjouir dans le présent. Cette joie culmine lorsque sa gloire apparaîtra, expression que MacArthur, dans sa note sur le verset 13, rapporte à la seconde venue de Christ, car même si Jésus est actuellement glorifié au ciel, sa gloire n'est pas encore pleinement révélée sur terre.</p>
+      <p>Au verset 14, l'apôtre déclare heureux celui qui est outragé pour le nom de Christ, parce que l'Esprit de gloire, l'Esprit de Dieu, repose sur lui. Selon la note de MacArthur sur le verset 14, ces croyants sont insultés et traités injustement parce qu'ils représentent tout ce que Christ est et qu'ils annoncent publiquement son nom. Le bonheur dont parle Pierre n'est pas un sentiment, mais un bienfait objectif&nbsp;: le croyant outragé est heureux parce que l'Esprit de gloire repose sur lui, en plus de la communion aux souffrances de Christ et de la gloire éternelle qu'il acquiert. Selon la même note, l'Esprit de gloire est l'Esprit qui est glorieux, dont la présence était figurée dans l'Ancien Testament par la nuée et la colonne de feu. Lorsqu'un croyant souffre, la présence de Dieu repose sur lui d'une manière toute spéciale et lui donne une force et un courage surnaturels.</p>
+      <p>La troisième attitude est de discerner l'origine et la nature de cette souffrance. Pierre distingue nettement deux sortes de souffrances. Que personne ne souffre comme meurtrier, voleur, malfaiteur ou pour s'être ingéré dans les affaires d'autrui (v. 15)&nbsp;; une telle souffrance n'a aucune gloire, car elle est méritée. Selon la note de MacArthur sur le verset 15, Pierre pense à des conduites qui pouvaient attirer la persécution, comme les activités révolutionnaires, la participation à des troubles ou l'entrave au fonctionnement du gouvernement&nbsp;; il pouvait aussi penser à ceux qui fourrent leur nez partout dans leur lieu de travail. En chaire, MacArthur penche pour l'agitation politique, sans exclure le chrétien qui, au travail, prétend imposer ses normes chrétiennes à son entreprise. En règle générale, le chrétien dans une société non chrétienne doit travailler fidèlement, exalter Christ et mener une vie vertueuse, au lieu d'essayer de renverser sa culture. La souffrance honorable, au contraire, est celle qu'on endure comme chrétien (v. 16)&nbsp;; selon la note de MacArthur sur ce verset, ce mot était à l'origine un surnom moqueur que les disciples finirent par aimer et adopter. Loin d'en avoir honte, le croyant doit glorifier Dieu à cause de ce nom.</p>
+      <p>Les versets 17 et 18 donnent une raison de plus de glorifier Dieu dans la souffrance. Car c'est le moment où le jugement va commencer par la maison de Dieu (v. 17). Selon la note de MacArthur sur ce verset, il ne s'agit pas de la condamnation, mais de l'épuration et de la purification de l'Église par la main aimante de Dieu. Il vaut mieux supporter la souffrance qui purifie et fortifie l'Église pour l'avancement de son règne que d'endurer les souffrances éternelles de l'incroyant dans l'étang de feu. L'apôtre raisonne par contraste, si Dieu juge si sévèrement l'Église qu'il aime, quelle sera la manifestation de sa colère contre les impies. Le verset 18 renforce ce contraste par une citation. Selon la note de MacArthur sur ce verset, Pierre cite Proverbes 11.31 d'après la Septante pour appuyer l'idée que, si le pécheur justifié n'est sauvé qu'après bien des difficultés et des souffrances, la fin des impies sera bien pire. L'expression le juste se sauve avec peine désigne, pour MacArthur, la dureté que la persécution impose au croyant, une épreuve disciplinaire, corrective et purificatrice qui le garde de commettre des péchés qui le perdraient&nbsp;; elle ne met donc pas en doute la sécurité du croyant, gardé par la puissance de Dieu (1.5), mais décrit le chemin éprouvant par lequel Dieu le conduit.</p>
+      <p>La quatrième et dernière attitude est de se remettre à Dieu. Ainsi, que ceux qui souffrent selon la volonté de Dieu remettent leur âme au fidèle Créateur, en faisant ce qui est bien (v. 19). Selon la note de MacArthur sur ce verset, le verbe remettre appartenait au vocabulaire bancaire et signifiait déposer pour assurer sa sécurité&nbsp;; le croyant confie donc son âme à Dieu comme on dépose un bien précieux entre les mains d'un dépositaire infaillible. Selon la même note, Pierre choisit le titre de Créateur pour rappeler à ses lecteurs qu'en donnant leur vie à Dieu ils lui rendent simplement ce qu'il avait créé, et que le Créateur connaît mieux que tout autre les besoins de ses créatures bien-aimées. L'auteur observe que cette remise n'est pas passive, car elle s'accompagne d'une consigne, en faisant ce qui est bien&nbsp;; la confiance et l'obéissance vont de pair, à l'image du Christ qui, injurié, ne rendait point d'injures, mais s'en remettait à celui qui juge justement (2.23).</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du creuset de la foi du chapitre 1 au modèle du Christ qui s'en remet à son Père, jusqu'à l'arrière-plan vétérotestamentaire du jugement qui commence par le sanctuaire.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 1.6-7</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'épreuve de la foi, plus précieuse que l'or éprouvé par le feu, prépare l'image de la fournaise du verset 12 et en donne le but, démontrer l'authenticité de la foi pour la louange, la gloire et l'honneur lorsque Jésus-Christ apparaîtra.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 2.20-23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le modèle de Christ qui, injurié, ne rendait point d'injures mais s'en remettait à celui qui juge justement, éclaire la remise de l'âme au fidèle Créateur du verset 19 et la souffrance pour le bien plutôt que pour le mal des versets 15-16.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 5.10-12</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Heureux ceux qui sont persécutés pour la justice&nbsp;; réjouissez-vous et soyez dans l'allégresse, car votre récompense sera grande dans les cieux. MacArthur rattache la joie du verset 13 à cette béatitude.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 5.41</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les apôtres se réjouissaient d'avoir été jugés dignes de subir des outrages pour le nom de Jésus, illustration concrète de l'honneur que Pierre attache à la souffrance pour le nom de Christ (vv. 13-14, 16).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 8.17-18</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Si nous souffrons avec Christ, c'est afin d'être glorifiés avec lui&nbsp;; les souffrances du temps présent ne sont pas à comparer avec la gloire à venir, fondement de la joie commandée au verset 13 dans la perspective de la gloire qui apparaîtra.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Proverbes 11.31</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Si le juste reçoit sur la terre sa rétribution, combien plus le méchant et le pécheur. MacArthur indique que Pierre cite ce verset d'après la Septante au verset 18 pour appuyer le contraste entre le juste sauvé avec peine et la fin des impies.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ézéchiel 9.6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Commencez par mon sanctuaire. Le jugement de Dieu qui débute par sa propre maison avant d'atteindre les nations donne l'arrière-plan vétérotestamentaire du principe énoncé au verset 17, le jugement commence par la maison de Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 23.46</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Père, je remets mon esprit entre tes mains. Le même verbe de dépôt confiant que Christ prononça en mourant éclaire l'exhortation finale, remettre son âme au fidèle Créateur (v. 19).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La souffrance comme creuset providentiel, non comme hasard</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ne trouvez pas étrange d'être dans la fournaise de l'épreuve, comme s'il vous arrivait quelque chose d'extraordinaire (v. 12). Selon MacArthur, le verbe arrivait signifie tombait par hasard, et l'apôtre le récuse, car la persécution n'arrive pas par hasard, Dieu la permet pour éprouver, laver et purifier le croyant.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, l'épreuve du chrétien n'est jamais hors du contrôle souverain de Dieu. Le croyant qui traverse la fournaise n'est pas victime du hasard ni abandonné, mais placé par son Père dans un creuset qui affine sa foi. Cette vérité interdit à la fois le fatalisme et la révolte, et appelle à recevoir l'épreuve comme une œuvre maîtrisée et bienfaisante de la main de Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La participation aux souffrances de Christ et la joie eschatologique</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Réjouissez-vous de la part que vous avez aux souffrances de Christ, afin que vous soyez dans la joie lorsque sa gloire apparaîtra (v. 13). MacArthur rapporte cette gloire à la seconde venue de Christ et lie la joie présente à la récompense future du croyant persécuté pour la justice.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la souffrance endurée pour Christ n'est pas un malheur stérile mais une communion réelle avec le Sauveur, qui débouche sur une joie débordante au jour de sa gloire. L'assurance de cette récompense future, ancrée dans le retour personnel et glorieux de Christ, permet déjà de se réjouir au milieu de l'outrage. L'espérance prémillénariste du royaume à venir n'est pas une consolation lointaine mais le ressort concret de la joie présente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La présence spéciale de l'Esprit sur le croyant qui souffre</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Si vous êtes outragés pour le nom de Christ, vous êtes heureux, parce que l'Esprit de gloire, l'Esprit de Dieu, repose sur vous (v. 14). Selon MacArthur, l'Esprit de gloire est l'Esprit qui est glorieux, et lorsqu'un croyant souffre, la présence de Dieu repose sur lui d'une manière spéciale et lui donne force et courage surnaturels.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la consolation du croyant éprouvé n'est pas une émotion qu'il se procure, mais le don d'une présence, celle de l'Esprit de gloire reposant sur lui. Loin de tout cessationnisme mal compris, cette vérité ne promet aucun signe spectaculaire à exhiber, mais la force intérieure surnaturelle que l'Esprit accorde au croyant fidèle dans l'outrage, comme à Étienne sous les pierres.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le jugement purificateur qui commence par la maison de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>C'est le moment où le jugement va commencer par la maison de Dieu. Or, si c'est par nous qu'il commence, quelle sera la fin de ceux qui n'obéissent pas à l'Évangile (v. 17). Selon MacArthur, il s'agit non de la condamnation mais de l'épuration et de la purification de l'Église par la main aimante de Dieu.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la discipline que Dieu exerce sur son peuple par l'épreuve est un signe d'amour, non de colère, et elle se distingue absolument du jugement de condamnation réservé aux impies. Le croyant ne doit donc pas interpréter la souffrance comme un signe de rejet, mais comme la main aimante d'un Père qui purifie. Le contraste avec la fin des incrédules avive aussi l'urgence de l'évangélisation, car la colère qui attend ceux qui n'obéissent pas à l'Évangile est sans commune mesure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La remise de l'âme au fidèle Créateur</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Que ceux qui souffrent selon la volonté de Dieu remettent leur âme au fidèle Créateur, en faisant ce qui est bien (v. 19). Selon MacArthur, remettre était un terme bancaire signifiant déposer pour assurer sa sécurité, et le titre de Créateur rappelle que Dieu connaît mieux que tout autre les besoins de ses créatures.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la réponse ultime à la souffrance n'est ni la fuite ni la révolte, mais le dépôt confiant de toute sa personne entre les mains du Dieu fidèle qui l'a créée et qui la garde. Cette confiance est active, car elle s'accompagne du devoir de faire ce qui est bien. Le croyant éprouvé imite ainsi le Christ qui s'en remettait à celui qui juge justement, assuré que la persévérance des saints repose sur la fidélité de Dieu, non sur la sienne.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Pierre commande de ne pas trouver l'épreuve étrange (v. 12). Quels signes révèlent qu'une assemblée tient secrètement la souffrance pour une anomalie de la vie chrétienne, plutôt que pour sa condition normale en ce monde hostile? Comment prêcher cette vérité sans banaliser la douleur réelle des éprouvés?</li>
+      <li>La joie commandée au verset 13 se fonde sur la part que le croyant a aux souffrances de Christ et sur la gloire qui apparaîtra. Comment distinguer cette joie eschatologique d'un optimisme superficiel ou d'un déni de la souffrance, lorsqu'on s'adresse à des personnes traversant une véritable fournaise?</li>
+      <li>MacArthur distingue la souffrance honorable du chrétien (v. 16) de la souffrance méritée du malfaiteur (v. 15). Comment aider vos auditeurs à examiner honnêtement leurs propres épreuves, afin de ne pas réclamer la couronne du martyr pour des conséquences de leur péché ou de leur imprudence?</li>
+      <li>Le jugement qui commence par la maison de Dieu (v. 17) est, selon MacArthur, une purification aimante et non une condamnation. Comment cette vérité console-t-elle le croyant qui souffre, et comment réfute-t-elle l'idée que l'épreuve serait un signe du déplaisir ou du rejet de Dieu?</li>
+      <li>Le contraste du verset 18 entre le juste sauvé avec peine et la fin de l'impie aiguise l'urgence missionnaire. Comment laisser ce contraste nourrir une compassion réelle pour les incrédules de votre entourage, plutôt qu'un sentiment de supériorité chez les éprouvés?</li>
+      <li>Remettre son âme au fidèle Créateur (v. 19) emploie le langage du dépôt bancaire confié à un gardien sûr. Quelles peurs concrètes vos auditeurs hésitent-ils à déposer entre les mains de Dieu, et qu'est-ce que le titre de Créateur fidèle change à leur capacité de lui confier ces peurs?</li>
+      <li>La remise de l'âme s'accompagne de la consigne en faisant ce qui est bien (v. 19). Comment tenir ensemble, dans la prédication, la confiance passive qui se repose en Dieu et l'obéissance active qui persévère dans le bien au cœur même de l'épreuve, à l'image du Christ de 2.23?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 1 Pierre 4.12-19 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;1 Pierre : l'espérance dans l'épreuve&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-1%20Pierre-4-12-19.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

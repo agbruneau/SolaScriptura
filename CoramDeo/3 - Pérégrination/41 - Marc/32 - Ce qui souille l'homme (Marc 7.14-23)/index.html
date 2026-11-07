@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc 7.14-23 · Ce qui souille l'homme · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Marc 7.14-23 : la vraie souillure vient du cœur, non du dehors ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Marc 7.14-23</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Marc 7.14-23</p>
+    <h1 class="hero__title">Ce qui souille l'homme</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Car c'est du dedans, c'est du cœur des hommes, que sortent les mauvaises pensées&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Marc 7.21 · NEG</p>
+    <p class="hero__series">Série : <b>Marc : le Serviteur souffrant</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Marc 7.14-23</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Il n'est hors de l'homme rien qui, entrant en lui, puisse le souiller; mais ce qui sort de l'homme, c'est ce qui le souille.</p>
+        <cite class="verse__ref">Marc 7.15 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Toutes ces choses mauvaises sortent du dedans, et souillent l'homme.</p>
+        <cite class="verse__ref">Marc 7.23 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Marc 7.14-23 est le sommet et la conclusion du grand affrontement de 7.1-23 : Jésus quitte le terrain de la controverse pour proclamer le principe de fond, la vraie souillure ne vient pas du dehors mais du dedans, du cœur de l'homme.</p>
+    <div class="body">
+      <p>Marc 7.14-23 forme le sommet et la conclusion du grand affrontement de 7.1-23, où une délégation de pharisiens et de scribes descendus de Jérusalem (7.1) reproche aux disciples de manger sans le lavage rituel des mains, c'est-à-dire sans s'être défaits de la souillure cérémonielle associée au contact des objets profanes. Jésus a d'abord démasqué l'hypocrisie de ses adversaires en citant Ésaïe 29.13 (7.6-7) et en exposant la pratique du corban qui annulait le cinquième commandement au nom de la tradition (7.9-13). Aux versets 14 à 23, il quitte le terrain de la controverse pour proclamer publiquement le principe de fond, puis l'expliquer en privé à ses disciples : la vraie souillure ne vient pas du dehors mais du dedans, du cœur de l'homme.</p>
+      <p>Le passage se découpe en trois mouvements nets. D'abord la proclamation publique (v. 14-16) : ayant de nouveau appelé la foule, Jésus pose l'énigme retentissante du verset 15, rien d'extérieur entrant dans l'homme ne le souille, mais ce qui sort de lui le souille. Ensuite l'explication privée dans la maison (v. 17-19) : aux disciples qui l'interrogent sur cette parabole, Jésus oppose l'estomac, qui ne touche que le physique, au cœur, siège du spirituel, et Marc ajoute son commentaire inspiré, Jésus déclarait ainsi purs tous les aliments. Enfin l'anatomie du cœur déchu (v. 20-23) : ce qui sort de l'homme le souille, car du cœur jaillit un catalogue de douze vices qui exposent la corruption native de l'être intérieur.</p>
+      <p>La portée du passage dépasse de loin la question des mains lavées. En abolissant la distinction cérémonielle entre aliments purs et impurs (Lv 11), Jésus retire le mur que la Loi mosaïque avait dressé entre Israël et les nations, et il ouvre la porte à la mission auprès des païens. Marc le souligne par la composition même de son récit : aussitôt après cette déclaration (v. 24), Jésus part en territoire païen, vers Tyr et Sidon, puis la Décapole. La théologie du cœur souillé n'est donc pas un détail rituel; elle prépare l'Évangile pour toutes les nations et annonce la nouvelle alliance qui change les cœurs plutôt que de réglementer les ablutions.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Marc 7.1-13 · 7.19</p>
+    </header>
+    <p class="lead">Le lavage rituel des mains que défendaient les pharisiens n'avait rien d'une mesure d'hygiène : cette procédure méticuleuse appartenait à la tradition des anciens, qui s'était de fait substituée à l'Écriture comme autorité suprême.</p>
+    <div class="body">
+      <p>Le lavage rituel des mains que défendaient les pharisiens n'avait rien d'une mesure d'hygiène. MacArthur précise qu'il s'agissait non de saleté mais de cérémonie, un rinçage rituel sur lequel on avait écrit des volumes entiers. Cette procédure méticuleuse appartenait non à la Loi écrite de Moïse mais à la tradition des anciens, ce corpus de lois et d'interprétations extrabibliques qui, dans le judaïsme, s'était de fait substitué à l'Écriture comme autorité religieuse suprême. C'est ce renversement que Jésus dénonce : les pharisiens abandonnaient le commandement de Dieu pour observer la tradition des hommes (7.8).</p>
+    </div>
+    <p>Trois réalités éclairent le passage pour le lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Les lois alimentaires de Lévitique 11 et leur fonction.</b> Les prescriptions de Lévitique 11 et Deutéronome 14 distinguaient les animaux purs des impurs et faisaient de la table un lieu de séparation. Ces prescriptions, données par Dieu, avaient une fonction pédagogique et nationale : elles marquaient Israël comme un peuple mis à part au milieu des nations et lui inculquaient quotidiennement la distinction entre le saint et le profane. En déclarant purs tous les aliments, Jésus ne contredit pas la Loi de Moïse, il en révèle l'accomplissement et la fin : la barrière cérémonielle avait servi son temps, et l'heure de l'Évangile universel approchait.</li>
+      <li><b>L'enflure rabbinique des règles d'impureté.</b> Les rabbins avaient enflé ces prescriptions d'un réseau touffu de règles secondaires, multipliant les catégories d'impureté contractée par contact, jusqu'à transformer la sainteté en une affaire de surfaces et de contacts extérieurs. C'est cette religion de l'extérieur, où la pureté se mesure aux contacts évités plutôt qu'au cœur devant Dieu, que Jésus retourne radicalement.</li>
+      <li><b>Le recul de Marc et la vision de Joppé.</b> La note de MacArthur sur le verset 19 relève que, dans les manuscrits où la phrase est un commentaire de Marc, l'auteur considère cet événement avec un certain recul, sans doute influencé par l'expérience de Pierre à Joppé (Ac 10.9-16). Là, une vision déclara purs tous les animaux, avant que Pierre soit envoyé chez le centurion païen Corneille. Le commentaire inspiré de Marc, Jésus déclarait ainsi purs tous les aliments, est le fil qui relie l'enseignement de Galilée à l'ouverture de l'Église aux nations.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope. Du verbe «&nbsp;souiller&nbsp;» (<i>koinoo</i>) que Jésus réoriente du rituel vers le moral, jusqu'au cœur (<i>kardia</i>), source de tout, en passant par le verbe «&nbsp;purifier&nbsp;» (<i>katharizo</i>) qui scelle l'abolition des lois alimentaires.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">souille</span><span class="mot-gr">koinoo</span></th>
+            <td class="col-sens">rendre commun, rendre profane, donc souiller au sens cérémoniel</td>
+            <td>Le verbe <i>koinoo</i> dérive de <i>koinos</i>, commun. Souiller, c'est rendre commun ou ordinaire ce qui devrait rester saint, donc rendre cérémoniellement impur. MacArthur relève que le verbe revient cinq fois dans le passage : les pharisiens ne craignaient que la souillure venue du dehors, tandis que Jésus montre qu'elle sort du dedans. La souillure qui compte n'est pas celle qu'on contracte par contact mais celle qui jaillit du cœur. Le même mot, employé en Actes 10.15, dit la vision de Pierre : ce que Dieu a déclaré pur, ne le regarde pas comme commun.</td>
+            <td><span class="trad"><span><b>S21</b> rend impur</span><span><b>NEG79</b> souille</span><span><b>Darby</b> souille</span><span><b>LSG</b> souille</span><span><b>KJF</b> souille</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">cœur</span><span class="mot-gr">kardia</span></th>
+            <td class="col-sens">cœur, centre de la personne, siège de la pensée, de la volonté et des affections</td>
+            <td>Pour MacArthur, qui y voit l'anthropologie biblique, <i>kardia</i> ne désigne pas la pompe physique mais l'être intérieur : l'esprit, source des pensées, des attitudes, des motifs, des désirs et de tout ce que l'on fait et dit. Jésus oppose le cœur au ventre (<i>koilia</i>) : la nourriture n'entre pas dans le cœur mais dans le ventre, et ne peut donc atteindre le for spirituel. Le cœur est le siège du péché, la source d'où jaillit toute souillure (v. 21). Cette doctrine du cœur déchu rejoint Jérémie 17.9, le cœur est tortueux par-dessus tout, et Genèse 6.5, et fonde la nécessité du cœur nouveau promis par la nouvelle alliance (Éz 36.26).</td>
+            <td><span class="trad"><span><b>S21</b> cœur</span><span><b>NEG79</b> cœur</span><span><b>Darby</b> cœur</span><span><b>LSG</b> cœur</span><span><b>KJF</b> cœur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">purifient</span><span class="mot-gr">katharizo</span></th>
+            <td class="col-sens">rendre pur, nettoyer, déclarer pur</td>
+            <td>Le participe <i>katharizon</i> au verset 19 porte tout le poids doctrinal du passage. Selon la lecture que retient MacArthur, il se rattache non au processus digestif mais à Jésus lui-même, sa note signalant que, dans certains manuscrits, la phrase est un commentaire de Marc : en bouleversant la tradition de la purification, Jésus annule de fait toutes les restrictions des lois alimentaires, déclarant ainsi purs tous les aliments. Le verbe est le terme technique de la pureté cultuelle dans la Septante de Lévitique. Son emploi ici marque un tournant de l'histoire du salut : ce que Dieu avait jadis déclaré impur par pédagogie, le Fils le déclare désormais pur, abolissant la barrière cérémonielle et ouvrant la table aux nations (cf. Ac 10.15; Ro 14.14).</td>
+            <td><span class="trad"><span><b>S21</b> purs</span><span><b>NEG79</b> purifient</span><span><b>Darby</b> purifiant</span><span><b>LSG</b> purifie</span><span><b>KJF</b> purifiant</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">mauvaises pensées</span><span class="mot-gr">dialogismoi hoi kakoi</span></th>
+            <td class="col-sens">raisonnements, délibérations intérieures, ici qualifiés de mauvais</td>
+            <td>Le terme <i>dialogismoi</i> désigne les raisonnements et délibérations qui se tiennent au-dedans, le travail de la pensée avant l'acte. Jésus le place en tête du catalogue des douze vices (v. 21-22) comme la racine d'où procèdent les onze autres : le péché commence dans le laboratoire de la pensée avant de s'extérioriser en parole et en acte. MacArthur note que la souillure du cœur transparaît tant dans les paroles que dans les actes (cf. Mt 12.34-37, la bouche parle de l'abondance du cœur). Cette priorité de la pensée mauvaise démonte l'illusion pharisienne d'une sainteté de surface et fonde l'examen du cœur que requiert la vraie repentance.</td>
+            <td><span class="trad"><span><b>S21</b> pensées mauvaises</span><span><b>NEG79</b> mauvaises pensées</span><span><b>Darby</b> mauvaises pensées</span><span><b>LSG</b> mauvaises pensées</span><span><b>KJF</b> mauvaises pensées</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">débauches</span><span class="mot-gr">porneiai</span></th>
+            <td class="col-sens">actes d'immoralité sexuelle de toute sorte, fornication</td>
+            <td>Pluriel de <i>porneia</i>, terme large couvrant toute activité sexuelle illégitime hors du mariage, comme le précise MacArthur. La racine <i>porn-</i> a donné pornographie. Dans le catalogue des vices, <i>porneia</i> voisine avec <i>moicheiai</i> (adultères) et <i>aselgeia</i> (dérèglement, conduite effrénée et sans pudeur), trois facettes de la corruption sexuelle qui sourd du cœur. Loin d'être un péché des seuls actes, la débauche est nommée ici comme un produit du cœur déchu : elle prouve, comme les onze autres vices, que la souillure n'est jamais d'abord extérieure mais intérieure. Le catalogue couvre ainsi le décalogue du dedans, la transgression des tables de la Loi remontant à sa source cordiale.</td>
+            <td><span class="trad"><span><b>S21</b> inconduites sexuelles</span><span><b>NEG79</b> débauches</span><span><b>Darby</b> fornications</span><span><b>LSG</b> débauches</span><span><b>KJF</b> fornications</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Marc 7.14-23</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Marc 7.14-23 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mc 7.16, 7.18, 7.19, 7.20, 7.21, 7.22.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-33</span></th>
+            <td><a href="https://www.gty.org/sermons/41-33" target="_blank" rel="noopener">The Inside Story on Defilement</a></td>
+            <td>Marc 7.14-23</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit Marc 7.14-23 comme une attaque frontale contre la fausse religion de l'extérieur. Le problème de l'homme n'est pas ce qui entre, mais ce qui sort; non la contamination reçue du dehors, mais la corruption émise du dedans.</p>
+    <div class="body">
+      <p>MacArthur lit Marc 7.14-23 comme une attaque frontale contre la fausse religion de l'extérieur. Toute la pratique pharisienne reposait sur une illusion : croire que la sainteté se mesure aux contacts évités, aux mains lavées, aux aliments triés. Jésus retourne radicalement la question. Le problème de l'homme n'est pas ce qui entre, mais ce qui sort; non la contamination reçue du dehors, mais la corruption émise du dedans. La nourriture étant seulement physique, observe MacArthur sur le verset 19, personne ne peut, en mangeant, souiller son cœur ou son être intérieur, puisque ceux-ci sont spirituels; une pollution physique, même la plus grave, ne pourra jamais corrompre spirituellement ou moralement, et inversement aucune cérémonie ni aucun rituel ne purifiera une personne spirituellement. La sentence est sans appel pour tout système de salut par les œuvres cérémonielles : le rituel ne touche pas le cœur.</p>
+      <p>Le verset 19 porte la pointe doctrinale du passage. Pour la proposition qui purifient tous les aliments, la note de MacArthur signale que, dans certains manuscrits, elle correspond à un commentaire de Marc : Jésus déclarait ainsi purs tous les aliments. En bouleversant la tradition de la purification des mains, Jésus annulait de fait toutes les restrictions liées aux lois alimentaires. Ce n'est pas une abrogation de la Loi morale de Dieu mais l'accomplissement de sa fonction cérémonielle : la barrière de Lévitique 11 ayant rempli son rôle pédagogique, le Fils la lève. Marc considérait sans doute cet événement avec le recul de l'expérience de Pierre à Joppé (Ac 10.15), où Dieu déclare pur ce qu'il a purifié. Aussitôt après, Marc conduit Jésus en territoire païen (7.24), début de ce que le plan de MacArthur appelle l'extension de son ministère aux régions païennes.</p>
+      <p>Les versets 20 à 23 livrent l'anatomie du cœur déchu. Du dedans, c'est-à-dire du cœur des hommes, sortent douze vices que MacArthur ne traite pas comme une liste décorative mais comme un diagnostic. Les mauvaises pensées ouvrent le catalogue parce que le péché naît au-dedans, dans la délibération, avant de se traduire en paroles et en actes. MacArthur relève que les six premiers termes, au pluriel, désignent des actes, et les six derniers, au singulier, les attitudes qui les sous-tendent (fraude, dérèglement, regard envieux qui est l'hébraïsme de l'œil mauvais pour l'envie, calomnie, orgueil, folie). Ce catalogue prouve la dépravation native de l'homme : la souillure n'est pas accidentelle ni extérieure, elle est consubstantielle au cœur non régénéré. MacArthur y voit la vue chrétienne définitive de l'homme : une religion qui pose un faux diagnostic ne peut offrir le vrai remède.</p>
+      <p>De ce diagnostic découle l'unique remède, que MacArthur martèle en chaire à partir d'Ézéchiel 36, de la nouvelle naissance exigée de Nicodème (Jean 3) et du bain de la régénération (Tite 3.5). Si la souillure vient du cœur, aucune réforme extérieure, aucune morale, aucun rituel ne peut sauver : il faut un cœur nouveau, donné par Dieu seul. C'est pourquoi le Serviteur de Marc est venu non pour être servi mais pour servir et donner sa vie comme rançon pour plusieurs (10.45). L'expiation substitutive est la réponse de Dieu au cœur souillé : le sang de l'alliance versé pour plusieurs (14.24) purifie ce qu'aucune eau de jarre ne pourra jamais atteindre. Et la foi qui reçoit ce salut n'est pas un assentiment de surface mais le reniement de soi et la repentance qui suivent le Roi crucifié (8.34-38). La purification du cœur est monergique : Dieu seul donne le cœur nouveau que la nouvelle alliance avait promis (Éz 36.26).</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle synoptique direct chez Matthieu à l'arrière-plan vétérotestamentaire du cœur déchu, jusqu'à l'accomplissement de la déclaration de Jésus dans la vision de Pierre et la liberté chrétienne chez Paul.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 15.10-20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Récit parallèle du même enseignement chez Matthieu, plus développé; confirme la leçon que ce qui sort de la bouche, venant du cœur, souille l'homme, et non ce qui y entre.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 7.24-30</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Immédiatement après avoir aboli la barrière cérémonielle, Jésus part en territoire païen vers Tyr et Sidon et délivre la fille d'une femme syro-phénicienne; la composition de Marc fait du cœur souillé le pivot de l'ouverture aux nations.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 10.9-16</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La vision de Pierre à Joppé, ce que Dieu a déclaré pur ne doit pas être tenu pour souillé, accomplit l'enseignement de Marc 7.19 et ouvre explicitement l'Évangile au païen Corneille; même verbe <i>koinoo</i>.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 14.14</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul confirme la doctrine, je sais qu'aucune chose n'est impure en soi, ancrant la liberté chrétienne à l'égard des aliments dans la déclaration du Seigneur lui-même.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jérémie 17.9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le cœur est tortueux par-dessus tout et incurable; fondement vétéro-testamentaire du diagnostic de Jésus sur le cœur comme source de la souillure.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 6.5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Toutes les pensées du cœur de l'homme se portaient chaque jour uniquement vers le mal; arrière-plan de la dépravation native que révèle le catalogue des douze vices.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ézéchiel 36.26</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Promesse du cœur nouveau et de l'esprit nouveau dans la nouvelle alliance; seul remède au cœur souillé que diagnostique Marc 7, accompli par l'œuvre de Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 29.13</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Cité par Jésus en amont (Mc 7.6-7), ce peuple m'honore des lèvres mais son cœur est éloigné de moi; pose dès l'ouverture de la controverse l'opposition entre le rituel extérieur et le cœur.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La dépravation du cœur, source de toute souillure</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Du dedans, du cœur des hommes, sortent les mauvaises pensées et les onze autres vices (v. 21-23); la souillure jaillit du cœur, non du contact extérieur.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'hamartiologie de MacArthur, le cœur non régénéré est la source même du péché, et non une victime passive d'influences externes. Pour l'assemblée : aucun effort de purification extérieure, aucune morale ni aucun rituel ne peut guérir un cœur corrompu; le problème de l'homme est plus profond que ses actes, il tient à sa nature, et réclame une transformation que Dieu seul opère.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'abolition de la barrière cérémonielle et la mission aux nations</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus déclarait ainsi purs tous les aliments (v. 19), et part aussitôt en territoire païen (v. 24).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La levée des lois alimentaires marque la fin de la fonction cérémonielle de la Loi mosaïque et l'ouverture de l'Évangile à toutes les nations. Pour l'assemblée : la table commune des Juifs et des païens est un signe de l'Église comme mystère révélé, et un appel à une mission sans frontière ethnique, car la souillure se traite au cœur, accessible à tout homme.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'insuffisance de la religion extérieure</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Rien de ce qui du dehors entre dans l'homme ne peut le souiller, car cela n'entre pas dans son cœur mais dans son ventre (v. 18-19).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Tout système qui prétend purifier l'homme par des rites, des cérémonies ou des observances extérieures est démasqué comme impuissant. Pour l'assemblée : l'hypocrisie pharisienne menace toujours l'Église sous des formes nouvelles, religiosité de façade, conformité mécanique, traditions humaines élevées au rang de Parole de Dieu; la vraie pureté est affaire de cœur devant Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le cœur nouveau, œuvre de la grâce souveraine</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le diagnostic du cœur souillé (v. 21-23) implique, par contraste, la nécessité d'un cœur que l'homme ne peut se donner.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Si la souillure vient du cœur, le salut est monergique : Dieu seul donne le cœur nouveau promis par la nouvelle alliance (Éz 36.26), au moyen de la rançon versée par le Serviteur (Mc 10.45) et du sang de l'alliance (14.24). Pour l'assemblée : la repentance et la foi salvatrice ne sont pas une réforme de surface mais le reniement de soi qui suit le Roi crucifié (8.34-38); l'assurance repose sur le cœur transformé, non sur l'observance.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Sous quelles formes la religion de l'extérieur, dénoncée par Jésus chez les pharisiens, survit-elle aujourd'hui dans votre assemblée : traditions humaines élevées au rang d'Écriture, conformité mécanique, religiosité de façade?</li>
+      <li>Comment prêcher la dépravation du cœur (v. 21-23) sans tomber dans un moralisme qui demanderait à l'auditeur de se nettoyer lui-même, alors que le texte conduit précisément au besoin d'un cœur nouveau que Dieu seul donne?</li>
+      <li>Le catalogue des douze vices place les mauvaises pensées en tête : comment aider l'assemblée à voir que le péché naît au-dedans, dans la délibération, avant de s'extérioriser, et à renoncer à une sainteté de surface?</li>
+      <li>En quoi la déclaration purs tous les aliments (v. 19) et le départ immédiat en territoire païen (v. 24) commandent-ils la vision missionnaire de votre Église envers les nations et les cultures que la tradition tient à distance?</li>
+      <li>Comment relier ce passage à la croix sans forcer le texte : si la souillure vient du cœur, pourquoi seule la rançon du Serviteur (10.45) et le sang de l'alliance (14.24) peuvent-ils purifier ce qu'aucun rituel n'atteint?</li>
+      <li>La vision de Pierre à Joppé (Ac 10.15) accomplit Marc 7.19 : comment cet enseignement protège-t-il votre assemblée contre toute forme de légalisme alimentaire ou cérémoniel réintroduit comme condition de sainteté?</li>
+      <li>Sur quoi vos auditeurs fondent-ils leur assurance du salut : une observance extérieure et un passé religieux, ou la preuve d'un cœur transformé qui se renie soi-même pour suivre le Roi crucifié (8.34-38)?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Marc 7.14-23 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Marc : le Serviteur souffrant&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Marc-7-14-23.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

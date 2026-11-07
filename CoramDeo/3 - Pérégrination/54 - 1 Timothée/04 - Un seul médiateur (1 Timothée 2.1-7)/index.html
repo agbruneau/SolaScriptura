@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Timothée 2.1-7 · Un seul médiateur · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Timothée 2.1-7 : un seul médiateur. On prie pour tous parce qu'il y a un seul Dieu et un seul médiateur, Jésus-Christ homme. Contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">1 Timothée 2.1-7</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 1 Timothée 2.1-7</p>
+    <h1 class="hero__title">Un seul médiateur</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Il y a un seul Dieu, et aussi un seul médiateur entre Dieu et les hommes, Jésus-Christ homme.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">1 Timothée 2.5 · NEG</p>
+    <p class="hero__series">Série : <b>1 Timothée : l'ordre dans la maison de Dieu</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">1 Timothée 2.1-7</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">J'exhorte donc, avant toutes choses, à faire des prières, des supplications, des requêtes, des actions de grâces, pour tous les hommes.</p>
+        <cite class="verse__ref">1 Timothée 2.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car il y a un seul Dieu, et aussi un seul médiateur entre Dieu et les hommes, Jésus-Christ homme.</p>
+        <cite class="verse__ref">1 Timothée 2.5 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">On prie pour tous les hommes parce que le salut, fondé sur un seul médiateur, déborde toute frontière ethnique ou sociale&nbsp;: tel est le fil unique qui tient ensemble cette péricope, de l'exhortation à prier (2.1) jusqu'au mandat de Paul pour les nations (2.7).</p>
+    <div class="body">
+      <p>Avec le chapitre 2, Paul passe de la défense de la saine doctrine (1.3-20) aux instructions concernant la conduite de l'Église rassemblée (2.1 à 3.16). La première de ces instructions, et la plus urgente aux yeux de l'apôtre, porte sur la prière&nbsp;: «&nbsp;J'exhorte donc, avant toutes choses, à faire des prières, des supplications, des requêtes, des actions de grâces, pour tous les hommes&nbsp;» (2.1). L'expression «&nbsp;avant toutes choses&nbsp;» ne marque pas un ordre chronologique mais une priorité de valeur&nbsp;: la prière de l'Église pour les perdus occupe le premier rang dans la vie du culte. Notre péricope (2.1-7) forme la première moitié de la section sur l'importance de la prière (2.1-8), et son cœur doctrinal se concentre aux versets 5 et 6, où Paul fonde l'appel à prier pour tous les hommes sur deux affirmations capitales&nbsp;: il y a un seul Dieu, et un seul médiateur entre Dieu et les hommes.</p>
+      <p>Le contexte immédiat éclaire pourquoi Paul insiste tant. Selon MacArthur, l'Église d'Éphèse avait, de toute évidence, cessé de prier pour les perdus. Les faux docteurs judaïsants, avec leur évangile perverti et leur conception du salut comme réservé aux Juifs et aux païens convertis au judaïsme, avaient sans doute restreint la prière à leur seul bénéfice. Cette doctrine d'exclusion, le salut offert à une élite ethnique ou rituelle, rendait inutile la prière pour les perdus en général. Paul corrige cette dérive en élargissant l'horizon de la prière à tous les hommes, sans limite, y compris les rois et les autorités (2.2), afin que l'Église jouisse d'une vie paisible et serve de témoin à l'Évangile universel.</p>
+      <p>Les bornes de la péricope sont nettes. Elle s'ouvre au verset 1 par l'exhortation à prier pour tous les hommes et culmine au verset 7, où Paul invoque son propre mandat d'apôtre des païens comme sceau de l'universalité du message. Le verset 8, qui reprend le thème de la prière en précisant que ce sont les hommes qui doivent présider, ouvre une transition vers le rôle des femmes (2.9-15). Notre unité tient donc ensemble par un fil unique&nbsp;: on prie pour tous les hommes parce que le salut, fondé sur un seul médiateur, déborde toute frontière ethnique ou sociale.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">1 Timothée 2.1 · 2.2 · 2.5</p>
+    </header>
+    <p class="lead">Éphèse, métropole cosmopolite d'Asie, voyait un légalisme judaïsant restreindre l'Évangile aux seuls Juifs et prosélytes&nbsp;: cet exclusivisme explique l'insistance de Paul sur le mot «&nbsp;tous&nbsp;» et sur sa propre vocation d'instruire les païens.</p>
+    <div class="body">
+      <p>La lettre fut écrite peu après la libération de Paul de son premier emprisonnement romain, vers 62 à 64 apr. J.-C., alors que Timothée exerçait son ministère pastoral dans l'Église d'Éphèse (1.3). Éphèse était une métropole cosmopolite de la province romaine d'Asie, carrefour de populations grecques, romaines et juives. C'est dans ce contexte que des faux docteurs, issus d'un légalisme judaïsant (1.7), avaient infiltré l'Église et propageaient un exclusivisme&nbsp;: pour eux, l'Évangile et la prière de l'Église devaient se concentrer sur les seuls Juifs et sur les prosélytes. Cet arrière-plan explique l'insistance de Paul sur le mot «&nbsp;tous&nbsp;» et sur sa propre vocation d'instruire les païens (2.7).</p>
+    </div>
+    <p>Trois traits éclairent la péricope.</p>
+    <ul class="points">
+      <li><b>La prière pour Néron.</b> L'exhortation à prier «&nbsp;pour les rois et pour tous ceux qui sont élevés en dignité&nbsp;» (2.2) prend tout son poids quand on se rappelle qui régnait alors. L'empereur était Néron, blasphémateur cruel et méchant qui allait bientôt déclencher une persécution sanglante contre la foi. MacArthur souligne que les Éphésiens étaient pourtant invités à prier pour le salut de cet homme. La prière de l'Église ne vise pas d'abord un climat politique favorable pour elle-même, mais le salut des autorités et, par ricochet, une vie paisible qui permette le libre témoignage de l'Évangile.</li>
+      <li><b>L'Église et la vie nationale.</b> L'Église ne doit pas agiter ni perturber la vie nationale&nbsp;: d'éventuelles persécutions ne devraient résulter que d'une vie droite, jamais d'une désobéissance civile. En manifestant son amour envers tous et en priant avec ferveur pour les perdus, autorités incluses, elle a des chances de jouir d'une certaine liberté religieuse, tout en restant sans compromission dans la défense de la vérité.</li>
+      <li><b>Le médiateur dans le monde antique.</b> La figure du médiateur (2.5) évoquait pour un lecteur du premier siècle l'arbitre ou le négociateur qui intervient entre deux parties adverses pour résoudre un conflit ou ratifier une alliance. Le titre «&nbsp;Dieu notre Sauveur&nbsp;» (2.3), rare dans le reste du Nouveau Testament, plonge ses racines dans l'Ancien Testament, où l'Éternel se révèle par nature comme celui qui sauve. Paul mobilise cette image familière pour affirmer une vérité unique&nbsp;: un seul homme, le Dieu-homme Jésus-Christ, peut réconcilier le Dieu saint et l'homme pécheur.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: de la <i>deēsis</i> née d'un besoin au <i>mesitēs</i> unique, jusqu'à l'<i>antilytron</i> substitutif, rançon pour tous, que proclame le <i>kēryx</i> des nations.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">prières</span><span class="mot-gr">deēsis</span></th>
+            <td class="col-sens">demande pressante née d'un manque, supplication adressée à Dieu pour un besoin éprouvé</td>
+            <td>La racine grecque de ce mot signifie «&nbsp;manquer&nbsp;», «&nbsp;être privé de&nbsp;» ou «&nbsp;être à court de&nbsp;». Ce genre de prière naît donc d'un besoin ressenti. MacArthur note que les perdus ont grand besoin d'être sauvés, et que les croyants devraient sans relâche implorer Dieu de répondre à ce besoin. Le terme ouvre la liste des quatre mots de prière du verset 1 (prières, supplications, requêtes, actions de grâces), série qui ne distingue pas des techniques mais souligne l'ampleur et l'intensité de l'intercession que l'Église doit déployer pour tous les hommes.</td>
+            <td><span class="trad"><span><b>S21</b> prières</span><span><b>NEG79</b> prières</span><span><b>Darby</b> supplications</span><span><b>LSG</b> requêtes</span><span><b>KJF</b> supplications</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">médiateur</span><span class="mot-gr">mesitēs</span></th>
+            <td class="col-sens">celui qui se tient au milieu, intermédiaire entre deux parties pour résoudre un conflit ou ratifier une alliance</td>
+            <td>Le mot désigne la personne qui intervient entre deux parties adverses pour résoudre leur conflit ou pour ratifier une alliance. Pour MacArthur, Jésus-Christ est le seul médiateur capable de restaurer la paix entre Dieu et les pécheurs (cf. Hé 8.6&nbsp;; 9.15&nbsp;; 12.24). L'unicité est ici décisive&nbsp;: de même qu'il n'y a qu'un seul Dieu, il n'y a qu'un seul intermédiaire, ce qui exclut toute autre voie de réconciliation, qu'elle soit angélique, sacerdotale ou rituelle. Le médiateur doit toucher les deux rives du conflit&nbsp;; seul le Dieu-homme parfait pouvait à la fois représenter Dieu auprès des hommes et les hommes auprès de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> médiateur</span><span><b>NEG79</b> médiateur</span><span><b>Darby</b> médiateur</span><span><b>LSG</b> médiateur</span><span><b>KJF</b> médiateur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">homme</span><span class="mot-gr">anthrōpos</span></th>
+            <td class="col-sens">être humain, homme au sens de membre de la race humaine, ici la vraie humanité assumée par Christ</td>
+            <td>Dans la formule «&nbsp;Jésus-Christ homme&nbsp;» (2.5), l'absence de l'article devant «&nbsp;homme&nbsp;» en grec suggère, selon MacArthur, la traduction «&nbsp;Jésus-Christ, lui-même un homme&nbsp;». Seul le Dieu-homme parfait pouvait réunir Dieu et l'homme (cf. Job 9.32-33). Le terme affirme la vraie et pleine humanité du Médiateur, sans nier sa pleine divinité éternelle&nbsp;: Christ ne cesse pas d'être Dieu en devenant homme. C'est précisément l'union des deux natures dans une seule personne qui le rend apte à la médiation. Le même mot, employé au pluriel dans «&nbsp;tous les hommes&nbsp;» (2.4), désigne, pour MacArthur, tous les hommes sans limite&nbsp;: il refuse de lire «&nbsp;tous&nbsp;» comme «&nbsp;quelques-uns&nbsp;».</td>
+            <td><span class="trad"><span><b>S21</b> homme</span><span><b>NEG79</b> homme</span><span><b>Darby</b> homme</span><span><b>LSG</b> homme</span><span><b>KJF</b> homme</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">rançon</span><span class="mot-gr">antilytron</span></th>
+            <td class="col-sens">prix de libération payé en échange et à la place d'un autre, rançon substitutive</td>
+            <td>Le terme désigne une rançon substitutive, donnée par une mort volontaire (cf. Jn 10.17-18), et rappelle la déclaration de Jésus en Mt 20.28. MacArthur souligne que ce n'est pas le simple <i>lutron</i>&nbsp;: Christ a pris la place du captif pour le libérer, il a subi notre mort et porté notre péché. Au verset 6, précise-t-il, l'accent de Paul porte sur le «&nbsp;pour tous&nbsp;»&nbsp;: Christ n'est pas mort pour quelques-uns, il s'est donné en rançon pour tous les hommes, et Paul ne cherche pas ici à exposer toute la doctrine de l'expiation. Le préfixe du mot grec porte l'idée de substitution, la rançon payée à la place de l'autre.</td>
+            <td><span class="trad"><span><b>S21</b> rançon</span><span><b>NEG79</b> rançon</span><span><b>Darby</b> rançon</span><span><b>LSG</b> rançon</span><span><b>KJF</b> rançon</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">prédicateur</span><span class="mot-gr">kēryx</span></th>
+            <td class="col-sens">héraut, crieur public chargé de proclamer officiellement le message de son maître</td>
+            <td>Le mot dérive en grec d'un verbe signifiant «&nbsp;proclamer&nbsp;», «&nbsp;se faire le héraut de&nbsp;» ou «&nbsp;parler en public&nbsp;». MacArthur explique que Paul était un héraut public qui proclamait l'Évangile de Christ. Le héraut antique ne livrait pas ses propres opinions mais répétait fidèlement la parole de celui qui l'envoyait, ce qui souligne l'autorité et la fidélité requises du prédicateur. Paul ajoute aussitôt «&nbsp;apôtre&nbsp;» et l'affirmation solennelle «&nbsp;je dis la vérité, je ne mens pas&nbsp;», car il défend son autorité d'enseignant des non-Juifs. Sa vocation particulière d'instruire les païens démontrait l'universalité de l'Évangile et réfutait l'exclusivisme juif qui avait émoussé l'ardeur des Éphésiens à prier pour le salut des nations.</td>
+            <td><span class="trad"><span><b>S21</b> prédicateur</span><span><b>NEG79</b> prédicateur</span><span><b>Darby</b> prédicateur</span><span><b>LSG</b> prédicateur</span><span><b>KJF</b> prédicateur</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">1 Timothée 2.1-7</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 1 Timothée 2.1-7 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 1 Tm 2.1-8, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">54-11</span></th>
+            <td><a href="https://www.gty.org/sermons/54-11" target="_blank" rel="noopener">Evangelistic Praying, Part 1</a></td>
+            <td>1 Timothée 2.1</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">54-12</span></th>
+            <td><a href="https://www.gty.org/sermons/54-12" target="_blank" rel="noopener">Evangelistic Praying, Part 2</a></td>
+            <td>1 Timothée 2.2-4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">54-13</span></th>
+            <td><a href="https://www.gty.org/sermons/54-13" target="_blank" rel="noopener">Evangelistic Praying, Part 3</a></td>
+            <td>1 Timothée 2.5-8</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La péricope corrige une dérive précise&nbsp;: une Église qui a cessé de prier pour les perdus. MacArthur en suit le fil, du «&nbsp;tous les hommes&nbsp;» pris sans limite jusqu'à la rançon donnée pour tous.</p>
+    <div class="body">
+      <p>MacArthur lit 2.1-7 comme une correction pastorale précise d'une dérive bien identifiée. L'Église d'Éphèse avait, de toute évidence, cessé de prier pour les perdus, puisque Paul exhorte Timothée à en refaire une priorité. Les faux docteurs judaïsants, avec leur évangile perverti et leur conception du salut comme réservé aux Juifs et aux convertis au judaïsme, avaient sans doute restreint la prière à leur seul cercle, et MacArthur y joint, en chaire, un élitisme païen, ancêtre du gnosticisme, qui réservait le salut aux initiés. Le remède de Paul est l'universalité de l'objet de la prière&nbsp;: prières, supplications, requêtes et actions de grâces «&nbsp;pour tous les hommes&nbsp;» (2.1). MacArthur voit dans ces quatre termes des quasi-synonymes dont chaque nuance enrichit la prière&nbsp;: le besoin des perdus, la gloire de Dieu, la compassion qui entre dans leur détresse, la reconnaissance quoi que Dieu fasse&nbsp;; et cette intercession doit embrasser tous les hommes, sans aucune limite.</p>
+      <p>Le «&nbsp;pour tous les hommes&nbsp;» du verset 1 et le «&nbsp;tous les hommes&nbsp;» du verset 4 sont au centre de la péricope, et MacArthur les interprète avec une grande rigueur. Au verset 1, «&nbsp;tous les hommes&nbsp;» désigne les perdus en général, et non seulement les élus&nbsp;: le décret par lequel Dieu choisit les siens est secret, et les croyants n'ont aucun moyen de savoir si telle personne est élue jusqu'au jour où elle répond à l'appel. La portée des efforts d'évangélisation déborde donc les frontières de l'élection (cf. Mt 22.14). Au verset 4, l'affirmation que Dieu «&nbsp;veut que tous les hommes soient sauvés&nbsp;» ne soutient pas l'universalisme. Le terme grec pour «&nbsp;vouloir&nbsp;» n'est pas celui de la volonté décrétive de Dieu, son plan éternel, mais renvoie à son désir. Il faut distinguer le désir de Dieu et son plan éternel de salut. Dieu ne supporte pas le péché des hommes et en hait les conséquences éternelles&nbsp;; il souhaiterait que personne ne périsse. Néanmoins, pour sa gloire, dans son plan éternel et souverain, il n'a choisi que les élus (cf. Jn 17.6) et abandonne les autres aux conséquences de leur péché et de leur rejet de Christ. En dernier ressort, les choix de Dieu sont déterminés par son plan souverain, non par ses désirs (cf. 2 Pi 3.9).</p>
+      <p>Le centre doctrinal éclate au verset 5&nbsp;: «&nbsp;Car il y a un seul Dieu, et aussi un seul médiateur entre Dieu et les hommes, Jésus-Christ homme.&nbsp;» MacArthur y voit le fondement même de la prière universelle&nbsp;: puisqu'il n'existe qu'un seul vrai Dieu (cf. De 6.4&nbsp;; És 45.5-6) et aucun autre moyen d'être sauvé (cf. Ac 4.12), il est indispensable de prier pour que les perdus parviennent à la connaissance de ce Dieu unique. Le médiateur est celui qui intervient entre deux parties adverses pour résoudre leur conflit&nbsp;; Jésus-Christ est le seul capable de restaurer la paix entre Dieu et les pécheurs. L'expression «&nbsp;Jésus-Christ homme&nbsp;» est lourde de sens&nbsp;: l'absence de l'article en grec suggère «&nbsp;Jésus-Christ, lui-même un homme&nbsp;», car seul le Dieu-homme parfait pouvait réunir Dieu et l'homme (cf. Job 9.32-33). La médiation exige que l'intermédiaire touche les deux rives du conflit&nbsp;; Christ, vrai Dieu et vrai homme, est cet unique pont.</p>
+      <p>Le verset 6 précise comment cette médiation s'accomplit&nbsp;: Christ «&nbsp;s'est donné lui-même en rançon pour tous&nbsp;». MacArthur souligne le caractère substitutif et volontaire de cette mort (cf. Jn 10.17-18), qui rappelle la «&nbsp;rançon de beaucoup&nbsp;» de Mt 20.28. Mais l'accent du verset, insiste MacArthur, porte sur le «&nbsp;pour tous&nbsp;»&nbsp;: Christ n'est pas mort pour quelques-uns, il est mort pour tous, et Paul ne cherche pas ici à exposer toute la théologie de l'expiation. Christ ne s'est pas contenté de payer une rançon&nbsp;; il est aussi devenu l'objet de la juste colère divine à notre place, subissant notre mort et portant notre péché (cf. 2 Co 5.21&nbsp;; 1 Pi 2.24). Une rançon a donc été fournie pour tous les hommes, et qui se perd, dit MacArthur, se perd non par le choix prédéterminé de Dieu, mais pour avoir rejeté Jésus-Christ.</p>
+      <p>Enfin, au verset 7, Paul ancre tout l'enseignement dans sa propre vocation&nbsp;: il a été établi prédicateur, apôtre et docteur des païens. MacArthur observe que Paul défend ici soudain et avec insistance son autorité et son intégrité d'apôtre, par la formule solennelle «&nbsp;je dis la vérité, je ne mens pas&nbsp;», car il veut souligner son rôle d'enseignant des non-Juifs. Cette spécificité démontrait l'universalité de l'Évangile&nbsp;: Paul devait lutter contre une forme d'exclusivisme juif qui avait émoussé l'ardeur des Éphésiens à prier pour le salut des païens. Toute la péricope converge donc vers une conclusion pastorale&nbsp;: l'Église doit prier pour tous les hommes parce qu'il y a un seul Dieu, un seul médiateur, une seule rançon offerte à tous, et un apôtre établi pour porter ce message jusqu'aux nations.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de la «&nbsp;rançon de beaucoup&nbsp;» et de l'unicité du salut jusqu'à l'arrière-plan vétérotestamentaire du <i>Shema</i> et du cri de Job vers un arbitre.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 20.28</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Le Fils de l'homme est venu donner sa vie comme la rançon de beaucoup&nbsp;»&nbsp;: la déclaration de Jésus que la note de MacArthur rapproche de la rançon du verset 6&nbsp;; en chaire, il insiste sur le «&nbsp;pour tous&nbsp;» de Paul&nbsp;: Christ s'est donné en rançon substitutive pour tous.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 4.12</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Il n'y a de salut en aucun autre&nbsp;»&nbsp;: confirme l'unicité du médiateur (2.5) et l'absence de tout autre moyen d'être sauvé, raison pour laquelle l'Église doit prier pour que les perdus connaissent le seul Dieu véritable.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 5.21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Celui qui n'a point connu le péché, il l'a fait devenir péché pour nous&nbsp;»&nbsp;: explicite l'aspect substitutif de la rançon du verset 6, Christ portant la colère divine et le péché à la place des croyants.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Pierre 3.9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Le Seigneur ne veut pas qu'aucun périsse&nbsp;»&nbsp;: passage parallèle que MacArthur lit avec 2.4 pour distinguer le désir de Dieu de son décret éternel, écartant ainsi toute lecture universaliste.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 17.6</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;J'ai fait connaître ton nom aux hommes que tu m'as donnés du milieu du monde&nbsp;»&nbsp;: illustre que, dans son plan éternel, Dieu n'a choisi que les élus, ce qui équilibre le désir exprimé en 2.4 sans le contredire.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 3.20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Or, le médiateur n'est pas médiateur d'un seul, tandis que Dieu est un seul&nbsp;»&nbsp;: éclaire la fonction du médiateur (2.5) qui se tient entre deux parties, et l'unicité de Dieu sur laquelle Paul fonde l'unicité du Médiateur.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 6.4</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Écoute, Israël&nbsp;! l'Éternel, notre Dieu, est le seul Éternel&nbsp;»&nbsp;: la confession monothéiste d'Israël, arrière-plan vétérotestamentaire du «&nbsp;il y a un seul Dieu&nbsp;» de 2.5 que Paul mobilise pour fonder la prière universelle.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Job 9.32-33</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Il n'y a pas entre nous d'arbitre, qui pose sa main sur nous deux&nbsp;»&nbsp;: le cri de Job vers un médiateur entre Dieu et l'homme, soif vétérotestamentaire à laquelle répond le «&nbsp;un seul médiateur, Jésus-Christ homme&nbsp;» de 2.5.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La prière universelle de l'Église pour les perdus</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul exhorte «&nbsp;avant toutes choses&nbsp;» à prier «&nbsp;pour tous les hommes&nbsp;», y compris les rois et les autorités (2.1-2), parce que cela est bon et agréable devant Dieu notre Sauveur (2.3). La prière déborde toute frontière ethnique ou sociale.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, l'Église d'Éphèse avait cessé de prier pour les perdus sous l'influence d'un exclusivisme qui réservait le salut à des Juifs observant la loi ou à une élite de païens initiés. Pour votre assemblée, cela rappelle que l'intercession pour les non-croyants, même hostiles, n'est pas optionnelle mais prioritaire&nbsp;; on prie pour le salut des gouvernants plutôt que de céder à l'amertume envers eux, et la prière pour les perdus est la marque d'une Église fidèle à la portée universelle de l'Évangile.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Tous les hommes : désir de Dieu, non universalisme</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Dieu veut que tous les hommes soient sauvés et parviennent à la connaissance de la vérité&nbsp;» (2.4). Le verbe grec rendu par «&nbsp;vouloir&nbsp;» exprime le désir de Dieu, non son décret éternel de salut.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la sotériologie monergique, il faut distinguer le désir de Dieu, qui déteste les conséquences du péché, et son plan éternel, qui n'a choisi que les élus (Jn 17.6). Pour votre assemblée, ce verset n'enseigne ni l'universalisme ni un salut posthume&nbsp;: «&nbsp;tous les hommes&nbsp;» vise bien tous les hommes, car Dieu désire le salut de tous, mais ce désir n'est pas son décret. On annonce donc l'Évangile à tous, sachant que seuls les élus répondront efficacement à l'appel.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Un seul Dieu et un seul médiateur</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Car il y a un seul Dieu, et aussi un seul médiateur entre Dieu et les hommes, Jésus-Christ homme&nbsp;» (2.5). L'unicité de Dieu fonde l'unicité du chemin du salut.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la christologie de l'union des deux natures, seul le Dieu-homme parfait pouvait réunir Dieu et l'homme&nbsp;: l'absence d'article devant «&nbsp;homme&nbsp;» affirme sa vraie humanité sans nier sa pleine divinité. Pour votre assemblée, cela exclut toute autre médiation, qu'elle soit angélique, sacerdotale, mariale ou rituelle. Il n'y a qu'un pont entre le Dieu saint et l'homme pécheur, et tout système qui ajoute un autre intermédiaire renie l'unicité du Christ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La rançon substitutive donnée pour tous</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Christ «&nbsp;s'est donné lui-même en rançon pour tous&nbsp;» (2.6). L'accent porte sur le «&nbsp;pour tous&nbsp;»&nbsp;: la rançon substitutive a été fournie pour tous les hommes.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de l'expiation substitutive, Christ s'est donné à la place des pécheurs, et cette rançon a été fournie pour tous les hommes&nbsp;; seuls ceux qui la reçoivent par la foi sont sauvés. Pour votre assemblée, cela permet d'offrir l'Évangile sincèrement à tous sans tomber dans l'universalisme&nbsp;: la croix est librement proclamée à tous, et qui se perd se perd pour avoir rejeté Christ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'apostolat de Paul, sceau de l'universalité de l'Évangile</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul a été établi «&nbsp;prédicateur et apôtre [...] chargé d'instruire les païens dans la foi et la vérité&nbsp;» (2.7), affirmation scellée par «&nbsp;je dis la vérité, je ne mens pas&nbsp;».</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'ecclésiologie réformée, l'office apostolique fondateur est clos avec le canon, mais le mandat d'annoncer l'Évangile aux nations demeure. Pour votre assemblée, la vocation de Paul aux païens démontre que le salut n'est pas réservé à un peuple ou à une élite&nbsp;; elle réfute tout repli identitaire de l'Église et la pousse à porter le message jusqu'aux nations, comme Paul fut établi pour le faire.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul place la prière pour tous les hommes «&nbsp;avant toutes choses&nbsp;» (2.1). Qu'est-ce que la place réelle accordée à l'intercession pour les perdus dans nos cultes révèle sur notre compréhension de l'Évangile&nbsp;?</li>
+      <li>Comment prêcher l'appel à prier pour les rois et les autorités (2.2) à une assemblée tentée par l'amertume ou le cynisme envers les gouvernants, sans tomber ni dans la naïveté ni dans la révolte&nbsp;?</li>
+      <li>Le verset 4 dit que Dieu «&nbsp;veut que tous les hommes soient sauvés&nbsp;». Comment exposer la distinction entre le désir de Dieu et son décret éternel sans vider le texte de sa force ni glisser vers l'universalisme&nbsp;?</li>
+      <li>Si «&nbsp;tous les hommes&nbsp;» désigne vraiment tous les hommes, sans limite, en quoi cette lecture change-t-elle la manière dont votre assemblée envisage l'évangélisation des nations&nbsp;?</li>
+      <li>«&nbsp;Un seul médiateur entre Dieu et les hommes&nbsp;» (2.5)&nbsp;: comment cette affirmation confronte-t-elle les systèmes religieux qui multiplient les intermédiaires, et comment l'annoncer avec clarté et amour&nbsp;?</li>
+      <li>Christ s'est donné «&nbsp;en rançon pour tous&nbsp;» (2.6). Comment cette vérité vous permet-elle d'offrir le Christ sincèrement à tout auditeur sans contredire l'élection souveraine&nbsp;?</li>
+      <li>Paul scelle son enseignement par son mandat d'apôtre des païens (2.7). Que dit la vocation de Paul aux nations sur les frontières que nous dressons parfois, consciemment ou non, autour de ceux à qui nous croyons l'Évangile destiné&nbsp;?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 1 Timothée 2.1-7 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;1 Timothée : l'ordre dans la maison de Dieu&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-1%20Timoth%C3%A9e-2-1-7.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

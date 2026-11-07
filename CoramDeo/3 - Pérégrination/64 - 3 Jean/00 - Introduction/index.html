@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La troisième épître de Jean · Marcher dans la vérité</title>
+<meta name="description" content="Présentation de la troisième épître de Jean pour une étude biblique : introduction, les trois hommes de la lettre et la leçon centrale. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">3 Jean</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#gaius">Gaïus le fidèle</a>
+    <a href="#hospitalite">Ouvriers avec la vérité</a>
+    <a href="#diotrephe">Diotrèphe l'orgueilleux</a>
+    <a href="#demetrius">Démétrius l'éprouvé</a>
+    <a href="#centrale">Leçon centrale</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#predication">La série</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Vue d'ensemble · 3 Jean 1.1-15</p>
+    <h1 class="hero__title">3 Jean</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Je n'ai pas de plus grande joie que d'apprendre que mes enfants marchent dans la vérité.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">3 Jean 1.4 · NEG</p>
+    <p class="hero__series">Série : <b>3 Jean : marcher dans la vérité</b></p>
+    <p class="hero__meta">Quatre semaines sur l'hospitalité, la vérité et l'authenticité de la foi · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Introduction</p>
+      <h2 class="sec-title">Trois hommes, un seul test de la foi</h2>
+      <p class="ref">Troisième épître de Jean</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">L'ancien, à Gaïus, le bien-aimé, que j'aime dans la vérité.</p>
+        <cite class="verse__ref">3 Jean 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Bien-aimé, n'imite pas le mal, mais le bien. Celui qui pratique le bien est de Dieu ; celui qui fait le mal n'a point vu Dieu.</p>
+        <cite class="verse__ref">3 Jean 1.11 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La troisième épître de Jean ; la plus personnelle des trois lettres johanniques et l'une des deux plus courtes du Nouveau Testament, moins de trois cents mots grecs tenant sur une seule feuille de papyrus, où l'hospitalité chrétienne, devoir vital du monde antique, devient le révélateur des cœurs : la vérité reçue se vérifie dans une vie cohérente, et la conduite démasque qui est réellement de Dieu.</p>
+    <ul class="points">
+      <li><b>L'auteur : l'apôtre Jean, «&nbsp;l'ancien&nbsp;».</b> Jean se désigne lui-même non par son nom mais par un titre : «&nbsp;l'ancien&nbsp;» (verset 1). Selon MacArthur, ce mot souligne à la fois son âge avancé, sa qualité de témoin oculaire de la vie de Jésus et son autorité d'apôtre sur les Églises d'Asie Mineure. L'épître fut écrite vers 90 à 95 après Jésus-Christ, depuis Éphèse, à la même époque que 2 Jean, dont elle partage la structure, le style et le vocabulaire.</li>
+      <li><b>Le destinataire : Gaïus, le bien-aimé.</b> Tandis que 1 Jean s'adresse aux assemblées dispersées et que 2 Jean vise une dame et sa famille, 3 Jean a un destinataire unique nommé : «&nbsp;Gaïus, le bien-aimé&nbsp;» (verset 1). Elle se range ainsi parmi les rares épîtres du Nouveau Testament écrites à une seule personne, comme Philémon. Gaïus appartenait probablement à une Église placée sous la responsabilité spirituelle de Jean, qui projetait de lui rendre visite (verset 14).</li>
+      <li><b>L'occasion : l'hospitalité, sous une perspective inversée.</b> Le thème central, comme dans 2 Jean, est l'hospitalité, mais retournée. Là où 2 Jean interdisait d'accueillir les faux docteurs (2 Jean 7-11), 3 Jean condamne le refus d'hospitalité opposé aux fidèles serviteurs de Dieu (versets 9-10). Recevoir le vrai missionnaire et fermer la porte au faux sont les deux faces d'une même fidélité à la vérité.</li>
+      <li><b>L'hospitalité, institution vitale pour la mission.</b> Faute d'auberges sûres, les prédicateurs itinérants partis «&nbsp;pour le nom de Jésus-Christ&nbsp;» (verset 7) dépendaient de l'accueil dans les maisons des croyants. Recevoir ces messagers, c'était devenir «&nbsp;ouvrier avec eux pour la vérité&nbsp;» (verset 8) ; leur fermer la porte, c'était saboter l'avancée de l'Évangile. Ne recevant rien des païens, ces missionnaires n'avaient que l'Église pour soutien.</li>
+      <li><b>Le thème unique : la vérité, norme de l'amour et de la marche.</b> MacArthur lit 3 Jean comme un prolongement direct de 2 Jean, ramené à un seul fil : l'hospitalité chrétienne exercée avec discernement. L'amour chrétien n'est jamais sans contenu doctrinal : il prend sa source dans la vérité reçue et se vérifie dans une conduite cohérente, «&nbsp;digne de Dieu&nbsp;» (verset 6).</li>
+      <li><b>Trois hommes structurent la lettre.</b> Le plan de MacArthur dégage trois portraits qui illustrent, par contraste, ce qu'est une hospitalité digne de Dieu. <span class="surligne">Gaïus le fidèle (versets 1-8)</span> est l'homme intègre, dont la marche correspond à la profession. <span class="surligne">Diotrèphe l'orgueilleux (versets 9-10)</span> porte le diagnostic le plus sévère. <span class="surligne">Démétrius l'éprouvé (versets 11-15)</span> referme la lettre sur le bon témoignage et la promesse d'une visite.</li>
+      <li><b>Le cœur qui commande tout le livre.</b> <span class="surligne">Le verset 11 gouverne l'épître : la conduite ne procure jamais le salut, mais elle le démontre ; celui qui fait le mal n'a point vu Dieu.</span> Le test moral de Jean tranche entre les trois hommes : les œuvres de Diotrèphe prouvent qu'il n'avait jamais été régénéré, tandis que la marche de Gaïus et de Démétrius atteste leur foi vivante. Cette page suit ce fil d'un bout à l'autre.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ I. GAÏUS LE FIDÈLE (versets 1-4) ============ -->
+  <article class="section reveal" id="gaius">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Premier homme · Versets 1-4</p>
+      <h2 class="sec-title">Gaïus, la joie d'une vie cohérente</h2>
+      <p class="ref">3 Jean 1.1-4</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je souhaite que tu prospères à tous égards et sois en bonne santé, comme prospère l'état de ton âme.</p>
+        <cite class="verse__ref">3 Jean 1.2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Je n'ai pas de plus grande joie que d'apprendre que mes enfants marchent dans la vérité.</p>
+        <cite class="verse__ref">3 Jean 1.4 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avant tout, Jean ancre la lettre dans la vérité : le mot revient six fois dans l'épître. Gaïus est l'homme dont la marche correspond à la profession, et la plus grande joie pastorale naît de voir des croyants dont la conduite répond à la vérité qu'ils confessent.</p>
+    <ul class="points">
+      <li><b>Un amour situé dans la vérité.</b> Jean aime Gaïus «&nbsp;dans la vérité&nbsp;» (verset 1). Chez Jean, la vérité (alêtheia) n'est pas une véracité générale, mais le corps de la révélation chrétienne, l'enseignement apostolique fidèle à l'Évangile. L'affection de l'apôtre s'enracine non dans la sympathie naturelle, mais dans la communion de la foi.</li>
+      <li><b>Le vœu du verset 2, contre l'évangile de la prospérité.</b> «&nbsp;Que tu prospères à tous égards et sois en bonne santé, comme prospère l'état de ton âme&nbsp;» (verset 2). MacArthur souligne que ce vœu inverse précisément la logique des faux docteurs : il place la santé de l'âme avant celle du corps. La condition spirituelle de Gaïus était si bonne que Jean pouvait lui souhaiter une santé physique à sa mesure.</li>
+      <li><b>Marcher dans la vérité.</b> Des frères «&nbsp;ont rendu témoignage de la vérité qui est en toi, de la manière dont tu marches dans la vérité&nbsp;» (verset 3). Le verbe «&nbsp;marcher&nbsp;» (peripateô) est la métaphore sémitique de la conduite morale habituelle : la doctrine reçue se vérifie dans une vie cohérente. L'éloge de Gaïus, note MacArthur, compte parmi les plus remarquables du Nouveau Testament.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ II. OUVRIERS AVEC LA VÉRITÉ (versets 5-8) ============ -->
+  <article class="section reveal" id="hospitalite">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">L'hospitalité recommandée · Versets 5-8</p>
+      <h2 class="sec-title">Ouvriers avec la vérité</h2>
+      <p class="ref">3 Jean 1.5-8</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Tu feras bien de pourvoir à leur voyage d'une manière digne de Dieu.</p>
+        <cite class="verse__ref">3 Jean 1.6 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Nous devons donc accueillir de tels hommes, afin d'être ouvriers avec eux pour la vérité.</p>
+        <cite class="verse__ref">3 Jean 1.8 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La marche de Gaïus se déploie dans l'hospitalité missionnaire. Recevoir et soutenir les fidèles serviteurs de l'Évangile fait du croyant un véritable partenaire de leur mission : celui qui héberge participe à l'œuvre de son hôte.</p>
+    <ul class="points">
+      <li><b>Une hospitalité digne de Dieu.</b> «&nbsp;Tu feras bien de pourvoir à leur voyage d'une manière digne de Dieu&nbsp;» (verset 6). MacArthur dégage plusieurs principes : on reçoit ceux dont les mobiles sont purs, qui voyagent «&nbsp;pour le nom de Jésus-Christ&nbsp;» et pour sa gloire, non la leur (verset 7).</li>
+      <li><b>Le soutien que les païens ne donnaient pas.</b> Ces missionnaires sont partis «&nbsp;sans rien recevoir des païens&nbsp;» (verset 7), afin que l'Évangile ne parût jamais une marchandise. N'exerçant pas un ministère rémunéré, ils n'avaient que l'Église pour soutien, et l'avarice n'avait sur eux aucune prise. Leur seul appui légitime venait donc des croyants.</li>
+      <li><b>Le partenariat dans la mission.</b> «&nbsp;Afin d'être ouvriers avec eux pour la vérité&nbsp;» (verset 8). Celui qui héberge participe au ministère de son hôte. MacArthur souligne le parallèle exact avec 2 Jean : la même raison qui interdit d'accueillir le faux docteur commande de recevoir le vrai serviteur. Dans les deux cas, l'hôte participe aux œuvres, bonnes ou mauvaises, de celui qu'il abrite.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ III. DIOTRÈPHE L'ORGUEILLEUX (versets 9-10) ============ -->
+  <article class="section reveal" id="diotrephe">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Deuxième homme · Versets 9-10</p>
+      <h2 class="sec-title">Diotrèphe, l'homme qui aimait être le premier</h2>
+      <p class="ref">3 Jean 1.9-10</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mais Diotrèphe, qui aime à être le premier parmi eux, ne nous reçoit point.</p>
+        <cite class="verse__ref">3 Jean 1.9 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il ne reçoit pas les frères, et ceux qui voudraient le faire, il les en empêche et les chasse de l'Église.</p>
+        <cite class="verse__ref">3 Jean 1.10 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le sommet de la tension : l'orgueil qui convoite la préséance dans l'Église tente de supplanter Christ lui-même et appelle le redressement de l'autorité apostolique. Le péché de Diotrèphe n'est pas une hérésie, mais l'orgueil et la désobéissance.</p>
+    <ul class="points">
+      <li><b>Un péché qui n'est pas doctrinal.</b> MacArthur insiste : l'épître ne reproche à Diotrèphe aucune hérésie précise. Son péché n'est pas une fausse croyance, mais l'orgueil et la désobéissance, deux attitudes qui touchent autant les orthodoxes que les hérétiques. Le plus grand péril d'une Église n'est pas toujours la fausse doctrine ; ce peut être l'ambition d'un homme qui cherche la préséance.</li>
+      <li><b>Aimer à être le premier.</b> «&nbsp;Diotrèphe, qui aime à être le premier&nbsp;» (verset 9). Le terme philoprôteuô, forgé pour lui, est un hapax du Nouveau Testament : il peint un démagogue avide de prééminence, qui veut être servi de tous sans servir personne. Il s'oppose frontalement à l'enseignement de Jésus sur le service (Matthieu 20.26-28) et au modèle de l'ancien qui paît le troupeau sans dominer (1 Pierre 5.3).</li>
+      <li><b>Quatre fautes manifestes.</b> Diotrèphe attaque Jean en paroles, ses propos sont malveillants, il refuse d'accueillir les frères, et il excommunie quiconque ose le faire (verset 10). Nier l'autorité apostolique de Jean, c'est nier la révélation même de Dieu transmise par cette autorité. Loin de la pluralité d'anciens serviteurs, Diotrèphe incarne le danger du cléricalisme autoritaire, que l'apôtre s'engage à redresser en personne.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ IV. DÉMÉTRIUS L'ÉPROUVÉ (versets 11-15) ============ -->
+  <article class="section reveal" id="demetrius">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Troisième homme · Versets 11-15</p>
+      <h2 class="sec-title">Démétrius, imite le bien et non le mal</h2>
+      <p class="ref">3 Jean 1.11-15</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Celui qui pratique le bien est de Dieu ; celui qui fait le mal n'a point vu Dieu.</p>
+        <cite class="verse__ref">3 Jean 1.11 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Tous, et la vérité elle-même, rendent un bon témoignage à Démétrius.</p>
+        <cite class="verse__ref">3 Jean 1.12 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Après la mise en garde, Jean place Démétrius en contre-modèle de Diotrèphe et referme la lettre sur le test moral de l'authenticité. La conduite ne procure jamais le salut, mais le démontre : celui qui fait le bien est de Dieu.</p>
+    <ul class="points">
+      <li><b>La clé sotériologique.</b> «&nbsp;Celui qui fait le mal n'a point vu Dieu&nbsp;» (verset 11). MacArthur y voit une application du test moral de 1 Jean : les œuvres de Diotrèphe prouvent qu'il n'avait jamais été régénéré. Il ne s'agit ni d'un croyant déchu de son salut, ni d'un salut acquis par les œuvres, mais du principe que la foi authentique se démontre par la conduite (Jacques 2.14-17).</li>
+      <li><b>Le triple témoignage de Démétrius.</b> «&nbsp;Tous, et la vérité elle-même, rendent un bon témoignage à Démétrius&nbsp;» (verset 12). Trois témoignages convergent en sa faveur : celui de tous, celui de la vérité elle-même qu'il met en pratique, et celui de l'apôtre. Le bon témoignage public devient le test visible de l'authenticité chrétienne, l'envers exact de Diotrèphe.</li>
+      <li><b>La conclusion : la paix et la visite.</b> Jean a «&nbsp;beaucoup de choses à écrire&nbsp;» mais préfère parler «&nbsp;de vive voix&nbsp;» (versets 13-14), espérant voir Gaïus bientôt. La lettre se clôt sur le vœu de paix : «&nbsp;Que la paix soit avec toi !&nbsp;» (verset 15). Gaïus est invité à imiter le bien, non le mal, parce que la conduite révèle qui est réellement de Dieu.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LEÇON CENTRALE ============ -->
+  <article class="section reveal" id="centrale">
+    <header class="sec-head">
+      <div class="sec-num">◆</div>
+      <p class="kicker">La leçon centrale</p>
+      <h2 class="sec-title">Marcher dans la vérité</h2>
+      <p class="ref">3 Jean 1.11 · La conduite révèle le cœur</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">N'imite pas le mal, mais le bien.</p>
+        <cite class="verse__ref">3 Jean 1.11 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">De la manière dont tu marches dans la vérité.</p>
+        <cite class="verse__ref">3 Jean 1.3 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La question qui commande tout 3 Jean n'est pas accessoire : à quoi reconnaît-on une foi authentique ? La réponse, et c'est là que MacArthur situe le cœur de l'épître, est que la conduite révèle le cœur : la vérité reçue se vérifie dans une marche cohérente, et l'hospitalité devient le révélateur des trois hommes.</p>
+    <ul class="points">
+      <li><b>La vérité, norme de l'amour et de la marche.</b> Le mot vérité scande l'épître, employé six fois. Jean aime Gaïus «&nbsp;dans la vérité&nbsp;», se réjouit de le voir «&nbsp;marcher dans la vérité&nbsp;», et la vérité elle-même rend témoignage à Démétrius. L'amour chrétien n'est jamais sans contenu doctrinal : il prend sa source dans la vérité reçue et s'y soumet.</li>
+      <li><b>L'hospitalité, partenariat dans la mission.</b> Recevoir les missionnaires partis «&nbsp;pour le nom de Jésus-Christ&nbsp;» fait de l'hôte un «&nbsp;ouvrier avec eux pour la vérité&nbsp;» (verset 8). Le soutien matériel n'est pas accessoire : il finance l'avancée de l'Évangile et associe celui qui donne à l'œuvre de celui qu'il envoie. La fidélité se mesure aussi à ce que l'on rend possible chez les autres.</li>
+      <li><b>Le danger de l'orgueil dans la direction.</b> Diotrèphe «&nbsp;qui aime à être le premier&nbsp;» calomnie l'apôtre, refuse les frères et excommunie les dissidents (versets 9-10). La direction biblique est un service exercé dans la pluralité des anciens, jamais une domination personnelle. Méfiez-vous de quiconque aime à être le premier, même là où la doctrine reste correcte.</li>
+      <li><b>Les œuvres, preuve de l'authenticité de la foi.</b> «&nbsp;Celui qui pratique le bien est de Dieu&nbsp;» (verset 11). La conduite ne procure jamais le salut, mais elle le démontre. Une profession de foi que la vie persiste à contredire n'est pas une foi faible : c'est une foi absente. L'assurance repose sur une vie transformée, fruit de la grâce, non sur une simple décision passée.</li>
+      <li><b>Trois hommes, un seul test.</b> Gaïus, Diotrèphe et Démétrius sont trois témoignages publics. Le verdict ne se lit pas dans une confession verbale, mais dans la marche : la foi vivante produit toujours de bonnes œuvres authentiques, et son absence persistante révèle un cœur qui n'a jamais connu Dieu. La sécurité éternelle de l'enfant de Dieu n'est pas menacée ; l'avertissement appelle au discernement.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CONCLUSION ============ -->
+  <article class="section section--conclusion reveal" id="conclusion">
+    <header class="sec-head">
+      <p class="kicker">Conclusion</p>
+      <h2 class="sec-title">De la marche cohérente à la paix promise</h2>
+      <p class="ref">3 Jean 1.1 à 1.15</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">L'ancien, à Gaïus, le bien-aimé, que j'aime dans la vérité.</p>
+        <cite class="verse__ref">3 Jean 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Que la paix soit avec toi ! Les amis te saluent. Salue les amis, chacun en particulier.</p>
+        <cite class="verse__ref">3 Jean 1.15 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">D'un bout à l'autre, 3 Jean pose une seule question, et c'est aussi la nôtre : à quoi reconnaît-on une foi authentique ? Le billet répond par trois hommes, et ramène tout à ce principe que la conduite révèle le cœur, parce que la foi vivante se voit dans une marche fidèle à la vérité.</p>
+    <ul class="points">
+      <li><b>Le chemin parcouru.</b> La série épouse le mouvement de la lettre. Elle part de la joie sereine d'une vie cohérente avec la vérité (semaine 1), s'élargit à la responsabilité concrète de soutenir la mission (semaine 2), bascule dans la tension lorsque l'orgueil de Diotrèphe menace l'Église de l'intérieur (semaine 3), puis se résout par l'appel à imiter le bien, non le mal (semaine 4).</li>
+      <li><b>La vérité, source de l'amour et de la marche.</b> L'arc va de l'admiration d'un modèle, au partenariat actif, à la vigilance contre l'orgueil ecclésial, jusqu'au test personnel de sa propre authenticité. L'auditeur quitte la série non pas durci, mais affermi et appelé à une marche cohérente avec la vérité qu'il confesse.</li>
+      <li><b>2 et 3 Jean, deux faces d'une même fidélité.</b> Les deux billets commandent des attitudes opposées, fermer la porte au faux docteur, l'ouvrir au vrai serviteur, à partir d'un seul principe de fidélité à la vérité. Situer 3 Jean en regard de 2 Jean aide l'assemblée à saisir d'emblée l'unité du propos johannique : l'hôte participe toujours aux œuvres de celui qu'il abrite.</li>
+      <li><b>Diotrèphe, orthodoxe mais perdu.</b> Le portrait de Diotrèphe interroge la gouvernance : il était correct quant à la doctrine, mais perdu quant au cœur. Aidez l'assemblée à voir où elle risque de tolérer l'orgueil et l'ambition tant que la doctrine reste correcte, et posez le modèle biblique de la pluralité d'anciens serviteurs contre la tyrannie ecclésiale.</li>
+      <li><b>La leçon centrale.</b> La culmination est le test moral de l'authenticité, prêché sans glisser ni vers le salut par les œuvres ni vers une assurance bon marché. Jean ne ferme pas le billet sur la sévérité, mais sur le vœu de paix et l'espérance du face à face. L'appel n'est donc pas de durcir le cœur, mais de marcher dans la vérité, car la conduite révèle qui est réellement de Dieu.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LA SÉRIE ============ -->
+  <article class="section reveal" id="predication">
+    <header class="sec-head">
+      <p class="kicker">La série</p>
+      <h2 class="sec-title">Les 4 recherches de la série</h2>
+      <p class="ref">3 Jean 1.1 à 1.15 · 4 semaines</p>
+    </header>
+    <p class="lead">La série «&nbsp;3 Jean : marcher dans la vérité&nbsp;» se déploie sur quatre semaines d'exposition suivie, sans lacune ni chevauchement, de la joie d'une vie cohérente (1.1-4) à l'appel d'imiter le bien et non le mal (1.11-15). Chaque passage dispose d'une recherche exégétique complète : choisissez une semaine pour ouvrir sa recherche et préparer la prédication.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20La%20joie%20d%27une%20vie%20coh%C3%A9rente%20%283%20Jean%201.1-4%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">La joie d'une vie cohérente</span>
+        <span class="semaine__ref">3 Jean 1.1-4<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20Ouvriers%20avec%20la%20v%C3%A9rit%C3%A9%20%283%20Jean%201.5-8%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Ouvriers avec la vérité</span>
+        <span class="semaine__ref">3 Jean 1.5-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20L%27homme%20qui%20aimait%20%C3%AAtre%20le%20premier%20%283%20Jean%201.9-10%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">L'homme qui aimait être le premier</span>
+        <span class="semaine__ref">3 Jean 1.9-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20Imite%20le%20bien%2C%20non%20le%20mal%20%283%20Jean%201.11-15%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">Imite le bien, non le mal</span>
+        <span class="semaine__ref">3 Jean 1.11-15<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;3 Jean : marcher dans la vérité&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

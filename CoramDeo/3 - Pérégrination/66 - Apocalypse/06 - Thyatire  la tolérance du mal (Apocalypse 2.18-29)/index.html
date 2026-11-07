@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apocalypse 2.18-29 · Thyatire : la tolérance du mal · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique d'Apocalypse 2.18-29 : la lettre à Thyatire et la tolérance du mal ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Apocalypse 2.18-29</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Apocalypse 2.18-29</p>
+    <h1 class="hero__title">Thyatire : la tolérance du mal</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Toutes les Églises connaîtront que je suis celui qui sonde les reins et les cœurs, et je rendrai à chacun de vous selon ses œuvres.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Apocalypse 2.23 · NEG</p>
+    <p class="hero__series">Série : <b>Apocalypse : la révélation de Jésus-Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Apocalypse 2.18-29</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Ecris à l'ange de l'Église de Thyatire: Voici ce que dit le Fils de Dieu, celui qui a les yeux comme une flamme de feu, et dont les pieds sont semblables à de l'airain ardent</p>
+        <cite class="verse__ref">Apocalypse 2.18 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Je frapperai de mort ses enfants; et toutes les Églises connaîtront que je suis celui qui sonde les reins et les cœurs, et je rendrai à chacun de vous selon ses œuvres.</p>
+        <cite class="verse__ref">Apocalypse 2.23 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La quatrième des sept lettres occupe la place centrale du cycle des Églises d'Asie et en constitue le sommet de la dérive interne : adressée à la plus petite des sept villes, elle est paradoxalement la plus longue, car la gravité du mal n'a rien à voir avec la taille de l'assemblée.</p>
+    <div class="body">
+      <p>La quatrième des sept lettres (2.18-29) occupe la place centrale du cycle des Églises d'Asie et en constitue le sommet de la dérive interne. Adressée à Thyatire, la plus petite et la plus obscure des sept villes, elle est paradoxalement la plus longue des sept lettres, signe que la gravité du mal n'a rien à voir avec la taille de l'assemblée. Le Christ glorifié reprend ici deux traits de la vision inaugurale du chapitre 1 : «&nbsp;les yeux comme une flamme de feu&nbsp;» (1.14) qui sondent et pénètrent tout, et «&nbsp;les pieds semblables à de l'airain ardent&nbsp;» (1.15) qui annoncent le jugement. MacArthur rappelle que l'airain était le métal de l'autel des holocaustes (Exode 38.1-7); des pieds d'airain ardent signifient que Christ parcourt son Église pour y exercer la discipline contre le péché. Le titre «&nbsp;Fils de Dieu&nbsp;» (2.18), unique dans les sept lettres, affirme sa pleine divinité et son autorité absolue de Juge.</p>
+      <p>Toutes les sept lettres suivent le même moule : destinataire, autoportrait du Christ tiré du chapitre 1, le «&nbsp;je connais tes œuvres&nbsp;», un éloge, un reproche, un avertissement, un appel à entendre l'Esprit, une promesse au vainqueur. Thyatire reçoit d'abord un éloge réel et croissant : amour, foi, service, constance, et des œuvres «&nbsp;plus nombreuses que les premières&nbsp;» (2.19), exact contraire d'Éphèse qui avait abandonné son premier amour (2.4). Mais l'éloge fait place à un reproche d'une sévérité inégalée : l'assemblée «&nbsp;laisse&nbsp;» agir une fausse prophétesse surnommée Jézabel, qui séduit les serviteurs du Christ vers la débauche et les viandes sacrifiées aux idoles. Le péché de Thyatire n'est pas l'hérésie professée mais la tolérance coupable du mal au sein de la communauté.</p>
+      <p>Le cœur théologique du passage est 2.23 : «&nbsp;toutes les Églises connaîtront que je suis celui qui sonde les reins et les cœurs, et je rendrai à chacun de vous selon ses œuvres.&nbsp;» Ce verset est l'aboutissement du fil conducteur de la série : le Christ qui scrute l'intériorité juge selon les œuvres, parce que les œuvres prouvent ou démentent le salut. MacArthur formule la grammaire de l'Évangile sans ambiguïté : les œuvres ne sauvent pas (Éphésiens 2.8-9), mais elles attestent qu'on est sauvé (Jacques 2.14-26). À cela répond la promesse finale au vainqueur, c'est-à-dire à tout chrétien authentique selon la définition johannique (1 Jean 5.4-5) : l'autorité sur les nations et le don de l'étoile du matin, qui n'est autre que Christ lui-même (22.16), gages du règne millénaire à venir.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Apocalypse 2.18 · 2.20 · 2.24</p>
+    </header>
+    <p class="lead">Thyatire était par-dessus tout une ville de corporations de métiers, plus densément organisée en guildes que toute autre cité d'Asie : c'est précisément à ce point de pression économique et sociale que la fausse prophétesse offrait son compromis séduisant.</p>
+    <div class="body">
+      <p>Thyatire était située à mi-chemin entre Pergame et Sardes, sous domination romaine depuis presque trois siècles (vers 190 av. J.-C.). Posée dans une longue vallée s'étirant sur une cinquantaine de kilomètres jusqu'à Pergame, la ville était dépourvue de toute défense naturelle : son histoire n'est qu'une suite de destructions et de reconstructions. Peuplée à l'origine par des soldats d'Alexandre le Grand, elle ne fut longtemps qu'un avant-poste militaire chargé de protéger Pergame. C'est de là qu'était originaire Lydie, la marchande de pourpre convertie sous le ministère de Paul à Philippes alors qu'elle se trouvait en Macédoine pour ses affaires (Actes 16.14-15). L'assemblée de Thyatire est probablement née de cette filière, ou du rayonnement prolongé du ministère de Paul à Éphèse.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Une ville de guildes.</b> Thyatire était par-dessus tout une ville de corporations de métiers, plus densément organisée en guildes que toute autre cité d'Asie : teinturiers de pourpre, foulons, tisserands, potiers, boulangers, travailleurs du bronze. Chacune de ces guildes possédait son dieu tutélaire et tenait des banquets sacrés où l'on mangeait les viandes offertes aux idoles et où la débauche rituelle suivait souvent le festin. Pour un artisan chrétien, refuser d'appartenir à sa corporation revenait à la ruine économique et à l'exclusion sociale; y participer, c'était se compromettre avec l'idolâtrie. C'est précisément à ce point de pression que la fausse prophétesse offrait un compromis séduisant, en enseignant qu'on pouvait participer à ces rites sans danger pour l'âme.</li>
+      <li><b>Le surnom de Jézabel.</b> Le surnom «&nbsp;Jézabel&nbsp;» renvoie à la reine de l'Ancien Testament, l'épouse païenne d'Achab qui entraîna Israël dans l'idolâtrie de Baal et l'immoralité, et fit massacrer les prophètes de l'Éternel (1 Rois 16.31; 21.25-26; 2 Rois 9.22). MacArthur explique que cette femme de Thyatire influençait l'Église exactement comme la Jézabel antique avait corrompu Israël. Sa doctrine relevait des «&nbsp;profondeurs de Satan&nbsp;» (2.24) : un libertinage qui, selon les enseignements précurseurs du gnosticisme, prétendait qu'on avait toute latitude pour explorer le domaine de Satan et commettre le mal avec le corps, sans que cela n'affecte en rien l'esprit.</li>
+      <li><b>Un mal qui se reproduit.</b> Quand Jean écrivit, vers 95, l'Église avait une quarantaine d'années; l'enseignement de Jézabel avait déjà engendré une «&nbsp;deuxième génération&nbsp;» de partisans (2.23, «&nbsp;ses enfants&nbsp;»), preuve que le mal toléré se propage et se reproduit. La permissivité d'hier devient l'hérésie installée de demain : ce que l'assemblée souffre par fausse charité finit par enfanter ses propres disciples.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la lettre : de la tolérance coupable (<i>aphiemi</i>) à la séduction des faux docteurs (<i>planao</i>), du Christ qui sonde l'intériorité (<i>eraunao</i>) au jugement selon les œuvres (<i>erga</i>) et à la victoire du vrai croyant (<i>nikao</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">tolérer (laisser)</span><span class="mot-gr">aphiemi</span></th>
+            <td class="col-sens">laisser aller, permettre, abandonner, ne pas empêcher</td>
+            <td>Le verbe traduit par «&nbsp;tu laisses&nbsp;» (2.20) signifie permettre, tolérer, ne pas réprimer. Là est le cœur du reproche : l'assemblée ne professe pas l'erreur de Jézabel, elle la souffre passivement. MacArthur souligne que le péché de Thyatire est la permissivité, la tolérance coupable du mal sous couvert d'amour et d'ouverture. Le même verbe sert ailleurs au pardon des péchés, mais ici il dénonce une indulgence qui trahit le troupeau au lieu de le protéger.</td>
+            <td><span class="trad"><span><b>S21</b> tu laisses</span><span><b>NEG79</b> tu laisses</span><span><b>Darby</b> tu laisses faire</span><span><b>LSG</b> tu laisses</span><span><b>KJF</b> tu permets</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">séduire</span><span class="mot-gr">planao</span></th>
+            <td class="col-sens">faire errer, égarer, détourner du droit chemin, fourvoyer</td>
+            <td>Le verbe (2.20) évoque l'image du berger ou du voyageur que l'on détourne de la route pour le perdre. C'est le terme par lequel le Nouveau Testament désigne l'œuvre des faux docteurs et de Satan lui-même, «&nbsp;celui qui séduit toute la terre&nbsp;» (12.9; cf. 13.14; 19.20). La séduction de Jézabel n'est pas une simple divergence d'opinion : c'est un égarement spirituel qui conduit les serviteurs du Christ à la débauche et à l'idolâtrie. MacArthur range cet enseignement parmi les «&nbsp;profondeurs de Satan&nbsp;».</td>
+            <td><span class="trad"><span><b>S21</b> égarer</span><span><b>NEG79</b> séduire</span><span><b>Darby</b> séduire</span><span><b>LSG</b> séduire</span><span><b>KJF</b> séduire</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">sonde</span><span class="mot-gr">eraunao</span></th>
+            <td class="col-sens">scruter, fouiller, examiner à fond, investiguer</td>
+            <td>Au verset 23, «&nbsp;celui qui sonde les reins et les cœurs&nbsp;» emploie un verbe qui dit l'examen minutieux et pénétrant. Les «&nbsp;reins&nbsp;» (grec <i>nephros</i>) désignaient pour l'esprit hébreu le siège des émotions et des désirs les plus secrets, le «&nbsp;cœur&nbsp;» (<i>kardia</i>) celui de la pensée et de la volonté. MacArthur rappelle que Dieu connaît parfaitement l'intimité du cœur de chaque homme et qu'on ne peut lui dissimuler aucun mal (Psaume 7.10; Proverbes 24.12; Jérémie 11.20; 17.10; 20.12). Cette prérogative divine de sonder appartient au Christ : elle affirme sa divinité et fonde la justice de son jugement.</td>
+            <td><span class="trad"><span><b>S21</b> sonde</span><span><b>NEG79</b> sonde</span><span><b>Darby</b> sonde</span><span><b>LSG</b> sonde</span><span><b>KJF</b> scrute</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">œuvres</span><span class="mot-gr">erga</span></th>
+            <td class="col-sens">actes, ouvrages, travaux, ce que l'on fait</td>
+            <td>Le mot revient comme un refrain dans la lettre : «&nbsp;je connais tes œuvres&nbsp;» (2.19), «&nbsp;selon ses œuvres&nbsp;» (2.23), «&nbsp;mes œuvres&nbsp;» à garder (2.26). MacArthur enseigne que c'est toujours sur la base des œuvres que s'effectue le jugement à venir, car les œuvres rendent visible la réalité invisible du cœur. Elles ne procurent jamais le salut (Éphésiens 2.8-9), mais elles en sont la preuve irrécusable (Jacques 2.14-26). Le lien est direct avec Jacques : la foi qui sauve n'est jamais seule, elle agit.</td>
+            <td><span class="trad"><span><b>S21</b> œuvres</span><span><b>NEG79</b> œuvres</span><span><b>Darby</b> œuvres</span><span><b>LSG</b> œuvres</span><span><b>KJF</b> œuvres</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">vaincra</span><span class="mot-gr">nikao</span></th>
+            <td class="col-sens">être victorieux, l'emporter, triompher</td>
+            <td>Refrain des sept lettres (2.7, 11, 17, 26; 3.5, 12, 21), «&nbsp;à celui qui vaincra&nbsp;» désigne, selon la définition johannique, tout chrétien véritable : être chrétien, c'est être un vainqueur (1 Jean 5.4-5). La même racine décrit l'Agneau qui a vaincu (5.5) et les rachetés qui triomphent par son sang (12.11). À Thyatire, le vainqueur est celui qui garde «&nbsp;jusqu'à la fin&nbsp;» les œuvres du Christ (2.26) : la persévérance finale est la marque de la foi authentique, conformément au Lordship et à la doctrine de la persévérance des saints.</td>
+            <td><span class="trad"><span><b>S21</b> vaincra</span><span><b>NEG79</b> vaincra</span><span><b>Darby</b> vaincra</span><span><b>LSG</b> vaincra</span><span><b>KJF</b> vaincra</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Apocalypse 2.18-29</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Apocalypse 2.18-29 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ap 2.1-3.22, 2.18, 2.20, 2.22, 2.23, 2.24, 2.26, 2.27, 2.28.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">66-10</span></th>
+            <td><a href="https://www.gty.org/sermons/66-10" target="_blank" rel="noopener">Thyatira: The Church That Tolerates Sin  Part 2</a></td>
+            <td>Apocalypse 2.18-29</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">66-9</span></th>
+            <td><a href="https://www.gty.org/sermons/66-9" target="_blank" rel="noopener">Thyatira: The Church That Tolerates Sin, Part 1</a></td>
+            <td>Apocalypse 2.18-20</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-475</span></th>
+            <td><a href="https://www.gty.org/sermons/90-475" target="_blank" rel="noopener">The Lord’s Word to His Church: Thyatira</a></td>
+            <td>Apocalypse 2.18-29</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Thyatire est le type de l'Église permissive, celle qui a beaucoup d'œuvres et de zèle, mais qui tolère le mal en son sein par fausse charité. Le Christ s'y présente en Juge, car ce qui commençait à Pergame est ici arrivé à pleine maturité : le mal toléré a pénétré jusqu'aux «&nbsp;profondeurs de Satan&nbsp;».</p>
+    <div class="body">
+      <p>MacArthur rappelle que les sept lettres s'adressent à de véritables Églises d'Asie au premier siècle, mais elles représentent aussi les sortes d'Églises de toute l'ère présente, et le message du Christ leur demeure pertinent en tout temps. Thyatire est le type de l'Église permissive, celle qui a beaucoup d'œuvres et de zèle, mais qui tolère le mal en son sein par fausse charité. Le Christ se présente à elle en Juge : les yeux de flamme qui sondent, les pieds d'airain ardent du jugement, le titre de Fils de Dieu. Ce qui commençait à Pergame est ici arrivé à pleine maturité : le mal toléré a pénétré jusqu'aux «&nbsp;profondeurs de Satan&nbsp;».</p>
+      <p>Le contraste avec Éphèse est voulu et instructif. Éphèse avait la doctrine pure mais avait perdu l'amour (2.4); Thyatire a l'amour et les œuvres croissantes mais a perdu le discernement doctrinal et moral. MacArthur en tire une leçon d'équilibre : l'amour sans la vérité dégénère en tolérance du péché, comme la vérité sans l'amour dégénère en orthodoxie froide. Jézabel exploitait la pression des corporations : ce que l'on fait du corps, enseignait-elle, n'atteint pas l'esprit, si bien que ses adeptes se vantaient eux-mêmes de connaître les «&nbsp;profondeurs de Satan&nbsp;», comme ils les appelaient, sans dommage pour leur âme. La patience du Christ envers elle fut réelle : «&nbsp;je lui ai donné du temps afin qu'elle se repente&nbsp;» (2.21), mais elle refusa.</p>
+      <p>Sur le jugement annoncé, MacArthur lit le texte au sens littéral et grave. Le «&nbsp;lit&nbsp;» sur lequel Christ va la jeter (2.22) répond à l'ironie du jugement : elle avait péché sur un lit de luxure et sur la couche des festins idolâtres, elle recevra un lit de mort, qui est l'enfer, où elle restera couchée pour toujours. La «&nbsp;grande tribulation&nbsp;» envoyée à ceux qui commettent l'adultère avec elle vise ses complices impénitents; frapper «&nbsp;de mort ses enfants&nbsp;» (2.23) désigne la seconde génération de disciples qui ont fait leur sa débauche. Ce n'est pas une menace symbolique mais un jugement réel : la mort pour Jézabel et ses enfants, un châtiment sévère pour ceux qui la suivent sans se repentir. Le but déclaré est pédagogique pour toute l'Église : «&nbsp;toutes les Églises connaîtront que je suis celui qui sonde les reins et les cœurs&nbsp;».</p>
+      <p>La grammaire de l'Évangile que MacArthur dégage de 2.23 tient en une phrase : «&nbsp;je rendrai à chacun selon ses œuvres&nbsp;». Le jugement à venir se mesure toujours aux œuvres, car elles révèlent le cœur que Christ sonde. Les œuvres ne sauvent pas (Éphésiens 2.8-9), mais elles prouvent le salut (Jacques 2.14-26) : c'est exactement la position de Jacques sur les deux sortes de foi, la vivante et la morte. La promesse au vainqueur scelle le tout : l'autorité sur les nations et la «&nbsp;verge de fer&nbsp;» (2.27, citant Psaume 2.9) renvoient au règne millénaire terrestre et littéral où Christ partagera sa domination avec ses saints; l'«&nbsp;étoile du matin&nbsp;» (2.28) est Christ lui-même (22.16), la pleine communion future avec le Seigneur revenu en gloire. MacArthur y voit la preuve d'un royaume millénaire terrestre : sans millénium, dit-il, cette promesse n'a pas de sens.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la lettre, de l'arrière-plan vétérotestamentaire de Jézabel et de Balaam au psaume messianique du règne, jusqu'au pôle paulinien de la grâce et à la définition johannique du vainqueur.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Rois 16.31; 21.25-26; 2 Rois 9.22</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La Jézabel historique, épouse d'Achab, entraîna Israël dans l'idolâtrie de Baal et l'immoralité; la fausse prophétesse de Thyatire reçoit son nom parce qu'elle corrompt l'Église exactement comme l'autre corrompit Israël.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 22 à 25; Apocalypse 2.14</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La doctrine de Balaam, déjà reprochée à Pergame, est de même nature que celle de Jézabel : induire le peuple de Dieu aux festins idolâtres et à la fornication; les deux lettres dénoncent le même compromis avec l'idolâtrie.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 7.10; Jérémie 17.10; Proverbes 24.12</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Sonder les reins et les cœurs est dans l'Ancien Testament une prérogative exclusive de Dieu; en se l'attribuant en 2.23, le Christ affirme sa pleine divinité et la justice de son jugement.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 2.8-9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'autorité sur les nations et la verge de fer qui brise les vases d'argile (2.26-27) citent le psaume messianique du règne du Fils; MacArthur y lit le règne millénaire terrestre et littéral partagé avec les vainqueurs.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jacques 2.14-26</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le «&nbsp;je rendrai à chacun selon ses œuvres&nbsp;» (2.23) renvoie directement à la doctrine de Jacques : les œuvres ne sauvent pas mais prouvent le salut; la foi qui sauve n'est jamais seule, elle agit.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.8-9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Contrepoint indispensable : le salut est par grâce au moyen de la foi, sans les œuvres; le jugement selon les œuvres de 2.23 mesure la réalité de la foi, il ne fonde pas le salut sur le mérite.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 5.4-5</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La définition johannique du vainqueur : tout vrai croyant est un vainqueur qui triomphe du monde par la foi; la promesse de 2.26 s'adresse donc à tout chrétien authentique, non à une élite spirituelle.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 1.14-15; 22.16</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les yeux de flamme et les pieds d'airain ardent du Juge (2.18) reprennent la vision inaugurale; l'étoile du matin promise au vainqueur (2.28) est identifiée plus loin au Christ lui-même, gage de la pleine communion future.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la lettre. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le Christ qui sonde et juge selon les œuvres</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Celui qui a les yeux comme une flamme de feu&nbsp;» sonde les reins et les cœurs et rend à chacun selon ses œuvres (2.18, 23).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Christ exerce une prérogative divine : nul ne peut lui cacher l'intériorité de son cœur. Le jugement à venir se mesure aux œuvres parce qu'elles révèlent ce que le cœur cache. Pour l'assemblée, c'est l'appel à l'authenticité : la profession de foi sera éprouvée par la conduite réelle, et Christ marche déjà au milieu de son Église pour y discipliner le péché.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Les œuvres, preuve du salut (lien avec Jacques)</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je rendrai à chacun de vous selon ses œuvres&nbsp;» (2.23); «&nbsp;à celui qui gardera jusqu'à la fin mes œuvres&nbsp;» (2.26).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Les œuvres ne procurent jamais le salut (Éphésiens 2.8-9), mais elles le prouvent (Jacques 2.14-26) : la foi qui sauve n'est jamais seule. Pour votre assemblée, cela tranche toute fausse assurance : une profession sans fruit est une foi morte, et la persévérance finale dans les œuvres du Christ est la marque du vrai croyant, conformément au Lordship et à la persévérance des saints.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La tolérance du mal, péché de l'Église permissive</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Ce que j'ai contre toi, c'est que tu laisses la femme Jézabel... enseigner et séduire mes serviteurs&nbsp;» (2.20).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le reproche ne vise pas une hérésie professée mais une indulgence coupable : l'assemblée souffre le mal au nom de l'amour. L'amour sans la vérité dégénère en tolérance du péché. Pour votre assemblée, c'est l'exigence du discernement et de la discipline : aimer le pécheur n'est jamais excuser le péché, et le silence devant la séduction trahit le troupeau.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le châtiment réel, conscient et éternel de l'impénitence</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je vais la jeter sur un lit, et envoyer une grande tribulation... je frapperai de mort ses enfants&nbsp;» après un temps de repentance refusé (2.21-23).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La patience de Christ est réelle mais a un terme; le refus de se repentir appelle un jugement réel, non symbolique. MacArthur lit le «&nbsp;lit&nbsp;» comme l'enfer, où l'impénitente restera couchée éternellement. Pour votre assemblée, c'est l'urgence de la repentance tant que le temps est donné.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La récompense du vainqueur et le règne millénaire</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je donnerai autorité sur les nations. Il les paîtra avec une verge de fer... et je lui donnerai l'étoile du matin&nbsp;» (2.26-28).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Au sens littéral et prémillénariste, le vainqueur partagera le règne terrestre et millénaire de Christ sur les nations (Psaume 2.9; Apocalypse 20.1-6), et recevra Christ lui-même, l'étoile du matin (22.16). Pour votre assemblée, l'espérance du règne à venir soutient la fidélité présente : tenir ferme «&nbsp;jusqu'à ce que je vienne&nbsp;» (2.25), dans l'attente du retour imminent et corporel du Roi.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le Christ se présente à Thyatire avec «&nbsp;les yeux comme une flamme de feu&nbsp;» qui sondent les reins et les cœurs (2.18, 23). En quoi cette vision du Juge qui pénètre l'intériorité change-t-elle la manière dont votre assemblée comprend l'authenticité de sa foi, par-delà l'apparence des œuvres?</li>
+      <li>Thyatire avait l'amour, la foi, le service, la constance et des œuvres croissantes (2.19), et pourtant le Christ a contre elle un reproche d'une sévérité inégalée. Comment expliquer qu'une Église si active et si aimante puisse encourir un tel jugement, et qu'est-ce que cela révèle sur le danger de l'amour sans le discernement?</li>
+      <li>Le péché de Thyatire n'est pas d'enseigner l'erreur, mais de «&nbsp;laisser&nbsp;» faire Jézabel (2.20). Où, dans la vie de l'Église contemporaine, la tolérance du mal se déguise-t-elle en charité, en ouverture ou en respect de la liberté individuelle?</li>
+      <li>MacArthur résume la grammaire de l'Évangile en 2.23 : les œuvres ne sauvent pas (Éphésiens 2.8-9) mais prouvent le salut (Jacques 2.14-26). Comment tenir ensemble, sans les confondre, le salut par grâce seule et le jugement selon les œuvres, pour éviter à la fois le légalisme et la fausse assurance?</li>
+      <li>Le Christ donne «&nbsp;du temps&nbsp;» à Jézabel pour se repentir, et elle refuse (2.21). Que nous apprend cette patience suivie d'un jugement réel sur la nature de la repentance et sur l'urgence d'y répondre tant que le temps est offert?</li>
+      <li>La promesse au vainqueur est l'autorité sur les nations, la verge de fer du Psaume 2 et l'étoile du matin (2.26-28). En quoi l'espérance littérale du règne millénaire et du retour de Christ doit-elle nourrir concrètement la persévérance de votre assemblée «&nbsp;jusqu'à ce qu'il vienne&nbsp;» (2.25)?</li>
+      <li>Christ affirme que «&nbsp;toutes les Églises connaîtront&nbsp;» son jugement sur Thyatire (2.23). Comment la discipline exercée sur une assemblée locale sert-elle d'avertissement et d'enseignement à l'Église universelle, et que devons-nous en retenir aujourd'hui?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Apocalypse 2.18-29 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Apocalypse : la révélation de Jésus-Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Apocalypse</a>
+    <a href="Recherche-MacArthur-Apocalypse-2-18-29.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

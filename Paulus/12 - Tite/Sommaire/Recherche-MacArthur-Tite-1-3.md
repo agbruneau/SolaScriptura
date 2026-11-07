@@ -1,0 +1,244 @@
+# Recherche exégétique (perspective MacArthur) : Tite 1-3
+
+**Orner la doctrine de Dieu notre Sauveur : anciens qualifiés, Église sainte et témoignage rempli de grâce dans un monde païen**
+
+> « Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée. Elle nous enseigne à renoncer à l’impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété, en attendant la bienheureuse espérance, et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ. Il s’est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres. » (Tite 2.11-14, NEG)
+
+11 avril 2026 · André-Guy Bruneau
+
+---
+
+## Contexte du passage
+
+> « Paul, serviteur de Dieu, et apôtre de Jésus-Christ pour la foi des élus de Dieu et la connaissance de la vérité qui est selon la piété - lesquelles reposent sur l’espérance de la vie éternelle, promise avant tous les siècles par le Dieu qui ne ment point, et qui a manifesté sa parole en son temps par la prédication qui m’a été confiée d’après l’ordre de Dieu notre Sauveur - » (Tite 1.1-3, NEG)
+
+> « Je t’ai laissé en Crète, afin que tu mettes en ordre ce qui reste à régler, et que, selon mes instructions, tu établisses des anciens dans chaque ville, » (Tite 1.5, NEG)
+
+> « attaché à la vraie parole telle qu’elle a été enseignée, afin d’être capable d’exhorter selon la saine doctrine et de réfuter les contradicteurs. » (Tite 1.9, NEG)
+
+> « Tout est pur pour ceux qui sont purs; mais rien n’est pur pour ceux qui sont souillés et incrédules; leur intelligence et leur conscience sont souillées. Ils font profession de connaître Dieu, mais ils le renient par leurs œuvres, étant abominables, rebelles, et incapables d’aucune bonne œuvre. » (Tite 1.15-16, NEG)
+
+> « Pour toi, dis les choses qui sont conformes à la saine doctrine. » (Tite 2.1, NEG)
+
+> « à ne rien dérober, mais à montrer toujours une parfaite fidélité, afin de faire honorer en tout la doctrine de Dieu notre Sauveur. » (Tite 2.10, NEG)
+
+> « Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée. Elle nous enseigne à renoncer à l’impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété, en attendant la bienheureuse espérance, et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ. Il s’est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres. » (Tite 2.11-14, NEG)
+
+> « Dis ces choses, exhorte, et reprends, avec une pleine autorité. Que personne ne te méprise. » (Tite 2.15, NEG)
+
+> « Rappelle-leur d’être soumis aux magistrats et aux autorités, d’obéir, d’être prêts à toute bonne œuvre, de ne médire de personne, d’être pacifiques, modérés, pleins de douceur envers tous les hommes. » (Tite 3.1-2, NEG)
+
+> « Mais, lorsque la bonté de Dieu notre Sauveur et son amour pour les hommes ont été manifestés, il nous a sauvés, non à cause des œuvres de justice que nous aurions faites, mais selon sa miséricorde, par le bain de la régénération et le renouvellement du Saint-Esprit. Il l’a répandu sur nous avec abondance par Jésus-Christ notre Sauveur, afin que, justifiés par sa grâce, nous devenions héritiers dans l’espérance de la vie éternelle. » (Tite 3.4-7, NEG)
+
+> « Cette parole est certaine, et je veux que tu affirmes ces choses, afin que ceux qui ont cru en Dieu s’appliquent à pratiquer de bonnes œuvres. Voilà ce qui est bon et utile aux hommes. » (Tite 3.8, NEG)
+
+Douzième épître canonique de l'apôtre Paul selon l'ordre chronologique établi par John MacArthur et avant-dernière lettre de son ministère (rédigée entre 62 et 64 apr. J.-C., à la même époque que 1 Timothée et juste avant 2 Timothée en 67), l'épître à Tite fut écrite entre la première et la seconde captivité romaine de l'apôtre, depuis Corinthe ou les environs de Nicopolis où il comptait passer l'hiver (3.12 ; Introduction GTY à Tite ; 56-1). Après avoir évangélisé l'île de Crète avec Tite, Paul y avait laissé son fidèle compagnon d'origine grecque (Ga 2.1-3 ; 2 Co 2.13 ; 7.6, 13-14 ; 8.6, 16, 23 ; 12.18) pour achever de mettre en ordre les jeunes assemblées crétoises, avant que Zénas et Apollos ne lui apportent cette lettre (1.5 ; 3.13).
+
+Relevant du genre littéraire de l'épître pastorale et ecclésiale, Tite ne vise pas d'abord à réfuter une hérésie dogmatique complexe comme Galates ou Colossiens - Paul ayant pleine confiance dans la solidité théologique de Tite -, mais à équiper de jeunes Églises entourées d'une culture païenne notoirement corrompue pour une évangélisation crédible et féconde (Introduction GTY ; 56-1, 56-12). Le plan du livre suit trois cercles concentriques correspondant aux trois chapitres : 1) l'ordre ecclésial parmi les conducteurs par l'établissement d'anciens irréprochables et la réfutation des séducteurs judaïsants (chapitre 1) ; 2) la beauté morale de la famille de Dieu au sein de l'assemblée locale et du foyer, fondée sur l'épiphanie de la grâce salvatrice (chapitre 2) ; 3) le témoignage doux, soumis et zélé pour les bonnes œuvres dans la société païenne, enraciné dans la régénération souveraine par le Saint-Esprit (chapitre 3).
+
+## Arrière-plan historique et culturel
+
+Située au carrefour de la Méditerranée orientale, au sud de la mer Égée, l'île montagneuse de Crète (environ 260 km de long sur 12 à 56 km de large) fut le berceau de l'ancienne civilisation minoenne et était surnommée par Homère « l'île aux cent villes » (*Iliade* 2.649). Des Juifs crétois se trouvaient à Jérusalem le jour de la Pentecôte (Actes 2.11), et le navire conduisant Paul captif vers Rome avait relâché à Beaux-Ports en Crète (Actes 27.7-13, 21), mais c'est après sa libération de sa première prison romaine (vers 62 apr. J.-C.) que Paul y conduisit une campagne d'implantation d'Églises avec Tite (56-1, 56-5).
+
+Dans tout le monde gréco-romain, les Crétois avaient une réputation proverbiale de fausseté, de brutalité et de cupidité : le verbe grec *krētizō* (« agir en Crétois ») signifiait « mentir, tromper avec effronterie », et l'historien grec Polybe (*Histoires* 6.46) écrivait qu'il était presque impossible de trouver ailleurs des mœurs privées plus fourbes et une rapacité plus sordide. Paul cite lui-même en Tite 1.12 le célèbre hexamètre du poète et philosophe crétois Épiménide de Cnossos (VIe siècle av. J.-C., repris par Callimaque dans son *Hymne à Zeus*) : « Crétois toujours menteurs, méchantes bêtes, ventres paresseux » (*56-10*, *56-11*). C'est au cœur de cette société dépravée - et face à des faux docteurs issus de la circoncision qui colportaient des « fables judaïques » et des « commandements d'hommes » ascétiques pour un gain honteux (1.10-14) - que les Églises de Crète devaient démontrer par leurs bonnes œuvres la puissance transformatrice de Dieu notre Sauveur.
+
+Trois détails échappent au lecteur moderne.
+
+- **Le profil spirituel de Tite, l'homme des missions impossibles.** Dans son introduction et son quatrième sermon (*56-4*), John MacArthur retrace le portrait de Tite à travers ses treize mentions dans le Nouveau Testament (Ga 2.1, 3 ; neuf fois dans 2 Corinthiens ; Tite 1.4 ; 2 Tm 4.10). Converti païen amené à Christ par Paul (« mon enfant légitime en notre commune foi », 1.4), non circoncis pour attester la pureté de l'Évangile de la grâce à Jérusalem (Ga 2.3-5), Tite possédait une trempe morale, une maturité administrative et un courage spirituel exceptionnels : là où Corinthe menaçait de se rebeller contre Paul, c'est Tite que l'apôtre envoya redresser la situation et organiser la collecte (2 Co 7.6-15 ; 8.6, 16-23), avant de lui confier la tâche redoutable de structurer seul toutes les assemblées des villes de Crète (1.5).
+- **La structure évangélique et apologétique du livre selon MacArthur.** Comme le souligne MacArthur (*Introduction GTY* ; *56-12*, *56-18*, *56-24*), le fil conducteur qui unifie les trois chapitres de Tite est la crédibilité de l'évangélisation : Dieu est appelé six fois « notre Sauveur » (trois fois Dieu le Père en 1.3 ; 2.10 ; 3.4 ; trois fois Jésus-Christ en 1.4 ; 2.13 ; 3.6), et l'objectif suprême de l'ordre ecclésial (ch. 1), de l'éthique familiale et intergénérationnelle (ch. 2) et du civisme doux et secourable (ch. 3) est « que la parole de Dieu ne soit pas calomniée » (2.5), « que l'adversaire soit confus » (2.8) et que les croyants « fassent honorer [ornent comme un bijou, *kosmōsin*] en tout la doctrine de Dieu notre Sauveur » (2.10).
+- **Continuité sans coupure et unité de pensée à travers les trois chapitres.** Les vingt-six prédications de John MacArthur (*56-1* à *56-26*) épousent exactement le découpage des trois chapitres sans qu'aucun sermon ne chevauche une frontière capitulaire (ch. 1 : *56-1* à *56-11* ; ch. 2 : *56-12* à *56-22* ; ch. 3 : *56-23* à *56-26*). Toutefois, MacArthur relève dans son sermon *56-22* sur Tite 2.15 (« Dis ces choses, exhorte, et reprends, avec une pleine autorité ») que ce verset charnière conclut à la fois l'enseignement du chapitre 2 et prépare directement l'impératif d'ouverture du chapitre 3 (« Rappelle-leur d'être soumis aux magistrats... », 3.1).
+
+## État du texte
+
+Sources consultées : grec : SBLGNT et son apparat critique (lus sur les 3 chapitres); grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Textus Receptus (Bible Hub); versions françaises : NEG79, LSG, S21, Darby, NBS. **Numérotation.** Aucun écart : la numérotation des 46 versets de Tite 1 à 3 est strictement identique dans le grec (SBLGNT), la NEG79, la LSG, la S21, la Darby, la NBS et la NASB de MacArthur (seule la ponctuation de la phrase charnière entre 3.8 et 3.9 varie légèrement entre la LSG et la NEG79).
+
+- **Tite 1.4.** Forme binaire *charis kai eirēnē* (« grâce et paix », א*, A, C*, D*, F, G, P, SBLGNT, NA28, Westcott et Hort, Tregelles), ou forme ternaire *charis, eleos, eirēnē* (« grâce, miséricorde, paix », א2, C2, D2, K, L, Ψ, texte byzantin, Textus Receptus), suivie de *Christou Iēsou* (א, A, C, D*, SBLGNT) ou *Kyriou Iēsou Christou* (D2, K, L, P, RP, TR). **NEG79.** « Que la grâce et la paix te soient données de la part de Dieu le Père et de Jésus-Christ notre Sauveur! » : la NEG79, la LSG, la Darby, la NBS et la NASB suivent la leçon ancienne (la S21 indique « [la compassion] » et « [du Seigneur] » entre crochets). **Portée.** L'addition byzantine de *eleos* est une harmonisation liturgique avec 1 Timothée 1.2 et 2 Timothée 1.2 ; MacArthur (56-4) expose le binôme « grâce et paix » comme la synthèse de l'œuvre rédemptrice du Père et du Fils.
+- **Tite 2.5.** Adjectif composé *oikourgous* (« travaillant à la maison, actives au foyer », de *oikos* + *ergon*, א*, A, C, D*, F, G, P, SBLGNT, NA28, Westcott et Hort, Tregelles), contre *oikourous* (« gardiennes de la maison, attachées au foyer », de *oikos* + *ouros*, א2, D2, H, K, L, Ψ, texte byzantin, Textus Receptus). **NEG79.** « occupées aux soins domestiques » : la NEG79 et la LSG (ainsi que la Darby « occupées des soins de la maison », la NBS « occupées aux travaux domestiques », la S21 « s'occuper de leur foyer » et la NASB « workers at home ») traduisent le sens d'*oikourgous*. **Portée.** Les deux termes grecs, proches par le son (itacisme ou assimilation à un terme classique plus fréquent), désignent la même réalité pratique sur laquelle insiste MacArthur (56-15) : la responsabilité prioritaire de la jeune épouse et mère chrétienne d'œuvrer au soin de son foyer afin que la Parole de Dieu ne soit pas calomniée.
+- **Tite 2.7.** Binôme *aphthorian, semnotēta* (« pureté / incorruption, dignité », א, A, C, D*, K, P, SBLGNT, NA28, Westcott et Hort, Tregelles), contre la triade *adiaphthorian, semnotēta, aphtharsian* (« incorruption, gravité, sincérité / intégrité », D2, L, Ψ, texte byzantin, Textus Receptus). **NEG79.** « et donnant un enseignement pur, digne » : la NEG79, la LSG, la Darby, la NBS et la NASB suivent la leçon ancienne à deux termes (la S21 ajoute « [et d'intégrité] » entre crochets). **Portée.** *Aphthoria* (forme ancienne remplacée par le synonyme plus courant *adiaphthoria* dans la tradition byzantine, puis doublée de la glose marginale *aphtharsian*) exprime, comme le souligne MacArthur (56-16), la pureté incorruptible de la doctrine et des motifs du pasteur.
+- **Tite 2.13.** Ordre *Iēsou Christou* (א2, F, G, H, K, L, P, Ψ, SBLGNT, NA28, texte byzantin, Textus Receptus), ou ordre inverse *Christou Iēsou* (א*, A, C, D*, Westcott et Hort, Tregelles) après la formule *tou megalou Theou kai Sōtēros hēmōn*. **NEG79.** « et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ » : la NEG79, la S21, la Darby, la NBS et la NASB rendent fidèlement l'article unique gouvernant « grand Dieu et Sauveur » (tandis que la LSG dédoublait à tort l'article : « du grand Dieu et de notre Sauveur »). **Portée.** Tous les manuscrits grecs sans exception attestent la construction à article unique *tou megalou Theou kai Sōtēros hēmōn* (règle de Granville Sharp), que la NEG79 a heureusement restaurée par rapport à la LSG et qui prouve grammaticalement que Jésus-Christ est « notre grand Dieu et Sauveur » (MacArthur, 56-20, 56-21).
+
+## Structure et grammaire
+
+**Plan de la péricope**
+
+- **Tite 1.1-1.16.** L'ordre divin parmi les conducteurs de l'Église : la salutation apostolique définissant le ministère selon la piété et l'espérance de la vie éternelle (1.1-4), le mandat d'établir dans chaque ville des anciens/évêques irréprochables dans leur foyer, leur caractère et leur maîtrise de la saine doctrine (1.5-9), et l'obligation de fermer la bouche aux faux docteurs rebelles et cupides qui renient Dieu par leurs œuvres (1.10-16). Marqueur : Salutation *Paulos doulos Theou... Titō gnēsiō teknō* (1.1-4), déclaration de mandat *Toutou charin apelipon se en Krētē hina...* (1.5), explication causale sur l'évêque *dei gar ton episkopon...* (1.7) et contraste polémique *Eisin gar polloi kai anypotaktoi... hous dei epistomizein* (1.10-11).
+- **Tite 2.1-2.15.** Le caractère d'une Église saine et le fondement de la grâce salvatrice : l'exhortation à enseigner à chaque groupe (vieillards, femmes âgées, jeunes femmes, jeunes gens avec Tite pour modèle, et serviteurs) une conduite qui pare d'honneur la doctrine de Dieu notre Sauveur (2.1-10), fondée sur la manifestation historique de la grâce salvatrice qui nous éduque à vivre saintement en attendant l'apparition glorieuse de notre grand Dieu et Sauveur Jésus-Christ (2.11-14), et conclue par le mandat d'enseigner avec une pleine autorité (2.15). Marqueur : Opposition personnelle emphatique *Sy de lalei ha prepei tē hygiainousē didaskalia* (2.1), trois propositions finales apologétiques *hina...* (2.5, 8, 10), fondement doctrinal *Epephanē gar hē charis tou Theou* (2.11) et triple impératif d'autorité *Tauta lalei kai parakalei kai elenche* (2.15).
+- **Tite 3.1-3.15.** La responsabilité du croyant dans une société païenne et le miracle de la régénération : l'appel à la soumission citoyenne, à la bonté active et à la douceur envers tous les hommes (3.1-2), motivé par le contraste entre notre dépravation passée (3.3) et notre salut gratuit par la miséricorde de Dieu, le bain de la régénération et le renouvellement du Saint-Esprit (3.4-7), suivi de l'exhortation à s'appliquer aux bonnes œuvres, à fuir les querelles stériles, à écarter l'homme sectaire et à pourvoir aux besoins des ouvriers de l'Évangile (3.8-15). Marqueur : Impératif de rappel *Hypomimnēske autous* (3.1), contraste temporel et sotériologique *Ēmen gar pote... Hote de... esōsen hēmas* (3.3-5), formule solennelle *Pistos ho logos* (3.8) et instructions finales *Hotan pempsō... Aspazontai se... Hē charis meta pantōn hymōn* (3.12-15).
+
+**Observations grammaticales**
+
+- **Tite 1.5-7.** En *kai katastēsēs kata polin **presbyterous**... ei tis estin **anenklētos**... dei gar ton **episkopon anenklēton** einai*, le passage immédiat du pluriel *presbyterous* (« anciens », v. 5) au singulier générique *ton episkopon* (« l'évêque / le surveillant », v. 7) relié par la conjonction causale *gar* et la reprise du même prédicat *anenklētos* (« irréprochable ») démontre syntaxiquement que *presbyteros* et *episkopos* désignent une seule et même charge pastorale exercée par une pluralité d'hommes dans chaque Église locale (MacArthur, 56-5, 56-7).
+- **Tite 2.11-14.** Les quatre versets de Tite 2.11-14 forment une seule période grecque articulée autour de l'indicatif aoriste passif principal ***Epephanē** gar hē charis tou Theou sōtērios pasin anthrōpois* (« Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée », v. 11) : cette grâce personnifiée gouverne le participe présent actif ***paideuousa** hēmas* (« nous éduquant / disciplinant continuellement »), qui commande la proposition finale au subjonctif aoriste *hina **arnēsamenoi**... sōphronōs kai dikaiōs kai eusebōs **zēsōmen*** (« afin qu'ayant renoncé..., nous vivions... », v. 12), tandis que le participe présent ***prosdechomenoi*** (« en attendant ardemment », v. 13) oriente toute cette vie sainte vers la seconde épiphanie. Au v. 13, le syntagme *tou megalou Theou kai Sōtēros hēmōn Iēsou Christou* réunit les deux substantifs singuliers personnels *Theou* et *Sōtēros* sous un seul article défini *tou* avec un seul génitif possessif *hēmōn* : selon la règle grammaticale de Granville Sharp, les deux titres s'appliquent nécessairement à la même personne, Jésus-Christ (56-18 à 56-21).
+- **Tite 3.4-7.** Tout le bloc de Tite 3.4-7 constitue une seule phrase grecque centrée sur un unique verbe principal à l'indicatif aoriste actif : ***esōsen** hēmas* (« il nous a sauvés », v. 5). Autour de ce noyau gravitent la subordonnée temporelle *hote de... epephanē* (v. 4), l'antithèse causale radicale ***ouk ex** ergōn tōn en dikaiosynē ha epoiēsamen hēmeis **alla kata** to autou eleos* (« non sur la base d'œuvres accomplies dans la justice que nous aurions faites nous-mêmes, mais selon sa propre miséricorde », v. 5a), le complément instrumental ***dia** loutrou palingenesias kai anakainōseōs Pneumatos Hagiou* (où les deux génitifs dépendent de la même préposition *dia* et du même génitif d'agent spirituel *Pneumatos Hagiou*, v. 5b), la relative d'effusion trinitaire *hou execheen eph' hēmas plousiōs dia Iēsou Christou* (v. 6) et la proposition finale d'héritage *hina dikaiōthentes... klēronomoi genēthōmen* (v. 7 ; 56-25).
+
+## Étude des mots-clés
+
+Le sens vient du lexique; les versions montrent des rendus, non le sens.
+
+| Français | Translit. | Sens littéral | Lexique et lecture retenue | Traductions comparées |
+|---|---|---|---|---|
+| **Sauveur** | *sōtēr* | sauveur, libérateur, celui qui arrache au péril de mort et conserve en vie | **Lexique (Thayer).** Selon l'analyse de Thayer, *sōtēr* (dérivé de *sōzō*, sauver, délivrer, guérir; 24 occurrences dans le NT dont 6 dans Tite : 1.3, 4; 2.10, 13; 3.4, 6; rendu dans la Septante pour l'hébreu *môšîa'* et *yēša'*) désigne celui qui délivre d'un danger mortel et assure la préservation parfaite des siens ; dans le NT, il est exclusivement réservé à Dieu le Père et au Seigneur Jésus-Christ. **Lecture retenue.** En Tite 1.3-4, 2.10, 13 et 3.4, 6, MacArthur (56-3, 56-4, 56-19, 56-21, 56-25) souligne que cette alternance systématique entre « Dieu notre Sauveur » et « Jésus-Christ notre Sauveur » prouve d'une part l'égalité d'essence divine du Père et du Fils, et rappelle d'autre part à l'Église que Dieu est par nature un Dieu qui sauve les pécheurs. | *S21* Dieu notre Sauveur (1.3; 2.10; 3.4); notre grand Dieu et Sauveur Jésus-Christ (2.13) · *NEG79* Dieu notre Sauveur (1.3; 2.10; 3.4); notre grand Dieu et Sauveur Jésus-Christ (2.13) · *Darby* notre Dieu sauveur (1.3; 2.10; 3.4); notre grand Dieu et Sauveur Jésus Christ (2.13) · *LSG* Dieu notre Sauveur (1.3; 2.10; 3.4); du grand Dieu et de notre Sauveur Jésus-Christ (2.13) · *NBS* Dieu, notre Sauveur (1.3; 2.10; 3.4); notre grand Dieu et Sauveur, Jésus-Christ (2.13) |
+| **saine** | *hygiainō* | être en bonne santé, être sain, vigoureux et exempt de toute maladie ou corruption | **Lexique (Thayer).** Selon Thayer, *hygiainō* (dérivé de *hygiēs*, sain, intact, d'où provient le mot français « hygiène »; 12 occurrences dans le NT dont 4 au sens médical chez Luc/Jean et 8 au sens figuré exclusivement dans les Épîtres pastorales, dont 4 dans Tite : 1.9, 13; 2.1, 2, complété par l'adjectif *hygiēs* en 2.8) qualifie la doctrine chrétienne pure de tout mélange d'erreur et la santé spirituelle vigoureuse qu'elle procure au croyant. **Lecture retenue.** En Tite 1.9, 13 et 2.1-2, MacArthur (56-9, 56-11, 56-12) explique que l'erreur doctrinale agit comme un poison ou une gangrène spirituelle (cf. 2 Tm 2.17), tandis que la Parole apostolique fidèlement prêchée est « l'enseignement sain » (*hē hygiainousa didaskalia*) qui produit des chrétiens spirituellement sains dans la foi, l'amour et la persévérance. | *S21* conformément à la saine doctrine (1.9); une foi saine (1.13); à la saine doctrine (2.1); solides dans la foi (2.2) · *NEG79* selon la saine doctrine (1.9); une foi saine (1.13); à la saine doctrine (2.1); sains dans la foi (2.2) · *Darby* par le sain enseignement (1.9); sains dans la foi (1.13; 2.2); au sain enseignement (2.1) · *LSG* selon la saine doctrine (1.9); une foi saine (1.13); à la saine doctrine (2.1); sains dans la foi (2.2) · *NBS* selon l'enseignement sain (1.9); une foi saine (1.13); à l'enseignement sain (2.1); sains dans la foi (2.2) |
+| **modéré** | *sōphrōn* | sain d'esprit, maître de ses passions et de ses désirs, réfléchi, pondéré, discipliné | **Lexique (Thayer).** Selon l'étymologie exposée par Thayer, *sōphrōn* (composé de *sōs*, sain/sauf, et de *phrēn*, l'esprit ou la pensée; 4 occurrences comme adjectif dans le NT : 1 Tm 3.2; Tite 1.8; 2.2, 5, entouré dans Tite du verbe *sōphronizō* « former à la sagesse » en 2.4, du verbe *sōphroneō* « être modéré » en 2.6 et de l'adverbe *sōphronōs* « avec sagesse / sobriété » en 2.12) désigne le gouvernement rationnel et spirituel des impulsions charnelles par une pensée renouvelée. **Lecture retenue.** En Tite 1.8 et 2.2-12, MacArthur (56-8, 56-13, 56-15, 56-16, 56-20) montre que cette famille de mots forme l'épine dorsale éthique de l'épître : face à une culture crétoise asservie au mensonge et aux appétits du ventre (1.12), la grâce de Dieu éduque chaque génération de croyants à une maîtrise de soi lucide et ordonnée. | *S21* réfléchi (1.8); réfléchis (2.2); réfléchies (2.5) · *NEG79* modéré (1.8); modérés (2.2); retenues (2.5) · *Darby* sage (1.8); sages (2.2, 5) · *LSG* modéré (1.8); modérés (2.2); retenues (2.5) · *NBS* pondéré (1.8); pondérés (2.2); pondérées (2.5) |
+| **faire honorer** | *kosmeō* | mettre en bel ordre, arranger avec harmonie, orner, parer comme un joyau précieux | **Lexique (Thayer).** Selon Thayer, *kosmeō* (dérivé de *kosmos*, ordre harmonieux, ornement, parure; 10 occurrences dans le NT dont Mt 25.7 pour arranger des lampes, Ap 21.2, 19 pour l'épouse parée pour son époux et les fondements ornés de pierres précieuses, et Tite 2.10 au sens figuré) signifie disposer des pierres précieuses dans une monture afin d'en faire resplendir tout l'éclat. **Lecture retenue.** En Tite 2.10, MacArthur (56-12, 56-17, 56-21) met en valeur l'image saisissante de ce verbe : par son intégrité, sa soumission joyeuse et sa fidélité au travail, même l'esclave le plus humble « pare de beauté » (*kosmōsin*) la doctrine de Dieu notre Sauveur et rend l'Évangile irrésistiblement crédible aux yeux des inconvertis. | *S21* afin d'honorer pleinement la doctrine de Dieu notre Sauveur (2.10) · *NEG79* afin de faire honorer en tout la doctrine de Dieu notre Sauveur (2.10) · *Darby* afin qu'ils ornent en toutes choses l'enseignement qui est de notre Dieu sauveur (2.10) · *LSG* afin de faire honorer en tout la doctrine de Dieu notre Sauveur (2.10) · *NBS* pour faire honneur en tout à l'enseignement de Dieu, notre Sauveur (2.10) |
+| **régénération** | *palingenesia* | nouvelle naissance, régénération, recréation radicale d'une vie nouvelle | **Lexique (Thayer).** Selon l'étymologie détaillée par Thayer, *palingenesia* (composé de *palin*, de nouveau, et de *genesis*, naissance, origine, création; 2 occurrences dans le NT : Mt 19.28 pour le renouvellement cosmique du monde lors du règne messianique, et Tite 3.5 pour la régénération personnelle du croyant) désigne la communication souveraine d'une vie spirituelle entièrement nouvelle. **Lecture retenue.** En Tite 3.5, MacArthur (56-25) explique que « le bain de la régénération et le renouvellement du Saint-Esprit » (*dia loutrou palingenesias kai anakainōseōs Pneumatos Hagiou*) n'a aucun rapport avec le baptême d'eau, mais décrit l'œuvre miraculeuse par laquelle l'Esprit lave intérieurement le pécheur de sa souillure et fait de lui une nouvelle créature en Christ (cf. Ez 36.25-27 ; Jn 3.3-8 ; 2 Co 5.17). | *S21* à travers le bain de la nouvelle naissance et le renouvellement du Saint-Esprit (3.5) · *NEG79* par le bain de la régénération et le renouvellement du Saint-Esprit (3.5) · *Darby* par le lavage de la régénération, et le renouvellement de l'Esprit Saint (3.5) · *LSG* par le baptême de la régénération et le renouvellement du Saint-Esprit (3.5) · *NBS* par le bain de la nouvelle naissance et du renouvellement procédant de l'Esprit saint (3.5) |
+
+## Apports des commentateurs
+
+**Niveau de source**
+
+Niveau 1 : sermons Grace to You sur Tite 1.1 à 3.15 (56-1 à 56-26, 26 prédications, 1992-1993), commentaire MacArthur New Testament Commentary : Titus (1996) et introduction de la MacArthur Study Bible
+
+**Couverture des sources**
+
+Vingt-six sermons (56-1 à 56-26) couvrent intégralement les trois chapitres (46 versets) de l'épître à Tite : les engagements d'un conducteur spirituel puissant dans la salutation apostolique (1.1-4, 56-1 à 56-4), le caractère moral, familial et doctrinal requis d'un pasteur/ancien (1.5-9, 56-5 à 56-9), les faux docteurs rebelles qu'il faut museler (1.10-16, 56-10 à 56-11), la saine doctrine appuyée par la vie sainte des hommes âgés, des femmes âgées, des jeunes femmes, des jeunes gens et des employés (2.1-10, 56-12 à 56-17), la manifestation de la grâce salvatrice et l'autorité du prédicateur (2.11-15, 56-18 à 56-22), ainsi que la responsabilité du chrétien dans une société païenne, le miracle de la régénération par le Saint-Esprit et les dernières instructions sur les relations fraternelles (3.1-15, 56-23 à 56-26).
+
+**Sermons Grace to You**
+
+| Code | Sermon | Passage |
+|---|---|---|
+| 56-1 | [Commitments of a Powerful Leader, Part 1](https://www.gty.org/sermons/56-1) | Tite 1.1 |
+| 56-2 | [Commitments of a Powerful Leader, Part 2](https://www.gty.org/sermons/56-2) | Tite 1.1-2 |
+| 56-3 | [Commitments of a Powerful Leader, Part 3](https://www.gty.org/sermons/56-3) | Tite 1.2-3 |
+| 56-4 | [Commitments of a Powerful Leader, Part 4](https://www.gty.org/sermons/56-4) | Tite 1.4 |
+| 56-5 | [The Moral Character of a Pastor](https://www.gty.org/sermons/56-5) | Tite 1.5-6 |
+| 56-6 | [The Required Character for a Pastor: Family Leadership](https://www.gty.org/sermons/56-6) | Tite 1.6 |
+| 56-7 | [The Qualifications for a Pastor, Part 1: Noble Character, Part 1](https://www.gty.org/sermons/56-7) | Tite 1.7 |
+| 56-8 | [The Qualifications for a Pastor, Part 2: Noble Character, Part 2](https://www.gty.org/sermons/56-8) | Tite 1.7-8 |
+| 56-9 | [The Qualifications for a Pastor, Part 3: Teaching Skill](https://www.gty.org/sermons/56-9) | Tite 1.9 |
+| 56-10 | [Men Who Must Be Silenced, Part 1](https://www.gty.org/sermons/56-10) | Tite 1.10-12 |
+| 56-11 | [Men Who Must Be Silenced, Part 2](https://www.gty.org/sermons/56-11) | Tite 1.13-16 |
+| 56-12 | [Sound Doctrine Backed by Sound Living](https://www.gty.org/sermons/56-12) | Tite 2.1 |
+| 56-13 | [God's Plan for Older Men and Older Women](https://www.gty.org/sermons/56-13) | Tite 2.2-3 |
+| 56-14 | [God's Plan for Younger Women, Part 1](https://www.gty.org/sermons/56-14) | Tite 2.4-5 |
+| 56-15 | [God's Plan for Younger Women, Part 2](https://www.gty.org/sermons/56-15) | Tite 2.4-5 |
+| 56-16 | [God's Plan for Younger Men](https://www.gty.org/sermons/56-16) | Tite 2.6-8 |
+| 56-17 | [God's Plan for Employees](https://www.gty.org/sermons/56-17) | Tite 2.9-10 |
+| 56-18 | [Saving Grace, Part 1](https://www.gty.org/sermons/56-18) | Tite 2.11 |
+| 56-19 | [Saving Grace, Part 2](https://www.gty.org/sermons/56-19) | Tite 2.11 |
+| 56-20 | [Saving Grace, Part 3](https://www.gty.org/sermons/56-20) | Tite 2.12-13 |
+| 56-21 | [Saving Grace, Part 4](https://www.gty.org/sermons/56-21) | Tite 2.13-14 |
+| 56-22 | [The Preacher's Authority](https://www.gty.org/sermons/56-22) | Tite 2.15 |
+| 56-23 | [The Christian's Responsibility in a Pagan Society, Part 1](https://www.gty.org/sermons/56-23) | Tite 3.1-2 |
+| 56-24 | [The Christian's Responsibility in a Pagan Society, Part 2](https://www.gty.org/sermons/56-24) | Tite 3.1-8 |
+| 56-25 | [He Saved Us](https://www.gty.org/sermons/56-25) | Tite 3.4-7 |
+| 56-26 | [The Last Word on Relationships](https://www.gty.org/sermons/56-26) | Tite 3.9-15 |
+
+Dans sa série de vingt-six prédications expositives sur l'épître à Tite (*56-1* à *56-26*), John MacArthur qualifie cette lettre de « petit livre condensé sous vide » qui, dès qu'on l'ouvre, déploie une immensité de vérité doctrinale et pastorale (*56-2*). L'objectif central de l'apôtre Paul est d'équiper Tite et les jeunes assemblées de l'île de Crète pour une évangélisation puissante au cœur d'une société païenne célèbre pour sa dépravation morale (1.12). Or, pour que le monde croie que le Dieu de la Bible est réellement « Dieu notre Sauveur » (1.3 ; 2.10 ; 3.4), il faut que l'Église expose devant les païens le spectacle irréfutable de vies sauvées et transformées par la grâce (*56-12*, *56-18*, *56-24*).
+
+Au chapitre 1 (*56-1* à *56-11*), Paul pose le premier pilier de ce témoignage : un leadership spirituel intègre et fidèle à la Parole. Dès la salutation (1.1-4, *56-1* à *56-4*), Paul trace son propre portrait de conducteur spirituel à travers huit engagements : esclave de Dieu (*doulos Theou*, titre unique chez Paul) et apôtre de Jésus-Christ, il consacre sa vie à amener les élus de Dieu à la foi salvatrice et à la connaissance de la vérité qui produit la piété (*kat' eusebeian*, 1.1) ; il s'appuie sur l'espérance de la vie éternelle que le Dieu incapable de mentir (*ho apseudēs Theos*) a promise avant les temps des siècles - une promesse d'amour éternelle faite par le Père au Fils avant la création du monde (1.2 ; *56-2*) - ; et il accomplit ce mandat par l'unique moyen ordonné par Dieu notre Sauveur, la prédication (*kērygma*) de sa Parole manifestée au temps marqué (1.3 ; *56-3*), en communion avec Tite, son enfant légitime dans la foi commune (1.4 ; *56-4*). Paul rappelle ensuite pourquoi il a laissé Tite en Crète : achever de redresser (*epidiorthōsē*, terme médical désignant la remise en place d'un membre fracturé) ce qui reste à régler et établir des anciens (*presbyterous*, appelés *episkopon* au v. 7) dans chaque ville (1.5 ; *56-5*). Les qualifications exigées (1.6-9) ne portent pas sur le charisme mondain mais sur l'irréprochabilité morale et conjugale (« mari d'une seule femme », l'infidélité conjugale disqualifiant du pastorat, *56-5*), l'autorité spirituelle au foyer attestée par des enfants croyants et soumis (*tekna pista*, 1.6 ; *56-6*), la maîtrise de soi d'un intendant de Dieu exempt d'arrogance, de colère, d'ivrognerie, de violence et de cupidité mais riche en hospitalité, en bonté, en justice et en sainteté (1.7-8 ; *56-7*, *56-8*), et enfin l'attachement indéfectible à la Parole fidèle pour exhorter selon la saine doctrine et réfuter les contradicteurs (1.9 ; *56-9*). Cette compétence doctrinale est vitale face aux nombreux rebelles, vains discoureurs et séducteurs issus de la circoncision qui bouleversent des familles entières pour un gain honteux (1.10-11) : citant le diagnostic d'Épiménide sur la fausseté et la gloutonnerie crétoises (1.12), Paul ordonne à Tite de leur « fermer la bouche » (*epistomizein*, les museler) et de les reprendre sévèrement (*apotomōs*) afin qu'on rejette leurs fables judaïques et leurs interdits ascétiques - car si tout est pur pour les cœurs purifiés par la foi, l'intelligence et la conscience des incrédules demeurent souillées, eux qui professent connaître Dieu mais le renient par leurs œuvres en étant réprouvés (*adokimoi*) à l'égard de toute bonne œuvre (1.13-16 ; *56-10*, *56-11*).
+
+Au chapitre 2 (*56-12* à *56-22*), le regard passe des pasteurs à l'ensemble des membres de l'assemblée pour décrire le caractère d'une Église saine (*56-12*). En contraste avec les séducteurs (« Pour toi, dis les choses qui sont conformes à la saine doctrine », 2.1), Tite doit inculquer une éthique concrète à cinq groupes : 1) les hommes âgés (*presbytas*), appelés à être sobres, dignes, pondérés et sains dans la triade de la foi, de l'amour et de la patience (2.2 ; *56-13*) ; 2) les femmes âgées (*presbytidas*), appelées à une tenue extérieure digne d'un sanctuaire (*hieroprepeis*), sans médisance ni esclavage du vin, étant des enseignantes du bien (*kalodidaskalous*, 2.3 ; *56-13*) ; 3) les jeunes femmes, instruites par leurs aînées à aimer leur mari et leurs enfants, à être retenues, chastes, actives aux soins de leur maison (*oikourgous*), bonnes et soumises à leur mari « afin que la parole de Dieu ne soit pas calomniée » (2.4-5 ; *56-14*, *56-15*) ; 4) les jeunes gens, exhortés à la maîtrise de soi (*sōphronein*) à travers l'exemple personnel de Tite dans ses bonnes œuvres et la pureté irréprochable de sa parole « afin que l'adversaire soit confus » (2.6-8 ; *56-16*) ; et 5) les serviteurs/employés (*doulous*), appelés à une soumission complaisante, sans réplique ni vol, mais d'une fidélité parfaite « afin de faire honorer [orner, *kosmōsin*] en tout la doctrine de Dieu notre Sauveur » (2.9-10 ; *56-17*). En 2.11-14 (*56-18* à *56-21*), Paul dévoile le moteur doctrinal de cette vie sainte : la grâce salvatrice de Dieu s'est manifestée (*epephanē*) en Jésus-Christ, apportant le salut à tous les hommes sans distinction (2.11), nous éduquant (*paideuousa*) à renoncer à l'impiété et aux convoitises mondaines pour vivre dans le siècle présent avec sagesse (vis-à-vis de soi), justice (vis-à-vis d'autrui) et piété (vis-à-vis de Dieu, 2.12), les yeux fixés sur la bienheureuse espérance et l'apparition de la gloire de notre grand Dieu et Sauveur Jésus-Christ (2.13), qui s'est donné lui-même en rançon substitutive pour nous racheter de toute iniquité et se purifier un peuple qui lui appartienne en propre, zélé pour les bonnes œuvres (2.14). Le chapitre se clôt sur le mandat solennel de 2.15 (*56-22*) : proclamer, exhorter et reprendre avec toute l'autorité du commandement divin (*meta pasēs epitagēs*), sans laisser personne mépriser la Parole.
+
+Enfin, au chapitre 3 (*56-23* à *56-26*), Paul définit la responsabilité missionnaire du croyant au sein de la société païenne. En 3.1-2 (*56-23*, *56-24*), les chrétiens crétois - autrefois connus pour leur esprit d'insurrection contre Rome - doivent se soumettre aux magistrats et aux autorités civiles, obéir, être prêts à toute bonne œuvre, ne médire de personne et manifester une parfaite douceur envers tous les hommes. Pourquoi une telle compassion envers des païens hostiles ? Parce que nous devons nous souvenir de notre propre misère passée (« Car nous aussi, nous étions autrefois insensés, désobéissants, égarés, asservis... », 3.3) et de la souveraine gratuité de notre délivrance en 3.4-7 (*56-25*) : lorsque la bonté (*chrēstotēs*) et l'amour pour les hommes (*philanthrōpia*) de Dieu notre Sauveur ont paru, « il nous a sauvés » (*esōsen hēmas*), non sur la base d'œuvres de justice accomplies par nous, mais selon sa miséricorde, par le bain de la régénération et le renouvellement du Saint-Esprit répandu sur nous avec abondance par Jésus-Christ notre Sauveur, afin que, justifiés par sa grâce, nous devenions héritiers dans l'espérance de la vie éternelle. Dans sa conclusion (3.8-15, *56-26*), Paul insiste une dernière fois sur la pratique des bonnes œuvres utiles aux hommes (3.8, 14), ordonne de fuir les spéculations folles, les généalogies et les querelles de la loi (3.9), prescrit d'écarter après deux avertissements formels l'homme sectaire qui provoque des divisions (*hairetikon anthrōpon*, 3.10-11), et donne ses directives fraternelles concernant Artémas, Tychique, son hiver à Nicopolis, ainsi que le soutien matériel de Zénas et d'Apollos avant la bénédiction finale de la grâce (3.12-15).
+
+**Indices du texte**
+
+- **Tite 1.3, 4; 2.10, 13; 3.4, 6.** Le titre *Sōtēr* (« Sauveur », 6 occurrences en 46 versets, soit le quart de tous les emplois du Nouveau Testament) alterne symétriquement dans chaque chapitre entre « Dieu notre Sauveur » (1.3; 2.10; 3.4) et « Jésus-Christ notre Sauveur » (1.4; 2.13; 3.6), scellant l'unité divine du Père et du Fils et la vocation missionnaire de l'épître.
+- **Tite 1.9, 13; 2.1, 2, 7, 8, 10.** Le vocabulaire de la « saine doctrine » (*didaskalia* en 1.9; 2.1, 7, 10 et le verbe médical *hygiainō* / l'adjectif *hygiēs* « être sain, en bonne santé » en 1.9, 13; 2.1, 2, 8) montre que l'enseignement apostolique non altéré est la source directe de la santé spirituelle de l'Église.
+- **Tite 1.8; 2.2, 4, 5, 6, 12.** La famille lexicale de *sōphrōn* (*sōphrōn* en 1.8; 2.2, 5; *sōphronizō* en 2.4; *sōphroneō* en 2.6; *sōphronōs* en 2.12) traverse tous les groupes de l'assemblée : la maîtrise de soi et la pondération de l'esprit sont le premier fruit visible de la grâce face à l'intempérance crétoise (1.12).
+- **Tite 1.16; 2.7, 14; 3.1, 5, 8, 14.** Le motif récurrent des « bonnes œuvres » (*kala erga* / *ergon agathon*, 6 fois positivement en 2.7, 14; 3.1, 8, 14, encadré par l'incapacité des faux docteurs à toute bonne œuvre en 1.16 et par l'exclusion des œuvres de justice comme cause du salut en 3.5) établit que si les œuvres ne sauvent jamais, la grâce qui sauve produit infailliblement un peuple zélé pour les bonnes œuvres.
+
+## Renvois et passages parallèles
+
+**Exode 19.5; Deutéronome 7.6; 14.2; Psaume 130.8; Ézéchiel 36.25-27** · *Citation ou allusion*
+
+Les deux grandes confessions sotériologiques de Tite 2.14 et 3.5-6 puisent directement dans le grec de la Septante et l'hébreu massorétique : 1) en Tite 2.14, la proposition *hina lytrōsētai hēmas apo pasēs anomias kai katharisē heautō laon periousion* (« afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui ») unit la promesse messianique du Psaume 130.8 (LXX 129.8 : *kai autos lytrōsetai ton Israēl ek pasōn tōn anomiōn autou*, hébreu *wəhû' yipdê 'et-yiśrā'ēl mikkol 'ăwōnōtāyw*) et l'expression d'alliance d'Exode 19.5 / Deutéronome 7.6; 14.2 (LXX : *laos periousios*, traduisant l'hébreu *'am səgullāh*, « un peuple qui soit mon trésor particulier ») ; 2) en Tite 3.5-6, le « bain de la régénération et le renouvellement du Saint-Esprit, qu'il a répandu sur nous avec abondance » accomplit la promesse de la Nouvelle Alliance d'Ézéchiel 36.25-27 (« Je répandrai sur vous une eau pure, et vous serez purifiés... Je mettrai mon Esprit en vous » ; 56-21, 56-25).
+
+**1 Timothée 3.1-7; Actes 20.17, 28; 1 Pierre 5.1-4** · *Parallèle direct*
+
+La liste des qualifications des anciens/évêques en Tite 1.5-9 correspond point par point à celle de 1 Timothée 3.1-7, tandis qu'Actes 20.17, 28 et 1 Pierre 5.1-2 confirment l'équivalence néotestamentaire entre les titres d'ancien (*presbyteros*), d'évêque/surveillant (*episkopos*) et de berger/pasteur du troupeau de Dieu (56-5 à 56-9).
+
+**Éphésiens 2.1-10; Romains 3.20-28; 2 Timothée 1.9** · *Parallèle direct*
+
+Le mouvement de Tite 3.3-8 (« Car nous aussi, nous étions autrefois insensés... Mais, lorsque la bonté de Dieu... il nous a sauvés, non à cause des œuvres de justice que nous aurions faites, mais selon sa miséricorde... afin que ceux qui ont cru en Dieu s'appliquent à pratiquer de bonnes œuvres ») est le parallèle exact d'Éphésiens 2.1-10 et de 2 Timothée 1.9, résumant toute la doctrine paulinienne de la dépravation totale, de la régénération monergiste, de la justification par grâce et des bonnes œuvres comme fruit du salut (56-24, 56-25).
+
+**Éphésiens 5.22-6.9; Colossiens 3.18-4.1; 1 Timothée 2.9-15; 5.1-16; 6.1-2; 1 Pierre 2.18-3.7** · *Parallèle direct*
+
+Les instructions de Tite 2.1-10 adressées aux vieillards, aux femmes âgées, aux jeunes femmes, aux jeunes gens et aux esclaves rejoignent les tables domestiques (*Haustafeln*) d'Éphésiens, de Colossiens, de 1 Timothée et de 1 Pierre, en mettant un accent particulier sur la portée missionnaire et apologétique de la vie familiale et professionnelle (56-13 à 56-17).
+
+**Romains 13.1-7; 1 Timothée 2.1-4; 1 Pierre 2.12-17** · *Lien thématique*
+
+L'appel de Tite 3.1-2 à se soumettre aux magistrats et aux autorités civiles, à être prêt à toute bonne œuvre et à montrer une douceur parfaite envers tous les hommes s'inscrit dans l'enseignement constant des apôtres sur le témoignage civique des chrétiens au sein d'un empire païen (56-23, 56-24).
+
+## Thèmes théologiques
+
+### L'harmonie trinitaire de Dieu notre Sauveur dans l'élection, la rédemption et la régénération
+
+**Dans le texte**
+
+En Tite 1.1-4, 2.10-14 et 3.4-7, le salut des élus de Dieu est promis avant les temps des siècles par le Père qui ne peut mentir (1.1-2), accompli par la manifestation de la grâce en notre grand Dieu et Sauveur Jésus-Christ qui s'est donné lui-même pour nous racheter de toute iniquité (2.11-14), et appliqué selon la miséricorde divine - sans aucune œuvre de justice humaine - par le bain de la régénération et le renouvellement du Saint-Esprit répandu sur nous avec abondance afin de nous justifier par grâce et de nous faire héritiers de la vie éternelle (3.4-7).
+
+**Ancrage doctrinal**
+
+Sotériologie trinitaire et monergiste : élection souveraine et pacte éternel de rédemption, expiation substitutive efficace de Christ, régénération et renouvellement par le Saint-Esprit, et justification par la grâce seule (*sola gratia*).
+
+**Révélation progressive**
+
+Du Dieu Sauveur unique d'Ésaïe 43.11 et 45.21 et de la promesse d'un cœur nouveau lavé par l'Esprit en Ézéchiel 36.25-27 jusqu'à l'accomplissement néotestamentaire où le Père et le Fils portent conjointement six fois le titre de « notre Sauveur ».
+
+**Pour votre assemblée**
+
+Puisque le pécheur spirituellement esclave (3.3) ne contribue en rien à son propre salut (3.5), toute gloire appartient à Dieu seul et toute arrogance envers les inconvertis fait place à l'humilité et à la compassion.
+
+### La pleine divinité de Jésus-Christ et la bienheureuse espérance de son retour glorieux
+
+**Dans le texte**
+
+En Tite 2.13, les croyants vivent dans le siècle présent « en attendant la bienheureuse espérance, et la manifestation (*epiphaneian*) de la gloire de notre grand Dieu et Sauveur Jésus-Christ » (*tou megalou Theou kai Sōtēros hēmōn Iēsou Christou*), qui s'est donné pour nous à sa première venue (2.11, 14) et apparaîtra dans sa gloire souveraine à la seconde.
+
+**Ancrage doctrinal**
+
+Christologie et eschatologie : affirmation directe de la déité absolue de Jésus-Christ (attestée par la règle grammaticale de Granville Sharp et par le partage du titre divin de *Sōtēr* en 1.3-4; 2.10, 13; 3.4, 6) et attente imminente de son retour glorieux.
+
+**Révélation progressive**
+
+Les deux venues du Messie annoncées par les prophètes (le Serviteur souffrant d'Ésaïe 53 et le Roi de gloire de Daniel 7.13-14) se déploient dans les deux épiphanies de Tite 2.11 et 2.13 : l'épiphanie de la grâce et l'épiphanie de la gloire.
+
+**Pour votre assemblée**
+
+La vie chrétienne authentique se déploie entre la croix et la parousie : la reconnaissance pour la première venue et l'attente ardente de la seconde purifient le croyant des convoitises mondaines (2.12-13).
+
+### Le gouvernement de l'Église locale par des anciens irréprochables et l'autorité de la Parole
+
+**Dans le texte**
+
+En Tite 1.5-16 et 2.1, 15, Tite doit établir dans chaque ville des anciens/évêques (*presbyterous / episkopon*) irréprochables dans leur mariage, leur foyer et leur caractère d'intendants de Dieu, fermement attachés à la Parole fidèle pour exhorter par la saine doctrine, réfuter et museler (*epistomizein*) les faux docteurs rebelles et cupides, et prêcher avec une pleine autorité (*meta pasēs epitagēs*).
+
+**Ancrage doctrinal**
+
+Ecclésiologie et bibliologie : gouvernement de chaque assemblée locale par une pluralité d'anciens qualifiés moralement et doctrinalement, suffisance de la saine doctrine et autorité impérative de la prédication expositive.
+
+**Révélation progressive**
+
+Des anciens d'Israël et des gardiens fidèles de la Loi dans l'Ancien Testament jusqu'aux bergers-intendants établis par les apôtres dans les Églises de la Nouvelle Alliance pour protéger le troupeau contre les loups ravisseurs (Actes 20.28-31).
+
+**Pour votre assemblée**
+
+Une Église ne peut jamais s'élever au-dessus de la maturité morale et doctrinale de ses conducteurs ; tolérer au pastorat des hommes disqualifiés ou laisser la parole aux faux docteurs ruine des familles entières (1.6, 11).
+
+### Les bonnes œuvres et la sainteté quotidienne comme parure missionnaire de l'Évangile
+
+**Dans le texte**
+
+À l'opposé des séducteurs qui professent connaître Dieu mais le renient par leurs œuvres étant incapables d'aucune bonne œuvre (1.16), la vérité de l'Évangile est « selon la piété » (1.1) et Christ s'est acquis un peuple « zélé pour les bonnes œuvres » (2.14 ; cf. 2.7 ; 3.1, 8, 14) ; par la vie sainte de chaque génération au foyer, dans l'Église, au travail et dans la cité, les croyants protègent la Parole de toute calomnie (2.5), confondent l'adversaire (2.8) et ornent (*kosmōsin*) la doctrine de Dieu notre Sauveur (2.10).
+
+**Ancrage doctrinal**
+
+Sanctification pratique et théologie de l'évangélisation : si les bonnes œuvres sont totalement exclues du fondement de la justification (3.5), elles sont la conséquence indispensable de la régénération et l'argument apologétique visible de l'Église devant le monde.
+
+**Révélation progressive**
+
+De l'appel fait à Israël d'être une lumière pour les nations par l'obéissance à la sagesse divine (Dt 4.6-8 ; Ésaïe 42.6) au commandement de Jésus en Matthieu 5.16 (« Que votre lumière luise ainsi devant les hommes, afin qu'ils voient vos bonnes œuvres, et qu'ils glorifient votre Père »).
+
+**Pour votre assemblée**
+
+L'évangélisation biblique ne repose pas sur des artifices mondains ou du marketing religieux, mais sur la proclamation fidèle de la vérité appuyée par l'intégrité conjugale, familiale, professionnelle et civique de chrétiens transformés.
+
+## Pistes de réflexion
+
+1. En comparant votre profession de foi et vos actes quotidiens à la lumière de Tite 1.16 (« Ils font profession de connaître Dieu, mais ils le renient par leurs œuvres ») et de Tite 2.10 (« afin de faire honorer [orner] en tout la doctrine de Dieu notre Sauveur »), votre vie au foyer et au travail pare-t-elle l'Évangile de beauté ou risque-t-elle de faire calomnier la Parole de Dieu (2.5) ?
+2. Pourquoi Paul place-t-il en Tite 1.5-9 l'irréprochabilité conjugale et familiale ainsi que la maîtrise du caractère avant même l'aptitude à enseigner, et comment ce critère doit-il guider notre manière d'évaluer et de soutenir les conducteurs spirituels de l'Église ?
+3. Selon Tite 2.2-8, quelle responsabilité précise Dieu vous confie-t-il au sein de votre génération (homme ou femme, aîné ou plus jeune) pour transmettre concrètement la saine doctrine et la maîtrise de soi (*sōphrōn*) dans l'assemblée locale ?
+4. Comment la contemplation des deux apparitions de Christ en Tite 2.11-14 - l'apparition passée de sa grâce rédemptrice à la croix et l'apparition future de sa gloire comme notre grand Dieu et Sauveur - vous enseigne-t-elle aujourd'hui à renoncer aux convoitises mondaines ?
+5. Face à une société de plus en plus païenne et hostile aux valeurs bibliques, comment le souvenir de votre propre perdition passée (Tite 3.3) et du salut purement gratuit par le bain de la régénération (3.4-7) doit-il transformer votre ton et votre attitude envers les autorités civiles et les non-croyants (3.1-2) ?

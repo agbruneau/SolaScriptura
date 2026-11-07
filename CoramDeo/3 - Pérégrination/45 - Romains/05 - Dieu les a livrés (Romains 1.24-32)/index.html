@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Romains 1.24-32 · Dieu les a livrés · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Romains 1.24-32 : la colère d'abandon, Dieu livre l'homme à ses convoitises ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Romains 1.24-32</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Romains 1.24-32</p>
+    <h1 class="hero__title">Dieu les a livrés</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;C'est pourquoi Dieu les a livrés à l'impureté, selon les convoitises de leurs cœurs.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Romains 1.24 · NEG</p>
+    <p class="hero__series">Série : <b>La justice de Dieu</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-16 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Romains 1.24-32</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">C'est pourquoi Dieu les a livrés à l'impureté, selon les convoitises de leurs cœurs, en sorte qu'ils déshonorent eux-mêmes leurs propres corps.</p>
+        <cite class="verse__ref">Romains 1.24 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Comme ils ne se sont pas souciés de connaître Dieu, Dieu les a livrés à leur sens réprouvé, pour commettre des choses indignes.</p>
+        <cite class="verse__ref">Romains 1.28 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Romains 1.24-32 est l'aboutissement de la grande démonstration qui ouvre l'épître : une unité serrée que scande par trois fois le refrain redoutable, «&nbsp;Dieu les a livrés&nbsp;», où le péché devient son propre châtiment.</p>
+    <div class="body">
+      <p>Notre péricope est l'aboutissement de la grande démonstration qui ouvre l'épître. Après avoir énoncé sa thèse en 1.16-17, la justice de Dieu révélée par la foi et pour la foi, Paul entreprend en 1.18 de prouver le besoin universel de cette justice en établissant d'abord la culpabilité des non-Juifs (1.18-32). Le mouvement est implacable : la colère de Dieu se révèle contre l'impiété des hommes qui retiennent injustement la vérité captive (1.18), car la création et la conscience leur rendent un témoignage irréfutable qui les laisse inexcusables (1.19-20). Ayant connu Dieu, ils ne l'ont ni glorifié ni remercié; ils se sont égarés dans de vaines pensées, et leur cœur sans intelligence s'est obscurci (1.21). Se vantant d'être sages, ils sont devenus fous, échangeant la gloire du Dieu incorruptible contre des images d'hommes et de bêtes (1.22-23). L'idolâtrie est donc la racine; notre passage en décrit le fruit amer.</p>
+      <p>Les versets 24 à 32 forment une unité serrée que scande par trois fois le refrain redoutable : «&nbsp;Dieu les a livrés&nbsp;» (1.24, 1.26, 1.28). Selon MacArthur, Paul y décrit la spirale descendante liée à la colère d'abandon dans la vie de l'homme que Dieu délaisse, en présentant successivement l'essence de cette nature pécheresse (1.24-25), sa manifestation (1.26-27) et son étendue (1.28-32). Ce n'est pas l'homme qui se libère pour pécher davantage; c'est Dieu qui, par un acte judiciaire, retire ses limitations et abandonne le rebelle à la convoitise de son propre cœur. Chaque livraison répond à un refus : ils ont échangé la vérité contre le mensonge (1.25), ils ne se sont pas souciés de connaître Dieu (1.28). Le péché devient ainsi son propre châtiment.</p>
+      <p>Le passage ferme la section sur les païens (1.18-32) et prépare le retournement de 2.1, où Paul piège le moraliste qui se croit exempt parce qu'il ne s'est pas vautré dans ces turpitudes. Loin d'être un simple catalogue de vices antiques, ces versets posent le premier maillon de l'argument qui culminera en 3.23 : tous ont péché et sont privés de la gloire de Dieu. La dépravation décrite ici n'est pas l'apanage du paganisme lointain; elle est le diagnostic de tout cœur livré à lui-même. Cette condamnation universelle est le sombre arrière-plan sans lequel la justice gratuite de 3.21-26 ne brillerait pas comme une délivrance.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Romains 1.23 · 1.26-27 · 1.29-32</p>
+    </header>
+    <p class="lead">Le lecteur du premier siècle reconnaissait dans ce tableau le monde gréco-romain qui l'entourait : l'idolâtrie en forme humaine et animale, la débauche tolérée et le catalogue de vices des moralistes, tous retournés en verdict par Paul.</p>
+    <div class="body">
+      <p>Le lecteur du premier siècle reconnaissait dans ce tableau le monde gréco-romain qui l'entourait. L'idolâtrie que Paul dénonce en 1.23, le culte d'images représentant l'homme, les oiseaux, les quadrupèdes et les reptiles, décrit avec précision les panthéons de l'Égypte, de la Grèce et de Rome, où les divinités revêtaient forme humaine ou animale. MacArthur rappelle, sources anciennes à l'appui (Hérodote, Varron cité par Augustin, Lucien de Samosate, Eusèbe), que plusieurs des plus vieilles civilisations, la Perse, Rome primitive, et même la Grèce et l'Égypte à leurs débuts, ignoraient l'idolâtrie : celle-ci fut une dégradation, non une étape primitive. La pratique idolâtrique la plus ancienne que mentionne l'Écriture concerne la famille d'Abram à Ur (Josué 24.2). Loin de représenter une ascension de l'homme vers le divin, l'idolâtrie marque une chute, l'échange volontaire de la gloire du Créateur contre la créature.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La débauche que la société banalisait.</b> Les péchés sexuels décrits aux versets 24 à 27 ne choquaient nullement la société païenne, qui les tolérait largement. L'homosexualité, que Paul identifie aux passions infâmes (1.26-27), était courante et socialement acceptée dans le monde gréco-romain; bien des empereurs et des notables s'y livraient ouvertement. C'est précisément ce contraste qui donne tout son tranchant au verdict de Paul : ce que la culture banalisait, Dieu le déclare contre nature et digne de mort (1.27, 1.32).</li>
+      <li><b>Les femmes nommées en premier.</b> MacArthur note la finesse du verset 26, où Paul mentionne les femmes en premier, employant non le mot habituel pour femmes, mais un terme général pour femelle : l'apôtre signale ainsi l'étendue extrême de la corruption, car dans la plupart des cultures les femmes sont les dernières à subir l'influence du déclin moral. Que la débauche les atteigne révèle un effondrement total.</li>
+      <li><b>Le catalogue de vices et le métal rejeté.</b> Le catalogue de vices des versets 29 à 31, vingt et un travers énumérés en rafale, relève d'un genre rhétorique répandu chez les moralistes stoïciens et dans le judaïsme hellénistique. Mais Paul n'y voit pas un simple exercice d'éloquence : cette liste documente l'étendue universelle de la dépravation une fois l'homme livré à son sens réprouvé. Le terme grec rendu par réprouvé (<i>adokimos</i>) appartenait au vocabulaire des métallurgistes : il décrivait un métal sans valeur, rejeté à l'épreuve parce que trop chargé d'impuretés. MacArthur en tire l'image saisissante : Dieu a éprouvé l'esprit de l'homme et l'a trouvé inutilisable, bon à rejeter (Jérémie 6.30). Enfin, le verset 32 aggrave encore la culpabilité : ces hommes connaissent le juste décret de Dieu qui frappe de mort de telles pratiques, non par simple ignorance mais en rébellion ouverte, et pourtant non seulement ils les commettent mais ils applaudissent ceux qui s'y adonnent.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Quatre termes grecs</p>
+    </header>
+    <p class="lead">Quatre mots portent le poids théologique de la péricope : du verbe judiciaire «&nbsp;livrer&nbsp;» (<i>paradidomi</i>) qui scande la colère d'abandon, à l'impureté (<i>akatharsia</i>) et aux passions infâmes (<i>pathos</i>) qui en sont le fruit, jusqu'à l'esprit réprouvé (<i>adokimos</i>) qui en marque le terme.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">livrés</span><span class="mot-gr">paradidomi</span></th>
+            <td class="col-sens">remettre, livrer entre les mains de, transmettre; terme technique du langage judiciaire</td>
+            <td>Verbe répété trois fois en position d'axe (1.24, 1.26, 1.28). MacArthur souligne qu'il s'agit en grec d'un terme judiciaire employé pour la remise d'un prisonnier aux autorités ou au châtiment. La livraison n'est donc pas passivité divine mais sentence : lorsque les hommes abandonnent Dieu sciemment, il les abandonne à leur tour (Juges 10.13; 2 Chroniques 15.2; Psaume 81.12-13; Osée 4.17). Dieu accomplit cette livraison de deux manières, indirectement en retirant ses limitations pour laisser le péché évoluer jusqu'à son terme inévitable, puis directement et en fin de compte par des actes précis de jugement et de punition.</td>
+            <td><span class="trad"><span><b>S21</b> les a livrés</span><span><b>NEG79</b> les a livrés</span><span><b>Darby</b> les a livrés</span><span><b>LSG</b> les a livrés</span><span><b>KJF</b> les a abandonnés</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">impureté</span><span class="mot-gr">akatharsia</span></th>
+            <td class="col-sens">souillure, saleté, état de ce qui est impur ou corrompu</td>
+            <td>Terme général qui désigne souvent les choses en décomposition, comme un cadavre dans sa tombe. MacArthur précise qu'il vise ici l'immoralité sexuelle (2 Corinthiens 12.21; Galates 5.19; Éphésiens 5.3; 1 Thessaloniciens 4.7), corruption qui commence dans le cœur, selon les convoitises décrites au verset 24, et aboutit au déshonneur du corps. L'image est celle de la putréfaction : l'homme livré à lui-même pourrit moralement de l'intérieur.</td>
+            <td><span class="trad"><span><b>S21</b> l'impureté</span><span><b>NEG79</b> l'impureté</span><span><b>Darby</b> l'impureté</span><span><b>LSG</b> l'impureté</span><span><b>KJF</b> l'impureté</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">passions</span><span class="mot-gr">pathos</span></th>
+            <td class="col-sens">passion, désir violent, élan incontrôlé qui subjugue la volonté; ici qualifié d'infâme, <i>atimia</i></td>
+            <td>Le mot dénote un désir qui maîtrise l'homme au lieu d'être maîtrisé par lui. Joint à <i>atimia</i> (déshonneur, ignominie), il forme l'expression passions infâmes (1.26). MacArthur identifie ces passions à l'homosexualité décrite aux versets 26 et 27, péché que l'Écriture condamne (Genèse 19; Lévitique 18.22; 1 Corinthiens 6.9-11; Galates 5.19-21; 1 Timothée 1.9-10; Jude 7). L'apôtre ne décrit pas une orientation neutre mais une passion dégradante qui inverse l'usage naturel voulu par le Créateur.</td>
+            <td><span class="trad"><span><b>S21</b> passions déshonorantes</span><span><b>NEG79</b> passions infâmes</span><span><b>Darby</b> passions infâmes</span><span><b>LSG</b> passions infâmes</span><span><b>KJF</b> viles affections</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">réprouvé</span><span class="mot-gr">adokimos</span></th>
+            <td class="col-sens">qui n'a pas réussi l'épreuve, non éprouvé valable, rejeté après examen</td>
+            <td>Adjectif tiré du vocabulaire des essayeurs de métaux : il décrivait un métal inutile et sans valeur, écarté parce que trop chargé d'impuretés pour passer le test. MacArthur applique l'image à l'esprit (<i>nous</i>) de l'homme : Dieu l'a éprouvé et l'a trouvé inutilisable, bon à rejeter (Jérémie 6.30). Le sens réprouvé est un esprit incapable de porter un jugement moral sain, livré à lui-même pour commettre des choses indignes. Le châtiment épouse la faute : ils n'ont pas jugé bon de retenir Dieu, Dieu les livre à un jugement faussé.</td>
+            <td><span class="trad"><span><b>S21</b> leur sens dépravé</span><span><b>NEG79</b> leur sens réprouvé</span><span><b>Darby</b> un esprit réprouvé</span><span><b>LSG</b> leur sens réprouvé</span><span><b>KJF</b> un esprit réprouvé</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Romains 1.24-32</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Romains 1.24-32 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Rm 1.24-32, 1.24, 1.25, 1.26, 1.27, 1.28, 1.32.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1261</span></th>
+            <td><a href="https://www.gty.org/sermons/1261" target="_blank" rel="noopener">Judgment on a Reprobate Society</a></td>
+            <td>Romains 1.18-32</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-112</span></th>
+            <td><a href="https://www.gty.org/sermons/80-112" target="_blank" rel="noopener">What's Wrong with America?</a></td>
+            <td>Romains 1.18-32</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-184</span></th>
+            <td><a href="https://www.gty.org/sermons/80-184" target="_blank" rel="noopener">The Reality of God's Wrath</a></td>
+            <td>Romains 1.18-32</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-314</span></th>
+            <td><a href="https://www.gty.org/sermons/80-314" target="_blank" rel="noopener">When God Abandons a Nation</a></td>
+            <td>Romains 1.18-32</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-14</span></th>
+            <td><a href="https://www.gty.org/sermons/45-14" target="_blank" rel="noopener">Abandoned by God, Part 1</a></td>
+            <td>Romains 1.24-25</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-15</span></th>
+            <td><a href="https://www.gty.org/sermons/45-15" target="_blank" rel="noopener">Abandoned by God, Part 2</a></td>
+            <td>Romains 1.26-32</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La clé de tout le passage est, pour MacArthur, la notion de colère d'abandon : la cinquième forme de la colère divine, qui supprime toute restriction et laisse l'homme courir à sa perte. Le triple «&nbsp;Dieu les a livrés&nbsp;» n'est pas une permission distraite, mais un jugement actif, présent et terrifiant.</p>
+    <div class="body">
+      <p>La clé de tout le passage est, pour MacArthur, la notion de colère d'abandon. Dans sa note sur 1.18, il distingue cinq manifestations de la colère de Dieu : la colère éternelle de l'enfer, la colère eschatologique du jour du Seigneur, la colère cataclysmique du déluge et de Sodome, la colère de conséquences du principe «&nbsp;on récolte ce qu'on sème&nbsp;», et enfin la colère d'abandon, qui consiste à supprimer toute restriction et à laisser les hommes poursuivre dans le péché et en subir les conséquences. C'est cette cinquième forme qui gouverne notre texte. La colère de Dieu n'est jamais un accès impulsif ou un caprice dirigé contre ceux qu'il n'aimerait pas; elle est la réponse arrêtée et déterminée d'un Dieu juste face au péché. Le triple «&nbsp;Dieu les a livrés&nbsp;» n'est donc pas le récit d'une permission distraite, mais celui d'un jugement actif, présent et terrifiant : sans feu du ciel ni cataclysme, Dieu déverse déjà sa colère jour après jour, quand il retire sa main retenante et abandonne le pécheur à la destruction de son propre péché.</p>
+      <p>MacArthur insiste sur le caractère judiciaire du verbe <i>paradidomi</i>, emprunté au langage des tribunaux pour la remise d'un prisonnier au châtiment. Lorsque l'homme abandonne Dieu de manière consciente et délibérée, Dieu l'abandonne à son tour, selon un principe constant de l'histoire de la révélation (Juges 10.13; 2 Chroniques 15.2; Psaume 81.12-13; Osée 4.17; Actes 7.42). Cette livraison opère sur deux registres : indirectement, en levant les barrières morales pour laisser le péché évoluer jusqu'à son aboutissement inévitable; directement et en dernier ressort, par des actes précis de jugement. Le péché devient à la fois la faute et la sentence. Le mouvement du passage est logiquement scellé : parce qu'ils ont échangé la vérité de Dieu contre le mensonge et adoré la créature au lieu du Créateur (1.25), Dieu les livre; parce qu'ils ne se sont pas souciés de retenir la connaissance de Dieu (1.28), Dieu les livre à un esprit incapable de discernement. L'idolâtrie verticale engendre la perversion horizontale : fausser sa relation au Créateur, c'est fatalement fausser sa propre nature.</p>
+      <p>La progression que trace Paul est, selon MacArthur, une spirale descendante en trois degrés. D'abord l'essence (1.24-25) : l'impureté intérieure d'un cœur livré à ses convoitises, qui s'exprime surtout dans le domaine sexuel et déshonore le corps; Dieu les y livre parce qu'ils ont échangé la vérité de Dieu contre le mensonge. Ensuite la manifestation (1.26-27) : l'homosexualité, présentée comme l'inversion volontaire de l'usage naturel que le Créateur a inscrit dans la distinction de l'homme et de la femme; les coupables reçoivent en eux-mêmes le salaire de leur égarement, car on récolte ce qu'on sème (Galates 6.7-8) et de telles pratiques portent en elles leur autodestruction. Enfin l'étendue (1.28-32) : le sens réprouvé qui déverse les vingt et un vices du catalogue, preuve que la dépravation, une fois la digue rompue, contamine toute la personne et toute la société. Cette spirale prouve la doctrine de la dépravation totale : livré à lui-même, sans la grâce retenante de Dieu, l'homme ne s'améliore pas, il se décompose.</p>
+      <p>Le verset 32 est le sommet de la culpabilité et non sa simple conclusion. MacArthur souligne que «&nbsp;connaissent&nbsp;» y désigne non une ignorance mais une rébellion flagrante : ces hommes savent pertinemment que le juste décret de Dieu déclare dignes de mort ceux qui commettent de telles choses, et ils passent outre. Pire encore, ils ne se contentent pas de pécher; ils approuvent et encouragent ceux qui pèchent, érigeant le mal en norme célébrée. C'est là le comble de la dépravation : aimer le péché au point d'applaudir le péché d'autrui. Ce tableau verrouille l'argument de la condamnation universelle. Nul ne peut plaider l'ignorance, car la révélation générale a laissé tout homme inexcusable (1.20); nul ne peut plaider l'innocence, car le cœur livré à lui-même prouve par ses fruits qu'il mérite le jugement. Voilà pourquoi, chez MacArthur, ce passage sombre est indispensable à l'Évangile : c'est sur ce fond de nuit que rayonnera, en 3.21-26, la justice de Dieu offerte gratuitement, par grâce, au moyen de la foi seule, par la propitiation dans le sang de Christ.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du contexte immédiat de l'idolâtrie aux archétypes vétérotestamentaires de la colère d'abandon, jusqu'aux parallèles pauliniens qui ouvrent sur l'espérance de la grâce transformatrice.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 1.18-23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le contexte immédiat : la colère révélée contre l'idolâtrie qui retient la vérité captive et échange la gloire de Dieu contre des images; la racine dont 1.24-32 décrit le fruit. Le triple «&nbsp;Dieu les a livrés&nbsp;» répond directement au triple refus de glorifier, remercier et retenir Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 3.23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Tous ont péché et sont privés de la gloire de Dieu : la condamnation des païens en 1.18-32 est le premier maillon de la démonstration de la culpabilité universelle que ce verset résume.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 81.12-13</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Je les ai livrés à l'endurcissement de leur cœur, ils ont suivi leurs propres conseils : archétype vétérotestamentaire de la colère d'abandon que MacArthur invoque pour éclairer le verbe livrer.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Osée 4.17</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Éphraïm est attaché aux idoles, laisse-le : la sentence de l'abandon judiciaire qui livre l'idolâtre à son idolâtrie; MacArthur y renvoie comme exemple type de cette colère.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Lévitique 18.22</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Tu ne coucheras point avec un homme comme on couche avec une femme, c'est une abomination : fondement légal qui range l'homosexualité parmi les passions infâmes condamnées par Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 6.9-11</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Catalogue paulinien des pratiques qui excluent du royaume, dont l'homosexualité, suivi de la délivrance par lavage, sanctification et justification : même verdict qu'en Romains 1, mais ouvert sur l'espérance de la grâce transformatrice.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 6.7-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">On ne se moque pas de Dieu, on récolte ce qu'on sème : principe que MacArthur applique au salaire que les coupables reçoivent en eux-mêmes (1.27), nature autodestructrice du péché sexuel.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 4.17-19</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les païens marchent dans la vanité de leurs pensées, l'intelligence obscurcie, livrés au dérèglement : parallèle paulinien exact de la spirale descendante de Romains 1, de l'aveuglement de l'esprit à l'impureté du corps.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La colère d'abandon comme jugement présent</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le triple «&nbsp;Dieu les a livrés&nbsp;» (1.24, 1.26, 1.28) déploie, selon la note de MacArthur sur 1.18, la cinquième forme de la colère divine : supprimer toute restriction et laisser les hommes continuer à pécher.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La colère de Dieu n'est pas seulement future et eschatologique; elle se révèle déjà, ici et maintenant, dans l'abandon judiciaire qui livre le rebelle à ses convoitises. Pour votre assemblée : une société qui s'enfonce ouvertement et sans honte dans la perversion n'échappe pas à Dieu, elle subit déjà son jugement. Le pire châtiment que Dieu puisse infliger en cette vie n'est pas de frapper le pécheur, mais de le laisser à lui-même. Cet enseignement réfute l'idée d'un Dieu indifférent au mal et appelle à craindre le retrait de sa grâce retenante.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La dépravation totale prouvée par la spirale descendante</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La progression essence (1.24-25), manifestation (1.26-27), étendue (1.28-32) que repère MacArthur montre l'homme livré à lui-même non pas s'améliorant mais se décomposant jusqu'au catalogue des vingt et un vices et à l'esprit réprouvé.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Sans la grâce souveraine et retenante de Dieu, le cœur humain ne tend pas vers le bien mais vers une corruption croissante. Pour votre assemblée : nul n'est naturellement neutre ou bon; tous portent en germe cette spirale, et seule la grâce fait la différence. Cette doctrine ruine tout optimisme sur la nature humaine et tout salut par l'effort moral, et prépare la nécessité absolue d'une justice imputée du dehors (3.21-22). Elle interdit au croyant de se croire meilleur par lui-même : il n'est qu'un pécheur arraché à la même spirale par pure grâce.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'idolâtrie comme racine de la perversion morale</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul fonde chaque livraison sur un refus de Dieu : ils ont changé la vérité de Dieu en mensonge et adoré la créature au lieu du Créateur (1.25); ils ne se sont pas souciés de connaître Dieu (1.28).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le désordre moral n'est jamais premier; il découle d'un désordre dans l'adoration. Fausser sa relation au Créateur entraîne fatalement la corruption de la créature qu'on est. Pour votre assemblée : les crises éthiques de notre temps sont d'abord des crises théologiques, des problèmes d'adoration. On ne réforme pas les mœurs sans rétablir la vérité sur Dieu. Inversement, la régénération qui remet Dieu à sa place restaure l'ordre moral du dedans, car le cœur qui adore le vrai Dieu retrouve l'usage naturel des dons du Créateur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'inexcusabilité de l'homme et la justice du jugement</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Au verset 32, «&nbsp;connaissent&nbsp;» désigne, selon MacArthur, non l'ignorance mais une rébellion flagrante : ils savent le juste décret de Dieu et non seulement le transgressent mais approuvent ceux qui le transgressent.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La culpabilité de l'homme est entière et sans excuse : la révélation générale l'a rendu inexcusable (1.20) et sa conscience témoigne du décret divin (1.32). Pour votre assemblée : le pécheur ne sera pas jugé pour ce qu'il ignorait mais pour la vérité qu'il a refoulée. Approuver et célébrer le péché d'autrui est un degré aggravé de la chute. Cette vérité écarte tout universalisme et toute idée que l'ignorance excuserait : le jugement de Dieu est pleinement juste, et c'est cette justice établie qui rend si glorieuse la justification gratuite du coupable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le sombre arrière-plan de l'Évangile de la grâce</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Cette péricope clôt la culpabilité des païens (1.18-32) et amorce la démonstration qui conduit à 3.23, fondement nécessaire de la justice de Dieu révélée et offerte par la foi (3.21-26).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>On ne peut comprendre la bonne nouvelle de la justification sans avoir mesuré la mauvaise nouvelle de la condamnation. Pour votre assemblée : prêcher la grâce sans prêcher la colère, c'est offrir un remède pour une maladie qu'on n'a pas diagnostiquée. C'est sur ce fond de nuit que brillera la justice gratuite, imputée par la foi seule, acquise par la propitiation dans le sang de Christ (3.25). Le croyant qui contemple d'où la grâce l'a tiré adore d'autant plus le Sauveur, et l'incroyant doit entendre la sentence avant l'offre du pardon.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>MacArthur range «&nbsp;Dieu les a livrés&nbsp;» (1.24, 1.26, 1.28) sous la colère d'abandon, cinquième forme de la colère divine. Comment prêcher cette vérité de façon à faire craindre à votre assemblée le retrait de la grâce retenante de Dieu, sans verser dans le fatalisme ni dans le sensationnalisme moralisateur?</li>
+      <li>Le verbe <i>paradidomi</i> est un terme judiciaire de remise d'un prisonnier. En quoi comprendre l'abandon comme une sentence active de Dieu, et non comme une simple permission distraite, change-t-il la manière dont vous présentez le jugement présent de Dieu sur notre société?</li>
+      <li>Paul fonde la perversion morale sur l'idolâtrie (1.25, 1.28) : le désordre de l'adoration précède le désordre des mœurs. Comment cette priorité du théologique sur l'éthique oriente-t-elle votre diagnostic des crises morales contemporaines et la manière d'y répondre depuis la chaire?</li>
+      <li>La spirale descendante des versets 24 à 32 démontre que l'homme livré à lui-même se décompose au lieu de s'améliorer. Comment cette doctrine de la dépravation totale réfute-t-elle l'optimisme moderne sur la bonté naturelle de l'homme, et comment la communiquer sans écraser les auditeurs sous le désespoir?</li>
+      <li>MacArthur identifie clairement les passions infâmes à l'homosexualité, péché que Paul déclare contre nature et digne de mort (1.26-27, 1.32). Comment annoncer ce verdict scripturaire avec une clarté inflexible tout en offrant l'espérance réelle de 1 Corinthiens 6.11 (et tels vous étiez), sans la dureté ni la complaisance?</li>
+      <li>Au verset 32, le comble n'est pas de pécher mais d'approuver ceux qui pèchent. En quoi ce degré aggravé de la chute, applaudir le mal d'autrui, parle-t-il à une culture qui célèbre publiquement ce que Dieu condamne, et quelle exhortation en tirer pour le croyant tenté de se taire?</li>
+      <li>Ce passage est le sombre arrière-plan sans lequel la justice gratuite de 3.21-26 ne brillerait pas. Comment structurer votre prédication pour que l'auditeur ressente d'abord le poids de la condamnation, afin que l'offre de la propitiation par le sang de Christ soit reçue comme la délivrance qu'elle est?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Romains 1.24-32 · 2026-06-16 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La justice de Dieu&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Romains-1-24-32.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tite 2 · Le caractère d&#x27;une Église saine : honorer la saine doctrine dans chaque génération sous l&#x27;école de la grâce salvatrice · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Tite 2 dans la perspective de John MacArthur : Le caractère d&#x27;une Église saine : honorer la saine doctrine dans chaque génération sous l&#x27;école de la grâce salvatrice.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Tite 2</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Tite 2</span></p>
+    <h1 class="hero__title">Le caractère d'une Église saine : honorer la saine doctrine dans chaque génération sous l'école de la grâce salvatrice</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée. Elle nous enseigne à renoncer à l’impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété, en attendant la bienheureuse espérance, et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ. Il s’est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Tite 2.11-⁠14 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 11 avril 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Tite 2</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Après avoir établi au chapitre 1 les qualifications des anciens/évêques (1.5-⁠9) et la nécessité de museler les faux docteurs dont les œuvres corrompues démentent la profession de foi (1.10-⁠16), l'apôtre Paul ouvre le chapitre 2 par un contraste emphatique : « Pour toi (<i>Sy de</i>), dis les choses qui sont conformes à la saine doctrine » (2.1). Comme le souligne John MacArthur (<i>56-⁠12</i>), le regard passe ici des pasteurs aux fidèles, des conducteurs à l'assemblée tout entière, afin de décrire le caractère d'une Église spirituellement saine au milieu du paganisme crétois.</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Pour toi, dis les choses qui sont conformes à la saine doctrine.</p><cite class="verse__ref">Tite 2.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">Dis que les vieillards doivent être sobres, honnêtes, modérés, sains dans la foi, dans l’amour, dans la patience.</p><cite class="verse__ref">Tite 2.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Dis que les femmes âgées doivent aussi avoir l’extérieur qui convient à la sainteté, n’être ni médisantes, ni adonnées aux excès du vin; qu’elles doivent donner de bonnes instructions,</p><cite class="verse__ref">Tite 2.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">dans le but d’apprendre aux jeunes femmes à aimer leur mari et leurs enfants,</p><cite class="verse__ref">Tite 2.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">à être retenues, chastes, occupées aux soins domestiques, bonnes, soumises à leur mari, afin que la parole de Dieu ne soit pas calomniée.</p><cite class="verse__ref">Tite 2.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">Exhorte de même les jeunes gens à être modérés,</p><cite class="verse__ref">Tite 2.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">te montrant toi-même à tous égards un modèle de bonnes œuvres, et donnant un enseignement pur, digne,</p><cite class="verse__ref">Tite 2.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">une parole saine, irréprochable, afin que l’adversaire soit confus, n’ayant aucun mal à dire de nous.</p><cite class="verse__ref">Tite 2.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Exhorte les serviteurs à être soumis à leurs maîtres, à leur plaire en toutes choses, à n’être point contredisants,</p><cite class="verse__ref">Tite 2.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">à ne rien dérober, mais à montrer toujours une parfaite fidélité, afin de faire honorer en tout la doctrine de Dieu notre Sauveur.</p><cite class="verse__ref">Tite 2.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée.</p><cite class="verse__ref">Tite 2.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Elle nous enseigne à renoncer à l’impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété,</p><cite class="verse__ref">Tite 2.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">en attendant la bienheureuse espérance, et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ.</p><cite class="verse__ref">Tite 2.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Il s’est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres.</p><cite class="verse__ref">Tite 2.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Dis ces choses, exhorte, et reprends, avec une pleine autorité. Que personne ne te méprise.</p><cite class="verse__ref">Tite 2.15 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Relevant du genre parénétique et pastoral (intégrant une table des devoirs générationnels et domestiques en 2.2-⁠10 couronnée par un credo christologique et sotériologique en 2.11-⁠14), ce chapitre médian constitue le cœur doctrinal et missionnaire de l'épître. Paul montre d'abord comment cinq groupes précis au sein de l'assemblée - les vieillards (2.2), les femmes âgées (2.3), les jeunes femmes (2.4-⁠5), les jeunes gens avec Tite en tête (2.6-⁠8) et les serviteurs (2.9-⁠10) - doivent incarner la saine doctrine afin de protéger la Parole de toute calomnie et d'orner l'enseignement de Dieu notre Sauveur. Puis il ancre tous ces devoirs dans l'apparition historique de la grâce salvatrice de Dieu (2.11-⁠14), avant de conclure par un appel vibrant à prêcher avec une pleine autorité (2.15) qui prépare directement les exhortations civiques du chapitre 3.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Tite 2</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Dans la société gréco-romaine et particulièrement en Crète, la structure familiale traditionnelle subissait une profonde érosion morale, tandis que les cultes à mystères et les courants judéo-ascétiques ou proto-gnostiques bouleversaient les maisonnées (1.11) en méprisant les rôles créés par Dieu dans le mariage et la maternité (cf. 1 Tm 2.11-⁠15 ; 4.3 ; 5.14 ; <i>56-⁠14</i>, <i>56-⁠15</i>). Parallèlement, l'Empire romain comptait des millions d'esclaves (<i>douloi</i>, jusqu'au tiers de la population urbaine) chez qui la rébellion, la réplique insolente et le chapardage domestique (<i>nosphizomenous</i>, 2.10) étaient monnaie courante (<i>56-⁠17</i>).</p><div class="body"><p>Face à ce monde païen qui jugeait toute doctrine religieuse à l'aune du comportement moral de ses adeptes, Paul rappelle que l'Église locale est une famille intergénérationnelle où les aînés forment les plus jeunes par l'exemple et la parole (2.2-⁠7), et où même les esclaves placés au bas de l'échelle sociale deviennent les ambassadeurs les plus éloquents de l'Évangile en ornant (<i>kosmōsin</i>) la doctrine de Dieu notre Sauveur par leur intégrité irréprochable (2.9-⁠10).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Le discipulat intergénérationnel féminin et la priorité du foyer (Tite 2.3-⁠5).</b> Dans ses sermons <i>56-⁠13</i>, <i>56-⁠14</i> et <i>56-⁠15</i>, John MacArthur met en lumière le modèle biblique du ministère féminin dans l'Église : Tite enseigne la saine doctrine aux femmes âgées afin que celles-ci, par leur comportement digne d'un sanctuaire (<i>hieroprepeis</i>) et leur statut d'enseignantes du bien (<i>kalodidaskalous</i>, 2.3), instruisent et ramènent au bon sens (<i>sōphronizōsin</i>, 2.4) les jeunes femmes. Ce mentorat spirituel porte sur sept vertus centrées sur le foyer : aimer leur mari (<i>philandrous</i>) et leurs enfants (<i>philoteknous</i>, un amour sacrificiel d'engagement et non un simple sentiment romantique), être modérées, chastes, occupées aux soins domestiques (<i>oikourgous</i>), bonnes et soumises à leur mari afin que la Parole de Dieu ne soit pas blasphémée par les païens (2.4-⁠5).</li><li><b>La portée universelle et l'efficacité particulière de la grâce salvatrice (Tite 2.11, 14).</b> En Tite 2.11 (« Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée », sermons <i>56-⁠18</i> et <i>56-⁠19</i>), MacArthur explique comment l'Écriture tient ensemble deux vérités complémentaires : d'une part, la grâce salvatrice apparue en Christ est offerte de bonne foi à tous les hommes sans distinction ethnique ni sociale (Juifs et Gentils, vieillards, jeunes et esclaves, cf. 1 Tm 2.4 ; 4.10) ; d'autre part, au v. 14 (<i>56-⁠21</i>), l'expiation substitutive de Christ (« Il s'est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne ») accomplit une rédemption effective et réelle pour tous les élus qui croient.</li><li><b>L'autorité absolue du prédicateur soumis à l'Écriture (Tite 2.15).</b> Dans son sermon <i>56-⁠22</i> (« The Preacher's Authority »), MacArthur médite sur le triple impératif de Tite 2.15 : « Dis ces choses (<i>lalei</i>), exhorte (<i>parakalei</i>), et reprends (<i>elenche</i>), avec une pleine autorité (<i>meta pasēs epitagēs</i>). Que personne ne te méprise. » Cette autorité n'appartient ni à une hiérarchie ecclésiastique humaine ni aux opinions personnelles du prédicateur, mais exclusivement à la Parole inspirée de Dieu lorsqu'elle est fidèlement exposée.</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Tite 2</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Tite 2.3</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Conjonction négative <i>mēde</i> (« ni asservies à beaucoup de vin », א*, A, C, D*, F, G, P, SBLGNT, Nestle 1904, Westcott et Hort, Tregelles), ou simple négation <i>mē</i> (א2, D2, H, K, L, Ψ, NA28, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« n’être ni médisantes, ni adonnées aux excès du vin » : rendu identique dans toutes les versions françaises.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Aucune incidence sur le sens : les deux particules coordonnent la seconde interdiction à <i>mē diabolous</i> (56-⁠13).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Tite 2.5</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Adjectif <i>oikourgous</i> (« travaillant à la maison, actives aux soins du foyer », de <i>oikos</i> + <i>ergon</i>, א*, A, C, D*, F, G, P, SBLGNT, NA28, Westcott et Hort, Tregelles), contre <i>oikourous</i> (« gardiennes du foyer », de <i>oikos</i> + <i>ouros</i>, א2, D2, H, K, L, Ψ, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« occupées aux soins domestiques » : la NEG79, la LSG, la Darby, la NBS, la S21 et la NASB (« workers at home ») traduisent le sens d'<i>oikourgous</i>.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee"><i>Oikourgous</i> est la leçon la mieux attestée par les onciaux anciens et met l'accent sur le travail diligent accompli par la jeune épouse dans la gestion de sa maisonnée (56-⁠15).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Tite 2.7</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Forme courte à deux noms <i>aphthorian, semnotēta</i> (« pureté / incorruption, dignité », א, A, C, D*, K, P, SBLGNT, NA28, Westcott et Hort, Tregelles), ou forme longue à trois noms <i>adiaphthorian, semnotēta, aphtharsian</i> (D2, L, Ψ, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« et donnant un enseignement pur, digne » : la NEG79, la LSG, la Darby, la NBS et la NASB suivent la leçon ancienne (la S21 met « [et d’intégrité] » entre crochets).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le troisième terme byzantin <i>aphtharsian</i> est une glose explicative d'<i>aphthorian</i> ; MacArthur (56-⁠16) commente directement <i>aphthoria</i> et <i>semnotēs</i>.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Tite 2.13</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Syntagme <i>tou megalou Theou kai Sōtēros hēmōn Iēsou Christou</i> (א2, F, G, H, K, L, P, Ψ, SBLGNT, NA28, RP, TR ; ordre <i>Christou Iēsou</i> dans א*, A, C, D*, WH, Tregelles).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ » : la NEG79 (contrairement à la LSG qui traduisait « du grand Dieu et de notre Sauveur »), la S21, la Darby, la NBS et la NASB respectent l'article unique du grec.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Sur le plan grammatical et doctrinal, l'unicité de l'article <i>tou</i> devant <i>megalou Theou kai Sōtēros hēmōn</i> (règle de Granville Sharp) identifie sans ambiguïté Jésus-Christ comme « notre grand Dieu et Sauveur » (56-⁠20, 56-⁠21).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Textus Receptus (Bible Hub)</li><li>versions françaises : NEG79, LSG, S21, Darby, NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart : la numérotation des versets 1 à 15 est identique dans toutes les éditions grecques et françaises.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Tite 2</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Tite</span> <span>2.1-⁠2.10</span></p><div class="plan__corps"><p class="plan__titre">La saine doctrine traduite en conduite sainte dans chaque groupe de l'Église : l'ordre général donné à Tite (2.1), le caractère des hommes âgés (2.2) et des femmes âgées appelées à former les jeunes femmes à aimer leur foyer (2.3-⁠5), l'appel des jeunes gens à la modération avec Tite pour modèle irréprochable (2.6-⁠8), et la fidélité soumise des serviteurs qui pare de beauté la doctrine de Dieu notre Sauveur (2.9-⁠10).</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Impératif d'ouverture <i>Sy de lalei ha prepei tē hygiainousē didaskalia</i> (2.1), énumération des cinq groupes <i>presbytas... presbytidas... tas neas... tous neōterous... doulous</i> (2.2-⁠9) et but apologétique culminant <i>hina tēn didaskalian... kosmōsin en pasin</i> (2.10).</p></div></li><li><p class="plan__ref"><span>Tite</span> <span>2.11-⁠2.14</span></p><div class="plan__corps"><p class="plan__titre">Le fondement doctrinal de la vie sainte dans la grâce salvatrice et l'espérance glorieuse : la manifestation de la grâce de Dieu source de salut pour tous les hommes (2.11), son œuvre pédagogique qui nous apprend à renoncer au péché et à vivre dans le siècle présent selon la sagesse, la justice et la piété (2.12), l'attente de la bienheureuse espérance et de la gloire de notre grand Dieu et Sauveur Jésus-Christ (2.13), et son sacrifice rédempteur pour se purifier un peuple particulier zélé pour les bonnes œuvres (2.14).</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Conjonction causale et verbe principal <i>Epephanē gar hē charis tou Theou</i> (2.11), participes présents <i>paideuousa... prosdechomenoi</i> (2.12-⁠13) et proposition relative rédemptrice <i>hos edōken heauton hyper hēmōn hina...</i> (2.14).</p></div></li><li><p class="plan__ref"><span>Tite</span> <span>2.15</span></p><div class="plan__corps"><p class="plan__titre">Le mandat d'autorité pastorale : l'ordre solennel de dire ces choses, d'exhorter et de reprendre avec une pleine autorité sans laisser personne mépriser le ministère de la Parole (2.15).</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Reprise récapitulative <i>Tauta lalei kai parakalei kai elenche meta pasēs epitagēs; mēdeis sou periphroneitō</i> (2.15).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Tite 2.3-⁠5</dt><dd>Au v. 3, l'adjectif composé <i>kalodidaskalous</i> (« enseignantes de ce qui est bien ») gouverne la proposition finale du v. 4 <i>hina <b>sōphronizōsin</b> tas neas</i> (« afin qu'elles forment à la sagesse / ramènent au bon sens les jeunes femmes »), suivie d'une série de sept prédicats à l'accusatif pluriel féminin dépendant de l'infinitif <i>einai</i> : <i>philandrous, philoteknous, sōphronas, hagnas, oikourgous, agathas, hypotassomenas tois idiois andrasin</i>. L'enseignement théorique de Tite (v. 1) se transmet aux jeunes épouses par le canal du mentorat pratique des femmes âgées pieuses (56-⁠13 à 56-⁠15).</dd></div><div><dt>Tite 2.6-⁠8</dt><dd>Après l'impératif <i>Tous neōterous hōsautōs parakalei sōphronein</i> (v. 6), le participe présent moyen nominatif singulier <i>peri panta seauton <b>parechomenos</b> typon kalōn ergōn</i> (« en te présentant toi-même à tous égards comme un modèle de bonnes œuvres », v. 7) s'accorde directement avec le sujet de <i>parakalei</i> (Tite lui-même, qui faisait partie des jeunes hommes) : Tite ne peut exhorter efficacement ses pairs à la maîtrise de soi que s'il en est l'empreinte vivante (<i>typon</i> ; 56-⁠16).</dd></div><div><dt>Tite 2.11-⁠12</dt><dd>En <i>paideuousa hēmas, hina <b>arnēsamenoi</b> tēn asebeian kai tas kosmikas epithymias sōphronōs kai dikaiōs kai eusebōs <b>zēsōmen</b> en tō nyn aiōni</i>, le participe aoriste moyen <i>arnēsamenoi</i> (« ayant renoncé par une rupture décisive ») exprime l'acte initial de repentance à la conversion, qui précède et fonde le subjonctif aoriste ingressif/constatif <i>zēsōmen</i> (« que nous vivions ») qualifié par la triade adverbiale couvrant les trois dimensions de l'existence : <i>sōphronōs</i> (envers soi-même), <i>dikaiōs</i> (envers le prochain) et <i>eusebōs</i> (envers Dieu ; 56-⁠20).</dd></div><div><dt>Tite 2.13-⁠14</dt><dd>En <i>prosdechomenoi tēn makarian elpida kai epiphaneian tēs doxēs tou megalou Theou kai Sōtēros hēmōn Iēsou Christou</i>, un premier article unique <i>tēn</i> unit <i>makarian elpida</i> et <i>epiphaneian</i> en une hendiadys (« la bienheureuse espérance qui consiste en la manifestation de la gloire »), et un second article unique <i>tou</i> unit <i>megalou Theou</i> et <i>Sōtēros hēmōn</i> en apposition directe à <i>Iēsou Christou</i> (règle de Granville Sharp). Au v. 14, la proposition finale comporte deux subjonctifs aoristes coordonnés - <i>hina <b>lytrōsētai</b> hēmas apo pasēs anomias kai <b>katharisē</b> heautō laon periousion</i> - démontrant que la rédemption expiatoire de Christ ne nous délivre pas seulement de la culpabilité du péché, mais aussi de son esclavage (<i>apo pasēs anomias</i>) pour nous consacrer aux bonnes œuvres (56-⁠20, 56-⁠21).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">qui convient à la sainteté</a><a href="#mot-2">occupées aux soins domestiques</a><a href="#mot-3">enseigne</a><a href="#mot-4">racheter</a><a href="#mot-5">qui lui appartienne</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">qui convient à la sainteté</h3><p class="mot__translit">hieroprepēs</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>qui convient à un lieu sacré ou à une personne consacrée au service du temple, empreint d'une dignité sainte</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>hieroprepēs</i> (composé de <i>hieros</i>, sacré, appartenant au temple, et de <i>prepō</i>, convenir, être séant; <i>hapax legomenon</i> dans le NT en Tite 2.3; fréquent chez Platon, Philon et Josèphe) décrit le maintien, l'attitude et le comportement révérencieux d'un officiant qui se tient dans le sanctuaire de Dieu.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Tite 2.3, MacArthur (56-⁠13) explique que les femmes âgées doivent porter dans toute leur manière d'être (<i>en katastēmati</i>) l'atmosphère d'un sanctuaire consacré à Dieu : leur vie quotidienne tout entière est un service sacerdotal qui inspire le respect de la sainteté divine.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> se comporter comme il convient à des servantes de Dieu (2.3)</li><li><b>NEG79</b> avoir l'extérieur qui convient à la sainteté (2.3)</li><li class="ecart"><b>Darby</b> dans toute leur manière d'être, comme il convient à de saintes femmes (2.3)</li><li><b>LSG</b> avoir l'extérieur qui convient à la sainteté (2.3)</li><li class="ecart"><b>NBS</b> un comportement qui convienne à des personnes consacrées (2.3)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">occupées aux soins domestiques</h3><p class="mot__translit">oikourgos</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>qui travaille à la maison, qui prend soin avec diligence des affaires du foyer</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>oikourgos</i> (composé de <i>oikos</i>, maison/foyer, et de la racine <i>erg-</i> de <i>ergon</i>, travail/œuvre; <i>hapax legomenon</i> dans le NT en Tite 2.5 dans le texte critique, correspondant à <i>oikouros</i> « gardienne du foyer » dans le Textus Receptus) désigne l'épouse qui fait de sa maison le champ privilégié de son activité et de son ministère.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Tite 2.5, MacArthur (56-⁠14, 56-⁠15) souligne que loin d'être une tâche inférieure, l'édification du foyer chrétien par une épouse et mère aimante, pure et travailleuse est le rempart établi par Dieu pour élever une génération pieuse et empêcher que la Parole de Dieu ne soit calomniée par le monde.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> réfléchies et pures, à s'occuper de leur foyer (2.5)</li><li><b>NEG79</b> retenues, chastes, occupées aux soins domestiques (2.5)</li><li class="ecart"><b>Darby</b> sages, pures, occupées des soins de la maison (2.5)</li><li><b>LSG</b> retenues, chastes, occupées aux soins domestiques (2.5)</li><li class="ecart"><b>NBS</b> pondérées, chastes, occupées aux travaux domestiques (2.5)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">enseigne</h3><p class="mot__translit">paideuō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>éduquer un enfant, former par l'instruction, la discipline, l'encouragement et la correction</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon Thayer, <i>paideuō</i> (dérivé de <i>pais</i>, enfant; 13 occurrences dans le NT dont Actes 7.22; 22.3; 1 Tm 1.20; 2 Tm 2.25; Tite 2.12; He 12.6-⁠10) embrasse toute la pédagogie parentale : l'instruction positive de l'esprit, l'entraînement moral de la volonté et la discipline corrective aimante qui façonnent le caractère d'un enfant jusqu'à la maturité.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Tite 2.12, MacArthur (56-⁠20) montre que la grâce salvatrice de Dieu n'est jamais une licence antinomiste pour pécher : la même grâce qui nous sauve gratuitement devient notre pédagogue quotidien (<i>paideuousa hēmas</i>), nous éduquant avec tendresse et fermeté à renoncer à l'impiété pour marcher dans la sainteté.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Elle nous enseigne à renoncer à un mode de vie impie (2.12)</li><li><b>NEG79</b> Elle nous enseigne à renoncer à l'impiété (2.12)</li><li class="ecart"><b>Darby</b> nous enseignant que, reniant l'impiété (2.12)</li><li><b>LSG</b> Elle nous enseigne à renoncer à l'impiété (2.12)</li><li class="ecart"><b>NBS</b> Elle nous apprend à renier l'impiété (2.12)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">racheter</h3><p class="mot__translit">lytroō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>libérer contre le paiement d'une rançon, racheter un captif ou un esclave pour le mettre en liberté</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon Thayer, <i>lytroō</i> (dérivé de <i>lytron</i>, prix de rachat ou rançon, lui-même issu de <i>lyō</i>, délier; 3 occurrences du verbe dans le NT : Lc 24.21; Tite 2.14; 1 P 1.18, traduisant l'hébreu <i>gā'al</i> et <i>pādāh</i> dans la Septante) signifie à la voix moyenne acquitter soi-même le prix fort d'une rançon pour arracher un esclave à sa servitude et se l'acquérir.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Tite 2.14, MacArthur (56-⁠21) souligne que Jésus-Christ a payé de sa propre vie (« Il s'est donné lui-même pour nous », <i>edōken heauton hyper hēmōn</i>) la rançon exigée par la justice divine, non seulement pour nous affranchir de la peine de l'enfer, mais pour nous libérer du pouvoir de « toute iniquité » (<i>apo pasēs anomias</i>).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> afin de nous racheter de toute faute (2.14)</li><li><b>NEG79</b> afin de nous racheter de toute iniquité (2.14)</li><li class="ecart"><b>Darby</b> afin qu'il nous rachetât de toute iniquité (2.14)</li><li><b>LSG</b> afin de nous racheter de toute iniquité (2.14)</li><li class="ecart"><b>NBS</b> afin de nous rédimer de tout mal (2.14)</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">qui lui appartienne</h3><p class="mot__translit">periousios</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>qui appartient en propre comme un trésor particulier et précieux choisi au-dessus de tous les autres</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon Thayer, <i>periousios</i> (dérivé du participe de <i>perieimi</i>, surpasser, abonder, d'où <i>periousia</i>, richesse précieuse gardée en réserve; <i>hapax legomenon</i> dans le NT en Tite 2.14) a été forgé par les traducteurs de la Septante en Exode 19.5 et Deutéronome 7.6; 14.2; 26.18 (<i>laos periousios</i>) pour rendre l'hébreu <i>'am səgullāh</i>, le trésor royal personnel que le souverain a acquis pour lui-même.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Tite 2.14, MacArthur (56-⁠21) montre que Christ s'est purifié un peuple qui Lui appartient en propre comme son joyau personnel (<i>laon periousion</i>), dont la marque distinctive sur la terre est d'être « zélé (passionné, brûlant d'ardeur, <i>zēlōtēn</i>) pour les bonnes œuvres ».</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> se faire un peuple qui lui appartienne, purifié (2.14)</li><li><b>NEG79</b> se faire un peuple qui lui appartienne, purifié par lui (2.14)</li><li class="ecart"><b>Darby</b> qu'il purifiât pour lui-même un peuple acquis (2.14)</li><li><b>LSG</b> se faire un peuple qui lui appartienne, purifié par lui (2.14)</li><li class="ecart"><b>NBS</b> purifier un peuple qui soit son bien propre (2.14)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Tite 2</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans ses onze prédications sur Tite 2 (<i>56-⁠12</i> à <i>56-⁠22</i>), John MacArthur déploie la vision apostolique d'une Église locale dont la santé morale et spirituelle constitue le plus puissant instrument d'évangélisation au sein d'une culture païenne. Dans le sermon d'ouverture du chapitre (2.1, <i>56-⁠12</i>, « Sound Doctrine Backed by Sound Living »), MacArthur souligne l'enchaînement logique avec le chapitre 1 : alors que les faux docteurs renient Dieu par leurs œuvres (1.16), Tite doit proclamer les comportements pratiques qui conviennent à la saine doctrine (2.1). Le monde inconverti ne peut pas juger la vérité d'une théologie abstraite, mais il peut observer si cette théologie transforme réellement les relations familiales et sociales : comme le disait le poète sceptique Heinrich Heine cité par MacArthur (<i>56-⁠12</i>), « Montrez-moi votre vie rachetée et je serai enclin à croire en votre Rédempteur ».</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : 11 sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur Tite 2.1 à 2.15 (56-⁠12 à 56-⁠22, 11 prédications, janvier à juin 1993) et commentaire MacArthur New Testament Commentary : Titus</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">56-12</span></th><td><a href="https://www.gty.org/sermons/56-12" target="_blank" rel="noopener">Sound Doctrine Backed by Sound Living</a></td><td>Tite 2.1</td></tr><tr><th scope="row"><span class="mot-fr">56-13</span></th><td><a href="https://www.gty.org/sermons/56-13" target="_blank" rel="noopener">God's Plan for Older Men and Older Women</a></td><td>Tite 2.2-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">56-14</span></th><td><a href="https://www.gty.org/sermons/56-14" target="_blank" rel="noopener">God's Plan for Younger Women, Part 1</a></td><td>Tite 2.4-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">56-15</span></th><td><a href="https://www.gty.org/sermons/56-15" target="_blank" rel="noopener">God's Plan for Younger Women, Part 2</a></td><td>Tite 2.4-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">56-16</span></th><td><a href="https://www.gty.org/sermons/56-16" target="_blank" rel="noopener">God's Plan for Younger Men</a></td><td>Tite 2.6-⁠8</td></tr><tr><th scope="row"><span class="mot-fr">56-17</span></th><td><a href="https://www.gty.org/sermons/56-17" target="_blank" rel="noopener">God's Plan for Employees</a></td><td>Tite 2.9-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">56-18</span></th><td><a href="https://www.gty.org/sermons/56-18" target="_blank" rel="noopener">Saving Grace, Part 1</a></td><td>Tite 2.11</td></tr><tr><th scope="row"><span class="mot-fr">56-19</span></th><td><a href="https://www.gty.org/sermons/56-19" target="_blank" rel="noopener">Saving Grace, Part 2</a></td><td>Tite 2.11</td></tr><tr><th scope="row"><span class="mot-fr">56-20</span></th><td><a href="https://www.gty.org/sermons/56-20" target="_blank" rel="noopener">Saving Grace, Part 3</a></td><td>Tite 2.12-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">56-21</span></th><td><a href="https://www.gty.org/sermons/56-21" target="_blank" rel="noopener">Saving Grace, Part 4</a></td><td>Tite 2.13-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">56-22</span></th><td><a href="https://www.gty.org/sermons/56-22" target="_blank" rel="noopener">The Preacher's Authority</a></td><td>Tite 2.15</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p>En 2.2-⁠10 (sermons <i>56-⁠13</i> à <i>56-⁠17</i>), Paul détaille le plan de Dieu pour les cinq composantes de l'assemblée locale. Premièrement, les hommes âgés (<i>presbytas</i>, désignant ici l'âge avancé, environ soixante ans et plus, et non l'office d'ancien, 2.2 ; <i>56-⁠13</i>) : loin de se retirer dans l'oisiveté ou l'amertume, ils doivent être sobres (<i>nēphalious</i>, lucides et mesurés), dignes de respect (<i>semnous</i>), modérés (<i>sōphronas</i>) et spirituellement sains dans la triade fondamentale de la vie chrétienne : la foi (qui ne vacille pas devant les épreuves), l'amour (qui ne s'endurcit pas avec les années) et la patience/persévérance (<i>hypomonē</i>, qui endure jusqu'au bout). Deuxièmement, les femmes âgées (<i>presbytidas</i>, 2.3 ; <i>56-⁠13</i>) : elles doivent avoir dans toute leur tenue l'extérieur qui convient à la sainteté (<i>hieroprepeis</i>, comme des servantes consacrées dans le temple), n'être ni médisantes (<i>mē diabolous</i>, littéralement « pas des diables / calomniatrices »), ni asservies aux excès du vin, mais des « enseignantes du bien » (<i>kalodidaskalous</i>). Troisièmement, les jeunes femmes (2.4-⁠5 ; sermons <i>56-⁠14</i> et <i>56-⁠15</i>) : formées par l'exemple et les conseils des femmes plus âgées (2.4a), elles apprennent à aimer leur mari (<i>philandrous</i>) et leurs enfants (<i>philoteknous</i>) d'un amour dévoué et inconditionnel, à être retenues, chastes, occupées aux soins domestiques (<i>oikourgous</i>, faisant du foyer leur sphère prioritaire de ministère), bonnes et soumises à leur propre mari « afin que la parole de Dieu ne soit pas calomniée » (2.5). Quatrièmement, les jeunes gens (2.6-⁠8 ; <i>56-⁠16</i>) : Paul les exhorte avant tout à la maîtrise de soi (<i>sōphronein</i>, 2.6) et ordonne à Tite - lui-même jeune homme - d'en être le modèle vivant (<i>typon</i>) par ses bonnes œuvres, par un enseignement incorruptible (<i>aphthorian</i>) et digne (<i>semnotēta</i>), et par une parole saine et inattaquable « afin que l'adversaire soit confus, n'ayant aucun mal à dire de nous » (2.7-⁠8). Cinquièmement, les serviteurs et employés (<i>doulous</i>, 2.9-⁠10 ; <i>56-⁠17</i>) : ils doivent se soumettre à leurs maîtres en toutes choses, chercher à leur donner satisfaction (<i>euarestous</i>), sans contredire ni détourner quoi que ce soit (<i>mē nosphizomenous</i>), mais en démontrant une fidélité parfaite, « afin de faire honorer [orner comme un joyau, <i>kosmōsin</i>] en tout la doctrine de Dieu notre Sauveur ».</p><p>En 2.11-⁠14 (sermons <i>56-⁠18</i> à <i>56-⁠21</i>, intitulés « Saving Grace »), Paul révèle comment des pécheurs crétois autrefois menteurs et rebelles peuvent vivre d'une manière aussi surnaturelle : « Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée » (2.11). MacArthur montre que la grâce salvatrice s'est incarnée en Jésus-Christ (Jn 1.14, 17 ; <i>56-⁠18</i>), apportant le salut à l'humanité entière sans barrière de race ou de classe (<i>56-⁠19</i>). Cette grâce agit comme une éducatrice divine (<i>paideuousa</i>, 2.12 ; <i>56-⁠20</i>) : négativement, elle nous enseigne à renoncer (<i>arnēsamenoi</i>) à l'impiété et aux convoitises mondaines ; positivement, elle nous fait vivre dans le siècle présent selon la sagesse, la justice et la piété ; et eschatologiquement, elle tourne nos cœurs vers « la bienheureuse espérance, et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ » (2.13 ; <i>56-⁠20</i>, <i>56-⁠21</i>), qui s'est livré en sacrifice substitutif à la croix pour nous racheter de toute iniquité et se purifier un peuple particulier zélé pour les bonnes œuvres (2.14 ; <i>56-⁠21</i>). Enfin, au verset 2.15 (<i>56-⁠22</i>), Paul couronne ce chapitre en ordonnant à Tite de prêcher, d'exhorter et de reprendre avec toute l'autorité d'un commandement royal (<i>meta pasēs epitagēs</i>), sans jamais permettre à quiconque de mépriser la Parole de Dieu.</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Tite 2.2, 4, 5, 6, 12.</b> La racine de la maîtrise de soi et du bon sens (<i>sōphrōn</i> en 2.2, 5; <i>sōphronizō</i> en 2.4; <i>sōphroneō</i> en 2.6; <i>sōphronōs</i> en 2.12) est présente dans chacune des instructions aux groupes d'âge et dans le résumé de la vie sous la grâce (2.12), unifiant toute l'éthique du chapitre.</li><li><b>Tite 2.1, 7, 10.</b> Le substantif <i>didaskalia</i> (« doctrine / enseignement ») encadre toute la section pratique : Tite doit annoncer ce qui convient à « la saine doctrine » (2.1), montrer une pureté entière « dans l'enseignement » (2.7), afin que les croyants ornent en tout « la doctrine de Dieu notre Sauveur » (2.10).</li><li><b>Tite 2.5, 8, 10.</b> Trois propositions finales introduites par <i>hina</i> dévoilent l'enjeu évangélique de la conduite chrétienne : <i>hina mē ho logos tou Theou blasphēmētai</i> (« afin que la parole de Dieu ne soit pas calomniée », 2.5), <i>hina ho ex enantias entrapē</i> (« afin que l'adversaire soit confus », 2.8), et <i>hina tēn didaskalian... kosmōsin</i> (« afin de faire honorer / orner la doctrine », 2.10).</li><li><b>Tite 2.11, 13.</b> Le rapprochement entre l'aoriste <i>Epephanē gar hē charis tou Theou</i> (« Car la grâce de Dieu a été manifestée », 2.11) et le substantif <i>epiphaneian tēs doxēs</i> (« la manifestation / l'apparition de la gloire », 2.13) situe toute la sanctification du croyant entre les deux venues historiques de Jésus-Christ.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Cinq passages</p></header>
+<p class="lead">Cinq passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 130.8; Exode 19.5; Deutéronome 7.6; 14.2; Ézéchiel 37.23</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Tite 2.14 (« afin de nous racheter de toute iniquité [<i>hina lytrōsētai hēmas apo pasēs anomias</i>], et de se faire un peuple qui lui appartienne, purifié par lui [<i>kai katharisē heautō laon periousion</i>] ») cite et combine le grec de la Septante du Psaume 130.8 (LXX 129.8 : <i>lytrōsetai ton Israēl ek pasōn tōn anomiōn autou</i>, hébreu <i>yipdê 'et-yiśrā'ēl mikkol 'ăwōnōtāyw</i>), d'Exode 19.5 / Deutéronome 7.6 (<i>laos periousios</i> pour l'hébreu <i>'am səgullāh</i>) et d'Ézéchiel 37.23 (<i>kai kathariō autous... eis laon</i>), montrant que Jésus-Christ est l'Éternel Rédempteur d'Israël et de l'Église (56-⁠21).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Éphésiens 5.22-⁠6.9; Colossiens 3.18-⁠4.1; 1 Timothée 5.1-⁠16; 6.1-⁠2; 1 Pierre 2.18-⁠3.7</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Les exhortations familiales, générationnelles et professionnelles de Tite 2.2-⁠10 trouvent leur pendant direct dans les codes domestiques d'Éphésiens, de Colossiens, de 1 Timothée (notamment 1 Tm 5.14 sur les jeunes femmes gouvernant leur maison et 6.1 sur les esclaves afin que le nom de Dieu et la doctrine ne soient pas blasphémés) et de 1 Pierre (56-⁠13 à 56-⁠17).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Jean 1.14, 17; Romains 6.1-⁠14; 1 Timothée 2.3-⁠6; 4.10; 1 Pierre 1.18-⁠19</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">L'apparition historique de la grâce salvatrice en Tite 2.11-⁠14 rejoint Jean 1.14, 17 (« la grâce et la vérité sont venues par Jésus-Christ »), l'offre universelle du salut de 1 Timothée 2.3-⁠6 et 4.10, la victoire sur le règne du péché de Romains 6 et le rachat par le sang précieux de Christ de 1 Pierre 1.18-⁠19 (56-⁠18 à 56-⁠21).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Pierre 1.1; Jean 20.28; Romains 9.5; Hébreux 1.8</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">La construction grammaticale de Tite 2.13 (« notre grand Dieu et Sauveur Jésus-Christ », <i>tou megalou Theou kai Sōtēros hēmōn Iēsou Christou</i>) est strictement identique à celle de 2 Pierre 1.1 (<i>tou Theou hēmōn kai Sōtēros Iēsou Christou</i>) et s'ajoute à Jean 20.28, Romains 9.5 et Hébreux 1.8 parmi les déclarations les plus explicites de la divinité de Jésus-Christ (56-⁠20, 56-⁠21).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Timothée 4.11-⁠16; 2 Timothée 4.1-⁠2</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le commandement de Tite 2.7 (« te montrant toi-même à tous égards un modèle de bonnes œuvres ») et celui de Tite 2.15 (« Dis ces choses, exhorte, et reprends, avec une pleine autorité. Que personne ne te méprise ») font écho à 1 Timothée 4.12 (« Que personne ne méprise ta jeunesse ; mais sois un modèle pour les fidèles ») et à 2 Timothée 4.2 (56-⁠16, 56-⁠22).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Quatre axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La grâce de Dieu comme puissance à la fois justificatrice et sanctifiante</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Tite 2.11-⁠12, la même « grâce de Dieu, source de salut pour tous les hommes » qui nous arrache à la perdition « nous enseigne (<i>paideuousa</i>) à renoncer à l'impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété ».</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sotériologie et sanctification : l'inséparabilité de la justification et de la sanctification ; la grâce divine n'est jamais une permission de demeurer dans le péché, mais l'école efficace qui discipline et transforme le croyant.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>De la Loi mosaïque gravée sur la pierre qui condamnait le pécheur sans lui donner la force d'obéir, à la grâce de la Nouvelle Alliance incarnée en Christ qui écrit la loi de Dieu dans le cœur (Jr 31.33 ; Rm 6.14).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Toute conception de la grâce qui tolère l'impiété ou le mondanisme pervertit l'Évangile (Jude 4) ; le vrai bénéficiaire de la grâce se reconnaît à son renoncement actif au péché.</p></div></div></section><section class="theme"><h3 class="theme__title">La pleine divinité de notre grand Dieu et Sauveur Jésus-Christ et la bienheureuse espérance</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Tite 2.13, toute la vie sainte du croyant est tendue vers « la bienheureuse espérance, et la manifestation (<i>epiphaneian</i>) de la gloire de notre grand Dieu et Sauveur Jésus-Christ ».</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Christologie et eschatologie : Jésus-Christ est le « grand Dieu » (<i>ho megas Theos</i>) et le « Sauveur » dont le retour glorieux constitue l'espérance bienheureuse de l'Église.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>De la première épiphanie dans l'humilité de la crèche et de la croix (2.11, 14) à la seconde épiphanie dans l'éclat de la gloire divine (2.13) qui accomplira toutes les promesses messianiques.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'attente quotidienne du retour de Christ délivre le chrétien de la séduction du siècle présent et lui inspire une sainteté joyeuse et vigilante (cf. 1 Jn 3.2-⁠3).</p></div></div></section><section class="theme"><h3 class="theme__title">L'expiation substitutive et rédemptrice de Christ en vue d'un peuple zélé pour les bonnes œuvres</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Tite 2.14, Jésus-Christ « s'est donné lui-même pour nous (<i>hyper hēmōn</i>), afin de nous racheter (<i>lytrōsētai</i>) de toute iniquité, et de se faire un peuple qui lui appartienne (<i>laon periousion</i>), purifié par lui et zélé pour les bonnes œuvres ».</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Expiation substitutive et rédemption efficace : Christ s'est offert en rançon à notre place pour briser tant la condamnation que la tyrannie du péché et s'acquérir une Église pure et ardente au bien.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Du rachat d'Israël hors d'Égypte par le sang de l'agneau pascal pour devenir le trésor particulier de l'Éternel au Sinaï (Ex 19.5) jusqu'au rachat définitif de l'Église par le sang de Christ.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Puisque nous avons été rachetés à un tel prix pour appartenir en propre à Christ, la tiédeur morale est une contradiction ; nous sommes appelés à être des « zélotes » des bonnes œuvres.</p></div></div></section><section class="theme"><h3 class="theme__title">La complémentarité des générations et des rôles familiaux au service de l'évangélisation</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Tite 2.1-⁠10, la maturité des vieillards et des femmes âgées, le dévouement domestique des jeunes femmes, la maîtrise de soi des jeunes gens et la fidélité des employés concourent à un seul but missionnaire : que la Parole de Dieu ne soit pas calomniée (2.5), que l'adversaire soit confus (2.8) et que la doctrine de Dieu notre Sauveur soit ornée en toutes choses (2.10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Théologie de la famille, du travail et de la mission : l'ordre créationnel et familial voulu par Dieu et l'éthique chrétienne du travail sont le premier témoignage apologétique de l'Église devant le monde.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Du mandat créationnel de Genèse 1-⁠2 et de la transmission intergénérationnelle de Deutéronome 6.6-⁠7 jusqu'à la vie communautaire de la famille de Dieu dans le Nouveau Testament.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Aucun croyant n'est trop âgé, trop jeune ou placé dans un emploi trop modeste pour rendre l'Évangile magnifique aux yeux de son entourage par une vie fidèle et soumise.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Dans quelle mesure votre conduite quotidienne - comme homme ou femme, plus âgé ou plus jeune, au foyer ou au travail - sert-elle de parure (<i>kosmeō</i>, 2.10) qui rend la doctrine de Dieu notre Sauveur attrayante pour ceux qui vous observent ?</li><li>Comment le modèle de mentorat spirituel de Tite 2.2-⁠8 (où les aînés dans la foi instruisent les plus jeunes par l'exemple et la parole) s'exerce-t-il concrètement dans votre vie et dans votre assemblée locale ?</li><li>Face aux pressions de la culture contemporaine qui dévalorise l'engagement familial et la soumission biblique, comment Tite 2.4-⁠5 (« afin que la parole de Dieu ne soit pas calomniée ») éclaire-t-il la grandeur spirituelle du ministère au sein du foyer ?</li><li>Selon Tite 2.11-⁠12, qu'est-ce que la grâce de Dieu vous enseigne précisément à abandonner aujourd'hui (« renoncer à l'impiété et aux convoitises mondaines ») et à cultiver (« vivre selon la sagesse, la justice et la piété ») ?</li><li>Comment recevez-vous la prédication de la Parole à la lumière de Tite 2.15 (« Dis ces choses, exhorte, et reprends, avec une pleine autorité. Que personne ne te méprise ») : avec la docilité d'un cœur prêt à obéir au commandement divin ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Tite 2 · 11 avril 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Tite-2.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

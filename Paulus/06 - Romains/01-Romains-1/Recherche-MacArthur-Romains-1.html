@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Romains 1 · L&#x27;Évangile, puissance de Dieu pour le salut, et la révélation de la colère divine · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Romains 1 dans la perspective de John MacArthur : L&#x27;Évangile, puissance de Dieu pour le salut, et la révélation de la colère divine.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Romains 1</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Romains 1</span></p>
+    <h1 class="hero__title">L'Évangile, puissance de Dieu pour le salut, et la révélation de la colère divine</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car je n’ai point honte de l’Evangile: c’est la puissance de Dieu pour le salut de quiconque croit, du Juif premièrement, puis du Grec, parce qu’en lui est révélée la justice de Dieu par la foi et pour la foi; selon qu’il est écrit: Le juste vivra par la foi.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Romains 1.16-⁠17 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 3 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Romains 1</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Chapitre d'ouverture de la plus grande lettre doctrinale du Nouveau Testament, Romains 1 pose à la fois le cadre apostolique, le thème directeur de toute l'épître (1.16-⁠17) et le premier acte du réquisitoire universel de Dieu contre le péché humain (1.18-⁠32, début de la grande section 1.18-⁠3.20 sur la condamnation). Avant d'exposer comment Dieu justifie le pécheur par la foi seule (ch. 3.21-⁠5.21), Paul démontre pourquoi l'humanité entière se trouve sous la colère de Dieu et dans l'impossibilité absolue de se sauver elle-même.</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Paul, serviteur de Jésus-Christ, appelé à être apôtre, mis à part pour annoncer l’Evangile de Dieu</p><cite class="verse__ref">Romains 1.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">– Evangile qui avait été promis auparavant de la part de Dieu par ses prophètes dans les saintes Ecritures;</p><cite class="verse__ref">Romains 1.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">il concerne son Fils, né de la postérité de David, selon la chair,</p><cite class="verse__ref">Romains 1.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">déclaré Fils de Dieu avec puissance, selon l’Esprit de sainteté, par sa résurrection d’entre les morts, Jésus-Christ notre Seigneur;</p><cite class="verse__ref">Romains 1.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">par lui nous avons reçu la grâce et l’apostolat, pour amener en son nom à l’obéissance de la foi tous les païens,</p><cite class="verse__ref">Romains 1.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">parmi lesquels vous êtes aussi, vous qui avez été appelés par Jésus-Christ –</p><cite class="verse__ref">Romains 1.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">à tous ceux qui, à Rome, sont bien-aimés de Dieu, saints par vocation: Que la grâce et la paix vous soient données de la part de Dieu notre Père et du Seigneur Jésus-Christ!</p><cite class="verse__ref">Romains 1.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je rends d’abord grâces à mon Dieu par Jésus-Christ, au sujet de vous tous, de ce que votre foi est renommée dans le monde entier.</p><cite class="verse__ref">Romains 1.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Dieu, que je sers en mon esprit dans l’Evangile de son Fils, m’est témoin que je fais sans cesse mention de vous,</p><cite class="verse__ref">Romains 1.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">demandant continuellement dans mes prières d’avoir enfin, par sa volonté, le bonheur d’aller vers vous.</p><cite class="verse__ref">Romains 1.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car je désire vous voir, pour vous communiquer quelque don spirituel, afin que vous soyez affermis,</p><cite class="verse__ref">Romains 1.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">ou plutôt, afin que nous soyons encouragés ensemble au milieu de vous par la foi qui nous est commune, à vous et à moi.</p><cite class="verse__ref">Romains 1.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je ne veux pas vous laisser ignorer, frères, que j’ai souvent formé le projet d’aller vous voir, afin de recueillir quelque fruit parmi vous, comme parmi les autres nations; mais j’en ai été empêché jusqu’ici.</p><cite class="verse__ref">Romains 1.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je me dois aux Grecs et aux barbares, aux savants et aux ignorants.</p><cite class="verse__ref">Romains 1.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ainsi j’ai un vif désir de vous annoncer aussi l’Evangile, à vous qui êtes à Rome.</p><cite class="verse__ref">Romains 1.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car je n’ai point honte de l’Evangile: c’est la puissance de Dieu pour le salut de quiconque croit, du Juif premièrement, puis du Grec,</p><cite class="verse__ref">Romains 1.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">parce qu’en lui est révélée la justice de Dieu par la foi et pour la foi; selon qu’il est écrit: Le juste vivra par la foi.</p><cite class="verse__ref">Romains 1.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">La colère de Dieu se révèle du ciel contre toute impiété et toute injustice des hommes qui retiennent injustement la vérité captive,</p><cite class="verse__ref">Romains 1.18 · NEG</cite></figure><figure class="verse"><p class="verse__text">car ce qu’on peut connaître de Dieu est manifeste pour eux, Dieu le leur ayant fait connaître.</p><cite class="verse__ref">Romains 1.19 · NEG</cite></figure><figure class="verse"><p class="verse__text">En effet, les perfections invisibles de Dieu, sa puissance éternelle et sa divinité, se voient comme à l’œil nu, depuis la création du monde, quand on les considère dans ses ouvrages. Ils sont donc inexcusables,</p><cite class="verse__ref">Romains 1.20 · NEG</cite></figure><figure class="verse"><p class="verse__text">car ayant connu Dieu, ils ne l’ont point glorifié comme Dieu, et ne lui ont point rendu grâces; mais ils se sont égarés dans leurs pensées, et leur cœur sans intelligence a été plongé dans les ténèbres.</p><cite class="verse__ref">Romains 1.21 · NEG</cite></figure><figure class="verse"><p class="verse__text">Se vantant d’être sages, ils sont devenus fous;</p><cite class="verse__ref">Romains 1.22 · NEG</cite></figure><figure class="verse"><p class="verse__text">et ils ont changé la gloire du Dieu incorruptible en images représentant l’homme corruptible, des oiseaux, des quadrupèdes, et des reptiles.</p><cite class="verse__ref">Romains 1.23 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pourquoi Dieu les a livrés à l’impureté, selon les convoitises de leurs cœurs; ainsi ils déshonorent eux-mêmes leurs propres corps;</p><cite class="verse__ref">Romains 1.24 · NEG</cite></figure><figure class="verse"><p class="verse__text">eux qui ont changé la vérité de Dieu en mensonge, et qui ont adoré et servi la créature au lieu du Créateur, qui est béni éternellement. Amen!</p><cite class="verse__ref">Romains 1.25 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pourquoi Dieu les a livrés à des passions infâmes: car leurs femmes ont changé l’usage naturel en celui qui est contre nature;</p><cite class="verse__ref">Romains 1.26 · NEG</cite></figure><figure class="verse"><p class="verse__text">et de même les hommes, abandonnant l’usage naturel de la femme, se sont enflammés dans leurs désirs les uns pour les autres, commettant homme avec homme des choses infâmes, et recevant en eux-mêmes le salaire que méritait leur égarement.</p><cite class="verse__ref">Romains 1.27 · NEG</cite></figure><figure class="verse"><p class="verse__text">Comme ils ne se sont pas souciés de connaître Dieu, Dieu les a livrés à leur sens réprouvé, pour commettre des choses indignes,</p><cite class="verse__ref">Romains 1.28 · NEG</cite></figure><figure class="verse"><p class="verse__text">étant remplis de toute espèce d’injustice, de méchanceté, de cupidité, de malice; pleins d’envie, de meurtre, de querelle, de ruse, de malignité;</p><cite class="verse__ref">Romains 1.29 · NEG</cite></figure><figure class="verse"><p class="verse__text">rapporteurs, médisants, impies, arrogants, hautains, fanfarons, ingénieux au mal, rebelles à leurs parents, dépourvus d’intelligence,</p><cite class="verse__ref">Romains 1.30 · NEG</cite></figure><figure class="verse"><p class="verse__text">de loyauté, d’affection naturelle, de miséricorde.</p><cite class="verse__ref">Romains 1.31 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et, bien qu’ils connaissent le jugement de Dieu, déclarant dignes de mort ceux qui commettent de telles choses, non seulement ils les font, mais encore ils approuvent ceux qui les font.</p><cite class="verse__ref">Romains 1.32 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire du chapitre unit la salutation épistolaire la plus développée de tout le corpus paulinien (une phrase unique de 93 mots grecs en 1.1-⁠7), l'action de grâces et le propos missionnaire personnel (1.8-⁠15), la proposition rhétorique ou thèse (<i>propositio</i>) de l'épître (1.16-⁠17) et le réquisitoire prophétique et judiciaire contre l'idolâtrie et la dépravation païennes (1.18-⁠32).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Romains 1</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Écrivant depuis Corinthe vers l'an 56 apr. J.-C. à une Église de Rome qu'il n'avait encore jamais visitée (1.10, 13; 15.22), Paul déploie dans les sept premiers versets ses lettres de créance apostoliques et le résumé kérygmatique de l'Évangile promis dans l'Ancien Testament : Jésus-Christ est à la fois le descendant royal de David selon la chair et le Fils de Dieu déclaré avec puissance selon l'Esprit de sainteté par sa résurrection d'entre les morts (1.3-⁠4; 45-⁠03).</p><div class="body"><p>Dans la seconde moitié du chapitre (1.18-⁠32), Paul peint sur le vif l'effondrement moral de l'Empire gréco-romain du premier siècle sous Claude et Néron - où quatorze des quinze premiers empereurs romains pratiquaient l'homosexualité et où l'idolâtrie philosophique et populaire allait de pair avec l'infanticide et la débauche ritualisée (45-⁠14 à 45-⁠16). Loin d'y voir une évolution primitive vers le polythéisme puis le monothéisme, Paul révèle que l'histoire religieuse de l'humanité est une dévolution volontaire : connaissant le vrai Dieu par la création, les hommes ont étouffé la vérité pour adorer la créature.</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Sept caractéristiques de la Bonne Nouvelle dès la salutation (1.1-⁠7).</b> Dans ses quatre premières prédications (45-⁠01 à 45-⁠04), John MacArthur dégage des versets 1 à 7 sept facettes de « l'Évangile de Dieu » (<i>euangelion Theou</i>) : 1) son <b>prédicateur</b> (v. 1 : Paul, esclave volontaire [<i>doulos</i>], appelé apôtre et mis à part); 2) sa <b>promesse</b> (v. 2 : annoncé d'avance par les prophètes dans les saintes Écritures); 3) sa <b>personne</b> (v. 3-⁠4a : son Fils, né de la postérité de David selon la chair et déclaré Fils de Dieu avec puissance par la résurrection); 4) sa <b>provision</b> (v. 4b-5a : Jésus-Christ notre Seigneur, par qui nous avons reçu la grâce); 5) sa <b>proclamation</b> (v. 5b : l'apostolat parmi tous les païens); 6) son <b>but</b> (v. 5b : amener à « l'obéissance de la foi » pour la gloire de son nom); 7) son <b>privilège</b> (v. 6-⁠7 : faire des croyants de Rome des appelés de Jésus-Christ, bien-aimés de Dieu et saints par vocation).</li><li><b>Les quatre causes de la colère de Dieu et l'inexcusabilité universelle (1.18-⁠23).</b> Contrairement au sophisme selon lequel les païens qui n'ont jamais entendu l'Évangile seraient innocents, Paul démontre en 1.18-⁠23 (45-⁠09 à 45-⁠13) que tous les hommes sont « inexcusables » (<i>anapologētous</i>, sans défense juridique, v. 20) pour quatre raisons : 1) <b>la révélation</b> (v. 19-⁠20 : Dieu a manifesté en eux la conscience morale et devant leurs yeux sa puissance éternelle et sa divinité dans l'œuvre de la création); 2) <b>la réjection</b> (v. 21a : ayant connu Dieu, ils ont refusé de le glorifier comme Dieu et de lui rendre grâces); 3) <b>la rationalisation</b> (v. 21b-22 : ils se sont égarés dans de vains raisonnements et, se vantant d'être sages, ils sont devenus fous, <i>emōranthēsan</i>); 4) <b>la religion idolâtre</b> (v. 23 : ils ont remplacé la gloire du Dieu incorruptible par des images d'hommes et d'animaux).</li><li><b>La colère d'abandon : trois fois « Dieu les a livrés » (1.24, 26, 28).</b> En 1.24-⁠32 (45-⁠14 à 45-⁠16), MacArthur explique la forme la plus terrifiante du jugement de Dieu dans l'histoire présente : la <b>colère d'abandon</b>. Empruntant trois fois le verbe judiciaire <i>paredōken autous ho Theos</i> (« Dieu les a livrés », employé pour le juge qui remet le condamné aux geôliers), Dieu retire sa main de retenue et abandonne la société rebelle aux conséquences destructrices de son propre choix : 1) livrés à <b>l'impureté sexuelle</b> (<i>akatharsia</i>, v. 24-⁠25); 2) livrés à <b>des passions d'ignominie contre nature</b> (l'inversion homosexuelle féminine et masculine, signe d'une culture sous jugement, v. 26-⁠27); 3) livrés à <b>un sens réprouvé</b> (<i>adokimon noun</i>, un esprit disqualifié incapable de discernement moral, qui engendre les vingt-et-un vices de 1.28-⁠31 et l'approbation collective du mal en 1.32).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Romains 1</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Romains 1.16</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>Ou gar epaischynomai to euangelion</i> (« Car je n'ai point honte de l'Évangile », א, A, B, C, D*, G, P, Ψ, 1739, SBLGNT, Westcott et Hort, Nestle 1904), ou <i>to euangelion tou Christou</i> (« de l'Évangile de Christ », D2, K, L, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Car je n'ai point honte de l'Evangile » : la NEG79, la LSG, la Darby et la NBS suivent le texte court sans la glose liturgique <i>tou Christou</i> (importée de 15.19, 29), que la S21 place entre crochets (« de l'Evangile [de Christ] »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le sens demeure identique puisque le verset 9 a déjà défini ce message comme « l'Evangile de son Fils » (45-⁠08).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Romains 1.29, 31</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 1.29 : <i>pasa adikia, ponēria, pleonexia, kakia</i> (א, A, B, C, K, SBLGNT, Westcott et Hort), ou addition de <i>porneia</i> (« fornication / immoralité sexuelle ») après <i>adikia</i> (L, Ψ, texte byzantin, Textus Receptus). En 1.31 : <i>asynetous, asynthetous, astorgous, aneleēmonas</i> (א*, A, B, D*, G, SBLGNT), ou addition d'un cinquième adjectif privatif <i>aspondous</i> (« irréconciliables / implacables », א2, C, D2, K, L, P, Ψ, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 1.29, la NEG79, la LSG, la Darby et la NBS suivent le texte court tandis que la S21 met « [d'immoralité sexuelle] » entre crochets; en 1.31, la NEG79, la LSG, la Darby et la NBS suivent le texte court à quatre termes (« sans intelligence, sans loyauté, sans affection naturelle, sans miséricorde »), tandis que la S21 ajoute le cinquième terme entre crochets (« [irréconciliables] »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Variantes d'assimilation phonétique dans le catalogue de vices (<i>adikia / porneia / ponēria</i>; <i>astorgous / aspondous</i> [cf. 2 Tm 3.3]), sans incidence sur le portrait global de la dépravation (45-⁠15).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique (lus aux 32 versets du chapitre)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus (Bible Hub)</li><li>Septante et hébreu massorétique pour Habacuc 2.4</li><li>versions françaises : NEG79, LSG, S21, Darby, NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart de numérotation des 32 versets entre la NEG79, le grec et la NASB de MacArthur.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Romains 1</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Romains</span> <span>1.1-⁠7</span></p><div class="plan__corps"><p class="plan__titre">La salutation apostolique : Paul, serviteur mis à part pour l'Évangile de Dieu promis par les prophètes et accompli en Jésus-Christ, Fils de David et Fils de Dieu ressuscité.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Période inaugurale de 93 mots grecs <i>Paulos doulos Christou Iēsou, klētos apostolos aphōrismenos eis euangelion Theou...</i> (v. 1-⁠7).</p></div></li><li><p class="plan__ref"><span>Romains</span> <span>1.8-⁠15</span></p><div class="plan__corps"><p class="plan__titre">Le cœur pastoral et missionnaire de l'apôtre : son action de grâces, son intercession incessante, son désir d'affermir les Romains et sa dette envers tous les hommes.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Ouverture <i>Prōton men eucharistō tō Theō mou</i> (v. 8-⁠12) et déclaration d'obligation <i>Hellēsin te kai barbarois... opheiletēs eimi</i> (v. 13-⁠15).</p></div></li><li><p class="plan__ref"><span>Romains</span> <span>1.16-⁠17</span></p><div class="plan__corps"><p class="plan__titre">La proposition thématique de l'épître : l'Évangile est la puissance de Dieu pour le salut de quiconque croit, car en lui est révélée la justice de Dieu par la foi.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Confession solennelle <i>Ou gar epaischynomai to euangelion</i> et citation d'Habacuc 2.4 (v. 16-⁠17).</p></div></li><li><p class="plan__ref"><span>Romains</span> <span>1.18-⁠32</span></p><div class="plan__corps"><p class="plan__titre">La révélation de la colère de Dieu contre l'impiété païenne : l'étouffement de la vérité révélée dans la création, la folie idolâtre et le triple abandon divin à la corruption.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Annonce <i>Apokalyptetai gar orgē Theou ap' ouranou</i> (v. 18-⁠23) et triple refrain <i>paredōken autous ho Theos</i> (v. 24-⁠32).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Romains 1.1</dt><dd>Le participe parfait passif <i>aphōrismenos eis euangelion Theou</i> (« ayant été mis à part et demeurant mis à part pour l'Évangile de Dieu », de <i>aphorizō</i>, tracer un horizon / une frontière, jeu de sens avec « pharisien », « séparé ») marque le renversement de la vie de Paul : jadis pharisien séparé par orgueil légaliste, il est désormais mis à part de manière permanente par Dieu pour la grâce de l'Évangile (cf. Ga 1.15; Ac 13.2; 45-⁠02).</dd></div><div><dt>Romains 1.3-⁠4</dt><dd>L'antithèse symétrique des deux participes aoristes passifs - <i>tou <b>genomenou</b> ek spermatos Dauid kata sarka, tou <b>horisthentos</b> Huiou Theou en dynamei kata Pneuma hagiōsynēs ex anastaseōs nekrōn</i> (« né de la postérité de David selon la chair, et déclaré / établi avec évidence Fils de Dieu avec puissance selon l'Esprit de sainteté par sa résurrection d'entre les morts ») - atteste les deux natures de Christ : Jésus n'est pas <i>devenu</i> Fils de Dieu à la résurrection, mais sa résurrection a manifesté avec puissance (<i>horisthentos</i>, tracer l'horizon de sa divinité) ce qu'il était de toute éternité (45-⁠03).</dd></div><div><dt>Romains 1.18</dt><dd>Le verbe <i>apokalyptetai</i> (« se révèle ») est un indicatif présent passif à valeur constative et continue : à côté de la colère eschatologique future (2.5), la colère de Dieu se révèle <i>dès maintenant</i> de manière continue depuis le ciel contre les hommes qui « retiennent injustement la vérité captive » (<i>tōn tēn alētheian en adikia katechontōn</i>, participe présent actif décrivant l'effort constant d'étouffer et de comprimer un ressort qui jaillit; 45-⁠09).</dd></div><div><dt>Romains 1.32</dt><dd>Le point culminant de la dépravation est exprimé par l'opposition des deux participes présents actifs <i>ou monon auta <b>poiousin</b> alla kai <b>syneudokousin</b> tois prassousin</i> (« non seulement ils les font, mais encore ils approuvent et applaudissent ceux qui les pratiquent ») : commettre le péché sous l'entraînement de la passion est grave, mais célébrer et institutionnaliser le mal de sang-froid malgré la connaissance du décret de mort de Dieu (<i>to dikaiōma tou Theou epignontes</i>) est le comble du sens réprouvé (45-⁠15).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Quatre mots-clés</p></header>
+<p class="lead">Quatre mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">Évangile</a><a href="#mot-2">puissance</a><a href="#mot-3">colère</a><a href="#mot-4">livrés</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">Évangile</h3><p class="mot__translit">euangelion</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>bonne nouvelle, message joyeux de victoire et de salut</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>euangelion</i> (composé de <i>eu</i>, bien / bon, et de <i>angelos</i>, messager; 76 occurrences dans le NT dont 60 chez Paul et 9 dans Romains : 1.1, 9, 16; 2.16; 10.16; 11.28; 15.16, 19; 16.25) désignait à l'origine la récompense offerte au porteur d'une bonne nouvelle, puis la proclamation officielle d'une victoire militaire ou de l'avènement d'un roi.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 1.1, 9, 16, Paul définit ce message comme « l'Évangile de Dieu » (dont Dieu est la source et l'Auteur) et « l'Évangile de son Fils » (dont Jésus-Christ est le sujet unique) : la joyeuse nouvelle que Dieu réconcilie et justifie gratuitement les pécheurs par la mort et la résurrection de son Fils (MacArthur, 45-⁠02, 45-⁠08).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> je n’ai pas honte de l’Évangile [de Christ] (1.16)</li><li><b>NEG79</b> je n’ai point honte de l’Evangile (1.16)</li><li class="ecart"><b>Darby</b> je n’ai pas honte de l’évangile (1.16)</li><li class="ecart"><b>LSG</b> je n’ai point honte de l’Évangile (1.16)</li><li class="ecart"><b>NBS</b> je n'ai pas honte de la bonne nouvelle (1.16)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">puissance</h3><p class="mot__translit">dynamis</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>puissance inhérente, force agissante, capacité miraculeuse d'accomplir une œuvre</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie précisée par Thayer, <i>dynamis</i> (dérivé du verbe <i>dynamai</i>, être capable, pouvoir; d'où proviennent nos mots « dynamique » et « dynamo »; 120 occurrences dans le NT) désigne la puissance effective qui triomphe de tout obstacle, par opposition à une simple parole sans force.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 1.16, l'Évangile est appelé « la puissance de Dieu pour le salut de quiconque croit » (<i>dynamis gar Theou estin eis sōtērian</i>) : ce que ni la philosophie grecque, ni la puissance militaire de Rome, ni la loi mosaïque (8.3) ne pouvaient accomplir - arracher un pécheur mort à la condamnation et au pouvoir du péché -, la prédication de l'Évangile l'opère par la toute-puissance de Dieu (MacArthur, 45-⁠08).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> c’est la puissance de Dieu pour le salut (1.16)</li><li><b>NEG79</b> c’est la puissance de Dieu pour le salut (1.16)</li><li class="ecart"><b>Darby</b> il est la puissance de Dieu en salut (1.16)</li><li class="ecart"><b>LSG</b> c’est une puissance de Dieu pour le salut (1.16)</li><li class="ecart"><b>NBS</b> elle est en effet puissance de Dieu pour le salut (1.16)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">colère</h3><p class="mot__translit">orgē</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>colère constante et réfléchie, indignation sainte et judiciaire contre le mal</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>orgē</i> (dérivé de <i>orgaō</i>, gonfler, mûrir; 36 occurrences dans le NT dont 12 dans Romains : 1.18; 2.5 [2x], 8; 3.5; 4.15; 5.9; 9.22 [2x]; 12.19; 13.4, 5) se distingue de <i>thymos</i> (l'emportement soudain et bouillonnant) : il désigne l'opposition permanente, sainte et maîtrisée de la nature morale de Dieu contre tout péché.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 1.18 (« La colère de Dieu se révèle du ciel contre toute impiété [<i>asebeia</i>, envers Dieu] et toute injustice [<i>adikia</i>, envers la loi morale] »), MacArthur (45-⁠09) distingue les cinq formes de la colère divine dans l'Écriture : la colère éternelle (l'enfer), la colère eschatologique (le jour du Seigneur), la colère cataclysmique (comme le déluge), la colère conséquente (la loi des semailles) et la colère d'abandon décrite aux versets 24 à 32.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> La colère de Dieu se révèle du ciel (1.18)</li><li><b>NEG79</b> La colère de Dieu se révèle du ciel (1.18)</li><li class="ecart"><b>Darby</b> la colère de Dieu est révélée du ciel (1.18)</li><li><b>LSG</b> La colère de Dieu se révèle du ciel (1.18)</li><li class="ecart"><b>NBS</b> La colère de Dieu, en effet, se révèle depuis le ciel (1.18)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">livrés</h3><p class="mot__translit">paradidōmi</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>livrer entre les mains d'un autre, remettre en garde ou au châtiment, abandonner</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie relevée par Thayer, <i>paradidōmi</i> (de <i>para</i>, auprès de, et <i>didōmi</i>, donner) est le terme judiciaire technique pour l'acte du juge qui remet le criminel condamné entre les mains des bourreaux ou des geôliers (cf. Mt 5.25; 18.34), employé aussi pour le Père livrant son propre Fils pour nos offenses (Rm 4.25; 8.32).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Romains 1.24, 26, 28, la triple répétition de <i>paredōken autous ho Theos</i> (« Dieu les a livrés ») ne fait pas de Dieu l'auteur du péché, mais le Juge saint qui retire ses digues protectrices et livre l'humanité rebelle à l'asservissement de ses propres convoitises (MacArthur, 45-⁠14, 45-⁠15).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> Dieu les a livrés à l’impureté (1.24)</li><li><b>NEG79</b> Dieu les a livrés à l’impureté (1.24)</li><li class="ecart"><b>Darby</b> Dieu les a aussi livrés, dans les convoitises de leurs cœurs, à l’impureté (1.24)</li><li><b>LSG</b> Dieu les a livrés à l’impureté (1.24)</li><li class="ecart"><b>NBS</b> Dieu les a livrés à l'impureté (1.24)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Romains 1</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans les dix-sept prédications consacrées au chapitre 1 (<i>45-⁠01</i> à <i>45-⁠16</i> et <i>45-⁠21</i>), John MacArthur pose les fondations de toute l'épître.</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-romains-1-1-7-l-apotre-mis-a-part-et-l-evangile-du-fils-de-dieu"><span class="sommaire__ref">Romains 1.1-⁠7</span><span class="sommaire__lib">L'apôtre mis à part et l'Évangile du Fils de Dieu</span></a></li><li><a href="#t2-romains-1-8-17-le-cur-du-serviteur-et-la-puissance-de-l-evangile"><span class="sommaire__ref">Romains 1.8-⁠17</span><span class="sommaire__lib">Le cœur du serviteur et la puissance de l'Évangile</span></a></li><li><a href="#t3-romains-1-18-32-la-colere-de-dieu-revelee-et-le-triple-abandon-divin"><span class="sommaire__ref">Romains 1.18-⁠32</span><span class="sommaire__lib">La colère de Dieu révélée et le triple abandon divin</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : 17 sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur Romains 1.1 à 1.32 (45-⁠01 à 45-⁠16 et 45-⁠21, série « Romans », mars à octobre 1981, 17 prédications)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">45-01</span></th><td><a href="https://www.gty.org/sermons/45-01" target="_blank" rel="noopener">Romans: The Man and the Message</a></td><td>Rm 1.1</td></tr><tr><th scope="row"><span class="mot-fr">45-02</span></th><td><a href="https://www.gty.org/sermons/45-02" target="_blank" rel="noopener">The Preacher of the Good News</a></td><td>Rm 1.1</td></tr><tr><th scope="row"><span class="mot-fr">45-03</span></th><td><a href="https://www.gty.org/sermons/45-03" target="_blank" rel="noopener">The Promise and the Person of the Good News</a></td><td>Rm 1.2-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">45-04</span></th><td><a href="https://www.gty.org/sermons/45-04" target="_blank" rel="noopener">The Provision, Proclamation, Privilege, and Purpose of the Good News</a></td><td>Rm 1.4b-7</td></tr><tr><th scope="row"><span class="mot-fr">45-05</span></th><td><a href="https://www.gty.org/sermons/45-05" target="_blank" rel="noopener">Marks of True Spiritual Service, Part 1</a></td><td>Rm 1.8-⁠10a</td></tr><tr><th scope="row"><span class="mot-fr">45-06</span></th><td><a href="https://www.gty.org/sermons/45-06" target="_blank" rel="noopener">Marks of True Spiritual Service, Part 2</a></td><td>Rm 1.10b-12</td></tr><tr><th scope="row"><span class="mot-fr">45-07</span></th><td><a href="https://www.gty.org/sermons/45-07" target="_blank" rel="noopener">Marks of True Spiritual Service, Part 3</a></td><td>Rm 1.13-⁠16a</td></tr><tr><th scope="row"><span class="mot-fr">45-08</span></th><td><a href="https://www.gty.org/sermons/45-08" target="_blank" rel="noopener">The Gospel of Christ</a></td><td>Rm 1.16-⁠17</td></tr><tr><th scope="row"><span class="mot-fr">45-09</span></th><td><a href="https://www.gty.org/sermons/45-09" target="_blank" rel="noopener">The Wrath of God</a></td><td>Rm 1.18</td></tr><tr><th scope="row"><span class="mot-fr">45-10</span></th><td><a href="https://www.gty.org/sermons/45-10" target="_blank" rel="noopener">Reasons for the Wrath of God, Part 1</a></td><td>Rm 1.19-⁠20</td></tr><tr><th scope="row"><span class="mot-fr">45-11</span></th><td><a href="https://www.gty.org/sermons/45-11" target="_blank" rel="noopener">Reasons for the Wrath of God, Part 2</a></td><td>Rm 1.21</td></tr><tr><th scope="row"><span class="mot-fr">45-12</span></th><td><a href="https://www.gty.org/sermons/45-12" target="_blank" rel="noopener">Reasons for the Wrath of God, Part 3</a></td><td>Rm 1.22</td></tr><tr><th scope="row"><span class="mot-fr">45-13</span></th><td><a href="https://www.gty.org/sermons/45-13" target="_blank" rel="noopener">Reasons for the Wrath of God, Part 4</a></td><td>Rm 1.23</td></tr><tr><th scope="row"><span class="mot-fr">45-14</span></th><td><a href="https://www.gty.org/sermons/45-14" target="_blank" rel="noopener">Abandoned by God, Part 1</a></td><td>Rm 1.24-⁠25</td></tr><tr><th scope="row"><span class="mot-fr">45-15</span></th><td><a href="https://www.gty.org/sermons/45-15" target="_blank" rel="noopener">Abandoned by God, Part 2</a></td><td>Rm 1.26-⁠32</td></tr><tr><th scope="row"><span class="mot-fr">45-16</span></th><td><a href="https://www.gty.org/sermons/45-16" target="_blank" rel="noopener">What the Bible Teaches About Homosexuality</a></td><td>Rm 1.26-⁠27 (Textes choisis)</td></tr><tr><th scope="row"><span class="mot-fr">45-21</span></th><td><a href="https://www.gty.org/sermons/45-21" target="_blank" rel="noopener">Questions and Answers on Romans 1-⁠2</a></td><td>Rm 1-⁠2</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-romains-1-1-7-l-apotre-mis-a-part-et-l-evangile-du-fils-de-dieu"><span class="intertitre__ref">Romains 1.1-⁠7</span>L'apôtre mis à part et l'Évangile du Fils de Dieu</h3><p>Dans les sermons <i>45-⁠01</i> à <i>45-⁠04</i> (sur 1.1-⁠7), il montre que Paul se présente d'abord comme l'esclave (<i>doulos</i>) de Jésus-Christ, totalement soumis à son Maître et mis à part pour « l'Évangile de Dieu ». Cet Évangile n'est pas une nouveauté subversive : il a été promis d'avance par les prophètes de l'Ancien Testament (v. 2) et a pour centre unique le Fils de Dieu, pleinement homme (« né de la postérité de David selon la chair », v. 3) et pleinement Dieu (« déclaré Fils de Dieu avec puissance, selon l'Esprit de sainteté, par sa résurrection d'entre les morts », v. 4). Le but de l'apostolat reçu par grâce est d'amener des hommes de toutes les nations à « l'obéissance de la foi » (<i>hypakoē pisteōs</i>, génitif d'apposition : l'obéissance qui consiste en une foi vivante soumise au Seigneur Jésus, v. 5).</p><h3 class="intertitre" id="t2-romains-1-8-17-le-cur-du-serviteur-et-la-puissance-de-l-evangile"><span class="intertitre__ref">Romains 1.8-⁠17</span>Le cœur du serviteur et la puissance de l'Évangile</h3><p>Dans les sermons <i>45-⁠05</i> à <i>45-⁠07</i> (sur 1.8-⁠16a), MacArthur dégage huit marques d'un véritable service spirituel à partir du cœur de Paul : un esprit reconnaissant (v. 8), un souci d'intercession constante (v. 9), une soumission totale à la volonté de Dieu (v. 10), un amour ardent qui désire partager des dons spirituels pour l'affermissement des frères (v. 11), une humilité prête à être encouragée en retour (v. 12), un désir de porter du fruit (v. 13), un sentiment d'obligation envers tous les hommes - Grecs et barbares, savants et ignorants (v. 14) - et un empressement sans honte à prêcher l'Évangile (v. 15-⁠16a). Le sermon <i>45-⁠08</i> (sur 1.16-⁠17) expose le sommet thématique de toute l'épître : l'Évangile est la puissance de Dieu pour le salut de quiconque croit (du Juif premièrement, puis du Grec), parce qu'en lui est révélée la justice qui vient de Dieu par la foi et pour la foi, selon l'oracle d'Habacuc 2.4 : « Le juste vivra par la foi ».</p><h3 class="intertitre" id="t3-romains-1-18-32-la-colere-de-dieu-revelee-et-le-triple-abandon-divin"><span class="intertitre__ref">Romains 1.18-⁠32</span>La colère de Dieu révélée et le triple abandon divin</h3><p>Dans les sermons <i>45-⁠09</i> à <i>45-⁠16</i> (sur 1.18-⁠32), MacArthur explique pourquoi la bonne nouvelle commence par la terrible nouvelle de « la colère de Dieu qui se révèle du ciel » (v. 18). L'humanité ne pèche pas par manque d'information, mais par rébellion délibérée : elle étouffe la vérité que Dieu a gravée dans la conscience intérieure (v. 19) et déployée dans la création extérieure (v. 20). Ayant refusé de glorifier Dieu et de lui rendre grâces (v. 21), l'homme prétendument sage est tombé dans la folie de l'idolâtrie (v. 22-⁠23). En jugement, « Dieu les a livrés » par trois fois : à l'impureté sexuelle (v. 24-⁠25), aux passions infâmes de l'homosexualité féminine et masculine (v. 26-⁠27, sujet que MacArthur approfondit bibliquement dans le sermon <i>45-⁠16</i> en montrant à la fois la gravité de ce péché et la puissance rédemptrice de 1 Corinthiens 6.9-⁠11), et à un sens réprouvé débordant de toute espèce de méchanceté jusqu'à applaudir ceux qui pratiquent le mal (v. 28-⁠32).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Romains 1.1, 9, 15, 16.</b> Le fil conducteur du substantif <i>euangelion</i> (« Évangile », 1.1, 9, 16) et du verbe <i>euangelisasthai</i> (« annoncer l'Évangile », 1.15) unifie toute l'ouverture du chapitre : mis à part pour l'Évangile de Dieu (v. 1), servant Dieu dans son esprit par l'Évangile de son Fils (v. 9) et ardent à annoncer l'Évangile à Rome (v. 15), Paul proclame qu'il n'a point honte de l'Évangile (v. 16).</li><li><b>Romains 1.16-⁠18.</b> La chaîne de quatre propositions causales introduites coup sur coup par <i>gar</i> (« car / parce que ») en 1.16a (<i>Ou <b>gar</b> epaischynomai</i>), 1.16b (<i>dynamis <b>gar</b> Theou estin</i>), 1.17 (<i>dikaiosynē <b>gar</b> Theou en autō apokalyptetai</i>) et 1.18 (<i>Apokalyptetai <b>gar</b> orgē Theou</i>) forme l'enchaînement logique le plus serré du Nouveau Testament : Paul désire prêcher l'Évangile <i>parce qu'</i>il n'en a pas honte, <i>parce qu'</i>il est la puissance de Dieu pour le salut, <i>parce que</i> la justice de Dieu y est révélée, <i>parce que</i> la colère de Dieu se révèle contre l'injustice humaine.</li><li><b>Romains 1.20.</b> L'oxymore saisissant <i>ta gar <b>aorata</b> autou... <b>kathoratai</b></i> (« car ses perfections <b>invisibles</b>... <b>se voient comme à l'œil nu</b> ») souligne l'évidence éclatante de la révélation générale dans la création.</li><li><b>Romains 1.23, 25, 26; 1.24, 26, 28.</b> Le triple échange coupable de l'homme - <i>ēllaxan</i> (« ils ont changé la gloire de Dieu », v. 23), <i>metēllaxan</i> (« ils ont changé la vérité de Dieu en mensonge », v. 25), <i>metēllaxan</i> (« leurs femmes ont changé l'usage naturel », v. 26) - reçoit en miroir exact le triple abandon divin : <i>paredōken autous ho Theos</i> (« Dieu les a livrés », v. 24, 26, 28), culminant dans la paronomase du v. 28 : <i>ouk <b>edokimasan</b> ton Theon echein en epignōsei, paredōken autous ho Theos eis <b>adokimon</b> noun</i> (« comme ils n'ont pas jugé bon de garder Dieu dans leur connaissance, Dieu les a livrés à une intelligence réprouvée »).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Cinq passages</p></header>
+<p class="lead">Cinq passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Samuel 7.12-⁠16; Psaume 2.7; Actes 13.32-⁠33</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Arrière-plan de la confession christologique de Romains 1.2-⁠4 : l'accomplissement de l'alliance davidique (2 S 7.12-⁠16) dans la naissance terrestre de Jésus et la déclaration de sa filiation divine à la résurrection selon le Psaume 2.7 cité par Paul en Actes 13.32-⁠33.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Habacuc 2.4; Galates 3.11; Hébreux 10.38</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">En Romains 1.17, Paul cite Habacuc 2.4 (selon la Septante grecque et l'hébreu massorétique : « Le juste vivra par la foi », <i>ho de dikaios ek pisteōs zēsetai</i>) comme texte fondateur de toute la doctrine de la justification par la foi.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 19.1-⁠5; Actes 14.15-⁠17; 17.24-⁠30</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Parallèle direct sur la révélation générale de Dieu dans la création (Romains 1.19-⁠20) : les cieux racontent la gloire de Dieu sans langage ni paroles (Ps 19.1-⁠5), rendant toute idolâtrie inexcusable (Ac 14.17; 17.24-⁠30).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 106.20; Jérémie 2.11; Deutéronome 4.15-⁠18</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">En Romains 1.23 (« ils ont changé la gloire du Dieu incorruptible en images représentant l'homme corruptible, des oiseaux, des quadrupèdes et des reptiles »), Paul reprend le vocabulaire de la Septante grecque et de l'hébreu massorétique du Psaume 106.20 (LXX 105.20 : <i>kai ēllaxanto tēn doxan autou en homoiōmati moschou</i>), de Jérémie 2.11 et de l'interdiction de Deutéronome 4.15-⁠18.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Lévitique 18.22; 20.13; 1 Corinthiens 6.9-⁠11</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Conformité de la condamnation morale de Romains 1.26-⁠27 avec la loi de sainteté de Lévitique 18.22 et 20.13, complétée par la promesse de grâce et de transformation en 1 Corinthiens 6.9-⁠11 (« Et c'est là ce que vous étiez, quelques-uns de vous. Mais vous avez été lavés... »).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Trois axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">L'Évangile de Dieu centré sur son Fils et révélant sa justice par la foi</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>L'Évangile de Dieu, promis par les prophètes et centré sur Jésus-Christ son Fils ressuscité (1.1-⁠4), est la puissance de Dieu pour le salut de quiconque croit, parce qu'en lui est révélée la justice de Dieu par la foi et pour la foi, selon qu'il est écrit : « Le juste vivra par la foi » (1.16-⁠17).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Christologie des deux natures (postérité de David selon la chair, Fils de Dieu selon l'Esprit de sainteté) et sotériologie de la justification par la foi seule (<i>sola fide</i>).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Annoncé en germe dès Genèse 3.15 et à travers toutes les Écritures prophétiques (1.2), l'Évangile éclate au grand jour dans la mort et la résurrection de Jésus-Christ pour appeler toutes les nations à l'obéissance de la foi.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant n'a jamais à rougir de l'Évangile devant le mépris intellectuel ou moral du monde : ce message est la seule puissance divine capable de sauver un pécheur et de le revêtir de la justice de Dieu.</p></div></div></section><section class="theme"><h3 class="theme__title">La révélation générale et l'inexcusabilité universelle des hommes</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Ce qu'on peut connaître de Dieu est manifeste pour les hommes, Dieu le leur ayant fait connaître dans leur conscience, et ses perfections invisibles - sa puissance éternelle et sa divinité - se voient comme à l'œil nu depuis la création du monde dans ses ouvrages, de sorte qu'ils sont inexcusables lorsqu'ils étouffent la vérité (1.18-⁠20).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Théologie de la révélation générale : suffisante pour attester l'existence, la puissance éternelle et la divinité du Créateur et condamner justement tout homme qui la rejette, mais nécessitant la révélation spéciale de l'Évangile pour sauver.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Depuis l'origine de la création (Gn 1; Ps 19), Dieu ne s'est jamais laissé sans témoignage, si bien qu'aucun être humain au jugement dernier ne pourra plaider l'ignorance.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'athéisme et l'agnosticisme ne résultent pas d'un manque de preuves intellectuelles, mais d'une révolte morale qui retient injustement la vérité captive (1.18) pour ne pas se soumettre à Dieu.</p></div></div></section><section class="theme"><h3 class="theme__title">La colère d'abandon de Dieu envers la société qui rejette sa vérité</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Parce que les hommes, ayant connu Dieu, ne l'ont point glorifié comme Dieu et ont changé la vérité de Dieu en mensonge pour adorer la créature, « Dieu les a livrés » par trois fois à l'impureté, à des passions infâmes contre nature et à un sens réprouvé remplissant le monde de toute injustice (1.21-⁠32).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Justice rétributive et colère présente de Dieu (<i>orgē Theou</i>) : le retrait judiciaire de la grâce commune par lequel le péché devient le châtiment même du péché.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Illustré dans l'Ancien Testament lorsque Dieu livra Israël à l'obstination de son cœur (Ps 81.13; Ac 7.42), ce jugement d'abandon explique l'effondrement moral des civilisations qui se détournent de la lumière divine.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Lorsqu'une société célèbre et institutionnalise la perversion morale (1.32), elle ne fait pas preuve de liberté moderne, mais manifeste qu'elle se trouve déjà sous le terrible jugement d'abandon de Dieu - et n'a d'autre espoir que la prédication urgente de l'Évangile.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>En quoi la présentation que Paul fait de lui-même en 1.1 (« esclave de Jésus-Christ, appelé apôtre, mis à part pour l'Évangile de Dieu ») définit-elle l'identité et la vocation de tout disciple de Christ ?</li><li>Parmi les huit marques du vrai service spirituel en 1.8-⁠16 (reconnaissance, intercession, soumission, amour, humilité, désir de fruit, sentiment de dette, empressement sans honte), laquelle avez-vous le plus besoin de cultiver aujourd'hui ?</li><li>Pourquoi Paul affirme-t-il que l'Évangile est lui-même « la puissance de Dieu pour le salut » (1.16), et comment cela nous garde-t-il de remplacer la prédication de la Parole par des artifices humains ?</li><li>Que répond Romains 1.18-⁠23 à l'objection courante concernant le sort de ceux qui n'ont jamais entendu l'Évangile, et comment cette vérité doit-elle enflammer notre zèle missionnaire ?</li><li>Pourquoi l'ingratitude et le refus de glorifier Dieu (1.21) constituent-ils la racine première de toute la déchéance spirituelle, intellectuelle et morale décrite en 1.22-⁠32 ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Romains 1 · 3 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Romains-1.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

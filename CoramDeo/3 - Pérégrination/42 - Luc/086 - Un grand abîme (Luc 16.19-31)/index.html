@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luc 16.19-31 · Un grand abîme · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Luc 16.19-31 : le riche et Lazare ; la réalité de l'enfer conscient, l'irréversibilité du sort éternel scellé à la mort, la suffisance de l'Écriture. Contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc 16.19-31</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Luc 16.19-31</p>
+    <h1 class="hero__title">Un grand abîme</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Entre nous et vous il y a un grand abîme, afin que ceux qui voudraient passer ne le puissent.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 16.26 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Luc 16.19-31</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Il y avait un homme riche, qui était vêtu de pourpre et de fin lin, et qui chaque jour menait joyeuse et brillante vie.</p>
+        <cite class="verse__ref">Luc 16.19 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">S'ils n'écoutent pas Moïse et les prophètes, ils ne se laisseront pas persuader même si quelqu'un des morts ressuscitait.</p>
+        <cite class="verse__ref">Luc 16.31 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le riche et Lazare est le sommet du chapitre 16 tout entier consacré à l'argent : adressé en priorité aux pharisiens amis de l'argent, il retourne de fond en comble leur conviction que la richesse prouve la faveur divine, et scelle le sort éternel à la mort, irréversiblement.</p>
+    <div class="body">
+      <p>Le récit du riche et de Lazare prend place dans la longue section centrale de Luc consacrée à l'enseignement de Jésus en route vers Jérusalem (9.51 à 19.27), et il forme le sommet du chapitre 16 tout entier dédié à l'argent. Le chapitre s'ouvre sur la parabole de l'économe infidèle (16.1-13), où Jésus apprend aux disciples à se servir des richesses injustes en vue de l'éternité; il enchaîne sur la réaction des pharisiens, que Luc qualifie sans détour d'amis de l'argent et qui se moquent de lui (16.14); il culmine dans la dénonciation de leur justice propre, eux qui cherchent à paraître justes devant les hommes mais dont Dieu connaît le cœur (16.15). Le riche et Lazare est donc adressé en priorité aux pharisiens : ce sont eux la cible. Ils tenaient la richesse pour une marque de la faveur divine et la pauvreté pour un signe de malédiction, conviction populaire que Jésus va retourner contre eux de fond en comble.</p>
+      <p>Le passage s'inscrit dans le fil rouge de l'Évangile selon Luc, le Sauveur venu chercher et sauver ce qui était perdu (19.10). Tout le récit oppose deux destins inversés à la mort : le mendiant couvert d'ulcères entre dans le sein d'Abraham, le riche somptueux se réveille en proie aux tourments du séjour des morts. Ce renversement est exactement celui qu'annonçait le Magnificat, Dieu qui renvoie les riches à vide et comble de biens les affamés (1.52-53), et que reprennent les béatitudes et malédictions du sermon de Luc, heureux vous les pauvres, malheur à vous les riches (6.20-25). Le texte n'enseigne pas que la pauvreté sauve ni que la richesse damne; il enseigne, conformément à la justification par la foi que Luc met en récit (7.50; 18.9-14; ch. 15), que le sort éternel se règle selon la foi qui se soumet à la Parole, non selon le statut social que les pharisiens idolâtraient.</p>
+      <p>Les bornes du récit sont nettes. Il s'ouvre en 16.19 par la formule typique des paraboles de Luc, il y avait un homme riche, et se referme en 16.31 sur le verdict d'Abraham, s'ils n'écoutent pas Moïse et les prophètes, ils ne se laisseront pas persuader même si quelqu'un des morts ressuscitait. Deux mouvements le structurent : d'abord le grand renversement de la vie présente à l'au-delà (16.19-26), qui culmine sur le grand abîme infranchissable du verset 26; ensuite le dialogue sur les cinq frères (16.27-31), qui culmine sur la pleine suffisance de l'Écriture pour vaincre l'incrédulité. L'idée maîtresse traverse les deux : le sort éternel se scelle à la mort, irréversiblement, et ceux qui n'écoutent pas l'Écriture ne se laisseront pas convaincre même par un ressuscité.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Luc 16.19-23</p>
+    </header>
+    <p class="lead">Le faste du riche et la misère de Lazare sont dépeints à grands traits que tout auditeur du premier siècle savait lire : pour un pharisien, ce tableau accumulait les signes de la défaveur divine sur le mendiant et de la faveur du ciel sur le riche. Jésus va précisément démolir cette grille de lecture.</p>
+    <div class="body">
+      <p>Le faste du riche est dépeint à grands traits que tout auditeur du premier siècle savait lire. Il était vêtu de pourpre et de fin lin : la pourpre désignait la teinture de luxe extraite du murex, le coquillage de Tyr, dont quelques grammes coûtaient une fortune et qui signalait la dignité royale ou sénatoriale; le fin lin désignait le coton d'Égypte le plus délicat, porté à même la peau comme sous-vêtement de prix. Le texte précise qu'il menait chaque jour joyeuse et brillante vie, c'est-à-dire qu'il festoyait somptueusement non aux jours de fête mais quotidiennement, marque d'une opulence sans frein. À sa porte gisait Lazare, jeté là, couvert d'ulcères, réduit à convoiter les miettes qui tombaient de la table, et que les chiens, animaux impurs et errants, venaient lécher. Pour un pharisien, ce tableau accumulait les signes de la défaveur divine : la pauvreté, la maladie, l'impureté rituelle au contact des chiens.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Le nom de Lazare, seul nommé des paraboles.</b> Le nom même de Lazare est lourd de sens. C'est le seul personnage de toutes les paraboles de Jésus à recevoir un nom, ce qui en souligne la portée : Lazare est la forme grecque de l'hébreu Éléazar, qui signifie celui que Dieu a secouru. Le riche, lui, demeure anonyme, sans nom pour l'éternité. Le renversement est total : le mendiant que la société comptait pour rien porte un nom qui proclame le salut de Dieu, et l'homme que tous enviaient sombre dans l'oubli des tourments. Que le pauvre méprisé se retrouve à la place d'honneur dans le sein d'Abraham, et le riche envié dans la flamme, constituait pour les pharisiens un scandale frontal, car la seule idée qu'un homme riche puisse être exclu du ciel leur était insupportable.</li>
+      <li><b>Le séjour des morts en deux compartiments.</b> L'arrière-plan du séjour des morts éclaire la géographie de l'au-delà que Jésus déploie. Le terme grec <i>hadès</i> traduit dans la Septante l'hébreu <i>shéol</i>, le royaume des morts en général. Mais dans l'usage du Nouveau Testament, le séjour des morts désigne la demeure des méchants avant le jugement de l'étang de feu. Jésus reprend l'image, connue de ses auditeurs, d'un séjour des morts en deux compartiments séparés par un gouffre infranchissable, l'un pour les justes et l'autre pour les injustes.</li>
+      <li><b>Le sein d'Abraham et l'absence de purgatoire.</b> Le sein d'Abraham, expression unique dans l'Écriture et attestée comme symbole du ciel dans la littérature rabbinique, désigne la place d'honneur au banquet céleste, aux côtés du père des croyants. Le texte ne fonde aucune doctrine d'un purgatoire ni d'une prison temporaire des saints de l'Ancien Testament : l'Écriture enseigne invariablement que l'esprit des justes se rend aussitôt dans la présence de Dieu, comme le prouvent la promesse au brigand, aujourd'hui tu seras avec moi dans le paradis (23.43), et la présence de Moïse et d'Élie à la transfiguration (9.30-31).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : du séjour des morts (<i>hadès</i>) et de ses tourments conscients (<i>odunômai</i>), au grand abîme irréversible (<i>chasma</i>), jusqu'à la repentance (<i>metanoeô</i>) qui naît de l'écoute de la Parole et non du prodige (<i>peithô</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">séjour des morts</span><span class="mot-gr">hadès</span></th>
+            <td class="col-sens">le lieu invisible, le royaume des morts; ici la demeure des damnés dans les tourments</td>
+            <td>Dans la Septante, <i>hadès</i> rend l'hébreu <i>shéol</i>, le royaume des morts pris de façon générale, sans toujours distinguer les justes des injustes. Mais selon MacArthur, l'usage établi du Nouveau Testament fixe le sens : <i>hadès</i> désigne la demeure des méchants avant le jugement définitif de l'étang de feu (Apocalypse 20.13-14). Jésus le dépeint ici comme un lieu où les tourments indescriptibles de la géhenne ont déjà commencé, conscient, brûlant, irréversible. Ce n'est ni le sommeil de l'âme ni un purgatoire, mais une détention réelle dans la souffrance, dont le grand abîme interdit toute sortie.</td>
+            <td><span class="trad"><span><b>S21</b> le séjour des morts</span><span><b>NEG79</b> le séjour des morts</span><span><b>Darby</b> le hadès</span><span><b>LSG</b> le séjour des morts</span><span><b>KJF</b> l'enfer</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">j'endure des tourments</span><span class="mot-gr">odunômai</span></th>
+            <td class="col-sens">souffrir une douleur aiguë, être torturé, être en proie à une angoisse cuisante</td>
+            <td>Le verbe <i>odunaomai</i> exprime une douleur lancinante, du corps comme de l'âme. Luc l'emploie pour le tourment du riche, je souffre cruellement dans cette flamme (16.24-25), et ailleurs pour l'angoisse déchirante (2.48; Actes 20.38). Pour MacArthur, Jésus accumule ici les traits du supplice de l'enfer : le feu qui ne s'éteint pas, une conscience accusatrice nourrie par le souvenir des occasions perdues, et la séparation irréversible d'avec Dieu et d'avec tout bien; la goutte d'eau réclamée n'est qu'une image du moindre soulagement, qui ne viendra jamais. Le terme dément toute idée d'un enfer métaphorique ou d'un anéantissement : la peine est consciente, personnelle et sans terme.</td>
+            <td><span class="trad"><span><b>S21</b> je souffre cruellement</span><span><b>NEG79</b> je souffre cruellement</span><span><b>Darby</b> je suis tourmenté</span><span><b>LSG</b> je souffre cruellement</span><span><b>KJF</b> je suis tourmenté</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">abîme</span><span class="mot-gr">chasma</span></th>
+            <td class="col-sens">un gouffre béant, une crevasse profonde et infranchissable</td>
+            <td>Le mot <i>chasma</i>, qui n'apparaît qu'ici dans le Nouveau Testament, vient d'une racine signifiant bâiller, s'ouvrir grand. Il désigne un vide immense fixé entre les deux compartiments du séjour des morts, et le texte précise sa fonction : afin que ceux qui voudraient passer ne le puissent. Pour MacArthur, ce grand abîme est l'image saisissante de l'irréversibilité du sort éternel : la mort scelle définitivement la destinée de chacun, et aucun passage n'est plus possible, ni du tourment vers la consolation, ni l'inverse. Il réfute par avance toute seconde chance posthume, tout purgatoire, tout salut après la mort.</td>
+            <td><span class="trad"><span><b>S21</b> un grand abîme</span><span><b>NEG79</b> un grand abîme</span><span><b>Darby</b> un grand gouffre</span><span><b>LSG</b> un grand abîme</span><span><b>KJF</b> un grand gouffre</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ils se repentiront</span><span class="mot-gr">metanoèsousin</span></th>
+            <td class="col-sens">changer de pensée et de direction, se détourner du péché pour se tourner vers Dieu</td>
+            <td>Le verbe <i>metanoeô</i> désigne chez Luc bien plus qu'un regret : c'est le retournement intérieur qui détourne le pécheur de son péché pour le soumettre à Dieu. Luc en fait un thème majeur, Jésus est venu appeler les pécheurs à la repentance (5.32), et si vous ne vous repentez, vous périrez tous (13.3, 5). Le riche imagine qu'un mort ressuscité provoquerait la repentance de ses cinq frères, mais Abraham réfute l'illusion : la repentance véritable naît de l'écoute de la Parole, non du spectacle d'un prodige. Pour MacArthur, ce verset enseigne que nul n'est sauvé par un miracle et que l'incrédulité est d'abord un mal moral, non un déficit de preuves.</td>
+            <td><span class="trad"><span><b>S21</b> ils changeront d'attitude</span><span><b>NEG79</b> ils se repentiront</span><span><b>Darby</b> ils se repentiront</span><span><b>LSG</b> ils se repentiront</span><span><b>KJF</b> ils se repentiront</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ils ne se laisseront pas persuader</span><span class="mot-gr">peisthèsontai</span></th>
+            <td class="col-sens">être convaincu, être amené à croire, se laisser persuader au point d'obéir</td>
+            <td>Forme passive de <i>peithô</i>, persuader. Abraham déclare que ceux qui n'écoutent pas Moïse et les prophètes ne se laisseront pas persuader même si quelqu'un des morts ressuscitait. Pour MacArthur, cette parole affirme avec force la pleine suffisance de l'Écriture pour vaincre l'incrédulité : la Parole révélée possède en elle-même la puissance de produire la foi (Romains 1.16; Hébreux 4.12; Jacques 1.18; 1 Pierre 1.23), car l'Évangile est la puissance de Dieu pour le salut. Aucune preuve extérieure, fût-elle une résurrection, ne saurait transformer en foi une incrédulité qui est avant tout un refus moral. La résurrection ultérieure d'un autre Lazare (Jean 11) et celle de Jésus lui-même le vérifieront : les chefs incrédules n'y répondirent que par le complot et le mensonge.</td>
+            <td><span class="trad"><span><b>S21</b> ils ne se laisseront pas persuader</span><span><b>NEG79</b> ils ne se laisseront pas persuader</span><span><b>Darby</b> ils ne seront pas persuadés</span><span><b>LSG</b> ils ne se laisseront pas persuader</span><span><b>KJF</b> ils ne seront pas persuadés</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Luc 16.19-31</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Luc 16.19-31 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Lc 16.20, 16.21, 16.22, 16.23, 16.24, 16.27, 16.29, 16.31.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-212</span></th>
+            <td><a href="https://www.gty.org/sermons/42-212" target="_blank" rel="noopener">A Testimony of One Surprised to Be in Hell, Part 1</a></td>
+            <td>Luc 16.19-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-213</span></th>
+            <td><a href="https://www.gty.org/sermons/42-213" target="_blank" rel="noopener">A Testimony of One Surprised to Be in Hell, Part 2</a></td>
+            <td>Luc 16.19-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-214</span></th>
+            <td><a href="https://www.gty.org/sermons/42-214" target="_blank" rel="noopener">A Testimony of One Surprised to Be in Hell, Part 3</a></td>
+            <td>Luc 16.19-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-215</span></th>
+            <td><a href="https://www.gty.org/sermons/42-215" target="_blank" rel="noopener">A Testimony of One Surprised to Be in Hell, Part 4</a></td>
+            <td>Luc 16.19-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-216</span></th>
+            <td><a href="https://www.gty.org/sermons/42-216" target="_blank" rel="noopener">A Testimony of One Surprised to Be in Hell, Part 5</a></td>
+            <td>Luc 16.19-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-123</span></th>
+            <td><a href="https://www.gty.org/sermons/81-123" target="_blank" rel="noopener">A Voice from Hell</a></td>
+            <td>Luc 16.19-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">CONF-RC08-10</span></th>
+            <td><a href="https://www.gty.org/sermons/CONF-RC08-10" target="_blank" rel="noopener">The Rich Man and Lazarus (2008 Resolved Conference)</a></td>
+            <td>Luc 16.19-31</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit le riche et Lazare comme une parabole, non un reportage, tout en y reconnaissant la révélation autorisée de réalités véritables sur l'au-delà : les enseignements sur l'enfer, le jugement et la suffisance de l'Écriture sont l'enseignement même du Fils de Dieu.</p>
+    <div class="body">
+      <p>MacArthur lit le riche et Lazare comme une parabole, non un reportage, tout en y reconnaissant la révélation autorisée de réalités véritables sur l'au-delà. La formule d'ouverture, il y avait un homme riche, est celle des autres paraboles de Luc, comme le bon Samaritain. Le fait que le mendiant porte un nom, fait unique dans les paraboles de Jésus, n'établit pas un fait divers historique mais souligne la leçon : Lazare, de l'hébreu Éléazar, signifie celui que Dieu a secouru, tandis que le riche reste sans nom, anonyme pour l'éternité. Quoi qu'il en soit, Christ emploie ce récit comme toutes ses paraboles, pour enseigner une vérité, ici à l'adresse des pharisiens amis de l'argent. La portée n'est donc pas réduite par le genre : les enseignements sur l'enfer, le jugement et la suffisance de l'Écriture sont l'enseignement même du Fils de Dieu.</p>
+      <p>Le cœur du premier mouvement est le grand renversement. De son vivant, le riche jouissait de tout et n'avait aucun égard pour le misérable couché à sa porte; Lazare, lui, n'avait que ses ulcères et sa faim. À la mort, tout bascule. Le pauvre est porté par les anges dans le sein d'Abraham, image de la place d'honneur au banquet céleste; le riche est enseveli, et se réveille dans les tourments. MacArthur insiste : Jésus dépeint le séjour des morts comme un lieu où les supplices de l'étang de feu ont déjà commencé, le feu qui ne s'éteint pas, la séparation irréversible d'avec Dieu et d'avec tout bien, et surtout une conscience accusatrice nourrie par le souvenir des occasions négligées. Fait remarquable, le riche conserve jusque dans l'enfer son orgueil et son mépris : il réclame que Lazare lui soit envoyé en serviteur pour tremper son doigt dans l'eau, puis pour avertir sa famille, traitant encore le croyant comme un domestique. Les flammes ne purifient pas le pécheur ni ne rachètent le péché; elles révèlent un cœur endurci qui demeure tel (Apocalypse 22.11).</p>
+      <p>Le verset 26 est l'axe doctrinal du premier mouvement. Le grand abîme fixé entre les deux séjours rend tout passage impossible. Pour MacArthur, ce verset affirme l'irréversibilité du sort éternel : la mort scelle la destinée, et il n'existe ni purgatoire, ni seconde chance, ni salut posthume. Le destin de l'âme se décide dans cette vie, par la réponse de foi ou d'incrédulité à la Parole de Dieu, et cette décision devient définitive à l'instant de la mort. Cette vérité fait de la prédication de l'Évangile une affaire d'urgence absolue, car aucune frontière ne s'ouvrira après le dernier souffle.</p>
+      <p>Le second mouvement livre la leçon ultime, qui donne au passage sa force apologétique. Le riche, par un dernier réflexe de propre justice, suppose implicitement n'avoir pas eu assez d'information, et réclame pour ses frères un signe spectaculaire, l'envoi d'un ressuscité. Abraham refuse net : ils ont Moïse et les prophètes, qu'ils les écoutent. Et au verset 31, le verdict : s'ils n'écoutent pas Moïse et les prophètes, ils ne se laisseront pas persuader même si quelqu'un des morts ressuscitait. MacArthur y voit l'affirmation décisive de la suffisance de l'Écriture. L'incrédulité n'est pas d'abord un problème intellectuel mais moral : aucune preuve, fût-elle une résurrection, ne convertit un cœur qui refuse la Parole. La Parole révélée possède au contraire en elle-même la puissance de produire la foi, parce que l'Évangile est la puissance de Dieu pour le salut (Romains 1.16). L'ironie est tranchante et prophétique : peu après, Jésus ressuscitera un autre Lazare (Jean 11), et les chefs ne croiront pas, comploteront plutôt de le tuer; et lorsque Christ lui-même ressuscitera, ces mêmes incrédules s'endurciront encore. La suffisance de l'Écriture, et non la quête de signes, demeure la seule voie ordonnée par Dieu vers la foi salvatrice.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du contexte immédiat qui nomme l'auditoire pharisien au fil rouge lucanien du Sauveur des perdus, jusqu'à la suffisance de l'Écriture déjà attestée par Moïse et les prophètes.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 16.14-15</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le contexte immédiat nomme l'auditoire : les pharisiens amis de l'argent qui se moquent de Jésus et cherchent à paraître justes. Le riche et Lazare retourne contre eux leur conviction que la richesse prouve la faveur de Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 23.43</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La promesse au brigand, aujourd'hui tu seras avec moi dans le paradis, confirme que l'esprit du croyant entre aussitôt dans la présence de Dieu, sans purgatoire ni détention intermédiaire, ce que le sein d'Abraham illustre.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 1.52-53</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le Magnificat annonce le renversement même du récit : Dieu renvoie les riches à vide et comble de biens les affamés. Le riche et Lazare en est la mise en scène eschatologique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 19.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le verset clé de l'Évangile, le Fils de l'homme est venu chercher et sauver ce qui était perdu, encadre le récit : c'est Lazare le perdu sauvé par grâce, non le riche qui se croyait béni.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 1.16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'Évangile est la puissance de Dieu pour le salut de quiconque croit; fondement de la suffisance de l'Écriture affirmée au verset 31, la Parole, et non les signes, opère la foi.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Hébreux 4.12</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La Parole de Dieu est vivante et efficace, pénétrante; elle possède en elle-même la puissance que le riche cherchait à tort dans un prodige, confirmant que Moïse et les prophètes suffisent.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 8.19-20</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le prophète renvoie le peuple à la loi et au témoignage plutôt qu'aux morts qu'on interroge : la révélation écrite, non les voix d'outre-tombe, est la norme de la foi, exactement la réponse d'Abraham.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 30.11-14</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Moïse atteste que la Parole n'est pas inaccessible mais tout près, dans la bouche et dans le cœur, afin qu'on la mette en pratique; les cinq frères ont déjà tout ce qu'il faut pour être sauvés.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La réalité de l'enfer conscient et éternel</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le riche, dans le séjour des morts, lève les yeux en proie aux tourments, supplie qu'on rafraîchisse sa langue, car il souffre cruellement dans cette flamme (16.23-24); le supplice est conscient, personnel et sans répit.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Jésus, le plus tendre des maîtres, enseigne plus que quiconque sur l'enfer : un lieu réel de tourment conscient, et non une métaphore, ni un sommeil de l'âme, ni un anéantissement. Pour votre assemblée, la doctrine de l'enfer n'est pas un archaïsme à taire mais le revers de l'amour de Dieu et le moteur de l'urgence évangélique. Prêchée avec larmes et fidélité, elle pousse à fuir la colère à venir et à se réfugier en Christ, seul sauveur des perdus.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'irréversibilité du sort éternel scellé à la mort</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Entre nous et vous il y a un grand abîme, afin que ceux qui voudraient passer ne le puissent (16.26); aucun franchissement n'est possible, dans aucun sens.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La mort fixe définitivement la destinée : pas de purgatoire, pas de seconde chance, pas de salut posthume, contre tout universalisme. Pour votre assemblée, cette vérité confère à chaque jour de la vie présente un poids éternel. C'est maintenant le temps favorable; nul ne se convertira après le dernier souffle. L'évangélisation devient une affaire d'extrême urgence envers ceux qui n'ont pas encore franchi cette frontière irrévocable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La pleine suffisance de l'Écriture pour produire la foi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>S'ils n'écoutent pas Moïse et les prophètes, ils ne se laisseront pas persuader même si quelqu'un des morts ressuscitait (16.31); l'Écrit inspiré suffit, le signe est superflu.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'incrédulité est d'abord un mal moral, non un déficit de preuves; aucun prodige ne convertit un cœur qui refuse la Parole, mais la Parole possède en elle-même la puissance de régénérer (Jacques 1.18; 1 Pierre 1.23). Pour votre assemblée, cela libère de la chasse aux expériences spectaculaires et recentre toute l'espérance sur la prédication fidèle de l'Écriture suffisante, car l'Évangile, et lui seul, est la puissance de Dieu pour le salut.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le renversement et la justification par la foi, non par le statut</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Lazare le mendiant impur est porté dans le sein d'Abraham, le riche somptueux sombre dans le tourment (16.22-23); le statut social s'inverse selon la réponse de foi à Dieu, non selon la richesse.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le texte démolit la théologie de la prospérité avant la lettre des pharisiens : la richesse n'est pas la preuve de la faveur divine, ni la pauvreté celle de la malédiction. Lazare, celui que Dieu a secouru, est sauvé par grâce souveraine, en cohérence avec la justification par la foi que Luc met en récit (7.50; 18.9-14). Pour votre assemblée, l'assurance ne repose ni sur le confort ni sur la respectabilité, mais sur la foi seule qui s'attache au Sauveur des perdus.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Comment prêcher la réalité de l'enfer conscient et éternel, comme Jésus le fait ici, avec à la fois la fermeté de la vérité et la tendresse pastorale, sans l'édulcorer ni en faire un spectacle?</li>
+      <li>Le grand abîme du verset 26 enseigne que la mort scelle définitivement le sort éternel. En quoi cette irréversibilité doit-elle transformer l'urgence avec laquelle votre assemblée évangélise ses proches encore vivants?</li>
+      <li>Le riche cherche un signe spectaculaire, un ressuscité, pour convaincre ses frères, alors qu'Abraham renvoie à Moïse et aux prophètes. Votre assemblée est-elle tentée de fonder sa foi sur des expériences plutôt que sur la suffisance de l'Écriture?</li>
+      <li>Si l'incrédulité est avant tout un refus moral et non un manque de preuves, comment cela oriente-t-il votre manière de répondre aux objections des sceptiques et de prier pour eux?</li>
+      <li>Les pharisiens tenaient la richesse pour une marque de la bénédiction divine. Quelles formes de cette même erreur, théologie de la prospérité ou respectabilité présumée chrétienne, peuvent encore endormir une assemblée à l'aise?</li>
+      <li>Le riche conserve son mépris de Lazare jusque dans l'enfer, le traitant encore en serviteur. Que révèle cette persistance sur la nature du péché et sur l'illusion que la souffrance purifierait d'elle-même le cœur?</li>
+      <li>Lazare, celui que Dieu a secouru, est sauvé par pure grâce, sans aucun mérite ni statut. Comment ce récit confirme-t-il la justification par la foi seule, et comment fonde-t-il une assurance qui ne repose ni sur le confort matériel ni sur les œuvres?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Luc 16.19-31 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Luc : venu sauver les perdus&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Luc-16-19-31.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

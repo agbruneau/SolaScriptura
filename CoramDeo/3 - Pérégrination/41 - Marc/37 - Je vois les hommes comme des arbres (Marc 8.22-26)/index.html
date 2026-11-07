@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc 8.22-26 · Je vois les hommes comme des arbres · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Marc 8.22-26 : la guérison progressive de l'aveugle de Bethsaïda ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Marc 8.22-26</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Marc 8.22-26</p>
+    <h1 class="hero__title">Je vois les hommes comme des arbres</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;J'aperçois les hommes, mais j'en vois comme des arbres, et qui marchent.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Marc 8.24 · NEG</p>
+    <p class="hero__series">Série : <b>Marc : le Serviteur souffrant</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Marc 8.22-26</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Ils se rendirent à Bethsaïda; et on amena vers Jésus un aveugle, qu'on le pria de toucher.</p>
+        <cite class="verse__ref">Marc 8.22 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Jésus lui mit de nouveau les mains sur les yeux; et, quand l'aveugle regarda fixement, il fut guéri, et vit tout distinctement.</p>
+        <cite class="verse__ref">Marc 8.25 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Marc 8.22-26 referme la grande section galiléenne et ouvre la charnière du livre : seule guérison en deux temps de tous les Évangiles, elle pourrait illustrer, sans que le texte le dise, l'ouverture graduelle des yeux des disciples sur l'identité de leur Maître.</p>
+    <div class="body">
+      <p>Marc 8.22-26 occupe une position stratégique dans la structure du deuxième Évangile. Il referme la grande section galiléenne et la suite des reproches que Jésus vient d'adresser à ses disciples au sujet de leur dureté de cœur (8.14-21), et il ouvre immédiatement sur la charnière du livre, la confession de Pierre à Césarée de Philippe (8.27-30). MacArthur note que ce passage est le second des deux seuls miracles que Marc soit le seul à rapporter (cf. 7.31-37, le sourd-muet de la Décapole), et la première des deux guérisons d'aveugles qu'il consigne, l'autre étant celle de Bartimée (10.46-52). Ces deux guérisons d'aveugles encadrent comme deux bornes toute la section centrale consacrée au chemin de la croix et à l'apprentissage du disciple.</p>
+      <p>Le contexte immédiat est saturé du thème de la vue et de l'aveuglement spirituel. Quelques versets plus haut, Jésus a réprimandé ses disciples par une cascade de questions : «&nbsp;Avez-vous le cœur endurci? Ayant des yeux, ne voyez-vous pas?&nbsp;» (8.17-18). Les disciples voient sans comprendre, un peu comme l'aveugle de Bethsaïda qui, après le premier toucher, aperçoit des formes confuses, des hommes pareils à des arbres qui marchent. Le texte n'explique pas pourquoi la guérison se fait en deux temps; on peut y voir, sans dogmatisme, une illustration de l'ouverture progressive des yeux des disciples sur l'identité de leur Maître. Pierre confessera bientôt que Jésus est le Christ (8.29), mais sa vision restera trouble, car il refusera aussitôt la croix (8.31-33). Sa vue ne deviendra parfaitement claire qu'après la croix et la résurrection.</p>
+      <p>La péricope se découpe nettement en cinq mouvements rapides et concrets, typiques du style d'action de Marc : l'arrivée à Bethsaïda et la requête qu'on lui amène l'aveugle pour qu'il le touche (v. 22); la sortie hors du village, la salive sur les yeux, l'imposition des mains et la question de Jésus (v. 23); la réponse de l'homme à demi guéri qui voit les hommes comme des arbres (v. 24); le second toucher et la guérison parfaite, l'homme voyant tout distinctement (v. 25); enfin le renvoi à la maison avec la consigne de ne pas rentrer au village (v. 26). L'unité est gouvernée par un seul fil : la restauration progressive et totale d'une vue par la seule puissance souveraine du Serviteur qui agit, le Fils de Dieu qui ne fait jamais les choses à demi.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Marc 8.22 · 8.23 · 8.26</p>
+    </header>
+    <p class="lead">Bethsaïda, village voué au jugement pour son aveuglement collectif, devient le théâtre où Jésus ouvre les yeux d'un aveugle; les gestes du Christ relèvent d'une condescendance envers l'aveugle, non d'une technique, et la progression en deux temps, dont le texte ne donne pas la raison, ne trahit aucun échec de puissance.</p>
+    <div class="body">
+      <p>Bethsaïda, dont le nom araméen signifie probablement «&nbsp;maison de la pêche&nbsp;», pose une difficulté géographique que MacArthur résout en distinguant deux localités. La Bethsaïda de 6.45 se trouvait sur la rive nord de la mer de Galilée, à l'est de Capernaüm; celle de notre passage est Bethsaïda-Julias, située à quelques kilomètres au nord de la mer de Galilée, sur la rive nord-est et à l'est du Jourdain, dans la tétrarchie de Philippe. Le tétrarque l'avait élevée au rang de ville et rebaptisée Julias en l'honneur de Julie, fille de l'empereur Auguste. C'est cette même Bethsaïda que Jésus place, avec Chorazin et Capernaüm, parmi les villes maudites pour leur incrédulité malgré les miracles accomplis sous leurs yeux (Mt 11.21). L'ironie est saillante : un village voué au jugement pour son aveuglement collectif devient le théâtre où Jésus ouvre les yeux d'un aveugle.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Les gestes du Christ, une condescendance pédagogique.</b> Prendre l'homme par la main, le conduire hors du village, lui mettre de la salive sur les yeux et lui imposer les mains s'expliquent par la condition même de l'aveugle. Dans sa note, MacArthur observe que, par cet acte et son toucher, Jésus voulait probablement rassurer l'aveugle qui, privé de la vue, se fiait naturellement à ses autres sens, le toucher en particulier, en lui signifiant son intention de lui guérir précisément les yeux (cf. 7.33, le sourd-muet; Jn 9.6, l'aveugle-né); en chaire, sans prétendre en connaître la raison, il y voit le symbole du transfert de la puissance, du Christ à l'homme. Dans la médecine populaire de l'Antiquité, la salive passait pour avoir des vertus curatives, mais rien ici ne ressortit à la magie ou à une technique : le pouvoir réside entièrement dans la personne du Christ.</li>
+      <li><b>La guérison en deux temps, sans échec de puissance.</b> Le déroulement en deux étapes est l'unique guérison progressive de tous les Évangiles, ce qui en interdit toute lecture comme un échec ou une limitation de la puissance de Jésus. MacArthur n'en tire aucune conclusion sur l'origine de la cécité : même un aveugle-né, dit-il, sait à peu près ce qu'est un homme, vertical comme un arbre; l'homme voit, mais sans netteté, les formes restant indistinctes. Quant à la raison des deux étapes, il reconnaît que le texte ne la donne pas, et ne suggère qu'avec réserve que la scène illustre la vue encore floue des disciples.</li>
+      <li><b>La consigne finale et le secret messianique.</b> Ne pas rentrer au village prolonge le motif marcien du secret messianique : Jésus avait déjà conduit l'aveugle hors de Bethsaïda avant de le guérir, probablement pour éviter de provoquer une effervescence populaire et l'agitation messianique mal orientée qui n'aurait pas manqué de suivre. Détail remarquable relevé par MacArthur, contrairement à d'autres bénéficiaires de miracles qui désobéirent (1.45; 7.36), cet homme obéit apparemment à l'ordre reçu.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le sens spirituel du récit. La gradation du vocabulaire de Marc, de l'aveugle (<i>typhlos</i>) saisi par la main (<i>epilambanomai</i>), à la vision confuse (<i>blepo</i>), au regard perçant (<i>diablepo</i>), jusqu'à la pleine clarté (<i>telaugos</i>), pourrait illustrer, sans que le texte l'affirme, l'itinéraire des disciples vers la reconnaissance du Christ crucifié.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">aveugle</span><span class="mot-gr">typhlos</span></th>
+            <td class="col-sens">privé de la vue, qui ne voit pas; au figuré, incapable de percevoir</td>
+            <td>Le terme désigne d'abord l'infirmité physique, mais l'Évangile de Marc l'investit d'une charge symbolique constante. La cécité physique de l'homme de Bethsaïda fait écho à l'aveuglement spirituel des disciples (8.18) et des foules. Pour MacArthur, rendre la vue aux aveugles était une marque du ministère de Jésus, celle qu'il donne en réponse à Jean-Baptiste, et un avant-goût du royaume qu'annonce És 35.5, où les yeux des aveugles s'ouvriront. La vue rendue est le signe visible d'une œuvre invisible : l'ouverture des yeux du cœur que seul Dieu opère.</td>
+            <td><span class="trad"><span><b>S21</b> aveugle</span><span><b>NEG79</b> aveugle</span><span><b>Darby</b> aveugle</span><span><b>LSG</b> aveugle</span><span><b>KJF</b> aveugle</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il prit par la main</span><span class="mot-gr">epilambanomai</span></th>
+            <td class="col-sens">saisir, prendre fermement, se saisir de quelqu'un pour le conduire ou le secourir</td>
+            <td>Le verbe exprime une prise active et secourable, non un simple effleurement. Jésus se saisit de l'aveugle pour le conduire hors du village : l'initiative est entièrement la sienne. L'aveugle ne trouve pas Jésus, c'est Jésus qui le prend par la main; de même le pécheur spirituellement aveugle ne se sauve pas lui-même, il est saisi et conduit par le Sauveur qui agit le premier. MacArthur y souligne ce qu'a d'inouï le geste : aucun chef religieux respectable n'aurait pris par la main un aveugle, tenu pour maudit de Dieu et que nul ne voulait toucher; Jésus, lui, touche et se laisse toucher, et ce toucher dit la compassion de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> il prit par la main</span><span><b>NEG79</b> il prit par la main</span><span><b>Darby</b> ayant pris par la main</span><span><b>LSG</b> il prit par la main</span><span><b>KJF</b> il prit par la main</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">j'aperçois</span><span class="mot-gr">blepo</span></th>
+            <td class="col-sens">voir, regarder, apercevoir; percevoir par les yeux</td>
+            <td>Verbe ordinaire de la vision, employé ici pour l'état intermédiaire de l'homme à demi guéri qui aperçoit des formes mais sans netteté. Marc l'avait déjà utilisé dans le reproche aux disciples : «&nbsp;Ayant des yeux, ne voyez-vous pas?&nbsp;» (8.18). Le contraste entre ce <i>blepo</i> confus et le verbe de la pleine vue du verset 25 marque le passage de la vue floue à la vue parfaite. MacArthur y voit une vue floue, indistincte, imparfaite; et il avance, sans dogmatisme, qu'elle pourrait illustrer celle des disciples, qui croient en Jésus comme Messie mais peinent surtout à comprendre qu'il doit mourir et ressusciter.</td>
+            <td><span class="trad"><span><b>S21</b> je vois</span><span><b>NEG79</b> j'aperçois</span><span><b>Darby</b> je vois</span><span><b>LSG</b> j'aperçois</span><span><b>KJF</b> je vois</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il regarda fixement</span><span class="mot-gr">diablepo</span></th>
+            <td class="col-sens">voir à travers, regarder fixement et clairement, percer du regard</td>
+            <td>Composé de <i>blepo</i> renforcé par la préposition <i>dia</i> (à travers) : le regard qui traverse l'obstacle et perçoit nettement. Après le second toucher, l'homme regarde fixement et la vue lui est pleinement rendue. MacArthur relève la richesse du vocabulaire : Marc emploie dans ce récit environ cinq verbes composés de la vue et les deux mots grecs pour les yeux; <i>diablepo</i>, littéralement voir à travers, dit la vue pénétrante, le brouillard dissipé. Il n'en tire pas une interprétation arrêtée, mais en fait, avec réserve, l'illustration de la vue spirituelle des disciples : floue d'abord, elle deviendra parfaitement claire après la croix et la résurrection.</td>
+            <td><span class="trad"><span><b>S21</b> regarda attentivement</span><span><b>NEG79</b> regarda fixement</span><span><b>Darby</b> regarda fixement</span><span><b>LSG</b> regarda fixement</span><span><b>KJF</b> regarda fixement</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">distinctement</span><span class="mot-gr">telaugos</span></th>
+            <td class="col-sens">clairement, avec une parfaite netteté, comme en pleine lumière jusqu'au loin</td>
+            <td>Adverbe rare, formé de <i>telos</i> (terme, au loin) et <i>auge</i> (éclat, lumière) : voir avec une clarté lumineuse et complète, jusqu'à l'horizon. Il scelle l'achèvement parfait de la guérison : l'homme voit tout distinctement. Pour MacArthur, le mot, qui signifie «&nbsp;au loin&nbsp;», dit une vue parfaite de près comme de loin : toute guérison opérée par Jésus rendait une perfection absolue, sans guérison partielle, ce qui interdit toute idée d'une puissance défaillante; quant à la raison des deux temps, il reconnaît que le texte ne la donne pas. La pleine clarté finale pourrait annoncer, suggère-t-il avec réserve, le jour où les yeux des disciples s'ouvriront entièrement, après la croix et la résurrection.</td>
+            <td><span class="trad"><span><b>S21</b> très clairement</span><span><b>NEG79</b> distinctement</span><span><b>Darby</b> clairement</span><span><b>LSG</b> distinctement</span><span><b>KJF</b> clairement</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Marc 8.22-26</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Marc 8.22-26 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mc 8.22-26, 8.22, 8.23, 8.26.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-39</span></th>
+            <td><a href="https://www.gty.org/sermons/41-39" target="_blank" rel="noopener">Jesus’ Power over Blindness</a></td>
+            <td>Marc 8.22-26</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit Marc 8.22-26 d'abord comme une démonstration de la pleine déité du Serviteur : ouvrir les yeux d'un aveugle est un acte que seul Dieu peut accomplir, et la guérison progressive, loin de trahir une limite de puissance, pourrait aussi illustrer, avance-t-il sans dogmatisme, l'itinéraire des disciples vers la pleine vue du Christ crucifié et ressuscité.</p>
+    <div class="body">
+      <p>MacArthur lit Marc 8.22-26 d'abord comme une démonstration de la pleine déité du Serviteur. Marc, qui met en avant les œuvres de Jésus plus que ses discours, présente ici un acte que seul Dieu peut accomplir : ouvrir les yeux d'un aveugle. Tout au long de l'Évangile, l'autorité souveraine du Christ s'est exercée sur la maladie, les démons, la nature, le péché et la mort; dernier miracle galiléen rapporté par Marc, la guérison de Bethsaïda couronne, pour MacArthur, les milliers de miracles qui attestaient sa déité, juste avant que Pierre confesse le Christ. Le pouvoir n'est ni dans la salive ni dans les gestes, mais dans la personne : la salive n'a rien d'une mixture magique, et le geste symbolise le transfert de la puissance, du Christ à l'homme. C'est le Dieu fait homme, vrai Dieu et vrai homme, qui touche de ses mains humaines pour communiquer une puissance divine.</p>
+      <p>Pour MacArthur, c'est le cadre du récit qui lui donne son sens : dernier miracle de Jésus en Galilée, miracle privé, il clôt le ministère public et ouvre le temps de la formation des Douze. La singularité du récit, l'unique guérison en deux temps des Évangiles, ne trahit aucune limite de puissance, et MacArthur reconnaît que le texte n'en donne pas la raison. Il avance toutefois, sans dogmatisme, une illustration : Jésus vient de reprocher aux disciples d'avoir des yeux sans voir (8.18), et Pierre, qui confessera le Christ, refusera aussitôt la croix (8.29-33). L'aveugle qui voit d'abord des hommes comme des arbres, puis tout distinctement, pourrait bien figurer cet itinéraire. Les Douze croient déjà, ils sont passés des ténèbres à la lumière, mais leur vue spirituelle vient par étapes : floue d'abord, elle ne deviendra parfaitement claire qu'après la croix et la résurrection.</p>
+      <p>MacArthur fait sienne la remarque d'un auteur : la capacité de voir, physiquement comme spirituellement, est un don de Dieu et non le fruit d'une capacité humaine. C'est Jésus qui prend l'aveugle par la main, le conduit, le touche, l'interroge et le guérit; rien n'indique que la guérison ait progressé à mesure que grandissait la foi de l'homme : elle vient uniquement du toucher répété de Jésus. L'Écriture l'enseigne ailleurs : l'ouverture des yeux du cœur est l'œuvre de Dieu (cf. 4.11-12; 2 Co 4.6). De même, la guérison est totale : comme toute guérison opérée par Jésus, elle rend une vue parfaite, instantanée et complète, sans rééducation. N'en va-t-il pas ainsi pour nous, demande MacArthur : un peu de vue, puis davantage, jusqu'au jour de la pleine vue, et c'est l'œuvre de Dieu.</p>
+      <p>Le récit s'inscrit enfin dans le motif marcien du secret messianique et du chemin de la croix. La consigne de ne pas rentrer au village, et la sortie préalable de Bethsaïda, avaient selon MacArthur plusieurs raisons : ne pas attirer des foules avides de miracles, ne pas attiser le conflit avec les pharisiens, faire sentir aux disciples la gravité du jugement prononcé sur Bethsaïda (Mt 11.21), et enfin ne pas laisser Jésus passer pour un simple faiseur de miracles, car le message ne serait complet qu'avec la croix et la résurrection. MacArthur relie ce passage à la trajectoire d'ensemble : à partir de 8.31, Jésus enseignera sans relâche aux disciples sa mort et sa résurrection (9.31; 10.33-34), la leçon qu'ils peineront le plus à recevoir. Jésus appellera aussi quiconque veut le suivre à se renier soi-même, à prendre sa croix et à perdre sa vie pour lui et pour l'Évangile (8.34-38). Voir clairement le Christ, c'est le voir crucifié et ressuscité : nul, prie MacArthur, ne peut voir clairement tant qu'il n'a pas vu parfaitement la croix et la résurrection.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du miracle jumeau propre à Marc aux deux bornes des guérisons d'aveugles, jusqu'à l'arrière-plan prophétique du Serviteur qui ouvre les yeux et à la clé sotériologique de l'illumination souveraine.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 7.31-37</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Guérison du sourd-muet de la Décapole, l'autre miracle propre à Marc, avec les mêmes gestes (à l'écart de la foule, salive, toucher); les deux récits encadrent les reproches sur l'incompréhension des disciples et préparent la charnière de Césarée.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 8.17-21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Reproche immédiat aux disciples qui, ayant des yeux, ne voient pas; l'aveugle à demi guéri peut illustrer, sans que le texte l'affirme, leur vue spirituelle encore floue.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 8.27-33</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Confession de Pierre puis refus de la croix; la vision encore trouble de Pierre, le Messie reconnu sans la croix comprise, rappelle le premier toucher de l'aveugle, rapprochement à tenir avec réserve, le texte ne l'expliquant pas.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 10.46-52</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Seconde guérison d'aveugle (Bartimée), borne jumelle qui referme la section du chemin de la croix; là, l'aveugle voit aussitôt et suit Jésus sur le chemin, accomplissement du disciple voyant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 9.1-7</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Guérison de l'aveugle-né avec salive et boue; même puissance souveraine ouvrant les yeux, et même symbolisme de la vue physique comme signe de l'illumination spirituelle.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 35.5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Promesse que les yeux des aveugles s'ouvriront à la venue de Dieu; la guérison de Bethsaïda atteste que le Messie d'Israël est à l'œuvre et accomplit l'attente prophétique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 42.6-7</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le Serviteur de l'Éternel établi pour ouvrir les yeux des aveugles; Marc, l'Évangile du Serviteur, montre Jésus accomplissant littéralement et spirituellement cette vocation.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 4.6</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Dieu qui a fait briller la lumière dans les cœurs pour faire resplendir la connaissance de sa gloire; clé sotériologique du récit, l'ouverture des yeux du cœur est une œuvre souveraine et monergique de Dieu.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La pleine déité du Serviteur qui agit</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus rend la vue à un aveugle par sa seule puissance personnelle, œuvre que seul Dieu peut accomplir; le pouvoir n'est ni dans la salive ni dans les gestes mais dans la personne du Fils de Dieu (1.1).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Marc présente le Dieu-homme dont l'autorité sur la maladie atteste la divinité. Appeler l'assemblée à adorer Jésus comme vrai Dieu, sans diluer ses miracles en simples gestes humanitaires; sa déité fonde l'autorité de tout l'Évangile.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'aveuglement spirituel et l'illumination souveraine</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'aveugle physique reflète les disciples qui ont des yeux sans voir (8.18); c'est Jésus qui le prend par la main, le conduit et lui ouvre les yeux, l'homme demeurant passif.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'homme est spirituellement aveugle et incapable de se sauver; seule la grâce souveraine et monergique de Dieu ouvre les yeux du cœur (2 Co 4.6). Cela réfute toute idée que la foi naîtrait d'une décision autonome et appelle à la dépendance dans la prière.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La révélation progressive de l'identité du Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La guérison en deux temps, vision confuse puis vue parfaite, peut illustrer, sans que le texte en donne la raison, l'ouverture graduelle des yeux des disciples sur l'identité de Jésus, de Bethsaïda à Césarée et au-delà.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Dieu conduit ses disciples par étapes vers une vision pleine du Christ crucifié et ressuscité. Encourager les croyants encore à la vision trouble à persévérer sous la Parole et l'Esprit jusqu'à voir distinctement, sans confondre cécité totale et vue qui mûrit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le Christ crucifié au centre de la vue véritable</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le récit ouvre la charnière du livre : voir clairement Jésus, c'est le reconnaître comme le Serviteur souffrant qui donne sa vie en rançon (10.45) et qu'il faut suivre en se reniant soi-même (8.34-38).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La foi qui sauve n'est pas un assentiment vague mais la reconnaissance du Roi crucifié à qui l'on se soumet (<i>Lordship Salvation</i>). Prêcher la croix comme contenu même de la vue véritable, contre tout christianisme sans renoncement ni seigneurie.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La guérison parfaite et la persévérance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Au second toucher, l'homme voit tout distinctement, de près comme de loin; l'œuvre commencée est conduite à son achèvement total, sans que le texte dise pourquoi elle se fait en deux temps.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Ce que Dieu commence dans le croyant, il le mène à son terme; les signes attestent l'autorité du Fils, ils ne fournissent pas un modèle normatif de guérison sur demande (cessationnisme). Assurer l'assemblée que la grâce qui sauve persévère jusqu'au bout.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le texte n'explique pas la guérison en deux temps de l'aveugle de Bethsaïda; si elle peut illustrer, avec réserve, la condition des disciples qui, juste avant, avaient des yeux sans voir (8.18), où en suis-je moi-même dans cette progression de la vue?</li>
+      <li>Le récit montre Jésus qui prend l'aveugle par la main et agit le premier, l'homme restant passif. Que dit cette initiative entièrement souveraine sur la manière dont un pécheur spirituellement aveugle vient à voir le Christ?</li>
+      <li>Voir des hommes comme des arbres peut figurer, sans dogmatisme, la vue de celui qui reconnaît le Messie sans saisir la croix, comme Pierre en 8.29-33. En quoi une vue partielle du Christ, vraie mais incomplète, peut-elle encore me tromper aujourd'hui?</li>
+      <li>Jésus a guéri cet homme en deux temps alors qu'il pouvait le faire d'un mot, et le texte ne dit pas pourquoi. Comment prêcher ce détail sans lui prêter une intention que l'Écriture tait, tout en y voyant, avec réserve, l'image de ceux qui apprennent lentement à voir le Christ?</li>
+      <li>L'homme voit finalement tout distinctement, d'une vue parfaite, comme dans toute guérison opérée par Jésus. Comment cette guérison achevée, lue avec la réserve qu'impose le texte, nourrit-elle l'assurance que Dieu, qui donne la vue par étapes, conduira son œuvre en moi à son terme?</li>
+      <li>Marc lie cette ouverture des yeux à l'appel à se renier soi-même et à prendre sa croix (8.34-38). Voir clairement le Christ, est-ce pour moi le suivre comme Seigneur crucifié, ou seulement l'admirer de loin?</li>
+      <li>Comment ce passage me garde-t-il de chercher dans les signes un modèle de guérison sur demande, tout en m'appelant à adorer la pleine déité du Serviteur qui seul ouvre les yeux aveugles?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Marc 8.22-26 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Marc : le Serviteur souffrant&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Marc-8-22-26.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

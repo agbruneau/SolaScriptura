@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jean 1.1-18 · La Parole faite chair · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jean 1.1-18 : le prologue du quatrième Évangile, la Parole faite chair, pleine de grâce et de vérité ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jean 1.1-18</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Jean 1.1-18</p>
+    <h1 class="hero__title">La Parole faite chair</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Et la Parole a été faite chair, et elle a habité parmi nous, pleine de grâce et de vérité&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jean 1.14 · NEG</p>
+    <p class="hero__series">Série : <b>Jean : le Verbe fait chair</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Jean 1.1-18</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Au commencement était la Parole, et la Parole était avec Dieu, et la Parole était Dieu.</p>
+        <cite class="verse__ref">Jean 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Personne n'a jamais vu Dieu; Dieu le Fils unique, qui est dans le sein du Père, est celui qui l'a fait connaître.</p>
+        <cite class="verse__ref">Jean 1.18 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le prologue (1.1-18) est la porte d'entrée et la clé de voûte de tout le quatrième Évangile : un sommaire dogmatique qui pose d'avance bien des thèmes majeurs du livre et conduit le lecteur de l'éternité du Verbe à son incarnation glorieuse.</p>
+    <div class="body">
+      <p>Le prologue (1.1-18) est la porte d'entrée et la clé de voûte de tout le quatrième Évangile. John MacArthur le lit comme l'ouverture solennelle d'une œuvre qui poursuit une seule thèse, énoncée en 20.31&nbsp;: Jésus est le Christ, le Fils de Dieu, et croire en lui donne la vie éternelle. Ces dix-huit versets posent d'avance bien des thèmes majeurs que le livre développera&nbsp;: la vie, la lumière, le témoignage, la gloire, la chair, la grâce et la vérité, la foi et le rejet, la filiation divine offerte. Jean écrit sous l'inspiration de l'Esprit, depuis Éphèse, à un âge avancé (dans la dernière décennie du Ier siècle), en témoin oculaire (1.14), avec le vocabulaire le plus simple du Nouveau Testament mais pour exprimer les vérités les plus profondes.</p>
+      <p>Le passage suit la structure que MacArthur dégage du prologue&nbsp;: six vérités fondamentales sur le Christ comme Fils de Dieu. Le Christ éternel (1.1-3), qui était déjà au commencement, avec Dieu, et par qui tout a été fait; le Christ révélé (1.4-5), la vie devenue lumière des hommes, que les ténèbres n'ont pu éteindre; le Christ promis (1.6-8), qu'annonce son précurseur, Jean-Baptiste, envoyé pour rendre témoignage à la lumière; le Christ rejeté par le monde et par les siens (1.9-11); le Christ qui sauve, en donnant le pouvoir de devenir enfants de Dieu à ceux qui le reçoivent, par une naissance qui vient de Dieu seul (1.12-13); enfin le Christ glorieux, la Parole faite chair qui a habité parmi nous, pleine de grâce et de vérité (1.14-18). La progression va de l'éternité à l'incarnation, du Verbe divin au Verbe visible.</p>
+      <p>Le prologue commande aussi l'architecture du livre. Le couple rejet-accueil des versets 9 à 13 annonce la division de l'Évangile&nbsp;: les chapitres 1 à 12 exposent surtout le rejet du Christ par le monde et par sa nation, les chapitres 13 à 21 se concentrent sur ceux qui l'ont reçu. La dernière phrase, «&nbsp;Dieu le Fils unique, qui est dans le sein du Père, est celui qui l'a fait connaître&nbsp;» (1.18), donne la fonction révélatrice du Fils&nbsp;: tout l'Évangile sera la mise en œuvre de cette exégèse vivante du Père par le Fils. Notre péricope est donc moins une introduction qu'un sommaire dogmatique&nbsp;: qui voudra comprendre Jean doit d'abord se tenir devant le prologue.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Jean 1.1 · 1.14 · 1.17</p>
+    </header>
+    <p class="lead">Le terme «&nbsp;Parole&nbsp;» (<i>logos</i>) que Jean choisit pour ouvrir son Évangile était un point de rencontre culturel calculé&nbsp;: Jean prend un mot connu du Grec comme du Juif et le fait éclater pour désigner une personne, la deuxième personne de la Trinité.</p>
+    <div class="body">
+      <p>Le terme «&nbsp;Parole&nbsp;» (<i>logos</i>) que Jean choisit pour ouvrir son Évangile était un point de rencontre culturel calculé. MacArthur note que Jean emprunte ce mot à la fois à l'Ancien Testament et à la philosophie grecque, mais qu'il lui donne le sens qu'il a dans l'Ancien Testament et pour les chrétiens. Pour la pensée grecque, le <i>logos</i> désignait, de façon totalement impersonnelle, le principe rationnel qui ordonne le cosmos, la raison divine, voire la sagesse. Pour le lecteur juif nourri des Écritures, «&nbsp;la parole de Dieu&nbsp;» était l'expression toute-puissante de Dieu dans la création (Gn 1.3; Ps 33.6), sa sagesse, sa révélation et son salut. Jean prend ce terme connu des deux auditoires et le fait éclater&nbsp;: le <i>logos</i> n'est ni un principe abstrait ni une simple énergie divine, mais une personne, la deuxième personne de la Trinité, Jésus-Christ. Sa stratégie missionnaire atteint ainsi le Grec non sauvé comme le Juif.</p>
+    </div>
+    <p>Trois réalités vétéro-testamentaires éclairent chaque image du prologue.</p>
+    <ul class="points">
+      <li><b>«&nbsp;Au commencement&nbsp;» et Genèse.</b> «&nbsp;Au commencement&nbsp;» (1.1) fait délibérément pendant à Genèse 1.1&nbsp;: Jean situe la Parole non pas au début de la création, mais avant elle, dans l'éternité, en opposition exacte avec le verbe «&nbsp;faire&nbsp;» du verset 3 qui marque, lui, un commencement temporel. Le Verbe précède le temps qu'il met lui-même en mouvement.</li>
+      <li><b>«&nbsp;A habité parmi nous&nbsp;» et le tabernacle.</b> Le verbe «&nbsp;a habité parmi nous&nbsp;» (1.14) traduit un mot grec qui signifie «&nbsp;dresser une tente, planter un tabernacle&nbsp;»&nbsp;: MacArthur y entend l'écho du tabernacle de l'Exode, la tente d'assignation où Dieu rencontrait Israël et que sa gloire remplissait (Ex 25.8; 33.7-11; 40.34). De même, «&nbsp;pleine de grâce et de vérité&nbsp;» et «&nbsp;nous avons contemplé sa gloire&nbsp;» renvoient à Exode 33 et 34, où Moïse demande à voir la gloire de Dieu et où l'Éternel se révèle plein de compassion, de miséricorde, de bonté et de fidélité. La Parole faite chair manifeste les mêmes attributs divins que l'Éternel de l'Ancien Testament.</li>
+      <li><b>La loi de Moïse et la fin du silence.</b> Le verset 17 oppose deux dispensations dans des termes que l'auditoire juif comprenait aussitôt&nbsp;: «&nbsp;la loi a été donnée par Moïse, la grâce et la vérité sont venues par Jésus-Christ.&nbsp;» MacArthur précise que la loi mosaïque n'était pas une démonstration de la grâce de Dieu mais de ses exigences de sainteté; conçue pour révéler l'injustice de l'homme et le besoin d'un Sauveur, elle ne livrait qu'une partie préparatoire de la vérité. Le ministère de Jean-Baptiste (1.6-8) prend place après les quatre cents années de silence prophétique entre les deux Testaments&nbsp;: issu d'une famille sacerdotale et lévitique (Lc 1.5), cousin de Jésus et son précurseur, Jean rompt le silence pour désigner la lumière du monde sans jamais se confondre avec elle.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids christologique du prologue&nbsp;: la Parole (<i>logos</i>) qui «&nbsp;était&nbsp;» (<i>ēn</i>) de toute éternité, qui «&nbsp;était Dieu&nbsp;» (<i>theos</i>), qui «&nbsp;a été faite chair&nbsp;» (<i>sarx egeneto</i>), Fils «&nbsp;unique&nbsp;» (<i>monogenēs</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">Parole</span><span class="mot-gr">logos</span></th>
+            <td class="col-sens">parole, discours, expression; raison, principe organisateur</td>
+            <td>Dans l'usage grec, le <i>logos</i> est le principe rationnel impersonnel qui ordonne le cosmos. Dans l'Ancien Testament, la parole de Dieu est son expression créatrice et révélatrice toute-puissante (Gn 1.3; Ps 33.6; 107.20). MacArthur souligne que Jean reprend ce terme connu des Juifs comme des Grecs, mais le transforme radicalement&nbsp;: le <i>logos</i> n'est pas une force ni une idée, c'est une personne éternelle et divine, la deuxième personne de la Trinité, Jésus-Christ (1.1, 14).</td>
+            <td><span class="trad"><span><b>S21</b> Parole</span><span><b>NEG79</b> Parole</span><span><b>Darby</b> Parole</span><span><b>LSG</b> Parole</span><span><b>KJF</b> Parole</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">était</span><span class="mot-gr">ēn</span></th>
+            <td class="col-sens">il, elle était (imparfait du verbe être, état continu)</td>
+            <td>Imparfait de <i>eimi</i>, trois fois au verset 1. MacArthur insiste sur le contraste délibérément établi par Jean entre ce verbe d'existence continue et le verbe «&nbsp;faire&nbsp;» (<i>egeneto</i>) du verset 3, qui marque un commencement. Le <i>logos</i> n'a pas commencé d'être&nbsp;: il était déjà, de toute éternité, avant que l'univers ne soit créé. Ce simple imparfait porte la préexistence éternelle du Fils et réfute toute idée qu'il aurait été créé (cf. 8.58).</td>
+            <td><span class="trad"><span><b>S21</b> était</span><span><b>NEG79</b> était</span><span><b>Darby</b> était</span><span><b>LSG</b> était</span><span><b>KJF</b> était</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Dieu</span><span class="mot-gr">theos</span></th>
+            <td class="col-sens">Dieu, l'être divin</td>
+            <td>Dans «&nbsp;la Parole était Dieu&nbsp;» (1.1c), MacArthur note que la construction grecque, littéralement «&nbsp;Dieu était la Parole&nbsp;», attribue à la Parole l'essence et les attributs mêmes de la divinité; distincte du Père, puisqu'elle est «&nbsp;avec Dieu&nbsp;» (1.1b), la Parole n'est pour autant ni un autre dieu ni un dieu inférieur. C'est l'affirmation sans équivoque de la pleine déité du Fils, en accord avec Colossiens 2.9, et la réfutation directe de tout antitrinitarisme et de toute christologie qui ferait du Christ une créature.</td>
+            <td><span class="trad"><span><b>S21</b> Dieu</span><span><b>NEG79</b> Dieu</span><span><b>Darby</b> Dieu</span><span><b>LSG</b> Dieu</span><span><b>KJF</b> Dieu</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">a été faite chair</span><span class="mot-gr">sarx egeneto</span></th>
+            <td class="col-sens">chair; devint, fut faite, entra dans l'existence</td>
+            <td><i>Sarx</i> désigne la nature humaine concrète, le corps réel. Le verbe <i>egeneto</i> (devenir, être fait) marque le processus par lequel le Fils, qui comme Dieu n'a pas été créé et demeure éternel, a endossé la nature humaine (cf. Hé 2.14-18). MacArthur précise que dans l'incarnation la Parole n'a jamais cessé d'être Dieu&nbsp;: sa déité n'a pas été amoindrie en prenant un corps humain. L'infini s'est fait fini, l'invisible visible, sans mélange ni perte des natures. Contre tout docétisme, la chair est réelle.</td>
+            <td><span class="trad"><span><b>S21</b> s'est faite homme</span><span><b>NEG79</b> a été faite chair</span><span><b>Darby</b> devint chair</span><span><b>LSG</b> a été faite chair</span><span><b>KJF</b> fut faite chair</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">unique</span><span class="mot-gr">monogenēs</span></th>
+            <td class="col-sens">unique en son genre, seul de sa catégorie, sans pareil</td>
+            <td>MacArthur précise dans sa Bible d'étude que <i>monogenēs</i> ne dérive pas du verbe «&nbsp;engendrer&nbsp;»; en chaire, il y lit une vie partagée&nbsp;: le Fils porte la nature du Père et, fils privilégié, en possède tout l'héritage. Appliqué au Fils (1.14, 18; 3.16, 18), il marque l'unicité absolue de sa relation au Père et sa prééminence sans pareille, non un commencement ni une création. Le terme s'emploie d'Isaac (Hé 11.17), pourtant second fils d'Abraham&nbsp;: il signale donc le statut privilégié et non l'origine. Le mot n'implique aucun temps où le Fils n'aurait pas existé.</td>
+            <td><span class="trad"><span><b>S21</b> unique</span><span><b>NEG79</b> unique</span><span><b>Darby</b> unique</span><span><b>LSG</b> unique</span><span><b>KJF</b> unique</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Jean 1.1-18</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Jean 1.1-18 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Jn 1.1-18, 1.1, 1.3, 1.4-5, 1.5, 1.6, 1.7, 1.8, 1.9, 1.11, 1.12-13, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17-18, 1.18.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1295</span></th>
+            <td><a href="https://www.gty.org/sermons/1295" target="_blank" rel="noopener">The Word Made Flesh</a></td>
+            <td>Jean 1.1-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-2</span></th>
+            <td><a href="https://www.gty.org/sermons/43-2" target="_blank" rel="noopener">Jesus: The Divine Word</a></td>
+            <td>Jean 1.1-5</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-422</span></th>
+            <td><a href="https://www.gty.org/sermons/90-422" target="_blank" rel="noopener">The Word Became Flesh</a></td>
+            <td>Jean 1.1-14</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-3</span></th>
+            <td><a href="https://www.gty.org/sermons/43-3" target="_blank" rel="noopener">Jesus: The Divine Light</a></td>
+            <td>Jean 1.6-13</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-4</span></th>
+            <td><a href="https://www.gty.org/sermons/43-4" target="_blank" rel="noopener">Jesus: Glory, Grace, and God</a></td>
+            <td>Jean 1.14-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-423</span></th>
+            <td><a href="https://www.gty.org/sermons/90-423" target="_blank" rel="noopener">We Beheld His Glory</a></td>
+            <td>Jean 1.14-18</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">John MacArthur lit le prologue comme l'énoncé de la thèse de Jean, Jésus est Dieu fait homme, et ne voit dans l'Écriture aucune preuve de sa déité plus puissante que cette ouverture : six vérités y présentent le Christ éternel, révélé, promis, rejeté, sauveur et glorieux.</p>
+    <div class="body">
+      <p>John MacArthur lit le prologue comme l'énoncé de la thèse de Jean, Jésus est Dieu fait homme; aucune des preuves de sa déité que contient l'Écriture n'est, selon lui, plus puissante que cette ouverture, qui présente le Christ en six vérités. Les trois propositions du verset 1 forment l'assise&nbsp;: «&nbsp;Au commencement était la Parole&nbsp;» place le Fils dans l'éternité, antérieur à toute création; «&nbsp;la Parole était avec Dieu&nbsp;» distingue sa personne de celle du Père, en communion intime de toute éternité; «&nbsp;la Parole était Dieu&nbsp;» affirme sans réserve sa pleine déité. MacArthur souligne que le grec dit littéralement «&nbsp;Dieu était la Parole&nbsp;»&nbsp;: quatre mots, la déclaration la plus claire et la plus directe de la déité de Jésus-Christ; la Parole a la nature, l'essence même de Dieu. C'est pourquoi Jean, dont le thème est que Jésus est le Dieu éternel, ne donne aucune généalogie&nbsp;: l'homme Jésus en a une, le Dieu Jésus, par définition, ne peut en avoir.</p>
+      <p>Le cœur du prologue est l'incarnation du verset 14. «&nbsp;La Parole a été faite chair&nbsp;» ajoute à la déité la vraie humanité&nbsp;: l'union des deux natures, divine et humaine, en une seule personne, le Dieu-homme. MacArthur insiste sur la portée vertigineuse de cette vérité&nbsp;: l'infini accepte de devenir fini, l'Éternel se conforme au temps, l'invisible devient visible. Mais dans l'incarnation la Parole n'a jamais cessé d'être Dieu; sa divinité n'a pas été diminuée. Le verbe «&nbsp;a habité parmi nous&nbsp;» évoque le tabernacle de l'Exode&nbsp;: comme la gloire de l'Éternel remplissait jadis la tente d'assignation, la plénitude de la divinité habite désormais corporellement dans le Christ (Col 2.9). «&nbsp;Nous avons contemplé sa gloire&nbsp;»&nbsp;: la déité fut voilée sous la chair, mais elle perçait par éclairs, sur la montagne de la transfiguration comme dans chaque attribut divin manifesté, grâce, vérité, miséricorde, sagesse.</p>
+      <p>Sur le salut, MacArthur lit dans les versets 12 et 13 le côté humain et le côté divin de la nouvelle naissance. «&nbsp;À tous ceux qui l'ont reçue, à ceux qui croient en son nom&nbsp;»&nbsp;: la seconde expression précise la première. Recevoir le Christ, c'est accepter pour vrai ce qu'il affirme de lui-même, se confier en lui et lui prêter allégeance; croire en son nom, c'est croire en tout ce qu'il est&nbsp;: connaître la vérité, y donner son assentiment et s'y fier, en remettant sa destinée entre ses mains. Mais aussitôt Jean précise l'origine de cet accueil&nbsp;: les croyants sont «&nbsp;nés non du sang, ni de la volonté de la chair, ni de la volonté de l'homme, mais de Dieu&nbsp;». MacArthur y voit un acte souverain de Dieu&nbsp;: la nouvelle naissance ne vient ni de l'ascendance, ni du désir ou de l'effort personnel, ni de l'intervention d'autres hommes ou d'un système religieux; Dieu seul l'opère (cf. 3.6-8; Tt 3.5), mais toujours avec la foi personnelle en tout ce que la Parole est et a fait. Le terme «&nbsp;donné&nbsp;» (1.12) confirme que le salut est exclusivement un effet de la grâce (Ép 2.8-10). Dès l'ouverture de l'Évangile se pose ainsi, note-t-il, une tension irréconciliable ici-bas entre la puissance souveraine de Dieu qui élit et la foi de l'individu&nbsp;: au verset 12, on est sauvé parce qu'on croit; au verset 13, tout vient de Dieu.</p>
+      <p>MacArthur referme le prologue sur la fonction révélatrice du Fils. Le verset 18, «&nbsp;Personne n'a jamais vu Dieu; Dieu le Fils unique, qui est dans le sein du Père, est celui qui l'a fait connaître&nbsp;», contient le verbe grec dont les théologiens ont tiré le mot «&nbsp;exégèse&nbsp;»&nbsp;: tout ce que Jésus est et fait explique, déploie, rend visible ce que Dieu est et fait (14.8-10). Le contraste du verset 17 verrouille l'argument&nbsp;: la loi, donnée par Moïse, exposait les exigences de sainteté et l'injustice de l'homme pour le conduire au Sauveur; la grâce et la vérité sont venues, en plénitude, dans la personne de Jésus-Christ. Quant à Jean-Baptiste (1.6-8, 15), il n'est pas la lumière mais le témoin de la lumière&nbsp;: agent de la foi et non son objet, petite lampe qui reflète la lumière et non la lumière elle-même. MacArthur voit ainsi dans le prologue la doctrine la plus essentielle de la foi chrétienne&nbsp;: Jésus est pleinement Dieu et pleinement homme; toute atteinte à sa déité ou à son humanité est une hérésie, et croire en un faux Jésus est aussi damnable que de ne croire en aucun.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le prologue, de l'arrière-plan vétéro-testamentaire de la parole créatrice et de la tente d'assignation aux parallèles doctrinaux pauliniens sur la préexistence et la déité du Fils.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 1.1-3</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le «&nbsp;Au commencement&nbsp;» de Jean fait pendant à la création par la parole de Dieu; le Verbe est l'agent par qui tout a été fait (1.3), posé avant la création et non en elle.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Exode 33.7-11; 33.18 à 34.7</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La tente d'assignation et la gloire de l'Éternel plein de grâce et de fidélité&nbsp;: arrière-plan de «&nbsp;a habité parmi nous&nbsp;» et de «&nbsp;pleine de grâce et de vérité&nbsp;» (1.14).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 33.6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La parole créatrice de l'Éternel par qui les cieux ont été faits; fonde l'emploi vétéro-testamentaire de <i>logos</i> que Jean personnalise dans le Fils.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 1.15-17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul affirme la préexistence du Fils, image du Dieu invisible et agent créateur de toutes choses; parallèle doctrinal direct de Jean 1.1-3.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 2.9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;En lui habite corporellement toute la plénitude de la divinité&nbsp;»&nbsp;: commente directement la déité voilée dans la chair de Jean 1.14 et le «&nbsp;était Dieu&nbsp;» de 1.1.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Hébreux 1.1-3; 2.14-18</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le Fils, reflet de la gloire et empreinte de la substance de Dieu, agent de la création, qui a participé à la chair et au sang; éclaire la déité et l'incarnation du prologue.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 8.58</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le «&nbsp;avant qu'Abraham fût, je suis&nbsp;» revendique le nom divin et confirme la préexistence éternelle affirmée par l'imparfait «&nbsp;était&nbsp;» de 1.1.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 1.1-4</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le même apôtre reprend le langage du prologue&nbsp;: la Parole de vie, le commencement, le témoignage oculaire de ce que les mains ont touché.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent le prologue. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La pleine déité éternelle du Fils</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;La Parole était Dieu&nbsp;» (1.1) affirme l'essence divine du Fils; l'imparfait «&nbsp;était&nbsp;» (1.1-2) marque sa préexistence éternelle, en opposition au «&nbsp;faire&nbsp;» temporel du verset 3; «&nbsp;Dieu le Fils unique&nbsp;» (1.18) clôt le prologue sur la même vérité.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la christologie de MacArthur, le Christ n'est ni un dieu inférieur, ni un être créé, ni une émanation&nbsp;: il possède toute la nature divine de toute éternité. Pour l'assemblée&nbsp;: le culte rendu à Jésus est dû à Dieu lui-même; toute réduction de sa déité (antitrinitarisme, arianisme moderne) détruit l'Évangile et l'objet même de la foi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La vraie humanité du Verbe incarné</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;La Parole a été faite chair, et elle a habité parmi nous&nbsp;» (1.14)&nbsp;: le Fils éternel a endossé une nature humaine réelle et un corps matériel, sans cesser d'être Dieu.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur tient l'union des deux natures en une seule personne, le Dieu-homme, sans mélange ni perte. Pour l'assemblée&nbsp;: le Sauveur est pleinement Dieu, donc capable de sauver, et pleinement homme, donc capable de représenter les siens. Contre tout docétisme, sa chair, ses larmes et sa mort furent réelles.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le salut comme don souverain de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les enfants de Dieu sont «&nbsp;nés non du sang, ni de la volonté de la chair, ni de la volonté de l'homme, mais de Dieu&nbsp;» (1.13); le pouvoir de devenir enfant est «&nbsp;donné&nbsp;» (1.12).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur lit ici un acte souverain de Dieu&nbsp;: la nouvelle naissance ne vient ni de l'ascendance, ni du désir ou de l'effort personnel, ni d'aucune intervention humaine, mais de Dieu seul (cf. 3.6-8; Tt 3.5). Pour l'assemblée&nbsp;: l'assurance ne repose pas sur la force de sa décision mais sur la fidélité de Dieu qui engendre et garde; cela humilie l'orgueil et nourrit l'adoration de la grâce, contre tout synergisme et tout <i>easy-believism</i>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi qui reçoit et qui se confie</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;À tous ceux qui l'ont reçue, à ceux qui croient en son nom&nbsp;» (1.12)&nbsp;: recevoir le Christ, c'est croire ce qu'il dit de lui-même et lui prêter allégeance.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour MacArthur, croire (le verbe central de l'Évangile) en son nom, ce n'est pas croire que son nom était Jésus, mais croire en la plénitude de sa personne&nbsp;: connaître la vérité, y donner son assentiment et s'y fier, en se remettant à lui comme Rédempteur, Seigneur et Dieu. Pour l'assemblée&nbsp;: examiner si sa foi reçoit réellement la personne du Christ ou se contente d'une adhésion confortable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le Fils, unique exégèse du Père</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Personne n'a jamais vu Dieu; Dieu le Fils unique... est celui qui l'a fait connaître&nbsp;» (1.18); «&nbsp;la grâce et la vérité sont venues par Jésus-Christ&nbsp;» (1.17).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur rappelle que le verbe «&nbsp;a fait connaître&nbsp;» a donné le mot «&nbsp;exégèse&nbsp;»&nbsp;: tout ce que le Fils est et fait explique le Père (14.8-10). Pour l'assemblée&nbsp;: on ne connaît Dieu qu'en Christ; il n'y a pas de révélation salvatrice du Père en dehors du Fils, ce qui exclut tout pluralisme religieux et fonde l'exclusivité de l'Évangile.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Comment exposer les trois propositions du verset 1 (la Parole était au commencement, avec Dieu, et Dieu) de manière à ce que votre assemblée saisisse à la fois la distinction des personnes et l'unité de l'essence, sans glisser dans le trithéisme ni dans le modalisme?</li>
+      <li>Votre prédication tient-elle ensemble, avec une force égale, la pleine déité (1.1) et la vraie humanité (1.14) du Christ, ou penche-t-elle vers l'une au détriment de l'autre? Que perd l'Évangile si l'on amoindrit l'une des deux natures?</li>
+      <li>Les versets 12 et 13 placent côte à côte «&nbsp;à ceux qui croient&nbsp;» et «&nbsp;nés... de Dieu&nbsp;». Comment prêcher la responsabilité de croire sans annuler la souveraineté de Dieu dans la nouvelle naissance, et réciproquement?</li>
+      <li>Comment montrer à un auditeur qui se croit chrétien parce qu'il a un jour «&nbsp;décidé&nbsp;» que le verset 13 exclut «&nbsp;la volonté de la chair&nbsp;», le désir et l'effort personnels, comme source de la nouvelle naissance?</li>
+      <li>Le verbe «&nbsp;a habité parmi nous&nbsp;» (1.14) évoque le tabernacle. Que gagne votre assemblée à voir le Christ comme le vrai lieu de la présence et de la gloire de Dieu, accomplissant la tente d'assignation?</li>
+      <li>Le verset 17 oppose la loi de Moïse à la grâce et la vérité venues par Christ. Comment honorer la loi dans son rôle préparatoire sans la mépriser, tout en exaltant la plénitude venue dans le Fils?</li>
+      <li>Si votre assemblée ne retient du prologue qu'une belle poésie sur Noël, avez-vous prêché le verset 18, c'est-à-dire le Christ comme unique exégèse du Père et seule voie de connaissance salvatrice de Dieu?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Jean 1.1-18 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Jean : le Verbe fait chair&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Jean-1-1-18.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

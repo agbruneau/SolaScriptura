@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galates 5.16-21 · Les œuvres de la chair · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Galates 5.16-21 : marchez selon l'Esprit et vous n'accomplirez pas les désirs de la chair ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Galates 5.16-21</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Galates 5.16-21</p>
+    <h1 class="hero__title">Les œuvres de la chair</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Marchez selon l'Esprit, et vous n'accomplirez pas les désirs de la chair.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Galates 5.16 · NEG</p>
+    <p class="hero__series">Série : <b>Galates : l'Évangile de la grâce</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Galates 5.16-21</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je dis donc: Marchez selon l'Esprit, et vous n'accomplirez pas les désirs de la chair.</p>
+        <cite class="verse__ref">Galates 5.16 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Or, les œuvres de la chair sont évidentes; ce sont la débauche, l'impureté, le dérèglement...</p>
+        <cite class="verse__ref">Galates 5.19 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La victoire sur la chair ne vient pas de l'effort moralisateur sous la loi, mais de la marche par l'Esprit : telle est la réponse positive de Paul, sommet pratique de l'épître de la grâce.</p>
+    <div class="body">
+      <p>Notre passage appartient à la troisième et dernière grande partie de l'épître, la partie pratique (5.1 à 6.18), que MacArthur intitule les privilèges de la justification. Après avoir défendu l'origine divine de son apostolat (ch. 1 et 2) puis démontré par l'Écriture que nul n'est justifié par les œuvres de la loi mais par la foi seule (ch. 3 et 4), Paul tire les conséquences de cette doctrine pour la conduite. La section immédiate, intitulée par MacArthur la liberté dans l'Esprit (5.13-26), désamorce une objection prévisible des judaïsants&nbsp;: si le croyant n'est plus sous la loi, ne va-t-il pas vivre dans le désordre? Paul répond que la liberté chrétienne n'est ni un retour au légalisme ni un prétexte pour la chair (5.13), mais le service mutuel par l'amour, qui accomplit en réalité toute la loi (5.14). Notre péricope offre la réponse positive de Paul&nbsp;: la victoire sur la chair ne vient pas de l'effort moralisateur sous la loi, mais de la marche par l'Esprit.</p>
+      <p>L'unité 5.16-21 s'articule en trois mouvements serrés. D'abord le commandement central (v. 16)&nbsp;: marchez selon l'Esprit, et la promesse qui l'accompagne, vous n'accomplirez pas les désirs de la chair. Ensuite l'explication du conflit (v. 17-18)&nbsp;: la chair et l'Esprit ont des désirs contraires et se font une guerre permanente dans le croyant, de sorte que les deux principes s'excluent mutuellement; être conduit par l'Esprit, c'est ne plus être sous la loi. Enfin le sombre catalogue (v. 19-21)&nbsp;: les œuvres de la chair sont évidentes, Paul en aligne une quinzaine couvrant la sexualité, la religion et les relations humaines, avant de sceller l'avertissement, ceux qui commettent de telles choses n'hériteront point le royaume de Dieu. Ce catalogue appelle son contraire, le fruit de l'Esprit (5.22-23), qui suit immédiatement et auquel répond toute la péricope.</p>
+      <p>La logique de Paul, telle que MacArthur la suit, est celle d'un contraste absolu entre deux maîtres et deux résultats. La chair désigne la nature humaine déchue, ce qui, dans le croyant, n'est pas encore racheté et où le péché demeure jusqu'à la glorification; l'Esprit est le Saint-Esprit qui habite tout croyant. Le verbe marcher est au présent continu&nbsp;: il s'agit d'un style de vie habituel, d'une progression, non d'une décision ponctuelle. La promesse du verset 16 n'est pas que la chair disparaîtra, mais que le croyant qui marche pas à pas sous la direction de l'Esprit ne portera pas à terme les désirs de la chair. L'idée maîtresse de la semaine commande tout&nbsp;: marcher par l'Esprit est la seule victoire sur les désirs de la chair, dont les œuvres sont manifestes et excluent du royaume de Dieu.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Galates 5.19-21</p>
+    </header>
+    <p class="lead">Le catalogue de vices des versets 19 à 21 n'est pas une abstraction : chaque entrée renvoyait à des réalités familières des cités gréco-romaines de la Galatie, où la morale courante du paganisme contrastait violemment avec l'éthique de l'Évangile.</p>
+    <div class="body">
+      <p>Le monde des Églises de Galatie est celui de l'Empire romain du I<sup>er</sup> siècle, où la morale courante du paganisme contrastait violemment avec l'éthique de l'Évangile. Le catalogue de vices que Paul dresse aux versets 19 à 21 n'est pas une abstraction&nbsp;: chacune de ses entrées renvoyait à des réalités familières des cités gréco-romaines de la province. Les listes de vices, dites catalogues, étaient un procédé littéraire connu tant des moralistes stoïciens que de la tradition juive; Paul en use ici, comme en Romains 1.24-32 et 1 Corinthiens 6.9-10, non par convention mais pour exposer crûment ce que produit la chair laissée à elle-même. MacArthur note que la liste, non exhaustive, couvre trois domaines de la vie humaine&nbsp;: la sexualité (la débauche, l'impureté, le dérèglement), la religion (l'idolâtrie, la magie) et les relations humaines (les rivalités, querelles, jalousies, animosités, disputes, divisions, sectes, l'envie), auxquels il ajoute l'ivrognerie et les excès de table.</p>
+    </div>
+    <p>Deux entrées exigent l'arrière-plan culturel pour être comprises, et l'enjeu pastoral renvoie à la crise galate elle-même.</p>
+    <ul class="points">
+      <li><b>La magie et les drogues du culte païen.</b> Le mot rendu par magie, en grec <i>pharmakeia</i>, dont dérive notre pharmacie, désignait à l'origine les médicaments en général, puis en vint à viser les drogues capables d'altérer la conscience et l'humeur, étroitement liées à l'occultisme, à la sorcellerie et à la magie. MacArthur précise que nombre de pratiques religieuses païennes exigeaient l'usage de telles drogues pour soutenir la prétendue communication avec les divinités&nbsp;: la magie relevait donc, avec l'idolâtrie qui la précède dans la liste, d'une religion corrompue par la chair.</li>
+      <li><b>L'ivrognerie et les orgies rituelles.</b> De même, l'ivrognerie et les excès de table renvoient probablement, selon MacArthur, aux orgies qui caractérisaient les cultes païens et idolâtres, comme celles du temple de Bacchus, et plus généralement à des comportements grossiers, bruyants et tapageurs. Ce que la culture entourait d'un vernis religieux, Paul le démasque comme œuvre de la chair.</li>
+      <li><b>La crise galate et la fausse réponse de la loi.</b> Les faux docteurs judaïsants prétendaient que la soumission à la loi de Moïse était la voie de la sanctification autant que du salut. Paul renverse l'argument&nbsp;: c'est précisément l'homme soumis aux commandements inopérants de la loi, sans l'Esprit, qui produit ces œuvres de la chair, car la loi sert de miroir pour révéler le péché, non de remède pour le vaincre. MacArthur souligne que ces péchés caractérisent toute l'humanité non régénérée; aucun homme ne les commet tous, ni avec la même gravité, mais tous les portent en germe dans la chair. La vraie réponse à l'immoralité galate n'est donc ni le retour à la loi ni la licence, mais une troisième voie&nbsp;: la marche par l'Esprit qui habite le croyant depuis sa conversion.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du passage&nbsp;: le verbe de la conduite (<i>peripateo</i>), le principe vaincu mais résiduel (<i>sarx</i>), son impulsion hostile (<i>epithumia</i>), la visibilité manifeste de ses œuvres (<i>phaneros</i>), et le verbe qui décide de l'avertissement (<i>prasso</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">Marchez</span><span class="mot-gr">peripateo</span></th>
+            <td class="col-sens">marcher, aller et venir, se conduire; au figuré, mener sa vie, se comporter de manière habituelle</td>
+            <td>Verbe de la conduite morale dans tout le Nouveau Testament. MacArthur insiste sur la forme grecque, un impératif présent qui indique une action continuelle, un style de vie habituel et non une crise ponctuelle. La marche implique aussi une progression&nbsp;: au fur et à mesure que le croyant se soumet au contrôle de l'Esprit, c'est-à-dire qu'il répond par l'obéissance aux commandements simples de l'Écriture, il avance pas à pas dans sa vie spirituelle. Marcher selon l'Esprit n'est donc pas un état mystique passif mais une dépendance active et constante, parallèle à être rempli de l'Esprit (Ep 5.18) et à laisser la parole de Christ habiter abondamment (Col 3.16).</td>
+            <td><span class="trad"><span><b>S21</b> Marchez par l'Esprit</span><span><b>NEG79</b> Marchez selon l'Esprit</span><span><b>Darby</b> Marchez par l'Esprit</span><span><b>LSG</b> Marchez selon l'Esprit</span><span><b>KJF</b> Marchez dans l'Esprit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">chair</span><span class="mot-gr">sarx</span></th>
+            <td class="col-sens">la chair, le tissu charnel; au sens éthique, la nature humaine déchue, l'homme livré à lui-même contre Dieu</td>
+            <td>Mot pivot du passage. MacArthur avertit qu'ici la chair n'inclut pas seulement le corps physique, mais aussi l'esprit, la volonté et les émotions, tous soumis au péché&nbsp;: en chaire, il la définit comme l'humanité non rachetée, le penchant pour le péché qui demeure même chez le croyant jusqu'à la glorification. Ce n'est donc pas le corps matériel qui est mauvais, précise-t-il contre tout dualisme philosophique, mais tout ce qui, dans l'homme, pensées, sentiments et intelligence, reste touché par le péché. La <i>sarx</i> est le principe vaincu mais non encore éradiqué qui lutte contre l'Esprit (v. 17) et dont les œuvres sont cataloguées aux versets 19 à 21.</td>
+            <td><span class="trad"><span><b>S21</b> votre nature propre</span><span><b>NEG79</b> la chair</span><span><b>Darby</b> la chair</span><span><b>LSG</b> la chair</span><span><b>KJF</b> la chair</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">désirs</span><span class="mot-gr">epithumia</span></th>
+            <td class="col-sens">convoitise, désir ardent, élan de la volonté vers un objet; neutre en soi, mais le plus souvent négatif dans le NT</td>
+            <td>Le terme désigne l'impulsion intense de la chair, sa pression dirigée vers le mal. MacArthur relie cette convoitise au verbe apparenté du verset 17&nbsp;: la chair convoite contre l'Esprit. Le désir de la chair n'est pas un appétit neutre mais une force hostile à Dieu, contraire à l'Esprit, qui pousse le croyant à un comportement pécheur qu'il ne serait pas incité à adopter autrement (cf. Ro 7.14-25). La promesse du verset 16 vise précisément cet objet&nbsp;: celui qui marche par l'Esprit n'accomplira pas, ne portera pas à terme, l'<i>epithumia</i> de la chair, même si la lutte demeure jusqu'à la glorification.</td>
+            <td><span class="trad"><span><b>S21</b> les désirs</span><span><b>NEG79</b> les désirs</span><span><b>Darby</b> la convoitise</span><span><b>LSG</b> les désirs</span><span><b>KJF</b> la convoitise</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">évidentes</span><span class="mot-gr">phaneros</span></th>
+            <td class="col-sens">manifeste, visible, exposé au grand jour, évident à tous</td>
+            <td>Adjectif qui ouvre le catalogue (v. 19). MacArthur en tire une observation tranchante&nbsp;: la chair se manifeste inévitablement et de façon évidente. Ces péchés, dit-il en chaire, ne sont pas cachés&nbsp;: nous les connaissons très bien. Le contraste est délibéré&nbsp;: les œuvres (<i>erga</i>) sont au pluriel, car le pécheur choisit ses péchés dans la liste et personne ne les commet tous, tandis que le fruit (<i>karpos</i>) est au singulier, car les vertus de l'Esprit ne se choisissent pas à la pièce&nbsp;: elles viennent ensemble, et elles doivent se voir. Ce qui est <i>phaneros</i> sert ainsi de test diagnostique&nbsp;: la pratique habituelle de ces œuvres révèle au grand jour un cœur non régénéré.</td>
+            <td><span class="trad"><span><b>S21</b> évidentes</span><span><b>NEG79</b> évidentes</span><span><b>Darby</b> manifestes</span><span><b>LSG</b> manifestes</span><span><b>KJF</b> manifestes</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">commettent</span><span class="mot-gr">prasso</span></th>
+            <td class="col-sens">pratiquer, faire de façon répétée, accomplir habituellement; exercer comme une activité courante</td>
+            <td>MacArthur en fait le mot clé de tout l'avertissement du verset 21. Le verbe grec, au présent, décrit non un acte isolé mais une pratique habituelle et permanente, un mode de vie. La distinction est décisive&nbsp;: les croyants demeurent susceptibles de tomber dans de tels péchés, mais ceux qui s'en font une pratique constante et sans repentance ne peuvent appartenir à Dieu (cf. 1 Co 6.11; 1 Jn 3.4-10). Paul ne menace donc pas le régénéré qui trébuche et se relève, mais démasque celui dont la vie entière est gouvernée par la chair. Les chrétiens pèchent, dit-il, mais le cours de leur vie suit la justice&nbsp;: ce qui compte n'est pas la perfection de la vie, mais sa direction.</td>
+            <td><span class="trad"><span><b>S21</b> ont un tel comportement</span><span><b>NEG79</b> commettent</span><span><b>Darby</b> commettent</span><span><b>LSG</b> commettent</span><span><b>KJF</b> pratiquent</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Galates 5.16-21</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Galates 5.16-21 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ga 5.16, 5.17, 5.18, 5.19-21, 5.19, 5.20, 5.21.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1667</span></th>
+            <td><a href="https://www.gty.org/sermons/1667" target="_blank" rel="noopener">What is Christian Liberty?</a></td>
+            <td>Galates 5.13-16</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-30</span></th>
+            <td><a href="https://www.gty.org/sermons/48-30" target="_blank" rel="noopener">Understanding Christian Freedom</a></td>
+            <td>Galates 5.13-16</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-31</span></th>
+            <td><a href="https://www.gty.org/sermons/48-31" target="_blank" rel="noopener">How Christian Freedom Works</a></td>
+            <td>Galates 5.13-16</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-32</span></th>
+            <td><a href="https://www.gty.org/sermons/48-32" target="_blank" rel="noopener">The Perfect Model of a Spirit-Empowered Life</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-33</span></th>
+            <td><a href="https://www.gty.org/sermons/48-33" target="_blank" rel="noopener">The Believer’s Lifelong Battle for Holiness</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-34</span></th>
+            <td><a href="https://www.gty.org/sermons/48-34" target="_blank" rel="noopener">Spiritual Power for Holy Living</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-35</span></th>
+            <td><a href="https://www.gty.org/sermons/48-35" target="_blank" rel="noopener">Thinking Rightly About the Work of the Spirit</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-36</span></th>
+            <td><a href="https://www.gty.org/sermons/48-36" target="_blank" rel="noopener">The Fruit of the Spirit, Part 1</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-37</span></th>
+            <td><a href="https://www.gty.org/sermons/48-37" target="_blank" rel="noopener">The Fruit of the Spirit, Part 2</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-38</span></th>
+            <td><a href="https://www.gty.org/sermons/48-38" target="_blank" rel="noopener">The Fruit of the Spirit, Part 3</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-39</span></th>
+            <td><a href="https://www.gty.org/sermons/48-39" target="_blank" rel="noopener">The Fruit of the Spirit, Part 4</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-332</span></th>
+            <td><a href="https://www.gty.org/sermons/90-332" target="_blank" rel="noopener">The Essential Ministry of the Holy Spirit, Part 3</a></td>
+            <td>Galates 5.16-25</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-34</span></th>
+            <td><a href="https://www.gty.org/sermons/90-34" target="_blank" rel="noopener">Walking by the Spirit</a></td>
+            <td>Galates 5.16-25</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question qui commande la péricope est pastorale autant que doctrinale&nbsp;: par quel moyen le croyant justifié par la foi remporte-t-il la victoire sur le péché qui demeure en lui? Trois réponses se disputaient le terrain galate, et Paul les écarte toutes deux sauf une.</p>
+    <div class="body">
+      <p>Trois réponses se disputaient le terrain galate. Le légaliste judaïsant répondait&nbsp;: par la soumission à la loi de Moïse. Le libertin, redoutant ce légalisme, répondait&nbsp;: par la liberté sans frein, puisque la grâce couvre tout. Paul, et c'est là que MacArthur situe le cœur du passage, écarte les deux et donne la seule réponse de l'Évangile&nbsp;: par la marche selon l'Esprit. Marchez selon l'Esprit, et vous n'accomplirez pas les désirs de la chair (v. 16). La victoire n'est ni dans l'effort sous la loi ni dans le relâchement, mais dans la dépendance continuelle envers le Saint-Esprit qui habite tout croyant depuis sa conversion (Ro 8.9; 1 Co 6.19).</p>
+      <p>MacArthur souligne que le verset 16 contient à la fois un commandement et une promesse liés indissolublement. Le commandement, marchez, est un présent continu&nbsp;: une dépendance habituelle, pas à pas, et non un acte unique. La promesse est catégorique&nbsp;: vous n'accomplirez pas, vous ne porterez pas à terme, les désirs de la chair. Ce n'est pas la disparition de la chair qui est promise, car le verset 17 décrit aussitôt une guerre ouverte et permanente&nbsp;: la chair a des désirs contraires à ceux de l'Esprit, et l'Esprit en a de contraires à ceux de la chair; ils sont opposés entre eux. Le croyant n'est pas un champ de bataille neutre mais le théâtre d'un conflit réel entre sa nature déchue résiduelle et l'Esprit qui l'habite. MacArthur rapproche cette tension du cri de Romains 7&nbsp;: le combat est la marque normale du régénéré, non un signe d'échec. La victoire ne consiste pas à supprimer l'ennemi en cette vie, mais à marcher de telle sorte que l'Esprit l'emporte au quotidien.</p>
+      <p>Le verset 18 verrouille la logique de toute l'épître&nbsp;: si vous êtes conduits par l'Esprit, vous n'êtes point sous la loi. MacArthur y lit deux principes mutuellement exclusifs, deux régimes incompatibles. Soit on vit par la puissance du Saint-Esprit, ce qui produit une conduite et des attitudes spirituelles justes (le fruit des versets 22 à 26), soit on demeure sous le régime de la loi, qui ne peut produire que les attitudes et les comportements mauvais des versets 19 à 21. La loi visée ici, précise-t-il, n'est pas la loi morale de Dieu, reflet de sa nature, mais les comportements et cérémonies extérieurs que les judaïsants imposaient&nbsp;: la loi ne sanctifie pas plus qu'elle ne sauve. Elle ne donne aucune force, et, imposée à l'homme charnel, elle excite même le péché (Ro 7.5, 8)&nbsp;; le légalisme, dit-il, ne retient pas la chair, il la déchaîne. La direction de l'Esprit est donc l'exact contraire de la servitude légale, et c'est elle qui accomplit ce que la loi visait sans pouvoir le produire.</p>
+      <p>Le catalogue des versets 19 à 21 sert chez MacArthur un double office. D'abord il prouve la réalité de la chair&nbsp;: ses œuvres sont évidentes, manifestes à tous, couvrant la sexualité, la religion et les relations humaines, sans qu'aucun homme déchu n'y échappe entièrement. Ensuite, et c'est l'avertissement le plus grave, il fonde un test diagnostique du salut&nbsp;: ceux qui commettent de telles choses, c'est-à-dire ceux qui en font la pratique habituelle, constante et sans repentance, n'hériteront point le royaume de Dieu. MacArthur écarte ici deux lectures fausses. Cet avertissement ne menace pas le croyant régénéré de perdre son salut&nbsp;: le verbe commettre vise une pratique permanente qui révèle un cœur jamais régénéré, non la chute ponctuelle du saint qui se relève et se repent (cf. 1 Co 6.11). Et l'héritage du royaume n'est pas mérité par l'abstention de ces vices, ce qui serait retomber dans le salut par les œuvres que toute l'épître réfute; l'absence de ces œuvres est la preuve, non le prix, d'une vie nouvelle. MacArthur relie d'ailleurs n'hériteront point le royaume de Dieu au règne présent de Christ sur les régénérés, au règne millénaire à venir et à l'état de bonheur éternel qui suivra&nbsp;: les non-régénérés en sont exclus, ici et dans l'éternité. Ainsi le passage tient ensemble, d'un seul tenant, la gratuité totale du salut et la réalité d'une vie transformée par l'Esprit, marque même de la foi qui sauve.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle pneumatologique direct de Romains 8 au contraste voulu du fruit de l'Esprit, jusqu'aux catalogues jumeaux qui verrouillent le sens diagnostique de l'avertissement.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 8.4-13</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le parallèle le plus étroit&nbsp;: marcher selon l'Esprit et non selon la chair, faire mourir par l'Esprit les actions du corps, est la condition de la vie; MacArthur éclaire Galates 5.16 par Romains 8.3-4&nbsp;: la loi, affaiblie par la chair, ne pouvait rien, mais ses exigences s'accomplissent en ceux qui marchent selon l'Esprit.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 7.14-25</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le conflit intérieur entre la loi du péché dans les membres et l'homme régénéré éclaire la guerre de la chair contre l'Esprit du verset 17, marque normale du croyant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 5.22-26</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le contraste immédiat et voulu&nbsp;: au sombre catalogue des œuvres de la chair répond le fruit unique de l'Esprit, que produit la même marche commandée au verset 16.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 6.9-11</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Liste de vices presque jumelle, avec le même avertissement, les injustes n'hériteront point le royaume de Dieu, suivie du décisif voilà ce que vous étiez qui prouve le sens diagnostique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 5.3-5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Même structure&nbsp;: catalogue de l'impureté et de l'idolâtrie, puis avertissement qu'aucun débauché ou cupide n'a d'héritage dans le royaume de Christ et de Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 1.24-32</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le catalogue paulinien de l'humanité livrée à elle-même, que MacArthur cite comme parallèle des œuvres de la chair manifestes du verset 19.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 5.18</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Soyez remplis de l'Esprit, autre formulation impérative et continue de la même dépendance que marchez selon l'Esprit, opposée à l'ivrognerie nommée au verset 21.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 3.4-10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La pratique habituelle du péché révèle qui est né de Dieu et qui ne l'est pas; verrouille la lecture macarthurienne du verbe commettre au verset 21.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La marche par l'Esprit, seule voie de la sanctification</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Marchez selon l'Esprit, et vous n'accomplirez pas les désirs de la chair (v. 16); si vous êtes conduits par l'Esprit, vous n'êtes point sous la loi (v. 18).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La même grâce qui justifie sanctifie. La sainteté ne se gagne pas par l'effort sous la loi ni par la discipline charnelle, mais se reçoit en se soumettant pas à pas au Saint-Esprit qui habite tout croyant. Enseignez à votre assemblée que la victoire sur le péché est une dépendance, non une performance&nbsp;: on ne combat pas la chair par la chair, mais en marchant dans la lumière de la Parole sous la conduite de l'Esprit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La présence intérieure du Saint-Esprit en tout croyant</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'impératif marchez selon l'Esprit suppose que l'Esprit habite déjà le destinataire; Paul ne commande pas de recevoir l'Esprit mais de marcher selon lui.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Comme MacArthur le rappelle en chaire, recevoir l'Esprit ne vient pas après le salut&nbsp;: au moment même du salut, le croyant est baptisé par l'Esprit dans le corps de Christ et l'Esprit vient l'habiter, si bien que tout croyant possède l'Esprit dès qu'il croit, sans seconde expérience à rechercher. La vie chrétienne n'est pas l'attente d'une effusion ultérieure mais l'exercice quotidien d'une plénitude offerte. Rassurez les croyants troublés&nbsp;: vous n'avez pas à mendier l'Esprit, vous avez à marcher selon lui.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le conflit permanent de la chair et de l'Esprit chez le régénéré</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La chair a des désirs contraires à ceux de l'Esprit, et l'Esprit en a de contraires à ceux de la chair; ils sont opposés entre eux (v. 17).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La chair, nature déchue résiduelle, n'est pas éradiquée à la conversion; elle demeure et fait la guerre jusqu'à la glorification. Le combat intérieur n'est donc pas un signe d'incrédulité mais la marque normale du saint. Cela protège contre deux erreurs&nbsp;: le perfectionnisme, qui prétend abolir la lutte ici-bas, et le découragement, qui prend la lutte pour une preuve de réprobation. Promettez le secours de l'Esprit, jamais la fin du combat avant le ciel.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Les œuvres de la chair comme test diagnostique du salut</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ceux qui commettent de telles choses n'hériteront point le royaume de Dieu (v. 21); les œuvres de la chair sont évidentes (v. 19).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la seigneurie de Christ, la foi qui sauve n'est jamais seule&nbsp;: la pratique habituelle et impénitente des œuvres de la chair révèle un cœur jamais régénéré, non un croyant qui perdrait son salut. L'absence de ces œuvres est la preuve d'une vie nouvelle, jamais son prix. Prêchez l'examen de soi sans détruire l'assurance&nbsp;: la chute ponctuelle suivie de repentance ne condamne pas, mais une vie entière gouvernée par la chair dément toute profession de foi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'exclusion du royaume et l'espérance prémillénariste</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>N'hériteront point le royaume de Dieu (v. 21).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur entend le royaume de Dieu à la fois comme le règne spirituel présent de Christ sur les régénérés et comme le règne millénaire à venir, puis l'état éternel. Les non-régénérés en sont exclus dans les deux dimensions. L'héritage du royaume n'est pas une métaphore vague mais une espérance concrète&nbsp;: le retour littéral de Christ et son règne. Cet horizon donne à l'avertissement son sérieux et à la persévérance sa récompense, et rappelle que la promesse faite au peuple de Dieu s'accomplira réellement.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le verset 16 promet que celui qui marche selon l'Esprit n'accomplira pas les désirs de la chair, mais le verset 17 décrit une guerre permanente. Comment prêcher cette promesse sans glisser vers le perfectionnisme ni la vider de sa force? Que signifie concrètement, pour un membre de votre assemblée cette semaine, marcher selon l'Esprit pas à pas?</li>
+      <li>Paul écarte à la fois le légalisme et la licence pour offrir une troisième voie. Vos auditeurs cherchent-ils la sainteté davantage par l'effort sous des règles ou par le relâchement présumé couvert par la grâce? Comment montrer que la marche par l'Esprit n'est ni l'un ni l'autre?</li>
+      <li>Le verbe commettre (v. 21) désigne une pratique habituelle, non une chute isolée. Comment manier cet avertissement pour examiner les cœurs sans détruire l'assurance du croyant qui trébuche et se repent? Où passe, dans la prédication, la ligne entre l'examen de soi salutaire et l'introspection morbide?</li>
+      <li>MacArthur tient que n'hériteront point le royaume de Dieu décrit le non-régénéré, non le croyant qui perd son salut. Comment répondriez-vous, à partir du texte, à celui qui lit ce verset comme une menace de perte du salut pour le chrétien?</li>
+      <li>Le catalogue couvre la sexualité, la religion (idolâtrie, magie) et les relations humaines, et MacArthur range huit des entrées du côté des conflits relationnels. Quelles œuvres de la chair une assemblée évangélique tolère-t-elle plus facilement parce qu'elles sont relationnelles plutôt que sexuelles? Comment nommer ce péché sans en banaliser d'autres?</li>
+      <li>Le fruit de l'Esprit (v. 22-23) suit immédiatement le catalogue&nbsp;: œuvres au pluriel contre fruit au singulier. Que vous apprend ce contraste sur la différence entre une vie charnelle et une vie conduite par l'Esprit, sachant que MacArthur l'explique ainsi&nbsp;: le pécheur choisit ses péchés dans la liste, mais les vertus de l'Esprit viennent toutes ensemble? Comment cette image du fruit nourrit-elle l'espérance de votre auditoire?</li>
+      <li>Si tout croyant possède déjà l'Esprit dès la conversion, pourquoi tant de chrétiens vivent-ils dans la défaite? Qu'est-ce qui, dans la marche quotidienne, fait la différence entre posséder l'Esprit et marcher selon lui, et comment l'enseigner sans laisser entendre qu'il faudrait une seconde expérience?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Galates 5.16-21 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Galates : l'Évangile de la grâce&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Galates-5-16-21.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

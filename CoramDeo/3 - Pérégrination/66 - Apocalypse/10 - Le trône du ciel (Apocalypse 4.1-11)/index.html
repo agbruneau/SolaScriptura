@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apocalypse 4.1-11 · Le trône du ciel · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique d'Apocalypse 4.1-11 : la vision du trône céleste ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Apocalypse 4.1-11</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Apocalypse 4.1-11</p>
+    <h1 class="hero__title">Le trône du ciel</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Tu es digne, notre Seigneur et notre Dieu, de recevoir la gloire, l'honneur et la puissance; car tu as créé toutes choses.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Apocalypse 4.11 · NEG</p>
+    <p class="hero__series">Série : <b>Apocalypse : la révélation de Jésus-Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Apocalypse 4.1-11</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Après cela, je regardai, et voici, une porte était ouverte dans le ciel. La première voix que j'avais entendue, comme le son d'une trompette, et qui me parlait, dit: Monte ici, et je te ferai voir ce qui doit arriver dans la suite.</p>
+        <cite class="verse__ref">Apocalypse 4.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Aussitôt je fus saisi par l'Esprit. Et voici, il y avait un trône dans le ciel, et sur ce trône quelqu'un était assis.</p>
+        <cite class="verse__ref">Apocalypse 4.2 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Apocalypse 4.1 marque la grande charnière du livre : avant que ne se déchaînent les jugements, Jean est introduit dans la salle du trône céleste, et tout l'avenir de l'histoire se trouve placé sous une perspective unique, celle du trône de Dieu qui domine et commande tout ce qui va suivre.</p>
+    <div class="body">
+      <p>Apocalypse 4.1 marque la grande charnière du livre. Le «&nbsp;Après cela&nbsp;» (gr. <i>meta tauta</i>) renvoie au plan donné en 1.19 : «&nbsp;les choses qui sont, et celles qui doivent arriver ensuite&nbsp;». Les chapitres 2 et 3 ont décrit «&nbsp;les choses qui sont&nbsp;», c'est-à-dire l'âge de l'Église à travers les lettres aux sept assemblées d'Asie. Avec le chapitre 4 s'ouvre la troisième et dernière section, «&nbsp;ce qui doit arriver dans la suite&nbsp;» : la révélation des événements consécutifs au temps de l'Église, qui occupera le livre jusqu'à la fin. Avant que ne se déchaînent les jugements des sceaux, des trompettes et des coupes, Jean est introduit dans la salle du trône céleste. Tout l'avenir de l'histoire est ainsi placé sous une perspective unique : le trône de Dieu domine et commande tout ce qui va suivre.</p>
+      <p>L'ordre «&nbsp;Monte ici&nbsp;» (<i>anaba hode</i>) n'est pas une allusion voilée à l'enlèvement de l'Église, mais un commandement de transporter temporairement Jean au ciel afin qu'il y reçoive ses révélations. La même expression «&nbsp;saisi par l'Esprit&nbsp;» qu'en 1.10 décrit non un rêve ni un sommeil, mais un transport surnaturel et pleinement conscient hors du monde matériel, où le Saint-Esprit rend les sens de Jean aptes à percevoir une révélation divine. Il s'agit d'une expérience apostolique unique, liée à la clôture du canon : le voyant reçoit, comme Ésaïe (És 6) et Ézéchiel (Ez 1), une vision inaugurale du trône, fondement de toute la prophétie qui suit.</p>
+      <p>La structure du chapitre est gouvernée par un seul mot, <i>thronos</i> (trône), qui revient treize fois, dont onze pour désigner le trône de Dieu. Tout y est ordonné autour du Siégeant : la description du Siégeant lui-même (v. 2-3), le cercle des vingt-quatre vieillards (v. 4), les phénomènes qui sortent du trône (v. 5), la mer de verre et les quatre êtres vivants (v. 6-8), enfin la double adoration des êtres vivants et des vieillards qui culmine dans la louange au Créateur (v. 9-11). Le passage n'est pas une digression contemplative : il établit la légitimité absolue de tous les jugements à venir. Parce que le trône est saint, souverain et créateur, la colère qui va se déverser sur le monde pécheur est entièrement juste.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Apocalypse 4.3 · 4.6 · 4.10</p>
+    </header>
+    <p class="lead">La vision du trône s'enracine dans la longue tradition prophétique des théophanies de l'Ancien Testament : le lecteur du premier siècle, nourri des Écritures, reconnaissait aussitôt qu'il était introduit dans le sanctuaire céleste, archétype du tabernacle terrestre.</p>
+    <div class="body">
+      <p>La vision du trône de Jean s'enracine dans la longue tradition prophétique des théophanies de l'Ancien Testament. Ésaïe avait vu «&nbsp;le Seigneur assis sur un trône très élevé&nbsp;» entouré des séraphins qui criaient «&nbsp;Saint, saint, saint&nbsp;» (És 6.1-3); Ézéchiel avait contemplé la gloire de Dieu portée par les quatre êtres vivants aux quatre faces (Ez 1); Daniel avait vu l'Ancien des jours siéger pour le jugement (Da 7.9-10). Jean reprend ces images sans les copier : sa description des chérubins diffère de celle d'Ézéchiel, mais tous deux décrivent les mêmes êtres surnaturels que les mots humains peinent à cerner. Le lecteur du premier siècle, nourri des Écritures, reconnaissait immédiatement qu'il était introduit dans le sanctuaire céleste, archétype du tabernacle terrestre.</p>
+    </div>
+    <p>Trois réalités du décor échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Les pierres précieuses du trône.</b> Le jaspe, que Jean décrira plus loin comme transparent comme le cristal (21.11), évoque vraisemblablement un diamant qui réfracte toutes les couleurs du spectre en un éclat éblouissant; la sardoine est un rubis flamboyant, nommé d'après la région où on l'extrayait. Ensemble, le blanc lumineux et le rouge ardent suggèrent la gloire et la sainteté qui consume. L'arc-en-ciel d'un vert d'émeraude rafraîchissant qui environne le trône rappelle, depuis Noé, la fidélité de Dieu à sa parole et à son alliance (Ge 9.12-17) : au seuil des jugements, le signe de la miséricorde encadre le siège de la justice.</li>
+      <li><b>La mer de verre.</b> La mer de verre semblable au cristal n'est pas une étendue d'eau, car il n'y a pas de mer au ciel (21.1); c'est le pavement scintillant qui supporte le trône, écho du «&nbsp;pavé de saphir&nbsp;» sous les pieds du Dieu d'Israël en Exode 24.10. Le lecteur juif y reconnaissait l'archétype céleste du sanctuaire, où la transcendance et la pureté de Dieu sont mises en relief par l'éclat translucide qui sépare le Siégeant de tout ce qui l'approche.</li>
+      <li><b>Les couronnes jetées devant le trône.</b> Le motif de jeter les couronnes (v. 10) prend tout son sens sur l'arrière-plan gréco-romain. Dans les concours et les célébrations de victoire, l'athlète vainqueur recevait une couronne; dans la cour impériale, les rois vassaux déposaient leurs insignes aux pieds de l'empereur en signe de soumission et de reconnaissance que leur autorité dérivait de lui. Les vingt-quatre vieillards accomplissent ce geste de remise totale : ils restituent à leur Roi les marques honorifiques qu'ils viennent de recevoir. Le contraste avec le culte de l'empereur, qui pressait les chrétiens d'Asie de proclamer «&nbsp;Seigneur César&nbsp;», est saisissant : ici, c'est au seul Dieu créateur, et non au Siégeant de Rome, que reviennent gloire, honneur et puissance.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : du trône (<i>thronos</i>) qui structure la vision, à la sainteté triplement proclamée (<i>hagios</i>) et au Tout-Puissant (<i>pantokratôr</i>), jusqu'aux êtres vivants (<i>zôa</i>) et à la dignité (<i>axios</i>) du Créateur.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">trône</span><span class="mot-gr">thronos</span></th>
+            <td class="col-sens">siège royal, trône</td>
+            <td>Selon MacArthur, le terme désigne moins un élément de mobilier qu'un symbole de souveraineté, de pouvoir et d'autorité. Mot pivot du chapitre, il y revient treize fois, dont onze pour le trône de Dieu, et structure toute la vision : il rattache la scène aux théophanies d'Ésaïe 6.1 et d'Ézéchiel 1, et il commande tous les jugements qui suivront. Le trône n'est pas vide ni contesté : quelqu'un y est assis, et c'est de là que sortent éclairs, voix et tonnerres annonçant la colère légitime de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> un trône</span><span><b>NEG79</b> un trône</span><span><b>Darby</b> un trône</span><span><b>LSG</b> un trône</span><span><b>KJF</b> un trône</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Saint</span><span class="mot-gr">hagios</span></th>
+            <td class="col-sens">saint, séparé, mis à part</td>
+            <td>La triple répétition «&nbsp;Saint, saint, saint&nbsp;» (<i>hagios, hagios, hagios</i>) exalte, pour MacArthur, le seul attribut de Dieu que l'Écriture répète ainsi trois fois (jamais «&nbsp;amour, amour, amour&nbsp;»), parce que la sainteté résume tout ce que Dieu est : c'est son attribut le plus saillant, sa séparation complète d'avec le mal. Le superlatif hébreu s'exprime par la répétition : dire trois fois saint, c'est proclamer la sainteté absolue, infinie, incomparable de Dieu. L'écho direct d'Ésaïe 6.3 ancre la scène dans la sainteté qui fonde la justice des jugements à venir : Dieu juge le monde parce qu'il est saint.</td>
+            <td><span class="trad"><span><b>S21</b> Saint, saint, saint</span><span><b>NEG79</b> Saint, saint, saint</span><span><b>Darby</b> Saint, saint, saint</span><span><b>LSG</b> Saint, saint, saint</span><span><b>KJF</b> Saint, saint, saint</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Tout-Puissant</span><span class="mot-gr">pantokratôr</span></th>
+            <td class="col-sens">celui qui tient tout, qui domine sur tout</td>
+            <td>Le titre <i>pantokratôr</i>, composé de <i>pas</i> (tout) et de <i>krateô</i> (tenir, dominer), désigne celui qui exerce une domination universelle et sans partage. Très rare ailleurs dans le Nouveau Testament, il devient dans l'Apocalypse le nom de prédilection de Dieu, scellant le thème de la souveraineté absolue sur la consommation de l'histoire. Joint à «&nbsp;qui était, qui est, et qui vient&nbsp;», il affirme que le Souverain éternel n'est circonscrit par aucun temps : il commandait hier, il commande aujourd'hui, et il viendra exécuter ses jugements.</td>
+            <td><span class="trad"><span><b>S21</b> le Tout-Puissant</span><span><b>NEG79</b> le Tout-Puissant</span><span><b>Darby</b> le Tout-Puissant</span><span><b>LSG</b> le Tout-Puissant</span><span><b>KJF</b> le Tout-Puissant</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">êtres vivants</span><span class="mot-gr">zôa</span></th>
+            <td class="col-sens">êtres vivants, créatures vivantes</td>
+            <td>Le pluriel <i>zôa</i> (de <i>zôê</i>, la vie) désigne des créatures pleines de vie, non des «&nbsp;bêtes&nbsp;». MacArthur identifie ces quatre êtres vivants aux chérubins, anges associés dans l'Ancien Testament à la présence, à la puissance et à la sainteté de Dieu (Ps 80.2; 99.1; Ez 1 et 10). Remplis d'yeux devant et derrière, ils ne sont pas omniscients, privilège de Dieu seul, mais doués d'une connaissance immense et d'un discernement aigu auquel rien n'échappe. Les images du lion, du veau, de l'homme et de l'aigle suggèrent respectivement la force, le service humble, la raison et la célérité de leur ministère.</td>
+            <td><span class="trad"><span><b>S21</b> êtres vivants</span><span><b>NEG79</b> êtres vivants</span><span><b>Darby</b> animaux</span><span><b>LSG</b> êtres vivants</span><span><b>KJF</b> bêtes vivantes</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">digne</span><span class="mot-gr">axios</span></th>
+            <td class="col-sens">digne, qui a le poids, qui mérite</td>
+            <td>L'adjectif <i>axios</i> évoque à l'origine ce qui «&nbsp;pèse&nbsp;» son juste poids, donc ce qui mérite pleinement une reconnaissance. La louange «&nbsp;Tu es digne&nbsp;» (<i>axios ei</i>) attribue à Dieu une valeur infinie : il mérite de recevoir la gloire, l'honneur et la puissance. Le fondement explicite est la création : «&nbsp;car tu as créé toutes choses&nbsp;». Pour MacArthur, c'est le Dieu créateur qui a décidé de racheter sa création; sa dignité de Créateur établit son droit absolu sur tout ce qui existe et donc sa légitimité à juger l'histoire. Le même titre sera repris au chapitre 5 pour l'Agneau, digne d'ouvrir le livre, fondant cette fois la dignité sur la rédemption.</td>
+            <td><span class="trad"><span><b>S21</b> digne</span><span><b>NEG79</b> digne</span><span><b>Darby</b> digne</span><span><b>LSG</b> digne</span><span><b>KJF</b> digne</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Apocalypse 4.1-11</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Apocalypse 4.1-11 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ap 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.10, 4.11.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">66-16</span></th>
+            <td><a href="https://www.gty.org/sermons/66-16" target="_blank" rel="noopener">A Trip to Heaven, Part 1</a></td>
+            <td>Apocalypse 4.1-3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-162</span></th>
+            <td><a href="https://www.gty.org/sermons/81-162" target="_blank" rel="noopener">Heavenly Worship, Part 1</a></td>
+            <td>Apocalypse 4.1-4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">66-17</span></th>
+            <td><a href="https://www.gty.org/sermons/66-17" target="_blank" rel="noopener">A Trip to Heaven, Part 2</a></td>
+            <td>Apocalypse 4.4-6</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-163</span></th>
+            <td><a href="https://www.gty.org/sermons/81-163" target="_blank" rel="noopener">Heavenly Worship, Part 2</a></td>
+            <td>Apocalypse 4.5-8</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">66-18</span></th>
+            <td><a href="https://www.gty.org/sermons/66-18" target="_blank" rel="noopener">A Trip to Heaven, Part 3</a></td>
+            <td>Apocalypse 4.6-11</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">66-19</span></th>
+            <td><a href="https://www.gty.org/sermons/66-19" target="_blank" rel="noopener">A Trip to Heaven, Part 4</a></td>
+            <td>Apocalypse 4.8-11</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-164</span></th>
+            <td><a href="https://www.gty.org/sermons/81-164" target="_blank" rel="noopener">Heavenly Worship, Part 3</a></td>
+            <td>Apocalypse 4.8-11</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Pour MacArthur, le chapitre 4 est délibérément placé avant le déferlement des jugements afin que le lecteur voie d'abord le trône qui les ordonne : la souveraineté absolue de Dieu sur la consommation de l'histoire est le présupposé de tout le reste.</p>
+    <div class="body">
+      <p>Pour MacArthur, le chapitre 4 est délibérément placé avant le déferlement des jugements afin que le lecteur voie d'abord le trône qui les ordonne. Le «&nbsp;Monte ici&nbsp;» du verset 1 ne décrit pas l'enlèvement de l'Église; il transporte temporairement l'apôtre au ciel pour qu'il y reçoive sa révélation, à la manière dont il avait été «&nbsp;saisi par l'Esprit&nbsp;» en 1.10. Le «&nbsp;ce qui doit arriver dans la suite&nbsp;» identifie explicitement la troisième partie du livre, celle qui décrit les événements postérieurs au temps de l'Église. Toute la suite de l'Apocalypse, des sceaux à la nouvelle Jérusalem, se déploie donc sous le regard du Dieu assis sur le trône : la souveraineté absolue de Dieu sur la consommation de l'histoire est le présupposé de tout le reste.</p>
+      <p>MacArthur soutient que les vingt-quatre vieillards représentent l'Église glorifiée, et il y parvient par élimination : ce ne sont pas des anges, qui ne vieillissent pas, ne siègent pas et ne reçoivent pas de couronnes, et la chronologie du livre écarte les autres groupes de rachetés. Ils sont assis sur des trônes, vêtus de blanc et couronnés d'or : ils règnent donc déjà avec Christ. Or ces rachetés ne peuvent être Israël, car la nation n'est pas encore sauvée, glorifiée ni couronnée à ce point du récit; sa résurrection et son entrée en gloire interviendront après les sept ans de la tribulation (Da 12.1-3). Ils ne sont pas non plus les saints de la tribulation, pas encore sauvés en 7.9-10. Un seul groupe est, à ce moment, complet et glorifié au ciel : l'Église, déjà enlevée et installée dans la demeure préparée par Jésus (Jn 14.1-4). Cette lecture distingue l'Église d'Israël et suppose que l'enlèvement de l'Église a déjà eu lieu avant la tribulation.</p>
+      <p>Les phénomènes qui sortent du trône, éclairs, voix et coups de tonnerre, ne relèvent pas, selon MacArthur, de la furie de la nature, mais de la tempête de feu de la colère légitime d'un Dieu terriblement puissant, prête à fondre sur un monde pécheur, comme le confirment 8.5, 11.19 et 16.18. Les sept lampes ardentes devant le trône sont les sept esprits de Dieu, c'est-à-dire non sept esprits, mais l'Esprit septuple, la plénitude de l'unique Saint-Esprit, le chiffre sept marquant la complétude. Ces lampes sont des torches de guerre plutôt que des lumières d'intérieur : celui qu'on connaît comme le Consolateur paraît ici comme l'agent du jugement ardent qui va fondre sur le monde.</p>
+      <p>Le sommet du chapitre est l'adoration. Les quatre êtres vivants ne cessent, jour et nuit, de proclamer la triple sainteté de Dieu; à leur suite, les vingt-quatre vieillards se prosternent et jettent leurs couronnes devant le trône. MacArthur souligne que ce geste exprime la conscience de ne rien devoir à soi-même : les rachetés reconnaissent que toute récompense reçue vient de Dieu seul, et ils la lui restituent. La louange culmine dans la déclaration de dignité fondée sur la création : «&nbsp;car tu as créé toutes choses, et c'est par ta volonté qu'elles existent et qu'elles ont été créées&nbsp;». Le Dieu qui va juger l'histoire est le Créateur de l'histoire; sa volonté est l'origine et la fin de tout ce qui existe. C'est ce Dieu créateur qui a résolu de racheter sa création, vérité qui prépare l'entrée de l'Agneau au chapitre 5.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, des théophanies du trône dans l'Ancien Testament au parallèle direct du chapitre 5, où la dignité du Créateur se prolonge dans celle du Rédempteur.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 6.1-4</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Vision inaugurale du Seigneur assis sur un trône élevé, entouré des séraphins criant «&nbsp;Saint, saint, saint&nbsp;» : modèle direct de la triple sainteté et de la théophanie du trône reprises par Jean.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ézéchiel 1.4-28</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Les quatre êtres vivants aux quatre faces et l'arc-en-ciel autour de la gloire de Dieu : Jean décrit les mêmes chérubins, sans copier Ézéchiel, autour du même trône de gloire.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 9.12-17</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'arc-en-ciel comme signe perpétuel de la fidélité de Dieu à son alliance avec Noé : l'arc d'émeraude qui environne le trône encadre la justice de la miséricorde.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Daniel 7.9-10</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'Ancien des jours qui s'assied pour le jugement, entouré de myriades : fondement vétérotestamentaire du trône souverain d'où procèdent les jugements de l'histoire.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Exode 24.9-10</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le pavé de saphir, clair comme le ciel, sous les pieds du Dieu d'Israël : arrière-plan de la mer de verre semblable au cristal qui supporte le trône.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 1.19</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le plan en trois temps du livre; le «&nbsp;ce qui doit arriver dans la suite&nbsp;» de 4.1 ouvre explicitement la troisième partie, postérieure au temps de l'Église.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 5.8-14</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La même cour céleste se prosterne, mais devant l'Agneau immolé : la dignité du Créateur (ch. 4) se prolonge dans la dignité du Rédempteur (ch. 5).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 14.1-4</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La demeure préparée par Jésus pour les siens : appui de la lecture des vingt-quatre vieillards comme l'Église déjà glorifiée et installée au ciel.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La souveraineté absolue de Dieu sur l'histoire</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le trône (<i>thronos</i>) revient treize fois et domine la scène; quelqu'un y est assis, et de là sortent les éclairs et tonnerres qui annoncent les jugements. Le Dieu «&nbsp;Tout-Puissant, qui était, qui est, et qui vient&nbsp;» règne sans partage avant que ne s'ouvre un seul sceau.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Avant d'expliquer l'avenir, l'assemblée doit voir qui gouverne l'avenir. Toute l'eschatologie chrétienne se lit depuis le trône : les bouleversements à venir ne sont pas un chaos, mais l'exécution ordonnée de la volonté d'un Dieu souverain. Cela ancre l'espérance et interdit la peur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La sainteté de Dieu, fondement de ses jugements</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les quatre êtres vivants proclament sans cesse «&nbsp;Saint, saint, saint est le Seigneur Dieu&nbsp;» : la triple répétition exprime la sainteté absolue et incomparable de Dieu, écho d'Ésaïe 6.3.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La colère qui va se déverser n'est pas arbitraire : elle découle de la sainteté parfaite de Dieu. Prêcher le jugement sans la sainteté le rend cruel; le fonder sur la sainteté le rend juste. L'assemblée est appelée à craindre Dieu et à poursuivre la sainteté sans laquelle nul ne le verra.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Dieu créateur, donc digne et légitime</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Tu es digne (<i>axios</i>) de recevoir la gloire, l'honneur et la puissance; car tu as créé toutes choses, et c'est par ta volonté qu'elles existent.&nbsp;» La dignité de Dieu est fondée explicitement sur la création.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Parce qu'il a tout créé par sa volonté, Dieu détient un droit absolu sur sa création, y compris celui de la juger. Réfuter toute vision qui réduit Dieu à une force impersonnelle ou à un spectateur : il est le Créateur personnel à qui tout doit gloire. La création prépare la rédemption du chapitre 5.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'adoration comme réponse à la souveraineté</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les vingt-quatre vieillards se prosternent et jettent leurs couronnes devant le trône, restituant à Dieu seul toute récompense reçue.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La juste réponse à la vision du trône n'est pas la spéculation mais l'adoration et la soumission. Les croyants, «&nbsp;vainqueurs&nbsp;» couronnés, déposent leurs mérites aux pieds de Dieu : tout est de grâce, rien n'est dû à soi. L'adoration véritable est la posture du chrétien devant le Dieu souverain.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'Esprit dans sa plénitude et le canon clos</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les sept lampes ardentes «&nbsp;sont les sept esprits de Dieu&nbsp;», c'est-à-dire le Saint-Esprit; Jean est «&nbsp;saisi par l'Esprit&nbsp;» pour recevoir une révélation apostolique.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le chiffre sept marque la complétude : il s'agit de la plénitude de l'Esprit unique, non d'esprits multiples. Le transport prophétique de Jean est une expérience apostolique unique liée à la clôture du canon; on ne l'érige pas en modèle d'expériences extatiques recherchées. L'Esprit éclaire aujourd'hui par la Parole achevée.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le chapitre place le trône de Dieu avant tout récit de jugement. En quoi voir d'abord qui règne change-t-il la manière dont votre assemblée aborde l'avenir et ses craintes?</li>
+      <li>La triple proclamation «&nbsp;Saint, saint, saint&nbsp;» fonde la justice des jugements à venir. Comment prêcher la colère de Dieu d'une façon qui découle de sa sainteté plutôt que de la trahir?</li>
+      <li>Les vingt-quatre vieillards jettent leurs couronnes devant le trône. Quelles «&nbsp;couronnes&nbsp;», réussites, mérites ou titres, vos auditeurs sont-ils tentés de garder pour eux plutôt que de les remettre à Dieu?</li>
+      <li>La dignité de Dieu est fondée sur la création : «&nbsp;car tu as créé toutes choses&nbsp;». Comment cette vérité répond-elle à une culture qui réduit Dieu à une force vague ou nie qu'il ait des droits sur sa créature?</li>
+      <li>MacArthur lit les vieillards comme l'Église déjà glorifiée, distincte d'Israël encore à sauver. Pourquoi cette distinction Israël / Église importe-t-elle pour lire correctement toute la suite de l'Apocalypse?</li>
+      <li>Les sept lampes sont la plénitude du seul Saint-Esprit, et le transport de Jean est une révélation apostolique unique. Comment cela protège-t-il votre assemblée des recherches d'expériences extatiques au détriment de la Parole achevée?</li>
+      <li>L'adoration incessante des êtres vivants est la réponse normale au trône. Qu'est-ce qui, dans la vie de prière et le culte de votre église, refléterait davantage cette adoration centrée sur la souveraineté de Dieu?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Apocalypse 4.1-11 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Apocalypse : la révélation de Jésus-Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble du livre</a>
+    <a href="Recherche-MacArthur-Apocalypse-4-1-11.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

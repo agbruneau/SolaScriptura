@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc 14.66-72 · Je ne connais pas cet homme · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Marc 14.66-72 : le reniement de Pierre ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Marc 14.66-72</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Marc 14.66-72</p>
+    <h1 class="hero__title">Je ne connais pas cet homme</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Alors il commença à faire des imprécations et à jurer&nbsp;: Je ne connais pas cet homme dont vous parlez.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Marc 14.71 · NEG</p>
+    <p class="hero__series">Série : <b>Marc : le Serviteur souffrant</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Marc 14.66-72</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Alors il commença à faire des imprécations et à jurer: Je ne connais pas cet homme dont vous parlez.</p>
+        <cite class="verse__ref">Marc 14.71 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Aussitôt, pour la seconde fois, le coq chanta. Et Pierre se souvint de la parole que Jésus lui avait dite: Avant que le coq chante deux fois, tu me renieras trois fois. Et en y réfléchissant, il pleurait.</p>
+        <cite class="verse__ref">Marc 14.72 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Marc 14.66-72 clôt la nuit du tribunal juif de la Passion : pendant que le Fils confesse à l'étage la vérité qui le condamne, le disciple le plus en vue glisse, dans la cour en contrebas, de l'audace à l'effondrement.</p>
+    <div class="body">
+      <p>Notre péricope clôt la nuit du tribunal juif de la Passion (14.53-72); selon MacArthur, le procès juif compte pourtant trois temps, la mise en accusation chez Anne, le procès devant Caïphe et la reprise publique du sanhédrin au matin (15.1), avant la phase romaine. Marc a construit ces versets en imbrication serrée avec la comparution devant Caïphe (14.55-65) : pendant que le souverain sacrificateur arrache à Jésus la confession qui le condamne à mort, le disciple le plus en vue, dans la cour en contrebas, glisse de l'audace à l'effondrement. Marc, qui écrit les mémoires de Pierre (l'expression est de Justin Martyr; Papias en fait le secrétaire de Pierre, Irénée son interprète), n'épargne rien à son maître spirituel : l'Évangile du Serviteur souffrant met en regard la fidélité absolue du Fils et la défaillance du disciple. Le contraste est l'arme théologique de Marc.</p>
+      <p>La structure de la péricope épouse trois reniements en intensité croissante, exactement comme Jésus l'avait annoncé en 14.30. Le premier (v. 66-68) répond à une servante par une esquive feinte, «&nbsp;je ne sais pas, je ne comprends pas&nbsp;». Le deuxième (v. 69-70a) répond à la même accusation par une dénégation pure. Le troisième (v. 70b-71) répond à la pression de la foule par des imprécations et un serment : «&nbsp;Je ne connais pas cet homme dont vous parlez.&nbsp;» Le mouvement est descendant, du déni évasif au parjure blasphématoire. Puis le coq chante pour la seconde fois, la parole de Jésus se vérifie au mot près, et Pierre s'effondre en larmes (v. 72). Marc est seul à noter le double chant du coq (voir la note sur 14.30), détail de témoin oculaire qui scelle l'exactitude prophétique.</p>
+      <p>Le fil narratif est limpide. Le reniement et les larmes de Pierre ferment la nuit du procès juif; dès le matin (15.1), le sanhédrin se réunit formellement pour entériner la sentence, puis lie Jésus et le livre à Pilate, ouvrant la phase romaine. La péricope tient donc une charnière : elle scelle l'échec humain au sommet de la trahison collective (Judas a livré, les disciples ont fui, Pierre renie) tandis que le Serviteur, seul et abandonné, marche vers la croix où il donnera sa vie comme rançon pour plusieurs (10.45). L'idée maîtresse de la série se cristallise ici : la faiblesse réelle du disciple, mais aussi la grâce souveraine qui restaure, puisque l'amère repentance de Pierre, marquée par les larmes, le distingue radicalement du remords stérile de Judas.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Marc 14.66 · 14.67 · 14.68 · 14.70-71</p>
+    </header>
+    <p class="lead">La scène se déroule dans la cour intérieure du palais du souverain sacrificateur, demeure aristocratique organisée autour d'un patio à ciel ouvert : Pierre est en bas, au feu de braises, tandis que l'interrogatoire de Jésus se tient à l'étage.</p>
+    <div class="body">
+      <p>La scène se déroule dans la cour intérieure du palais du souverain sacrificateur, une demeure aristocratique organisée autour d'un patio à ciel ouvert. MacArthur précise que les appartements situés tout autour dominaient la cour elle-même : Pierre est en bas (v. 66), tandis que l'interrogatoire de Jésus se tient à l'étage. Cette topographie explique la simultanéité dramatique du récit. Au centre de la cour brûle un feu de braises, car les nuits de Pâque, au printemps à Jérusalem perchée à environ huit cents mètres d'altitude, sont froides. Pierre se chauffe parmi les serviteurs et les gardes (v. 67), mêlé à la maisonnée même qui détient son maître, exposition imprudente que la lumière du brasier rend plus dangereuse encore lorsque la servante le dévisage.</p>
+    </div>
+    <p>Trois réalités culturelles éclairent la mécanique du reniement.</p>
+    <ul class="points">
+      <li><b>Les accusatrices et la hiérarchie du lieu.</b> La première à le confondre est une servante du souverain sacrificateur (v. 66), femme esclave attachée à la maison; MacArthur la rapproche, à la suite de Jn 18.15-16, de la portière qui avait laissé Pierre entrer dans la cour, piquée par la curiosité et le soupçon. Que le chef des douze soit acculé non par un magistrat mais par une domestique accentue l'ironie de sa chute. L'étiquette de «&nbsp;Nazareth&nbsp;» (v. 67) charrie le mépris des chefs juifs pour la ville natale obscure de Jésus (cf. Jn 1.46).</li>
+      <li><b>L'étiquette galiléenne.</b> L'accusation «&nbsp;tu es Galiléen&nbsp;» (v. 70) est une étiquette péjorative dont les habitants de Jérusalem affublaient leurs voisins du nord, allusion à peine voilée à leur faible niveau d'éducation et d'instruction (cf. Ac 4.13, où le sanhédrin s'étonne de l'assurance de Pierre et de Jean, hommes sans instruction). Selon Matthieu (26.73), c'est l'accent galiléen de Pierre qui le trahit, sa manière de parler dénonçant son origine.</li>
+      <li><b>Le vestibule, le chant du coq et l'autoanathème.</b> Le «&nbsp;vestibule&nbsp;» (v. 68), terme employé uniquement ici dans le Nouveau Testament selon MacArthur, désigne l'entrée ou le hall ouvrant de la cour sur la rue : Pierre s'y retire pour fuir le regard, geste de recul qui prépare l'aggravation. Selon la division juive du temps, le chant du coq désignait la troisième veille de la nuit, qui s'achève vers trois heures du matin (cf. 13.35); Marc seul mentionne deux chants, conformément à la prédiction du v. 30. Enfin, les imprécations du v. 71 relèvent d'une formule d'autoanathème : Pierre appelle sur lui-même la malédiction divine s'il ment, alors qu'il ment précisément, comble de l'ironie devant le Fils qu'il avait confessé Christ à Césarée de Philippe (8.29).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope : du verbe «&nbsp;renier&nbsp;» (<i>arneomai</i>) qui traverse les trois chutes, à l'imprécation (<i>anathematizo</i>) et au serment (<i>omnymi</i>) du parjure, puis aux pleurs (<i>klaio</i>) et au souvenir de la Parole (<i>anamimnesko</i>) qui ramènent le disciple.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">Il le nia</span><span class="mot-gr">arneomai</span></th>
+            <td class="col-sens">nier, désavouer, renoncer, refuser de reconnaître</td>
+            <td>Le verbe traverse les trois reniements (v. 68, 70) et culmine au composé renforcé du v. 71. MacArthur rapproche la scène de l'avertissement de 8.38 : quiconque aura honte de Jésus, le Fils de l'homme aura honte de lui. Renier (<i>arneomai</i>), c'est l'inverse exact de confesser; c'est désavouer publiquement le lien avec une personne. Le poids du terme rend l'acte de Pierre d'autant plus grave qu'il en avait reçu l'avertissement formel. Pourtant le récit montre un reniement de la chair défaillante, non l'apostasie définitive du cœur incrédule : Pierre est restauré, tandis que celui qui renie de façon irrévocable se voit renié par Christ.</td>
+            <td><span class="trad"><span><b>S21</b> Il le nia</span><span><b>NEG79</b> Il le nia</span><span><b>Darby</b> Il le nia</span><span><b>LSG</b> Il le nia</span><span><b>KJF</b> Mais il le nia</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">faire des imprécations</span><span class="mot-gr">anathematizo</span></th>
+            <td class="col-sens">se vouer à la malédiction, appeler sur soi l'anathème divin</td>
+            <td>Au v. 71, Pierre commença à faire des imprécations : le verbe signifie littéralement s'engager sous peine de malédiction, invoquer sur soi-même le jugement de Dieu pour garantir la véracité de ses dires. L'ironie est tranchante : Pierre appelle la malédiction divine sur lui s'il connaît Jésus, alors qu'il le connaît parfaitement et l'a confessé Fils de Dieu. MacArthur souligne que la chute du disciple atteint ici son fond, le langage du serment et de l'autoanathème marquant la distance maximale prise verbalement avec le maître, juste avant le retournement des larmes.</td>
+            <td><span class="trad"><span><b>S21</b> à lancer des malédictions</span><span><b>NEG79</b> à faire des imprécations</span><span><b>Darby</b> à faire des imprécations</span><span><b>LSG</b> à faire des imprécations</span><span><b>KJF</b> à se maudire</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">à jurer</span><span class="mot-gr">omnymi</span></th>
+            <td class="col-sens">jurer, prêter serment, attester par serment</td>
+            <td>Couplé à l'imprécation, jurer (<i>omnymi</i>) donne au mensonge de Pierre une solennité juridique : il invoque un témoin supérieur pour cautionner sa parole. La gravité est redoublée par le souvenir de l'enseignement de Jésus sur le serment (Mt 5.34-37), qui réclamait du disciple un oui simple et un non simple. Pierre, en jurant pour mentir, viole frontalement la parole de son maître au moment même où il le renie. Le serment qui devait sceller la vérité scelle ici le parjure.</td>
+            <td><span class="trad"><span><b>S21</b> à jurer</span><span><b>NEG79</b> à jurer</span><span><b>Darby</b> à jurer</span><span><b>LSG</b> à jurer</span><span><b>KJF</b> et à jurer</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il pleurait</span><span class="mot-gr">klaio</span></th>
+            <td class="col-sens">pleurer, sangloter, se lamenter à voix haute</td>
+            <td>Le verbe <i>klaio</i> dénote des pleurs bruyants, le sanglot du deuil et non la larme discrète; Luc 22.62 ajoute «&nbsp;amèrement&nbsp;». Ces larmes sont le cœur de la péricope : elles distinguent la repentance authentique du croyant véritable du simple remords. MacArthur y marque la différence avec Judas : tous deux ont éprouvé du remords, mais celui de Judas, un repentir qui ne mène pas au salut, l'a conduit à se pendre, tandis que Pierre, dont la foi ne défaille pas, se souvient de la parole de Jésus et pleure. Le regard du Seigneur (Lu 22.61) déclenche la prise de conscience, et les larmes attestent une foi blessée mais vivante, ouverte à la restauration (cf. Jn 21.15-19).</td>
+            <td><span class="trad"><span><b>S21</b> il pleurait</span><span><b>NEG79</b> il pleurait</span><span><b>Darby</b> il pleura</span><span><b>LSG</b> il pleurait</span><span><b>KJF</b> il pleura</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">se souvint</span><span class="mot-gr">anamimnesko</span></th>
+            <td class="col-sens">se rappeler, se remémorer, ramener à la mémoire</td>
+            <td>Au v. 72, Pierre se souvint de la parole que Jésus lui avait dite. Le verbe marque le déclencheur de la repentance : ce n'est pas le coq seul, mais la parole prophétique de Jésus rappelée à la mémoire qui brise le disciple. MacArthur note qu'au premier chant du coq, Pierre a peut-être déjà compris qu'il suivait point par point la prédiction de Jésus; au second, le Seigneur se retourna et le regarda (Lu 22.61), et Pierre se souvint. La parole du Seigneur, vérifiée au mot près, est l'instrument souverain qui ramène le pécheur. Le souvenir de la Parole précède et produit les larmes, illustrant la primauté de la Parole sur l'expérience.</td>
+            <td><span class="trad"><span><b>S21</b> se souvint</span><span><b>NEG79</b> se souvint</span><span><b>Darby</b> se ressouvint</span><span><b>LSG</b> se souvint</span><span><b>KJF</b> se rappela</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Marc 14.66-72</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Marc 14.66-72 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mc 14.53-15.15, 14.66, 14.67, 14.68, 14.70.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-78</span></th>
+            <td><a href="https://www.gty.org/sermons/41-78" target="_blank" rel="noopener">Peter's Denial: A Warning About Self-Confidence</a></td>
+            <td>Marc 14.66-72</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit le reniement de Pierre comme la démonstration narrative de la faiblesse du disciple authentique, et non comme la preuve d'une incrédulité de fond : tout, dans le récit, contredit l'idée d'une apostasie.</p>
+    <div class="body">
+      <p>MacArthur lit le reniement de Pierre comme la démonstration narrative de la faiblesse du disciple authentique, et non comme la preuve d'une incrédulité de fond. Tout, dans le récit, contredit l'idée d'une apostasie : Pierre est entré dans la cour de l'ennemi, là où les autres ont fui; il aime son maître, mais sa confiance en sa propre force, vantée au v. 31 («&nbsp;quand je devrais mourir avec toi, je ne te renierai pas&nbsp;»), s'effondre devant une servante. La chute illustre la sentence de 14.38, l'esprit est bien disposé, mais la chair est faible. Pour MacArthur, la présomption de soi est la racine de la chute : Pierre a négligé la veille et la prière de Gethsémané, et le disciple qui ne veille pas tombe à l'heure de l'épreuve.</p>
+      <p>Le commentateur insiste sur la gradation des reniements, étalés sur quelque deux heures. Le premier est une esquive, «&nbsp;je ne sais pas, je ne comprends pas&nbsp;», un faux pas où la surprise prend Pierre au dépourvu; le deuxième, une dénégation nette et déjà préméditée; le troisième, un parjure scellé par l'imprécation et le serment. Cette pente descendante illustre la dynamique du péché qui, non confessé sur le moment, s'aggrave de palier en palier. MacArthur souligne aussi la précision prophétique : Marc seul rapporte les deux chants du coq, et tout arrive exactement comme Jésus l'avait dit (v. 30); le Seigneur n'a pas fait arriver la chute, il savait qu'elle arriverait, parce que Pierre n'était pas prêt. Le Christ qui subit le procès connaît d'avance le cœur de son disciple jusqu'au moindre détail.</p>
+      <p>MacArthur établit aussi le contraste entre Pierre et Judas. Les deux ont trahi; un seul est restauré. La différence ne tient pas à la gravité de l'acte mais à la nature du cœur : Judas, un démon dès le départ, éprouve un remords qui le mène à la pendaison; Pierre, un croyant, éprouve lui aussi du remords, mais sa foi ne défaille pas. Les larmes amères de Pierre sont la marque du croyant véritable que la grâce souveraine ne lâche pas. MacArthur rappelle que Jésus avait prié pour Pierre afin que sa foi ne défaille point (Lu 22.31-32), et qu'il avait promis de rassembler après sa résurrection les brebis dispersées : je vous précéderai en Galilée (14.28). La persévérance de Pierre n'est pas son œuvre mais le fruit de l'intercession et de la grâce souveraine du Maître.</p>
+      <p>Enfin, MacArthur tire de la scène une portée pastorale directe sans en faire un modèle d'échec normatif. Le reniement n'autorise jamais le péché; il avertit le disciple sûr de lui et console le croyant tombé. La restauration de Pierre, consommée en Jn 21, montre que l'amour de Christ ne se mesure pas à la perfection du disciple mais à la fidélité du Berger qui ramène la brebis. Le Serviteur qui marche vers la croix porte déjà, dans son intercession, la restauration de celui qui le renie. C'est là l'Évangile en miniature : le pécheur défaillant, sauvé non par sa fidélité mais par la grâce d'un Sauveur qui donne sa vie en rançon.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de l'annonce directe du reniement et du récit synoptique parallèle, à la clé doctrinale du contraste Pierre/Judas et à la restauration consommée en Jean 21.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 14.27-31</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Annonce directe du reniement : Jésus prédit que tous seront scandalisés et que Pierre le reniera trois fois avant que le coq chante deux fois (v. 30); l'accomplissement exact au v. 72 prouve l'omniscience du Serviteur et l'inspiration du récit. La présomption de Pierre au v. 31 prépare sa chute.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 8.34-38</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le contre-modèle théologique : suivre Christ exige le reniement de soi et le refus d'avoir honte de lui; or quiconque aura honte de moi, le Fils de l'homme aura honte de lui (v. 38). Pierre échoue ici sur le terrain même de la condition du disciple, ce qui rend sa restauration ultérieure d'autant plus signifiante.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 22.31-34</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Jésus révèle que Satan a demandé à cribler Pierre, mais qu'il a prié pour que sa foi ne défaille point, et qu'une fois revenu il affermira ses frères. Cette intercession explique pourquoi le reniement de Pierre n'est pas une apostasie : sa persévérance repose sur la prière souveraine du Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 22.61-62</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Détail complémentaire décisif : le Seigneur, se retournant, regarda Pierre, ce qui réveilla sa mémoire; Pierre sortit et pleura amèrement. Le regard de Christ déclenche la repentance, et l'adverbe amèrement qualifie la profondeur du sanglot que Marc nomme au v. 72.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 21.15-19</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La restauration consommée : par trois fois, en écho aux trois reniements, le Ressuscité interroge Pierre sur son amour et lui confie son troupeau. La grâce souveraine qui restaure le croyant véritable s'accomplit pleinement, démontrant que la chute n'a pas annulé l'appel.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 7.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Clé doctrinale du contraste Pierre/Judas : la tristesse selon Dieu produit une repentance à salut dont on ne se repent jamais, mais la tristesse du monde produit la mort. Les larmes de Pierre relèvent de la première, le remords de Judas de la seconde.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 4.13</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Renversement éclatant : ce Galiléen sans instruction qui reniait devant une servante se tient désormais avec assurance devant le sanhédrin, et l'on reconnaît qu'il a été avec Jésus. La restauration et le don de l'Esprit transforment le renégat tremblant en témoin intrépide.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 26.69-75</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Récit parallèle synoptique du reniement; Matthieu ajoute que l'accent galiléen de Pierre le trahit (26.73) et conclut, comme Marc, par les pleurs amers. Les variations de formulation, loin de prouver une dépendance littéraire, confirment des témoignages indépendants inspirés par le même Esprit.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La faiblesse réelle du disciple et la présomption de soi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le chef des douze, qui jurait de mourir plutôt que de renier (14.31), s'effondre devant une servante (v. 66-68) puis sombre dans l'imprécation et le serment (v. 71). La pente descendante des trois reniements expose la fragilité de la chair là où la confiance en soi a remplacé la veille et la prière.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le croyant le plus zélé reste vulnérable s'il s'appuie sur sa propre force. La péricope appelle l'assemblée à la défiance de soi et à la dépendance de la grâce, selon l'avertissement de 14.38 : veillez et priez, afin que vous ne tombiez pas en tentation; l'esprit est bien disposé, mais la chair est faible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce souveraine qui restaure le croyant véritable</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le souvenir de la parole de Jésus (v. 72), déclenché par le chant du coq et le regard du Seigneur (Lu 22.61), brise Pierre en larmes. Cette repentance n'est pas son initiative mais le fruit de l'intercession du Christ qui avait prié pour que sa foi ne défaille point (Lu 22.32).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La sécurité du croyant ne repose pas sur sa fidélité mais sur la fidélité du Sauveur qui intercède et ramène. C'est l'assurance du salut monergique : celui qui appartient vraiment à Christ peut chuter, mais il ne sera pas perdu, car la persévérance des saints est l'œuvre de la grâce et non de l'homme.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Repentance authentique contre remords stérile</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les larmes de Pierre (<i>klaio</i>, v. 72), bruyantes et amères (Lu 22.62), tranchent sur le remords de Judas qui mène au suicide. Le même acte de trahison débouche sur deux destins opposés selon la nature du cœur que la suite révèle.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La tristesse selon Dieu produit la repentance à salut, la tristesse du monde produit la mort (2 Co 7.10). L'assemblée apprend à discerner la vraie repentance, qui retourne vers Christ et se laisse restaurer, du simple regret des conséquences qui s'enferme dans le désespoir.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La fidélité prophétique du Serviteur souffrant</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Tandis que Pierre renie, Jésus, accusé à l'étage, accomplit exactement sa propre parole : le coq chante deux fois (v. 72), au mot près de la prédiction du v. 30, détail que Marc seul rapporte. Le contraste oppose la défaillance du disciple à la véracité infaillible du Maître.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La précision de la prophétie accomplie atteste l'omniscience du Fils et l'inspiration verbale du récit. Le Serviteur qui marche seul vers la croix domine souverainement les événements; l'assemblée peut se reposer sur une Parole qui ne tombe jamais à terre.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Pierre s'effondre précisément là où il s'était cru le plus fort (14.31). Où ma propre assurance spirituelle masque-t-elle une faiblesse que je refuse de confier à la grâce, et qu'est-ce que la veille et la prière de 14.38 changeraient à ma vigilance?</li>
+      <li>La chute de Pierre s'aggrave de palier en palier, de l'esquive au parjure. Quels petits compromis non confessés, dans ma vie, ouvrent la porte à des reniements plus graves de Christ devant les hommes?</li>
+      <li>Ce qui sépare Pierre de Judas n'est pas la gravité de la faute mais la nature du cœur révélée par la suite. Mes regrets après le péché ressemblent-ils à la tristesse selon Dieu qui ramène à Christ, ou à la tristesse du monde qui s'enferme dans le désespoir (2 Co 7.10)?</li>
+      <li>La repentance de Pierre est déclenchée par le souvenir de la parole de Jésus et par son regard. Quelle place la Parole mémorisée tient-elle dans ma vie pour me ramener quand je tombe, plutôt que mes seules émotions ou mon expérience?</li>
+      <li>La persévérance de Pierre repose sur l'intercession du Christ qui a prié pour que sa foi ne défaille point (Lu 22.32). Comment cette vérité fonde-t-elle mon assurance du salut sur la fidélité du Sauveur et non sur ma propre constance?</li>
+      <li>En Jean 21, Christ restaure Pierre par trois questions en écho à ses trois reniements. Y a-t-il un échec pour lequel je doute encore d'être pleinement restauré, alors que la grâce souveraine se plaît à relever le croyant véritable?</li>
+      <li>Le renégat tremblant d'Actes 4.13 confesse Christ avec assurance devant le sanhédrin même qui l'avait condamné. Comment la restauration que Christ accomplit me prépare-t-elle non seulement au pardon, mais au témoignage hardi devant ceux que je craignais?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Marc 14.66-72 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Marc : le Serviteur souffrant&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Marc-14-66-72.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

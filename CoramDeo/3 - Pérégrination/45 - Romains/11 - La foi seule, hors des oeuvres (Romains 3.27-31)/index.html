@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Romains 3.27-31 · La foi seule, hors des œuvres · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Romains 3.27-31 : l'homme est justifié par la foi, sans les œuvres de la loi ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Romains 3.27-31</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Romains 3.27-31</p>
+    <h1 class="hero__title">La foi seule, hors des œuvres</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Car nous estimons que l'homme est justifié par la foi, sans les œuvres de la loi.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Romains 3.28 · NEG</p>
+    <p class="hero__series">Série : <b>La justice de Dieu</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-16 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Romains 3.27-31</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Où donc est le sujet de se glorifier? Il est exclu. Par quelle loi? Par la loi des œuvres? Non, mais par la loi de la foi.</p>
+        <cite class="verse__ref">Romains 3.27 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car nous estimons que l'homme est justifié par la foi, sans les œuvres de la loi.</p>
+        <cite class="verse__ref">Romains 3.28 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Romains 3.27-31 n'est pas un appendice mais la conclusion logique de la propitiation : Paul en tire quatre corollaires, dont le verset 28, où MacArthur voit un principe majeur du Nouveau Testament : la justification par la foi, sans les œuvres de la loi.</p>
+    <div class="body">
+      <p>Notre péricope referme la section capitale qui ouvre la grande exposition de la justification (3.21-31), elle-même au cœur du quatrième volet de l'épître, «&nbsp;Justification : les ressources de la justice de Dieu&nbsp;» (3.21-5.21). Les versets 21 à 26 viennent d'atteindre le sommet doctrinal du Nouveau Testament : la justice de Dieu manifestée sans la loi, offerte à tous ceux qui croient, sur la base de la rédemption qui est en Jésus-Christ, présenté par Dieu comme victime propitiatoire par son sang, de sorte que Dieu demeure juste tout en justifiant celui qui a la foi en Jésus (3.26). Les versets 27 à 31 ne sont pas un appendice mais la conclusion logique de cette propitiation : Paul en tire quatre corollaires, l'exclusion de toute gloire de l'homme, la justification par la foi sans les œuvres de la loi, l'unité du Dieu des Juifs et des païens, et la confirmation de la loi loin de son abolition. Le passage est donc le verdict que rend l'apôtre sur le plus capital des sujets, après avoir prouvé du chapitre 1.18 au chapitre 3.20 que toute bouche est fermée et que nul ne sera justifié devant Dieu par les œuvres de la loi (3.19-20).</p>
+      <p>Les bornes sont nettes. La péricope s'ouvre en 3.27 par une question rhétorique abrupte, «&nbsp;Où donc est le sujet de se glorifier? Il est exclu&nbsp;», et se referme en 3.31 par un dernier échange de questions et réponses, «&nbsp;Annulons-nous donc la loi par la foi? Loin de là! Au contraire, nous confirmons la loi.&nbsp;» Entre ces deux bornes, Paul procède par sa méthode coutumière, la diatribe, multipliant les interrogations courtes qu'il fait suivre d'une réponse tranchée : «&nbsp;Par quelle loi? Par la loi des œuvres? Non.&nbsp;» Ou bien «&nbsp;Dieu est-il seulement le Dieu des Juifs?&nbsp;» Cette série de questions n'est pas un procédé décoratif, c'est l'instrument par lequel l'apôtre démolit méthodiquement chaque objection que le légaliste juif pouvait élever contre l'Évangile de la grâce.</p>
+      <p>Le cœur de la péricope est le verset 28, où MacArthur voit un principe majeur du Nouveau Testament : l'homme est justifié par la foi, sans les œuvres de la loi. La Réforme tout entière s'est ramassée dans ce verset, Luther y ayant ajouté l'adverbe «&nbsp;seule&nbsp;». MacArthur note que, bien que le mot «&nbsp;seule&nbsp;» n'apparaisse pas dans le texte grec, c'est le sens que voulait donner Paul, comme le montre Romains 4.3-5, dans l'exemple d'Abraham qui suit immédiatement. Le fil conducteur de la semaine est donc clair : Paul tire les conséquences de la propitiation, la justification par la foi seule, qui n'annule pas mais établit la loi.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Romains 3.27 · 3.29-30 · 3.31</p>
+    </header>
+    <p class="lead">Paul écrit aux Romains depuis Corinthe vers l'an 56, à une Église mixte de Juifs et de païens : la composition de l'assemblée éclaire l'objection du verset 29 et le légalisme judaïsant que l'apôtre combat dans toute l'épître.</p>
+    <div class="body">
+      <p>Paul écrit aux Romains depuis Corinthe vers l'an 56, à la fin de son troisième voyage missionnaire, à une Église qu'il n'a ni fondée ni encore visitée, vraisemblablement issue de Juifs convertis lors de la Pentecôte (cf. Actes 2.10) et désormais composée d'une majorité de croyants d'origine païenne. Cette composition mixte n'est pas un détail anodin pour notre passage : l'objection que Paul anticipe au verset 29, «&nbsp;Ou bien Dieu est-il seulement le Dieu des Juifs?&nbsp;», vise précisément la prétention juive à un monopole sur le salut. Le Juif du premier siècle confessait chaque jour le Chema, «&nbsp;Écoute, Israël, l'Éternel notre Dieu est le seul Éternel&nbsp;» (Deutéronome 6.4), et tirait de ce monothéisme une fierté nationale : la circoncision, la possession de la loi et l'élection d'Israël semblaient garantir une faveur que les païens ne pouvaient atteindre qu'en se faisant prosélytes. Paul retourne le Chema contre cette présomption : puisqu'il y a un seul Dieu, ce Dieu unique est aussi le Dieu des païens, et il les justifie de la même manière, par la foi.</p>
+    </div>
+    <p>Trois réalités éclairent la péricope pour le lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Le légalisme judaïsant et la justice par les œuvres.</b> L'arrière-plan le plus décisif est celui du légalisme judaïsant que Paul combat dans toute l'épître. Le pharisaïsme, dont Paul était lui-même issu en tant que pharisien formé aux pieds de Gamaliel, avait construit un système élaboré de justice par les œuvres : l'homme se tenait pour agréé de Dieu sur la base de son observance de la loi mosaïque et des traditions rabbiniques qui l'entouraient. Cette religion du mérite produisait inévitablement la gloire de l'homme, l'orgueil spirituel de celui qui croit avoir contribué à son propre salut. C'est exactement ce «&nbsp;sujet de se glorifier&nbsp;» que Paul déclare exclu au verset 27.</li>
+      <li><b>Le scandale de l'égalité du Juif et du païen.</b> Pour un Juif religieux du premier siècle, l'idée que le païen incirconcis et le Juif circoncis fussent justifiés exactement de la même façon, par la foi seule et sans aucun mérite des œuvres, était scandaleuse : elle nivelait toute distinction et réduisait à néant des siècles de privilège supposé. La prétention juive à un monopole sur le salut, fondée sur la circoncision et la possession de la loi, s'effondre devant l'unique moyen de justification.</li>
+      <li><b>La souplesse du mot «&nbsp;loi&nbsp;» (<i>nomos</i>).</b> Le terme «&nbsp;loi&nbsp;» traverse la péricope avec une remarquable souplesse, et le lecteur moderne risque de s'y perdre. Au verset 27, Paul joue sur le mot : par quelle loi, c'est-à-dire par quel principe, par quel système, le sujet de se glorifier est-il exclu? Non par la loi des œuvres mais par la loi de la foi. Au verset 28, «&nbsp;œuvres de la loi&nbsp;» désigne l'observance de la loi mosaïque comme prétendu moyen de justification. Au verset 31, la loi que la foi confirme désigne la loi de Dieu dans son autorité et sa fonction véritables. Paul anticipe ici l'accusation d'antinomisme, qu'on lui adressera nécessairement, et MacArthur note qu'il introduit la défense qu'il développera pleinement aux chapitres 6 et 7 : loin d'abolir la loi, la grâce en met en évidence la réelle importance.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : du «&nbsp;se glorifier&nbsp;» (<i>kauchesis</i>) que la grâce abolit, au verbe forensique «&nbsp;justifier&nbsp;» (<i>dikaioo</i>), reçu par la foi (<i>pistis</i>) et non par les œuvres de la loi (<i>erga nomou</i>), jusqu'au verbe «&nbsp;confirmer&nbsp;» (<i>histemi</i>) qui établit la loi loin de l'abolir.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">se glorifier</span><span class="mot-gr">kauchesis</span></th>
+            <td class="col-sens">action de se vanter, de se prévaloir, fierté que l'on tire de soi-même ou de ce qu'on possède</td>
+            <td>Le substantif désigne l'acte de se glorifier et, par extension, le sujet ou le fondement de cette gloire. Paul l'emploie pour viser l'orgueil religieux du légaliste qui croit avoir contribué à son salut par ses œuvres. Selon MacArthur, ce verset 27 fait écho à 1 Corinthiens 1.26-29, où Dieu a tout disposé afin que nulle chair ne se glorifie devant lui. La justification par la foi seule arrache à l'homme toute possibilité de se prévaloir de lui-même : si le salut est entièrement un don de la grâce reçu par la foi, il ne reste plus aucune place pour la vantardise. La gloire revient à Dieu seul.</td>
+            <td><span class="trad"><span><b>S21</b> Où est donc la raison de s'enorgueillir?</span><span><b>NEG79</b> Où donc est le sujet de se glorifier?</span><span><b>Darby</b> Où donc est la vanterie?</span><span><b>LSG</b> Où donc est le sujet de se glorifier?</span><span><b>KJF</b> Où est donc la vantardise?</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">justifié</span><span class="mot-gr">dikaioo</span></th>
+            <td class="col-sens">déclarer juste, prononcer une sentence d'acquittement, tenir pour juste sur le plan judiciaire</td>
+            <td>Verbe forensique emprunté au vocabulaire du tribunal, dérivé de l'adjectif «&nbsp;juste&nbsp;». Avec les mots de même racine, il revient une trentaine de fois dans Romains, surtout de 2.13 à 5.1. Justifier ne signifie jamais rendre intérieurement juste ni améliorer moralement, mais déclarer juste : Dieu, juge souverain, prononce le pécheur croyant acquitté et juste à ses yeux, non en raison d'une justice propre, mais par l'imputation de la justice parfaite de Christ. Ce verdict comporte le pardon de la culpabilité et du châtiment du péché ainsi que le transfert au compte du croyant de l'obéissance parfaite de Christ à la loi. La déclaration est instantanée, complète et irréversible. La sanctification, œuvre distincte par laquelle Dieu rend justes ceux qu'il a déclarés justes, la suit toujours sans exception (8.30).</td>
+            <td><span class="trad"><span><b>S21</b> l'homme est considéré comme juste</span><span><b>NEG79</b> l'homme est justifié</span><span><b>Darby</b> l'homme est justifié</span><span><b>LSG</b> l'homme est justifié</span><span><b>KJF</b> un homme est justifié</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">foi</span><span class="mot-gr">pistis</span></th>
+            <td class="col-sens">confiance, appui sur, conviction reposant sur la fidélité de l'objet auquel on se fie</td>
+            <td>Terme central de l'épître pour l'appropriation du salut. La foi qui sauve est surnaturelle, un don de la grâce que Dieu produit dans le cœur, le seul canal par lequel le pécheur reçoit la justice de Dieu. Elle n'est jamais une œuvre méritoire : opposée aux œuvres, elle marque au contraire la fin de toute tentative de gagner la faveur de Dieu par le mérite. Pour MacArthur, elle comporte trois éléments indissociables : l'intelligence comprend l'Évangile, le cœur accepte la vérité et se réjouit de la miséricorde divine, la volonté se soumet à Christ comme seul espoir de salut. Cette soumission de la volonté distingue la foi salvatrice de la simple adhésion intellectuelle et fonde la doctrine de la seigneurie de Christ : la foi qui justifie est inséparable de la repentance.</td>
+            <td><span class="trad"><span><b>S21</b> par la foi</span><span><b>NEG79</b> par la foi</span><span><b>Darby</b> par la foi</span><span><b>LSG</b> par la foi</span><span><b>KJF</b> par la foi</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">œuvres de la loi</span><span class="mot-gr">erga nomou</span></th>
+            <td class="col-sens">œuvres de la loi, actes d'observance de la loi mosaïque accomplis comme prétendu moyen de mériter la faveur de Dieu</td>
+            <td>Expression désignant les performances religieuses par lesquelles le légaliste prétend gagner sa justification. MacArthur souligne que Paul exclut ici toute forme d'œuvre humaine comme base du salut : personne ne sera justifié devant Dieu par les œuvres de la loi (3.20), puisque c'est la loi qui donne la connaissance du péché, non le pouvoir d'y échapper. Les œuvres de la loi ne sont pas mauvaises en elles-mêmes, elles deviennent fatales dès qu'on les présente comme cause ou co-cause de la justification. Paul anéantit ainsi par avance toute justice par les œuvres, le légalisme judaïsant comme tout système ultérieur qui ferait des œuvres une cause de la justification.</td>
+            <td><span class="trad"><span><b>S21</b> sans les œuvres de la loi</span><span><b>NEG79</b> sans les œuvres de la loi</span><span><b>Darby</b> sans œuvres de loi</span><span><b>LSG</b> sans les œuvres de la loi</span><span><b>KJF</b> sans les œuvres de la loi</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">nous confirmons</span><span class="mot-gr">histemi</span></th>
+            <td class="col-sens">dresser, établir, affermir, faire tenir debout, donner une base ferme et stable</td>
+            <td>Verbe qui signifie poser solidement, maintenir debout, par opposition à annuler ou abolir (en grec <i>katargeo</i>, réduire à néant). Au verset 31, Paul oppose les deux : loin d'annuler la loi, la foi la confirme, l'établit, lui donne sa pleine valeur. Selon MacArthur, le salut par grâce et par la foi ne diminue pas la loi mais en met en évidence la réelle importance, de trois manières : il offre un paiement pour la peine de mort qu'entraîne sa violation, il accomplit son but originel de tutrice qui révèle l'incapacité de l'homme à obéir et le conduit à Christ (Galates 3.24), et il rend les croyants capables de lui obéir (8.3-4). La foi ne dispense donc pas de la loi : elle seule en honore l'autorité.</td>
+            <td><span class="trad"><span><b>S21</b> nous confirmons la loi</span><span><b>NEG79</b> nous confirmons la loi</span><span><b>Darby</b> nous établissons la loi</span><span><b>LSG</b> nous confirmons la loi</span><span><b>KJF</b> nous établissons la loi</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Romains 3.27-31</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Romains 3.27-31 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Rm 3.27, 3.28, 3.29, 3.31.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-28</span></th>
+            <td><a href="https://www.gty.org/sermons/45-28" target="_blank" rel="noopener">False Elements Added to Salvation</a></td>
+            <td>Romains 3.20-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-118</span></th>
+            <td><a href="https://www.gty.org/sermons/81-118" target="_blank" rel="noopener">The Character of God in the Cross of Christ</a></td>
+            <td>Romains 3.21-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-83</span></th>
+            <td><a href="https://www.gty.org/sermons/80-83" target="_blank" rel="noopener">Looking at the Cross from God's Perspective</a></td>
+            <td>Romains 3.24-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-294</span></th>
+            <td><a href="https://www.gty.org/sermons/80-294" target="_blank" rel="noopener">God's Glory Displayed in Christ's Cross</a></td>
+            <td>Romains 3.25-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-345</span></th>
+            <td><a href="https://www.gty.org/sermons/80-345" target="_blank" rel="noopener">Christ Died for God</a></td>
+            <td>Romains 3.25-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-401</span></th>
+            <td><a href="https://www.gty.org/sermons/90-401" target="_blank" rel="noopener">How to Be Reconciled with God</a></td>
+            <td>Romains 3.25-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">TM11-3</span></th>
+            <td><a href="https://www.gty.org/sermons/TM11-3" target="_blank" rel="noopener">The Gospel Satisfies God’s Demands</a></td>
+            <td>Romains 3.25-31</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-32A</span></th>
+            <td><a href="https://www.gty.org/sermons/45-32A" target="_blank" rel="noopener">How Christ Died for God, Part 2</a></td>
+            <td>Romains 3.27-28</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-32B</span></th>
+            <td><a href="https://www.gty.org/sermons/45-32B" target="_blank" rel="noopener">True Marks of Saving Faith</a></td>
+            <td>Romains 3.27-28</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-33</span></th>
+            <td><a href="https://www.gty.org/sermons/45-33" target="_blank" rel="noopener">How Christ Died for God, Part 3: Declaring God's Righteousness</a></td>
+            <td>Romains 3.29-31</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Pour MacArthur, les versets 25 à 31 montrent ce que la croix accomplit pour Dieu : elle déclare sa justice, exalte sa grâce, révèle sa cohérence et confirme sa loi; le verset 28, l'homme justifié par la foi sans les œuvres de la loi, relève de la grâce exaltée.</p>
+    <div class="body">
+      <p>Pour MacArthur, les versets 25 à 31 montrent ce que la croix accomplit pour Dieu : elle déclare sa justice, exalte sa grâce, révèle sa cohérence et confirme sa loi. Les versets 27 et 28 relèvent de la grâce exaltée : l'homme est justifié par la foi, sans les œuvres de la loi, et MacArthur voit dans le verset 28 un principe majeur du Nouveau Testament. La grande controverse historique se ramasse ici : Luther traduisit «&nbsp;par la foi seule&nbsp;», et bien que l'adverbe «&nbsp;seule&nbsp;» ne figure pas dans le texte grec, MacArthur affirme que c'est le sens voulu par Paul, comme le montre l'enchaînement immédiat sur Abraham, justifié par la foi et non par les œuvres (4.3-5). La justification est entièrement forensique : Dieu déclare juste le pécheur impie, non parce qu'il l'a rendu juste, mais parce qu'il lui a imputé la justice parfaite de Christ. C'est la double imputation qui gouverne toute la section, le péché du croyant transféré sur Christ à la croix, l'obéissance de Christ portée au compte du croyant comme si elle était sienne (cf. 3.24; 4.6; 5.19; 2 Corinthiens 5.21).</p>
+      <p>Le premier corollaire est l'exclusion de toute gloire de l'homme (v. 27). MacArthur relie ce verset à 1 Corinthiens 1.26-29 : Dieu a tout disposé afin que nulle chair ne se glorifie devant lui. Si la justification s'obtenait par les œuvres, l'homme aurait de quoi se prévaloir, comme l'illustrera l'hypothèse impensable d'Abraham au chapitre 4.2. Mais puisqu'elle s'obtient par la foi seule, qui n'est pas une œuvre méritoire mais le simple canal par lequel le don est reçu, toute vantardise est radicalement abolie. La foi ne laisse à l'homme aucun titre de gloire, car elle est elle-même un don (cf. Éphésiens 2.8). C'est le coup mortel porté au légalisme judaïsant et à tout système du mérite : l'orgueil religieux ne survit pas à la grâce souveraine. Paul oppose ainsi deux principes incompatibles, la loi des œuvres qui nourrit la gloire de l'homme et la loi de la foi qui la réduit à néant.</p>
+      <p>Le deuxième corollaire est l'universalité du salut offert également au Juif et au païen (v. 29-30). MacArthur note la simplicité écrasante de l'argument : il n'y a qu'un seul vrai Dieu (cf. 1 Corinthiens 8.5-6), donc ce Dieu unique est le Dieu de tous, et il justifie de la même manière les circoncis et les incirconcis, par la foi. La distinction que le Juif tirait de la circoncision et de la possession de la loi s'effondre, non parce que les promesses d'Israël seraient abolies, mais parce que le moyen du salut a toujours été la foi, jamais l'appartenance ethnique ni l'observance rituelle. MacArthur en conclut qu'il n'y a jamais eu deux voies de salut, la loi pour les Juifs et la foi pour les païens : Noé, Moïse et Abraham ont eux aussi été sauvés par grâce, au moyen de la foi. Il faut toutefois maintenir que l'unité du moyen de justification ne dissout pas la distinction d'Israël et de l'Église dans le plan de Dieu, distinction que Paul réaffirmera aux chapitres 9 à 11. Le Juif et le païen sont sauvés par une même foi, mais Dieu garde un plan futur pour la nation d'Israël.</p>
+      <p>Le troisième corollaire répond à l'accusation d'antinomisme (v. 31). MacArthur observe que Paul, sachant qu'on lui reprochera de détruire la loi en affirmant que l'homme est justifié indépendamment de son obéissance, introduit ici la défense qu'il développera aux chapitres 6 et 7. La réponse est catégorique : «&nbsp;Loin de là! Au contraire, nous confirmons la loi.&nbsp;» MacArthur en donne la triple raison : l'Évangile honore la loi en payant la peine de mort qu'entraîne sa violation, il accomplit le but originel de la loi, servir de tutrice qui révèle l'incapacité de l'homme et conduit à Christ (Galates 3.24), et il rend les croyants capables d'obéir réellement par l'Esprit (8.3-4). C'est ici que la lentille MacArthurienne refuse les deux dévoiements opposés : l'antinomisme qui se croit dispensé de toute loi par la grâce, et le légalisme qui ferait des œuvres de la loi le moyen de la justification. La grâce n'abolit pas la loi, elle l'établit en l'accomplissant et en produisant l'obéissance que la loi seule ne pouvait jamais arracher.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du pôle paulinien immédiat qui verrouille la thèse du verset 28 jusqu'à l'arrière-plan vétérotestamentaire du Chema et de la foi d'Abraham.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 3.20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Personne ne sera justifié devant Dieu par les œuvres de la loi, puisque c'est par la loi que vient la connaissance du péché : la prémisse négative immédiate dont notre péricope tire la conséquence positive.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 4.1-5</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Abraham justifié par la foi et non par les œuvres, à qui sa foi fut imputée à justice : la démonstration scripturaire qui suit aussitôt le verset 28 et prouve le «&nbsp;seul&nbsp;» implicite.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 2.16</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'homme n'est pas justifié par les œuvres de la loi mais par la foi en Jésus-Christ : triple négation paulinienne qui verrouille la thèse du verset 28.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.8-9</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">C'est par la grâce que vous êtes sauvés, par le moyen de la foi, et cela ne vient pas de vous, afin que personne ne se glorifie : la foi-don et l'exclusion de toute gloire, exactement le verset 27.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 1.26-29</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Dieu a choisi les choses méprisées afin que nulle chair ne se glorifie devant lui : texte que MacArthur cite comme parallèle du «&nbsp;sujet de se glorifier&nbsp;» exclu au verset 27.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 3.8-9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Être trouvé en Christ, non avec ma propre justice venant de la loi, mais avec celle qui s'obtient par la foi : la justice imputée opposée à la justice propre, parcours inverse du légalisme.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 6.4</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Écoute, Israël, l'Éternel notre Dieu est le seul Éternel : le Chema, fondement du monothéisme que Paul retourne au verset 30 pour prouver que le Dieu unique justifie aussi les païens.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 15.6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Abraham crut à l'Éternel, qui le lui imputa à justice : socle vétérotestamentaire de la justification par la foi seule, cité par Paul au chapitre 4 pour confirmer le verset 28.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La justification forensique par la foi seule</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'homme est justifié par la foi, sans les œuvres de la loi (v. 28), conclusion de la propitiation des versets 21 à 26; le verdict de Dieu déclare juste le pécheur croyant sur la base de la justice imputée de Christ, non d'une œuvre humaine.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La justification est un acte judiciaire instantané et irréversible, non un processus moral. Pour votre assemblée, cela ruine tout système religieux fondé sur le mérite et offre au pécheur tourmenté une assurance qui ne repose pas sur sa performance mais sur l'œuvre achevée de Christ. On reçoit cette justice les mains vides, par la foi seule, qui est elle-même un don.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'exclusion de toute gloire de l'homme</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Où donc est le sujet de se glorifier? Il est exclu (v. 27); puisque le salut s'obtient par la loi de la foi et non par la loi des œuvres, toute vantardise religieuse est radicalement abolie.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le légalisme produit inévitablement l'orgueil spirituel; la grâce souveraine le détruit à la racine. Pour votre assemblée, c'est le test de l'humilité véritable : celui qui a compris la justification par la foi seule ne peut plus se glorifier de rien devant Dieu, car il sait que tout, même sa foi, lui a été donné. La gloire revient à Dieu seul, <i>soli Deo gloria</i>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le Dieu unique des Juifs et des païens</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ou bien Dieu est-il seulement le Dieu des Juifs? Ne l'est-il pas aussi des païens? Puisqu'il y a un seul Dieu, qui justifiera par la foi les circoncis et par la foi les incirconcis (v. 29-30).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le moyen du salut est universel et identique, la foi, sans distinction d'ethnie ni de rite. Pour votre assemblée, cela abat toute fierté de privilège religieux et fonde la mission auprès de tous les peuples. Il faut toutefois maintenir la distinction d'Israël et de l'Église dans le plan de Dieu : l'unité du moyen de justification ne spiritualise pas les promesses faites à Israël, que Paul réaffirmera aux chapitres 9 à 11.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce qui confirme la loi, contre l'antinomisme</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Annulons-nous donc la loi par la foi? Loin de là! Au contraire, nous confirmons la loi (v. 31); Paul réfute par avance l'accusation d'antinomisme et annonce les chapitres 6 et 7.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La justification par la foi seule n'abolit pas la loi, elle l'honore en payant la peine de sa violation, en accomplissant son rôle de tutrice qui conduit à Christ, et en rendant le croyant capable d'obéir par l'Esprit. Pour votre assemblée, cela écarte ensemble l'antinomien qui se croit dispensé de sainteté et le légaliste qui ferait des œuvres le prix du salut : la foi qui justifie est inséparable de la soumission à la seigneurie de Christ et produit infailliblement l'obéissance.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le verset 28 condense la Réforme : comment exposer à votre assemblée que le mot «&nbsp;seule&nbsp;», absent du grec, traduit pourtant fidèlement la pensée de Paul, sans donner l'impression d'ajouter au texte mais en montrant que tout le contexte (4.3-5) l'exige?</li>
+      <li>L'exclusion de toute gloire (v. 27) touche le cœur de l'orgueil religieux : où, dans votre propre assemblée doctrinalement saine, le mérite et la fierté spirituelle se réintroduisent-ils subtilement comme fondement de l'assurance?</li>
+      <li>Comment prêcher que la foi n'est pas une œuvre méritoire mais un don reçu (Éphésiens 2.8), de manière à fermer la dernière porte par laquelle l'homme voudrait se prévaloir, même de sa foi, devant Dieu?</li>
+      <li>Le verset 30 abat la fierté de privilège du Juif : quelle forme contemporaine de privilège religieux ou ecclésial votre assemblée doit-elle laisser ce texte démolir, sans pour autant gommer la distinction d'Israël et de l'Église que Paul maintiendra aux chapitres 9 à 11?</li>
+      <li>Le verset 31 répond à l'antinomisme : comment montrer que la grâce confirme la loi plutôt qu'elle ne l'abolit, en présentant les trois fonctions de la loi sans glisser ni dans le légalisme ni dans le laisser-aller?</li>
+      <li>Si la justification est entièrement forensique et reçue par la foi seule, comment préparez-vous déjà l'assemblée à la sanctification réelle des chapitres 6 à 8, afin qu'elle ne confonde pas «&nbsp;foi sans les œuvres&nbsp;» avec «&nbsp;foi sans le fruit&nbsp;»?</li>
+      <li>Comment ce passage permet-il de réfuter à la fois la Nouvelle Perspective sur Paul, qui voudrait réintroduire les œuvres dans le verdict de justification, et l'<i>easy-believism</i>, qui réduirait la foi à un assentiment sans soumission à Christ comme Seigneur?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Romains 3.27-31 · 2026-06-16 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La justice de Dieu&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Romains-3-27-31.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

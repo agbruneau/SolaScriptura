@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luc 9.46-50 · Le plus petit est le plus grand · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Luc 9.46-50 : la grandeur du royaume se reçoit par l'abaissement ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc 9.46-50</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Luc 9.46-50</p>
+    <h1 class="hero__title">Le plus petit est le plus grand</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Celui qui est le plus petit parmi vous tous, c'est celui-là qui est grand.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 9.48 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__meta">Recherche exégétique · 14 juin 2026 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Luc 9.46-50</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Or, une pensée leur vint à l'esprit, savoir lequel d'entre eux était le plus grand.</p>
+        <cite class="verse__ref">Luc 9.46 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car celui qui est le plus petit parmi vous tous, c'est celui-là qui est grand.</p>
+        <cite class="verse__ref">Luc 9.48 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Notre péricope clôt la grande section galiléenne de l'Évangile (4.14 à 9.50) et sert de dernière leçon avant la montée résolue vers Jérusalem; l'orgueil de préséance des disciples surgit au moment même où Jésus annonce son humiliation et sa mort.</p>
+    <div class="body">
+      <p>Notre péricope clôt la grande section galiléenne de l'Évangile (4.14 à 9.50) et sert de dernière leçon avant que Luc n'ouvre, en 9.51, les dix chapitres consacrés à la montée résolue vers Jérusalem. Le contraste est volontairement saisissant. Aux versets 43 à 45, Jésus vient d'annoncer pour la seconde fois sa Passion&nbsp;: «&nbsp;Le Fils de l'homme doit être livré entre les mains des hommes.&nbsp;» Les disciples ne comprennent pas cette parole, voilée pour eux conformément à la volonté souveraine de Dieu (note JMA sur 9.45).</p>
+      <p>Or, au moment même où le Maître parle de sa propre humiliation et de sa mort, leurs cœurs s'enflent d'une rivalité de préséance&nbsp;: «&nbsp;Or, une pensée leur vint à l'esprit, savoir lequel d'entre eux était le plus grand&nbsp;» (9.46). L'orgueil surgit donc en plein cœur de l'enseignement sur le sacrifice de soi, ce qui rend la dérive d'autant plus flagrante. C'est précisément cette manifestation d'orgueil, selon MacArthur, que Jésus saisit comme occasion d'enseigner l'humilité.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Luc 9.46-48 · 9.49-50</p>
+    </header>
+    <p class="lead">L'épisode se déroule à Capernaüm, quartier général du ministère galiléen, vraisemblablement dans la maison de Pierre; deux formes d'orgueil s'y côtoient, l'orgueil individuel qui brigue le premier rang et l'orgueil de groupe qui exclut l'étranger.</p>
+    <div class="body">
+      <p>L'épisode se déroule à Capernaüm, quartier général du ministère galiléen de Jésus, vraisemblablement dans la maison de Pierre, où les douze viennent de rentrer de leur tournée missionnaire (Mc 9.33). Les parallèles de Matthieu 18 et Marc 9 permettent de reconstituer la scène&nbsp;: les disciples, en chemin, s'étaient disputés pour savoir qui était le plus grand, puis avaient gardé un silence honteux quand Jésus les interrogea. MacArthur souligne que cette rivalité naissait de comparaisons mesquines de leurs exploits respectifs au cours de la mission. Deux formes d'orgueil se côtoient dans la péricope&nbsp;: l'orgueil individuel, qui pousse chacun à briguer le premier rang (9.46-48), et l'orgueil de groupe, ou sectarisme, qui pousse Jean à empêcher un étranger d'agir au nom de Jésus (9.49-50).</p>
+    </div>
+    <p>Trois réalités éclairent la portée de la scène.</p>
+    <ul class="points">
+      <li><b>Le statut social réel de l'enfant.</b> Le geste de Jésus n'a de force que rapporté au statut de l'enfant dans le monde antique. Dans la société juive du premier siècle, l'enfant ne jouissait d'aucune considération juridique ni sociale&nbsp;: sans accomplissement, sans rang, sans voix, il occupait l'échelon le plus bas. MacArthur note que les rabbins méprisaient les enfants et les tenaient pour les êtres les plus faibles, les plus dépourvus de mérite et les plus vulnérables. Jésus prend donc et place près de lui (9.47) l'exemple vivant de celui qui n'a rien à faire valoir, sinon la dépendance pure&nbsp;: le bambin figure le croyant dépouillé de tout titre, qui n'entre dans le royaume que par la miséricorde de Dieu.</li>
+      <li><b>L'esprit de clan de Jean.</b> La réplique de Jean au verset 49 révèle un second arrière-plan, celui de l'esprit de clan. Que l'apôtre qui s'exprime ici soit Jean, celui-là même qui deviendra connu comme l'apôtre de l'amour, n'est pas anodin&nbsp;: la note JMA y voit une erreur caractéristique du sectarisme et le premier des deux péchés que Jean commit en peu de temps contre le principe d'amour (cf. note sur 9.54, où Jacques et Jean réclament le feu du ciel sur un village samaritain).</li>
+      <li><b>Un ministère pourtant authentique.</b> L'homme que les disciples ont voulu réduire au silence chassait pourtant réellement des démons au nom de Jésus; il aurait passé les deux tests légitimes du ministère, la doctrine et le fruit, mais Jean était enclin à le rejeter au seul motif qu'il n'appartenait pas à leur cercle.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du paradoxe de la péricope&nbsp;: du «&nbsp;plus grand&nbsp;» (<i>meizon</i>) que les disciples convoitent, au «&nbsp;petit enfant&nbsp;» (<i>paidion</i>) que l'on «&nbsp;reçoit&nbsp;» (<i>dechomai</i>), jusqu'au «&nbsp;plus petit&nbsp;» (<i>mikroteros</i>) qui est grand et au verbe «&nbsp;empêcher&nbsp;» (<i>kolyo</i>) qui démasque le sectarisme.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">le plus grand</span><span class="mot-gr">meizon</span></th>
+            <td class="col-sens">comparatif de <i>megas</i>&nbsp;: plus grand, supérieur en rang ou en dignité</td>
+            <td>Comparatif servant ici de superlatif relatif («&nbsp;lequel serait le plus grand&nbsp;»). Le mot désigne la prééminence de rang, l'élévation au-dessus des autres. MacArthur souligne que les disciples l'entendaient au sens de statut, de position et de récompense future dans le royaume, fruit d'une comparaison mesquine de leurs exploits. Tout le paradoxe du passage tient à ce que Jésus retourne le terme&nbsp;: la vraie <i>meizon</i> ne se conquiert pas par l'ambition mais se reçoit par l'abaissement, de sorte que le plus petit (<i>mikroteros</i>) est celui-là même qui est grand.</td>
+            <td><span class="trad"><span><b>S21</b> le plus grand</span><span><b>NEG79</b> le plus grand</span><span><b>Darby</b> le plus grand</span><span><b>LSG</b> le plus grand</span><span><b>KJF</b> le plus grand</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">petit enfant</span><span class="mot-gr">paidion</span></th>
+            <td class="col-sens">petit enfant, bambin en bas âge, diminutif de <i>pais</i></td>
+            <td>Le diminutif désigne un très jeune enfant, un tout-petit encore sans accomplissement, sans rang ni voix dans la société. Selon MacArthur, c'est précisément cette nullité sociale qui fait du <i>paidion</i> l'illustration parfaite&nbsp;: il représente le croyant dépouillé de tout mérite, qui n'a rien à présenter sinon sa dépendance, et qui n'entre dans le royaume que par la grâce. Le geste de prendre l'enfant et de le placer près de lui (9.47) en fait l'objet d'une leçon&nbsp;: recevoir un tel petit au nom de Jésus, c'est recevoir Jésus lui-même.</td>
+            <td><span class="trad"><span><b>S21</b> enfant</span><span><b>NEG79</b> petit enfant</span><span><b>Darby</b> petit enfant</span><span><b>LSG</b> petit enfant</span><span><b>KJF</b> petit enfant</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">reçoit</span><span class="mot-gr">dechomai</span></th>
+            <td class="col-sens">recevoir, accueillir, faire bon accueil, prendre auprès de soi</td>
+            <td>Verbe de l'accueil hospitalier et bienveillant. Jésus l'emploie quatre fois en cascade au verset 48 pour bâtir une chaîne d'identification&nbsp;: recevoir l'enfant, c'est recevoir Jésus, et recevoir Jésus, c'est recevoir le Père qui l'a envoyé. MacArthur précise que cet enfant figure le croyant&nbsp;: recevoir en son nom le plus humble des croyants, c'est recevoir Christ, et le Père qui l'a envoyé; l'orgueil qui méprise un frère rejette donc Christ lui-même. L'accueil du méprisé est l'inverse exact de l'orgueil qui cherche le premier rang, car il honore Christ là où le monde ne voit rien à honorer.</td>
+            <td><span class="trad"><span><b>S21</b> accueille</span><span><b>NEG79</b> reçoit</span><span><b>Darby</b> reçoit</span><span><b>LSG</b> reçoit</span><span><b>KJF</b> recevra</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">le plus petit</span><span class="mot-gr">mikroteros</span></th>
+            <td class="col-sens">comparatif de <i>mikros</i>&nbsp;: plus petit, moindre, inférieur en taille, en âge ou en importance</td>
+            <td>Comparatif employé comme superlatif relatif&nbsp;: le moindre, le dernier de tous. Le verset 48 fait reposer sur ce mot le cœur du paradoxe&nbsp;: «&nbsp;celui qui est le plus petit parmi vous tous, c'est celui-là qui est grand.&nbsp;» Pour MacArthur, la grandeur dans le royaume de Dieu n'est pas un rang que l'on acquiert&nbsp;: il n'y a là aucune hiérarchie, et la grandeur s'identifie à l'humilité de celui qui cherche la dernière place pour servir les autres. Le <i>mikroteros</i> n'est pas un degré inférieur de citoyenneté céleste&nbsp;: dans le royaume, tous entrent comme des enfants dépouillés de mérite, et c'est l'abaissement volontaire qui constitue la vraie <i>meizon</i>.</td>
+            <td><span class="trad"><span><b>S21</b> le plus petit</span><span><b>NEG79</b> le plus petit</span><span><b>Darby</b> le plus petit</span><span><b>LSG</b> le moindre</span><span><b>KJF</b> le plus petit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">empêchâmes</span><span class="mot-gr">kolyo</span></th>
+            <td class="col-sens">empêcher, faire obstacle, interdire, retenir</td>
+            <td>Verbe qui marque l'opposition active, l'interdiction imposée à autrui. Jean l'emploie pour avouer que les disciples ont voulu retenir un homme qui chassait des démons au nom de Jésus, au seul motif qu'il ne les suivait pas (9.49). Jésus reprend le même verbe à l'impératif négatif&nbsp;: «&nbsp;Ne l'en empêchez pas&nbsp;» (9.50). Selon MacArthur, ce <i>kolyo</i> dénonce l'orgueil de groupe, le sectarisme qui range les serviteurs de Christ d'après l'appartenance au cercle plutôt que d'après la doctrine et le fruit. Empêcher un ouvrier fidèle parce qu'il n'est pas des nôtres, c'est confondre la défense de Christ avec la défense de soi.</td>
+            <td><span class="trad"><span><b>S21</b> l'en avons empêché</span><span><b>NEG79</b> l'en avons empêché</span><span><b>Darby</b> l'en avons empêché</span><span><b>LSG</b> l'avons empêché</span><span><b>KJF</b> le lui avons défendu</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Luc 9.46-50</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Luc 9.46-50 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Lc 9.46, 9.48, 9.49, 9.50.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-130</span></th>
+            <td><a href="https://www.gty.org/sermons/42-130" target="_blank" rel="noopener">The Mark of True Greatness, Part 1</a></td>
+            <td>Luc 9.46-48</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-293</span></th>
+            <td><a href="https://www.gty.org/sermons/80-293" target="_blank" rel="noopener">Humility: An Essential Element for Ministry</a></td>
+            <td>Luc 9.46-56</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-131</span></th>
+            <td><a href="https://www.gty.org/sermons/42-131" target="_blank" rel="noopener">The Mark of True Greatness, Part 2</a></td>
+            <td>Luc 9.49-50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Pour MacArthur, le ressort de toute la péricope est l'orgueil, qu'il désigne comme le destructeur le plus commun du ministère&nbsp;: il ruine l'unité, engendre les disputes et dresse les hommes les uns contre les autres.</p>
+    <div class="body">
+      <p>La gravité de la scène tient à son moment&nbsp;: les disciples se querellent sur la préséance au moment précis où Jésus vient d'annoncer sa propre humiliation et sa mort. La querelle n'est pas un incident anodin mais un symptôme de la profondeur du cœur déchu; MacArthur rappelle ici que le cœur est tortueux par-dessus tout et incurablement mauvais (Jr 17.9), de sorte que l'orgueil affleurant trahit la corruption native que la grâce seule peut renverser. Significativement, Jésus voit la pensée de leur cœur (9.47)&nbsp;: il lit l'orgueil avant qu'il ne s'exprime, et son omniscience même fait de lui le seul juge compétent de la vraie grandeur.</p>
+      <p>Le geste de l'enfant est une parabole en acte. En plaçant près de lui le bambin, l'être social le plus négligeable, le moins accompli et le plus vulnérable, Jésus retourne l'échelle des valeurs du monde. MacArthur explique que la grandeur dans le royaume de Dieu ne se mesure pas au rang ni à l'exploit mais à la petitesse et à l'effacement&nbsp;: tous entrent dans le royaume comme des enfants spirituels, sans rien qui les recommande, ne possédant que la miséricorde de Dieu. La chaîne du verset 48 (recevoir l'enfant, c'est recevoir Christ, c'est recevoir le Père) lie l'humilité à la révélation&nbsp;: honorer le méprisé en raison du nom de Jésus, c'est honorer Jésus lui-même, et accueillir Jésus, c'est accueillir Dieu. La grandeur n'est donc pas relative mais, en un sens, absolue&nbsp;: tous les rachetés sont également grands, car tous tiennent leur statut de la justice imputée de Christ et non de leurs mérites. Cette lecture s'accorde avec l'harmonie que MacArthur relève, dans son introduction à l'Évangile, entre la théologie de Luc et celle de Paul, centrée sur la justification par la foi&nbsp;: la justice se reçoit comme un don, à la manière de l'enfant qui ne fait que recevoir.</p>
+      <p>Le verset 49 fait passer de l'orgueil individuel à l'orgueil collectif. Jean avoue avoir empêché un exorciste agissant au nom de Jésus, parce qu'il ne suivait pas le groupe. MacArthur y voit le sectarisme&nbsp;: l'esprit de clan qui évalue les serviteurs de Dieu d'après l'appartenance plutôt que d'après la fidélité. La note JMA est explicite&nbsp;: l'homme aurait passé les deux seuls tests légitimes du ministère, la doctrine (1 Jn 4.1-3; 2 Jn 7-11) et le fruit (1 Jn 2.4-6; 3.4-12; cf. Mt 7.16), mais Jean était enclin à le rejeter pour des raisons d'appartenance. C'est, écrit MacArthur, une erreur caractéristique du sectarisme. Ironie révélatrice&nbsp;: c'est Jean, le futur apôtre de l'amour, qui commet ici sa première faute contre le principe d'amour, et bientôt la seconde lorsqu'il réclamera le feu du ciel sur la Samarie (9.54).</p>
+      <p>La réponse de Jésus au verset 50, «&nbsp;qui n'est pas contre vous est pour vous&nbsp;», ne dilue en rien la vérité. MacArthur la rapproche de 11.23 («&nbsp;celui qui n'est pas avec moi est contre moi&nbsp;»), autre manière, dit-il en chaire, d'énoncer la même vérité&nbsp;: la note JMA précise qu'il n'y a aucune place pour la neutralité ni le juste milieu. Les deux maximes ne se contredisent pas&nbsp;: en 9.50, Christ donne le moyen d'éprouver autrui d'après sa conduite, alors qu'en 11.23 il énoncera le principe qui permet à chacun d'éprouver sa propre vie intérieure. On ne saurait donc accueillir indistinctement quiconque revendique le nom de Christ&nbsp;: il faut, avertit MacArthur, qu'il soit réellement pour Christ et fidèle à la vérité, car celui qui n'est pas vraiment avec lui est contre lui. La leçon est double&nbsp;: humilité contre l'orgueil personnel, ouverture contre le sectarisme, mais l'une et l'autre subordonnées à la fidélité doctrinale.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, des parallèles synoptiques directs aux reprises internes du thème de la grandeur par l'abaissement, jusqu'à l'arrière-plan vétérotestamentaire du sectarisme et du cœur déchu.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 18.1-5</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Parallèle synoptique direct de la même scène&nbsp;: les disciples demandent qui est le plus grand dans le royaume, Jésus place un enfant au milieu d'eux et déclare qu'il faut se faire petit comme cet enfant; la note JMA renvoie expressément à Mt 18.5 pour 9.48.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 9.33-37</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Parallèle synoptique qui localise la scène à Capernaüm, dans la maison, et rapporte la dispute sur le chemin; MacArthur s'en sert pour reconstituer le cadre et le silence honteux des disciples interrogés.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 22.24-27</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La même rivalité ressurgit lors de la Cène&nbsp;: Jésus enseigne que le plus grand doit se faire comme le plus petit et celui qui gouverne comme celui qui sert; reprise interne du thème de la grandeur par l'abaissement.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 18.15-17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Jésus accueille les petits enfants et déclare que nul n'entre dans le royaume s'il ne le reçoit comme un enfant; même image de la dépendance dépouillée de mérite comme condition d'entrée.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 11.23</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Maxime apparemment inverse («&nbsp;qui n'est pas avec moi est contre moi&nbsp;») que la note JMA met en contraste avec 9.50&nbsp;: pas de neutralité possible; 9.50 éprouve autrui par sa conduite, 11.23 éprouve sa propre vie intérieure.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 2.3-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul commande de regarder les autres comme supérieurs à soi et présente l'abaissement de Christ jusqu'à la mort comme le modèle; développement apostolique exact du paradoxe que le plus petit est le plus grand.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 11.26-29</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Eldad et Médad prophétisent hors du camp; Josué veut les en empêcher, mais Moïse refuse tout esprit de clan&nbsp;: «&nbsp;Es-tu jaloux pour moi?&nbsp;» Antécédent vétérotestamentaire du sectarisme corrigé en Luc 9.49-50.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jérémie 17.9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Le cœur est tortueux par-dessus tout, et il est incurable.&nbsp;» Fond anthropologique de la péricope&nbsp;: MacArthur y rattache l'orgueil que Jésus discerne dans la pensée du cœur des disciples (9.47).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La grandeur du royaume se reçoit par l'abaissement</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Celui qui est le plus petit parmi vous tous, c'est celui-là qui est grand&nbsp;» (9.48); Jésus place un enfant sans rang ni mérite comme étalon de la vraie grandeur (9.47).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, le royaume ne connaît aucune hiérarchie&nbsp;: la grandeur y est l'humilité même, jamais le fruit de l'ambition ou de l'exploit. Pour votre assemblée&nbsp;: la grandeur chrétienne n'est pas un rang à conquérir mais une petitesse à embrasser, à l'imitation du Fils de l'homme qui descend vers la croix; le service du plus négligeable, fait au nom de Jésus, vaut plus aux yeux de Dieu que tout titre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'orgueil, destructeur de la communion et symptôme du cœur déchu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les disciples se disputent la préséance (9.46) au moment même où Jésus annonce sa Passion (9.44); il voit la pensée de leur cœur (9.47).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur tient l'orgueil pour le destructeur le plus commun du ministère&nbsp;: il ruine l'unité et engendre les disputes. Pour votre assemblée&nbsp;: l'orgueil n'est pas un défaut mineur mais l'affleurement d'un cœur tortueux (Jr 17.9); il faut le démasquer là où il se cache, jusque dans la rivalité spirituelle, et lui opposer l'humilité qui ne se prévaut d'aucun mérite devant Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Accueillir le méprisé, c'est accueillir Christ et le Père</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La chaîne d'identification du verset 48&nbsp;: recevoir l'enfant au nom de Jésus, c'est recevoir Jésus, et recevoir Jésus, c'est recevoir celui qui l'a envoyé.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'accueil du plus insignifiant en raison du nom de Christ honore Christ lui-même et, en lui, le Père. Pour votre assemblée&nbsp;: la mesure de notre amour pour Dieu se vérifie dans notre accueil de ceux que le monde tient pour rien, l'enfant, le pauvre, le faible; ce thème prolonge la compassion de Luc pour les exclus et la portée universelle de l'Évangile (cf. 19.10).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Contre le sectarisme&nbsp;: éprouver le ministère par la doctrine et le fruit</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jean empêche un exorciste fidèle parce qu'il ne suit pas le groupe (9.49); Jésus répond&nbsp;: «&nbsp;Ne l'en empêchez pas&nbsp;» (9.50).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La note JMA enseigne que le ministère d'un croyant s'évalue uniquement d'après les tests de la doctrine (1 Jn 4.1-3) et du fruit (1 Jn 2.4-6; Mt 7.16), non d'après l'appartenance à un cercle. Pour votre assemblée&nbsp;: l'esprit de clan est une forme d'orgueil de groupe; rejeter un serviteur fidèle parce qu'il n'est pas des nôtres, c'est confondre la cause de Christ avec la nôtre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Aucune neutralité face à Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Qui n'est pas contre vous est pour vous&nbsp;» (9.50), mis en contraste avec «&nbsp;celui qui n'est pas avec moi est contre moi&nbsp;» (11.23).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur refuse tout juste milieu&nbsp;: il n'y a pas de terrain neutre entre la vérité et l'erreur. Pour votre assemblée&nbsp;: l'ouverture aux autres serviteurs de Christ n'est jamais un œcuménisme indistinct; on n'accueille que ceux qui sont réellement pour Christ et fidèles à la vérité, car quiconque n'est pas vraiment avec lui est contre lui. L'humilité ne dissout pas le discernement doctrinal, elle le sert.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Vos auditeurs perçoivent-ils que la rivalité des disciples surgit au moment précis où Jésus annonce sa mort? Comment faire sentir le scandale de cet orgueil qui s'enfle pendant que le Maître parle de s'abaisser?</li>
+      <li>Jésus voit la pensée du cœur (9.47) avant qu'elle ne s'exprime. Comment prêcher l'omniscience du Christ de manière à démasquer l'orgueil caché de l'assemblée sans la précipiter dans le seul remords?</li>
+      <li>L'enfant représentait l'être social le plus négligeable. Quels sont, dans votre milieu, les «&nbsp;petits&nbsp;» que l'on accueille seulement pour ce qu'ils apportent, et non au nom de Jésus? Comment ce texte les replace-t-il au centre?</li>
+      <li>Comment exposer que la grandeur du royaume se reçoit par l'abaissement sans glisser dans un éloge sentimental de la faiblesse, mais en l'ancrant dans le sacrifice de soi à l'imitation du Fils de l'homme qui monte vers la croix?</li>
+      <li>Le sectarisme de Jean (9.49) est un orgueil de groupe. Où votre assemblée range-t-elle les serviteurs fidèles de Christ d'après l'appartenance à un cercle plutôt que d'après la doctrine et le fruit?</li>
+      <li>Comment tenir ensemble 9.50 («&nbsp;qui n'est pas contre vous est pour vous&nbsp;») et 11.23 («&nbsp;qui n'est pas avec moi est contre moi&nbsp;») sans abolir l'un par l'autre, en montrant que l'ouverture véritable suppose la fidélité doctrinale et non l'indifférence à la vérité?</li>
+      <li>Si votre assemblée sort de cette prédication seulement attendrie par l'image de l'enfant, sans être confrontée à son propre orgueil et à son propre sectarisme, aurez-vous prêché tout le texte, ou seulement sa partie la plus douce?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Luc 9.46-50 · 14 juin 2026 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Luc : venu sauver les perdus&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Luc-9-46-50.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

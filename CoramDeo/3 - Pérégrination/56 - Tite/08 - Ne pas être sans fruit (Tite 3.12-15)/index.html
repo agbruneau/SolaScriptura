@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tite 3.12-15 · Ne pas être sans fruit · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Tite 3.12-15 : ne pas être sans fruit ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Tite 3.12-15</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Tite 3.12-15</p>
+    <h1 class="hero__title">Ne pas être sans fruit</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Il faut que les nôtres aussi apprennent à pratiquer de bonnes œuvres pour subvenir aux besoins pressants, afin qu'ils ne soient pas sans produire de fruits.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Tite 3.14 · NEG</p>
+    <p class="hero__series">Série : <b>Tite : équiper l'Église pour le témoignage</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Tite 3.12-15</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Il faut que les nôtres aussi apprennent à pratiquer de bonnes œuvres pour subvenir aux besoins pressants, afin qu'ils ne soient pas sans produire de fruits.</p>
+        <cite class="verse__ref">Tite 3.14 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Salue ceux qui nous aiment dans la foi. Que la grâce soit avec vous tous!</p>
+        <cite class="verse__ref">Tite 3.15 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Tite 3.12-15 referme l'épître par sa conclusion (vv. 12-14) et sa bénédiction (v. 15)&nbsp;: après le grand exposé du salut par grâce, Paul redescend au ras des détails de la vie missionnaire, mais ce sont précisément ces détails qui incarnent la doctrine qui précède.</p>
+    <div class="body">
+      <p>Tite 3.12-15 referme l'épître par sa conclusion (vv. 12-14) et sa bénédiction (v. 15). Après le grand exposé du salut par grâce (3.4-7) et l'appel à pratiquer de bonnes œuvres (3.8), après les consignes de discipline envers le fauteur de division (3.9-11), Paul redescend au ras des détails de la vie missionnaire concrète&nbsp;: déplacements de collaborateurs, soutien matériel de prédicateurs itinérants, salutations fraternelles. Selon le plan que MacArthur reçoit de la Bible d'étude, ces versets forment la troisième partie majeure de la lettre, la Conclusion (3.12-14), suivie de la Bénédiction (3.15). L'épître entière a un seul but, la formation des Églises de Crète pour une évangélisation efficace, et ce but ne se relâche pas dans la conclusion&nbsp;: il s'y incarne dans des gestes ordinaires.</p>
+      <p>Le mouvement de la péricope est limpide. D'abord, Paul appelle Tite à le rejoindre une fois la relève assurée&nbsp;: lorsque Artémas ou Tychique arrivera en Crète pour diriger le ministère sur place, Tite devra se hâter de gagner Nicopolis, où Paul a résolu de passer l'hiver (v. 12). Ensuite, Paul confie à Tite le soin de pourvoir au voyage de Zénas le docteur de la loi et d'Apollos, de sorte que rien ne leur manque (v. 13)&nbsp;: ce sont vraisemblablement les porteurs de la lettre. Puis vient le verset pivot de la péricope (v. 14)&nbsp;: il faut que les nôtres aussi apprennent à pratiquer de bonnes œuvres pour subvenir aux besoins pressants, afin qu'ils ne soient pas sans produire de fruits. Enfin, la bénédiction (v. 15) clôt la lettre par les salutations mutuelles et le vœu de grâce, le même mot qui ouvrait l'épître (1.4) et qui en est, du début à la fin, la note dominante.</p>
+      <p>Le verset 14 reprend explicitement le thème majeur de toute l'épître, les bonnes œuvres (1.16; 2.7, 14; 3.1, 5, 8, 14), et le rattache au cœur doctrinal de 3.4-8&nbsp;: le salut n'est jamais par les œuvres (3.5), mais ceux qui ont cru en Dieu doivent s'appliquer à pratiquer de bonnes œuvres (3.8). Les bonnes œuvres ne sont pas la racine du salut, elles en sont le fruit. MacArthur le note&nbsp;: ces derniers mots, très pratiques et très personnels, ne sont pas accessoires, car c'est souvent à la fin que vient ce qui importe le plus&nbsp;; Paul y donne son dernier mot sur les relations qui rendent le témoignage efficace, et les bonnes œuvres représentent un tremplin pour un témoignage efficace auprès des inconvertis. La péricope n'est donc pas un appendice détaché&nbsp;: elle est la mise en application vivante de la grâce qui enseigne (2.11-12) jusque dans le détail des voyages, des dons et des saluts.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Tite 3.12 · 3.13 · 3.14</p>
+    </header>
+    <p class="lead">Les noms propres de la péricope, Artémas, Tychique, Zénas, Apollos, dessinent le réseau missionnaire de Paul&nbsp;: pourvoir au voyage de prédicateurs itinérants était, dans l'Église primitive, une bonne œuvre concrète et un devoir de solidarité.</p>
+    <div class="body">
+      <p>La Crète, l'une des plus grandes îles de la Méditerranée (environ 220 kilomètres de long), avait mauvaise réputation dans le monde antique&nbsp;; son propre prophète Épiménide avait traité les Crétois de menteurs, de méchantes bêtes, de ventres paresseux (1.12). Paul y avait laissé Tite pour mettre en ordre ce qui restait à régler et établir des anciens dans chaque ville (1.5). L'épître a probablement été écrite entre 62 et 64 apr. J.-C., alors que Paul œuvrait auprès des Églises de Macédoine entre son premier et son second emprisonnement à Rome, depuis Corinthe ou Nicopolis (cf. 3.12). Ce sont vraisemblablement Zénas et Apollos qui en furent les porteurs (3.13), ce qui explique le soin pris à pourvoir à leur voyage.</p>
+    </div>
+    <p>Trois traits éclairent la scène.</p>
+    <ul class="points">
+      <li><b>Un réseau de collaborateurs éprouvés.</b> Les noms propres de la péricope dessinent le réseau missionnaire de Paul. D'Artémas on ne sait rien, sinon que l'apôtre lui faisait visiblement confiance pour relever Tite. Tychique, lui, est bien connu&nbsp;: frère bien-aimé et fidèle ministre (Col 4.7), il avait accompagné Paul de Corinthe jusqu'en Asie Mineure (Ac 20.4) et porté ses lettres aux Colossiens et probablement aux Éphésiens.</li>
+      <li><b>Des porteurs de poids.</b> Nicopolis, littéralement ville de la victoire, se trouvait au sud-ouest de la Grèce, sur la côte de l'Achaïe, bon endroit pour passer l'hiver, saison où la navigation cessait. Zénas, qualifié de docteur de la loi, était versé soit dans la loi biblique soit dans le droit romain&nbsp;; on ne sait rien d'autre de lui. Apollos, originaire d'Alexandrie, était un enseignant des Écritures hors pair (Ac 18.24-28), dont certains admirateurs avaient formé un parti à Corinthe (1 Co 1.11-12).</li>
+      <li><b>Le soutien des itinérants, un devoir.</b> Pourvoir au voyage de prédicateurs itinérants était une pratique attestée de l'Église primitive. Les missionnaires se déplaçaient par voie de terre et de mer à travers l'Empire, dépendant de l'hospitalité et du soutien des assemblées pour ne pas être à charge des incroyants ni mendier en chemin. En demandant que rien ne manque à Zénas et Apollos, Paul institue un devoir concret de solidarité dans l'œuvre de l'Évangile. Le verbe traduit subvenir aux besoins pressants évoque les nécessités urgentes, immédiates&nbsp;: non un luxe, mais le strict nécessaire qui permet à l'œuvre d'avancer. Dans une île où les croyants venaient d'un milieu réputé pour la paresse et l'égoïsme (1.12), apprendre à pratiquer ces bonnes œuvres était une rupture visible avec l'ancienne manière de vivre, et donc un témoignage.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la conclusion&nbsp;: du <i>propempō</i> qui soutient le missionnaire au <i>manthanō</i> qui dit que le fruit s'apprend, des <i>kala erga</i> qui sont le résultat du salut au croyant qui ne doit pas demeurer <i>akarpos</i>, jusqu'à la <i>charis</i> qui ouvre et referme l'épître.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">subvenir</span><span class="mot-gr">propempō</span></th>
+            <td class="col-sens">envoyer en avant, escorter, accompagner sur la route; par extension pourvoir aux besoins du voyage de quelqu'un, l'équiper pour son départ</td>
+            <td>Le verbe <i>propempō</i> (v. 13, aie soin de pourvoir au voyage) signifie littéralement envoyer en avant, accompagner pour un bout de chemin, mais a pris dans l'Église primitive le sens technique de soutenir matériellement un missionnaire en partance, lui fournir vivres, argent et escorte pour la route. Il décrit ailleurs l'aide due aux ouvriers de l'Évangile (Ro 15.24; 1 Co 16.6, 11; 3 Jn 6). Pour MacArthur, c'est le dernier mot de Paul sur les compagnons de service&nbsp;: les aider avec empressement et pourvoir à tout ce qui leur manque, besoin spirituel ou matériel, nourriture ou logement, car tous forment une même équipe au service du Royaume.</td>
+            <td><span class="trad"><span><b>S21</b> occupe-toi</span><span><b>NEG79</b> aie soin de pourvoir</span><span><b>Darby</b> accompagne</span><span><b>LSG</b> aie soin de pourvoir</span><span><b>KJF</b> amène diligemment</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">apprennent</span><span class="mot-gr">manthanō</span></th>
+            <td class="col-sens">apprendre, recevoir un enseignement, acquérir par instruction et par pratique; devenir disciple par accoutumance</td>
+            <td>Le verbe <i>manthanō</i> (v. 14, que les nôtres apprennent) désigne l'apprentissage qui s'acquiert par instruction répétée et par pratique, la même racine que <i>mathētēs</i>, disciple. Les bonnes œuvres ne sont donc ni spontanées ni naturelles à l'homme déchu&nbsp;: elles s'apprennent, comme un métier, par discipline et habitude. MacArthur souligne que la grâce de Dieu nous enseigne à renoncer à l'impiété (2.11-12)&nbsp;; ici cet enseignement se traduit en exercice concret. Pour des convertis crétois venus d'un milieu de ventres paresseux (1.12), apprendre à œuvrer marquait une rupture réelle avec leur passé.</td>
+            <td><span class="trad"><span><b>S21</b> apprennent</span><span><b>NEG79</b> apprennent</span><span><b>Darby</b> apprennent</span><span><b>LSG</b> apprennent</span><span><b>KJF</b> apprennent</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">bonnes œuvres</span><span class="mot-gr">kala erga</span></th>
+            <td class="col-sens">œuvres bonnes, belles, excellentes; actions intrinsèquement bonnes et visiblement honorables, qui attirent l'attention par leur beauté morale</td>
+            <td>L'expression <i>kala erga</i> (v. 14) emploie <i>kalos</i>, qui dit non seulement le bien moral mais le beau, l'excellent, ce qui est manifestement honorable aux yeux des hommes. C'est le thème répété de toute l'épître (1.16; 2.7, 14; 3.1, 5, 8, 14). MacArthur insiste&nbsp;: les bonnes œuvres ne sont pas un moyen d'acquérir le salut, elles en sont le résultat (note sur 2.14; cf. Ép 2.10). Le salut n'est jamais à cause des œuvres de justice (3.5), mais le peuple racheté est zélé pour les bonnes œuvres (2.14). Ces œuvres belles et visibles sont un tremplin pour le témoignage auprès des inconvertis crétois.</td>
+            <td><span class="trad"><span><b>S21</b> belles œuvres</span><span><b>NEG79</b> bonnes œuvres</span><span><b>Darby</b> bonnes œuvres</span><span><b>LSG</b> bonnes œuvres</span><span><b>KJF</b> bonnes œuvres</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">sans fruits</span><span class="mot-gr">akarpos</span></th>
+            <td class="col-sens">sans fruit, stérile, qui ne porte pas de récolte; improductif, inutile parce qu'il ne donne rien</td>
+            <td>L'adjectif <i>akarpos</i> (v. 14, qu'ils ne soient pas sans produire de fruits) est formé du privatif <i>a</i> et de <i>karpos</i>, fruit&nbsp;: littéralement sans fruit, stérile. Le N.T. l'emploie pour la semence étouffée par les soucis (Mt 13.22), pour le croyant qui doit éviter cette stérilité (2 Pi 1.8), pour les œuvres infructueuses des ténèbres (Ép 5.11). L'image agricole est celle de l'arbre que l'on reconnaît à son fruit (Mt 7.16-20). Pour MacArthur, une vie sans fruit ne rend pas bon témoignage à la puissance salvatrice de Dieu&nbsp;: on doit pouvoir voir le fruit (Mt 5.16), car Dieu ne justifie pas sans sanctifier. Jacques dit de même qu'une foi sans les œuvres est morte (Ja 2.14-26). Ne pas demeurer <i>akarpos</i>, c'est démontrer par les œuvres la réalité de la régénération opérée par l'Esprit (3.5).</td>
+            <td><span class="trad"><span><b>S21</b> sans porter de fruit</span><span><b>NEG79</b> sans produire de fruits</span><span><b>Darby</b> sans fruit</span><span><b>LSG</b> sans porter de fruit</span><span><b>KJF</b> sans fruit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">grâce</span><span class="mot-gr">charis</span></th>
+            <td class="col-sens">faveur gratuite et imméritée, bienveillance accordée sans contrepartie; don souverain de Dieu</td>
+            <td>La <i>charis</i> (v. 15, que la grâce soit avec vous tous) referme l'épître sur le mot qui l'ouvrait (1.4) et qui en commande toute la doctrine du salut. C'est la grâce de Dieu, source de salut (2.11), la grâce selon laquelle nous sommes justifiés (3.7), distincte de toute œuvre de justice (3.5). MacArthur voit dans ce vœu la condition de tout ce qui précède&nbsp;: sans la grâce de Dieu, rien de cela ne peut se faire&nbsp;; par elle, tout devient possible. En 2.11, il reconnaît dans la grâce manifestée non seulement l'attribut divin mais Jésus-Christ lui-même, le don suprême offert à l'humanité déchue. En plaçant le vœu de grâce comme dernier mot, Paul rappelle que tout, depuis le salut jusqu'aux bonnes œuvres qu'il vient de commander, procède de cette faveur imméritée&nbsp;: l'ordre demeure inviolable, la grâce d'abord, le fruit ensuite, jamais l'inverse.</td>
+            <td><span class="trad"><span><b>S21</b> grâce</span><span><b>NEG79</b> grâce</span><span><b>Darby</b> grâce</span><span><b>LSG</b> grâce</span><span><b>KJF</b> grâce</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Tite 3.12-15</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Tite 3.12-15 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Tt 3.12-14, 3.12, 3.13, 3.14, 3.15.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-26</span></th>
+            <td><a href="https://www.gty.org/sermons/56-26" target="_blank" rel="noopener">The Last Word on Relationships</a></td>
+            <td>Tite 3.9-15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit la conclusion de Tite non comme un simple post-scriptum, mais comme le dernier mot de Paul sur les relations, clé de l'évangélisation&nbsp;: aider les compagnons de service, aimer fidèlement les frères.</p>
+    <div class="body">
+      <p>Pour MacArthur, ces derniers mots ne sont pas un post-scriptum&nbsp;: c'est souvent à la fin que vient ce qui importe le plus, et Paul y donne son dernier mot sur les relations qui rendent le témoignage efficace. Toute l'épître a un seul objectif, équiper les Églises de Crète pour une évangélisation efficace, et cet objectif ne se relâche pas au moment des adieux. Paul donne d'abord des instructions personnelles à Tite (vv. 12-13). Lorsqu'Artémas ou Tychique arrivera pour prendre la relève du ministère sur place, Tite devra se hâter de rejoindre l'apôtre à Nicopolis pour y passer l'hiver. Ce détail révèle le souci pastoral de Paul&nbsp;: il ne retire pas Tite de Crète sans y pourvoir une relève, car c'est le bien de l'œuvre qui commande. D'Artémas on ne sait rien, sinon que Paul lui faisait confiance&nbsp;; Tychique, en revanche, était un collaborateur éprouvé, porteur des lettres aux Colossiens et aux Éphésiens.</p>
+      <p>Le deuxième geste, pourvoir au voyage de Zénas et d'Apollos (v. 13), est lui aussi une consigne missionnaire. Ces deux hommes étaient probablement les porteurs de la lettre. Zénas, docteur de la loi, et Apollos, enseignant des Écritures hors pair originaire d'Alexandrie (Ac 18.24-28), devaient poursuivre leur route, et Paul demande que rien ne leur manque. MacArthur y voit le dernier mot sur les compagnons de service&nbsp;: les aider avec empressement, pourvoir à leurs besoins spirituels comme matériels, car tous forment une même équipe au service du Royaume. Ce n'est pas une politesse mais une responsabilité, confiée ici à Tite lui-même, envers ceux qui annoncent la Parole.</p>
+      <p>Le verset 14 descend au niveau de l'assemblée. Il faut que les nôtres aussi apprennent à pratiquer de bonnes œuvres pour subvenir aux besoins pressants, afin qu'ils ne soient pas sans produire de fruits. Pour MacArthur, Paul le répète tout au long de la lettre (2.12&nbsp;; 3.1, 8)&nbsp;: l'homme naturel ne peut faire les choses de Dieu, et la grâce qui sauve devient le pédagogue qui forme le croyant à la piété. La grâce de Dieu enseigne (2.11-12), et cet enseignement se vérifie dans l'exercice concret de la générosité. Le but énoncé, ne pas demeurer sans fruit, tient au témoignage&nbsp;: une vie stérile ne rend pas bon témoignage à la puissance salvatrice de Dieu, alors que le fruit visible fait glorifier le Père (Mt 5.16). Le fruit n'est pas la cause du salut, il en est la preuve. Tout au long de Tite, MacArthur martèle la même articulation&nbsp;: le salut ne s'obtient jamais par les œuvres de justice que nous aurions faites (3.5), mais selon la miséricorde, par le bain de la régénération&nbsp;; et pourtant ceux qui ont cru s'appliquent à pratiquer de bonnes œuvres (3.8). Les œuvres sont le résultat du salut, jamais sa racine (note sur 2.14; cf. Ép 2.10).</p>
+      <p>Cette articulation écarte, en chaire, deux erreurs&nbsp;: croire qu'on peut être délivré du châtiment du péché tout en restant sous sa domination, et chercher à gagner Dieu par des rites ou des mérites. Contre la première, le verset 14 rappelle que le salut porte du fruit&nbsp;: là où la transformation ne se voit pas, il faut s'examiner pour savoir si l'on est vraiment sauvé, puis veiller à ce que le péché ne brouille pas l'évidence de la vie nouvelle. C'est tout l'enjeu de ce que MacArthur appelle la question de la seigneurie&nbsp;: à la conversion, y a-t-il ou non une transformation&nbsp;? Contre le légalisme judaïsant que Tite devait combattre en Crète (1.10-16; 3.9), le verset 14 maintient que ces œuvres viennent après le salut déjà reçu par grâce, comme son fruit zélé (2.14), non comme son prix. MacArthur précise que ces bonnes œuvres représentent un tremplin pour un témoignage efficace auprès des inconvertis&nbsp;: dans une île de menteurs et de ventres paresseux (1.12), des croyants laborieux, généreux et désintéressés rendaient l'Évangile crédible. La sanctification visible est au service de l'évangélisation.</p>
+      <p>La bénédiction finale (v. 15) referme la boucle. Tous ceux qui sont avec Paul saluent Tite&nbsp;; il faut saluer en retour ceux qui aiment fidèlement l'apôtre. Pour MacArthur, cet amour fidèle est le ciment qui tient tout ensemble&nbsp;: on pratique de bonnes œuvres pour les besoins pressants quand on s'aime fidèlement. Le dernier mot, que la grâce soit avec vous tous, n'est pas une formule de politesse&nbsp;: il reprend le terme qui ouvrait l'épître (1.4), et MacArthur y voit la condition de tout le reste, car sans la grâce de Dieu rien de cela ne peut se faire. C'est cette même grâce qu'il reconnaît, en 2.11, incarnée en Christ lui-même, le don suprême. En plaçant ce mot en clôture, juste après l'exhortation au fruit, Paul scelle l'ordre inviolable de son Évangile&nbsp;: la grâce d'abord, source du salut et puissance de la vie nouvelle&nbsp;; le fruit ensuite, preuve et non cause. Jusque dans les détails de la vie missionnaire, voyages, dons, salutations, c'est la même grâce qui enseigne, transforme et fructifie.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la conclusion, de l'appel jumeau aux bonnes œuvres (3.8) à leur racine dans le rachat (2.14), du contrepoint du salut par grâce (3.5) à l'arrière-plan agricole de l'arbre reconnu à son fruit (Mt 7.16-20).</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 3.8</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Que ceux qui ont cru en Dieu s'appliquent à pratiquer de bonnes œuvres&nbsp;: reprend, deux versets plus haut, le même appel que le v. 14 (apprendre à pratiquer de bonnes œuvres). MacArthur lie les deux&nbsp;: les œuvres sont bonnes et utiles aux hommes, fruit de la foi déjà reçue, jamais son prix.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 2.14</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Christ s'est donné pour se faire un peuple purifié et zélé pour les bonnes œuvres&nbsp;: énonce la racine théologique du v. 14. Les œuvres ne sont pas un moyen d'acquérir le salut, elles en sont le résultat (note JMA), produit du rachat opéré par Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 3.5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Il nous a sauvés, non à cause des œuvres de justice que nous aurions faites&nbsp;: le contrepoint indispensable du v. 14. Le fruit (œuvres) suit le salut par grâce (bain de la régénération), il ne le précède jamais. Régénération baptismale réfutée&nbsp;: c'est l'Esprit, non un rite, qui régénère.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Nous sommes son ouvrage, créés en Jésus-Christ pour de bonnes œuvres que Dieu a préparées d'avance&nbsp;: confirme que le fruit du v. 14 est le but de la création nouvelle, conséquence du salut par grâce de Ép 2.8-9, et non sa cause.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jacques 2.14-26</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La foi sans les œuvres est morte&nbsp;: éclaire le qu'ils ne soient pas sans fruit (<i>akarpos</i>). Pour MacArthur, Dieu ne justifie pas sans sanctifier&nbsp;: là où la transformation ne se voit pas, il faut s'examiner pour savoir si l'on est vraiment sauvé.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 7.16-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">C'est à leurs fruits que vous les reconnaîtrez&nbsp;; tout arbre qui ne porte pas de bon fruit est coupé&nbsp;: l'image agricole derrière <i>akarpos</i> (sans fruit). Le fruit est le critère visible de la réalité intérieure, écho du diagnostic de Tite 1.16.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">3 Jean 5-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Tu agis fidèlement en pourvoyant au voyage des frères&nbsp;: nous devons soutenir de tels hommes pour être ouvriers avec eux pour la vérité. Parallèle exact du <i>propempō</i> de Tite 3.13 (pourvoir au voyage de Zénas et Apollos), devoir de soutenir les missionnaires.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 15.24</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Que vous m'aidiez à poursuivre mon voyage&nbsp;: Paul emploie le même verbe <i>propempō</i> pour le soutien matériel des missionnaires par les Églises, arrière-plan de la consigne donnée à Tite au v. 13.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la conclusion. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le fruit, preuve et non cause du salut</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Afin qu'ils ne soient pas sans produire de fruits (v. 14, <i>akarpos</i>)&nbsp;: Paul veut que les croyants portent du fruit, repris de l'appel à s'appliquer aux bonnes œuvres (3.8) et fondé sur le rachat de 2.14 et le salut par grâce de 3.5.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, qui refuse en chaire toute justification sans sanctification, les bonnes œuvres ne sont jamais le prix du salut (3.5) mais son fruit nécessaire (2.14; Ép 2.10). Pour votre assemblée, cela tranche autant l'easy-believism que le légalisme&nbsp;: une foi durablement stérile est à interroger comme une foi morte (Ja 2.17), mais le fruit que l'on attend pousse sur la racine de la grâce déjà reçue, jamais avant elle.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Les bonnes œuvres s'apprennent</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Il faut que les nôtres aussi apprennent à pratiquer de bonnes œuvres (v. 14, <i>manthanō</i>)&nbsp;: le fruit n'est pas spontané, il s'acquiert par instruction et par pratique, comme un disciple apprend de son maître.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'éthique de la grâce qui enseigne (2.11-12), la sanctification est un apprentissage discipliné, non une éclosion automatique. Pour votre assemblée, cela appelle un enseignement délibéré de la générosité et du service concret&nbsp;: on forme des croyants laborieux comme on forme des disciples, par l'exemple (2.7) et l'habitude, surtout là où le vieil homme tirait vers la paresse (1.12).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le soutien des ouvriers de l'Évangile</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Aie soin de pourvoir au voyage de Zénas et d'Apollos, en sorte que rien ne leur manque (v. 13, <i>propempō</i>)&nbsp;; subvenir aux besoins pressants (v. 14)&nbsp;: l'Église assume la charge matérielle de ses prédicateurs itinérants.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'ecclésiologie réformée, l'assemblée doit pourvoir à ceux qui annoncent la Parole (cf. 3 Jn 5-8; 1 Co 9.14), afin que l'œuvre ne dépende ni des incroyants ni de la mendicité. Pour votre assemblée, soutenir missionnaires et serviteurs n'est pas une option pieuse mais une bonne œuvre commandée, expression concrète et visible de la foi qui agit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce, premier et dernier mot</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Que la grâce soit avec vous tous (v. 15)&nbsp;: le dernier mot de l'épître est celui qui l'ouvrait (1.4) et qui commande toute sa doctrine du salut (2.11; 3.7).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, la grâce manifestée en 2.11 est Christ lui-même, don suprême offert à l'humanité déchue, et la grâce souhaitée au verset 15 est la condition de tout le reste. Pour votre assemblée, placer la grâce en clôture, juste après l'appel au fruit, scelle l'ordre inviolable de l'Évangile&nbsp;: la grâce d'abord, source et puissance&nbsp;; le fruit ensuite, preuve et non prix. Toute vie chrétienne se tient entre ces deux occurrences du même mot.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Les détails ordinaires au service de la mission</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Voyages (v. 12), relève du ministère (v. 12), dons matériels (v. 13), salutations dans la foi (v. 15)&nbsp;: la conclusion logistique sert le but unique de l'épître, équiper la Crète pour une évangélisation efficace.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la lecture de MacArthur, ces bonnes œuvres concrètes sont un tremplin pour le témoignage auprès des inconvertis. Pour votre assemblée, la sainteté ne se loge pas d'abord dans le spectaculaire mais dans le quotidien fidèle&nbsp;: organiser une relève, soutenir un frère en voyage, saluer les croyants. Dans un monde qui observe (1.12), ces gestes ordinaires rendent l'Évangile crédible.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le verset 14 dit que les croyants doivent apprendre à pratiquer de bonnes œuvres&nbsp;: si le fruit s'acquiert par instruction et par pratique, votre assemblée enseigne-t-elle délibérément le service et la générosité, ou attend-elle qu'ils surgissent d'eux-mêmes?</li>
+      <li>Paul veut que les nôtres ne soient pas sans fruit (<i>akarpos</i>). Comment prêcher cet appel au fruit sans glisser dans le légalisme (le fruit comme prix du salut) ni dans l'easy-believism (le fruit comme accessoire facultatif)?</li>
+      <li>MacArthur fait des bonnes œuvres le résultat du salut, jamais sa cause (3.5; 2.14). Comment articuler clairement, devant vos auditeurs, que la grâce précède le fruit, alors que la péricope les place côte à côte?</li>
+      <li>Le soin pris à pourvoir au voyage de Zénas et d'Apollos (v. 13) fait du soutien des ouvriers une bonne œuvre commandée. Votre assemblée perçoit-elle le soutien des missionnaires comme un devoir de la foi ou comme une générosité optionnelle?</li>
+      <li>Paul ne retire Tite de la Crète qu'après avoir prévu une relève (v. 12). Que dit ce souci pastoral sur la manière de gérer les transitions de ministère dans une Église, pour que l'œuvre passe avant les personnes?</li>
+      <li>La conclusion de l'épître ne traite que de détails ordinaires (voyages, dons, saluts), et pourtant elle sert le but missionnaire de toute la lettre. Comment aider vos auditeurs à voir la sainteté dans le quotidien fidèle plutôt que dans le seul spectaculaire?</li>
+      <li>L'épître s'ouvre et se ferme sur le mot grâce (1.4; 3.15). Que change-t-il, pour la prédication de Tite 3.12-15, de lire l'appel au fruit comme encadré, des deux côtés, par la grâce souveraine de Dieu?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Tite 3.12-15 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Tite : équiper l'Église pour le témoignage&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Tite-3-12-15.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

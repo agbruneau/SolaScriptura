@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Romains 1.8-15 · Une foi connue dans le monde entier · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Romains 1.8-15 : le cœur pastoral et missionnaire de Paul ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Romains 1.8-15</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Romains 1.8-15</p>
+    <h1 class="hero__title">Une foi connue dans le monde entier</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Je rends d'abord grâces à mon Dieu par Jésus-Christ, au sujet de vous tous, de ce que votre foi est renommée dans le monde entier.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Romains 1.8 · NEG</p>
+    <p class="hero__series">Série : <b>La justice de Dieu</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-16 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Romains 1.8-15</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je rends d'abord grâces à mon Dieu par Jésus-Christ, au sujet de vous tous, de ce que votre foi est renommée dans le monde entier.</p>
+        <cite class="verse__ref">Romains 1.8 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Ainsi j'ai un vif désir de vous annoncer aussi l'Évangile, à vous qui êtes à Rome.</p>
+        <cite class="verse__ref">Romains 1.15 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Romains 1.8-15 referme la grande introduction de l'épître : Paul passe de la formule liturgique à l'épanchement pastoral, et son cœur missionnaire prépare directement l'énoncé de la thèse, la justice de Dieu révélée par la foi.</p>
+    <div class="body">
+      <p>Notre péricope (1.8-15) referme la grande introduction de l'épître. Après l'adresse et la salutation (1.1-7), où Paul s'est présenté comme serviteur appelé à l'apostolat et a déjà condensé l'Évangile autour du Fils, né de la postérité de David selon la chair et déclaré Fils de Dieu par sa résurrection, l'apôtre passe de la formule liturgique à l'épanchement pastoral. Il rend grâces, prie, expose ses projets contrariés et déclare sa dette de l'Évangile. Ce mouvement n'est pas un simple préambule de courtoisie : il prépare directement l'énoncé de la thèse en 1.16-17, la justice de Dieu révélée par la foi. Le cœur missionnaire qui bat dans ces versets explique pourquoi Paul, sans honte de l'Évangile, brûle d'annoncer à Rome même la puissance de Dieu pour le salut de quiconque croit.</p>
+      <p>Le passage suit une progression intérieure simple et chaude. Paul commence par l'action de grâces pour la foi des Romains renommée dans le monde entier (v. 8), prend Dieu à témoin de ses prières incessantes (v. 9-10), dévoile son désir de les voir afin de leur communiquer un don spirituel et d'être encouragé avec eux par la foi commune (v. 11-12), avoue le projet maintes fois formé mais jusqu'ici empêché (v. 13), se déclare débiteur envers tous, Grecs et barbares, savants et ignorants (v. 14), puis conclut sur son vif désir de leur annoncer l'Évangile (v. 15). La structure révèle un homme façonné par la grâce souveraine : sa reconnaissance, ses prières et ses projets sont tous suspendus à la volonté de Dieu (v. 10), et sa hâte d'évangéliser découle d'une obligation reçue, non d'un zèle d'amour-propre.</p>
+      <p>Il faut noter que l'Église de Rome n'avait jamais reçu d'enseignement apostolique direct : Paul ne l'avait ni fondée ni visitée. Cette section fonde donc sa légitimité non sur un lien antérieur mais sur le mandat divin de prêcher Jésus aux païens (1.5; Actes 9.15). La tendresse et l'humilité de Paul, qui se dit prêt à être lui-même encouragé par la foi des Romains (v. 12), désamorcent par avance tout soupçon de paternalisme et préparent un terrain doctrinalement sain à recevoir le chef-d'œuvre de l'Évangile de la grâce qui va suivre.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Romains 1.8 · 1.13 · 1.14</p>
+    </header>
+    <p class="lead">Rome, capitale de l'Empire et centre du monde habité, comptait plus d'un million d'habitants : la réputation de foi de l'Église romaine rayonnait naturellement dans tout l'Empire, et les catégories sociales du verset 14 reflètent la vision du monde gréco-romaine.</p>
+    <div class="body">
+      <p>Rome, capitale de l'Empire et centre du monde habité, comptait au temps de Paul plus d'un million d'habitants, esclaves nombreux compris. Ce qui s'y passait était mondialement connu, de sorte que la réputation de foi de l'Église romaine rayonnait naturellement dans tout l'Empire (v. 8). Le témoignage de cette assemblée était si vigoureux qu'en l'an 49 l'empereur Claude expulsa les Juifs de Rome à cause des troubles suscités par un certain Chrestus, allusion évidente à Christ (cf. Actes 18.2). L'Église fut vraisemblablement fondée par des Juifs convertis lors de la Pentecôte (cf. Actes 2.10), de retour dans la capitale; à la mort de Claude, beaucoup revinrent, de sorte que l'assemblée mêlait croyants d'origine juive et croyants d'origine païenne, ces derniers désormais majoritaires (parmi les autres nations, v. 13).</p>
+      <p>Paul rédige l'épître depuis Corinthe, vers la fin de son troisième voyage missionnaire, probablement en l'an 56, alors qu'il s'apprête à monter à Jérusalem porter aux croyants pauvres la collecte recueillie en Macédoine et en Achaïe. Son regard est tourné vers l'Occident : il espère gagner l'Espagne en passant par Rome (15.24, 28). L'empêchement dont il parle au v. 13 est providentiel et répété : Paul avait souvent formé le projet d'aller à Rome mais en avait été détourné, et c'est précisément à cet empêchement orchestré par la volonté souveraine de Dieu (v. 10) que le monde doit ce traité écrit de l'Évangile. Son désir se réalisa finalement, mais sous une forme inattendue : il vint à Rome enchaîné, et y recueillit du fruit jusque dans la maison de l'empereur (cf. Philippiens 4.22).</p>
+    </div>
+    <p>Trois réalités du verset 14 éclairent la portée universelle de la dette de Paul.</p>
+    <ul class="points">
+      <li><b>Les Grecs, l'élite cultivée.</b> Les Grecs désignent les hommes ayant adopté la langue, la culture et l'éducation grecques, l'élite cultivée éprise de philosophie, tenue pour savante et sage; Paul emploie parfois ce mot pour désigner tous les païens. En se déclarant débiteur de ce groupe, l'apôtre refuse de réserver l'Évangile aux seuls esprits préparés à le recevoir : la sagesse du monde n'est pas un titre devant la grâce de Dieu.</li>
+      <li><b>Les barbares, les exclus méprisés.</b> Les barbares étaient à l'origine un terme moqueur forgé par les Grecs pour qualifier tous ceux qui ne parlaient pas leur langue, dont le discours inintelligible sonnait comme un bredouillement, bar-bar-bar; le mot en vint à désigner les non-Grecs jugés incultes et sans instruction. Paul se déclare tout autant débiteur d'eux : l'Évangile doit atteindre les exclus du monde comme son élite.</li>
+      <li><b>L'absence de favoritisme divin.</b> En se déclarant débiteur des deux groupes, savants et ignorants, Paul affirme que Dieu ne fait preuve d'aucun favoritisme et que l'Évangile doit atteindre à la fois l'élite du monde et ses exclus (cf. Jean 4.4-42). Aucune barrière sociale, culturelle ou intellectuelle ne suspend l'obligation reçue de transmettre la grâce.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du passage : de l'action de grâces (<i>eucharisteo</i>) pour la foi (<i>pistis</i>) authentique des Romains, au culte intérieur que Paul rend (<i>latreuo</i>), au don spirituel (<i>charisma pneumatikon</i>) qu'il veut communiquer, jusqu'à la dette de l'Évangile dont il se reconnaît débiteur (<i>opheiletes</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">grâces</span><span class="mot-gr">eucharisteo</span></th>
+            <td class="col-sens">rendre grâces, exprimer sa reconnaissance, savoir gré</td>
+            <td>Paul ouvre presque toutes ses lettres par une action de grâces à propos de ceux qui les recevront (cf. 1 Corinthiens 1.4), seule l'épître aux Galates faisant exception, leur abandon du véritable Évangile l'ayant empêché de tout éloge (Galates 1.6-12). Ici l'action de grâces est adressée à mon Dieu et passe par Jésus-Christ, unique médiateur : la reconnaissance du croyant ne monte au Père que par le Fils. Son objet est la foi des Romains, c'est-à-dire l'authenticité de leur salut, œuvre de Dieu et non mérite humain, ce qui rend la gratitude tout entière tournée vers le donateur de la grâce.</td>
+            <td><span class="trad"><span><b>S21</b> Je dis tout d'abord toute ma reconnaissance</span><span><b>NEG79</b> Je rends d'abord grâces</span><span><b>Darby</b> je rends grâces à mon Dieu</span><span><b>LSG</b> Je rends d'abord grâces</span><span><b>KJF</b> Premièrement, je remercie mon Dieu</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">foi</span><span class="mot-gr">pistis</span></th>
+            <td class="col-sens">confiance, conviction ferme, appui de tout l'être sur la fidélité de son objet</td>
+            <td>Au v. 8 le mot vise l'authenticité du salut des Romains, leur foi renommée dans le monde entier. Pour MacArthur, la foi qui sauve est surnaturelle, un don de la grâce que Dieu produit dans le cœur (cf. Éphésiens 2.8), seul moyen de s'approprier la véritable justice. Elle comporte trois éléments : l'intelligence comprend l'Évangile, le cœur en accepte la vérité en regrettant son péché et en se réjouissant de la miséricorde, la volonté se soumet à Christ comme Seigneur. La foi sincère produit toujours l'obéissance et persévère; au v. 12 cette même foi est dite commune à Paul et aux Romains, fondement d'un encouragement mutuel entre croyants.</td>
+            <td><span class="trad"><span><b>S21</b> votre foi</span><span><b>NEG79</b> votre foi</span><span><b>Darby</b> votre foi</span><span><b>LSG</b> votre foi</span><span><b>KJF</b> votre foi</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">je sers</span><span class="mot-gr">latreuo</span></th>
+            <td class="col-sens">rendre un service religieux, offrir un culte, servir une divinité</td>
+            <td>Dans le Nouveau Testament ce verbe désigne toujours un service religieux, parfois traduit rendre un culte. Paul sert Dieu en son esprit dans l'Évangile de son Fils : un culte intérieur, authentique et sincère, et non le fruit d'une peur servile ou d'un sentiment légaliste d'obligation. L'apôtre avait connu de près la pratique superficielle et hypocrite des pharisiens ainsi que l'hédonisme superstitieux de l'idolâtrie païenne; son service à lui jaillit d'un cœur régénéré (cf. Philippiens 3.3; 2 Timothée 1.3). Le terme prépare le sacrifice vivant et le culte raisonnable de 12.1.</td>
+            <td><span class="trad"><span><b>S21</b> que je sers de tout mon cœur</span><span><b>NEG79</b> que je sers en mon esprit</span><span><b>Darby</b> que je sers dans mon esprit</span><span><b>LSG</b> que je sers en mon esprit</span><span><b>KJF</b> que je sers avec mon esprit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">don spirituel</span><span class="mot-gr">charisma pneumatikon</span></th>
+            <td class="col-sens">don de grâce, aptitude conférée gratuitement par l'Esprit de Dieu</td>
+            <td>Le mot <i>charisma</i> signifie don de la grâce, une capacité dont la source est l'Esprit de Dieu. Dans l'épître aux Romains il décrit tour à tour Christ lui-même (5.15-16), les bénédictions générales de Dieu (11.29) et les dons précis accordés aux membres du corps pour l'édification de tous (12.6-8). Paul voulait probablement englober ici ces trois sens. Il se reprend aussitôt (v. 12) : plutôt que de donner d'en haut, il désire un encouragement réciproque, signe d'une humilité sincère qui ne se place pas au-dessus de l'assemblée mais à ses côtés dans la foi commune.</td>
+            <td><span class="trad"><span><b>S21</b> quelque don spirituel</span><span><b>NEG79</b> quelque don spirituel</span><span><b>Darby</b> quelque don de grâce spirituel</span><span><b>LSG</b> quelque don spirituel</span><span><b>KJF</b> quelque don spirituel</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">je me dois</span><span class="mot-gr">opheiletes</span></th>
+            <td class="col-sens">débiteur, celui qui est tenu par une dette, obligé</td>
+            <td>Paul se déclare débiteur envers les Grecs et les barbares, les savants et les ignorants. Cette dette n'est pas contractée envers les hommes qui lui auraient prêté quelque chose, mais envers Dieu (cf. 1 Corinthiens 9.16-17) : l'apôtre a reçu le mandat divin de faire connaître Jésus aux païens (1.5; Actes 9.15), et ce mandat l'oblige. Il ne s'agit donc pas d'un sentiment, mais d'une contrainte de l'appel : avoir reçu gratuitement l'Évangile crée l'obligation de le transmettre à tous, sans distinction de rang ni de culture, car Dieu ne fait pas de favoritisme.</td>
+            <td><span class="trad"><span><b>S21</b> Je me dois</span><span><b>NEG79</b> Je me dois</span><span><b>Darby</b> Je suis débiteur</span><span><b>LSG</b> Je me dois</span><span><b>KJF</b> Je suis débiteur</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Romains 1.8-15</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Romains 1.8-15 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Rm 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-05</span></th>
+            <td><a href="https://www.gty.org/sermons/45-05" target="_blank" rel="noopener">Marks of True Spiritual Service, Part 1</a></td>
+            <td>Romains 1.8-10</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-06</span></th>
+            <td><a href="https://www.gty.org/sermons/45-06" target="_blank" rel="noopener">Marks of True Spiritual Service, Part 2</a></td>
+            <td>Romains 1.10-12</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-07</span></th>
+            <td><a href="https://www.gty.org/sermons/45-07" target="_blank" rel="noopener">Marks of True Spiritual Service, Part 3</a></td>
+            <td>Romains 1.13-16</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit 1.8-15 comme un exposé des principes du comportement spirituel, où Paul ouvre son cœur : dix marques d'un vrai service spirituel, rendu en esprit et non par pure forme, un esprit reconnaissant, soucieux, disponible, soumis, aimant, humble, fécond, obéissant, empressé et hardi (v. 8-16).</p>
+    <div class="body">
+      <p>MacArthur lit 1.8-15 comme un exposé des principes du comportement spirituel : Paul, qui écrit à une Église qui ne le connaît pas, lui ouvre son cœur et montre ce qu'est servir Dieu en esprit, de l'intérieur. Tout commence par l'action de grâces (v. 8) : Paul rend grâces à son Dieu par Jésus-Christ au sujet de la foi des Romains, foi renommée dans le monde entier. Ce qu'il célèbre n'est pas une performance religieuse mais l'authenticité de leur salut, œuvre de Dieu seul. Le réflexe premier de l'apôtre devant des croyants n'est ni la critique ni l'instruction, mais la reconnaissance envers le Dieu qui les a sauvés; sa gratitude monte au Père par le Fils, unique médiateur, soulignant que le salut tout entier, son commencement comme sa renommée, vient d'en haut.</p>
+      <p>Viennent ensuite l'intercession, marque d'un esprit soucieux (v. 9), puis la disponibilité et la soumission (v. 10). Paul prend Dieu à témoin, formule solennelle qui souligne la vérité de ses dires, qu'il fait sans cesse mention des Romains, demandant continuellement, par la volonté de Dieu, le bonheur d'aller vers eux. MacArthur insiste sur ce par sa volonté : c'est l'orchestration souveraine par Dieu des circonstances de Paul (cf. Matthieu 6.10; Actes 21.11-14). L'apôtre ne réclame pas sa visite comme un droit; il la suspend au décret divin. Son service même se dit en mon esprit dans l'Évangile, un culte intérieur et sincère, à l'opposé du légalisme pharisien et de l'idolâtrie païenne qu'il avait connus. La prière de Paul n'est pas l'arme d'une volonté autonome cherchant à fléchir Dieu, mais l'expression d'un cœur soumis qui désire ce que Dieu voudra.</p>
+      <p>Suivent l'esprit aimant, qui veut donner, et l'esprit humble (v. 11-12). Paul veut communiquer aux Romains quelque don spirituel afin qu'ils soient affermis. Le mot <i>charisma</i>, don de la grâce, recouvre ici sans doute à la fois Christ, les bénédictions divines et les dons précis du corps. Mais aussitôt l'apôtre se corrige avec une humilité remarquable : ou plutôt, afin que nous soyons encouragés ensemble par la foi qui nous est commune. MacArthur y voit l'humilité sincère de Paul (cf. 1 Pierre 5.3-4) : le grand apôtre des nations se place au même rang que ces croyants qu'il ne connaît pas encore et confesse avoir besoin, lui aussi, d'être fortifié par leur foi. La grâce produit cette réciprocité; elle ne crée pas des dispensateurs au-dessus de la mêlée mais des frères dans la foi commune.</p>
+      <p>Les dernières marques sont un esprit fécond, obéissant et empressé (v. 13-15), avant l'esprit hardi du verset 16. Paul a souvent formé le projet d'aller à Rome pour y recueillir du fruit, c'est-à-dire, selon MacArthur, surtout de nouveaux convertis (cf. 16.5), comme parmi les autres nations; mais il en a été empêché jusqu'ici. Cet empêchement n'est pas un échec, c'est la providence : Dieu retardait la venue de Paul et préparait par là le traité écrit que serait l'épître. De cette obligation reçue jaillit la déclaration de dette (v. 14) : Paul se doit aux Grecs et aux barbares, aux savants et aux ignorants. Avoir reçu gratuitement le mandat de prêcher Jésus aux païens (1.5) l'oblige envers tous, sans favoritisme : l'Évangile doit atteindre l'élite cultivée comme les exclus méprisés. D'où le vif désir d'annoncer l'Évangile à Rome même (v. 15), qui se déverse directement dans la thèse : car je n'ai point honte de l'Évangile, puissance de Dieu pour le salut de quiconque croit (v. 16). Le cœur pastoral et missionnaire de Paul n'est donc pas un préambule aimable, c'est le tremplin de la grande démonstration de la justice de Dieu.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope : du sommet vers lequel tout converge, la justice de Dieu par la foi, aux parallèles missionnaires de Paul, jusqu'aux échos sur la foi-don et la volonté souveraine de Dieu.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 1.16-17</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La thèse vers laquelle tout le passage converge : l'Évangile, puissance de Dieu pour le salut de quiconque croit, où se révèle la justice de Dieu par la foi; le vif désir d'annoncer du v. 15 débouche directement sur ce sommet.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 15.22-24</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul reprend et précise l'empêchement du v. 13 : longtemps retenu, il projette désormais de visiter Rome en route vers l'Espagne; même cœur missionnaire, même soumission à la providence.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 9.15</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'élection de Paul comme instrument choisi pour porter le nom de Christ aux nations fonde la dette du v. 14 : le mandat divin reçu crée l'obligation d'annoncer l'Évangile à tous.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 9.16-17</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Malheur à moi si je n'annonce pas l'Évangile : même conscience d'une nécessité imposée par l'appel, éclairant le je me dois du v. 14 comme une obligation envers Dieu et non un simple élan.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 4.21-22</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le fruit espéré à Rome (v. 13) se réalisa dans la captivité de Paul : des saints jusque dans la maison de César, preuve que l'empêchement providentiel servit l'expansion de l'Évangile.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 1.7-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La foi d'une Église rayonnant en tout lieu, à l'image de la foi des Romains renommée dans le monde entier (v. 8) : le témoignage authentique se propage de lui-même.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.8-9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le salut comme don de la grâce par la foi, non par les œuvres : fonde la lecture du v. 8, où la foi des Romains célébrée par Paul est l'œuvre de Dieu, objet d'action de grâces et non de félicitation humaine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 6.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Que ta volonté soit faite : éclaire le par sa volonté du v. 10, où Paul suspend ses projets de voyage au décret souverain de Dieu plutôt qu'à son propre désir.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La souveraineté de Dieu sur les projets du serviteur</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul demande d'aller à Rome par sa volonté (v. 10) et avoue avoir été empêché jusqu'ici (v. 13); ses prières et ses plans sont suspendus au décret divin.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, le par sa volonté désigne l'orchestration souveraine par Dieu de toutes les circonstances de Paul (cf. Actes 21.11-14). Pour l'assemblée : la providence n'est pas un obstacle à contourner mais le cadre dans lequel le croyant prie et planifie; l'empêchement même de Paul a donné au monde l'épître aux Romains. Le serviteur fidèle tient ses projets d'une main ouverte, certain que Dieu accomplit son dessein souverain par les portes qu'il ouvre comme par celles qu'il ferme.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi authentique, œuvre de Dieu et objet d'action de grâces</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul rend grâces à Dieu au sujet de la foi des Romains, renommée dans le monde entier (v. 8); cette foi est l'authenticité de leur salut.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur tient que la foi qui sauve est un don de la grâce produit par Dieu dans le cœur (Éphésiens 2.8), non un mérite humain. Pour l'assemblée : quand nous voyons une foi vivante chez d'autres, le réflexe juste est de remercier Dieu, car c'est lui qui sauve, et non de féliciter l'homme. La gratitude tournée vers le donateur, plutôt que l'éloge tourné vers le croyant, garde l'Évangile de la grâce intact et préserve l'humilité de toute l'Église.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La dette de l'Évangile et l'absence de favoritisme divin</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Je me dois aux Grecs et aux barbares, aux savants et aux ignorants (v. 14); d'où le vif désir d'annoncer l'Évangile à tous (v. 15).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Cette dette est une obligation envers Dieu née du mandat reçu (1.5; Actes 9.15; cf. 1 Corinthiens 9.16-17), non un sentiment. MacArthur relève que Dieu ne fait aucun favoritisme : l'Évangile doit atteindre l'élite cultivée comme les exclus méprisés. Pour l'assemblée : avoir reçu gratuitement la grâce crée le devoir de la transmettre sans acception de personne, riche ou pauvre, instruit ou simple; aucune barrière sociale, culturelle ou intellectuelle ne dispense l'Église de sa mission.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le culte intérieur et sincère opposé à la religion formaliste</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu, que je sers en mon esprit dans l'Évangile de son Fils, m'est témoin (v. 9).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le verbe servir désigne ici un service religieux, un culte rendu en esprit. MacArthur souligne que ce culte n'est pas le fruit d'une peur servile ni d'un légalisme, contrairement à la pratique pharisienne hypocrite et à l'idolâtrie païenne superstitieuse que Paul avait connues. Pour l'assemblée : Dieu ne se contente pas d'un service extérieur; il veut un cœur régénéré qui l'adore en esprit et en vérité. Ce culte intérieur, annoncé ici, trouvera sa pleine expression dans le sacrifice vivant de 12.1.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'humilité du serviteur et la communion de la foi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ou plutôt, afin que nous soyons encouragés ensemble au milieu de vous par la foi qui nous est commune, à vous et à moi (v. 12).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Paul se reprend pour ne pas se placer au-dessus des Romains : il attend d'être lui-même encouragé par leur foi. MacArthur y lit l'humilité sincère de l'apôtre (cf. 1 Pierre 5.3-4). Pour l'assemblée : même les plus grands serviteurs de Christ demeurent membres du même corps et ont besoin de l'édification de leurs frères; la grâce ne crée pas une caste de dispensateurs intouchables mais une communion réciproque où chacun affermit l'autre par la foi commune.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Quand votre assemblée découvre une foi vivante chez d'autres croyants, son premier mouvement est-il de rendre grâces à Dieu, qui sauve, ou de féliciter l'homme? Comment 1.8 garde-t-il l'Évangile de la grâce de toute glorification humaine?</li>
+      <li>Paul suspend ses projets de voyage à la volonté souveraine de Dieu (v. 10) et reçoit l'empêchement (v. 13) comme une providence. Où, dans votre ministère, un empêchement frustrant pourrait-il être l'instrument par lequel Dieu accomplit un meilleur dessein?</li>
+      <li>La dette de l'Évangile (v. 14) vise les savants et les ignorants, les Grecs et les barbares. Quelles catégories sociales, culturelles ou intellectuelles votre assemblée a-t-elle tendance à exclure implicitement de sa mission, et comment l'absence de favoritisme divin la corrige-t-elle?</li>
+      <li>Paul sert Dieu en son esprit (v. 9), par opposition au formalisme pharisien et à la superstition païenne. Votre culte est-il un service intérieur et sincère du cœur régénéré, ou risque-t-il de glisser dans une religion extérieure et légaliste?</li>
+      <li>L'humilité de Paul, qui attend d'être encouragé par la foi des Romains (v. 12), interpelle-t-elle ceux qui exercent un ministère? Comment éviter la posture du dispensateur intouchable et cultiver la communion réciproque de la foi commune?</li>
+      <li>Le vif désir d'annoncer l'Évangile (v. 15) débouche aussitôt sur l'absence de honte de l'Évangile (v. 16). Votre passion d'évangéliser découle-t-elle d'une obligation reçue de Dieu, comme chez Paul, ou d'un simple zèle d'amour-propre que la persécution ferait taire?</li>
+      <li>Si votre assemblée retient seulement la chaleur pastorale de ces versets sans voir qu'ils préparent la thèse de la justice de Dieu par la foi (v. 16-17), a-t-elle saisi pourquoi Paul brûlait précisément d'annoncer cet Évangile-là, et non un message édulcoré?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Romains 1.8-15 · 2026-06-16 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La justice de Dieu&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Romains-1-8-15.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

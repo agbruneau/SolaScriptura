@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galates 6.11-18 · Que la croix seule · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Galates 6.11-18 : que la croix seule soit l'objet de toute gloire ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Galates 6.11-18</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Galates 6.11-18</p>
+    <h1 class="hero__title">Que la croix seule</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Loin de moi la pensée de me glorifier d'autre chose que de la croix de notre Seigneur Jésus-Christ.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Galates 6.14 · NEG</p>
+    <p class="hero__series">Série : <b>Galates : l'Évangile de la grâce</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Galates 6.11-18</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Pour ce qui me concerne, loin de moi la pensée de me glorifier d'autre chose que de la croix de notre Seigneur Jésus-Christ, par qui le monde est crucifié pour moi, comme je le suis pour le monde!</p>
+        <cite class="verse__ref">Galates 6.14 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car ce n'est rien d'être circoncis ou incirconcis; ce qui est quelque chose, c'est d'être une nouvelle création.</p>
+        <cite class="verse__ref">Galates 6.15 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Galates 6.11-18 est la conclusion incandescente de l'épître : Paul saisit la plume de sa propre main pour ramener toute la lettre à un seul point fixe, la croix de notre Seigneur Jésus-Christ, seul objet légitime de toute gloire.</p>
+    <div class="body">
+      <p>Galates 6.11-18 forme la conclusion de l'épître (plan de MacArthur : III.E, Conclusion, 6.11-18) et constitue, selon ses notes, l'attaque rhétorique finale de Paul contre la doctrine et les motivations des judaïsants, doublée d'une affirmation de la pureté de ses propres mobiles à prêcher le véritable Évangile. L'apôtre saisit la plume de sa propre main (6.11), abandonnant le scribe auquel il dictait habituellement, pour livrer un épilogue qui n'est pas un simple au revoir mais le résumé incandescent de toute la lettre. Après six chapitres consacrés à défendre la justification par la foi seule contre l'ajout de la circoncision et des œuvres de la loi, Paul ramène tout à un seul point fixe : la croix de notre Seigneur Jésus-Christ. La péricope oppose terme à terme deux mondes : celui des judaïsants, qui veulent se glorifier dans la chair des convertis et fuir la persécution liée à la croix, et celui de Paul, qui ne se glorifie que de cette croix par laquelle le monde lui est crucifié.</p>
+      <p>Le passage se découpe nettement. D'abord les mobiles des faux docteurs démasqués (6.12-13) : ils contraignent à la circoncision pour se rendre agréables selon la chair, pour éviter d'être persécutés à cause de la croix de Christ, et pour se glorifier dans la chair de leurs prosélytes, alors qu'ils n'observent même pas la loi qu'ils imposent. Puis le contraste central avec la gloire de Paul (6.14-15) : loin de lui la pensée de se glorifier d'autre chose que de la croix, car ce n'est rien d'être circoncis ou incirconcis, mais ce qui compte, c'est d'être une nouvelle création. Enfin la bénédiction finale (6.16-18) : paix et miséricorde sur tous ceux qui suivront cette règle, et sur l'Israël de Dieu; l'avertissement que Paul porte sur son corps les marques de Jésus; et le salut de grâce qui scelle la lettre. L'idée maîtresse est limpide : que la croix seule soit l'objet de toute gloire, car elle seule fait la nouvelle création.</p>
+      <p>Cette conclusion n'est pas un appendice : elle commande la lecture de l'épître entière. Tout ce que Paul a soutenu, de l'anathème de 1.8-9 jusqu'au fruit de l'Esprit de 5.22-23, converge ici vers la croix. La paix et la miséricorde, résultats du salut, ne reposent pas sur la règle de la loi mais sur cette règle nouvelle : la croix et la nouvelle création qu'elle produit. Le thème de la lettre se trouve ainsi scellé, la grâce ayant le premier et le dernier mot (1.3; 6.18).</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Galates 6.11 · 6.12-13 · 6.17</p>
+    </header>
+    <p class="lead">Le geste de Paul prenant la plume (6.11), l'enjeu de la circoncision comme frontière sacrée de l'alliance, et les <i>stigmata</i> gravés dans sa chair éclairent un épilogue où tout oppose la marque qui protège aux marques qui prouvent l'appartenance à Jésus.</p>
+    <div class="body">
+      <p>Le geste de Paul prenant la plume (6.11) éclaire la pratique épistolaire du Ier siècle. La plupart de ses lettres étaient dictées à un secrétaire, l'<i>amanuensis</i> (cf. Tertius en Romains 16.22), et Paul n'ajoutait souvent qu'une brève salutation de sa main pour authentifier le document contre les faux (1 Corinthiens 16.21; Colossiens 4.18; 2 Thessaloniciens 3.17). Ici, selon la note de MacArthur, deux lectures se présentent pour les grandes lettres : soit la myopie de Paul, déjà évoquée en lien avec une infirmité de la chair (4.13, 15), l'obligeait à tracer de gros caractères; soit il choisit délibérément des lettres majuscules, comme celles des avis officiels, pour mettre en relief le contenu de la lettre plutôt que sa forme. En chaire, il joint les deux raisons : Paul, qui n'est pas un scribe de métier et écrit dans l'urgence, trace de grosses lettres, peut-être aussi à cause de sa mauvaise vue. Dans les deux cas, l'écriture maladroite devient une image visible du contraste entre le souci de Paul pour la substance et l'unique préoccupation des judaïsants : les apparences.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La circoncision, frontière de l'alliance.</b> L'enjeu de fond reste la circoncision, signe de l'alliance abrahamique et frontière sacrée entre le peuple de Dieu et les nations. Pour un Juif du second Temple, exiger la circoncision des croyants d'origine païenne, c'était faire de la conversion au judaïsme la condition d'entrée dans le salut. MacArthur expose les trois mobiles que Paul démasque : l'orgueil religieux, qui voulait se rendre agréable selon la chair et impressionner par une piété extérieure (cf. Matthieu 6.1-7); la lâcheté, qui s'attachait à la loi mosaïque plutôt qu'à la croix pour échapper à l'ostracisme et conserver le statut protégé que Rome accordait au judaïsme, religion légale; et l'hypocrisie, qui ne gardait même pas la loi imposée mais se targuait du nombre de ses convertis, se glorifiant dans la chair circoncise de ses prosélytes (cf. Matthieu 23.15).</li>
+      <li><b>Les <i>stigmata</i> gravés dans la chair.</b> Les marques que Paul porte sur son corps (6.17) renvoient à un autre arrière-plan. Le terme grec <i>stigmata</i> désignait les marques imprimées au fer sur les esclaves, les soldats ou les dévots d'une divinité, signe d'appartenance et de propriété. MacArthur y voit les résultats physiques de la persécution : cicatrices et blessures reçues à Lystre, à Philippes et ailleurs (cf. Actes 14.19; 16.22; 2 Corinthiens 11.23-25), qui identifient Paul comme l'un de ceux qui ont réellement souffert pour le Seigneur. Là où les judaïsants exhibaient la marque indolore de la circoncision pour fuir la souffrance, Paul porte les stigmates coûteux d'un véritable serviteur de Christ.</li>
+      <li><b>La marque qui protège contre celles qui prouvent.</b> Cet ultime contraste verrouille tout l'épilogue : la croix que les judaïsants esquivent, Paul la subit dans sa chair. D'un côté la marque charnelle et indolore qui protège de la persécution et garantit un statut social; de l'autre les marques coûteuses et risquées qui prouvent l'appartenance à Jésus. Le scandale de la croix (cf. 5.11) faisait de l'Évangile une folie pour le monde, et c'est précisément ce scandale que les faux docteurs cherchaient à fuir par un signe extérieur prudent et sans risque.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de l'épilogue : la gloire (<i>kauchaomai</i>) qui se déporte entièrement de la chair vers la croix (<i>stauros</i>), la nouvelle création (<i>ktisis</i>) qui seule compte, la règle (<i>kanon</i>) qui mesure le vrai peuple de Dieu, et les marques (<i>stigmata</i>) qui scellent l'appartenance à Christ.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">me glorifier</span><span class="mot-gr">kauchaomai</span></th>
+            <td class="col-sens">se vanter, se glorifier, se réjouir d'une chose comme du fondement de sa fierté</td>
+            <td>MacArthur note que le verbe grec, contrairement à la nuance péjorative du mot français, désignait la simple expression d'une louange légitime; Paul se réjouissait du sacrifice de Christ. Paul l'emploie d'abord pour les judaïsants qui veulent se glorifier dans la chair des convertis (6.13), puis pour lui-même qui refuse de se glorifier d'autre chose que de la croix (6.14). Tout l'épilogue est commandé par cette opposition : se glorifier de soi et de ses œuvres, ou se glorifier uniquement du sacrifice de Christ. La mise en garde de 5.26 contre la vaine gloire (<i>kenodoxoi</i>) et le contraste avec Philippiens 3.3-7 montrent que la gloire chrétienne se déporte entièrement de la chair vers la croix.</td>
+            <td><span class="trad"><span><b>S21</b> que je tire ma fierté</span><span><b>NEG79</b> me glorifier</span><span><b>Darby</b> me glorifier</span><span><b>LSG</b> me glorifier</span><span><b>KJF</b> me glorifie</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">croix</span><span class="mot-gr">stauros</span></th>
+            <td class="col-sens">poteau, pieu d'exécution; la croix comme instrument du supplice romain</td>
+            <td>Le <i>stauros</i> était l'instrument le plus infamant du monde romain, réservé aux esclaves et aux séditieux. Par métonymie, le mot en vient à désigner toute l'œuvre expiatoire de Christ : sa mort substitutive qui paie le péché et apaise la colère de Dieu. MacArthur souligne que les judaïsants voulaient précisément échapper à la persécution liée à la croix de Christ (6.12) : la croix les offensait, car elle déclare l'homme pécheur, digne de mort et incapable de plaire à Dieu. Pour Paul au contraire, la croix est le seul objet de gloire (6.14), car elle seule justifie le pécheur sans les œuvres de la loi (cf. 2.21; 3.13). Se glorifier de la croix, c'est confesser que rien dans la chair n'ajoute au salut accompli.</td>
+            <td><span class="trad"><span><b>S21</b> la croix</span><span><b>NEG79</b> la croix</span><span><b>Darby</b> la croix</span><span><b>LSG</b> la croix</span><span><b>KJF</b> la croix</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">création</span><span class="mot-gr">ktisis</span></th>
+            <td class="col-sens">acte de créer, ce qui est créé, créature; ici la nouvelle création produite par Dieu</td>
+            <td>Le mot <i>ktisis</i> renvoie à l'acte créateur et à son résultat. Couplé à <i>kainos</i> (nouveau quant à la nature, et non simplement quant au temps), il forme l'expression nouvelle création (<i>kaine ktisis</i>). MacArthur la rattache directement à la nouvelle naissance (Jean 3.3) et à 2 Corinthiens 5.17 : si quelqu'un est en Christ, il est une nouvelle création, les choses anciennes sont passées. Ce n'est pas une réforme de l'ancien moi mais une recréation surnaturelle opérée par l'Esprit. Le contraste est total avec la circoncision, simple modification de la chair : ce n'est rien d'être circoncis ou incirconcis (6.15); seul compte l'homme nouveau que Dieu crée. La marque qui sauve n'est pas tracée dans la chair mais imprimée dans le cœur régénéré.</td>
+            <td><span class="trad"><span><b>S21</b> une nouvelle création</span><span><b>NEG79</b> une nouvelle création</span><span><b>Darby</b> une nouvelle création</span><span><b>LSG</b> une nouvelle créature</span><span><b>KJF</b> une nouvelle créature</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">règle</span><span class="mot-gr">kanon</span></th>
+            <td class="col-sens">roseau servant de mesure, règle d'arpenteur, étalon, norme</td>
+            <td>Le <i>kanon</i> désignait la tige droite servant à mesurer ou à tracer une ligne, d'où le sens de norme et d'étalon (cf. 2 Corinthiens 10.13-16; le même mot a donné canon des Écritures). En 6.16, ceux qui suivront cette règle sont ceux qui s'alignent sur le principe énoncé aux versets 14-15 : non la circoncision ni les œuvres de la loi, mais la croix et la nouvelle création. MacArthur lit «&nbsp;cette règle&nbsp;» comme le principe de la grâce et de la foi manifesté à la croix : quand on laisse la loi et les œuvres pour venir à la croix, la paix et la miséricorde, résultats du salut, remplissent la vie. La norme n'est plus extérieure et charnelle mais intérieure et spirituelle, accomplie par l'œuvre de Christ reçue par la foi.</td>
+            <td><span class="trad"><span><b>S21</b> cette règle</span><span><b>NEG79</b> cette règle</span><span><b>Darby</b> cette règle</span><span><b>LSG</b> cette règle</span><span><b>KJF</b> cette règle</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">marques</span><span class="mot-gr">stigmata</span></th>
+            <td class="col-sens">marques imprimées au fer rouge, cicatrices, signes de propriété ou d'appartenance</td>
+            <td>Les <i>stigmata</i> étaient les marques gravées sur la peau des esclaves, des soldats ou des consacrés d'un dieu, attestant à qui ils appartenaient. MacArthur les interprète comme les résultats physiques de la persécution, cicatrices et blessures (cf. Actes 14.19; 16.22; 2 Corinthiens 11.25), qui identifiaient Paul comme l'un de ceux qui avaient souffert pour le Seigneur. Le contraste avec la circoncision est délibéré : les judaïsants se vantent d'une marque charnelle qui leur évite la souffrance; Paul porte dans son corps les marques coûteuses d'un véritable serviteur de Christ. Ces stigmates ne sont pas un titre de mérite mais le sceau visible d'une appartenance scellée par la croix, à ne pas confondre avec les plaies de Christ lui-même.</td>
+            <td><span class="trad"><span><b>S21</b> les marques</span><span><b>NEG79</b> les marques</span><span><b>Darby</b> les marques</span><span><b>LSG</b> les marques</span><span><b>KJF</b> les marques</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Galates 6.11-18</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Galates 6.11-18 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ga 6.11-17, 6.11, 6.12, 6.13, 6.14, 6.15, 6.16, 6.17, 6.18.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1292</span></th>
+            <td><a href="https://www.gty.org/sermons/1292" target="_blank" rel="noopener">Rejoicing in the Cross</a></td>
+            <td>Galates 6.11-16</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">1673</span></th>
+            <td><a href="https://www.gty.org/sermons/1673" target="_blank" rel="noopener">The Hypocrisy of the Legalists</a></td>
+            <td>Galates 6.11-13</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-42</span></th>
+            <td><a href="https://www.gty.org/sermons/48-42" target="_blank" rel="noopener">The Wonder of the Cross</a></td>
+            <td>Galates 6.11-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-125</span></th>
+            <td><a href="https://www.gty.org/sermons/80-125" target="_blank" rel="noopener">The Glory of the Cross</a></td>
+            <td>Galates 6.11-16</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-252</span></th>
+            <td><a href="https://www.gty.org/sermons/80-252" target="_blank" rel="noopener">The Cross of Christ</a></td>
+            <td>Galates 6.11-14</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">1674</span></th>
+            <td><a href="https://www.gty.org/sermons/1674" target="_blank" rel="noopener">Glorying in the Cross</a></td>
+            <td>Galates 6.14-18</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question qui commande l'épilogue est celle des mobiles : pourquoi prêche-t-on ce que l'on prêche, et de quoi tire-t-on sa gloire? MacArthur lit 6.11-18 comme la confrontation finale entre deux gloires inconciliables.</p>
+    <div class="body">
+      <p>Les judaïsants se glorifient dans la chair, celle des convertis qu'ils circoncisent (6.13); Paul ne se glorifie que de la croix de notre Seigneur Jésus-Christ (6.14). Trois mobiles bas démasquent les faux docteurs : l'orgueil religieux qui veut se rendre agréable selon la chair, la lâcheté qui s'attache à la loi pour fuir la persécution liée à la croix, et l'hypocrisie de ceux qui n'observent pas la loi qu'ils imposent. Derrière la dispute sur la circoncision se joue donc une question de cœur : aimer la croix au prix de la persécution, ou aimer sa propre sécurité et sa réputation.</p>
+      <p>Le verset central, 6.14, est le sommet de l'épître. MacArthur observe que le verbe grec rendu par me glorifier (<i>kauchaomai</i>) ne porte pas le soupçon d'orgueil de son équivalent français : il désigne la louange légitime. Paul ne se vante pas de lui-même : il se réjouit du sacrifice de Christ, son unique sujet de gloire. La formule loin de moi la pensée traduit la négation grecque la plus catégorique (<i>me genoito</i>) : que jamais cela n'arrive. Tout ce qui pourrait faire la fierté d'un homme selon la chair, et Paul en avait plus que quiconque (cf. Philippiens 3.4-7), il le tient pour rien au regard de la croix. La croix, instrument de honte, devient le seul trône de la gloire chrétienne, parce qu'elle seule a payé le péché et accompli le salut que la loi ne pouvait procurer (2.21; 3.13).</p>
+      <p>La croix opère une double mort : par elle le monde est crucifié pour Paul, comme Paul l'est pour le monde (6.14). MacArthur précise que le monde désigne ici le système satanique mauvais (cf. 1 Jean 2.15-16; 5.19), et que cette double crucifixion signifie une rupture radicale et mutuelle. Pour le croyant, le monde est mort, il n'a plus sur lui le pouvoir d'attraction ni de domination du diable; et le croyant est mort au monde, n'appartenant plus à son ordre. C'est l'application du grand principe de 2.20, j'ai été crucifié avec Christ. De là découle le verset 15 : ce n'est rien d'être circoncis ou incirconcis, car la seule chose qui compte est d'être une nouvelle création. MacArthur rattache cette expression à la nouvelle naissance (Jean 3.3) et à 2 Corinthiens 5.17 : non une retouche de la chair mais une recréation surnaturelle. La circoncision modifie le corps; la croix recrée l'homme tout entier.</p>
+      <p>Deux questions sensibles trouvent ici leur réponse, et MacArthur les tranche fermement comme le sens même du texte. Premièrement, qui est l'Israël de Dieu (6.16)? MacArthur soutient que l'expression désigne tous les Juifs qui croient en Christ, c'est-à-dire ceux qui sont les descendants d'Abraham à la fois biologiquement et spirituellement (cf. 3.7, 18; Romains 2.28-29; 9.6-7) : en chaire, il y voit les vrais Juifs, juifs par la foi et non seulement par la race, et un coup direct aux judaïsants, qui ne sont pas l'Israël de Dieu. La paix et la miséricorde, résultats du salut, sont offertes à tous ceux qui suivent la règle de la croix, Juifs compris, et Paul y glisse une invitation aux judaïsants eux-mêmes. Deuxièmement, les marques de Jésus (6.17) ne sont pas les plaies mystiques de Christ mais les cicatrices de la persécution, sceau de l'authentique serviteur. La bénédiction finale (6.18), enfin, vante implicitement l'Évangile de la grâce : la grâce de notre Seigneur Jésus-Christ soit avec votre esprit. La lettre qui s'ouvrait sur la grâce (1.3) se ferme sur la grâce, démontrant sa supériorité sur tout système humain de justice par les œuvres.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du fondement personnel de la double crucifixion jusqu'à l'arrière-plan vétérotestamentaire du scandale de la croix, en passant par les textes qui définissent la nouvelle création et l'Israël de Dieu.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 2.20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">J'ai été crucifié avec Christ : le fondement personnel de la double crucifixion de 6.14, le croyant mort au monde et vivant par Christ; MacArthur renvoie explicitement de 6.14 à 2.20.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 3.3-9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul énumère tous ses titres charnels, circoncision comprise, puis les tient pour de la boue afin de gagner Christ et la justice de la foi : illustration vivante du refus de se glorifier dans la chair (6.13-14).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 5.17</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Si quelqu'un est en Christ, il est une nouvelle création : le texte que MacArthur joint à 6.15, avec la nouvelle naissance, pour éclairer la nouvelle création : les choses anciennes sont passées, toutes choses sont devenues nouvelles.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 3.3-7</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Il faut naître de nouveau pour voir le royaume : la nouvelle naissance à laquelle MacArthur rattache l'expression nouvelle création de 6.15.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 2.28-29</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le vrai Juif l'est intérieurement, par la circoncision du cœur selon l'Esprit : appui de MacArthur pour identifier l'Israël de Dieu (6.16) au reste juif croyant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 9.6-7</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Tous les descendants d'Israël ne sont pas Israël : la distinction qui fonde la lecture de l'Israël de Dieu comme reste croyant, sans supprimer la nation (6.16).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 2.15-16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">N'aimez pas le monde ni ce qui est dans le monde : MacArthur y renvoie pour définir le monde crucifié de 6.14 comme le système satanique mauvais.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 21.23</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Maudit est quiconque est pendu au bois : l'arrière-plan vétérotestamentaire du scandale de la croix que les judaïsants fuyaient (6.12; cf. 3.13).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La croix, seul objet de gloire</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Loin de moi la pensée de me glorifier d'autre chose que de la croix de notre Seigneur Jésus-Christ (6.14), opposée à la volonté des judaïsants de se glorifier dans votre chair (6.13).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la sotériologie de <i>Biblical Doctrine</i>, le salut est entièrement l'œuvre de Dieu en Christ, reçu par la foi seule, sans aucun apport méritoire de l'homme. Toute gloire propre est donc exclue (Éphésiens 2.8-9). Pour l'assemblée : notre acceptation devant Dieu et notre assurance ne reposent jamais sur ce que nous accomplissons, mais uniquement sur ce que Christ a accompli à la croix; là est notre unique sujet de fierté.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La nouvelle création par la régénération</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ce n'est rien d'être circoncis ou incirconcis; ce qui est quelque chose, c'est d'être une nouvelle création (6.15).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La régénération est un acte monergique de l'Esprit qui recrée le pécheur mort dans ses fautes (Jean 3.3; Tite 3.5; Éphésiens 2.1-5). Aucun rite extérieur, circoncision ou baptême, ne produit cette vie nouvelle. Pour l'assemblée : la vraie religion n'est pas une modification de surface ni l'observance d'une marque charnelle, mais le changement radical du cœur que Dieu seul opère; l'appartenance à Christ se mesure à la vie nouvelle, non aux rites.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La double crucifixion au monde</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Par qui le monde est crucifié pour moi, comme je le suis pour le monde (6.14).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'union au Christ crucifié rompt la souveraineté du monde et de son prince sur le croyant (2.20; Romains 6.2-10; Colossiens 2.20). Le système satanique est mort pour lui, et lui pour le système. Pour l'assemblée : le chrétien ne tire plus sa valeur ni ses craintes du jugement du monde; affranchi de la peur de la persécution et de la séduction des biens présents, il vit pour Celui qui l'a aimé et s'est livré pour lui.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La distinction entre Israël et l'Église</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paix et miséricorde sur tous ceux qui suivront cette règle, et sur l'Israël de Dieu (6.16).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le dispensationalisme exposé dans <i>Biblical Doctrine</i> distingue Israël et l'Église. La note de MacArthur identifie l'Israël de Dieu aux Juifs qui croient en Christ, descendants d'Abraham biologiquement et spirituellement; l'expression ne désigne donc pas l'Église comme un nouvel Israël. Les promesses faites à la nation ne sont pas spiritualisées (Romains 11). Pour l'assemblée : Dieu reste fidèle à toutes ses paroles; l'unité des croyants juifs et païens en Christ n'annule pas les desseins particuliers de Dieu pour Israël, et la grâce qui sauve un reste aujourd'hui garantit ces promesses pour demain.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce, premier et dernier mot</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Frères, que la grâce de notre Seigneur Jésus-Christ soit avec votre esprit! Amen (6.18).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La justification est forensique, par grâce au moyen de la foi, fondée sur l'imputation de la justice de Christ (Romains 3.24; 2 Corinthiens 5.21). En refermant sur la grâce une lettre ouverte sur la grâce (1.3), Paul démontre la supériorité de l'Évangile sur tout système d'œuvres. Pour l'assemblée : du premier au dernier verset de la vie chrétienne, c'est la grâce qui commence, soutient et achève le salut; rien n'est ajouté, rien n'est mérité, tout est reçu.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Les judaïsants prêchaient la circoncision pour éviter la persécution liée à la croix (6.12). Où votre assemblée est-elle tentée d'adoucir le scandale de la croix pour rester respectable, acceptable ou en sécurité aux yeux du monde?</li>
+      <li>Paul ne se glorifie que de la croix (6.14). De quoi votre assemblée tire-t-elle réellement sa fierté : de ses performances religieuses, de sa culture, de ses réussites, ou uniquement de l'œuvre accomplie par Christ?</li>
+      <li>Si être circoncis ou incirconcis n'est rien, et que seule compte la nouvelle création (6.15), comment prêcher pour que personne ne confonde un rite, un baptême ou une décision passée avec la régénération réelle du cœur?</li>
+      <li>Que signifie concrètement que le monde soit crucifié pour vous et vous pour le monde (6.14)? Vos auditeurs vivent-ils encore sous la peur du jugement du monde ou sous la séduction de ses biens?</li>
+      <li>Sur l'Israël de Dieu (6.16), laissez-vous la grammaire et le fil de Paul gouverner votre lecture, ou un système de remplacement décide-t-il à votre place que l'Église aurait absorbé les promesses faites à Israël?</li>
+      <li>Paul porte les marques de Jésus, cicatrices de la persécution (6.17), tandis que les judaïsants exhibent une marque qui leur épargne la souffrance. Quelles marques votre fidélité à la croix vous a-t-elle réellement coûtées?</li>
+      <li>La lettre s'ouvre et se ferme sur la grâce (1.3; 6.18). Votre prédication de Galates laisse-t-elle l'auditeur reposer entièrement sur la grâce, ou repart-il en cherchant encore quelque chose à ajouter pour être agréé de Dieu?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Galates 6.11-18 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Galates : l'Évangile de la grâce&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Galates-6-11-18.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

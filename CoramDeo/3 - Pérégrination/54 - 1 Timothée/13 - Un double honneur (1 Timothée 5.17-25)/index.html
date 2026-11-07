@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Timothée 5.17-25 · Un double honneur · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Timothée 5.17-25 : un double honneur ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">1 Timothée 5.17-25</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 1 Timothée 5.17-25</p>
+    <h1 class="hero__title">Un double honneur</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Que les anciens qui dirigent bien soient jugés dignes d'un double honneur, surtout ceux qui travaillent à la prédication et à l'enseignement.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">1 Timothée 5.17 · NEG</p>
+    <p class="hero__series">Série : <b>1 Timothée : Garde le dépôt</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">1 Timothée 5.17-25</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Ne reçois point d'accusation contre un ancien, si ce n'est sur la déposition de deux ou de trois témoins.</p>
+        <cite class="verse__ref">1 Timothée 5.19 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Ceux qui pèchent, reprends-les devant tous, afin que les autres aussi éprouvent de la crainte.</p>
+        <cite class="verse__ref">1 Timothée 5.20 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'idée maîtresse du passage tient en une seule tension&nbsp;: les anciens qui dirigent bien méritent un double honneur, et ceux qui pèchent sont repris devant tous. La même charge qui appelle l'estime appelle aussi la responsabilité.</p>
+    <div class="body">
+      <p>Cette péricope appartient à la cinquième grande section de l'épître, celle des responsabilités pastorales (5.1 à 6.2), où Paul instruit Timothée sur la manière de se conduire dans la maison de Dieu. Après avoir traité les rapports avec les divers groupes de l'assemblée (5.1-2), puis longuement la question des veuves (5.3-16), l'apôtre en vient aux anciens, ces responsables spirituels que la lettre nomme aussi évêques ou surveillants (3.1-7). MacArthur observe que l'incompétence des responsables était à l'origine de la plupart des difficultés de l'Église d'Éphèse, et que Paul explique ici à Timothée comment restaurer la direction pastorale en mettant en relief les obligations de l'Église envers ses anciens&nbsp;: ils doivent être honorés, protégés, corrigés et choisis à bon escient.</p>
+      <p>Le texte se déploie en quatre mouvements clairs. Aux versets 17-18, Paul commande qu'on accorde un double honneur aux anciens qui dirigent bien, et il fonde cette rémunération sur deux citations de l'Écriture. Aux versets 19-20, il protège l'ancien contre les accusations frivoles en exigeant deux ou trois témoins, tout en commandant que ceux qui persistent dans le péché soient repris devant tous. Au verset 21, une adjuration solennelle devant Dieu, devant Jésus-Christ et devant les anges élus scelle cette discipline sans prévention ni favoritisme. Aux versets 22-25, l'apôtre tourne le regard vers le choix futur des anciens&nbsp;: ne pas imposer les mains avec précipitation, car les péchés comme les bonnes œuvres finissent toujours par se manifester avec le temps. Le verset 23, sur le vin et l'estomac de Timothée, est une parenthèse pastorale enchâssée dans le commandement de se conserver pur, et non une digression hors sujet.</p>
+      <p>L'idée maîtresse du passage est double et tient en une seule tension&nbsp;: les anciens qui dirigent bien méritent un double honneur, et ceux qui pèchent sont repris devant tous. La même charge qui appelle l'estime appelle aussi la responsabilité; le respect accordé à l'office ne dispense jamais celui qui l'exerce d'une reddition de comptes publique. Cette section prolonge directement les qualifications des anciens posées en 3.1-7&nbsp;: si l'on exige que l'évêque soit irréprochable, c'est parce que la discipline et le choix décrits ici dépendent entièrement de la solidité de ces critères.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">1 Timothée 5.17 · 5.18 · 5.19 · 5.22</p>
+    </header>
+    <p class="lead">L'institution de l'ancien, le soutien matériel du serviteur et la règle des témoins plongent toutes leurs racines dans la synagogue juive et le droit vétérotestamentaire&nbsp;: Paul ne réinvente rien, il transpose dans l'Église ce que Dieu avait déjà établi.</p>
+    <div class="body">
+      <p>Le mot ancien (gr. <i>presbuteros</i>) plonge ses racines dans la synagogue juive et, plus loin encore, dans l'institution vétérotestamentaire des anciens d'Israël (Ex 24.1; No 11.16). Au premier siècle, chaque synagogue était gouvernée par un collège d'anciens chargés de la doctrine et de la discipline; l'Église primitive a repris cette structure plurielle, comme l'attestent l'établissement d'anciens dans chaque assemblée au terme du premier voyage missionnaire (Ac 14.23) et l'usage interchangeable, chez Paul, des termes ancien, évêque et pasteur (Ac 20.17, 28; Tit 1.5-9). MacArthur rappelle que ces hommes avaient pour tâche de diriger, de prêcher et d'enseigner, de soutenir les faibles et de consacrer de nouveaux responsables.</p>
+    </div>
+    <p>Trois traits échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Le soutien matériel commandé.</b> Le double honneur du verset 17 se comprend sur l'arrière-plan du soutien matériel des serviteurs de Dieu. La première citation que Paul invoque, tirée de Deutéronome 25.4, interdit de museler le bœuf qui foule le grain&nbsp;: dans une aire de battage antique, l'animal piétinait les épis pour séparer le grain de la paille, et la loi voulait qu'il puisse manger pendant qu'il travaillait. À plus forte raison l'ouvrier spirituel doit-il être soutenu par ceux qu'il sert.</li>
+      <li><b>Luc tenu pour Écriture.</b> La seconde citation, l'ouvrier mérite son salaire, reprend une parole de Jésus rapportée en Luc 10.7. MacArthur note la portée significative du procédé&nbsp;: l'un des rédacteurs du Nouveau Testament, Paul, confirme l'inspiration divine d'un autre, Luc, en désignant son texte comme Écriture, au même titre que la Torah, ce qui révèle l'estime que l'Église primitive accordait déjà aux écrits du Nouveau Testament (cf. 2 Pi 3.15-16).</li>
+      <li><b>La règle des témoins et l'imposition des mains.</b> L'exigence de deux ou trois témoins au verset 19 reprend une règle judiciaire fondamentale de l'Ancien Testament (De 17.6; 19.15), reprise par Jésus dans la procédure de discipline de Matthieu 18.15-20. Dans le contexte d'Éphèse, où des faux docteurs occupaient vraisemblablement des fonctions d'anciens, cette règle privait l'ancien fautif de toute immunité, mais le protégeait aussi des accusateurs inconsidérés ou malintentionnés. Quant à l'imposition des mains du verset 22, elle renvoie au cérémonial public de confirmation dans le ministère, hérité du geste vétérotestamentaire posé sur l'animal du sacrifice en signe d'identification (Ex 29.10; Lé 4.15; No 27.18-23).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: des <i>presbuteroi</i> dignes d'une <i>timē</i> double, aux anciens qui <i>kopiaō</i> jusqu'à l'épuisement, jusqu'au verbe <i>elenchō</i> qui reprend publiquement et à l'adjectif <i>prodēlos</i> qui dit que rien ne reste caché.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">anciens</span><span class="mot-gr">presbuteroi</span></th>
+            <td class="col-sens">hommes plus âgés; par extension, responsables spirituels établis à la tête de l'assemblée</td>
+            <td>Le terme désigne d'abord l'âge, puis la fonction de direction. Dans le Nouveau Testament, MacArthur souligne qu'il est interchangeable avec évêque (surveillant) et pasteur, désignant les mêmes hommes (Ac 20.17, 28; Tit 1.5-9; 1 Pi 5.1-2)&nbsp;: ceux qui dirigent, prêchent et enseignent, soutiennent les faibles et consacrent de nouveaux responsables. Le mot implique une pluralité d'anciens et un office, non un rang honorifique vide. Ici, ils sont les responsables spirituels de l'Église à qui revient la conduite de l'assemblée.</td>
+            <td><span class="trad"><span><b>S21</b> anciens</span><span><b>NEG79</b> anciens</span><span><b>Darby</b> anciens</span><span><b>LSG</b> anciens</span><span><b>KJF</b> anciens</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">honneur</span><span class="mot-gr">timē</span></th>
+            <td class="col-sens">estime, valeur reconnue; honoraire, prix payé, marque de respect tangible</td>
+            <td>Le mot oscille entre le respect moral et la rétribution matérielle, et les deux sens se rejoignent ici. MacArthur précise que le double honneur n'est pas une équation mathématique qui doublerait ce que reçoit l'ancien ordinaire&nbsp;: il désigne un soutien ample et généreux, en rémunération comme en respect, dont sont dignes les anciens qui servent avec plus d'effort, d'engagement et d'excellence, et qui méritent une plus grande reconnaissance de la part de leur assemblée. Le verbe apparenté est celui qu'emploie le verset 3 pour les veuves (honore les veuves), où le respect se traduit aussi en soutien concret.</td>
+            <td><span class="trad"><span><b>S21</b> honneur</span><span><b>NEG79</b> honneur</span><span><b>Darby</b> honneur</span><span><b>LSG</b> honneur</span><span><b>KJF</b> honneur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">travaillent</span><span class="mot-gr">kopiaō</span></th>
+            <td class="col-sens">peiner jusqu'à l'épuisement, se fatiguer par un labeur intense</td>
+            <td>Le verbe dit littéralement travailler jusqu'à l'épuisement. MacArthur note que le grec renvoie à l'effort exigeant requis par la tâche plutôt qu'au nombre d'heures qu'on y consacre. Paul affirme ainsi implicitement que certains anciens s'investissent plus que les autres, particulièrement ceux qui se consacrent à la prédication et à l'enseignement, et que leur ministère acquiert de ce fait une place prépondérante. Le mot s'applique ailleurs au labeur apostolique de Paul lui-même (1 Co 15.10; Col 1.29) et qualifie un service ardu, et non confortable.</td>
+            <td><span class="trad"><span><b>S21</b> travaillent</span><span><b>NEG79</b> travaillent</span><span><b>Darby</b> travaillent</span><span><b>LSG</b> travaillent</span><span><b>KJF</b> travaillent dur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">reprends-les</span><span class="mot-gr">elenchō</span></th>
+            <td class="col-sens">convaincre de faute, démontrer publiquement la culpabilité, réprimander en exposant le tort</td>
+            <td>Le verbe ne désigne pas un simple reproche émotif, mais l'acte de convaincre quelqu'un de péché par une démonstration qui établit sa faute. MacArthur l'applique aux anciens qui persistent dans leur péché après avoir été confrontés à deux ou trois témoins, surtout lorsqu'il s'agit de fautes qui violent les qualifications requises pour exercer la charge (3.2-7). La reprise se fait devant tous, c'est-à-dire devant les autres anciens et toute l'assemblée, conformément à la troisième mesure de Matthieu 18.17&nbsp;: rendre l'accusation publique pour que toute l'Église pousse le fautif à la repentance et que les autres éprouvent une crainte salutaire.</td>
+            <td><span class="trad"><span><b>S21</b> reprends-les</span><span><b>NEG79</b> reprends-les</span><span><b>Darby</b> reprends</span><span><b>LSG</b> reprends-les</span><span><b>KJF</b> reprends</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">manifestes</span><span class="mot-gr">prodēlos</span></th>
+            <td class="col-sens">évident d'avance, visible aux yeux de tous, manifeste avant tout examen</td>
+            <td>L'adjectif signifie évident par avance, ce qui crève les yeux avant même toute enquête. MacArthur l'applique aux deux versants du verset 24-25&nbsp;: les péchés de certains hommes sont si notoires qu'ils les disqualifient d'entrée du ministère d'ancien, tandis que d'autres ne se découvrent qu'avec le temps, durant l'examen de la candidature. De même, certaines bonnes œuvres sont notoires, d'autres connues plus tard, mais aucune ne peut rester cachée. Le terme fonde l'exhortation centrale&nbsp;: temps et vérité vont de pair, d'où la nécessité de patience, d'équité, d'impartialité et de pureté dans le choix des anciens.</td>
+            <td><span class="trad"><span><b>S21</b> évidents</span><span><b>NEG79</b> manifestes</span><span><b>Darby</b> manifestes</span><span><b>LSG</b> manifestes</span><span><b>KJF</b> manifestes d'avance</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">1 Timothée 5.17-25</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 1 Timothée 5.17-25 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 1 Tm 5.17-25, 5.17, 5.18, 5.19, 5.20, 5.21, 5.22, 5.23, 5.24, 5.25.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">54-40</span></th>
+            <td><a href="https://www.gty.org/sermons/54-40" target="_blank" rel="noopener">Restoring Biblical Eldership, Part 1</a></td>
+            <td>1 Timothée 5.17-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">54-41</span></th>
+            <td><a href="https://www.gty.org/sermons/54-41" target="_blank" rel="noopener">Restoring Biblical Eldership, Part 2</a></td>
+            <td>1 Timothée 5.19-21</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">54-42</span></th>
+            <td><a href="https://www.gty.org/sermons/54-42" target="_blank" rel="noopener">Restoring Biblical Eldership, Part 3</a></td>
+            <td>1 Timothée 5.22-25</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit toute la péricope comme une instruction sur la manière de restaurer une direction pastorale saine dans une Église malade, autour de quatre devoirs de l'assemblée envers ses anciens&nbsp;: les honorer, les protéger, les corriger et les choisir avec discernement.</p>
+    <div class="body">
+      <p>MacArthur lit toute la péricope comme une instruction sur la manière de restaurer une direction pastorale saine dans une Église malade. À Éphèse, c'est l'incompétence et l'infidélité des responsables qui avaient ouvert la porte aux fausses doctrines; aussi Paul ne se contente-t-il pas de décrire les qualifications de l'ancien (3.1-7), il établit ici les quatre devoirs de l'assemblée envers ses anciens&nbsp;: les honorer, les protéger, les corriger et les choisir avec discernement. Le premier devoir est le double honneur du verset 17. L'expression suppose l'honneur dû à tout ancien et le dépasse&nbsp;: les anciens qui dirigent avec excellence, et surtout ceux qui peinent jusqu'à l'épuisement dans la prédication et l'enseignement, doivent recevoir une reconnaissance plus généreuse, à la fois en estime et en soutien matériel. MacArthur s'arrête sur le mot surtout (malista, principalement)&nbsp;: tous les anciens dirigent et enseignent à quelque degré, mais ceux qui peinent le plus dans la prédication et l'enseignement sont particulièrement dignes du double honneur, sans qu'il faille distinguer des anciens qui dirigent et des anciens qui enseignent.</p>
+      <p>Pour MacArthur, le fondement scripturaire du verset 18 réserve un détail des plus intéressants&nbsp;: il rend témoignage à l'Écriture du Nouveau Testament. En accolant Deutéronome 25.4 (Tu ne muselleras point le bœuf quand il foule le grain) à une parole de Jésus rapportée en Luc 10.7 (l'ouvrier mérite son salaire), et en introduisant les deux par la formule l'Écriture dit, Paul place l'évangile de Luc sur le même pied d'autorité que la Torah. Un rédacteur inspiré du Nouveau Testament reconnaît ainsi l'inspiration d'un autre, ce qui démontre que l'Église apostolique tenait déjà les écrits du Nouveau Testament pour Écriture sainte (cf. 2 Pi 3.15-16). L'argument du bœuf est analogique&nbsp;: si Dieu se soucie qu'un animal de labour mange pendant qu'il travaille, à plus forte raison veut-il que l'ouvrier spirituel soit soutenu par ceux qu'il sert. Le soutien matériel du pasteur n'est donc pas une faveur facultative, mais un commandement enraciné dans la justice de Dieu.</p>
+      <p>Le deuxième et le troisième devoir, protéger et corriger, sont tenus ensemble dans une tension volontaire aux versets 19-20. D'un côté, l'ancien jouit d'une protection&nbsp;: aucune accusation ne sera reçue contre lui sans la déposition de deux ou trois témoins. MacArthur explique que cette règle, héritée du droit vétérotestamentaire (De 19.15) et de la procédure de Matthieu 18.15-20, prive certes l'ancien de toute immunité, mais le met aussi à l'abri des accusateurs inconsidérés ou malintentionnés, car sa visibilité l'expose à la calomnie. De l'autre côté, lorsque le péché est avéré et que l'ancien y persiste, la sanction est publique&nbsp;: reprends-les devant tous, afin que les autres aussi éprouvent de la crainte. Le mot tous désigne les autres anciens et l'assemblée entière. MacArthur y voit une épée à deux tranchants&nbsp;: la charge vaut à l'ancien fidèle honneur et protection, mais elle ne laisse aucune immunité à celui qui pèche. Le péché de celui qui doit servir de modèle est plus grave, parce que ses conséquences sont plus grandes, et la reprise publique sert l'avertissement de tous.</p>
+      <p>L'adjuration du verset 21, devant Dieu, devant Jésus-Christ et devant les anges élus, donne à cette discipline une solennité de tribunal céleste. Les anges élus sont, pour MacArthur, les anges choisis par Dieu et demeurés fidèles, par opposition à Satan et aux démons; leur mention révèle que le plan éternel de Dieu, qui inclut le choix des participants à son royaume, embrasse aussi le monde angélique; ces anges, spectateurs de l'Église et agents du jugement, attendent de voir l'obéissance de Timothée. Devant ces témoins, Timothée doit agir sans prévention et ne rien faire par faveur&nbsp;: la discipline doit être impartiale, dépourvue de préjugés comme de favoritisme. C'est ici que la tentation guette&nbsp;: la sympathie pour un homme apprécié de tous, ou la crainte du scandale, pousse à ne rien faire.</p>
+      <p>Le quatrième devoir, choisir à bon escient, occupe les versets 22-25 et regarde vers l'avenir. N'impose les mains à personne avec précipitation&nbsp;: l'imposition des mains confirmait publiquement un homme dans le ministère, et MacArthur avertit qu'agir avec précipitation, sans enquête ni délai pour vérifier les qualifications de 3.1-7, c'est se rendre complice du péché d'autrui. Celui qui ordonne un homme non qualifié participe au tort que ce dernier causera en détournant les croyants de la vérité; d'où l'ordre toi-même, conserve-toi pur. Le verset 23, sur l'usage d'un peu de vin à cause de l'estomac et des fréquentes indispositions de Timothée, est un aparté, mais non hors sujet&nbsp;: l'appel à se conserver pur amène Paul à préciser qu'il ne réclame pas un ascétisme rigide qui nuirait à la santé. Timothée avait manifestement fait vœu de s'abstenir de vin, un vœu honorable que Paul ne lui demande pas de rompre&nbsp;: il l'invite seulement à ne plus boire uniquement de l'eau, souvent porteuse de maladies, et à prendre un peu de vin comme remède, non à boire en société.</p>
+      <p>Les versets 24-25 livrent enfin quatre principes pour le choix des anciens&nbsp;: les péchés de certains hommes sont manifestes avant même qu'on les juge, tandis que chez d'autres ils ne se découvrent qu'à l'examen; il en va de même des bonnes œuvres, notoires chez les uns, révélées à l'examen chez les autres. MacArthur en tire un encouragement&nbsp;: la tâche n'est pas aussi ardue que Timothée pourrait le craindre, car un examen attentif révèle ce que le premier regard ne montre pas. D'où la nécessité de ne pas se hâter, car le temps est l'allié de la vérité. Le point central de toutes ces instructions, conclut-il, est l'appel à la patience, à l'équité, à l'impartialité et à la pureté&nbsp;: c'est à ce prix que l'Église peut espérer faire de bons choix et préserver l'intégrité de ses responsables. Ainsi, l'honneur dû aux fidèles et la reprise des infidèles ne sont pas deux régimes contradictoires, mais les deux faces d'un même souci de la gloire de Dieu dans la conduite de son Église.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du bœuf de l'aire de battage à la règle des témoins, de la parole de Jésus tenue pour Écriture aux qualifications de l'évêque qui fondent toute la discipline.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 25.4</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Tu ne muselleras point le bœuf quand il foule le grain&nbsp;: la loi que Paul cite au verset 18 pour fonder le soutien matériel de l'ancien. L'argument est analogique, du moindre au plus grand&nbsp;: si Dieu pourvoit au bœuf de labour, à plus forte raison à l'ouvrier de l'Évangile.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 19.15</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Un seul témoin ne suffira pas; un fait s'établira sur la déposition de deux ou de trois témoins. Source vétérotestamentaire directe de la règle de protection de l'ancien au verset 19.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 10.7</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'ouvrier mérite son salaire&nbsp;: parole de Jésus que Paul cite au verset 18 et désigne comme Écriture, à égalité avec la Torah, attestant l'inspiration et l'autorité canonique de l'évangile de Luc.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 18.15-20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La procédure de discipline en trois étapes, qui culmine dans l'accusation portée devant l'Église; MacArthur y rattache l'exigence des témoins (v. 19) et la reprise publique devant tous (v. 20).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 20.17, 28</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul convoque les anciens d'Éphèse et les nomme évêques chargés de paître l'Église&nbsp;: confirme l'identité des termes ancien, évêque et pasteur, et l'arrière-plan éphésien direct de la péricope.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 9.7-14</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul y développe longuement le même droit au soutien matériel du serviteur de l'Évangile, en citant déjà Deutéronome 25.4&nbsp;: parallèle paulinien le plus proche du double honneur du verset 17.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Timothée 3.1-7</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les qualifications de l'évêque, irréprochable et mari d'une seule femme&nbsp;: la trame de référence sans laquelle la discipline (v. 19-20) et le choix prudent (v. 22-25) des anciens n'auraient aucun critère.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 6.1</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Si un homme vient à être surpris en quelque faute, redressez-le avec un esprit de douceur&nbsp;: éclaire l'esprit de la reprise du verset 20, exercée sans favoritisme mais en vue de la restauration et non de la destruction.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'honneur dû à l'office d'ancien</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Que les anciens qui dirigent bien soient jugés dignes d'un double honneur, surtout ceux qui travaillent à la prédication et à l'enseignement (v. 17)&nbsp;: l'estime et le soutien matériel sont commandés, non facultatifs.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'ecclésiologie que MacArthur tire de ce texte, celle d'une pluralité d'anciens à restaurer selon l'Écriture, le double honneur unit le respect moral et la rétribution concrète du serviteur fidèle. Pour votre assemblée, soutenir et honorer ses anciens n'est pas une simple politesse, mais une obéissance à un commandement scripturaire enraciné dans la justice de Dieu (De 25.4; Lu 10.7); négliger le pasteur qui peine dans la Parole, c'est mépriser l'ordre que Dieu a établi pour son Église.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'inspiration et l'autorité du Nouveau Testament</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Car l'Écriture dit (v. 18) introduit côte à côte Deutéronome 25.4 et une parole de Jésus rapportée en Luc 10.7, plaçant l'évangile de Luc au rang d'Écriture sainte.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la bibliologie de l'inspiration verbale et plénière, un rédacteur inspiré du Nouveau Testament reconnaît ici l'inspiration d'un autre (cf. 2 Pi 3.15-16). Pour votre assemblée, cela fonde la confiance absolue dans tout le canon&nbsp;: les écrits apostoliques ne sont pas des opinions humaines tardives mais la Parole de Dieu, suffisante et infaillible, sur laquelle repose toute l'autorité de la prédication.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La discipline impartiale des responsables</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ne reçois point d'accusation contre un ancien, si ce n'est sur la déposition de deux ou de trois témoins. Ceux qui pèchent, reprends-les devant tous (v. 19-20), sans prévention ni faveur (v. 21).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la sainteté de l'Église, l'office honoré ne confère aucune immunité au péché&nbsp;: la même charge qui mérite le respect appelle une reddition de comptes plus rigoureuse. Pour votre assemblée, cela protège à la fois l'ancien contre la calomnie et le troupeau contre l'infidélité; la reprise publique du fautif, loin d'être une cruauté, est un avertissement salutaire qui suscite une crainte sainte et préserve la pureté du corps.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La sainteté contre l'ascétisme</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Toi-même, conserve-toi pur (v. 22), puis aussitôt&nbsp;: Ne continue pas à ne boire que de l'eau, mais fais usage d'un peu de vin, à cause de ton estomac (v. 23).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Conformément au refus de l'ascétisme déjà posé en 4.1-5, la pureté commandée est spirituelle et morale, jamais une privation corporelle méritoire. Pour votre assemblée, la sainteté ne se confond pas avec l'abstinence rigoriste; tout ce que Dieu a créé est bon, et le serviteur fidèle peut prendre soin de son corps sans compromettre sa consécration, car la vraie sainteté tient au cœur et non aux interdits alimentaires.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le temps, allié de la vérité dans le choix des anciens</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>N'impose les mains à personne avec précipitation (v. 22); les péchés de certains hommes sont manifestes... tandis que chez d'autres ils ne se découvrent que dans la suite (v. 24-25).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon le souci pastoral de la qualification des responsables (3.1-7), la précipitation à ordonner rend complice du péché de l'homme non qualifié. Pour votre assemblée, le choix des anciens exige patience et examen prolongé, car le caractère se révèle avec le temps; mieux vaut attendre et éprouver que confier la conduite du troupeau à un homme dont les fautes, encore cachées, finiront tôt ou tard par éclater.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le double honneur (v. 17) unit le respect et le soutien matériel. Votre assemblée honore-t-elle réellement ses anciens qui peinent dans la Parole, ou se contente-t-elle d'une déférence verbale sans engagement concret? Qu'est-ce qui changerait si ce commandement était pris au sérieux?</li>
+      <li>Paul cite Luc 10.7 comme Écriture, à égalité avec la Torah (v. 18). Comment exposer à des auditeurs modernes que tout le Nouveau Testament porte la même autorité divine que l'Ancien, sans réduire cette vérité à une simple affirmation dogmatique?</li>
+      <li>L'exigence de deux ou trois témoins (v. 19) protège l'ancien, mais la reprise devant tous (v. 20) le soumet à une discipline publique. Comment tenir ensemble ces deux pôles dans une Église, sans tomber ni dans la complaisance envers les responsables, ni dans la chasse aux sorcières?</li>
+      <li>L'adjuration devant Dieu et les anges élus (v. 21) appelle une discipline sans prévention ni faveur. Quels favoritismes concrets, dans une assemblée locale, menacent le plus l'impartialité de la discipline des responsables?</li>
+      <li>Le verset 23, sur le vin et l'estomac de Timothée, est enchâssé dans l'ordre de pureté. Comment ce détail réfute-t-il l'idée que la sainteté consisterait en privations corporelles, et que dit-il du soin légitime que le serviteur de Dieu peut prendre de son corps?</li>
+      <li>Ne pas imposer les mains avec précipitation (v. 22), c'est refuser de se rendre complice du péché d'autrui. Quelles pressions poussent une Église à ordonner trop vite, et comment la patience commandée ici les contrebalance-t-elle?</li>
+      <li>Puisque les péchés comme les bonnes œuvres finissent toujours par se manifester (v. 24-25), en quoi le temps est-il un allié plutôt qu'un obstacle dans le discernement des futurs responsables? Comment prêcher cette patience à une assemblée pressée de combler ses besoins de direction?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 1 Timothée 5.17-25 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;1 Timothée : Garde le dépôt&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-1%20Timoth%C3%A9e-5-17-25.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

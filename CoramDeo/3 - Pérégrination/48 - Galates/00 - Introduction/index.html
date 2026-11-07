@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'épître aux Galates · L'Évangile de la grâce</title>
+<meta name="description" content="Présentation de l'épître aux Galates pour une étude biblique : introduction, les trois mouvements de la lettre et la leçon centrale. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Galates</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#personnelle">Ch. 1-2</a>
+    <a href="#doctrinale">Ch. 3-4</a>
+    <a href="#pratique">Ch. 5-6</a>
+    <a href="#centrale">Leçon centrale</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#predication">La série</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Vue d'ensemble · Galates 1.1-6.18</p>
+    <h1 class="hero__title">Galates</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Néanmoins, sachant que ce n'est pas par les œuvres de la loi que l'homme est justifié, mais par la foi en Jésus-Christ, nous aussi nous avons cru en Jésus-Christ, afin d'être justifiés par la foi en Christ et non par les œuvres de la loi, parce que nul ne sera justifié par les œuvres de la loi.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Galates 2.16 · NEG</p>
+    <p class="hero__series">Série : <b>Galates : l'Évangile de la grâce</b></p>
+    <p class="hero__meta">2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Introduction</p>
+      <h2 class="sec-title">Une lettre pour défendre l'Évangile</h2>
+      <p class="ref">Épître aux Galates</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je m'étonne que vous vous détourniez si promptement de celui qui vous a appelés par la grâce de Christ, pour passer à un autre Evangile.</p>
+        <cite class="verse__ref">Galates 1.6 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Christ nous a affranchis pour que nous soyons libres. Demeurez donc fermes, et ne vous laissez pas mettre de nouveau sous le joug de la servitude.</p>
+        <cite class="verse__ref">Galates 5.1 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'épître aux Galates ; lettre brûlante écrite dans l'urgence pour défendre le cœur même de l'Évangile : un pécheur est-il déclaré juste devant Dieu par la foi seule, ou faut-il y ajouter les œuvres de la loi ?</p>
+    <ul class="points">
+      <li><b>Une crise doctrinale aiguë.</b> Des faux docteurs judaïsants s'étaient introduits dans les Églises de Galatie et y répandaient un enseignement empoisonné : pour être pleinement sauvés, les païens devraient se faire circoncire et se soumettre à la loi de Moïse (Galates 1.7; 5.2-12; 6.12-13). Cet ajout d'œuvres à la foi sapait le cœur de l'Évangile, la justification par la foi seule.</li>
+      <li><b>L'auteur : Paul, apôtre par Jésus-Christ.</b> Les premiers mots ne laissent aucun doute : «&nbsp;Paul, apôtre, non de la part des hommes, ni par un homme, mais par Jésus-Christ et Dieu le Père&nbsp;» (Galates 1.1). C'est la seule lettre de l'apôtre adressée non à une assemblée unique, mais à un ensemble d'Églises réparties dans plusieurs villes (1.2).</li>
+      <li><b>Des destinataires fondés par Paul lui-même.</b> Selon la lecture la plus probable, celle de la Galatie du sud, les destinataires sont les Églises d'Antioche de Pisidie, d'Icone, de Lystre et de Derbe, fondées durant le premier voyage missionnaire (Actes 13.14 à 14.23).</li>
+      <li><b>Une date très ancienne (vers 49 ap. J.-C.).</b> La montée de Paul à Jérusalem (2.1-10) se rattache au concile d'Actes 15; la rédaction se situe donc peu après, vers l'an 49, ce qui fait de Galates l'une des toutes premières lettres de Paul.</li>
+      <li><b>Une lettre sans action de grâces.</b> Galates est la seule épître paulinienne dépourvue de toute action de grâces pour ses lecteurs. Au lieu de féliciter, l'apôtre s'étonne qu'on se détourne si promptement vers «&nbsp;un autre Evangile&nbsp;» (1.6), et il prononce par deux fois l'anathème sur quiconque altère le message reçu (1.8-9).</li>
+      <li><b>Trois mouvements d'une grande clarté.</b> L'argument suit un plan que MacArthur résume en trois parties. La <span class="surligne">partie personnelle (1.1 à 2.21)</span> défend l'origine divine de l'apostolat de Paul et de son évangile. La <span class="surligne">partie doctrinale (3.1 à 4.31)</span> démontre par l'Écriture que nul n'est justifié par les œuvres de la loi, mais par la foi. La <span class="surligne">partie pratique (5.1 à 6.18)</span> tire les conséquences : une liberté qui n'est ni légalisme ni licence, mais marche par l'Esprit.</li>
+      <li><b>Le verset qui commande tout le livre.</b> <span class="surligne">Galates 2.16 gouverne l'ensemble de l'épître : l'homme n'est pas justifié par les œuvres de la loi, mais par la foi en Jésus-Christ.</span> Cette page suit ce fil d'un bout à l'autre : la grâce seule, par la foi seule, en Christ seul, contre tout autre évangile.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PARTIE PERSONNELLE (Ch. 1-2) ============ -->
+  <article class="section reveal" id="personnelle">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Partie personnelle · Chapitres 1-2</p>
+      <h2 class="sec-title">L'Évangile reçu de Christ et défendu</h2>
+      <p class="ref">Galates 1.1 à 2.21</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mais, si nous-mêmes, si un ange du ciel annonçait un autre Evangile que celui que nous vous avons prêché, qu'il soit anathème !</p>
+        <cite class="verse__ref">Galates 1.8 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">J'ai été crucifié avec Christ; et si je vis, ce n'est plus moi qui vis, c'est Christ qui vit en moi.</p>
+        <cite class="verse__ref">Galates 2.20 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avant de défendre la doctrine, Paul défend la source de son message. Son évangile et son apostolat ne viennent pas des hommes, mais d'une révélation de Jésus-Christ. Cette indépendance n'est pas de l'orgueil : c'est la garantie que l'Évangile reçu par les Galates est divin et non humain, donc inaltérable.</p>
+    <ul class="points">
+      <li><b>Un seul Évangile, sous peine d'anathème.</b> Pour Paul il n'existe qu'un seul Évangile (Galates 1.11-12). Tout message qui ajoute l'œuvre humaine à la grâce n'est pas un autre évangile, mais une altération de l'unique Évangile (1.7). De là la gravité unique de l'anathème : «&nbsp;si quelqu'un, fût-ce un ange du ciel, annonce un évangile différent, qu'il soit anathème&nbsp;» (1.8-9). L'exclusivité du salut en Christ par la foi n'est pas une opinion négociable, mais la ligne qui sépare la vie de la perdition.</li>
+      <li><b>Un évangile reçu par révélation.</b> Paul l'affirme : son évangile «&nbsp;n'est pas de l'homme&nbsp;»; il ne l'a «&nbsp;ni reçu ni appris d'un homme, mais par une révélation de Jésus-Christ&nbsp;» (1.11-12). Pour le prouver, il raconte sa propre histoire.</li>
+      <li><b>De persécuteur à prédicateur.</b> La volte-face de Paul, du fanatique judaïsant qui ravageait l'Église au héraut de la foi qu'il voulait détruire (1.13-24), atteste que son Évangile vient de Dieu et non des hommes. Une telle conversion ne s'explique que par la grâce souveraine.</li>
+      <li><b>Un Évangile reconnu à Jérusalem.</b> Les colonnes de l'Église, Jacques, Pierre et Jean, reconnaissent l'Évangile de Paul sans rien y ajouter et sans imposer la circoncision (2.1-10). L'accord apostolique confirme que la vérité de la grâce est une.</li>
+      <li><b>L'incident d'Antioche et le verset-clé.</b> Même Pierre devait être repris quand sa conduite démentait l'Évangile (2.11-14). De cet incident surgit le verset qui commande la lettre : «&nbsp;l'homme n'est pas justifié par les œuvres de la loi, mais par la foi en Jésus-Christ&nbsp;» (2.16). Cette justification est forensique : Dieu ne constate pas une justice acquise, il déclare juste celui qui croit, en lui imputant la justice parfaite de Christ.</li>
+      <li><b>Crucifié avec Christ.</b> Paul clôt la partie personnelle par son expérience : le croyant est mort à la loi et crucifié avec Christ, qui vit désormais en lui (2.19-20). L'envers de cette vérité ferme toute porte au légalisme : «&nbsp;si la justice s'obtient par la loi, Christ est donc mort en vain&nbsp;» (2.21).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PARTIE DOCTRINALE (Ch. 3-4) ============ -->
+  <article class="section reveal" id="doctrinale">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Partie doctrinale · Chapitres 3-4</p>
+      <h2 class="sec-title">La justification par la foi et l'adoption</h2>
+      <p class="ref">Galates 3.1 à 4.31</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Christ nous a rachetés de la malédiction de la loi, étant devenu malédiction pour nous, car il est écrit : Maudit est quiconque est pendu au bois.</p>
+        <cite class="verse__ref">Galates 3.13 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et parce que vous êtes fils, Dieu a envoyé dans nos cœurs l'Esprit de son Fils, lequel crie : Abba ! Père !</p>
+        <cite class="verse__ref">Galates 4.6 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Au cœur argumentatif de la lettre, Paul prend Abraham, le père que les judaïsants revendiquaient, et démontre par l'Écriture que la justification a toujours été par la foi. La loi n'a jamais eu pour rôle de sauver : elle conduit à Christ, qui fait des esclaves des fils.</p>
+    <ul class="points">
+      <li><b>L'Esprit reçu par la foi.</b> Paul ouvre par l'expérience même des Galates : ils ont reçu l'Esprit par la foi, et non par les œuvres (3.1-5). Vouloir «&nbsp;s'achever par la chair&nbsp;» après avoir «&nbsp;commencé par l'Esprit&nbsp;» (3.3) est une folie, comme s'ils avaient été ensorcelés après avoir vu Christ crucifié dépeint sous leurs yeux.</li>
+      <li><b>Les vrais fils d'Abraham.</b> Abraham «&nbsp;crut à Dieu, et cela lui fut imputé à justice&nbsp;» (Galates 3.6, citant Genèse 15.6), avant la circoncision et avant la loi. Les vrais fils d'Abraham sont donc les croyants (3.7), non les circoncis : l'argument des judaïsants se retourne contre eux.</li>
+      <li><b>Christ, malédiction pour nous.</b> La loi prononce une malédiction sur quiconque ne l'accomplit pas tout entière (3.10), car nul ne le peut. Mais «&nbsp;Christ nous a rachetés de la malédiction de la loi, étant devenu malédiction pour nous&nbsp;» (3.13). MacArthur y lit la substitution pénale et la double imputation : nos péchés portés par Christ, sa justice imputée au croyant, comme en 2 Corinthiens 5.21.</li>
+      <li><b>La promesse avant la loi.</b> L'alliance de la promesse, faite à Abraham et à sa postérité, le Christ, précède la loi de quatre cent trente ans et ne peut être annulée par elle (3.15-18). La priorité de la promesse établit le primat de la grâce.</li>
+      <li><b>La loi, notre précepteur.</b> La loi n'a qu'un rôle temporaire et pédagogique : survenue «&nbsp;à cause des transgressions&nbsp;» (3.19), elle a servi de précepteur, de paidagogos, «&nbsp;pour nous conduire à Christ, afin que nous soyons justifiés par la foi&nbsp;» (3.24). Sainte et bonne, elle ne fut jamais le moyen de la justice.</li>
+      <li><b>De l'esclave à l'héritier.</b> Par la foi, «&nbsp;vous êtes tous fils de Dieu en Jésus-Christ&nbsp;» (3.26); il n'y a plus ni Juif ni Grec, esclave ni libre, homme ni femme, car tous sont un en Christ et héritiers de la promesse (3.28-29). Au temps marqué, Dieu a envoyé son Fils racheter ceux qui étaient sous la loi, puis l'Esprit de son Fils dans nos cœurs, faisant de nous des fils qui crient : «&nbsp;Abba ! Père !&nbsp;» (4.4-7).</li>
+      <li><b>Enfants de la promesse.</b> L'apôtre s'alarme de voir les Galates tentés de retourner «&nbsp;aux faibles et pauvres rudiments&nbsp;» (4.9) et plaide comme un père dans les douleurs de l'enfantement (4.19). Il clôt par l'allégorie d'Agar et de Sara (4.21-31) : deux alliances, l'esclavage de la loi et la liberté de la promesse; les croyants sont les enfants de la femme libre.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PARTIE PRATIQUE (Ch. 5-6) ============ -->
+  <article class="section reveal" id="pratique">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Partie pratique · Chapitres 5-6</p>
+      <h2 class="sec-title">La liberté et la marche par l'Esprit</h2>
+      <p class="ref">Galates 5.1 à 6.18</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mais le fruit de l'Esprit, c'est l'amour, la joie, la paix, la patience, la bonté, la bénignité, la fidélité, la douceur, la tempérance.</p>
+        <cite class="verse__ref">Galates 5.22-23 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Pour ce qui me concerne, loin de moi la pensée de me glorifier d'autre chose que de la croix de notre Seigneur Jésus-Christ.</p>
+        <cite class="verse__ref">Galates 6.14 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La partie pratique prolonge la doctrine sans la contredire : la même grâce qui justifie sanctifie. Christ nous a affranchis pour la liberté, mais cette liberté n'est ni un retour au joug du légalisme ni un prétexte pour la chair. La réponse au péché qui demeure n'est pas l'effort moralisateur, mais la marche par l'Esprit.</p>
+    <ul class="points">
+      <li><b>Demeurez fermes dans la liberté.</b> «&nbsp;Christ nous a affranchis pour que nous soyons libres&nbsp;» (5.1). Se faire circoncire pour être justifié, c'est se séparer de Christ et «&nbsp;déchoir de la grâce&nbsp;» (5.4); seule compte «&nbsp;la foi qui est agissante par l'amour&nbsp;» (5.6). Pour MacArthur, «&nbsp;déchus de la grâce&nbsp;» ne décrit pas des croyants régénérés qui perdraient leur salut, mais ceux qui, cherchant la justice par la loi, abandonnent le régime même de la grâce.</li>
+      <li><b>Qui vous a arrêtés ?</b> «&nbsp;Un peu de levain fait lever toute la pâte&nbsp;» (5.9) : la séduction légaliste ne vient pas de Celui qui appelle, et ceux qui troublent l'Église en porteront le jugement (5.7-12).</li>
+      <li><b>Servez-vous par amour.</b> La liberté n'est pas «&nbsp;un prétexte pour la chair&nbsp;» (5.13); exercée par l'amour, elle accomplit toute la loi résumée en un seul commandement : «&nbsp;Tu aimeras ton prochain comme toi-même&nbsp;» (5.14).</li>
+      <li><b>Les œuvres de la chair.</b> «&nbsp;Marchez selon l'Esprit, et vous n'accomplirez pas les désirs de la chair&nbsp;» (5.16). Les œuvres de la chair sont manifestes, et ceux qui les pratiquent «&nbsp;n'hériteront pas le royaume de Dieu&nbsp;» (5.19-21). Ce catalogue se prêche sans détour, mais sous la grâce.</li>
+      <li><b>Le fruit de l'Esprit.</b> Au sombre catalogue répond «&nbsp;le fruit de l'Esprit&nbsp;» (5.22-23). La sanctification n'est pas la production de la chair ni l'effort de la volonté, mais ce que l'Esprit fait croître dans ceux qui ont «&nbsp;crucifié la chair&nbsp;» et qui marchent par lui (5.24-25).</li>
+      <li><b>Portez les fardeaux les uns des autres.</b> La vie de l'Esprit se prouve dans la communauté : relever avec douceur celui qui tombe, porter les fardeaux, ne pas se lasser de faire le bien, car «&nbsp;ce qu'un homme aura semé, il le moissonnera aussi&nbsp;» (6.1-10).</li>
+      <li><b>Que la croix seule.</b> De sa propre main, Paul conclut : il ne se glorifie que de «&nbsp;la croix de notre Seigneur Jésus-Christ&nbsp;» (6.14), par laquelle le monde est crucifié pour lui. Ce qui compte n'est «&nbsp;ni la circoncision, ni l'incirconcision, mais une nouvelle création&nbsp;» (6.15). La paix et la grâce reposent sur «&nbsp;l'Israël de Dieu&nbsp;» (6.16) : MacArthur y voit le reste juif croyant, non l'Église se substituant à Israël, maintenant la distinction entre Israël et l'Église.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LEÇON CENTRALE ============ -->
+  <article class="section reveal" id="centrale">
+    <header class="sec-head">
+      <div class="sec-num">◆</div>
+      <p class="kicker">La leçon centrale</p>
+      <h2 class="sec-title">L'Évangile de la grâce</h2>
+      <p class="ref">Galates 2.16 · La grâce seule, par la foi seule</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Sachant que ce n'est pas par les œuvres de la loi que l'homme est justifié, mais par la foi en Jésus-Christ.</p>
+        <cite class="verse__ref">Galates 2.16 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Si la justice s'obtient par la loi, Christ est donc mort en vain.</p>
+        <cite class="verse__ref">Galates 2.21 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La question qui commande tout Galates n'est pas accessoire : comment un pécheur est-il déclaré juste devant un Dieu saint ? La réponse de Paul, et c'est là que MacArthur situe le cœur de l'épître comme celui de Romains, est la justification par la foi seule.</p>
+    <ul class="points">
+      <li><b>Une justification forensique.</b> «&nbsp;L'homme n'est pas justifié par les œuvres de la loi, mais par la foi en Jésus-Christ&nbsp;» (2.16, répété trois fois). Dieu ne rend pas le pécheur intrinsèquement juste : il le déclare juste, en lui imputant la justice parfaite de Christ. C'est la double imputation : nos péchés portés par Christ, sa justice mise à notre compte.</li>
+      <li><b>La moindre addition détruit la grâce.</b> L'envers de cette vérité, que les Galates ont perdu de vue, est que toute addition d'œuvre à la foi détruit la grâce. «&nbsp;Si la justice s'obtient par la loi, Christ est donc mort en vain&nbsp;» (2.21). C'est pourquoi Paul refuse tout compromis : un seul mot ajouté à la foi suffit à perdre l'Évangile.</li>
+      <li><b>L'anathème contre tout autre évangile.</b> L'exclusivité du salut en Christ par la foi n'admet aucun autre évangile, «&nbsp;fût-il prêché par un apôtre ou par un ange&nbsp;» (1.8-9). L'amour de la vérité n'est pas de l'intolérance : quand le cœur de l'Évangile est en jeu, la fidélité exige la fermeté. La grâce seule, la foi seule, Christ seul.</li>
+      <li><b>Une foi qui n'est jamais seule.</b> La foi qui sauve est «&nbsp;agissante par l'amour&nbsp;» (5.6). MacArthur y reconnaît la note du salut selon la seigneurie de Christ : une foi qui ne demeure jamais seule, mais qui se prouve par son fruit. Galates exclut donc à la fois le légalisme, qui ajoute l'œuvre à la foi, et l'antinomisme, qui sépare la foi de l'obéissance.</li>
+      <li><b>La même grâce justifie et sanctifie.</b> On ne combat pas la chair par la loi, mais en marchant pas à pas sous la conduite de l'Esprit (5.16). La sanctification n'est pas le moralisme de la volonté, mais le fruit que l'Esprit produit dans le croyant uni à Christ. Ainsi Paul tient ensemble, d'un bout à l'autre, la gratuité totale du salut et la réalité d'une vie transformée.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CONCLUSION ============ -->
+  <article class="section section--conclusion reveal" id="conclusion">
+    <header class="sec-head">
+      <p class="kicker">Conclusion</p>
+      <h2 class="sec-title">De l'esclavage à la liberté en Christ</h2>
+      <p class="ref">Galates 1 à 6</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Christ nous a affranchis pour que nous soyons libres. Demeurez donc fermes, et ne vous laissez pas mettre de nouveau sous le joug de la servitude.</p>
+        <cite class="verse__ref">Galates 5.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car en Jésus-Christ ni la circoncision ni l'incirconcision n'ont de valeur, mais la foi qui est agissante par l'amour.</p>
+        <cite class="verse__ref">Galates 5.6 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">D'un bout à l'autre, Galates pose une seule question, et c'est aussi la nôtre : reposez-vous votre acceptation par Dieu sur ce que Christ a accompli, ou sur ce que vous y ajoutez ? L'épître coupe le nerf de toute justice propre et ramène tout à la croix.</p>
+    <ul class="points">
+      <li><b>Le chemin parcouru.</b> La série part d'une alarme : un Évangile en péril, et l'étonnement de Paul devant des Églises qui se détournent. Elle s'enfonce dans la démonstration doctrinale, du tribunal de la justification au précepteur qu'est la loi, jusqu'à l'adoption des fils et la liberté des enfants de la promesse.</li>
+      <li><b>De la peur à l'assurance.</b> L'auditeur passe de la peur de tout perdre à l'assurance de la grâce, et de l'esclavage de la loi à la liberté de servir par amour. L'assurance ne repose jamais sur ce que nous ajoutons, mais entièrement sur ce que Christ a accompli, reçu par la foi.</li>
+      <li><b>Ni légalisme, ni licence.</b> Le croyant est libéré du légalisme sans tomber dans le libertinage. La même grâce qui sauve enseigne à renoncer au péché. Ni la règle pour la règle, ni la licence : la liberté de servir Dieu et le prochain par amour, dans la puissance de l'Esprit.</li>
+      <li><b>La distinction maintenue.</b> L'unité du peuple racheté en Christ ne supprime pas les promesses faites à la nation d'Israël. «&nbsp;L'Israël de Dieu&nbsp;» (6.16) désigne le reste juif croyant, non l'Église qui se substituerait à Israël : Dieu reste fidèle à toutes ses paroles.</li>
+      <li><b>La leçon centrale.</b> La culmination est la croix seule et la nouvelle création. Paul ne se glorifie que de la croix; ce qui compte n'est ni la circoncision ni l'incirconcision, mais une nouvelle création (6.14-15). L'appel n'est donc pas de redoubler d'effort moral, mais de revenir à Christ et de demeurer ferme dans la liberté qu'il a acquise.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LA SÉRIE ============ -->
+  <article class="section reveal" id="predication">
+    <header class="sec-head">
+      <p class="kicker">La série</p>
+      <h2 class="sec-title">Les 23 recherches de la série</h2>
+      <p class="ref">Galates 1 à 6 · 23 semaines</p>
+    </header>
+    <p class="lead">La série «&nbsp;Galates : l'Évangile de la grâce&nbsp;» se déploie sur vingt-trois semaines d'exposition suivie, sans lacune ni chevauchement, de la salutation (1.1-5) à la bénédiction finale (6.11-18). Chaque passage dispose d'une recherche exégétique complète : choisissez une semaine pour ouvrir sa recherche et préparer la prédication.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20Gr%C3%A2ce%20et%20paix%20de%20la%20part%20de%20Dieu%20%28Galates%201.1-5%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">Grâce et paix de la part de Dieu</span>
+        <span class="semaine__ref">Galates 1.1-5<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20Un%20seul%20Evangile%20%28Galates%201.6-9%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Un seul Évangile</span>
+        <span class="semaine__ref">Galates 1.6-9<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20Un%20Evangile%20re%C3%A7u%20par%20r%C3%A9v%C3%A9lation%20%28Galates%201.10-12%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Un Évangile reçu par révélation</span>
+        <span class="semaine__ref">Galates 1.10-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20De%20pers%C3%A9cuteur%20%C3%A0%20pr%C3%A9dicateur%20%28Galates%201.13-24%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">De persécuteur à prédicateur</span>
+        <span class="semaine__ref">Galates 1.13-24<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../05%20-%20Un%20seul%20Evangile%20reconnu%20%28Galates%202.1-10%29/index.html">
+        <span class="semaine__num">Semaine 5</span>
+        <span class="semaine__titre">Un seul Évangile reconnu</span>
+        <span class="semaine__ref">Galates 2.1-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../06%20-%20Justifi%C3%A9s%20par%20la%20foi%2C%20non%20par%20les%20oeuvres%20%28Galates%202.11-16%29/index.html">
+        <span class="semaine__num">Semaine 6</span>
+        <span class="semaine__titre">Justifiés par la foi, non par les œuvres</span>
+        <span class="semaine__ref">Galates 2.11-16<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../07%20-%20Crucifi%C3%A9%20avec%20Christ%20%28Galates%202.17-21%29/index.html">
+        <span class="semaine__num">Semaine 7</span>
+        <span class="semaine__titre">Crucifié avec Christ</span>
+        <span class="semaine__ref">Galates 2.17-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../08%20-%20L%27Esprit%20re%C3%A7u%20par%20la%20foi%20%28Galates%203.1-5%29/index.html">
+        <span class="semaine__num">Semaine 8</span>
+        <span class="semaine__titre">L'Esprit reçu par la foi</span>
+        <span class="semaine__ref">Galates 3.1-5<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../09%20-%20Les%20vrais%20fils%20d%27Abraham%20%28Galates%203.6-9%29/index.html">
+        <span class="semaine__num">Semaine 9</span>
+        <span class="semaine__titre">Les vrais fils d'Abraham</span>
+        <span class="semaine__ref">Galates 3.6-9<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../10%20-%20Christ%2C%20mal%C3%A9diction%20pour%20nous%20%28Galates%203.10-14%29/index.html">
+        <span class="semaine__num">Semaine 10</span>
+        <span class="semaine__titre">Christ, malédiction pour nous</span>
+        <span class="semaine__ref">Galates 3.10-14<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../11%20-%20La%20promesse%20avant%20la%20loi%20%28Galates%203.15-18%29/index.html">
+        <span class="semaine__num">Semaine 11</span>
+        <span class="semaine__titre">La promesse avant la loi</span>
+        <span class="semaine__ref">Galates 3.15-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../12%20-%20La%20loi%2C%20notre%20pr%C3%A9cepteur%20%28Galates%203.19-25%29/index.html">
+        <span class="semaine__num">Semaine 12</span>
+        <span class="semaine__titre">La loi, notre précepteur</span>
+        <span class="semaine__ref">Galates 3.19-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../13%20-%20Tous%20fils%20de%20Dieu%20en%20Christ%20%28Galates%203.26-29%29/index.html">
+        <span class="semaine__num">Semaine 13</span>
+        <span class="semaine__titre">Tous fils de Dieu en Christ</span>
+        <span class="semaine__ref">Galates 3.26-29<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../14%20-%20De%20l%27esclave%20%C3%A0%20l%27h%C3%A9ritier%20%28Galates%204.1-7%29/index.html">
+        <span class="semaine__num">Semaine 14</span>
+        <span class="semaine__titre">De l'esclave à l'héritier</span>
+        <span class="semaine__ref">Galates 4.1-7<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../15%20-%20Pourquoi%20retourner%20en%20arri%C3%A8re%20%28Galates%204.8-20%29/index.html">
+        <span class="semaine__num">Semaine 15</span>
+        <span class="semaine__titre">Pourquoi retourner en arrière?</span>
+        <span class="semaine__ref">Galates 4.8-20<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../16%20-%20Enfants%20de%20la%20promesse%20%28Galates%204.21-31%29/index.html">
+        <span class="semaine__num">Semaine 16</span>
+        <span class="semaine__titre">Enfants de la promesse</span>
+        <span class="semaine__ref">Galates 4.21-31<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../17%20-%20Demeurez%20fermes%20dans%20la%20libert%C3%A9%20%28Galates%205.1-6%29/index.html">
+        <span class="semaine__num">Semaine 17</span>
+        <span class="semaine__titre">Demeurez fermes dans la liberté</span>
+        <span class="semaine__ref">Galates 5.1-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../18%20-%20Qui%20vous%20a%20arr%C3%AAt%C3%A9s%20%28Galates%205.7-12%29/index.html">
+        <span class="semaine__num">Semaine 18</span>
+        <span class="semaine__titre">Qui vous a arrêtés?</span>
+        <span class="semaine__ref">Galates 5.7-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../19%20-%20Servez-vous%20par%20amour%20%28Galates%205.13-15%29/index.html">
+        <span class="semaine__num">Semaine 19</span>
+        <span class="semaine__titre">Servez-vous par amour</span>
+        <span class="semaine__ref">Galates 5.13-15<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../20%20-%20Les%20oeuvres%20de%20la%20chair%20%28Galates%205.16-21%29/index.html">
+        <span class="semaine__num">Semaine 20</span>
+        <span class="semaine__titre">Les œuvres de la chair</span>
+        <span class="semaine__ref">Galates 5.16-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../21%20-%20Le%20fruit%20de%20l%27Esprit%20%28Galates%205.22-26%29/index.html">
+        <span class="semaine__num">Semaine 21</span>
+        <span class="semaine__titre">Le fruit de l'Esprit</span>
+        <span class="semaine__ref">Galates 5.22-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../22%20-%20Portez%20les%20fardeaux%20les%20uns%20des%20autres%20%28Galates%206.1-10%29/index.html">
+        <span class="semaine__num">Semaine 22</span>
+        <span class="semaine__titre">Portez les fardeaux les uns des autres</span>
+        <span class="semaine__ref">Galates 6.1-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../23%20-%20Que%20la%20croix%20seule%20%28Galates%206.11-18%29/index.html">
+        <span class="semaine__num">Semaine 23</span>
+        <span class="semaine__titre">Que la croix seule</span>
+        <span class="semaine__ref">Galates 6.11-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;Galates : l'Évangile de la grâce&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

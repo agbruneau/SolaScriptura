@@ -1,0 +1,135 @@
+# Série expositive : Galates
+
+**l'Evangile de la grâce**
+
+2026-06-14 · Simon Ouellette
+
+---
+
+## Niveau de source
+
+Niveau 1 pour 23 unités sur 23, sermons Grace to You (codes dans la colonne Source, tirés de l'archive par Écriture).
+
+## Introduction au livre
+
+L'épître aux Galates compte 6 chapitres et 149 versets, écrits dans l'urgence pour défendre le cœur de l'Evangile, la justification par la foi seule, contre les faux docteurs judaïsants. Le découpage compte 23 unités, réparties selon les divisions naturelles du texte et le plan en trois parties de La Bible d'étude MacArthur, la partie personnelle (1.1 à 2.21), la partie doctrinale (3.1 à 4.31) et la partie pratique (5.1 à 6.18). L'exposition est complète et en totalité : aucun verset n'est sauté, de la salutation (1.1-5) à la bénédiction finale (6.11-18). Plusieurs sections demandent un soin particulier, surtout les chapitres doctrinaux 3 et 4 (la malédiction de la loi en 3.10-14, le rôle pédagogique de la loi en 3.19-25, l'illustration d'Agar et de Sara en 4.21-31) et certains versets contestés (5.4 sur l'assurance du salut, 6.16 sur l'Israël de Dieu). Le verset qui commande tout le livre est 2.16 : l'homme n'est pas justifié par les œuvres de la loi, mais par la foi en Jésus-Christ.
+
+## Structure de l'argument
+
+Galates défend la justification par la foi seule contre des judaïsants qui exigeaient des païens la circoncision et la soumission à la loi de Moïse, et qui attaquaient l'apostolat de Paul pour discréditer son Évangile. Paul bâtit sa démonstration en trois temps : son expérience (ch. 1 et 2), les Écritures (ch. 3 et 4), puis les implications et l'application de l'Évangile véritable (ch. 5 et 6).
+
+La partie personnelle s'ouvre sans action de grâces, sur l'étonnement et l'anathème (1.6-9). Paul établit que son Évangile vient d'une révélation de Jésus-Christ et non des hommes (1.10-24), que les apôtres de Jérusalem l'ont reconnu sans rien y ajouter (2.1-10), et qu'il a dû reprendre Pierre à Antioche quand sa conduite le démentait (2.11-21); le récit aboutit à la thèse de 2.16. La partie doctrinale en donne la preuve : l'Esprit reçu par la foi (3.1-5), la justification d'Abraham (3.6-9), la malédiction de la loi portée par Christ (3.10-14), la promesse antérieure à la loi (3.15-18), le rôle de la loi jusqu'à Christ (3.19-29), l'adoption des fils (4.1-7), la folie d'un retour à la servitude (4.8-20) et l'illustration d'Agar et de Sara, dernier argument tiré de l'Écriture (4.21-31).
+
+La partie pratique décrit la liberté que donne la justification : à l'égard des rites et du légalisme (5.1-12), exercée par l'amour et par la marche selon l'Esprit contre la chair (5.13-26), vécue dans le service mutuel (6.1-10). Le post-scriptum autographe (6.11-18) résume l'opposition de toute la lettre : les judaïsants se glorifient dans la chair, Paul ne se glorifie que de la croix.
+
+## Découpage en unités d'exposition
+
+| No | Passage | Base du découpage | Titre | Propos central | Source |
+|---|---|---|---|---|---|
+| 1 | **Galates 1.1-5** | Adresse et salutation, closes par la doxologie et son « Amen! » (1.5), avant « Je m'étonne » (1.6), qui tient lieu de l'action de grâces habituelle; bornes identiques chez MacArthur (GTY 48-2 et 48-3). | Grâce et paix de la part de Dieu | Avant tout débat, Paul condense l'Evangile : un apôtre envoyé par Christ seul et un Sauveur qui s'est donné pour nos péchés afin de nous arracher au présent siècle mauvais. | GTY 48-2, 48-3 |
+| 2 | **Galates 1.6-9** | « Je m'étonne » (1.6) ouvre le corps de la lettre, et le double anathème (1.8-9) le clôt avant « est-ce la faveur des hommes que je désire » (1.10); bornes identiques chez MacArthur (GTY 48-4). | Un seul Evangile | Il n'existe qu'un seul Evangile; y ajouter une condition, c'est le perdre, et quiconque l'altère, fût-il un ange, tombe sous l'anathème. | GTY 48-4 |
+| 3 | **Galates 1.10-12** | « Et maintenant, est-ce la faveur des hommes que je désire » (1.10) ouvre l'apologie, et la thèse « je ne l'ai ni reçu ni appris d'un homme » (1.12) précède la preuve biographique de 1.13; diffère de MacArthur, qui ne coupe pas en 1.13 (GTY 48-5 sur 1.10-15, GTY 48-6 sur 1.10-24). | Un Evangile reçu par révélation | L'Evangile de Paul n'a pas d'origine humaine : il l'a reçu par une révélation de Jésus-Christ, non d'un homme. | GTY 48-5, 48-6 |
+| 4 | **Galates 1.13-24** | « Vous avez su, en effet, quelle était autrefois ma conduite » (1.13) ouvre le récit qui prouve la thèse de 1.12, clos par les Églises de Judée qui « glorifiaient Dieu à mon sujet » (1.24) avant « Quatorze ans après » (2.1); MacArthur ouvre en 1.10 (GTY 48-5, 48-6) mais finit aussi en 1.24. | De persécuteur à prédicateur | La volte-face de Paul, du fanatique judaïsant au héraut de la foi qu'il voulait détruire, atteste que son Evangile vient de Dieu et non des hommes. | GTY 48-5, 48-6 |
+| 5 | **Galates 2.1-10** | « Quatorze ans après, je montai de nouveau à Jérusalem » (2.1) ouvre la reconnaissance de l'Évangile par les colonnes, close par le souvenir des pauvres (2.10) avant l'incident d'Antioche (2.11); bornes identiques chez MacArthur (GTY 48-7 et 48-8). | Un seul Evangile reconnu | Les apôtres de Jérusalem reconnaissent l'Evangile de Paul sans rien y ajouter : la vérité de la grâce est une et n'impose pas la circoncision. | GTY 48-7, 48-8 |
+| 6 | **Galates 2.11-16** | « Mais lorsque Céphas vint à Antioche » (2.11) ouvre l'incident, et la thèse « ce n'est pas par les œuvres de la loi que l'homme est justifié » (2.16) le clôt avant l'objection de 2.17; diffère de MacArthur, qui coupe en 2.13 et prêche 2.13-21 d'un seul tenant (GTY 48-9, 48-10). | Justifiés par la foi, non par les œuvres | Même Pierre devait être repris quand sa conduite démentait l'Evangile : l'homme est justifié par la foi en Christ et non par les œuvres de la loi. | GTY 48-9, 48-10 |
+| 7 | **Galates 2.17-21** | L'objection « Christ serait-il un ministre du péché? » (2.17) et sa réfutation mènent à « Christ est donc mort en vain » (2.21), avant l'apostrophe de 3.1; MacArthur ouvre en 2.13 (GTY 48-10) mais finit aussi en 2.21. | Crucifié avec Christ | Le croyant est mort à la loi et crucifié avec Christ, qui vit désormais en lui; si la justice venait de la loi, Christ serait mort en vain. | GTY 48-10 |
+| 8 | **Galates 3.1-5** | L'apostrophe « O Galates dépourvus de sens! » (3.1) ouvre la partie doctrinale par une suite de questions sur l'Esprit reçu (3.1-5), avant « Comme Abraham crut à Dieu » (3.6); bornes identiques chez MacArthur (GTY 48-11). | L'Esprit reçu par la foi | Les Galates ont reçu l'Esprit par la foi et non par les œuvres : vouloir s'achever par la chair après avoir commencé par l'Esprit est une folie. | GTY 48-11, 90-30, 90-31, 90-32, 90-33 |
+| 9 | **Galates 3.6-9** | « Comme Abraham crut à Dieu » (3.6) ouvre la preuve scripturaire, et « ceux qui croient sont bénis avec Abraham » (3.9) la conclut avant la malédiction de la loi (3.10); diffère de MacArthur, qui prêche 3.6-14 d'un tenant (GTY 48-12). | Les vrais fils d'Abraham | Abraham fut justifié par sa foi, et ce sont les croyants, non les circoncis, qui sont ses véritables enfants et héritiers de sa bénédiction. | GTY 48-12 |
+| 10 | **Galates 3.10-14** | « tous ceux qui s'attachent aux œuvres de la loi sont sous la malédiction » (3.10) répond à la bénédiction de 3.9, et « afin que la bénédiction d'Abraham » (3.14) referme l'inclusion avant 3.15; bornes identiques aux sermons GTY 48-13 et 48-14, bien que GTY 48-12 lie 3.6-14. | Christ, malédiction pour nous | La loi maudit quiconque ne l'accomplit pas tout entière; Christ nous a rachetés en devenant malédiction à notre place, pour que la bénédiction et l'Esprit nous parviennent par la foi. | GTY 48-12, 48-13, 48-14, 80-105, 80-187, 90-285, 1259, 80-333 |
+| 11 | **Galates 3.15-18** | « Frères (je parle à la manière des hommes), un testament » (3.15) ouvre l'illustration juridique, conclue par l'héritage donné « par la promesse » (3.18) avant « Pourquoi donc la loi? » (3.19); bornes identiques aux sermons GTY 48-15 et 48-16, mais GTY 48-17 couvre 3.15-22. | La promesse avant la loi | L'alliance de la promesse, faite à Abraham et à sa postérité, le Christ, précède la loi de quatre cent trente ans et ne peut être annulée par elle. | GTY 48-15, 48-16, 48-17 |
+| 12 | **Galates 3.19-25** | La question « Pourquoi donc la loi? » (3.19) ouvre l'exposé sur le rôle de la loi, clos par « nous ne sommes plus sous ce précepteur » (3.25) avant « vous êtes tous fils de Dieu » (3.26); diffère de MacArthur aux deux bornes (GTY 48-17 sur 3.15-22, GTY 48-18 sur 3.23-29). | La loi, notre précepteur | La loi fut ajoutée à cause des transgressions, pour un temps, comme un gardien chargé de nous conduire à Christ afin que nous soyons justifiés par la foi. | GTY 48-17, 48-18 |
+| 13 | **Galates 3.26-29** | « Car vous êtes tous fils de Dieu par la foi » (3.26) passe du précepteur à la filiation, close par « héritiers selon la promesse » (3.29), mot que reprend l'héritier de 4.1; MacArthur ouvre en 3.23 (GTY 48-18) mais finit aussi en 3.29. | Tous fils de Dieu en Christ | Par la foi, tous, Juif et Grec, esclave et libre, homme et femme, sont fils de Dieu et un en Christ, héritiers de la promesse selon Abraham. | GTY 48-18 |
+| 14 | **Galates 4.1-7** | « Or, aussi longtemps que l'héritier est enfant » (4.1) développe l'illustration de l'héritier mineur, conclue par « tu n'es plus esclave, mais fils » (4.7) avant « Autrefois, ne connaissant pas Dieu » (4.8); diffère de MacArthur, qui coupe après 4.6 et prêche 4.7-11 ensemble (GTY 48-19 à 48-21). | De l'esclave à l'héritier | Au temps marqué, Dieu a envoyé son Fils racheter ceux qui étaient sous la loi, puis l'Esprit de son Fils dans nos cœurs, faisant de nous des fils qui crient : Abba, Père. | GTY 48-19, 48-20, 80-76, 81-62, 48-21 |
+| 15 | **Galates 4.8-20** | « Autrefois, ne connaissant pas Dieu » (4.8) tourne l'argument vers le passé des Galates puis vers l'appel personnel de Paul, clos par « je suis dans l'inquiétude à votre sujet » (4.20) avant 4.21; MacArthur ouvre en 4.7 (GTY 48-21) mais finit aussi en 4.20 (GTY 48-23). | Pourquoi retourner en arrière? | Revenir aux rudiments faibles et à l'observance des jours, c'est retomber dans l'esclavage; Paul s'alarme et plaide comme un père dans les douleurs de l'enfantement. | GTY 48-19, 48-21, 48-22, 48-23, 48-24, 48-25, TMU294 |
+| 16 | **Galates 4.21-31** | « Dites-moi, vous qui voulez être sous la loi » (4.21) ouvre l'argument d'Agar et de Sara, conclu par « nous ne sommes pas enfants de l'esclave, mais de la femme libre » (4.31); diffère de MacArthur, qui y rattache 5.1 comme conclusion (GTY 48-26, 48-27). | Enfants de la promesse | Agar et Sara figurent deux alliances, l'esclavage de la loi et la liberté de la promesse; les croyants sont les enfants de la femme libre. | GTY 48-26, 48-27 |
+| 17 | **Galates 5.1-6** | « C'est pour la liberté que Christ nous a affranchis » (5.1) ouvre la partie pratique, et « la foi qui est agissante par l'amour » (5.6) clôt l'avertissement sur la circoncision avant « Vous couriez bien » (5.7); bornes identiques au sermon GTY 48-28, mais MacArthur prêche aussi 5.1 avec 4.21-31 (GTY 48-26, 48-27). | Demeurez fermes dans la liberté | Christ nous a affranchis pour la liberté; se faire circoncire pour être justifié, c'est se séparer de Christ et déchoir de la grâce, car seule compte la foi agissante par l'amour. | GTY 48-26, 48-27, 48-28 |
+| 18 | **Galates 5.7-12** | « Vous couriez bien: qui vous a arrêtés » (5.7) passe aux perturbateurs, clos par « Puissent-ils être retranchés » (5.12) avant l'appel de 5.13; bornes identiques chez MacArthur (GTY 48-29). | Qui vous a arrêtés? | Un peu de levain fait lever toute la pâte : la séduction légaliste ne vient pas de Celui qui appelle, et ceux qui troublent l'Eglise en porteront le jugement. | GTY 48-29 |
+| 19 | **Galates 5.13-15** | « Frères, vous avez été appelés à la liberté » (5.13) reprend 5.1 sous l'angle de l'amour, jusqu'à la mise en garde de 5.15, avant « Je dis donc: Marchez selon l'Esprit » (5.16); diffère de MacArthur, qui inclut 5.16 dans ses deux sermons sur 5.13-16 (GTY 48-30, 48-31). | Servez-vous par amour | La liberté n'est pas un prétexte pour la chair; exercée par l'amour, elle accomplit toute la loi résumée dans un seul commandement. | GTY 1667, 48-30, 48-31 |
+| 20 | **Galates 5.16-21** | « Je dis donc: Marchez selon l'Esprit » (5.16) ouvre le conflit de la chair et de l'Esprit, clos par la liste des œuvres de la chair et l'avertissement de 5.21, avant « Mais le fruit de l'Esprit » (5.22); diffère de MacArthur, qui fait de 5.16 la charnière de deux séries et prêche 5.16-26 sans couper en 5.22 (GTY 48-32 à 48-39). | Les œuvres de la chair | Marcher par l'Esprit est la seule victoire sur les désirs de la chair, dont les œuvres sont manifestes et excluent du royaume de Dieu. | GTY 1667, 48-30, 48-31, 48-32, 48-33, 48-34, 48-35, 48-36, 48-37, 48-38, 48-39, 90-332, 90-34 |
+| 21 | **Galates 5.22-26** | « Mais le fruit de l'Esprit » (5.22) répond par antithèse aux œuvres de la chair, jusqu'à la mise en garde contre la vaine gloire (5.26), avant « Frères, si un homme vient à être surpris en faute » (6.1); diffère de MacArthur, qui ne coupe pas en 5.22 (GTY 48-32 à 48-39) et rattache 5.26 à 6.1-6 (GTY 48-40). | Le fruit de l'Esprit | Le fruit de l'Esprit n'est pas la production de la chair mais ce que l'Esprit fait croître dans ceux qui ont crucifié la chair et marchent par lui. | GTY 48-32, 48-33, 48-34, 48-35, 48-36, 48-37, 48-38, 48-39, 90-332, 90-34, 1291, 1671, 48-40 |
+| 22 | **Galates 6.1-10** | « Frères, si un homme vient à être surpris en faute » (6.1) ouvre les devoirs mutuels, et « Ainsi donc, pendant que nous en avons l'occasion » (6.10) les conclut avant le post-scriptum autographe (6.11); MacArthur ouvre en 5.26 (GTY 48-40) mais finit aussi en 6.10 (GTY 48-41). | Portez les fardeaux les uns des autres | La vie de l'Esprit se prouve dans la communauté : relever avec douceur celui qui tombe, porter les fardeaux, ne pas se lasser de faire le bien, car on récolte ce qu'on sème. | GTY 1291, 1671, 48-40, 80-155, 80-179, 90-35, 1672, 48-41 |
+| 23 | **Galates 6.11-18** | « Voyez avec quelles grandes lettres je vous ai écrit de ma propre main » (6.11) ouvre le post-scriptum, clos par la grâce finale (6.18); bornes identiques chez MacArthur (GTY 48-42). | Que la croix seule | Paul ne se glorifie que de la croix de Christ, par laquelle le monde est crucifié pour lui; ce qui compte n'est ni la circoncision ni l'incirconcision, mais une nouvelle création. | GTY 1292, 1673, 48-42, 80-125, 80-252, 1674 |
+
+## Textes exigeants
+
+### Galates 3.28
+
+**Difficulté**
+
+« il n'y a plus ni homme ni femme » est invoqué pour abolir toute distinction de rôles entre hommes et femmes dans le foyer et l'Église.
+
+**Lecture retenue**
+
+Le verset parle de l'unité spirituelle en Christ : Juif et Grec, esclave et libre, homme et femme sont également fils de Dieu par la foi. Dieu n'entend pas effacer les distinctions, et cette égalité spirituelle s'accorde avec les rôles d'autorité et de soumission qu'il a établis dans l'Église, la société et le foyer.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 48-18; Niveau 3, note sur Ga 3.28
+
+### Galates 4.21-31
+
+**Difficulté**
+
+« Ces faits ont une valeur allégorique » (4.24) semble autoriser une lecture allégorique de l'Ancien Testament.
+
+**Lecture retenue**
+
+Le verbe signifie parler d'une chose au moyen d'une autre : Paul se sert de personnages et de lieux historiques pour illustrer le contraste entre la servitude de la loi et la liberté de la promesse. Ce n'est pas une allégorie au sens propre; aucun récit de l'Écriture ne cache un sens secret qui remplacerait son sens historique.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 48-26; Niveau 3, note sur Ga 4.24
+
+### Galates 5.4
+
+**Difficulté**
+
+« Vous êtes séparés de Christ, vous tous qui cherchez la justification dans la loi; vous êtes déchus de la grâce » paraît enseigner qu'un croyant peut perdre son salut.
+
+**Lecture retenue**
+
+Paul vise des Galates attirés par l'Évangile mais non convertis, tentés de chercher la justification par la loi. Qui ajoute une œuvre à Christ sort du régime de la grâce : Christ ne lui sert de rien et il devient débiteur de toute la loi. Tourner ainsi le dos à Christ après avoir connu l'Évangile prouve que la foi n'a jamais été authentique; au verset 5, le « nous » désigne les vrais croyants.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 48-28; Niveau 3, note sur Ga 5.4
+
+### Galates 5.19-21
+
+**Difficulté**
+
+« ceux qui commettent de telles choses n'hériteront point le royaume de Dieu » : le croyant qui tombe dans l'un de ces péchés perd-il son héritage?
+
+**Lecture retenue**
+
+Le texte vise une pratique habituelle et ininterrompue : ceux dont la vie est marquée par ces œuvres ne sont pas enfants de Dieu, car les œuvres manifestent la nature. Ces péchés caractérisent l'humanité non régénérée; Christ est venu ôter non seulement la culpabilité du péché mais sa puissance (1 Jn 3.4-5).
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 48-34; Niveau 3, notes sur Ga 5.19-21 et 5.21
+
+### Galates 6.16
+
+**Difficulté**
+
+« l'Israël de Dieu » est souvent lu comme un nom de l'Église entière.
+
+**Lecture retenue**
+
+L'expression désigne les Juifs qui croient en Christ, vrais Juifs selon Romains 2.28-29, en contraste direct avec les judaïsants, Israélites selon la chair mais non l'Israël de Dieu.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 48-42; Niveau 3, note sur Ga 6.16
+
+## Notes de mise en œuvre
+
+**Cadence**
+
+Cadence hebdomadaire par défaut : vingt-trois unités, soit environ six mois. Il ne faut pas accélérer dans les chapitres 3 et 4, qui portent la charge théologique de tout le livre.
+
+**Calibrage des unités**
+
+Chapitres doctrinaux denses : la malédiction de la loi et la substitution de Christ (3.10-14), la promesse antérieure à la loi (3.15-18) et le rôle pédagogique de la loi (3.19-25). Passages pastoralement lourds : les œuvres de la chair qui excluent du royaume (5.19-21), à prêcher sans détour mais sous la grâce. Versets contestés à traiter avec rigueur en laissant le texte gouverner : 3.28 (égalité spirituelle et rôles distincts, sans effacer la complémentarité), 5.4 (déchus de la grâce, non perte du salut du croyant régénéré mais abandon du régime de la grâce), et 6.16 (l'Israël de Dieu désigne le reste juif croyant, non l'Eglise se substituant à Israël). L'argument d'Agar et de Sara (4.21-31) demande de montrer que Paul illustre la vérité à partir de personnages et de faits historiques, sans allégorie ni sens caché.
+
+<!-- source_hash: 2b621c952ebcf923 -->

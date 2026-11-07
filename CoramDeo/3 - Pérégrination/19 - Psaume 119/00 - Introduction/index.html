@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Psaume 119 : Une lampe à mes pieds · Église Baptiste de Charlesbourg</title>
+<meta name="description" content="Présentation du Psaume 119 pour une étude biblique : le plus long chapitre de la Bible, un acrostiche de 22 strophes sur la suprématie et la suffisance de la Parole qui fait vivre, de Aleph à Tav. Vingt-deux semaines d'exposition suivie, du premier bonheur à la dernière brebis égarée que le Berger vient chercher. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+</style>
+
+<style>
+  /* ---- Carte de semaine : idee maitresse (ajout page de livre) ---- */
+  .semaine__idee{
+    font-size:.96rem;line-height:1.5;color:var(--encre-doux);
+    margin:.1rem 0 .2rem;text-wrap:pretty;
+  }
+  .mouvement .sec-head{margin-bottom:1.6rem;}
+  .mouvement .lead{margin-bottom:.4rem;}
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Psaume 119</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#mvt1">I. Le chemin du bonheur</a>
+    <a href="#mvt2">II. Obéir et témoigner</a>
+    <a href="#mvt3">III. L'affliction et la Parole éternelle</a>
+    <a href="#mvt4">IV. La méditation et la lampe</a>
+    <a href="#mvt5">V. La vérité et la paix</a>
+    <a href="#mvt6">VI. La brebis égarée</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Psaume 119 · Exposition suivie</p>
+    <h1 class="hero__title">Psaume 119 : Une lampe à mes pieds</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Ta parole est une lampe à mes pieds, et une lumière sur mon sentier.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Psaume 119.105 · NEG</p>
+    <p class="hero__series">Série : <b>Psaume 119 : Une lampe à mes pieds</b></p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- PRESENTATION DU LIVRE -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Présentation du livre</p>
+      <h2 class="sec-title">Une traversée du Psaume 119</h2>
+      <p class="ref">De Aleph à Tav, du chemin du bonheur à la brebis que le Berger vient chercher</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Heureux ceux qui sont intègres dans leur voie, qui marchent selon la loi de l’Éternel!</p>
+        <cite class="verse__ref">Psaume 119.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Je suis errant comme une brebis perdue: cherche ton serviteur, car je n’oublie point tes commandements.</p>
+        <cite class="verse__ref">Psaume 119.176 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le Psaume 119, le plus long chapitre de la Bible, est un acrostiche de <span class="surligne">22 strophes de 8 versets</span>, une par lettre de l'alphabet hébreu, tout entier consacré à la Parole de Dieu, célébrée sous huit synonymes. Mais ce n'est pas un froid éloge de l'Écriture : c'est le journal d'un cœur racheté qui vit de la Parole à travers le bonheur, l'affliction, la défaillance et la paix. Le danger serait d'y entendre vingt-deux fois « aimez votre Bible »; la vérité du psaume est que cette délice pour la Parole est le fruit de la régénération et de la grâce, jamais un mérite, et que la loi chérie pointe au-delà d'elle-même vers Celui qui l'a parfaitement accomplie. Tout culmine, non dans le triomphe du dévot, mais dans le cri de la brebis égarée qui implore le Berger : le psaume le plus long se ferme sur la grâce qui cherche, et nous renvoie à Christ.</p>
+    <ul class="points">
+      <li><b>La clé : 105.</b> <span class="surligne">Ta parole est une lampe à mes pieds, et une lumière sur mon sentier</span> : dans un monde obscur, la Parole suffit à éclairer chaque pas du croyant.</li>
+      <li><b>Un acrostiche, huit synonymes.</b> Vingt-deux strophes de Aleph à Tav, où la Parole est célébrée « depuis A jusqu'à Z » sous huit termes (loi, statuts, préceptes, commandements, témoignages, ordonnances, parole, voie) : sa suprématie, sa suffisance et sa permanence.</li>
+      <li><b>La grâce, non le moralisme.</b> La délice du psalmiste pour la Parole est le fruit de la régénération et de l'œuvre de l'Esprit, jamais un effort pour mériter; chaque strophe enracine l'obéissance dans la grâce reçue.</li>
+      <li><b>Un cœur éprouvé.</b> Le psaume suit le croyant à travers le bonheur, l'illumination, l'affliction qui colle l'âme à la poussière, la défaillance où Dieu semble tarder, puis la paix profonde sous la persécution.</li>
+      <li><b>La brebis égarée.</b> L'homme le plus dévoué à la Parole finit en brebis égarée qui implore le Berger de la chercher (v.176) : la dévotion du psaume se résout en grâce, et pointe vers le Bon Berger, Christ (Luc 19.10; Jean 10).</li>
+      <li><b>Six mouvements, vingt-deux semaines.</b> La série épouse l'acrostiche, de 119.1 à 119.176, sans lacune ni chevauchement. Choisissez un mouvement, puis une semaine, pour ouvrir sa recherche exégétique complète.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt1">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Mouvement I · Psaume 119.1-32</p>
+      <h2 class="sec-title mouvement-titre">Le chemin du bonheur et la Parole gardée</h2>
+      <p class="ref">Semaines 1 à 4</p>
+    </header>
+    <p class="lead">De Aleph à Daleth : le vrai bonheur appartient à qui marche dans la loi de l'Éternel; on garde le chemin en cachant la Parole dans son cœur, en demandant à Dieu d'ouvrir les yeux, et l'âme dans la poussière supplie : fais-moi revivre par ta parole.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20Le%20chemin%20du%20bonheur%20%28Psaume%20119.1-8%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">Le chemin du bonheur</span>
+        <span class="semaine__idee">Le vrai bonheur appartient à ceux qui marchent d'un cœur entier dans la loi de l'Eternel.</span>
+        <span class="semaine__ref">Psaume 119.1-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20La%20Parole%20dans%20le%20coeur%20%28Psaume%20119.9-16%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">La Parole dans le cœur</span>
+        <span class="semaine__idee">C'est la Parole serrée dans le cœur qui garde une vie pure.</span>
+        <span class="semaine__ref">Psaume 119.9-16<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20Ouvre%20mes%20yeux%20%28Psaume%20119.17-24%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Ouvre mes yeux</span>
+        <span class="semaine__idee">L'étranger sur la terre a besoin que Dieu lui ouvre les yeux pour contempler les merveilles de sa loi.</span>
+        <span class="semaine__ref">Psaume 119.17-24<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20Fais-moi%20revivre%20%28Psaume%20119.25-32%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">Fais-moi revivre</span>
+        <span class="semaine__idee">Quand l'âme gît dans la poussière, Dieu la fait revivre par sa parole.</span>
+        <span class="semaine__ref">Psaume 119.25-32<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt2">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Mouvement II · Psaume 119.33-64</p>
+      <h2 class="sec-title mouvement-titre">Enseigne-moi, j'obéirai et je témoignerai</h2>
+      <p class="ref">Semaines 5 à 8</p>
+    </header>
+    <p class="lead">De Hé à Heth : un cœur qui veut obéir supplie Dieu de l'enseigner et de l'incliner; la Parole donne la hardiesse de confesser Dieu devant les rois, devient cantique dans la nuit, et fait du Seigneur lui-même le partage du croyant.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../05%20-%20Enseigne-moi%2C%20incline%20mon%20coeur%20%28Psaume%20119.33-40%29/index.html">
+        <span class="semaine__num">Semaine 5</span>
+        <span class="semaine__titre">Enseigne-moi, incline mon cœur</span>
+        <span class="semaine__idee">Un cœur qui veut obéir supplie Dieu de l'enseigner, de l'incliner et de détourner ses yeux de la vanité.</span>
+        <span class="semaine__ref">Psaume 119.33-40<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../06%20-%20Sans%20honte%20devant%20les%20rois%20%28Psaume%20119.41-48%29/index.html">
+        <span class="semaine__num">Semaine 6</span>
+        <span class="semaine__titre">Sans honte devant les rois</span>
+        <span class="semaine__idee">La Parole donne la liberté hardie de confesser Dieu devant les rois sans honte.</span>
+        <span class="semaine__ref">Psaume 119.41-48<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../07%20-%20Un%20cantique%20dans%20la%20nuit%20%28Psaume%20119.49-56%29/index.html">
+        <span class="semaine__num">Semaine 7</span>
+        <span class="semaine__titre">Un cantique dans la nuit</span>
+        <span class="semaine__idee">La promesse de Dieu est la consolation et le cantique qui soutiennent le pèlerin dans la nuit.</span>
+        <span class="semaine__ref">Psaume 119.49-56<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../08%20-%20L%27Eternel%20est%20mon%20partage%20%28Psaume%20119.57-64%29/index.html">
+        <span class="semaine__num">Semaine 8</span>
+        <span class="semaine__titre">L'Eternel est mon partage</span>
+        <span class="semaine__idee">Quand Dieu lui-même est notre partage, l'obéissance prompte et la communion des saints suivent.</span>
+        <span class="semaine__ref">Psaume 119.57-64<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt3">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Mouvement III · Psaume 119.65-96</p>
+      <h2 class="sec-title mouvement-titre">L'affliction, bonne école, et la Parole qui subsiste</h2>
+      <p class="ref">Semaines 9 à 12</p>
+    </header>
+    <p class="lead">De Teth à Lamed : l'affliction se révèle la bonne école de Dieu, qui nous façonne par fidélité; même quand l'âme défaille et que Dieu paraît tarder, la foi s'attache à la parole éternelle, fixée dans les cieux quand tout le reste a ses bornes.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../09%20-%20Il%20m%27est%20bon%20d%27%C3%AAtre%20humili%C3%A9%20%28Psaume%20119.65-72%29/index.html">
+        <span class="semaine__num">Semaine 9</span>
+        <span class="semaine__titre">Il m'est bon d'être humilié</span>
+        <span class="semaine__idee">L'affliction est la bonne école de Dieu qui nous apprend à chérir sa Parole plus que l'or.</span>
+        <span class="semaine__ref">Psaume 119.65-72<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../10%20-%20Tes%20mains%20m%27ont%20form%C3%A9%20%28Psaume%20119.73-80%29/index.html">
+        <span class="semaine__num">Semaine 10</span>
+        <span class="semaine__titre">Tes mains m'ont formé</span>
+        <span class="semaine__idee">Le Dieu qui nous a formés de ses mains nous humilie par fidélité et nous façonne par sa parole.</span>
+        <span class="semaine__ref">Psaume 119.73-80<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../11%20-%20Quand%20me%20consoleras-tu%20%28Psaume%20119.81-88%29/index.html">
+        <span class="semaine__num">Semaine 11</span>
+        <span class="semaine__titre">Quand me consoleras-tu?</span>
+        <span class="semaine__idee">Même quand l'âme défaille et que Dieu paraît tarder, la foi s'attache à sa parole.</span>
+        <span class="semaine__ref">Psaume 119.81-88<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../12%20-%20Ta%20parole%20subsiste%20%C3%A0%20toujours%20%28Psaume%20119.89-96%29/index.html">
+        <span class="semaine__num">Semaine 12</span>
+        <span class="semaine__titre">Ta parole subsiste à toujours</span>
+        <span class="semaine__idee">La parole de Dieu subsiste à toujours dans les cieux quand tout le reste a ses bornes.</span>
+        <span class="semaine__ref">Psaume 119.89-96<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt4">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Mouvement IV · Psaume 119.97-128</p>
+      <h2 class="sec-title mouvement-titre">La méditation, la lampe et la séparation</h2>
+      <p class="ref">Semaines 13 à 16</p>
+    </header>
+    <p class="lead">De Mem à Aïn : aimer et méditer la Parole rend plus sage que tous nos maîtres et plus douce que le miel; elle est la lampe qui éclaire chaque pas, ce qui exige de rompre net avec le mal et de soupirer après l'intervention de Dieu.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../13%20-%20Plus%20douce%20que%20le%20miel%20%28Psaume%20119.97-104%29/index.html">
+        <span class="semaine__num">Semaine 13</span>
+        <span class="semaine__titre">Plus douce que le miel</span>
+        <span class="semaine__idee">Aimer et méditer la Parole rend plus sage que tous nos maîtres.</span>
+        <span class="semaine__ref">Psaume 119.97-104<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../14%20-%20Une%20lampe%20%C3%A0%20mes%20pieds%20%28Psaume%20119.105-112%29/index.html">
+        <span class="semaine__num">Semaine 14</span>
+        <span class="semaine__titre">Une lampe à mes pieds</span>
+        <span class="semaine__idee">La Parole de Dieu est la lampe qui éclaire chaque pas dans un monde dangereux.</span>
+        <span class="semaine__ref">Psaume 119.105-112<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../15%20-%20Mon%20asile%20et%20mon%20bouclier%20%28Psaume%20119.113-120%29/index.html">
+        <span class="semaine__num">Semaine 15</span>
+        <span class="semaine__titre">Mon asile et mon bouclier</span>
+        <span class="semaine__idee">S'attacher à la Parole, c'est rompre nettement avec le mal et trembler devant Dieu.</span>
+        <span class="semaine__ref">Psaume 119.113-120<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../16%20-%20Il%20est%20temps%20que%20Dieu%20agisse%20%28Psaume%20119.121-128%29/index.html">
+        <span class="semaine__num">Semaine 16</span>
+        <span class="semaine__titre">Il est temps que Dieu agisse</span>
+        <span class="semaine__idee">Le serviteur de Dieu soupire après son intervention et aime ses commandements plus que l'or fin dans un siècle sans loi.</span>
+        <span class="semaine__ref">Psaume 119.121-128<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt5">
+    <header class="sec-head">
+      <div class="sec-num">V</div>
+      <p class="kicker">Mouvement V · Psaume 119.129-168</p>
+      <h2 class="sec-title mouvement-titre">La lumière des simples, la vérité et la paix</h2>
+      <p class="ref">Semaines 17 à 21</p>
+    </header>
+    <p class="lead">De Pé à Schin : la Parole qui se découvre éclaire les simples, et son mépris par le monde brise le cœur du croyant; ancré dans la justice de Dieu et la vérité de sa parole, il crie en devançant l'aurore, reçoit ses grandes compassions et goûte une paix profonde sous la persécution.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../17%20-%20La%20lumi%C3%A8re%20des%20simples%20%28Psaume%20119.129-136%29/index.html">
+        <span class="semaine__num">Semaine 17</span>
+        <span class="semaine__titre">La lumière des simples</span>
+        <span class="semaine__idee">La Parole qui se découvre éclaire les simples, et son mépris par le monde brise le cœur du croyant.</span>
+        <span class="semaine__ref">Psaume 119.129-136<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../18%20-%20Ta%20loi%20est%20la%20v%C3%A9rit%C3%A9%20%28Psaume%20119.137-144%29/index.html">
+        <span class="semaine__num">Semaine 18</span>
+        <span class="semaine__titre">Ta loi est la vérité</span>
+        <span class="semaine__idee">Dieu est juste et sa parole est la vérité même, juste pour toujours.</span>
+        <span class="semaine__ref">Psaume 119.137-144<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../19%20-%20Je%20devance%20l%27aurore%20%28Psaume%20119.145-152%29/index.html">
+        <span class="semaine__num">Semaine 19</span>
+        <span class="semaine__titre">Je devance l'aurore</span>
+        <span class="semaine__idee">Le cœur qui aime la Parole crie vers Dieu jour et nuit, devançant l'aurore.</span>
+        <span class="semaine__ref">Psaume 119.145-152<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../20%20-%20Tes%20compassions%20sont%20grandes%20%28Psaume%20119.153-160%29/index.html">
+        <span class="semaine__num">Semaine 20</span>
+        <span class="semaine__titre">Tes compassions sont grandes</span>
+        <span class="semaine__idee">Les grandes compassions de Dieu délivrent l'affligé attaché à sa parole, dont le fondement est la vérité.</span>
+        <span class="semaine__ref">Psaume 119.153-160<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../21%20-%20Une%20paix%20profonde%20%28Psaume%20119.161-168%29/index.html">
+        <span class="semaine__num">Semaine 21</span>
+        <span class="semaine__titre">Une paix profonde</span>
+        <span class="semaine__idee">Ceux qui aiment la loi de Dieu ont une paix profonde et se réjouissent de sa parole comme d'un grand butin, même sous la persécution.</span>
+        <span class="semaine__ref">Psaume 119.161-168<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt6">
+    <header class="sec-head">
+      <div class="sec-num">VI</div>
+      <p class="kicker">Mouvement VI · Psaume 119.169-176</p>
+      <h2 class="sec-title mouvement-titre">La brebis égarée</h2>
+      <p class="ref">Semaines 22 à 22</p>
+    </header>
+    <p class="lead">Strophe Tav : toute la dévotion du psaume se résout en brebis égarée qui implore le Berger de la chercher; le psaume le plus long de la Bible se ferme sur la grâce qui cherche et pointe vers le Bon Berger, Christ.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../22%20-%20La%20brebis%20%C3%A9gar%C3%A9e%20%28Psaume%20119.169-176%29/index.html">
+        <span class="semaine__num">Semaine 22</span>
+        <span class="semaine__titre">La brebis égarée</span>
+        <span class="semaine__idee">L'homme le plus dévoué à la Parole finit en brebis égarée qui implore le Berger de la chercher, et c'est là que la grâce le rejoint.</span>
+        <span class="semaine__ref">Psaume 119.169-176<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;Psaume 119 : Une lampe à mes pieds&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

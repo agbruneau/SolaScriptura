@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luc 3.1-6 · Préparez le chemin du Seigneur · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Luc 3.1-6 : la prédication de Jean-Baptiste, préparez le chemin du Seigneur ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc 3.1-6</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Luc 3.1-6</p>
+    <h1 class="hero__title">Préparez le chemin du Seigneur</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Et toute chair verra le salut de Dieu.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 3.6 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Luc 3.1-6</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">La quinzième année du règne de Tibère César... la parole de Dieu fut adressée à Jean, fils de Zacharie, dans le désert.</p>
+        <cite class="verse__ref">Luc 3.1-2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et toute chair verra le salut de Dieu.</p>
+        <cite class="verse__ref">Luc 3.6 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avec Luc 3.1, l'Évangile bascule du récit de l'enfance au ministère public : notre péricope forme le prologue solennel de la prédication de Jean-Baptiste, qui ancre l'irruption de la parole de Dieu dans l'histoire et se referme sur la clé de voûte universelle du verset 6, «&nbsp;toute chair verra le salut de Dieu&nbsp;».</p>
+    <div class="body">
+      <p>Avec Luc 3.1, l'Évangile bascule du récit de l'enfance (ch. 1 et 2) au ministère public, et le plan de MacArthur ouvre ici la grande section du baptême de Jésus (3.1 à 4.13), dont la première unité est la prédication de Jean-Baptiste (3.1-20). Après vingt années de silence, depuis Jésus enfant au temple (2.41-50), le rideau se lève sur l'âge adulte. Notre péricope (3.1-6) forme le prologue solennel de cette prédication : Luc l'historien ancre l'irruption de la parole de Dieu dans une grille chronologique impériale et religieuse précise (v. 1-2), puis présente Jean comme le héraut prophétisé par Ésaïe (v. 3-6). La péricope se referme sur la note décisive du verset 6, «&nbsp;toute chair verra le salut de Dieu&nbsp;», clé de voûte universelle que seul Luc ajoute à la citation d'Ésaïe.</p>
+      <p>La structure est limpide. Les versets 1 et 2 constituent une seule phrase, datée par sept repères (Tibère, Pilate, les trois tétrarques, les deux souverains sacrificateurs), jusqu'au sujet enfin atteint : «&nbsp;la parole de Dieu fut adressée à Jean&nbsp;». Le verset 3 résume le contenu et la portée du ministère : un baptême de repentance prêché dans toute la région du Jourdain. Les versets 4 à 6 fournissent la justification scripturaire en citant Ésaïe 40.3-5, où Luc seul prolonge la citation jusqu'au verset 5 d'Ésaïe pour atteindre l'affirmation universelle du salut. Le titre thématique de la semaine, «&nbsp;Préparez le chemin du Seigneur&nbsp;», est tiré au cœur même de cette citation (v. 4).</p>
+      <p>Dans l'économie de l'Évangile selon Luc, le Sauveur des perdus (19.10), cette péricope inaugure ce qui sera consommé sur la croix. Jean n'est pas le Messie mais son précurseur, celui qui prépare les cœurs. MacArthur lit toute la prédication de Jean comme un appel à la repentance authentique, indissociable de la foi : le message de tout vrai prédicateur, que Jésus illustrera par le publicain qui se frappe la poitrine et redescend justifié (18.13-14). La grâce souveraine de Dieu prend ici l'initiative : ce n'est pas Jean qui se lève de lui-même, c'est «&nbsp;la parole de Dieu&nbsp;» qui vient à lui, exactement comme elle venait aux prophètes de l'Ancien Testament.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Luc 3.1-2 · Ésaïe 40.3-5</p>
+    </header>
+    <p class="lead">La datation du verset 1 trahit le souci d'historien méticuleux que MacArthur reconnaît à Luc : au-delà de la date, sept noms plantent le décor politique et religieux où surgit la parole de Dieu.</p>
+    <div class="body">
+      <p>La datation du verset 1 trahit le souci d'historien méticuleux que MacArthur reconnaît à Luc. «&nbsp;La quinzième année du règne de Tibère César&nbsp;» est l'unique repère du Nouveau Testament qui synchronise un événement évangélique avec le calendrier impérial romain. MacArthur note que cette date n'est pas aisée à fixer avec précision, à cause du parcours complexe de Tibère vers le pouvoir. Le sénat avait posé que le pouvoir d'Auguste s'éteindrait à sa mort sans transmission héréditaire; Auguste contourna l'obstacle en nommant un corégent, et ce fut finalement Tibère, son beau-fils adopté, nommé corégent en l'an 11 et seul détenteur du pouvoir à la mort d'Auguste, le 19 août de l'an 14. Selon que Luc compte depuis la corégence (la quinzième année tombant vers 25 ou 26) ou depuis la mort d'Auguste (entre août 28 et août 29), et selon l'usage juif qui faisait débuter un règne au nouvel an suivant l'accession, la fourchette se situe autour de 26 à 29 de notre ère. Loin d'être une faiblesse, cette précision vérifiable est un sceau de l'inspiration verbale : la rédemption s'inscrit dans l'histoire réelle, datable, et non dans un mythe intemporel.</p>
+    </div>
+    <p>Trois réalités éclairent la scène du lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Une Palestine morcelée sous tutelle romaine.</b> La mosaïque politique du verset 1 dépeint le partage du royaume d'Hérode le Grand. Ponce Pilate gouverne la Judée; Hérode Antipas, tétrarque de la Galilée, est celui-là même qui emprisonnera puis fera décapiter Jean (3.19-20); son frère Philippe administre l'Iturée et la Trachonite au nord-est; Lysanias règne sur l'Abilène, région au nord-ouest de Damas dont MacArthur souligne que l'histoire est quasiment muette à son sujet. Cet émiettement situe Israël sous le joug païen, dans l'attente fébrile du Messie libérateur.</li>
+      <li><b>Un sacerdoce corrompu et politisé.</b> Le verset 2 ajoute le repère religieux : «&nbsp;du temps des souverains sacrificateurs Anne et Caïphe&nbsp;». Selon Flavius Josèphe, Anne avait exercé le souverain sacerdoce de l'an 6 à l'an 15 avant d'être déposé par Rome, mais il conserva le pouvoir réel à travers cinq de ses fils et son gendre Caïphe, titulaire officiel à l'époque de Luc. Cette dualité, qui réapparaîtra au procès de Jésus comparu d'abord devant Anne, manifeste la corruption d'un sacerdoce devenu charge politique négociable, terrain sur lequel surgit la voix prophétique de Jean.</li>
+      <li><b>L'image royale du chemin et le baptême des prosélytes.</b> Le ministère de Jean se déroule «&nbsp;dans le désert&nbsp;» et «&nbsp;dans tout le pays des environs du Jourdain&nbsp;» (v. 2-3), reprenant le décor d'Ésaïe. MacArthur éclaire l'image royale qui sous-tend l'appel «&nbsp;préparez le chemin du Seigneur&nbsp;» : un monarque en déplacement à travers des contrées désertiques se faisait précéder d'ouvriers chargés de dégager la route, combler les ravins, niveler les hauteurs et aplanir les passages raboteux, afin que rien ne ralentisse le voyage du souverain. Jean est cet avant-coureur, mais le nivellement qu'il réclame est spirituel. Le baptême qu'il administre évoque les ablutions juives et surtout le baptême des prosélytes : que Jean somme des Juifs de souche de se faire baptiser comme des païens était une provocation prophétique, nul ne s'approchant de Dieu sur la base de sa lignée, mais seulement par la repentance.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : du <i>désert</i> (<i>erēmos</i>) où surgit le héraut, à la <i>repentance</i> (<i>metanoia</i>) qui retourne le cœur, au <i>pardon</i> (<i>aphesis</i>) que le baptême confesse sans le produire, à l'ordre de <i>préparer</i> (<i>hetoimazō</i>) la route du Roi, jusqu'au <i>salut</i> (<i>sōtērion</i>) offert à toute chair.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">désert</span><span class="mot-gr">erēmos</span></th>
+            <td class="col-sens">lieu désert, solitude, région inhabitée et aride</td>
+            <td>Désigne l'étendue inculte de Judée bordant le Jourdain et la mer Morte, et non un simple sable vide. Le mot porte une lourde charge prophétique : c'est au désert qu'Israël fut mis à l'épreuve, et c'est «&nbsp;la voix de celui qui crie dans le désert&nbsp;» (Es 40.3) qui annonce la consolation. Pour MacArthur, le désert où la parole de Dieu vient à Jean (v. 2) accomplit littéralement le décor d'Ésaïe; le héraut surgit loin du temple corrompu, sur les marges, comme jadis les prophètes. Le lieu même prêche : la stérilité spirituelle d'Israël attend l'eau vive du Messie.</td>
+            <td><span class="trad"><span><b>S21</b> désert</span><span><b>NEG79</b> désert</span><span><b>Darby</b> désert</span><span><b>LSG</b> désert</span><span><b>KJF</b> désert</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">repentance</span><span class="mot-gr">metanoia</span></th>
+            <td class="col-sens">changement de pensée, retournement de l'intelligence et de la volonté</td>
+            <td>Bien plus qu'un regret émotif ou un simple changement d'avis : la <i>metanoia</i> biblique est un revirement radical qui détourne du péché pour se tourner vers Dieu, et que les fruits viennent prouver (3.8). MacArthur insiste : le «&nbsp;baptême de repentance&nbsp;» de Jean exige une transformation réelle de la conduite, non un rituel magique ni un ascétisme mystique (cf. 3.10-14). Dans l'Évangile de Luc, la repentance est centrale (5.32; 13.3,5; 24.47) et indissociable de la foi salvatrice. Elle est l'envers de la grâce souveraine : Dieu donne le retournement, l'homme s'y soumet. Aucune justification sans cette rupture intérieure.</td>
+            <td><span class="trad"><span><b>S21</b> changement d'attitude</span><span><b>NEG79</b> repentance</span><span><b>Darby</b> repentance</span><span><b>LSG</b> repentance</span><span><b>KJF</b> repentance</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">pardon</span><span class="mot-gr">aphesis</span></th>
+            <td class="col-sens">renvoi, relâchement, remise d'une dette; libération</td>
+            <td>Terme d'affranchissement : l'<i>aphesis</i> est le congé donné à la dette ou au prisonnier, appliqué ici à la rémission des péchés. La préposition de la NEG, «&nbsp;à cause du pardon des péchés&nbsp;», est doctrinalement décisive : MacArthur la lit comme un témoignage symbolique du pardon déjà accordé au moment de la repentance, et non comme la cause qui produirait ce pardon. Le baptême n'opère pas la rémission; il la proclame. Cette lecture verrouille le refus de la régénération baptismale : l'eau figure et confesse une grâce reçue par la foi, elle ne la confère pas. Le baptême de Jean est un signe, jamais un mérite.</td>
+            <td><span class="trad"><span><b>S21</b> pardon</span><span><b>NEG79</b> pardon</span><span><b>Darby</b> rémission</span><span><b>LSG</b> rémission</span><span><b>KJF</b> rémission</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">préparez</span><span class="mot-gr">hetoimazō</span></th>
+            <td class="col-sens">préparer, apprêter, rendre prêt; aménager d'avance</td>
+            <td>Verbe à l'impératif aoriste dans la citation d'Ésaïe (v. 4), portant l'image des ouvriers qui dégagent la route avant le passage du roi. MacArthur déploie le tableau : combler les ravins, abaisser les collines, redresser ce qui est tortueux, aplanir les chemins raboteux (v. 5), tout cela pour qu'aucun obstacle ne ralentisse la venue du souverain. Transposé au plan spirituel, <i>hetoimazō</i> désigne la préparation du cœur d'Israël à recevoir son Messie. Le héraut ne construit pas le salut; il en prépare l'accueil. L'orgueil de la lignée («&nbsp;nous avons Abraham pour père&nbsp;», 3.8) est précisément l'une des montagnes à abaisser.</td>
+            <td><span class="trad"><span><b>S21</b> préparez</span><span><b>NEG79</b> Préparez</span><span><b>Darby</b> préparez</span><span><b>LSG</b> Préparez</span><span><b>KJF</b> Préparez</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">salut</span><span class="mot-gr">sōtērion</span></th>
+            <td class="col-sens">le salut, la délivrance opérée par Dieu; ce qui sauve</td>
+            <td>Forme neutre substantivée de <i>sōtēr</i> (sauveur), elle désigne moins l'acte que la réalité salvatrice elle-même, «&nbsp;le salut de Dieu&nbsp;» que toute chair verra (v. 6). Luc l'a déjà placé sur les lèvres de Siméon, «&nbsp;mes yeux ont vu ton salut&nbsp;» (2.30), et le reprend ici en clôture de la citation d'Ésaïe. MacArthur note que Luc seul prolonge Ésaïe jusqu'à ce sommet pour souligner la dimension universelle de l'Évangile : ce salut s'offre aux Juifs et aux non-Juifs. Le mot ancre le thème maître du troisième Évangile, le Sauveur venu chercher et sauver les perdus (19.10), dont la portée déborde Israël pour atteindre toute chair.</td>
+            <td><span class="trad"><span><b>S21</b> salut</span><span><b>NEG79</b> salut</span><span><b>Darby</b> salut</span><span><b>LSG</b> salut</span><span><b>KJF</b> salut</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Luc 3.1-6</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Luc 3.1-6 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Lc 3.1, 3.2, 3.3, 3.4, 3.6.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-35</span></th>
+            <td><a href="https://www.gty.org/sermons/42-35" target="_blank" rel="noopener">Setting the Stage for Jesus, Part 1</a></td>
+            <td>Luc 3.1</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-36</span></th>
+            <td><a href="https://www.gty.org/sermons/42-36" target="_blank" rel="noopener">Setting the Stage for Jesus, Part 2</a></td>
+            <td>Luc 3.2-3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-37</span></th>
+            <td><a href="https://www.gty.org/sermons/42-37" target="_blank" rel="noopener">Setting the Stage for Jesus, Part 3</a></td>
+            <td>Luc 3.3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-38</span></th>
+            <td><a href="https://www.gty.org/sermons/42-38" target="_blank" rel="noopener">Setting the Stage for Jesus, Part 4</a></td>
+            <td>Luc 3.3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-39</span></th>
+            <td><a href="https://www.gty.org/sermons/42-39" target="_blank" rel="noopener">A Voice Crying in the Wilderness, Part 1</a></td>
+            <td>Luc 3.4-6</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-40</span></th>
+            <td><a href="https://www.gty.org/sermons/42-40" target="_blank" rel="noopener">A Voice Crying in the Wilderness, Part 2</a></td>
+            <td>Luc 3.4-6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit les versets 1 et 2 comme un décor historique, politique et religieux plutôt que comme une chronologie : par sept noms, Luc l'historien minutieux peint les temps sombres où la parole de Dieu vient à Jean.</p>
+    <div class="body">
+      <p>MacArthur lit les versets 1 et 2 comme un décor historique, politique et religieux plutôt que comme une chronologie. Par sept noms, Tibère, Pilate, Antipas, Philippe, Lysanias, Anne et Caïphe, Luc l'historien minutieux peint des temps sombres : une terre promise morcelée sous de petits rois païens et un sacerdoce corrompu. L'Évangile n'est pas une légende flottant hors du temps mais un fait planté dans l'histoire impériale romaine. MacArthur rappelle que l'archéologie a confirmé cette exactitude : une inscription découverte à Césarée en 1961 porte le nom de Ponce Pilate, et des inscriptions attestent un Lysanias tétrarque d'Abilène au temps de Jean, là où des critiques accusaient Luc d'erreur. La rédemption a une date, des gouverneurs et des grands prêtres nommés. La parole de Dieu vint à un homme réel, en une année réelle.</p>
+      <p>La formule du verset 2, «&nbsp;la parole de Dieu fut adressée à Jean&nbsp;», reprend délibérément le langage de la vocation prophétique de l'Ancien Testament (Jérémie, Osée, Joël). MacArthur y voit la consécration de Jean comme dernier prophète de l'ancienne alliance et précurseur annoncé. Ce n'est pas Jean qui s'autoproclame réformateur; c'est Dieu qui, par grâce souveraine, prend l'initiative et envoie sa parole. Dès le seuil du ministère, le mouvement va de Dieu vers l'homme. Et la parole tombe non sur le souverain sacrificateur en fonction ni dans le temple, mais sur un homme du désert, fils du sacrificateur Zacharie, écartant ainsi la hiérarchie corrompue d'Anne et de Caïphe au profit de la voix prophétique authentique.</p>
+      <p>Le baptême de repentance «&nbsp;à cause du pardon des péchés&nbsp;» (v. 3) est le nœud doctrinal de la péricope, et MacArthur le tranche avec netteté : le baptême de Jean est un témoignage symbolique du pardon déjà accordé au moment de la repentance, non sa cause efficiente. La préposition n'enseigne pas que l'immersion produit la rémission; elle indique que le baptême confesse publiquement une grâce déjà reçue par la repentance et la foi. C'est l'exacte parallèle de sa lecture d'Actes 2.38. Cette précision exclut la régénération baptismale : l'eau est signe, jamais mérite, jamais canal automatique de la grâce. La repentance que Jean réclame n'est pas un sentiment passager mais un retournement vérifiable par ses fruits (3.8), indissociable de la foi salvatrice. MacArthur y insiste longuement : il n'y a pas de pardon sans repentance, et qui se croit sauvé par un engagement passé sans aucune attitude de repentance ne l'est probablement pas.</p>
+      <p>Le sommet est le verset 6 : «&nbsp;toute chair verra le salut de Dieu.&nbsp;» MacArthur souligne que Luc, et lui seul parmi les évangélistes qui citent Ésaïe 40.3, prolonge la citation jusqu'aux versets 4 et 5 d'Ésaïe pour atteindre cette affirmation universelle. «&nbsp;Toute chair&nbsp;» signifie les Juifs et les non-Juifs : c'est la signature du troisième Évangile, écrit par celui qui serait le seul auteur non juif de l'Écriture, proche de l'apôtre des païens, qui présente Jésus comme le Sauveur offert au monde après avoir été rejeté par Israël. Cette universalité de l'invitation, toutefois, ne dilue jamais la particularité de l'élection ni l'exigence de la repentance : le salut est offert à toute chair, il n'est reçu que par ceux dont le cœur a été préparé, abaissé, redressé. La justification par la foi que Luc met en récits, le publicain de 18.13-14, le prodigue de 15, demeure en parfaite harmonie avec Paul. Le précurseur prépare donc le chemin d'un salut à la fois universel dans son offre et souverain dans son application.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de la prophétie d'Ésaïe citée explicitement aux parallèles synoptiques que Luc seul prolonge, jusqu'aux échos thématiques du salut universel et de la colère à venir.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 40.3-5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La prophétie citée explicitement par Luc 3.4-6 : la voix qui crie dans le désert, le chemin à préparer, les vallées comblées et les montagnes abaissées. Luc seul prolonge la citation jusqu'à «&nbsp;toute chair verra le salut de Dieu&nbsp;» (Es 40.5) pour en tirer la portée universelle de l'Évangile.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Malachie 3.1; 4.5-6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La promesse du messager qui prépare le chemin devant l'Éternel et du retour d'Élie avant le jour du Seigneur; Jean accomplit cette attente en venant «&nbsp;avec l'esprit et la puissance d'Élie&nbsp;» (Lu 1.17) pour préparer les cœurs.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 1.16-17, 76-79</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'annonce angélique et le cantique de Zacharie définissaient déjà la mission de Jean : marcher devant le Seigneur pour préparer ses voies et ramener les cœurs. La péricope montre l'accomplissement de ce programme prophétique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Mt 3.1-6; Mc 1.2-5; Jn 1.19-23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les trois autres Évangiles rapportent la prédication de Jean et citent Ésaïe 40.3, mais s'arrêtent au verset 3; Luc seul ajoute les versets 4 et 5 jusqu'au salut vu par toute chair, accentuant sa visée universelle.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 2.30-32</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Siméon avait déjà vu «&nbsp;le salut&nbsp;» de Dieu préparé devant tous les peuples, lumière pour éclairer les nations et gloire d'Israël; le <i>sōtērion</i> du chapitre 3 reprend ce mot et confirme l'arc universel ouvert dès la nativité.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 2.38</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le «&nbsp;baptême pour le pardon des péchés&nbsp;» que MacArthur lit de la même manière qu'en Luc 3.3 : le baptême témoigne d'un pardon déjà accordé à la repentance, il ne le produit pas; verrou contre la régénération baptismale.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 19.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le verset-thème de l'Évangile, le Fils de l'homme venu chercher et sauver ce qui était perdu, est annoncé dès 3.6 : le salut de Dieu offert à toute chair trouve son centre dans la mission rédemptrice de Jésus.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 1.18; 1 Th 1.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La «&nbsp;colère à venir&nbsp;» dont Jean somme de fuir (Lu 3.7) vise la destruction prochaine de Jérusalem mais entrevoit aussi le déversement de la colère divine au jour du Seigneur et au jugement dernier; jalon eschatologique qui distingue le jugement historique et le jugement final.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'inspiration vérifiable et l'ancrage historique de la rédemption</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les sept repères du verset 1 (Tibère, Pilate, Antipas, Philippe, Lysanias) et du verset 2 (Anne et Caïphe) datent l'irruption de la parole de Dieu avec la précision d'un historien méticuleux que MacArthur reconnaît à Luc.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'Évangile n'est pas un mythe intemporel mais un fait planté dans l'histoire impériale réelle. Cette assise documentaire soutient la doctrine de l'inspiration verbale et plénière et réfute toute reconstruction critique qui dissoudrait le texte dans des sources hypothétiques. Prêchez un salut daté, attesté, dont les coordonnées résistent à l'examen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le précurseur prophétique et la grâce qui prend l'initiative</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;La parole de Dieu fut adressée à Jean&nbsp;» (v. 2) reprend le langage de la vocation des prophètes de l'Ancien Testament; ce n'est pas Jean qui se lève, c'est Dieu qui l'envoie préparer le chemin selon Ésaïe 40.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le monergisme de Luc affleure dès le seuil : le mouvement va de Dieu vers l'homme. Dieu suscite son héraut hors du temple corrompu et prépare souverainement les cœurs. L'évangélisation et le réveil naissent de l'initiative divine, non de l'ingéniosité humaine; le serviteur prépare l'accueil, Dieu donne le salut.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La repentance authentique sans régénération baptismale</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le «&nbsp;baptême de repentance, à cause du pardon des péchés&nbsp;» (v. 3) que MacArthur lit comme témoignage symbolique d'un pardon déjà accordé à la repentance, non comme sa cause; la repentance se prouve par ses fruits (3.8).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'eau confesse une grâce reçue par la foi, elle ne la confère pas : verrou contre la régénération baptismale et le sacramentalisme. La repentance est un retournement réel, indissociable de la foi salvatrice (<i>Lordship Salvation</i>) : aucun salut sans rupture intérieure, aucune foi authentique qui laisse la vie inchangée. Prêchez la repentance biblique, non un rituel ni un simple changement d'attitude.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'universalité de l'offre du salut</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Toute chair verra le salut de Dieu&nbsp;» (v. 6); Luc seul prolonge la citation d'Ésaïe jusqu'à ce sommet pour souligner que le salut s'adresse aux Juifs et aux non-Juifs.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le troisième Évangile, écrit par celui qui serait le seul auteur non juif de l'Écriture, présente Jésus comme le Sauveur des perdus offert au monde (19.10). L'offre est universelle, mais la réception demeure souveraine : le salut est vu par tous, reçu par ceux dont le cœur a été préparé. Annoncez une bonne nouvelle sans frontière ethnique, sans jamais dissoudre l'élection ni l'exigence de la foi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La colère à venir et la distinction des jugements</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le contexte immédiat («&nbsp;fuir la colère à venir&nbsp;», 3.7), où MacArthur entend en chaire la colère finale de Dieu et le jugement éternel, et où sa note voit aussi une allusion à la destruction future de Jérusalem.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Cadre dispensationaliste prémillénariste : le jugement historique sur Jérusalem (accompli en 70) demeure distinct du jugement final et glorieux encore à venir. La repentance que Jean prêche n'est pas un luxe moral mais l'unique échappatoire à la colère divine. Réfutez le prétérisme qui confond les deux jugements; appelez l'auditeur à fuir une colère réelle vers un salut réel.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Luc date l'irruption de la parole de Dieu par sept repères impériaux et religieux vérifiables. Comment cette historicité minutieuse nourrit-elle votre confiance, et celle de votre assemblée, dans l'inspiration verbale de l'Écriture face à un scepticisme qui range les Évangiles parmi les mythes?</li>
+      <li>«&nbsp;La parole de Dieu fut adressée à Jean&nbsp;» : l'initiative est entièrement divine. En quoi cette grâce souveraine qui suscite le héraut hors du temple corrompu corrige-t-elle nos méthodes d'évangélisation centrées sur l'ingéniosité humaine?</li>
+      <li>Jean prêche un «&nbsp;baptême de repentance, à cause du pardon des péchés&nbsp;». Comment prêcher ce verset de manière à confesser le baptême comme signe du pardon reçu par la foi, sans glisser vers la régénération baptismale ni vider le baptême de son sens?</li>
+      <li>La repentance biblique est un retournement vérifiable par ses fruits (3.8), non un simple «&nbsp;changement d'attitude&nbsp;». Votre prédication appelle-t-elle à cette rupture concrète et soumise à la seigneurie de Christ, ou s'arrête-t-elle à un regret sans transformation?</li>
+      <li>L'image royale du chemin à préparer suppose qu'il y a des montagnes d'orgueil à abaisser et des sentiers tortueux à redresser. Quelles «&nbsp;montagnes&nbsp;» spirituelles (la confiance dans la lignée, le mérite religieux, l'autosuffisance) doivent être nivelées dans votre cœur et dans votre assemblée avant la venue du Roi?</li>
+      <li>«&nbsp;Toute chair verra le salut de Dieu&nbsp;» ouvre l'Évangile aux non-Juifs sans frontière ethnique. Comment tenir ensemble cette universalité de l'offre et la souveraineté de Dieu dans l'application du salut, sans verser dans l'universalisme ni dans un repli sectaire?</li>
+      <li>Jean somme ses auditeurs de «&nbsp;fuir la colère à venir&nbsp;» (3.7). Prêchez-vous la réalité de la colère divine, en distinguant le jugement historique sur Jérusalem du jugement dernier encore à venir, ou avez-vous adouci cet avertissement au point que la repentance perde son urgence?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Luc 3.1-6 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Luc : venu sauver les perdus&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Luc-3-1-6.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

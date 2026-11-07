@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luc 1.67-80 · Le soleil levant nous a visités · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Luc 1.67-80 : le cantique de Zacharie (Benedictus), la visitation rédemptrice de Dieu et le soleil levant qui se lève sur ceux qui sont dans les ténèbres; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc 1.67-80</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Luc 1.67-80</p>
+    <h1 class="hero__title">Le soleil levant nous a visités</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Grâce aux entrailles de la miséricorde de notre Dieu, par lesquelles le soleil levant nous a visités d'en haut.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 1.78 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Luc 1.67-80</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Zacharie, son père, fut rempli du Saint-Esprit, et il prophétisa, en ces mots : Béni soit le Seigneur, le Dieu d'Israël, de ce qu'il a visité et racheté son peuple.</p>
+        <cite class="verse__ref">Luc 1.67-68 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et toi, petit enfant, tu seras appelé prophète du Très-Haut; car tu marcheras devant la face du Seigneur, pour préparer ses voies.</p>
+        <cite class="verse__ref">Luc 1.76 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le cantique de Zacharie, le Benedictus, n'est pas un point d'arrivée mais une flèche : il tend tout entier vers la venue du Messie que Jean préparera, et il livre par anticipation la clé de tout l'Évangile, le salut accompli pour les perdus par le Sauveur de la maison de David.</p>
+    <div class="body">
+      <p>Le cantique de Zacharie, que la tradition appelle le Benedictus d'après le premier mot de la version latine, clôt le récit de la naissance du précurseur (1.57-80) et scelle toute la séquence des annonces qui ouvre l'Évangile. Pendant neuf mois, Zacharie est demeuré muet pour n'avoir pas cru à la parole de Gabriel (1.20); à la circoncision de son fils, l'instant où il confirme par écrit le nom de Jean, sa langue se délie (1.63-64). Le premier usage de cette bouche rendue libre n'est pas une plainte ni une justification, mais une bénédiction : ce sacrificateur qui devait prononcer la bénédiction sur le peuple dans le Temple au moment même où il fut frappé de mutisme (voir la note de MacArthur sur 1.21) ouvre enfin les lèvres pour bénir le Dieu d'Israël. Luc précise que Zacharie «&nbsp;fut rempli du Saint-Esprit, et il prophétisa&nbsp;» (1.67) : ce chant n'est pas un épanchement poétique humain, mais une parole prophétique inspirée, troisième des grands psaumes de louange que Luc insère dans son récit de la nativité, après le Magnificat de Marie (1.46-55) et avant le Nunc dimittis de Siméon (2.29-32).</p>
+      <p>Le cantique se déploie en deux mouvements nettement distincts. Les versets 68 à 75 célèbrent l'œuvre rédemptrice de Dieu en faveur de tout Israël : Dieu a «&nbsp;visité et racheté son peuple&nbsp;», il a suscité «&nbsp;un puissant Sauveur dans la maison de David&nbsp;», accomplissant l'alliance jurée à Abraham. Le sujet de ces lignes n'est jamais Jean, mais le Messie davidique qui le suit. Le second mouvement (76-79) se tourne directement vers l'enfant : «&nbsp;Et toi, petit enfant, tu seras appelé prophète du Très-Haut.&nbsp;» Zacharie y définit la vocation de son fils, le précurseur qui marchera devant la face du Seigneur pour préparer ses voies et donner au peuple la connaissance du salut par le pardon des péchés. Le chant culmine dans l'image du «&nbsp;soleil levant&nbsp;» qui «&nbsp;nous a visités d'en haut&nbsp;» pour éclairer ceux qui sont assis dans les ténèbres : titre messianique éclatant qui ramène le regard du précurseur vers Celui qu'il annonce.</p>
+      <p>La fonction du passage dans l'architecture de Luc est charnière. Il achève le diptyque des deux naissances annoncées, celle de Jean et celle de Jésus, et opère la transition du précurseur vers le Sauveur. Le verset 80, sobre et conclusif, referme tout le récit de Jean enfant : «&nbsp;l'enfant croissait, et se fortifiait en esprit. Et il demeura dans les déserts, jusqu'au jour où il se présenta devant Israël.&nbsp;» Luc le laisse au désert, et le récit bascule aussitôt vers Bethléhem et la nativité du Seigneur (2.1-7). Ainsi le Benedictus n'est pas un point d'arrivée mais une flèche : il tend tout entier vers la venue du Messie que Jean préparera, et il livre par anticipation la clé de tout l'Évangile, le salut accompli pour les perdus par le Sauveur de la maison de David.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Luc 1.5 · 1.69 · 1.80</p>
+    </header>
+    <p class="lead">Zacharie et Élisabeth sont tous deux lévites : ce détail généalogique est décisif, car l'enfant suscité «&nbsp;dans la maison de David&nbsp;» ne saurait être Jean, descendant de Lévi, mais nécessairement le Messie de la lignée de Juda et de David.</p>
+    <div class="body">
+      <p>Zacharie est sacrificateur de la classe d'Abia, la huitième des vingt-quatre divisions sacerdotales instituées sous David (1.5; cf. 1 Chroniques 24.10), et son épouse Élisabeth est elle-même «&nbsp;d'entre les filles d'Aaron&nbsp;». MacArthur souligne ce détail comme décisif pour l'interprétation du cantique : Zacharie et Élisabeth étant tous deux lévites, l'enfant suscité «&nbsp;dans la maison de David&nbsp;» (1.69) ne saurait être Jean, descendant de Lévi, mais nécessairement quelqu'un de plus grand, le Messie de la lignée de Juda et de David. Le cantique chante donc deux enfants : le Sauveur royal des versets 68-75, et le prophète précurseur des versets 76-79. Comprendre cette généalogie lévitique, c'est saisir pourquoi Zacharie ne célèbre pas d'abord son propre fils, mais Celui dont son fils ne sera que le héraut.</p>
+    </div>
+    <p>Trois réalités éclairent l'arrière-plan du cantique.</p>
+    <ul class="points">
+      <li><b>L'attente messianique du second Temple.</b> Le Benedictus baigne tout entier dans l'attente messianique du judaïsme du second Temple, sous le joug romain et dans le silence prophétique de quatre siècles depuis Malachie. Le langage de Zacharie est saturé d'allusions et de renvois à l'Ancien Testament, à la manière du Magnificat : la «&nbsp;corne de salut&nbsp;», l'alliance jurée à Abraham, la délivrance des ennemis, la lumière sur ceux qui marchent dans les ténèbres sont autant de motifs prophétiques familiers.</li>
+      <li><b>Une délivrance recentrée sur la sainteté.</b> L'attente populaire était largement politique : on espérait un libérateur qui briserait le joug de Rome et restaurerait le royaume terrestre d'Israël. Zacharie, inspiré par l'Esprit, reprend ce vocabulaire de délivrance des ennemis (1.71, 74), mais l'oriente vers son terme véritable : le but de la rédemption n'est pas d'abord l'indépendance nationale, c'est de «&nbsp;le servir sans crainte, en marchant devant lui dans la sainteté et dans la justice&nbsp;» (1.74-75), et le cœur du salut est «&nbsp;le pardon des péchés&nbsp;» (1.77). La délivrance attendue est replacée dans le cadre de l'alliance et de la sainteté, sans que la promesse faite à Israël soit pour autant spiritualisée ou abolie : elle demeure littérale et reste à accomplir pleinement.</li>
+      <li><b>Le désert de Judée et la préparation prophétique.</b> Le verset 80 ouvre une fenêtre sur le monde du désert de Judée, où Jean «&nbsp;demeura dans les déserts&nbsp;» jusqu'à sa manifestation publique. MacArthur rappelle que plusieurs communautés d'ascètes vivaient dans ces régions arides à l'est de Jérusalem, dont la plus célèbre, Qumrân, nous a légué les manuscrits de la mer Morte; il n'est pas exclu que les parents de Jean, très âgés, l'aient confié aux soins d'une personne liée à l'une de ces communautés, comme Anne avait jadis consacré Samuel au Seigneur (1 Samuel 1.22-28). Mais l'Écriture ne fournit aucune indication formelle, et MacArthur écarte toute conclusion : Jean est dépeint au contraire comme un personnage solitaire qui marche dans les pas d'Élie (1.17), non comme le membre d'une secte. Le désert n'est pas pour lui un cloître, mais le lieu de la préparation prophétique, loin du formalisme du Temple, d'où il surgira pour préparer le chemin du Seigneur.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique du cantique : la visitation (<i>episkeptomai</i>) et le rachat (<i>lutrōsis</i>) de Dieu, le «&nbsp;puissant Sauveur&nbsp;» (<i>keras sōtērias</i>, la corne de salut), le «&nbsp;soleil levant&nbsp;» messianique (<i>anatolē</i>) et le pardon (<i>aphesis</i>) qui en est le cœur.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">visité</span><span class="mot-gr">episkeptomai</span></th>
+            <td class="col-sens">regarder vers, venir voir, visiter avec une intention bienveillante; inspecter pour porter secours</td>
+            <td>Le verbe encadre le cantique : Dieu «&nbsp;a visité et racheté son peuple&nbsp;» (1.68) et «&nbsp;le soleil levant nous a visités d'en haut&nbsp;» (1.78). Loin d'une simple venue, le terme dit l'intervention salvatrice de Dieu qui se penche en personne sur la misère des siens pour les secourir, comme jadis il «&nbsp;visita&nbsp;» Israël en Égypte (Exode 4.31). Pour MacArthur, cette expression typiquement vétérotestamentaire dit une visite de Dieu, parfois pour le jugement (Exode 32.34), ici pour la grâce : le ciel est descendu, le surnaturel a fait irruption dans le naturel, et Luc, qui résume son Évangile en 19.10, présentera Jésus comme le Sauveur venu chercher ce qui était perdu.</td>
+            <td><span class="trad"><span><b>S21</b> il a visité</span><span><b>NEG79</b> il a visité</span><span><b>Darby</b> il a visité</span><span><b>LSG</b> il a visité</span><span><b>KJF</b> il a visité</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">racheté</span><span class="mot-gr">lutrōsis</span></th>
+            <td class="col-sens">rachat, rédemption, libération obtenue moyennant le paiement d'une rançon (lutron)</td>
+            <td>Le substantif évoque l'affranchissement d'un esclave ou d'un captif par le versement d'un prix. Appliqué ici à l'œuvre de Dieu envers son peuple (1.68), il annonce la rédemption messianique dont le prix sera, comme tout l'Évangile le révélera, la vie même du Fils de l'homme «&nbsp;donnée en rançon&nbsp;». Pour MacArthur, racheter, c'est délivrer à haut prix, et Zacharie voit ce rachat accomplir trois alliances de salut : l'alliance davidique (1.69-71), l'alliance abrahamique (1.72-75) et la nouvelle alliance (1.76-79). Dieu rachètera son peuple de l'occupation romaine et de ses ennemis terrestres, mais plus encore de ses ennemis spirituels, son propre péché, car ni l'alliance davidique ni l'alliance abrahamique ne s'accomplissent sans le pardon promis par la nouvelle alliance.</td>
+            <td><span class="trad"><span><b>S21</b> racheté</span><span><b>NEG79</b> racheté</span><span><b>Darby</b> délivrance</span><span><b>LSG</b> racheté</span><span><b>KJF</b> racheté</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">un puissant Sauveur</span><span class="mot-gr">keras sōtērias</span></th>
+            <td class="col-sens">littéralement «&nbsp;une corne de salut&nbsp;»; la corne, image de la force et de la puissance victorieuse</td>
+            <td>L'expression «&nbsp;corne de salut&nbsp;» est fréquente dans l'Ancien Testament (2 Samuel 22.3; Psaume 18.3; cf. 1 Samuel 2.1); la corne du taureau symbolise la force qui renverse l'ennemi (Deutéronome 33.17). MacArthur insiste : cette corne suscitée «&nbsp;dans la maison de David&nbsp;» ne peut désigner Jean, fils de lévites, mais le Messie davidique, plus grand que le précurseur (Jean 1.26-27). La NEG rend justement le sens par «&nbsp;un puissant Sauveur&nbsp;», faisant ressortir que la force de salut promise est une personne royale, et non une simple délivrance abstraite.</td>
+            <td><span class="trad"><span><b>S21</b> un puissant Sauveur</span><span><b>NEG79</b> un puissant Sauveur</span><span><b>Darby</b> une corne de délivrance</span><span><b>LSG</b> un puissant Sauveur</span><span><b>KJF</b> une corne de salut</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">le soleil levant</span><span class="mot-gr">anatolē</span></th>
+            <td class="col-sens">le levant, l'orient, le lever du soleil ou de l'astre; au sens figuré, le germe, le rejeton qui pointe</td>
+            <td>Le mot signifie à la fois le «&nbsp;lever&nbsp;» de l'astre et, dans la Septante, le «&nbsp;germe&nbsp;» ou «&nbsp;rejeton&nbsp;» messianique (Jérémie 23.5; Zacharie 3.8; 6.12). MacArthur le tient pour un terme à signification proprement messianique (cf. Ésaïe 9.1; 60.1-3; Malachie 4.2; 2 Pierre 1.19; Apocalypse 22.16) : le Messie est l'aurore qui se lève d'en haut sur un peuple assis dans les ténèbres. La NEG choisit «&nbsp;le soleil levant&nbsp;», image lumineuse qui condense l'idée du Messie comme lumière divine visitant ceux qui sont dans l'ombre de la mort.</td>
+            <td><span class="trad"><span><b>S21</b> le soleil levant</span><span><b>NEG79</b> le soleil levant</span><span><b>Darby</b> l'Orient d'en haut</span><span><b>LSG</b> le soleil levant</span><span><b>KJF</b> le Dayspring</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">le pardon</span><span class="mot-gr">aphesis</span></th>
+            <td class="col-sens">renvoi, relâchement, remise; le fait de relâcher une dette ou de libérer un prisonnier; rémission</td>
+            <td>Le terme désigne la remise effective d'une dette ou la libération d'un captif, et donc, appliqué aux péchés (1.77), leur effacement complet devant Dieu. MacArthur en fait le cœur même du salut : c'est parce que Dieu pourvoit au sacrifice pour les péchés et qu'il les pardonne que le pécheur est sauvé de la séparation d'avec lui et de l'enfer éternel (cf. Romains 4.6-8; Éphésiens 1.7; Hébreux 9.22). La «&nbsp;connaissance du salut&nbsp;» que Jean donnera au peuple consiste précisément en ce pardon : non une amélioration morale, mais la rémission gratuite obtenue par la croix.</td>
+            <td><span class="trad"><span><b>S21</b> le pardon</span><span><b>NEG79</b> le pardon</span><span><b>Darby</b> la rémission</span><span><b>LSG</b> le pardon</span><span><b>KJF</b> la rémission</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Luc 1.67-80</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Luc 1.67-80 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Lc 1.67, 1.68-79, 1.69, 1.72, 1.76, 1.77, 1.78, 1.80.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-16</span></th>
+            <td><a href="https://www.gty.org/sermons/42-16" target="_blank" rel="noopener">Zachariah's Song of Salvation: Introduction</a></td>
+            <td>Luc 1.67-80</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-17</span></th>
+            <td><a href="https://www.gty.org/sermons/42-17" target="_blank" rel="noopener">Zachariah's Song of Salvation: The Davidic Covenant</a></td>
+            <td>Luc 1.67-80</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-18</span></th>
+            <td><a href="https://www.gty.org/sermons/42-18" target="_blank" rel="noopener">Zachariah's Song of Salvation: The Abrahamic Covenant</a></td>
+            <td>Luc 1.67-80</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-19</span></th>
+            <td><a href="https://www.gty.org/sermons/42-19" target="_blank" rel="noopener">Zachariah's Song of Salvation: The New Covenant, Part 1</a></td>
+            <td>Luc 1.67-80</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-20</span></th>
+            <td><a href="https://www.gty.org/sermons/42-20" target="_blank" rel="noopener">Zachariah's Song of Salvation: The New Covenant, Part 2</a></td>
+            <td>Luc 1.67-80</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-21</span></th>
+            <td><a href="https://www.gty.org/sermons/42-21" target="_blank" rel="noopener">Zachariah's Song of Salvation: The New Covenant, Part 3</a></td>
+            <td>Luc 1.67-80</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-63</span></th>
+            <td><a href="https://www.gty.org/sermons/81-63" target="_blank" rel="noopener">A Jewish Priest Testifies to the Messiah</a></td>
+            <td>Luc 1.67-79</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-433</span></th>
+            <td><a href="https://www.gty.org/sermons/90-433" target="_blank" rel="noopener">Connecting the Covenantal Dots, Part 1</a></td>
+            <td>Luc 1.67-75</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-434</span></th>
+            <td><a href="https://www.gty.org/sermons/90-434" target="_blank" rel="noopener">Connecting the Covenantal Dots, Part 2</a></td>
+            <td>Luc 1.67-75</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit le Benedictus comme une prophétie inspirée et non comme une simple effusion lyrique : Dieu rend la parole à Zacharie, et la parole rendue devient prophétie.</p>
+    <div class="body">
+      <p>MacArthur lit le Benedictus comme une prophétie inspirée et non comme une simple effusion lyrique. Le verset 67 le dit expressément : Zacharie «&nbsp;fut rempli du Saint-Esprit, et il prophétisa&nbsp;». Dans le récit de Luc, toutes les personnes remplies de l'Esprit sont conduites à une adoration dirigée par l'Esprit (cf. Éphésiens 5.18-20), et le contenu de leur louange porte l'autorité de la révélation divine. Le chant abonde, comme le Magnificat, en allusions et en renvois à l'Ancien Testament : Zacharie ne brode pas, il rassemble les fils de la promesse pour les nouer dans l'événement qui s'accomplit. Que ses premiers mots, après neuf mois de mutisme, soient une bénédiction n'a rien d'étonnant pour MacArthur, puisque c'est précisément une bénédiction sur le peuple que Zacharie aurait dû prononcer dans le Temple au moment où il fut rendu muet (note sur 1.21). Dieu lui rend la parole, et la parole rendue devient prophétie.</p>
+      <p>Le cœur christologique du cantique tient à l'identité du «&nbsp;puissant Sauveur&nbsp;» du verset 69, littéralement «&nbsp;une corne de salut&nbsp;». MacArthur écarte fermement toute lecture qui exalterait Jean-Baptiste : Zacharie et Élisabeth étant tous deux lévites, celui qui est suscité «&nbsp;dans la maison de David&nbsp;» ne peut être leur fils, mais quelqu'un de plus grand que lui, le Messie davidique devant qui Jean lui-même s'effacera (Jean 1.26-27). Le cantique distingue ainsi nettement les deux rôles : les versets 68-75 chantent le Sauveur royal de la lignée de David, les versets 76-79 décrivent la vocation subordonnée du précurseur. Cette hiérarchie est doctrinalement décisive : elle pose dès le berceau la supériorité absolue du Christ sur son plus grand prophète, et elle interdit toute confusion entre l'envoyé et Celui qu'il annonce.</p>
+      <p>Le centre sotériologique du chant se trouve aux versets 72-77. La «&nbsp;sainte alliance&nbsp;» dont Dieu se souvient (1.72) est, pour MacArthur, l'alliance abrahamique (1.73), celle qui contenait la promesse du salut par grâce (note sur Genèse 12.1-3). Dieu n'improvise pas le salut : il accomplit un serment juré des siècles plus tôt, et la rédemption en Christ est la fidélité de Dieu à sa propre parole. Délivré de ses ennemis par l'accomplissement de l'alliance davidique, Israël pourra enfin, selon la promesse faite à Abraham, «&nbsp;le servir sans crainte, en marchant devant lui dans la sainteté et dans la justice tous les jours de notre vie&nbsp;» (1.74-75), lui qui a toujours vécu dans la peur des nations hostiles. Et le moyen de ce salut est nommé sans ambiguïté au verset 77 : «&nbsp;la connaissance du salut par le pardon de ses péchés&nbsp;». MacArthur fait de ce pardon le cœur même du salut, car c'est parce que Dieu pourvoit au sacrifice et remet les péchés que le pécheur échappe à la séparation d'avec lui et à l'enfer éternel. Zacharie attend donc bel et bien, et avec raison selon MacArthur, la délivrance politique promise à David et la bénédiction nationale promise à Abraham; mais ni l'une ni l'autre ne peuvent s'accomplir sans le pardon des péchés de la nouvelle alliance, qui ne s'obtient ni par le mérite ni par les œuvres, mais par la grâce de Dieu qui justifie l'impie, comme l'enseigne Paul.</p>
+      <p>Le sommet poétique du cantique est l'image du «&nbsp;soleil levant&nbsp;» qui «&nbsp;nous a visités d'en haut&nbsp;» (1.78). MacArthur y reconnaît un terme à signification proprement messianique, écho des grandes prophéties de la lumière (Ésaïe 9.1; 60.1-3; Malachie 4.2) que confirmeront Pierre et l'Apocalypse (2 Pierre 1.19; Apocalypse 22.16). Le Messie est l'aurore qui se lève sur ceux qui «&nbsp;sont assis dans les ténèbres et dans l'ombre de la mort&nbsp;» (1.79), pour diriger leurs pas «&nbsp;dans le chemin de la paix&nbsp;». Cette lumière vient «&nbsp;d'en haut&nbsp;» : ce n'est pas une clarté que l'homme allume, c'est une visitation souveraine de Dieu. Le verset 80, enfin, clôt sobrement le récit de Jean : il croît, se fortifie en esprit et se retire au désert, marchant déjà dans les pas d'Élie, jusqu'au jour de sa manifestation devant Israël. Le précurseur s'efface dans l'attente; le soleil va se lever.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le cantique, de l'arrière-plan vétérotestamentaire de l'alliance, de la corne de salut et de la lumière messianique, jusqu'au verset-clé de Luc et à la supériorité du Messie sur son précurseur.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 12.1-3; 22.16-18</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'alliance et le serment jurés à Abraham que Zacharie déclare accomplis (1.72-73). MacArthur identifie la «&nbsp;sainte alliance&nbsp;» au pacte abrahamique, qui contenait déjà la promesse du salut par grâce; la rédemption en Christ est la fidélité de Dieu à ce serment.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Samuel 7.12-16; Psaume 89.27-30</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La promesse d'un trône éternel à la maison de David, fondement du titre «&nbsp;un puissant Sauveur dans la maison de David&nbsp;» (1.69). Le Messie royal y est annoncé, non le précurseur lévite.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Samuel 22.3; Psaume 18.3; 1 Samuel 2.1</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Sources vétérotestamentaires de l'expression «&nbsp;corne de salut&nbsp;» (1.69), image de la force victorieuse de Dieu. MacArthur y renvoie pour montrer que la corne symbolise la puissance du Sauveur royal (cf. Deutéronome 33.17).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Malachie 4.2; Ésaïe 9.1; 60.1-3</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le «&nbsp;soleil levant&nbsp;» et la lumière qui se lève sur ceux qui marchent dans les ténèbres (1.78-79). MacArthur lit <i>anatolē</i> comme un terme messianique enraciné dans ces prophéties de l'aurore divine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Malachie 3.1; 4.5-6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le messager qui prépare le chemin du Seigneur, accompli en Jean «&nbsp;prophète du Très-Haut&nbsp;» qui marchera «&nbsp;devant la face du Seigneur, pour préparer ses voies&nbsp;» (1.76; cf. la mission selon l'esprit d'Élie, 1.17).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 1.46-55 (Magnificat)</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Cantique parallèle de Marie, lui aussi saturé de renvois à l'Ancien Testament et inspiré par l'Esprit. MacArthur rapproche les deux chants de salut, mais les distingue : le Magnificat chante un salut personnel, le Benedictus un salut collectif, aussi large que l'histoire de la rédemption.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 19.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le thème de la visitation et du rachat de 1.68 trouve son sommet dans le verset-clé de Luc : «&nbsp;Le Fils de l'homme est venu chercher et sauver ce qui était perdu.&nbsp;» Le Benedictus annonce déjà ce Sauveur qui descend vers les perdus.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 1.26-27; Luc 1.32</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La supériorité du Messie sur Jean, fondement de la lecture de MacArthur : le précurseur s'efface devant Celui dont il n'est pas digne de délier la sandale, le «&nbsp;Fils du Très-Haut&nbsp;» contrasté avec le «&nbsp;prophète du Très-Haut&nbsp;» (1.76).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent le cantique. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La visitation rédemptrice de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu «&nbsp;a visité et racheté son peuple&nbsp;» (1.68), et «&nbsp;le soleil levant nous a visités d'en haut&nbsp;» (1.78). Le verbe <i>episkeptomai</i> encadre le cantique : Dieu se penche en personne sur la misère des siens pour les secourir.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le salut est l'œuvre souveraine de Dieu qui descend vers l'homme, non l'ascension de l'homme vers Dieu. Annoncez à votre assemblée un Dieu qui prend l'initiative de la grâce; nul ne se sauve lui-même, et la visitation du soleil levant précède et fonde toute réponse de foi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'accomplissement de l'alliance abrahamique et davidique</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu «&nbsp;se souvient de sa sainte alliance, selon le serment par lequel il avait juré à Abraham&nbsp;» (1.72-73), et suscite le Sauveur «&nbsp;dans la maison de David&nbsp;» (1.69). Les promesses anciennes s'accomplissent à la lettre.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La fidélité de Dieu à sa parole est le roc de l'assurance du croyant. Montrez que Dieu n'improvise jamais le salut : il tient des serments vieux de millénaires. Les promesses faites à Israël demeurent littérales et fiables, et notre rédemption en Christ s'enracine dans un Dieu qui ne renie jamais sa parole.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le pardon des péchés, cœur du salut</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jean donnera au peuple «&nbsp;la connaissance du salut par le pardon de ses péchés&nbsp;» (1.77). La délivrance attendue n'est pas d'abord politique : son but est de servir Dieu «&nbsp;dans la sainteté et dans la justice&nbsp;» (1.75).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le salut n'est pas une amélioration morale ni une libération sociale, mais la rémission gratuite de la dette du péché, obtenue par le sacrifice de Christ. Prêchez le pardon comme le centre de l'Évangile : c'est de l'enfer et de la séparation d'avec Dieu que le pécheur est sauvé, par grâce et non par mérite.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Christ supérieur au plus grand des prophètes</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le «&nbsp;puissant Sauveur&nbsp;» de la maison de David (1.69) n'est pas Jean, fils de lévites, mais le Messie; Jean n'est que «&nbsp;prophète du Très-Haut&nbsp;» qui prépare ses voies (1.76).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Dès le berceau, le précurseur s'efface devant le Sauveur. Gardez votre assemblée de toute confusion entre les envoyés de Dieu et Celui qu'ils annoncent : aucun prophète, aucun ministre, aucune institution ne tient la place du Christ. Le plus grand serviteur ne fait que pointer vers le Soleil levant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La lumière du Messie sur les ténèbres de la mort</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le soleil levant éclaire «&nbsp;ceux qui sont assis dans les ténèbres et dans l'ombre de la mort&nbsp;», pour «&nbsp;diriger nos pas dans le chemin de la paix&nbsp;» (1.79). La lumière vient «&nbsp;d'en haut&nbsp;» (1.78).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'humanité hors de Christ est assise dans les ténèbres, non en marche vers la lumière par ses propres forces. Présentez la condition perdue avec sérieux, puis la grâce qui visite : seule la lumière venue d'en haut tire le pécheur de l'ombre de la mort et le met sur le chemin de la paix avec Dieu.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Zacharie passe du mutisme du doute (1.20) à la bénédiction prophétique (1.67-68) : comment l'expérience de la discipline divine a-t-elle préparé l'éclat de sa louange, et que dit-elle de la patience de Dieu envers la foi vacillante de ses serviteurs?</li>
+      <li>Le cantique célèbre un Dieu qui «&nbsp;visite&nbsp;» son peuple : en quoi la grâce qui prend l'initiative et descend vers l'homme contredit-elle toute religion de l'effort et de la montée vers Dieu, et comment prêcher cette souveraineté sans tomber dans le fatalisme?</li>
+      <li>MacArthur insiste : le «&nbsp;puissant Sauveur dans la maison de David&nbsp;» ne peut être Jean, fils de lévites. Comment cette précision généalogique protège-t-elle la suprématie du Christ, et où guettons-nous aujourd'hui la tentation de mettre des envoyés à la place de Celui qu'ils annoncent?</li>
+      <li>La délivrance des ennemis (1.71, 74) ne s'arrête pas à l'indépendance nationale et débouche sur le service «&nbsp;dans la sainteté et dans la justice&nbsp;» (1.75) : comment redresser l'attente d'un salut utilitaire ou politique pour la recentrer sur la sainteté et l'adoration?</li>
+      <li>Le pardon des péchés est nommé «&nbsp;cœur du salut&nbsp;» (note sur 1.77) : votre prédication présente-t-elle le pardon comme le centre de l'Évangile, ou comme un bénéfice secondaire d'un message d'abord moral ou social?</li>
+      <li>«&nbsp;Le soleil levant nous a visités d'en haut&nbsp;» : comment l'image de l'aurore qui se lève sur ceux qui sont «&nbsp;assis&nbsp;» dans les ténèbres décrit-elle à la fois l'impuissance du pécheur et la pure gratuité de la grâce qui vient le chercher?</li>
+      <li>Le verset 80 laisse Jean au désert «&nbsp;jusqu'au jour où il se présenta devant Israël&nbsp;» : que nous enseigne ce long temps caché de préparation sur la valeur des saisons obscures où Dieu façonne ses serviteurs avant de les manifester?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Luc 1.67-80 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Luc : venu sauver les perdus&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Luc-1-67-80.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

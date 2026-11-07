@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colossiens 1.15-20 · Le premier-né de toute la création · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Colossiens 1.15-20 : le premier-né de toute la création ; Christ image du Dieu invisible, créateur et réconciliateur en qui habite toute plénitude. Contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Colossiens 1.15-20</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Colossiens 1.15-20</p>
+    <h1 class="hero__title">Le premier-né de toute la création</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Le Fils est l'image du Dieu invisible, le premier-né de toute la création.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Colossiens 1.15 · NEG</p>
+    <p class="hero__series">Série : <b>Colossiens : la suprématie de Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Colossiens 1.15-20</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Le Fils est l'image du Dieu invisible, le premier-né de toute la création.</p>
+        <cite class="verse__ref">Colossiens 1.15 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il a voulu par lui tout réconcilier avec lui-même, tant ce qui est sur la terre que ce qui est dans les cieux, en faisant la paix par lui, par le sang de sa croix.</p>
+        <cite class="verse__ref">Colossiens 1.20 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Colossiens 1.15-20 constitue le sommet christologique de l'épître&nbsp;: chaque proposition élève la personne du Sauveur au-dessus de tout l'ordre créé, non comme une méditation détachée, mais comme une arme doctrinale forgée contre une séduction proto-gnostique.</p>
+    <div class="body">
+      <p>Colossiens 1.15-20 constitue le sommet christologique de l'épître et, selon le plan que MacArthur reçoit de la Bible d'étude, il ouvre la grande partie doctrinale de la lettre (1.15 à 2.23), dont la première section porte précisément sur la divinité de Christ (1.15-23). La péricope se rattache directement aux versets qui précèdent&nbsp;: Paul vient d'évoquer le Fils bien-aimé en qui les croyants ont la rédemption et le pardon des péchés (1.13-14), et il enchaîne sans transition sur une description vertigineuse de ce Fils. Notre passage forme une unité serrée, parfois appelée hymne au Christ, où chaque proposition élève la personne du Sauveur au-dessus de tout l'ordre créé.</p>
+      <p>Les bornes de la péricope sont nettes. Elle s'ouvre au verset 15 par l'affirmation que le Fils est l'image du Dieu invisible et se referme au verset 20 par la réconciliation universelle accomplie par le sang de la croix. Deux mouvements la structurent&nbsp;: la suprématie de Christ dans la création (1.15-17), puis sa suprématie dans la rédemption, c'est-à-dire dans la nouvelle création qu'est l'Église (1.18-20). Le verset 16 commence par un car qui justifie le titre de premier-né, et le verset 19 par un car qui fonde la réconciliation sur la plénitude qui habite en lui. Cette charpente logique interdit toute lecture qui ferait de Christ une simple créature ou une émanation.</p>
+      <p>MacArthur situe ce passage au cœur de la riposte de Paul contre l'hérésie colossienne. L'un des aspects de cette erreur qui menaçait l'Église était le refus de la divinité de Christ&nbsp;: les faux docteurs faisaient de Jésus un simple maillon dans une chaîne d'émanations descendant de Dieu, inférieur à Dieu et donc créé. Paul combat cette grave erreur en présentant un plaidoyer vigoureux en faveur de la pleine divinité du Sauveur. La péricope n'est donc pas une méditation détachée&nbsp;: elle est une arme doctrinale, forgée pour défendre la personne de Christ contre une séduction proto-gnostique.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Colosses · l'hérésie colossienne</p>
+    </header>
+    <p class="lead">L'hérésie qui menaçait Colosses était unique dans l'histoire&nbsp;: un mélange de légalisme judaïque et de mysticisme proto-gnostique qui niait à la fois la divinité du Fils et son incarnation réelle. Les versets 15 à 20 sont dirigés contre cette double attaque.</p>
+    <div class="body">
+      <p>Colosses était une ville de Phrygie, dans la province romaine d'Asie, à environ 160 kilomètres à l'est d'Éphèse, dans la vallée du fleuve Lycus, dans la région des sept Églises de l'Apocalypse. À l'époque de Paul, la cité connaissait un déclin, la route principale ayant été déviée vers Laodicée. Sa population, essentiellement païenne, comptait aussi une implantation juive importante remontant à Antiochus le Grand. Ce mélange se retrouvait dans la composition de l'Église et dans les hérésies qui la frappaient&nbsp;: le légalisme judaïque et le mysticisme païen. L'Église, fondée non par Paul mais par Épaphras durant le ministère éphésien de l'apôtre, fut menacée plusieurs années après sa naissance par une hérésie dangereuse et unique, que l'on ne retrouve dans aucune secte de l'histoire.</p>
+    </div>
+    <p>Trois traits de cette hérésie commandent la lecture du passage.</p>
+    <ul class="points">
+      <li><b>Une erreur proto-gnostique.</b> Elle enseignait des éléments de ce qui deviendra le gnosticisme&nbsp;: Dieu serait bon, mais la matière mauvaise; Jésus-Christ ne serait qu'un élément dans une série d'émanations issues de Dieu, et donc inférieur à lui, ce qui conduisait à nier sa véritable humanité; une connaissance secrète, supérieure à l'Écriture, serait nécessaire au salut. C'est précisément contre cette double attaque, contre la divinité du Fils et contre son incarnation réelle, que les versets 15 à 20 sont dirigés.</li>
+      <li><b>Le culte des anges.</b> Les faux docteurs avaient intégré l'adoration des anges à leur système, et ce culte débouchait sur un autre mensonge&nbsp;: Jésus aurait été un ange lui aussi, un simple esprit créé par Dieu et inférieur à lui. La liste des trônes, dignités, dominations et autorités (1.16) énumère justement les hiérarchies angéliques pour montrer que tous les anges, quel que soit leur rang, ne sont que des créatures dont le Créateur est Christ lui-même.</li>
+      <li><b>Le mot plénitude retourné contre l'adversaire.</b> L'expression toute plénitude (1.19) était probablement empruntée au vocabulaire des hérétiques, qui l'employaient pour désigner les pouvoirs et attributs qu'ils prétendaient répartis entre diverses émanations. Paul retourne ce mot contre eux&nbsp;: la plénitude de la divinité, tous les pouvoirs et attributs divins, n'a pas été distribuée à des êtres créés mais réside en Christ seul. Le passage est ainsi bâti dans le langage même de l'adversaire, pour le réfuter de l'intérieur.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids christologique de la péricope&nbsp;: de l'<i>eikōn</i> qui rend Dieu visible au <i>prōtotokos</i> de la prééminence, jusqu'au <i>plērōma</i> qui habite en Christ seul et à l'<i>apokatallassō</i> qui réconcilie tout l'univers.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">image</span><span class="mot-gr">eikōn</span></th>
+            <td class="col-sens">image, portrait, ressemblance exacte; représentation qui rend visible et manifeste son modèle</td>
+            <td>Le mot grec <i>eikōn</i> désigne un portrait ou une ressemblance, mais une ressemblance qui ne fait pas que copier&nbsp;: elle manifeste et représente réellement son modèle. MacArthur souligne que Jésus-Christ est à la ressemblance parfaite de Dieu et qu'il a la forme même de Dieu depuis toute éternité; en le décrivant ainsi, Paul affirme qu'il constitue à la fois la représentation et la manifestation de Dieu. Le Fils n'est donc pas une copie inférieure&nbsp;: il est pleinement Dieu à tous égards. Le terme rejoint l'enseignement de Hébreux 1.3, où Christ est l'exacte représentation de la personne de Dieu, et de Jean 14.9, où voir le Fils, c'est voir le Père.</td>
+            <td><span class="trad"><span><b>S21</b> image</span><span><b>NEG79</b> image</span><span><b>Darby</b> image</span><span><b>LSG</b> image</span><span><b>KJF</b> image</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">premier-né</span><span class="mot-gr">prōtotokos</span></th>
+            <td class="col-sens">premier-né; le plus souvent, celui qui détient la prééminence en rang et le droit d'héritage, non l'antériorité chronologique</td>
+            <td>En grec, <i>prōtotokos</i> pouvait désigner celui qui était né le premier dans le temps, mais le terme évoquait le plus souvent la prééminence en matière de position ou de rang. MacArthur rappelle que, dans la culture grecque comme juive, le premier-né était le fils, aîné ou non, qui recevait l'héritage du père. Le mot qualifiait Israël, qui n'était pas la première des nations mais en avait la prééminence (Exode 4.22; Jérémie 31.9). Ici, premier-né ne désigne donc pas le premier créé, mais celui qui est placé au rang le plus élevé&nbsp;: Christ jouit de la prééminence et possède le droit d'héritage sur toute la création. Le verset 18 le confirme en l'appelant premier-né d'entre les morts, afin d'être en tout le premier.</td>
+            <td><span class="trad"><span><b>S21</b> premier-né</span><span><b>NEG79</b> premier-né</span><span><b>Darby</b> premier-né</span><span><b>LSG</b> premier-né</span><span><b>KJF</b> premier-né</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">subsistent</span><span class="mot-gr">synistēmi</span></th>
+            <td class="col-sens">tenir ensemble, maintenir la cohésion; faire que les éléments tiennent et durent comme un tout ordonné</td>
+            <td>Le verbe <i>synistēmi</i> signifie littéralement tenir ensemble. MacArthur explique que Christ soutient l'univers en maintenant la puissance et l'équilibre indispensables à son existence et à sa pérennité. Le verbe ne décrit pas un acte unique et passé, mais une activité permanente&nbsp;: à chaque instant, c'est le Fils qui empêche le cosmos de se disloquer, comme l'enseigne aussi Hébreux 1.3, où il soutient tout par sa parole puissante. Cette fonction de cohésion suppose la pleine divinité&nbsp;: seul le Créateur éternel peut soutenir continuellement ce qu'il a fait. Le mot interdit donc de réduire Christ à une cause lointaine et inactive.</td>
+            <td><span class="trad"><span><b>S21</b> tiennent ensemble</span><span><b>NEG79</b> subsistent</span><span><b>Darby</b> subsistent</span><span><b>LSG</b> subsistent</span><span><b>KJF</b> consistent</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">plénitude</span><span class="mot-gr">plērōma</span></th>
+            <td class="col-sens">plénitude, totalité, ce qui remplit; ici, la somme entière de la nature divine et de ses attributs</td>
+            <td>Le terme <i>plērōma</i> désigne la plénitude, ce qui remplit ou complète. MacArthur note qu'il était probablement employé par les hérétiques de Colosses pour nommer les pouvoirs et les attributs qu'ils prétendaient répartis entre diverses émanations descendant de Dieu. Paul retourne le mot contre eux&nbsp;: la plénitude de la divinité, tous les pouvoirs et attributs divins, n'a pas été distribuée à des êtres créés, mais réside en Christ seul. Le verset 19 affirme que Dieu a voulu faire habiter toute plénitude en lui, et 2.9 précise que cette plénitude de la divinité habite corporellement en Christ. Le mot écarte ainsi toute christologie de l'inférieur&nbsp;: rien de la divinité ne manque au Fils.</td>
+            <td><span class="trad"><span><b>S21</b> plénitude</span><span><b>NEG79</b> plénitude</span><span><b>Darby</b> plénitude</span><span><b>LSG</b> plénitude</span><span><b>KJF</b> plénitude</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">réconcilier</span><span class="mot-gr">apokatallassō</span></th>
+            <td class="col-sens">réconcilier pleinement, rétablir entièrement une relation; forme intensive bâtie sur la racine changer, échanger</td>
+            <td>Le verbe grec <i>apokatallassō</i> est formé sur la racine signifiant changer ou échanger; dans le Nouveau Testament, il décrit le changement de relation du pécheur avec Dieu. MacArthur observe qu'il s'agit ici d'une forme intensive, qui évoque la réconciliation totale et complète des croyants, et finalement de tout ce qui existe dans l'univers créé. L'homme est réconcilié quand Dieu rétablit une relation juste entre lui et l'homme, par le moyen de Jésus-Christ. MacArthur précise toutefois que ce verset n'enseigne pas que tous croiront, mais que tout sera un jour soumis (Philippiens 2.9-11)&nbsp;: la portée universelle vise la pacification finale de l'univers sous l'autorité de Christ, non un salut universel des personnes.</td>
+            <td><span class="trad"><span><b>S21</b> réconcilier</span><span><b>NEG79</b> réconcilier</span><span><b>Darby</b> réconcilier</span><span><b>LSG</b> réconcilier</span><span><b>KJF</b> réconcilier</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Colossiens 1.15-20</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Colossiens 1.15-20 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Col 1.15-20, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1201</span></th>
+            <td><a href="https://www.gty.org/sermons/1201" target="_blank" rel="noopener">The Image of the Invisible God</a></td>
+            <td>Colossiens 1.15-19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">2135</span></th>
+            <td><a href="https://www.gty.org/sermons/2135" target="_blank" rel="noopener">Christ Above All</a></td>
+            <td>Colossiens 1.15-19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-127</span></th>
+            <td><a href="https://www.gty.org/sermons/80-127" target="_blank" rel="noopener">The Child Who Was God</a></td>
+            <td>Colossiens 1.15-20</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-32</span></th>
+            <td><a href="https://www.gty.org/sermons/81-32" target="_blank" rel="noopener">The Divine Credentials of the Christmas Child</a></td>
+            <td>Colossiens 1.15-19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">2136</span></th>
+            <td><a href="https://www.gty.org/sermons/2136" target="_blank" rel="noopener">Reconciled to God</a></td>
+            <td>Colossiens 1.20-23</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Tout le poids du passage repose sur une conviction&nbsp;: Christ n'appartient pas au côté des créatures, mais au côté du Créateur. Paul l'établit en deux temps, la suprématie de Christ dans la création, puis sa suprématie dans la rédemption.</p>
+    <div class="body">
+      <p>MacArthur lit Colossiens 1.15-20 comme un plaidoyer vigoureux et délibéré en faveur de la pleine divinité du Sauveur, écrit pour réfuter l'hérésie colossienne qui niait cette divinité et faisait de Jésus une émanation créée, inférieure à Dieu. Tout le poids du passage repose sur la conviction que Christ n'appartient pas au côté des créatures, mais au côté du Créateur. Paul l'établit en deux temps&nbsp;: la suprématie de Christ dans la création, puis sa suprématie dans la rédemption.</p>
+      <p>Le premier titre est décisif&nbsp;: le Fils est l'image du Dieu invisible (1.15). MacArthur souligne que le mot image dit la ressemblance parfaite et la forme même de Dieu, possédées depuis toute éternité. Christ est à la fois la représentation et la manifestation de Dieu; il est donc pleinement Dieu à tous égards, comme l'affirment Jean 8.58, Jean 10.30-33 et Hébreux 1.8. Voir le Fils, c'est voir le Père (Jean 14.9). Loin de suggérer une infériorité, le titre place Jésus au rang du Dieu invisible qu'il rend visible.</p>
+      <p>Vient ensuite l'expression que les sectes antitrinitaires ont saisie pour soutenir que Christ fut créé&nbsp;: le premier-né de toute la création (1.15). MacArthur réfute cette lecture point par point. En grec, premier-né évoque le plus souvent la prééminence en rang, non l'antériorité dans le temps; dans la culture grecque comme juive, le premier-né était le fils qui recevait l'héritage, et le terme qualifiait Israël sans en faire la première nation. Ici, premier-né désigne donc celui qui est placé au rang le plus élevé, pour quatre raisons que MacArthur énumère&nbsp;: Christ ne peut être à la fois le Fils unique et le premier engendré chronologiquement; quand le mot vise un groupe, ce groupe est au pluriel, or création est au singulier; enseigner que Christ fut créé reviendrait à donner raison à l'hérésie même que Paul combat; et Christ ne peut avoir été créé tout en étant le Créateur de toutes choses (1.16). Jésus est donc bien premier-né, mais au sens où il jouit de la prééminence et possède le droit d'héritage&nbsp;: il existait avant la création et il est élevé au-dessus d'elle.</p>
+      <p>Le verset 16 scelle l'argument&nbsp;: en lui ont été créées toutes les choses, dans les cieux et sur la terre, visibles et invisibles. MacArthur note que la liste des trônes, dignités, dominations et autorités énumère les hiérarchies angéliques précisément pour montrer l'infinie supériorité de Christ sur toute créature. Les faux docteurs adoraient les anges et faisaient de Jésus un ange parmi d'autres; Paul rejette énergiquement cette thèse en enseignant que les anges, saints ou déchus, quel que soit leur rang, ne sont que des créatures dont le Créateur est le Seigneur Jésus-Christ. Tout a été créé par lui et pour lui&nbsp;: Jésus est Dieu, et il a créé l'univers matériel et spirituel pour son plaisir et pour sa gloire. Le verset 17 ajoute deux affirmations qui supposent la pleine divinité&nbsp;: il est avant toutes choses, donc éternel par définition, et toutes choses subsistent en lui, c'est-à-dire qu'il soutient continuellement l'univers en maintenant la puissance et l'équilibre nécessaires à son existence.</p>
+      <p>Le second mouvement transpose cette suprématie dans le domaine de la rédemption. Christ est la tête du corps de l'Église (1.18)&nbsp;: Paul emploie l'image du corps humain dirigé par le cerveau pour dire que c'est Christ qui contrôle toutes les parties de l'Église et qui lui donne vie et direction. Il est le commencement, ce qui joint les notions de source et de prééminence&nbsp;: l'Église a son origine en lui. Il est le premier-né d'entre les morts&nbsp;: le mot ne dit pas d'abord qu'il fut le premier ressuscité, car d'autres l'avaient été avant lui, mais qu'il est le premier en rang parmi tous ceux qui ont été ou seront ressuscités, et sa résurrection garantit la leur. L'expression afin d'être en tout le premier résume tout le passage&nbsp;: la prééminence de Christ est totale, dans la création comme dans la nouvelle création.</p>
+      <p>Le fondement de cette double suprématie est donné au verset 19&nbsp;: Dieu a voulu faire habiter toute plénitude en lui. MacArthur rappelle que ce terme de plénitude était sans doute celui des hérétiques, qui imaginaient les attributs divins répartis entre des émanations; Paul réplique que tous les pouvoirs et attributs divins résident en Christ seul, ce que 2.9 dira encore plus clairement&nbsp;: toute la plénitude de la divinité habite corporellement en lui. C'est parce que la divinité tout entière habite en Christ qu'il peut réconcilier. Le verset 20 conclut&nbsp;: Dieu a voulu par lui tout réconcilier avec lui-même, en faisant la paix par le sang de sa croix. MacArthur précise le sens de cette réconciliation universelle&nbsp;: la forme intensive du verbe évoque la réconciliation totale des croyants et, finalement, de tout l'univers créé, mais le texte n'enseigne pas que tous croiront; il enseigne que tout sera un jour soumis (Philippiens 2.9-11). La pacification finale du cosmos sous l'autorité de Christ n'est donc pas un salut universel des personnes. Quant à l'expression par le sang de sa croix, elle couvre toute l'œuvre expiatoire de Christ comme sacrifice pour le péché, non une vertu chimique du liquide. Ainsi, le même Christ qui a tout créé est celui qui a tout réconcilié, et c'est sa pleine divinité qui rend l'une et l'autre œuvre possibles.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, des parallèles johanniques et hébraïques sur la divinité du créateur jusqu'à l'arrière-plan vétérotestamentaire du premier-né royal au sens de la prééminence.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Hébreux 1.3</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le Fils est l'exacte représentation de Dieu et soutient tout par sa parole puissante&nbsp;: double parallèle direct avec image du Dieu invisible (1.15) et avec toutes choses subsistent en lui (1.17).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 1.1-3</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Au commencement la Parole était Dieu, et tout a été fait par elle&nbsp;: confirme que celui qui crée toutes choses (1.16) est lui-même Dieu, non une créature.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 2.9</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Toute la plénitude de la divinité habite corporellement en Christ&nbsp;: explicite le toute plénitude du verset 19 et ferme la porte à toute idée d'émanation inférieure.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 2.6-11</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Christ, existant en forme de Dieu, devant qui tout genou fléchira&nbsp;: éclaire la forme même de Dieu (1.15) et la réconciliation-soumission universelle du verset 20.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 14.9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Celui qui m'a vu a vu le Père&nbsp;: appuie l'affirmation que le Fils est l'image et la manifestation du Dieu invisible (1.15).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 5.13</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Toute créature rend gloire à l'Agneau&nbsp;: illustre la prééminence et le droit d'héritage du premier-né (1.15, 18) sur tout l'univers créé.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Exode 4.22</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Israël est appelé mon fils premier-né alors qu'il n'est pas la première nation&nbsp;: prouve que premier-né (1.15) signifie prééminence et droit d'héritage, non antériorité chronologique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 89.28</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Je ferai du roi davidique le premier-né, le plus élevé des rois de la terre&nbsp;: usage royal du titre premier-né au sens de rang suprême, arrière-plan de Colossiens 1.15.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Christ, image du Dieu invisible et pleinement Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le Fils est l'image du Dieu invisible (1.15)&nbsp;: il est la ressemblance parfaite et la manifestation de Dieu, possédant la forme même de Dieu depuis toute éternité, donc pleinement Dieu à tous égards.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la christologie de MacArthur, nier la pleine divinité du Fils détruit l'Évangile, car seul un Sauveur vraiment Dieu peut réconcilier l'homme avec Dieu. Pour votre assemblée, cela donne une assurance inébranlable&nbsp;: en contemplant Christ, on contemple Dieu lui-même, et toute spiritualité qui cherche Dieu ailleurs qu'en lui se trompe de chemin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Premier-né au sens de prééminence, non de créature</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le premier-né de toute la création (1.15)&nbsp;: non le premier être créé, mais celui qui détient le rang le plus élevé et le droit d'héritage, car il existait avant la création et il est élevé au-dessus d'elle.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la lecture de MacArthur, ce titre, bien compris, réfute les sectes qui nient la divinité de Christ et invoquent ce verset pour en faire un être créé. Pour votre assemblée, cela arme les croyants contre les enseignements qui rabaissent le Fils au rang de simple créature&nbsp;: le Christ n'a pas de commencement, il est le Créateur, et l'adorer est l'adoration même de Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Christ créateur et soutien de toutes choses</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>En lui ont été créées toutes les choses, visibles et invisibles, et toutes choses subsistent en lui (1.16-17)&nbsp;: Christ a créé l'univers matériel et spirituel, y compris toutes les hiérarchies angéliques, et il le maintient en cohésion à chaque instant.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la suffisance de Christ, celui qui a tout créé n'a besoin d'aucun intermédiaire, ange ou émanation, pour gouverner ou pour sauver. Pour votre assemblée, cela exclut tout culte des anges et toute médiation ajoutée&nbsp;: le chrétien n'a pas à craindre les puissances spirituelles, puisque leur Créateur et Maître est son Sauveur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Toute la plénitude divine habite en Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu a voulu faire habiter toute plénitude en lui (1.19; cf. 2.9)&nbsp;: tous les pouvoirs et attributs de la divinité résident en Christ seul, et non répartis entre des émanations comme le prétendaient les faux docteurs.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la suffisance de Christ, rien ne manque au croyant qui possède Christ, car en lui habite corporellement toute la divinité. Pour votre assemblée, cela coupe le nerf de tout mysticisme et de toute quête d'une connaissance secrète&nbsp;: la plénitude est déjà donnée en Jésus, et la chercher ailleurs revient à le tenir pour insuffisant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La réconciliation universelle par le sang de la croix</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu a voulu par lui tout réconcilier, en faisant la paix par le sang de sa croix (1.20)&nbsp;: la forme intensive du verbe vise la réconciliation totale des croyants et la pacification finale de tout l'univers sous l'autorité de Christ.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, ce verset n'enseigne pas le salut universel des personnes mais la soumission finale de tout à Christ (Philippiens 2.9-11). Pour votre assemblée, cela maintient ensemble deux vérités&nbsp;: la croix réconcilie réellement et pleinement ceux qui croient, et elle assure que tout l'univers sera un jour soumis, sans pour autant promettre un salut posthume ou universel.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Comment exposer le titre image du Dieu invisible (1.15) de manière à montrer qu'il affirme la pleine divinité du Fils, et non une ressemblance inférieure, pour une assemblée habituée à entendre que Jésus serait simplement très proche de Dieu?</li>
+      <li>Les sectes antitrinitaires citent premier-né de toute la création pour conclure que Christ fut créé. Comment présenter avec clarté les raisons que donne MacArthur, afin d'équiper vos auditeurs à répondre à cette objection sans se troubler?</li>
+      <li>Le verset 16 affirme que Christ a créé jusqu'aux trônes, dominations et autorités. Que change, pour la vie de prière et pour la peur des puissances spirituelles, le fait que les anges eux-mêmes soient des créatures soumises au Sauveur?</li>
+      <li>Toutes choses subsistent en lui (1.17). Comment cette vérité, que Christ soutient l'univers à chaque instant, peut-elle nourrir l'adoration et la confiance d'une assemblée traversant l'épreuve ou l'incertitude?</li>
+      <li>Paul réfute l'hérésie colossienne en affirmant que toute plénitude habite en Christ (1.19). Quelles formes prend aujourd'hui la quête d'une plénitude ou d'une connaissance hors de Christ, et comment prêcher sa suffisance face à elles?</li>
+      <li>La réconciliation universelle du verset 20 ne signifie pas que tous seront sauvés mais que tout sera soumis. Comment exposer cette distinction pour écarter l'universalisme sans affaiblir la portée cosmique de la croix?</li>
+      <li>Le passage culmine dans l'affirmation que Christ doit être en tout le premier (1.18). Concrètement, dans quels domaines de la vie de votre assemblée et de votre propre ministère Christ n'a-t-il pas encore la prééminence qui lui revient?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Colossiens 1.15-20 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Colossiens : la suprématie de Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Colossiens-1-15-20.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

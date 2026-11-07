@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galates 4.8-20 · Pourquoi retourner en arrière? · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Galates 4.8-20 : retourner aux faibles et pauvres rudiments après l'adoption; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Galates 4.8-20</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Galates 4.8-20</p>
+    <h1 class="hero__title">Pourquoi retourner en arrière?</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Comment retournez-vous à ces faibles et pauvres rudiments auxquels vous voulez vous asservir encore?&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Galates 4.9 · NEG</p>
+    <p class="hero__series">Série : <b>Galates : l'Évangile de la grâce</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Galates 4.8-20</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mais à présent que vous avez connu Dieu, ou plutôt que vous avez été connus de Dieu, comment retournez-vous à ces faibles et pauvres rudiments?</p>
+        <cite class="verse__ref">Galates 4.9 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Mes enfants, pour qui j'éprouve de nouveau les douleurs de l'enfantement, jusqu'à ce que Christ soit formé en vous.</p>
+        <cite class="verse__ref">Galates 4.19 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Galates 4.8-20 clôt la grande section doctrinale de l'épître : sur le sommet libérateur de l'adoption filiale tombe, comme un coup de tonnerre, la question de notre péricope, comment, après une telle grâce, retourner aux faibles et pauvres rudiments.</p>
+    <div class="body">
+      <p>Le passage clôt la grande section doctrinale de l'épître (3.1 à 4.31), celle que MacArthur intitule «&nbsp;les principes de la justification&nbsp;», et plus précisément la sous-section «&nbsp;la futilité des rites&nbsp;» (4.8-20). Paul vient d'achever une démonstration éclatante : l'héritier mineur ne diffère en rien d'un esclave tant qu'il est sous tuteurs, mais lorsque les temps ont été accomplis, Dieu a envoyé son Fils pour racheter ceux qui étaient sous la loi et nous donner l'adoption (4.1-7). Le croyant n'est donc plus esclave mais fils, et même héritier par la grâce de Dieu. C'est sur ce sommet libérateur que tombe, comme un coup de tonnerre, la question de notre péricope : comment, après une telle adoption, retourner aux faibles et pauvres rudiments? L'argument bascule de la démonstration vers la supplication; après avoir établi la vérité, Paul plaide pour qu'on n'y renonce pas.</p>
+      <p>La logique du passage suit deux mouvements que MacArthur distingue nettement dans ses notes. D'abord, 4.8-11 forme un reproche doctrinal : Paul oppose l'avant et l'après de la conversion des Galates. Autrefois, ne connaissant pas Dieu, ils servaient des dieux qui ne le sont pas; maintenant qu'ils ont connu Dieu, ou plutôt qu'ils ont été connus de Dieu, ils s'apprêtent pourtant à retomber dans une servitude analogue, observant scrupuleusement jours, mois, temps et années. L'apôtre conclut ce premier volet par un aveu déchirant : «&nbsp;Je crains d'avoir inutilement travaillé pour vous&nbsp;» (4.11). Ensuite, 4.12-20 change radicalement de registre : après les reproches cinglants, Paul lance un appel fondé sur sa profonde affection. Il rappelle l'accueil chaleureux que les Galates lui avaient réservé malgré son infirmité, s'étonne de leur revirement et démasque les motivations intéressées des judaïsants qui les courtisent.</p>
+      <p>Le point culminant est l'image de l'enfantement (4.19). Paul, qui s'est dit père de ces Églises, se compare ici à une mère dans les douleurs de l'accouchement, éprouvant de nouveau ces souffrances jusqu'à ce que Christ soit formé en ses enfants. Cet usage, le seul du genre chez Paul, dévoile le cœur pastoral de tout le passage : ce n'est pas un débat froid mais un combat pour des âmes aimées. MacArthur note d'ailleurs que le terme rendu par «&nbsp;inquiétude&nbsp;» au verset 20 désigne un désarroi total. Le fil conducteur de la semaine se vérifie ainsi : l'appel pressant de l'apôtre, mêlé d'affection et d'inquiétude, prépare l'ultime illustration tirée des Écritures, l'allégorie typologique d'Agar et de Sara (4.21-31) qui suivra immédiatement.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Galates 4.8 · 4.10 · 4.13-15</p>
+    </header>
+    <p class="lead">Les Galates étaient d'anciens païens, non d'anciens Juifs : c'est cet arrière-plan polythéiste qui rend la pointe de Paul si tranchante, car en se soumettant au calendrier judaïsant, ils ne montaient pas d'un cran, ils retournaient à une servitude de même nature.</p>
+    <div class="body">
+      <p>Les destinataires sont, selon la lecture que MacArthur défend, les Églises du sud de la province romaine de Galatie : Antioche de Pisidie, Icone, Lystre et Derbe, fondées par Paul durant son premier voyage missionnaire (Actes 13.14 à 14.23). Ces croyants étaient en immense majorité d'anciens païens. Le verset 8 le confirme sans ambiguïté : «&nbsp;Autrefois, ne connaissant pas Dieu, vous serviez des dieux qui ne le sont pas de leur nature.&nbsp;» MacArthur rattache cette formule au panthéon gréco-romain, ces divinités inexistantes que les Galates croyaient adorer avant leur conversion. Leur passé religieux n'était donc pas le monothéisme d'Israël mais l'idolâtrie polythéiste, avec ses fêtes, ses calendriers cultuels et ses rituels minutieux destinés à s'attirer la faveur des dieux. C'est cet arrière-plan qui rend la pointe de Paul si tranchante : en se soumettant au calendrier judaïsant, ces anciens païens ne montaient pas d'un cran, ils retournaient à une servitude de même nature.</p>
+    </div>
+    <p>Trois réalités éclairent la péricope.</p>
+    <ul class="points">
+      <li><b>L'observance des jours, mois, temps et années.</b> Le drame se joue autour de l'observance des «&nbsp;jours, des mois, des temps et des années&nbsp;» (4.10). MacArthur identifie là une allusion aux rituels, cérémonies et fêtes du calendrier juif : les sabbats, les fêtes et la Pâque, les nouvelles lunes (cf. Colossiens 2.16). Ce calendrier avait certes été donné par Dieu à Israël, mais Dieu n'exigea jamais que l'Église s'y conforme. Le piège tendu par les judaïsants était précisément de présenter cette observance comme une obligation salvifique, comme si la faveur divine se gagnait à coups de scrupules cérémoniels. Paul rapproche ce danger de celui qu'il combattra chez les Colossiens (Colossiens 2.16-17) : ces choses n'étaient que l'ombre, et le corps est en Christ. Observer le calendrier de façon légaliste, dans l'espoir d'obtenir en retour des faveurs de Dieu, revenait à nier que le salut est un don gratuit et achevé.</li>
+      <li><b>L'infirmité de la chair de Paul.</b> Un second trait culturel éclaire les versets 13 à 15 : l'infirmité de la chair de Paul. MacArthur rapporte l'hypothèse, retenue par plusieurs, d'une malaria peut-être contractée dans les territoires côtiers de la Pamphylie, dont le climat plus frais et plus élevé de la Galatie, notamment Antioche de Pisidie à plus de mille mètres, aurait soulagé Paul. Grave et handicapante sans être tout à fait invalidante, cette maladie récurrente n'aurait pas empêché un ministère exercé entre deux accès de fièvre. Or, dans l'Antiquité, la maladie et l'apparence repoussante attiraient le mépris et passaient souvent pour un signe de disgrâce divine.</li>
+      <li><b>L'accueil sans mépris et son effondrement.</b> Le fait que les Galates aient reçu Paul «&nbsp;comme un ange de Dieu, comme Jésus-Christ&nbsp;» (4.14), sans mépris ni dégoût, et qu'ils se seraient même arraché les yeux pour les lui donner (4.15, ce qui suggère peut-être une atteinte oculaire, cf. 6.11), témoigne d'une affection extraordinaire. C'est précisément l'effondrement de cette affection, désormais retournée jusqu'à voir en Paul un ennemi (4.16), qui le bouleverse et le pousse à l'image maternelle de l'enfantement.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope : des rudiments élémentaires (<i>stoicheia</i>) auxquels l'homme s'asservit (<i>douleuo</i>), au retournement monergiste de la connaissance (<i>ginosko</i>), jusqu'aux douleurs de l'enfantement (<i>odino</i>) et au zèle ambigu (<i>zeloo</i>) des faux docteurs.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">principes élémentaires</span><span class="mot-gr">stoicheia</span></th>
+            <td class="col-sens">les éléments de base, rangée ou rang, comme les lettres de l'alphabet que l'on apprend en premier</td>
+            <td>Le mot vient d'une racine signifiant «&nbsp;rangée&nbsp;» ou «&nbsp;rang&nbsp;», d'où l'idée des rudiments que l'on enseigne aux commençants, telles les lettres de l'alphabet. MacArthur, à la lumière de l'usage du verset 9 et de Colossiens 2.8, y voit les principes de base et les rituels élémentaires des religions humaines. Sa lecture est frappante : Paul qualifie la religion des Juifs d'élémentaire au même titre que le paganisme des Galates, car sans Christ toute religion en reste à l'abc, même le judaïsme, dont la loi est pourtant sainte, juste et bonne. Qui s'y arrête demeure dans l'immaturité de l'enfant encore sous tutelle. Retourner aux <i>stoicheia</i>, c'est donc redevenir esclave de rudiments faibles et pauvres.</td>
+            <td><span class="trad"><span><b>S21</b> principes élémentaires</span><span><b>NEG79</b> principes élémentaires</span><span><b>Darby</b> éléments</span><span><b>LSG</b> rudiments</span><span><b>KJF</b> éléments rudimentaires</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">asservir</span><span class="mot-gr">douleuo</span></th>
+            <td class="col-sens">servir comme esclave, être en servitude, appartenir à un maître</td>
+            <td>Le verbe <i>douleuo</i> désigne le service de l'esclave, l'appartenance totale à un maître. Paul l'emploie au verset 8 pour le passé idolâtre des Galates («&nbsp;vous serviez des dieux&nbsp;») et le reprend au verset 9 : vous voulez «&nbsp;vous asservir encore&nbsp;». MacArthur souligne le caractère insupportable de cet esclavage, fondé sur une justice qu'il faudrait obtenir au moyen d'œuvres personnelles toujours insuffisantes. Le mot encadre tout l'argument adoption-esclavage des chapitres 3 et 4 : le croyant a été affranchi de la loi pour devenir fils et héritier (4.7), et vouloir retourner sous le joug cérémoniel n'est rien d'autre qu'une rechute volontaire dans la servitude dont Christ l'a racheté.</td>
+            <td><span class="trad"><span><b>S21</b> vous asservir</span><span><b>NEG79</b> vous asservir</span><span><b>Darby</b> être asservis</span><span><b>LSG</b> vous asservir</span><span><b>KJF</b> être en servitude</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">connus</span><span class="mot-gr">ginosko</span></th>
+            <td class="col-sens">connaître, reconnaître, prendre connaissance par expérience et par relation</td>
+            <td>Le verbe <i>ginosko</i> ne décrit pas une simple information mais une connaissance relationnelle et expérimentale. Paul l'emploie au verset 9 dans un retournement décisif : «&nbsp;maintenant que vous avez connu Dieu, ou plutôt que vous avez été connus de Dieu&nbsp;». MacArthur fait de cette correction la clé du passage : nous ne connaissons Dieu que parce qu'il nous a connus d'abord, de même que nous ne le choisissons que parce qu'il nous a élus le premier (Jean 6.44; 15.16) et que nous ne l'aimons que parce qu'il nous a aimés le premier (1 Jean 4.19). La connaissance salvatrice est l'effet de l'initiative souveraine de Dieu, jamais le mérite de l'homme; c'est pourquoi retourner aux œuvres est si absurde.</td>
+            <td><span class="trad"><span><b>S21</b> connus</span><span><b>NEG79</b> connus</span><span><b>Darby</b> connus</span><span><b>LSG</b> connus</span><span><b>KJF</b> connus</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">j'éprouve les douleurs de l'enfantement</span><span class="mot-gr">odino</span></th>
+            <td class="col-sens">souffrir les douleurs de l'accouchement, être dans les douleurs de la parturiente</td>
+            <td>Le verbe <i>odino</i> évoque les contractions et les souffrances de la femme qui accouche. Paul l'applique à lui-même au verset 19, image audacieuse où l'apôtre, ailleurs père de ses convertis, se fait mère dans les douleurs : «&nbsp;Mes enfants, pour qui j'éprouve de nouveau les douleurs de l'enfantement, jusqu'à ce que Christ soit formé en vous.&nbsp;» MacArthur observe que «&nbsp;Mes enfants&nbsp;» est la seule fois où Paul use de cette tendresse, alors que Jean la prodigue. La finalité de cet enfantement spirituel n'est pas un simple ralliement de parti, contrairement aux judaïsants intéressés, mais que Christ soit formé dans les Galates, c'est-à-dire leur conformité à Christ, qui est le but même du salut (Romains 8.29). La douleur dit l'intensité du combat pastoral pour des âmes en péril.</td>
+            <td><span class="trad"><span><b>S21</b> je souffre les douleurs de l'accouchement</span><span><b>NEG79</b> j'éprouve les douleurs de l'enfantement</span><span><b>Darby</b> je travaille comme une femme en travail d'enfant</span><span><b>LSG</b> j'éprouve les douleurs de l'enfantement</span><span><b>KJF</b> je suis dans le travail de l'enfantement</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">zèle</span><span class="mot-gr">zeloo</span></th>
+            <td class="col-sens">être zélé, brûler d'ardeur, rechercher avec empressement, convoiter</td>
+            <td>Le verbe <i>zeloo</i> et son substantif désignent une ardeur intense, qui peut être noble ou perverse. MacArthur relève que c'est le même mot qui décrit, en 1.14, le zèle passé de Paul pour le judaïsme. Aux versets 17 et 18, Paul joue sur ce double tranchant : les judaïsants déploient un zèle apparent pour les Galates, mais ce zèle n'est pas pur; ils cherchent en réalité à exclure les Galates du salut gratuit offert par Dieu et de la liberté en Christ, pour que ceux-ci se tournent vers eux, et à obtenir de la reconnaissance pour eux-mêmes. Paul retourne le terme : il est beau d'avoir du zèle pour ce qui est bien et en tout temps (4.18). Le contraste oppose le zèle manipulateur du faux docteur au zèle authentique pour l'Évangile de la grâce.</td>
+            <td><span class="trad"><span><b>S21</b> le zèle</span><span><b>NEG79</b> le zèle</span><span><b>Darby</b> ils sont zélés</span><span><b>LSG</b> le zèle</span><span><b>KJF</b> ils sont zélés</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Galates 4.8-20</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Galates 4.8-20 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ga 4.8-11, 4.8, 4.9, 4.10, 4.11, 4.12-20, 4.12, 4.13, 4.14, 4.15, 4.16, 4.17, 4.18, 4.19, 4.20.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-19</span></th>
+            <td><a href="https://www.gty.org/sermons/48-19" target="_blank" rel="noopener">The Adoption of the Believer</a></td>
+            <td>Galates 4.1-11</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-21</span></th>
+            <td><a href="https://www.gty.org/sermons/48-21" target="_blank" rel="noopener">The Inheritance You Can’t Lose</a></td>
+            <td>Galates 4.7-11</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-22</span></th>
+            <td><a href="https://www.gty.org/sermons/48-22" target="_blank" rel="noopener">Paul’s Plea: Cling to the Gospel!</a></td>
+            <td>Galates 4.12-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-23</span></th>
+            <td><a href="https://www.gty.org/sermons/48-23" target="_blank" rel="noopener">The Primary Importance of Sanctification</a></td>
+            <td>Galates 4.19-20</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-24</span></th>
+            <td><a href="https://www.gty.org/sermons/48-24" target="_blank" rel="noopener">The Right Motive in Sanctification</a></td>
+            <td>Galates 4.19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-25</span></th>
+            <td><a href="https://www.gty.org/sermons/48-25" target="_blank" rel="noopener">The Starting Point of Sanctification</a></td>
+            <td>Galates 4.19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">TMU294</span></th>
+            <td><a href="https://www.gty.org/sermons/TMU294" target="_blank" rel="noopener">Christ Formed in You, Part 1</a></td>
+            <td>Galates 4.19</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question interprétative qui commande le passage est posée par Paul lui-même : comment des Galates qui n'avaient jamais été juifs pourraient-ils retourner «&nbsp;encore&nbsp;» à un calendrier qu'ils n'avaient jamais pratiqué? MacArthur résout l'énigme par sa lecture des <i>stoicheia</i>.</p>
+    <div class="body">
+      <p>La question interprétative qui commande le passage est posée par Paul lui-même au verset 9 : «&nbsp;comment retournez-vous à ces faibles et pauvres principes élémentaires auxquels vous voulez vous asservir encore?&nbsp;» Le mot «&nbsp;encore&nbsp;» fait difficulté, car les Galates étaient d'anciens païens, non d'anciens Juifs : comment pourraient-ils retourner à un calendrier juif qu'ils n'avaient jamais pratiqué? MacArthur résout l'énigme par sa lecture des <i>stoicheia</i> : Paul range le légalisme judaïsant et le paganisme dans une même catégorie, celle des principes élémentaires, faibles et sans valeur, de toute religion sans Christ : le judaïsme lui-même, sans Christ, n'est plus qu'une forme de paganisme, l'écorce d'une religion autrefois voulue par Dieu, dont on prétend désormais gagner la faveur divine par des rites. Aux yeux de l'apôtre, adopter l'observance cérémonielle juive comme voie de salut n'est pas un progrès depuis l'idolâtrie, c'est une rechute dans une servitude de même essence. L'ancien polythéiste et le judaïsant sont également esclaves de rudiments faibles et pauvres, car aucun des deux systèmes, sans Christ, ne fait connaître Dieu ni ne procure la justification. Voilà pourquoi le retour en arrière est si tragiquement absurde.</p>
+      <p>Le verset 9 contient aussi le pivot doctrinal du passage, et MacArthur y souligne la priorité de la grâce de Dieu. Paul se reprend en cours de phrase : «&nbsp;maintenant que vous avez connu Dieu, ou plutôt que vous avez été connus de Dieu&nbsp;». Cette correction n'est pas un ornement de style; c'est l'affirmation que toute l'initiative du salut appartient à Dieu. Nous ne connaissons Dieu que parce qu'il nous a connus d'abord, nous ne le choisissons que parce qu'il nous a élus, nous ne l'aimons que parce qu'il nous a aimés le premier. Or, si le salut procède entièrement de l'élection et de l'appel efficace de Dieu, alors retourner aux œuvres de la loi pour le compléter est une contradiction insensée : c'est prétendre achever par la chair ce que l'Esprit a souverainement commencé (cf. 3.3). Le légalisme n'est pas seulement inutile, il renie la nature même de la grâce comme don gratuit et imméritif.</p>
+      <p>La seconde moitié du passage révèle l'âme pastorale de MacArthur dans sa lecture de Paul. Après le reproche doctrinal vient le plaidoyer affectueux (4.12-20). MacArthur note ce changement de ton : l'apôtre passe des reproches cinglants à un appel fondé sur sa profonde affection. Il rappelle l'accueil que les Galates lui ont réservé malgré son infirmité, accueil si chaleureux qu'ils se seraient arraché les yeux pour les lui donner, et il s'étonne douloureusement de leur revirement : «&nbsp;Suis-je devenu votre ennemi en vous disant la vérité?&nbsp;» (4.16). Le contraste est mis en pleine lumière avec les judaïsants : leur zèle apparent (4.17) cache une manœuvre intéressée, ils veulent exclure les Galates des bienfaits du vrai salut et de la liberté en Christ pour que ceux-ci les recherchent, alors que Paul, lui, les recherche pour Christ et non pour lui-même. L'image de l'enfantement (4.19) couronne tout : l'apôtre souffre comme une mère jusqu'à ce que Christ soit formé en eux, but ultime du salut qu'est la ressemblance à Christ. Le mot «&nbsp;inquiétude&nbsp;» du verset 20 désigne, selon MacArthur, un désarroi total : Paul voudrait être présent et changer de ton, tant son cœur est déchiré.</p>
+      <p>Deux gardes-fous doctrinaux s'imposent. Premièrement, le verset 10, sur l'observance des jours, ne condamne pas toute commémoration chrétienne ni toute discipline de temps; il condamne l'observance légaliste qui prétend gagner la faveur de Dieu et fait d'un calendrier une condition de salut. MacArthur le rapproche de Romains 14.1-6 et de Colossiens 2.16-17 : ces choses sont l'ombre, le corps est en Christ, et le croyant ne doit pas se laisser juger en ces matières devenues indifférentes. Deuxièmement, la crainte de Paul d'avoir «&nbsp;inutilement travaillé&nbsp;» (4.11) ne signifie pas que de vrais régénérés puissent perdre leur salut, ce qui contredirait la persévérance des saints affirmée ailleurs dans l'épître; elle exprime l'angoisse pastorale légitime devant des professants dont la défection vers le légalisme jetterait un doute sérieux sur la réalité de leur conversion, et rendrait vain le labeur missionnaire de l'apôtre. La même tension parcourt 3.4 et 1 Thessaloniciens 3.5.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du contexte immédiat de l'adoption filiale au socle monergiste de l'élection, jusqu'à l'arrière-plan vétérotestamentaire du calendrier d'Israël.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 4.1-7</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le contexte immédiat qui fonde le reproche : le croyant n'est plus esclave mais fils et héritier par adoption; retourner aux rudiments contredit donc directement le statut filial que Christ a acquis.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 2.16-17</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul y traite la même observance de fêtes, de nouvelles lunes et de sabbats comme une ombre dont le corps est en Christ; MacArthur y renvoie explicitement pour interpréter les jours et les années de 4.10.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 14.1-6</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Cadre apostolique sur l'observance des jours devenue indifférente en Christ, que MacArthur cite pour distinguer la liberté chrétienne du légalisme calendaire condamné en 4.10.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 3.3</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Même reproche que 4.9 sous une autre forme : après avoir commencé par l'Esprit, vouloir finir par la chair, c'est l'absurdité de compléter l'œuvre souveraine de Dieu par l'effort humain.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 15.16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Ce n'est pas vous qui m'avez choisi, mais moi qui vous ai choisis : verset que MacArthur invoque pour gloser le «&nbsp;plutôt que vous avez été connus de Dieu&nbsp;» de 4.9.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 3.5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Même angoisse pastorale que 4.11 : Paul redoute que le tentateur n'ait rendu vain son travail, sans que cela nie la persévérance des vrais croyants.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 8.29</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le but du salut est la conformité à l'image du Fils; MacArthur y rattache le «&nbsp;jusqu'à ce que Christ soit formé en vous&nbsp;» de 4.19, finalité de l'enfantement spirituel.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Lévitique 23.1-44</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le calendrier des fêtes solennelles d'Israël, donné par Dieu à la nation, que les judaïsants imposaient à tort à l'Église comme condition de salut (jours, mois, temps et années de 4.10).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le monergisme de la grâce et l'élection souveraine</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La correction de Paul au verset 9, «&nbsp;vous avez connu Dieu, ou plutôt vous avez été connus de Dieu&nbsp;», place l'initiative entière du salut en Dieu, non dans l'homme.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Si la connaissance salvatrice de Dieu procède de son élection et de son appel efficace, alors aucune œuvre humaine n'y ajoute rien. L'assurance du croyant repose sur l'action souveraine de Dieu, ce qui rend toute rechute légaliste à la fois inutile et ingrate; la sécurité du salut tient à celui qui nous a connus d'abord, jamais à notre performance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'esclavage du légalisme contre la liberté de l'adoption</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul présente le retour aux faibles et pauvres rudiments comme un asservissement (4.9), à l'opposé du statut de fils et d'héritier reçu par adoption (4.7).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le légalisme religieux, qu'il soit païen ou judaïsant, n'élève pas l'homme mais le réasservit, car il fait dépendre la faveur divine d'œuvres toujours insuffisantes. La liberté chrétienne n'est pas l'absence de loi morale mais la délivrance du système des œuvres comme voie de justification; ajouter le rite à la foi, c'est déchoir du régime de la grâce (cf. 5.4).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La suffisance de l'œuvre de Christ contre l'observance cérémonielle</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'observance des jours, des mois, des temps et des années (4.10) prétend ajouter au salut ce que Christ a déjà parfaitement accompli en rachetant ceux qui étaient sous la loi.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Les fêtes mosaïques n'étaient que l'ombre dont Christ est le corps; les imposer comme conditions de salut nie la suffisance de son sacrifice unique et une fois pour toutes. L'assemblée doit distinguer une discipline de temps librement consentie d'une observance légaliste qui marchanderait la faveur de Dieu et viderait la croix de sa plénitude.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le cœur pastoral et l'épreuve diagnostique de la persévérance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La crainte d'avoir inutilement travaillé (4.11) et les douleurs de l'enfantement jusqu'à ce que Christ soit formé en eux (4.19) révèlent un berger angoissé pour des âmes en péril.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La défection des Galates vers le légalisme ne prouve pas que de vrais régénérés perdent leur salut, mais elle constitue un signal alarmant qui jette un doute sur la réalité de leur foi. Le vrai pasteur ne se réjouit pas d'une profession verbale; il combat dans la douleur jusqu'à voir Christ formé dans ses ouailles, car la conformité à Christ est la marque et le but du salut authentique.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le discernement des faux docteurs et de leurs motivations</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le zèle des judaïsants pour les Galates n'est pas pur (4.17) : ils veulent les exclure du salut gratuit offert par Dieu pour se les attacher et obtenir de la reconnaissance pour eux-mêmes.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'apparence de ferveur religieuse ne garantit pas la pureté du motif; le faux docteur se reconnaît à ce qu'il flatte et capte pour lui-même au lieu de conduire à Christ. L'Église doit éprouver les enseignants à l'aune de l'Évangile de la grâce et de leur finalité réelle, et non à l'intensité de leur zèle apparent, car Satan se déguise en ange de lumière.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul met le légalisme judaïsant et l'idolâtrie païenne dans la même catégorie de rudiments faibles et pauvres (4.8-9) : selon MacArthur, qu'est-ce qui range ces deux systèmes, sans Christ, parmi les rudiments qui asservissent, et pourquoi le retour au légalisme est-il un retour en arrière et non un progrès?</li>
+      <li>Le mot «&nbsp;encore&nbsp;» au verset 9 a fait couler beaucoup d'encre, puisque les Galates n'avaient jamais été juifs : comment la lecture de MacArthur sur les <i>stoicheia</i> résout-elle l'objection sans concéder que Paul parlerait d'un retour au paganisme proprement dit?</li>
+      <li>La correction du verset 9, «&nbsp;ou plutôt que vous avez été connus de Dieu&nbsp;», fonde le monergisme : en quoi cette priorité de l'action de Dieu rend-elle toute addition d'œuvre à la foi non seulement inutile mais contradictoire avec la nature même de la grâce?</li>
+      <li>Comment distinguer concrètement, dans la vie de votre assemblée, une discipline chrétienne du temps librement consentie d'une observance légaliste des jours condamnée en 4.10, à la lumière de Colossiens 2.16-17 et de Romains 14.1-6?</li>
+      <li>Paul craint d'avoir inutilement travaillé (4.11) : comment tenir ensemble cette angoisse pastorale et la doctrine de la persévérance des saints, de sorte que la crainte exprimée ne devienne pas un argument en faveur de la perte du salut?</li>
+      <li>L'image de l'apôtre dans les douleurs de l'enfantement jusqu'à ce que Christ soit formé en eux (4.19) définit le but du ministère : qu'est-ce que cela exige du pasteur d'aujourd'hui qui se contenterait d'une profession de foi verbale sans transformation visible?</li>
+      <li>Le zèle des judaïsants paraissait sincère (4.17) : à quels signes l'Église doit-elle reconnaître un faux docteur dont la ferveur cache une volonté de capter les fidèles pour lui-même, plutôt que de les conduire à Christ?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Galates 4.8-20 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Galates : l'Évangile de la grâce&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Galates-4-8-20.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

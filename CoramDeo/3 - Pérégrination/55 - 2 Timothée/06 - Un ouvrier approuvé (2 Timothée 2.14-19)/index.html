@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Timothée 2.14-19 · Un ouvrier approuvé · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Timothée 2.14-19 : un ouvrier approuvé ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">2 Timothée 2.14-19</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 2 Timothée 2.14-19</p>
+    <h1 class="hero__title">Un ouvrier approuvé</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Efforce-toi de te présenter devant Dieu comme un homme éprouvé, un ouvrier qui n'a point à rougir, qui dispense droitement la parole de la vérité.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">2 Timothée 2.15 · NEG</p>
+    <p class="hero__series">Série : <b>2 Timothée : garde le bon dépôt</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">2 Timothée 2.14-19</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Efforce-toi de te présenter devant Dieu comme un homme éprouvé, un ouvrier qui n'a point à rougir, qui dispense droitement la parole de la vérité.</p>
+        <cite class="verse__ref">2 Timothée 2.15 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Néanmoins, le solide fondement posé par Dieu subsiste, avec ces paroles qui lui servent de sceau : Le Seigneur connaît ceux qui lui appartiennent.</p>
+        <cite class="verse__ref">2 Timothée 2.19 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Au cœur d'une galerie de modèles à imiter, Paul dresse la figure de l'ouvrier&nbsp;: celui qui dispense droitement la Parole de la vérité et résiste à la gangrène des faux docteurs, encadré entre deux certitudes, la vérité fidèlement maniée et l'Église que Dieu connaît et scelle.</p>
+    <div class="body">
+      <p>Notre péricope (2.14-19) prend place au cœur de la troisième grande division de l'épître, où Paul aligne une série de modèles que l'homme de Dieu doit suivre&nbsp;: Paul lui-même (2.1-2), le soldat (2.3-4), l'athlète (2.5), le laboureur (2.6-7) et Jésus (2.8-13). Les versets 14-19 développent la figure de l'ouvrier, celui qui dispense droitement la parole de la vérité, tandis que les images du vase (2.20-23) et du serviteur (2.24-26) viendront ensuite. Le fil qui relie ces portraits est la fidélité sous la pression&nbsp;: Paul, prisonnier et bientôt martyr (env. 67 apr. J.-C.), écrit pour empêcher que Timothée ne faiblisse face aux persécutions et aux faux docteurs d'Éphèse.</p>
+      <p>Le passage s'ouvre par un impératif de continuité, Rappelle ces choses (v. 14), qui rattache l'ouvrier au cantique de fidélité qui précède (vv. 11-13). Il se referme par l'affirmation que le solide fondement posé par Dieu subsiste (v. 19), encadrant ainsi le danger des faux docteurs entre deux certitudes&nbsp;: la Parole de la vérité fidèlement dispensée et l'Église que Dieu connaît et scelle. Au centre, le verset clé, Efforce-toi de te présenter devant Dieu comme un homme éprouvé, un ouvrier qui n'a point à rougir, qui dispense droitement la parole de la vérité (v. 15), donne au passage son titre&nbsp;: un ouvrier approuvé.</p>
+      <p>L'unité oppose deux trajectoires. D'un côté, l'ouvrier sans honte qui manie la Parole avec exactitude (v. 15). De l'autre, les hommes des discours vains et profanes qui avancent toujours plus dans l'impiété et dont la parole ronge comme la gangrène (vv. 16-17). Hyménée et Philète servent d'illustration concrète&nbsp;: ils ont quitté la vérité en prétendant que la résurrection était déjà arrivée et ils renversent la foi de quelques-uns (vv. 17-18). Mais l'ouvrier ne désespère pas, car l'édifice de Dieu tient bon, marqué d'un double sceau&nbsp;: le Seigneur connaît les siens, et quiconque lui appartient s'éloigne de l'iniquité (v. 19).</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">2 Timothée 2.15 · 2.17 · 2.19</p>
+    </header>
+    <p class="lead">Deux images du verset 15 plongent dans les métiers du premier siècle, où l'ouvrier coupe droit le bois, la pierre ou le cuir&nbsp;; la gangrène du verset 17 dit la nécrose mortelle de l'erreur&nbsp;; et le double sceau du verset 19 puise dans la révolte de Koré.</p>
+    <div class="body">
+      <p>Au moment de la rédaction (env. 66-67 apr. J.-C.), Paul subit sa seconde détention romaine, non plus l'assignation à résidence relativement clémente d'Actes 28, mais un cachot froid, enchaîné comme un malfaiteur (2.9; 4.13), sans espoir de libération (4.6). La persécution néronienne contre les chrétiens (déclenchée en 64) fait fuir presque tous ses compagnons d'Asie (1.15; 4.10-16). Timothée, lui, dirige l'Église d'Éphèse, un centre cosmopolite où prospèrent les spéculations religieuses et où les faux docteurs trouvent un terrain tout préparé. C'est dans ce contexte de pression extérieure et de défection intérieure que Paul confie à son fils dans la foi le pan non apostolique de son ministère (2.2).</p>
+    </div>
+    <p>Trois traits éclairent la couleur du passage.</p>
+    <ul class="points">
+      <li><b>L'ouvrier comme artisan, non comme théoricien.</b> Le verbe traduit par dispense droitement signifie littéralement ouvrir en droite ligne ou couper droit, et il évoquait la précision qu'exigeaient certaines professions&nbsp;: charpentier qui trace une planche, maçon qui aligne un mur, ou fabricant de tentes comme Paul lui-même, qui devait tailler les pièces de cuir sans gauchir la ligne. L'ouvrier (gr. <i>ergatēs</i>) n'est pas un théoricien mais un artisan dont le travail se mesure à sa rectitude.</li>
+      <li><b>La gangrène, image médicale de l'erreur.</b> La gangrène (v. 17) renvoie à une réalité médicale connue&nbsp;: une plaie qui se nécrose et se propage de proche en proche jusqu'à emporter le membre puis la vie. L'image dit le caractère mortel et insidieux de l'erreur doctrinale, qui n'est pas un simple écart d'opinion mais une infection qui s'étend si on ne l'excise pas.</li>
+      <li><b>L'hérésie, peut-être sur fond de dualisme grec.</b> L'erreur d'Hyménée et de Philète pouvait refléter la conception philosophique grecque selon laquelle la matière est mauvaise et seul l'esprit est bon, sans qu'on en connaisse la forme exacte. En affirmant que la résurrection est déjà arrivée, ils niaient la réalité de la résurrection physique des croyants, ne lui reconnaissant qu'un sens spirituel déjà accompli (cf. l'erreur des Corinthiens, 1 Corinthiens 15.12). Hyménée avait déjà été livré par Paul à Satan (1 Timothée 1.20)&nbsp;; Philète apparaît ici comme son complice. Le double sceau du verset 19, enfin, puise dans la révolte de Koré (Nombres 16), où l'Éternel distingue ceux qui lui appartiennent et appelle son peuple à se séparer de l'iniquité.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du passage&nbsp;: de l'<i>orthotomeō</i> qui coupe droit dans la Parole à la <i>spoudazō</i> du zèle diligent, de l'ouvrier <i>dokimos</i> approuvé à la <i>gangraina</i> qui ronge, jusqu'au <i>themelios</i> que rien n'ébranle.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">dispense droitement</span><span class="mot-gr">orthotomeō</span></th>
+            <td class="col-sens">couper droit, tracer une ligne droite, ouvrir en droite ligne</td>
+            <td>Composé de <i>orthos</i> (droit) et <i>tomos</i> (coupure), le verbe évoque l'action de trancher selon une ligne exacte, sans dévier. Il décrivait la précision du charpentier, du maçon ou du fabricant de tentes. Appliqué à la Parole de la vérité, il commande au prédicateur de transmettre l'Écriture de façon complète, claire et exacte, sans la gauchir ni la déformer. La précision n'est pas une option mais une obligation, car on a ici affaire à la Parole de Dieu elle-même&nbsp;; se contenter de moins serait honteux.</td>
+            <td><span class="trad"><span><b>S21</b> qui expose avec droiture</span><span><b>NEG79</b> qui dispense droitement</span><span><b>Darby</b> exposant justement</span><span><b>LSG</b> qui dispense droitement</span><span><b>KJF</b> partageant avec droiture</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">efforce-toi</span><span class="mot-gr">spoudazō</span></th>
+            <td class="col-sens">se hâter, mettre tout son zèle, faire diligence</td>
+            <td>Le terme dénote une persistance pleine de zèle pour atteindre un but. Il ne s'agit pas d'un vague souhait mais d'un effort intense et soutenu. Timothée est engagé à faire tout son possible pour transmettre la Parole avec exactitude, comme tout prédicateur et enseignant. Cette diligence est cruciale, car c'est elle qui contrecarre les effets destructeurs des fausses doctrines. L'approbation visée n'est pas celle des hommes mais le verdict de Dieu, devant qui l'ouvrier se présente comme un homme éprouvé.</td>
+            <td><span class="trad"><span><b>S21</b> Efforce-toi</span><span><b>NEG79</b> Efforce-toi</span><span><b>Darby</b> Étudie-toi</span><span><b>LSG</b> Efforce-toi</span><span><b>KJF</b> Étudie-toi</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">éprouvé</span><span class="mot-gr">dokimos</span></th>
+            <td class="col-sens">approuvé après examen, reconnu authentique par une épreuve</td>
+            <td>L'adjectif désignait le métal éprouvé au feu et reconnu pur, par opposition au réprouvé (<i>adokimos</i>) dont l'épreuve révèle l'absence de valeur (cf. 3.8&nbsp;; Romains 1.28). L'ouvrier approuvé est celui qui, soumis à l'examen de Dieu, ressort attesté et sans honte. La rectitude dans le maniement de la Parole est le critère même de cette approbation&nbsp;: c'est en dispensant droitement la vérité que l'ouvrier se présente devant Dieu comme un homme dont la fidélité a passé l'épreuve.</td>
+            <td><span class="trad"><span><b>S21</b> approuvé</span><span><b>NEG79</b> éprouvé</span><span><b>Darby</b> approuvé</span><span><b>LSG</b> éprouvé</span><span><b>KJF</b> approuvé</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">gangrène</span><span class="mot-gr">gangraina</span></th>
+            <td class="col-sens">gangrène, ulcère qui ronge et se propage, nécrose mortelle</td>
+            <td>Terme médical désignant une maladie mortelle à diffusion rapide, qui dévore les chairs de proche en proche. La métaphore souligne le danger insidieux des fausses doctrines&nbsp;: elles ne sont pas un simple écart d'opinion mais une nécrose qui attente à la vie spirituelle et se répand sans frein si on ne l'arrête pas. C'est pourquoi Paul ordonne de fuir les discours vains et profanes plutôt que de débattre avec ceux qui les tiennent&nbsp;: on n'argumente pas avec une infection, on l'excise.</td>
+            <td><span class="trad"><span><b>S21</b> gangrène</span><span><b>NEG79</b> gangrène</span><span><b>Darby</b> gangrène</span><span><b>LSG</b> gangrène</span><span><b>KJF</b> gangrène</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">fondement</span><span class="mot-gr">themelios</span></th>
+            <td class="col-sens">fondation, assise sur laquelle repose un édifice</td>
+            <td>Le mot désigne la base solide d'une construction, ce qui ne peut être ébranlé. Paul évoque ici l'Église, l'édifice de Dieu que les forces de l'enfer ne prévaudront jamais à renverser (Matthieu 16.18), formée de ceux qui appartiennent vraiment à Dieu. Ce fondement subsiste là où les faux docteurs renversent la foi de quelques-uns&nbsp;: l'apostasie de certains ne dément pas la solidité de l'œuvre divine. Le fondement porte un sceau, garantie de propriété et d'authenticité, qui distingue les vrais des faux.</td>
+            <td><span class="trad"><span><b>S21</b> fondement</span><span><b>NEG79</b> fondement</span><span><b>Darby</b> fondement</span><span><b>LSG</b> fondement</span><span><b>KJF</b> fondation</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">2 Timothée 2.14-19</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 2 Timothée 2.14-19 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 2 Tm 2.14, 2.15, 2.16, 2.17, 2.18, 2.19.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-8</span></th>
+            <td><a href="https://www.gty.org/sermons/55-8" target="_blank" rel="noopener">Motives for Sacrificial Ministry, Part 2</a></td>
+            <td>2 Timothée 2.10-14</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-9</span></th>
+            <td><a href="https://www.gty.org/sermons/55-9" target="_blank" rel="noopener">The Danger of False Teaching</a></td>
+            <td>2 Timothée 2.14-19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-342</span></th>
+            <td><a href="https://www.gty.org/sermons/80-342" target="_blank" rel="noopener">Characteristics of a Useful Vessel</a></td>
+            <td>2 Timothée 2.14-26</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Le passage oppose deux manières de se rapporter à la Parole&nbsp;: l'ouvrier qui coupe droit dans la vérité et le faux docteur dont l'erreur ronge comme une gangrène. Au bout, non le désespoir, mais le solide fondement scellé de Dieu.</p>
+    <div class="body">
+      <p>Le passage s'organise autour d'un contraste tranché entre deux manières de se rapporter à la Parole. Paul ouvre par une mise en garde&nbsp;: Rappelle ces choses, en conjurant devant Dieu qu'on évite les disputes de mots, qui ne servent qu'à la ruine de ceux qui écoutent (v. 14). Argumenter avec les faux docteurs, ceux qui, au moyen de la raison humaine, trompent les hommes en pervertissant la Parole, n'est pas seulement stupide et futile, mais dangereux. C'est la première des trois injonctions de Paul, dans ce chapitre, à éviter les vaines discussions (cf. vv. 16, 23). Le mot rendu par ruine signifie en grec bouleversement ou renversement&nbsp;; on ne le retrouve qu'une seule autre fois dans le Nouveau Testament (2 Pierre 2.6), à propos de la destruction de Sodome et Gomorrhe. Les faux docteurs remplacent la vérité par des mensonges et provoquent ainsi une catastrophe spirituelle chez ceux qui leur prêtent attention, une ruine qui peut être éternelle.</p>
+      <p>À ce péril, Paul oppose au verset 15 le programme positif de l'ouvrier&nbsp;: Efforce-toi de te présenter devant Dieu comme un homme éprouvé, un ouvrier qui n'a point à rougir, qui dispense droitement la parole de la vérité. Le verbe traduit par dispense droitement signifie littéralement ouvrir en droite ligne. MacArthur observe qu'il évoque la précision exigée de certaines professions, charpentiers, maçons, artisans du cuir et fabricants de tentes comme Paul. Précision et exactitude sont indispensables pour interpréter correctement la Bible, bien plus encore que pour d'autres activités, car on a ici affaire à la Parole de Dieu&nbsp;; il serait honteux de se contenter de moins. La parole de la vérité désigne les Écritures en général (Jean 17.17) et le message de l'Évangile en particulier (Éphésiens 1.13&nbsp;; Colossiens 1.5). L'approbation que l'ouvrier recherche n'est donc pas celle des auditeurs mais le verdict de Dieu, devant qui il se tient comme un homme éprouvé, sans avoir à rougir.</p>
+      <p>Les versets 16-17 décrivent la pente fatale de l'erreur. MacArthur souligne qu'une hérésie aussi destructrice ne peut conduire qu'à plus d'impiété&nbsp;: l'hérésie ne peut ni sauver ni sanctifier. C'est le deuxième avertissement de Paul à éviter les discours vains et profanes. Et leur parole rongera comme la gangrène. Le terme grec désigne une maladie mortelle, à diffusion rapide&nbsp;; la métaphore souligne le danger insidieux des fausses doctrines, qui attentent à la vie même. L'erreur n'est pas un débat académique inoffensif&nbsp;: c'est une nécrose qui se propage de membre en membre dans le corps de l'Église si on ne l'excise pas. D'où l'ordre, non pas de discuter, mais de fuir.</p>
+      <p>Hyménée et Philète donnent un visage à cette gangrène (vv. 17-18). Ils se sont détournés de la vérité, disant que la résurrection est déjà arrivée, et renversent la foi de quelques-uns. Comme les faux docteurs qui troublèrent les Corinthiens (1 Corinthiens 15.12), ils niaient la réalité de la résurrection physique des croyants. En chaire, MacArthur reconnaît qu'on ignore la forme exacte de leur erreur&nbsp;: peut-être une expérience mystique, le passage de la vie non éclairée à la vie éclairée tenu pour la résurrection, peut-être l'idée grecque qu'on ne survit que dans ses enfants, peut-être un dualisme qui rejetait le corps. Quelle qu'en fût la forme, nier la résurrection à venir revenait à nier celle de Christ, qui en est les prémices, et donc à arracher le cœur de l'Évangile (cf. 1 Corinthiens 15). Sur l'expression renversent la foi, MacArthur tranche un point essentiel&nbsp;: il s'agit de ceux dont la foi n'était pas authentique. Une authentique foi qui sauve ne peut jamais être totalement et irrémédiablement renversée&nbsp;; mais une foi mal placée, inappropriée pour le salut, n'est pas rare (cf. Matthieu 7.21-27&nbsp;; 13.19-22&nbsp;; Jean 2.23-24&nbsp;; 1 Jean 2.19). Les faux docteurs ne font donc pas perdre leur salut à de vrais croyants&nbsp;: ils mettent au jour une foi qui n'avait jamais été vivante.</p>
+      <p>Le verset 19 répond à l'inquiétude que ce ravage pourrait susciter&nbsp;: Néanmoins, le solide fondement posé par Dieu subsiste. MacArthur y voit l'Église (cf. 1 Timothée 3.15), avec la majorité des commentateurs, précise-t-il en chaire&nbsp;: elle ne sera jamais battue par les forces de l'enfer (Matthieu 16.18) et elle est formée des rachetés, de ceux qui appartiennent à Dieu. Ce fondement porte un sceau, garantie de propriété et d'authenticité, et Paul en énonce les deux faces. La première, Le Seigneur connaît ceux qui lui appartiennent, est sans doute une allusion à Nombres 16.5&nbsp;: il connaît, non au sens d'avoir conscience de l'existence de quelqu'un, mais comme un mari connaît son épouse, au sens de relations intimes. Dieu connaît les siens puisqu'il les a choisis de toute éternité (cf. 1.9). C'est la sécurité de l'élu, fondée sur la connaissance souveraine de Dieu et non sur la solidité de l'homme. La seconde face, Quiconque prononce le nom du Seigneur, qu'il s'éloigne de l'iniquité, inspirée de Nombres 16.26, dit la marque visible de cette appartenance&nbsp;: ceux qui aiment Dieu recherchent la sainteté (cf. 1 Pierre 1.15-16). Le sceau a donc deux versants indissociables&nbsp;: l'élection souveraine de Dieu, secrète, et la sainteté du croyant, manifeste. Là où le faux docteur trahit son inauthenticité par l'iniquité, le vrai membre du fondement de Dieu se sépare du mal, attestant ainsi qu'il appartient bien à celui qui le connaît.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le portrait de l'ouvrier, du double sceau enraciné dans la révolte de Koré à la négation de la résurrection physique, jusqu'à la solidité de l'Église que rien n'ébranle.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 16.5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Lors de la révolte de Koré, l'Éternel déclare qu'il fera connaître au matin celui qui lui appartient. C'est l'arrière-plan vétérotestamentaire direct du premier sceau, Le Seigneur connaît ceux qui lui appartiennent (v. 19), fondé sur l'élection souveraine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 16.26</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Moïse ordonne au peuple de s'éloigner des tentes des rebelles pour ne pas périr avec eux. Cette séparation d'avec l'iniquité inspire le second sceau, Quiconque prononce le nom du Seigneur, qu'il s'éloigne de l'iniquité (v. 19).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 15.12-19</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul réfute déjà à Corinthe ceux qui disaient qu'il n'y a point de résurrection des morts. L'hérésie d'Hyménée et de Philète, la résurrection est déjà arrivée (v. 18), en est une variante&nbsp;: la même négation de la résurrection physique des croyants.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Timothée 1.19-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul y livre Hyménée à Satan, afin qu'il apprenne à ne plus blasphémer, après le naufrage de sa foi. Le même Hyménée reparaît ici (v. 17), confirmant le caractère obstiné et non régénéré du faux docteur.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 2.19</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Ils sont sortis du milieu de nous, mais ils n'étaient pas des nôtres. Éclaire la formule renversent la foi de quelques-uns (v. 18)&nbsp;: la foi ainsi renversée n'était pas authentique&nbsp;; l'apostat révèle qu'il n'avait jamais appartenu à Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 16.18</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Je bâtirai mon Église, et les portes du séjour des morts ne prévaudront point contre elle. Garantit la solidité du fondement posé par Dieu (v. 19) malgré le ravage des faux docteurs.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 17.17</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Sanctifie-les par ta vérité&nbsp;: ta parole est la vérité. Définit l'objet que l'ouvrier doit dispenser droitement, la parole de la vérité (v. 15), identifiée à l'Écriture elle-même.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 3.9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Mais évite les discussions folles, les généalogies, les querelles. Reprend la même injonction qu'au verset 14, fuir les disputes de mots et les discours vains et profanes plutôt que d'argumenter avec les faux docteurs.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent le portrait de l'ouvrier. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La suffisance et l'autorité de l'Écriture</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'ouvrier dispense droitement la parole de la vérité (v. 15), littéralement il coupe droit dans l'Écriture, sans la gauchir. La précision dans le maniement de la Parole est le critère même de l'approbation divine.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Conformément à la bibliologie réformée de l'inspiration verbale et plénière, l'Écriture est la Parole de Dieu, et la manier exige une exactitude qu'aucun autre métier ne réclame à ce degré. Pour votre assemblée, cela élève la prédication expositoire au rang de devoir sacré&nbsp;: on ne prêche pas ses opinions, on tranche droit dans le texte inspiré, car se contenter de moins serait honteux devant Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le caractère mortel de l'erreur doctrinale</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les discours vains et profanes font avancer toujours plus dans l'impiété, et leur parole ronge comme la gangrène (vv. 16-17). L'erreur n'est pas un débat inoffensif mais une nécrose qui se propage et qui tue.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon le cessationnisme et le souci de la saine doctrine propres à ce cadre, la fausse doctrine ne sanctifie ni ne sauve&nbsp;: elle corrompt. Pour votre assemblée, cela interdit l'indifférence doctrinale et l'œcuménisme de complaisance. On ne dialogue pas avec une gangrène, on l'excise&nbsp;: la fidélité commande de fuir les discours vains et d'exclure le poison, par amour pour le corps menacé.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La fausse foi démasquée, non la vraie foi perdue</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Hyménée et Philète renversent la foi de quelques-uns (v. 18). Mais une authentique foi qui sauve ne peut jamais être totalement et irrémédiablement renversée&nbsp;; ce qui se renverse, c'est une foi mal placée, inappropriée pour le salut.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Conformément à la persévérance des saints et à la sécurité éternelle, le vrai croyant ne perd jamais son salut&nbsp;; l'apostasie révèle seulement une profession qui n'avait jamais été vivante (1 Jean 2.19). Pour votre assemblée, c'est à la fois un avertissement, examinez-vous, et une consolation&nbsp;: si votre foi est authentique, aucun faux docteur ne pourra l'arracher, car elle repose sur l'œuvre de Dieu et non sur votre force.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le double sceau : élection souveraine et sainteté</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le solide fondement subsiste, marqué d'un sceau à deux faces&nbsp;: Le Seigneur connaît ceux qui lui appartiennent, et Quiconque prononce le nom du Seigneur, qu'il s'éloigne de l'iniquité (v. 19).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la sotériologie monergique, l'élection de Dieu, secrète et souveraine, est la face cachée du sceau&nbsp;; la sainteté du croyant en est la face visible et inséparable. Pour votre assemblée, l'assurance du salut ne repose pas sur la stabilité de l'homme mais sur la connaissance intime que Dieu a des siens, choisis de toute éternité&nbsp;; et cette assurance ne reste jamais sans fruit, car celui qui appartient vraiment à Dieu se sépare de l'iniquité.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le verbe dispenser droitement (v. 15) dit l'exactitude de l'artisan qui coupe droit. En quoi votre préparation hebdomadaire traduit-elle ou trahit-elle cette exigence de précision dans le maniement du texte? Où la commodité prend-elle parfois le pas sur la rectitude?</li>
+      <li>Paul ordonne d'éviter les disputes de mots (v. 14) et de fuir les discours vains (v. 16), non d'en débattre. Comment discerner, dans votre ministère, ce qui mérite une réfutation patiente et ce qu'il faut simplement fuir comme une gangrène?</li>
+      <li>L'ouvrier cherche l'approbation de Dieu, non celle des hommes (v. 15). Quelle pression de plaire à l'auditoire ou de soigner sa réputation menace le plus votre fidélité, et que change la perspective de vous présenter devant Dieu comme un homme éprouvé?</li>
+      <li>Hyménée et Philète tordaient la résurrection (v. 18) en réinterprétant un fait physique en pure réalité spirituelle déjà accomplie. Quelles spiritualisations comparables, qui vident une vérité de sa réalité concrète, circulent aujourd'hui et menacent votre assemblée?</li>
+      <li>Si renverser la foi (v. 18) ne décrit jamais la perte du salut d'un vrai croyant mais le démasquage d'une foi inauthentique, comment prêcher ce texte de façon à la fois consolante pour le croyant assuré et solennellement avertissante pour le chrétien de nom?</li>
+      <li>Le premier sceau, Le Seigneur connaît ceux qui lui appartiennent (v. 19), fonde l'assurance sur l'élection souveraine et non sur la performance humaine. Comment cette vérité console-t-elle l'ouvrier découragé par les défections qu'il voit autour de lui?</li>
+      <li>Le second sceau lie indissociablement l'appartenance à Dieu et la séparation d'avec l'iniquité (v. 19). Comment tenir ensemble, dans la prédication, la sécurité gratuite de l'élu et l'exigence concrète de sainteté, sans tomber ni dans le laxisme ni dans le légalisme?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 2 Timothée 2.14-19 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;2 Timothée : garde le bon dépôt&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-2%20Timoth%C3%A9e-2-14-19.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

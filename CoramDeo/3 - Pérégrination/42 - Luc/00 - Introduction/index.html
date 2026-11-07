@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Évangile de Luc · Venu sauver les perdus</title>
+<meta name="description" content="Vue d'ensemble de l'Évangile de Luc pour une étude biblique : les cinq mouvements du livre, la leçon centrale et les 129 recherches de la série. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#nativite">Nativité</a>
+    <a href="#galilee">Galilée</a>
+    <a href="#montee">Montée</a>
+    <a href="#passion">Passion</a>
+    <a href="#resurrection">Résurrection</a>
+    <a href="#centrale">Leçon centrale</a>
+    <a href="#serie">La série</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Vue d'ensemble · Luc 1.1-24.53</p>
+    <h1 class="hero__title">Luc</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span> Le Fils de l'homme est venu chercher et sauver ce qui était perdu. <span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 19.10 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__series" style="margin-top:1rem;font-size:.78rem;">2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Introduction</p>
+      <h2 class="sec-title">Le médecin historien et son Évangile de la grâce</h2>
+      <p class="ref">Évangile selon Luc</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">il m'a aussi semblé bon, après avoir fait des recherches exactes sur toutes ces choses depuis leur origine, de te les exposer par écrit d'une manière suivie, excellent Théophile, afin que tu reconnaisses la certitude des enseignements que tu as reçus.</p>
+        <cite class="verse__ref">Luc 1.3-4 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car le Fils de l'homme est venu chercher et sauver ce qui était perdu.</p>
+        <cite class="verse__ref">Luc 19.10 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'Évangile selon Luc est le plus long des quatre : vingt-quatre chapitres, conçus par un historien méticuleux pour démontrer que Jésus est le Fils de l'homme venu chercher et sauver ce qui était perdu (Luc 19.10).</p>
+    <ul class="points">
+      <li><b>Un médecin, seul auteur non juif de l'Écriture.</b> La tradition unanime de l'Église ancienne attribue ce livre à Luc, ce médecin (Colossiens 4.14) que Paul distingue des collaborateurs « issus de la circoncision » (Colossiens 4.11). Compagnon de Paul dans plusieurs de ses voyages, révélés par les sections en « nous » des Actes, il est selon toute vraisemblance le seul auteur non juif de l'Écriture sainte.</li>
+      <li><b>Un ouvrage en deux volumes pour Théophile.</b> Luc a signé un ouvrage en deux tomes, l'Évangile puis les Actes, tous deux adressés à « l'excellent Théophile » (1.3; Actes 1.1). Le prologue (1.1-4), une seule phrase de grec littéraire soigné à la manière des grands historiens, annonce le dessein : rapporter, après « des recherches exactes », la certitude des faits accomplis en Jésus-Christ.</li>
+      <li><b>Un historien rigoureux et inspiré.</b> Luc écrit en historien, datant les événements par des repères vérifiables (1.5; 2.1-2; 3.1-2). Reconnaître qu'il a puisé dans des témoins oculaires et des sources écrites ne compromet en rien l'inspiration : le processus n'efface ni la personnalité ni le travail de l'auteur, mais les conduit par la providence et par l'Esprit (2 Pierre 1.21), en sorte que le récit demeure vrai et infaillible.</li>
+      <li><b>Une date probable de 60 à 62 apr. J.-C.</b> Luc et Actes paraissent avoir été rédigés coup sur coup, vraisemblablement pendant la détention de Paul à Rome. Le silence de Luc sur la destruction de Jérusalem (pourtant annoncée en 19.42-44 et 21.20-24), sur la persécution néronienne de 64 et sur le martyre de Jacques rend très improbable une rédaction tardive.</li>
+      <li><b>Un Évangile pour les nations.</b> Luc écrit pour un lectorat large, majoritairement non juif. De là son souci d'expliquer les lieux de Palestine, de préférer la terminologie grecque aux hébraïsmes (« Calvaire » plutôt que « Golgotha », 23.33) et de citer l'Ancien Testament selon la Septante.</li>
+      <li><b>Cinq mouvements, un seul but.</b> <span class="surligne">L'Évangile suit un arc clair : le prélude de la nativité (1 à 2), le ministère en Galilée (3.1 à 9.50), la longue montée vers Jérusalem (9.51 à 19.27), la semaine de la Passion (19.28 à 23.56), puis la résurrection et l'ascension (24).</span> Le fil qui tend tout l'ensemble est la marche résolue de Jésus vers la croix : « il prit la résolution de se rendre à Jérusalem » (9.51). Cette destination n'est pas un accident, mais la raison même de sa venue.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ MOUVEMENT I : NATIVITÉ ============ -->
+  <article class="section reveal" id="nativite">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Premier mouvement</p>
+      <h2 class="sec-title">Prélude et nativité : Dieu visite son peuple</h2>
+      <p class="ref">Luc 1 à 2</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">car aujourd'hui, dans la ville de David, il vous est né un Sauveur, qui est le Christ, le Seigneur.</p>
+        <cite class="verse__ref">Luc 2.11 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Mon âme exalte le Seigneur, et mon esprit se réjouit en Dieu, mon Sauveur.</p>
+        <cite class="verse__ref">Luc 1.46-47 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La série part de l'irruption joyeuse de Dieu dans l'histoire. Après le préambule qui établit la fiabilité du récit, Luc rompt des siècles de silence prophétique : Dieu annonce Jean, puis le Sauveur, et la louange éclate en cantiques.</p>
+    <ul class="points">
+      <li><b>Pour que tu connaisses la certitude.</b> Le préambule (1.1-4) pose le fondement de toute la série : l'Évangile repose sur des faits attestés, non sur des mythes. Il prépare la première scène, une annonce surnaturelle au temple, où Dieu intervient souverainement dans la vie d'un couple pieux et stérile pour susciter le précurseur du Messie.</li>
+      <li><b>Que tout se fasse selon ta parole.</b> Au doute de Zacharie, discipliné par le mutisme, répond la foi soumise de Marie : le Fils du Très-Haut s'incarne par une conception virginale et souveraine (1.26-38). L'ange annonce que son fils recevra « le trône de David, son père », et régnera « sur la maison de Jacob éternellement » (1.32-33), promesse d'un règne littéral et futur.</li>
+      <li><b>Les cantiques de l'attente.</b> La rencontre des deux mères fait éclater le Magnificat : Marie chante le Dieu qui renverse les puissants et relève les humbles (1.46-56). Le Benedictus de Zacharie (1.67-80) célèbre le Dieu qui visite et rachète son peuple en accomplissant l'alliance faite à Abraham et à David.</li>
+      <li><b>Couché dans une crèche.</b> Le Souverain de l'univers entre dans l'histoire dans l'humilité la plus totale, sous le décret d'un empereur qui sert sans le savoir le plan de Dieu (2.1-7). Dieu annonce d'abord la naissance du Sauveur à d'humbles bergers, signe que l'Évangile s'adresse aux petits et remplit de joie : « une grande joie pour tout le peuple » (2.10).</li>
+      <li><b>Mes yeux ont vu ton salut.</b> Présenté au temple, l'enfant est le salut préparé par Dieu, « lumière pour éclairer les nations, et gloire d'Israël » (2.32). Le cantique de Siméon élargit la portée du salut aux païens, thème cher à Luc, mais l'ombre de la croix plane déjà : « une épée te transpercera l'âme » (2.35). À douze ans, Jésus manifeste la conscience unique de sa filiation divine (2.49).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ MOUVEMENT II : GALILÉE ============ -->
+  <article class="section reveal" id="galilee">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Deuxième mouvement</p>
+      <h2 class="sec-title">Le ministère en Galilée : l'autorité du Messie</h2>
+      <p class="ref">Luc 3.1 à 9.50</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je ne suis pas venu appeler des justes à la repentance, mais des pécheurs.</p>
+        <cite class="verse__ref">Luc 5.32 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Tu es mon Fils bien-aimé; en toi j'ai mis toute mon affection.</p>
+        <cite class="verse__ref">Luc 3.22 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La série s'élève à travers l'autorité éclatante du ministère galiléen, où le Messie enseigne, guérit et appelle des disciples au prix fort. Jean prépare le chemin, le ciel atteste le Fils, et le second Adam vainc là où le premier a failli.</p>
+    <ul class="points">
+      <li><b>Préparez le chemin du Seigneur.</b> Dieu suscite Jean dans un contexte historique précis (3.1-6) pour préparer les cœurs et annoncer que « toute chair verra le salut de Dieu ». La vraie repentance n'est pas un rituel mais une transformation visible (3.7-14), et Jean s'efface devant Celui qui baptisera d'Esprit et de feu.</li>
+      <li><b>Mon Fils bien-aimé, et le second Adam.</b> Le baptême inaugure le ministère par l'onction de l'Esprit et l'approbation du Père (3.21-22); la généalogie jusqu'à Adam (3.38) prépare la tentation du second Adam. Là où Israël et Adam ont failli, Jésus vainc par la fidélité à la Parole (4.1-13), se qualifiant comme Sauveur sans péché.</li>
+      <li><b>Aujourd'hui cette parole est accomplie.</b> À Nazareth, Jésus déclare ouvertement qu'il est le Messie oint d'Ésaïe (4.18-21), mais s'arrête au milieu d'Ésaïe 61.2, avant « le jour de la vengeance » : l'Esprit qui l'oint inaugure l'année de grâce, et le jugement est réservé à sa seconde venue. Le rejet à domicile annonce le rejet national.</li>
+      <li><b>Une parole qui a autorité.</b> À Capernaüm, les actes d'autorité valident son identité : il commande aux démons (4.31-37), guérit par compassion mais recentre sur la prédication du Royaume (4.43). Devant la sainteté et la puissance de Jésus, Pierre découvre son péché, et la grâce le transforme en pêcheur d'hommes (5.1-11).</li>
+      <li><b>Je suis venu appeler des pécheurs.</b> Le Fils de l'homme revendique le pouvoir divin de pardonner les péchés (5.17-26) et appelle Lévi le publicain : il est le médecin venu pour les malades, non pour les justes autosuffisants (5.27-32). Sa nouveauté radicale ne peut s'enfermer dans les vieilles outres du ritualisme; Seigneur du sabbat, il libère le jour du repos du légalisme (6.1-11).</li>
+      <li><b>L'éthique du Royaume.</b> Après une nuit de prière, Jésus choisit souverainement les douze apôtres (6.12-16), fondement de son Église. Le sermon dans la plaine renverse les valeurs du monde par les béatitudes (6.20-26), appelle à l'amour des ennemis (6.27-38) et clôt sur l'épreuve de l'authenticité : seul celui qui met en pratique les paroles de Jésus tiendra (6.46-49).</li>
+      <li><b>La foi qui sauve et l'autorité sur la mort.</b> La foi d'un centurion païen dépasse celle d'Israël (7.1-10); Jésus, ému de compassion, exerce un pouvoir sur la mort (7.11-17). À la pécheresse pardonnée chez Simon, il déclare : « Ta foi t'a sauvée » (7.50), illustrant la justification par la foi en harmonie avec Paul.</li>
+      <li><b>Les paraboles et les miracles d'autorité.</b> La parabole du semeur montre que l'accueil de la Parole dépend de l'état du cœur, et que la foi authentique se prouve dans la persévérance et le fruit (8.4-15). Quatre miracles révèlent le Seigneur de la création, des démons, de la maladie et de la mort (8.22-56).</li>
+      <li><b>Le Christ de Dieu, et la croix.</b> Tournant christologique : la confession de Pierre amène la première annonce de la Passion et l'appel au discipulat coûteux, « qu'il se charge chaque jour de sa croix » (9.23). La transfiguration dévoile la gloire du Fils et place la croix dans le plan de Dieu (9.28-36). Dans le Royaume, la grandeur se mesure à l'humilité (9.46-50), ce qui prépare la grande charnière du livre.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ MOUVEMENT III : MONTÉE VERS JÉRUSALEM ============ -->
+  <article class="section reveal" id="montee">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Troisième mouvement · la charnière (9.51)</p>
+      <h2 class="sec-title">La montée vers Jérusalem : la grâce pour les perdus</h2>
+      <p class="ref">Luc 9.51 à 19.27</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Lorsque le temps où il devait être enlevé du monde approcha, Jésus prit la résolution de se rendre à Jérusalem.</p>
+        <cite class="verse__ref">Luc 9.51 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il y aura de même plus de joie dans le ciel pour un seul pécheur qui se repent, que pour quatre-vingt-dix-neuf justes qui n'ont pas besoin de repentance.</p>
+        <cite class="verse__ref">Luc 15.7 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">En 9.51 tout bascule : commence la longue montée vers Jérusalem, section largement propre à Luc et cœur de l'Évangile. L'enseignement se durcit, le conflit s'intensifie, et la grâce pour les perdus se déploie en paraboles inoubliables.</p>
+    <ul class="points">
+      <li><b>Le visage tourné vers Jérusalem.</b> Jésus s'engage résolument vers la croix (9.51), et son Royaume ne s'impose pas par le feu mais par la patience qui sauve. Sur la route, il définit le coût du discipulat : suivre Jésus exige une priorité absolue et sans retour en arrière (9.57-62).</li>
+      <li><b>La moisson et le bon Samaritain.</b> Le Seigneur de la moisson envoie ses ouvriers annoncer la paix du Royaume (10.1-12), et la vraie joie n'est pas dans la puissance sur les démons mais dans le salut révélé souverainement aux petits (10.20). À la question « qui est mon prochain », Jésus répond en renversant l'autojustification du légiste (10.25-37), puis place l'écoute de sa Parole au-dessus de tout service (10.38-42).</li>
+      <li><b>L'enseignement sur la prière.</b> Jésus enseigne à prier en plaçant la gloire et le Royaume de Dieu avant nos besoins (11.1-4), dans une dépendance filiale : le Père céleste donne le Saint-Esprit à ceux qui le lui demandent (11.13). Nul ne peut rester neutre face à lui : le Royaume est arrivé jusqu'à eux (11.14-23).</li>
+      <li><b>Malheurs contre l'hypocrisie.</b> Jésus dénonce la religion des pharisiens, soignée au-dehors et corrompue au-dedans (11.37-54). Il appelle ses disciples à la transparence et au courage, sans peur des hommes mais dans la crainte de Dieu seul (12.1-12), et met en garde contre l'idolâtrie des biens : il faut être « riche pour Dieu » (12.21) et chercher d'abord le Royaume (12.31).</li>
+      <li><b>Veiller et discerner le temps.</b> Le disciple vit dans l'attente vigilante du retour soudain de son Maître (12.35-40), responsabilité proportionnée à ce qu'il a reçu (12.48). L'urgence du moment présent devient appel direct à la repentance : « si vous ne vous repentez, vous périrez tous » (13.3,5).</li>
+      <li><b>La porte étroite et le grand festin.</b> Le salut passe par une porte étroite qu'il faut franchir maintenant (13.22-30). Dieu invite gratuitement au festin du salut, mais ceux qui s'excusent en sont exclus et leur place est donnée aux marginaux (14.15-24). À l'invitation gratuite répond pourtant l'exigence absolue du discipulat : calculer la dépense et tout préférer à Christ (14.25-35).</li>
+      <li><b>Les paraboles de la grâce (ch. 15).</b> <span class="surligne">Sommet de la section</span> : à la critique « il accueille des gens de mauvaise vie et mange avec eux », Jésus répond par la brebis, la drachme et le fils perdus. Dieu cherche activement le pécheur, et le Père court au-devant du prodigue repentant pour le rétablir par pure grâce (15.11-24). Le fils aîné, lui, révèle le vrai visage de l'autojustification religieuse qui méprise la grâce (15.25-32).</li>
+      <li><b>L'argent, l'enfer et le service.</b> On ne peut servir deux maîtres : l'argent est un gérant à investir pour l'éternité, jamais le seigneur du cœur (16.1-13). Le riche et Lazare confronte à la réalité irréversible de l'au-delà et à la suffisance de l'Écriture (16.19-31). Le disciple pardonne sans relâche et ne revendique aucun mérite (17.1-10); seul le Samaritain revient adorer, montrant la foi qui sauve dans la gratitude (17.11-19).</li>
+      <li><b>Le Royaume présent et le retour à venir.</b> Le Royaume de Dieu est déjà présent dans la personne du Roi, mais la révélation glorieuse du Fils de l'homme sera soudaine et universelle (17.20-37) : lecture prémillénariste d'un retour futur, littéral et soudain, qui appelle à la vigilance. La persévérance dans la prière (18.1-8) prépare le cœur.</li>
+      <li><b>Justifié plutôt que l'autre.</b> Dieu justifie le pécheur qui implore sa grâce, non le religieux confiant en sa propre justice : le publicain « s'en retourna justifié » (18.14), cœur de l'Évangile. Le chef riche s'en va triste (18.18-30), tandis que l'aveugle de Jéricho voit par la foi (18.35-43).</li>
+      <li><b>Chercher et sauver ce qui était perdu.</b> Zachée résume la thèse du livre : Jésus prend l'initiative de sauver le pécheur méprisé, et la repentance véritable se prouve par une vie transformée (19.1-10). Une parabole corrige enfin l'idée d'un Royaume immédiat : le Roi part recevoir son Royaume et reviendra demander des comptes (19.11-27).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ MOUVEMENT IV : PASSION ============ -->
+  <article class="section reveal" id="passion">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Quatrième mouvement</p>
+      <h2 class="sec-title">La semaine de la Passion : la croix vers laquelle tout marchait</h2>
+      <p class="ref">Luc 19.28 à 23.56</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Cette coupe est la nouvelle alliance en mon sang, qui est répandu pour vous.</p>
+        <cite class="verse__ref">Luc 22.20 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Père, pardonne-leur, car ils ne savent ce qu'ils font.</p>
+        <cite class="verse__ref">Luc 23.34 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le sommet est la semaine de la Passion, la croix vers laquelle tout l'Évangile marchait. Jésus entre en Roi, purifie le temple, affronte les chefs, institue la nouvelle alliance, puis livre volontairement sa vie pour sauver les perdus.</p>
+    <ul class="points">
+      <li><b>Béni soit le Roi qui vient.</b> Jésus se présente délibérément comme le Roi messianique de Zacharie (19.28-40), et l'acclamation royale précède aussitôt ses larmes sur Jérusalem, qui n'a pas reconnu le temps de sa visite (19.41-44). Il purifie le temple pour rétablir la maison de prière (19.45-48).</li>
+      <li><b>La guerre ouverte avec les chefs.</b> La confrontation s'engage sur la question de l'autorité (20.1-8). La parabole des vignerons expose le complot : Israël rejette le Fils, mais « la pierre rejetée » devient la pierre angulaire (20.9-19). Jésus déjoue les pièges sur l'impôt et sur la résurrection (20.20-40), puis confond les scribes sur l'identité du Messie, à la fois Fils et Seigneur de David (20.41-44).</li>
+      <li><b>Le discours du mont des Oliviers.</b> Le temple sera détruit (21.5-11, accompli en 70 apr. J.-C.); avant la fin, les disciples seront persécutés mais gardés (21.12-19). <span class="surligne">Le discours distingue le jugement historique sur Jérusalem du retour futur, littéral et glorieux du Fils de l'homme « sur une nuée avec puissance et une grande gloire » (21.27)</span>, lecture prémillénariste qui appelle à la vigilance (21.29-38).</li>
+      <li><b>La nouvelle alliance en mon sang.</b> Le complot des chefs et la trahison de Judas, mus par l'avidité et par Satan, s'inscrivent pourtant dans le plan souverain de Dieu (22.1-6). Jésus donne à la Pâque son sens ultime : son corps livré et son sang versé inaugurent la nouvelle alliance pour le pardon des péchés (22.14-23). La grandeur, enseigne-t-il encore, se mesure au service (22.24-30).</li>
+      <li><b>Gethsémané et l'heure des ténèbres.</b> Dans une agonie réelle, Jésus se soumet à la coupe de la colère divine, vainquant par la prière là où ses disciples succombent (22.39-46). Il se laisse arrêter volontairement, maître de la situation (22.47-53); le reniement de Pierre, accompli comme annoncé, est suivi du regard de Jésus qui le mène aux larmes de la repentance (22.54-62). Devant le sanhédrin, il confesse ouvertement qu'il est le Fils de Dieu (22.66-71).</li>
+      <li><b>Barabbas relâché : la substitution.</b> Ni Pilate ni Hérode ne trouvent de faute en Jésus (23.1-12), attestant malgré eux l'innocence de l'Agneau. Pilate livre l'innocent et relâche le coupable (23.13-25) : image saisissante de l'Évangile, le juste meurt à la place du pécheur.</li>
+      <li><b>Aujourd'hui, avec moi dans le paradis.</b> Sur la croix, Jésus intercède pour ses bourreaux et sauve un brigand par la seule foi (23.32-43), démontrant la grâce jusqu'au dernier instant. À sa mort, les ténèbres et le voile déchiré proclament que l'accès à Dieu est ouvert (23.44-49). L'ensevelissement honorable par Joseph d'Arimathée atteste la réalité de sa mort (23.50-56).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ MOUVEMENT V : RÉSURRECTION ============ -->
+  <article class="section reveal" id="resurrection">
+    <header class="sec-head">
+      <div class="sec-num">V</div>
+      <p class="kicker">Cinquième mouvement</p>
+      <h2 class="sec-title">Résurrection et ascension : le tombeau vide et la mission</h2>
+      <p class="ref">Luc 24</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Pourquoi cherchez-vous parmi les morts celui qui est vivant? Il n'est point ici, mais il est ressuscité.</p>
+        <cite class="verse__ref">Luc 24.5-6 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">et que la repentance et le pardon des péchés seraient prêchés en son nom à toutes les nations.</p>
+        <cite class="verse__ref">Luc 24.47 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'Évangile aboutit au tombeau vide, à la reconnaissance du Ressuscité et à l'ascension. Qui suit la série du début à la fin aura parcouru tout l'arc de la rédemption, jusqu'à l'envoi en mission.</p>
+    <ul class="points">
+      <li><b>Pourquoi cherchez-vous parmi les morts?</b> Le tombeau vide et la parole des anges attestent que Jésus est ressuscité, exactement comme il l'avait annoncé (24.1-12). La résurrection inaugure l'aboutissement de l'Évangile.</li>
+      <li><b>Tout ce qui le concerne dans les Écritures.</b> Sur le chemin d'Emmaüs, le Christ ressuscité ouvre l'Ancien Testament tout entier pour montrer « qu'il fallait que le Christ souffre ces choses, et qu'il entre dans sa gloire » (24.26), avant de se faire reconnaître à la fraction du pain (24.28-35).</li>
+      <li><b>Touchez-moi et voyez.</b> La résurrection est corporelle et réelle : le Ressuscité mange devant les siens, ce n'est ni un esprit ni une illusion (24.36-43). Cette réalité physique fonde le témoignage.</li>
+      <li><b>Témoins de ces choses.</b> Le Christ envoie ses disciples prêcher en son nom la repentance et le pardon à toutes les nations, revêtus de la puissance d'en haut (24.44-49) : la grande mission relie l'Évangile au livre des Actes.</li>
+      <li><b>Élevé dans le ciel.</b> Jésus monte au ciel en bénissant les siens, et l'Évangile se clôt dans l'adoration et la joie (24.50-53). La série s'achève là où l'Église commence : dans la joie, l'adoration et la mission.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LEÇON CENTRALE ============ -->
+  <article class="section section--conclusion reveal" id="centrale">
+    <header class="sec-head">
+      <p class="kicker">Leçon centrale</p>
+      <h2 class="sec-title">Le Fils de l'homme venu chercher et sauver les perdus</h2>
+      <p class="ref">Luc 19.10</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Car le Fils de l'homme est venu chercher et sauver ce qui était perdu.</p>
+        <cite class="verse__ref">Luc 19.10 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Je vous le dis, il descendit dans sa maison justifié, plutôt que l'autre.</p>
+        <cite class="verse__ref">Luc 18.14 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">D'un bout à l'autre, Luc répond à une seule question : pourquoi le Fils de Dieu est-il venu? « Le Fils de l'homme est venu chercher et sauver ce qui était perdu » (19.10). Le salut n'est pas l'aboutissement d'une quête humaine vers Dieu, mais l'initiative d'un Sauveur qui descend chercher des perdus incapables de se sauver eux-mêmes.</p>
+    <ul class="points">
+      <li><b>Le médecin divin tendu vers les exclus.</b> Luc dépeint Jésus tendant la main aux plus conscients de leur besoin : les païens, les Samaritains, les femmes, les enfants, les publicains et les pécheurs, tous les exclus de la société d'Israël. L'Évangile s'annonce comme « une grande joie pour tout le peuple » (2.10). Aucun pécheur n'est trop méprisable pour la grâce, et aucun respectable trop bien né pour s'en passer.</li>
+      <li><b>La justification par la foi, en harmonie avec Paul.</b> La théologie sous-jacente est paulinienne : l'élément central de Paul, la justification par la foi, Luc l'illustre par des récits, le pharisien et le publicain (18.9-14), le fils prodigue (15.11-32), la pécheresse pardonnée (7.36-50) et Zachée (19.1-10). Le publicain « s'en retourna justifié » (18.14) : déclaré juste par une justice imputée, et non gagnée par ses mérites. Cette double imputation met Luc en pleine harmonie avec Romains 3.24-28.</li>
+      <li><b>Une grâce qui n'est jamais bon marché.</b> Pour MacArthur, la foi qui sauve est inséparable de la repentance et de la soumission à Christ comme Seigneur. Jésus est venu « appeler à la repentance les pécheurs » (5.32), et « si vous ne vous repentez, vous périrez tous » (13.3,5). Le même Évangile pose le prix du disciple : renoncer à soi, se charger chaque jour de sa croix (9.23). Il n'y a pas de croyant qui ne soit aussi disciple, mais Luc tient ensemble la gratuité du salut et la réalité d'une foi qui se prouve, sans glisser vers l'antinomisme.</li>
+      <li><b>Une christologie haute.</b> L'enfant de Bethléhem est « un Sauveur, qui est le Christ, le Seigneur » (2.11). Le titre que Jésus se donne le plus souvent, « Fils de l'homme », n'abaisse pas sa personne : il renvoie au personnage divin et glorieux de Daniel 7.13 à qui est remis le royaume éternel, tout en l'unissant à la mission de souffrance, car il « doit souffrir beaucoup » (9.22).</li>
+      <li><b>Le Roi qui reviendra régner.</b> Lue dans le cadre dispensationaliste et prémillénariste de MacArthur, l'eschatologie de Luc maintient une distinction permanente entre Israël et l'Église et refuse de spiritualiser les promesses faites à Israël. Le règne promis « sur la maison de Jacob » (1.33) est un royaume littéral et futur; le retour du Fils de l'homme « sur une nuée » (21.27) désigne la seconde venue personnelle, glorieuse et littérale de Christ. L'histoire n'est pas un cercle, mais une marche vers le retour du Roi.</li>
+      <li><b>La leçon centrale.</b> <span class="surligne">Tout Luc se lit comme l'histoire du Sauveur compatissant qui descend chercher les perdus.</span> Dieu, par pure grâce, vient lui-même chercher et sauver des pécheurs perdus, et appelle les sauvés à le suivre jusqu'à la gloire. Pour une assemblée tentée de réduire Jésus à un modèle moral, ce thème replace la croix au centre : il est venu non pour être admiré, mais pour sauver.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LES 129 RECHERCHES ============ -->
+  <article class="section reveal" id="serie">
+    <header class="sec-head">
+      <p class="kicker">La série</p>
+      <h2 class="sec-title">Les 129 recherches de la série</h2>
+      <p class="ref">Luc 1.1 à 24.53 · 129 semaines</p>
+    </header>
+    <p class="lead">La série « Luc : venu sauver les perdus » se déploie sur cent vingt-neuf semaines d'exposition suivie, sans lacune ni chevauchement, du préambule (1.1-4) à l'ascension (24.50-53). Chaque passage dispose d'une recherche exégétique complète : choisissez une semaine pour ouvrir sa recherche et préparer la prédication. Les recherches sont regroupées selon les cinq mouvements de l'Évangile.</p>
+    <h3 class="mouvement-titre">Prélude et nativité<span class="mouvement-ref">Luc 1 à 2 · semaines 1 à 13</span></h3>
+    <ul class="semaines">
+      <li class="semaine"><a href="../001%20-%20Pour%20que%20tu%20connaisses%20la%20certitude%20%28Luc%201.1-4%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">Pour que tu connaisses la certitude</span>
+        <span class="semaine__ref">Luc 1.1-4<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../002%20-%20Une%20pri%C3%A8re%20exauc%C3%A9e%20au%20temple%20%28Luc%201.5-17%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Une prière exaucée au temple</span>
+        <span class="semaine__ref">Luc 1.5-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../003%20-%20Le%20prix%20de%20l%27incr%C3%A9dulit%C3%A9%20%28Luc%201.18-25%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Le prix de l'incrédulité</span>
+        <span class="semaine__ref">Luc 1.18-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../004%20-%20Que%20tout%20se%20fasse%20selon%20ta%20parole%20%28Luc%201.26-38%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">Que tout se fasse selon ta parole</span>
+        <span class="semaine__ref">Luc 1.26-38<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../005%20-%20L%27enfant%20a%20tressailli%20%28Luc%201.39-45%29/index.html">
+        <span class="semaine__num">Semaine 5</span>
+        <span class="semaine__titre">L'enfant a tressailli</span>
+        <span class="semaine__ref">Luc 1.39-45<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../006%20-%20Mon%20%C3%A2me%20exalte%20le%20Seigneur%20%28Luc%201.46-56%29/index.html">
+        <span class="semaine__num">Semaine 6</span>
+        <span class="semaine__titre">Mon âme exalte le Seigneur</span>
+        <span class="semaine__ref">Luc 1.46-56<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../007%20-%20Son%20nom%20est%20Jean%20%28Luc%201.57-66%29/index.html">
+        <span class="semaine__num">Semaine 7</span>
+        <span class="semaine__titre">Son nom est Jean</span>
+        <span class="semaine__ref">Luc 1.57-66<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../008%20-%20Le%20soleil%20levant%20nous%20a%20visit%C3%A9s%20%28Luc%201.67-80%29/index.html">
+        <span class="semaine__num">Semaine 8</span>
+        <span class="semaine__titre">Le soleil levant nous a visités</span>
+        <span class="semaine__ref">Luc 1.67-80<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../009%20-%20Couch%C3%A9%20dans%20une%20cr%C3%A8che%20%28Luc%202.1-7%29/index.html">
+        <span class="semaine__num">Semaine 9</span>
+        <span class="semaine__titre">Couché dans une crèche</span>
+        <span class="semaine__ref">Luc 2.1-7<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../010%20-%20Une%20bonne%20nouvelle%20pour%20tout%20le%20peuple%20%28Luc%202.8-20%29/index.html">
+        <span class="semaine__num">Semaine 10</span>
+        <span class="semaine__titre">Une bonne nouvelle pour tout le peuple</span>
+        <span class="semaine__ref">Luc 2.8-20<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../011%20-%20Mes%20yeux%20ont%20vu%20ton%20salut%20%28Luc%202.21-32%29/index.html">
+        <span class="semaine__num">Semaine 11</span>
+        <span class="semaine__titre">Mes yeux ont vu ton salut</span>
+        <span class="semaine__ref">Luc 2.21-32<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../012%20-%20Une%20%C3%A9p%C3%A9e%20transpercera%20ton%20%C3%A2me%20%28Luc%202.33-40%29/index.html">
+        <span class="semaine__num">Semaine 12</span>
+        <span class="semaine__titre">Une épée transpercera ton âme</span>
+        <span class="semaine__ref">Luc 2.33-40<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../013%20-%20Aux%20affaires%20de%20mon%20P%C3%A8re%20%28Luc%202.41-52%29/index.html">
+        <span class="semaine__num">Semaine 13</span>
+        <span class="semaine__titre">Aux affaires de mon Père</span>
+        <span class="semaine__ref">Luc 2.41-52<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+
+    <h3 class="mouvement-titre">Le ministère en Galilée<span class="mouvement-ref">Luc 3.1 à 9.50 · semaines 14 à 52</span></h3>
+    <ul class="semaines">
+      <li class="semaine"><a href="../014%20-%20Pr%C3%A9parez%20le%20chemin%20du%20Seigneur%20%28Luc%203.1-6%29/index.html">
+        <span class="semaine__num">Semaine 14</span>
+        <span class="semaine__titre">Préparez le chemin du Seigneur</span>
+        <span class="semaine__ref">Luc 3.1-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../015%20-%20Produisez%20des%20fruits%20de%20repentance%20%28Luc%203.7-14%29/index.html">
+        <span class="semaine__num">Semaine 15</span>
+        <span class="semaine__titre">Produisez des fruits de repentance</span>
+        <span class="semaine__ref">Luc 3.7-14<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../016%20-%20Plus%20puissant%20que%20moi%20%28Luc%203.15-20%29/index.html">
+        <span class="semaine__num">Semaine 16</span>
+        <span class="semaine__titre">Plus puissant que moi</span>
+        <span class="semaine__ref">Luc 3.15-20<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../017%20-%20Mon%20Fils%20bien-aim%C3%A9%2C%20et%20fils%20d%27Adam%20%28Luc%203.21-38%29/index.html">
+        <span class="semaine__num">Semaine 17</span>
+        <span class="semaine__titre">Mon Fils bien-aimé, et fils d'Adam</span>
+        <span class="semaine__ref">Luc 3.21-38<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../018%20-%20Le%20second%20Adam%20victorieux%20%28Luc%204.1-13%29/index.html">
+        <span class="semaine__num">Semaine 18</span>
+        <span class="semaine__titre">Le second Adam victorieux</span>
+        <span class="semaine__ref">Luc 4.1-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../019%20-%20Aujourd%27hui%20cette%20parole%20est%20accomplie%20%28Luc%204.14-21%29/index.html">
+        <span class="semaine__num">Semaine 19</span>
+        <span class="semaine__titre">Aujourd'hui cette parole est accomplie</span>
+        <span class="semaine__ref">Luc 4.14-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../020%20-%20Nul%20proph%C3%A8te%20n%27est%20bien%20re%C3%A7u%20%28Luc%204.22-30%29/index.html">
+        <span class="semaine__num">Semaine 20</span>
+        <span class="semaine__titre">Nul prophète n'est bien reçu</span>
+        <span class="semaine__ref">Luc 4.22-30<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../021%20-%20Une%20parole%20qui%20a%20autorit%C3%A9%20%28Luc%204.31-37%29/index.html">
+        <span class="semaine__num">Semaine 21</span>
+        <span class="semaine__titre">Une parole qui a autorité</span>
+        <span class="semaine__ref">Luc 4.31-37<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../022%20-%20Il%20faut%20que%20j%27annonce%20le%20Royaume%20%28Luc%204.38-44%29/index.html">
+        <span class="semaine__num">Semaine 22</span>
+        <span class="semaine__titre">Il faut que j'annonce le Royaume</span>
+        <span class="semaine__ref">Luc 4.38-44<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../023%20-%20D%C3%A9sormais%20tu%20prendras%20des%20hommes%20%28Luc%205.1-11%29/index.html">
+        <span class="semaine__num">Semaine 23</span>
+        <span class="semaine__titre">Désormais tu prendras des hommes</span>
+        <span class="semaine__ref">Luc 5.1-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../024%20-%20Je%20le%20veux%2C%20sois%20pur%20%28Luc%205.12-16%29/index.html">
+        <span class="semaine__num">Semaine 24</span>
+        <span class="semaine__titre">Je le veux, sois pur</span>
+        <span class="semaine__ref">Luc 5.12-16<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../025%20-%20Le%20Fils%20de%20l%27homme%20a%20le%20pouvoir%20de%20pardonner%20%28Luc%205.17-26%29/index.html">
+        <span class="semaine__num">Semaine 25</span>
+        <span class="semaine__titre">Le Fils de l'homme a le pouvoir de pardonner</span>
+        <span class="semaine__ref">Luc 5.17-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../026%20-%20Je%20suis%20venu%20appeler%20des%20p%C3%A9cheurs%20%28Luc%205.27-32%29/index.html">
+        <span class="semaine__num">Semaine 26</span>
+        <span class="semaine__titre">Je suis venu appeler des pécheurs</span>
+        <span class="semaine__ref">Luc 5.27-32<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../027%20-%20Du%20vin%20nouveau%20%28Luc%205.33-39%29/index.html">
+        <span class="semaine__num">Semaine 27</span>
+        <span class="semaine__titre">Du vin nouveau</span>
+        <span class="semaine__ref">Luc 5.33-39<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../028%20-%20Ma%C3%AEtre%20du%20sabbat%20%28Luc%206.1-11%29/index.html">
+        <span class="semaine__num">Semaine 28</span>
+        <span class="semaine__titre">Maître du sabbat</span>
+        <span class="semaine__ref">Luc 6.1-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../029%20-%20Il%20appela%20ceux%20qu%27il%20voulut%20%28Luc%206.12-16%29/index.html">
+        <span class="semaine__num">Semaine 29</span>
+        <span class="semaine__titre">Il appela ceux qu'il voulut</span>
+        <span class="semaine__ref">Luc 6.12-16<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../030%20-%20Heureux%2C%20vous%20les%20pauvres%20%28Luc%206.17-26%29/index.html">
+        <span class="semaine__num">Semaine 30</span>
+        <span class="semaine__titre">Heureux, vous les pauvres</span>
+        <span class="semaine__ref">Luc 6.17-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../031%20-%20Aimez%20vos%20ennemis%20%28Luc%206.27-38%29/index.html">
+        <span class="semaine__num">Semaine 31</span>
+        <span class="semaine__titre">Aimez vos ennemis</span>
+        <span class="semaine__ref">Luc 6.27-38<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../032%20-%20B%C3%A2tir%20sur%20le%20roc%20%28Luc%206.39-49%29/index.html">
+        <span class="semaine__num">Semaine 32</span>
+        <span class="semaine__titre">Bâtir sur le roc</span>
+        <span class="semaine__ref">Luc 6.39-49<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../033%20-%20Je%20n%27ai%20pas%20trouv%C3%A9%20une%20telle%20foi%20%28Luc%207.1-10%29/index.html">
+        <span class="semaine__num">Semaine 33</span>
+        <span class="semaine__titre">Je n'ai pas trouvé une telle foi</span>
+        <span class="semaine__ref">Luc 7.1-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../034%20-%20Jeune%20homme%2C%20l%C3%A8ve-toi%20%28Luc%207.11-17%29/index.html">
+        <span class="semaine__num">Semaine 34</span>
+        <span class="semaine__titre">Jeune homme, lève-toi</span>
+        <span class="semaine__ref">Luc 7.11-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../035%20-%20Es-tu%20celui%20qui%20doit%20venir%20%28Luc%207.18-23%29/index.html">
+        <span class="semaine__num">Semaine 35</span>
+        <span class="semaine__titre">Es-tu celui qui doit venir?</span>
+        <span class="semaine__ref">Luc 7.18-23<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../036%20-%20Plus%20qu%27un%20proph%C3%A8te%20%28Luc%207.24-35%29/index.html">
+        <span class="semaine__num">Semaine 36</span>
+        <span class="semaine__titre">Plus qu'un prophète</span>
+        <span class="semaine__ref">Luc 7.24-35<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../037%20-%20Deux%20d%C3%A9biteurs%20%28Luc%207.36-43%29/index.html">
+        <span class="semaine__num">Semaine 37</span>
+        <span class="semaine__titre">Deux débiteurs</span>
+        <span class="semaine__ref">Luc 7.36-43<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../038%20-%20Ta%20foi%20t%27a%20sauv%C3%A9e%20%28Luc%207.44-50%29/index.html">
+        <span class="semaine__num">Semaine 38</span>
+        <span class="semaine__titre">Ta foi t'a sauvée</span>
+        <span class="semaine__ref">Luc 7.44-50<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../039%20-%20La%20semence%20et%20la%20terre%20%28Luc%208.1-8%29/index.html">
+        <span class="semaine__num">Semaine 39</span>
+        <span class="semaine__titre">La semence et la terre</span>
+        <span class="semaine__ref">Luc 8.1-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../040%20-%20Garder%20la%20Parole%20et%20porter%20du%20fruit%20%28Luc%208.9-15%29/index.html">
+        <span class="semaine__num">Semaine 40</span>
+        <span class="semaine__titre">Garder la Parole et porter du fruit</span>
+        <span class="semaine__ref">Luc 8.9-15<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../041%20-%20Ma%20m%C3%A8re%20et%20mes%20fr%C3%A8res%20%28Luc%208.16-21%29/index.html">
+        <span class="semaine__num">Semaine 41</span>
+        <span class="semaine__titre">Ma mère et mes frères</span>
+        <span class="semaine__ref">Luc 8.16-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../042%20-%20Qui%20est%20donc%20celui-ci%20%28Luc%208.22-25%29/index.html">
+        <span class="semaine__num">Semaine 42</span>
+        <span class="semaine__titre">Qui est donc celui-ci?</span>
+        <span class="semaine__ref">Luc 8.22-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../043%20-%20L%C3%A9gion%20%28Luc%208.26-33%29/index.html">
+        <span class="semaine__num">Semaine 43</span>
+        <span class="semaine__titre">Légion</span>
+        <span class="semaine__ref">Luc 8.26-33<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../044%20-%20Raconte%20tout%20ce%20que%20Dieu%20a%20fait%20%28Luc%208.34-39%29/index.html">
+        <span class="semaine__num">Semaine 44</span>
+        <span class="semaine__titre">Raconte tout ce que Dieu a fait</span>
+        <span class="semaine__ref">Luc 8.34-39<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../045%20-%20Ta%20foi%20t%27a%20gu%C3%A9rie%20%28Luc%208.40-48%29/index.html">
+        <span class="semaine__num">Semaine 45</span>
+        <span class="semaine__titre">Ta foi t'a guérie</span>
+        <span class="semaine__ref">Luc 8.40-48<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../046%20-%20Elle%20n%27est%20pas%20morte%2C%20elle%20dort%20%28Luc%208.49-56%29/index.html">
+        <span class="semaine__num">Semaine 46</span>
+        <span class="semaine__titre">Elle n'est pas morte, elle dort</span>
+        <span class="semaine__ref">Luc 8.49-56<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../047%20-%20Envoy%C3%A9s%20avec%20autorit%C3%A9%20%28Luc%209.1-6%29/index.html">
+        <span class="semaine__num">Semaine 47</span>
+        <span class="semaine__titre">Envoyés avec autorité</span>
+        <span class="semaine__ref">Luc 9.1-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../048%20-%20Donnez-leur%20vous-m%C3%AAmes%20%C3%A0%20manger%20%28Luc%209.7-17%29/index.html">
+        <span class="semaine__num">Semaine 48</span>
+        <span class="semaine__titre">Donnez-leur vous-mêmes à manger</span>
+        <span class="semaine__ref">Luc 9.7-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../049%20-%20Le%20Christ%20de%20Dieu%2C%20et%20la%20croix%20%28Luc%209.18-27%29/index.html">
+        <span class="semaine__num">Semaine 49</span>
+        <span class="semaine__titre">Le Christ de Dieu, et la croix</span>
+        <span class="semaine__ref">Luc 9.18-27<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../050%20-%20Celui-ci%20est%20mon%20Fils%20%C3%A9lu%2C%20%C3%A9coutez-le%20%28Luc%209.28-36%29/index.html">
+        <span class="semaine__num">Semaine 50</span>
+        <span class="semaine__titre">Celui-ci est mon Fils élu, écoutez-le</span>
+        <span class="semaine__ref">Luc 9.28-36<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../051%20-%20G%C3%A9n%C3%A9ration%20incr%C3%A9dule%20%28Luc%209.37-45%29/index.html">
+        <span class="semaine__num">Semaine 51</span>
+        <span class="semaine__titre">Génération incrédule</span>
+        <span class="semaine__ref">Luc 9.37-45<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../052%20-%20Le%20plus%20petit%20est%20le%20plus%20grand%20%28Luc%209.46-50%29/index.html">
+        <span class="semaine__num">Semaine 52</span>
+        <span class="semaine__titre">Le plus petit est le plus grand</span>
+        <span class="semaine__ref">Luc 9.46-50<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+
+    <h3 class="mouvement-titre">La montée vers Jérusalem<span class="mouvement-ref">Luc 9.51 à 19.27 · semaines 53 à 97</span></h3>
+    <ul class="semaines">
+      <li class="semaine"><a href="../053%20-%20Le%20visage%20tourn%C3%A9%20vers%20J%C3%A9rusalem%20%28Luc%209.51-56%29/index.html">
+        <span class="semaine__num">Semaine 53</span>
+        <span class="semaine__titre">Le visage tourné vers Jérusalem</span>
+        <span class="semaine__ref">Luc 9.51-56<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../054%20-%20Mettre%20la%20main%20%C3%A0%20la%20charrue%20%28Luc%209.57-62%29/index.html">
+        <span class="semaine__num">Semaine 54</span>
+        <span class="semaine__titre">Mettre la main à la charrue</span>
+        <span class="semaine__ref">Luc 9.57-62<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../055%20-%20La%20moisson%20est%20grande%20%28Luc%2010.1-12%29/index.html">
+        <span class="semaine__num">Semaine 55</span>
+        <span class="semaine__titre">La moisson est grande</span>
+        <span class="semaine__ref">Luc 10.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../056%20-%20Vos%20noms%20sont%20%C3%A9crits%20dans%20les%20cieux%20%28Luc%2010.13-24%29/index.html">
+        <span class="semaine__num">Semaine 56</span>
+        <span class="semaine__titre">Vos noms sont écrits dans les cieux</span>
+        <span class="semaine__ref">Luc 10.13-24<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../057%20-%20Va%2C%20et%20toi%2C%20fais%20de%20m%C3%AAme%20%28Luc%2010.25-37%29/index.html">
+        <span class="semaine__num">Semaine 57</span>
+        <span class="semaine__titre">Va, et toi, fais de même</span>
+        <span class="semaine__ref">Luc 10.25-37<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../058%20-%20La%20seule%20chose%20n%C3%A9cessaire%20%28Luc%2010.38-42%29/index.html">
+        <span class="semaine__num">Semaine 58</span>
+        <span class="semaine__titre">La seule chose nécessaire</span>
+        <span class="semaine__ref">Luc 10.38-42<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../059%20-%20Quand%20vous%20priez%2C%20dites%20%28Luc%2011.1-4%29/index.html">
+        <span class="semaine__num">Semaine 59</span>
+        <span class="semaine__titre">Quand vous priez, dites</span>
+        <span class="semaine__ref">Luc 11.1-4<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../060%20-%20Demandez%2C%20et%20l%27on%20vous%20donnera%20%28Luc%2011.5-13%29/index.html">
+        <span class="semaine__num">Semaine 60</span>
+        <span class="semaine__titre">Demandez, et l'on vous donnera</span>
+        <span class="semaine__ref">Luc 11.5-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../061%20-%20Le%20Royaume%20est%20arriv%C3%A9%20jusqu%27%C3%A0%20vous%20%28Luc%2011.14-23%29/index.html">
+        <span class="semaine__num">Semaine 61</span>
+        <span class="semaine__titre">Le Royaume est arrivé jusqu'à vous</span>
+        <span class="semaine__ref">Luc 11.14-23<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../062%20-%20Heureux%20ceux%20qui%20gardent%20la%20Parole%20%28Luc%2011.24-28%29/index.html">
+        <span class="semaine__num">Semaine 62</span>
+        <span class="semaine__titre">Heureux ceux qui gardent la Parole</span>
+        <span class="semaine__ref">Luc 11.24-28<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../063%20-%20Le%20signe%20de%20Jonas%20%28Luc%2011.29-36%29/index.html">
+        <span class="semaine__num">Semaine 63</span>
+        <span class="semaine__titre">Le signe de Jonas</span>
+        <span class="semaine__ref">Luc 11.29-36<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../064%20-%20Vous%20nettoyez%20le%20dehors%20%28Luc%2011.37-44%29/index.html">
+        <span class="semaine__num">Semaine 64</span>
+        <span class="semaine__titre">Vous nettoyez le dehors</span>
+        <span class="semaine__ref">Luc 11.37-44<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../065%20-%20Vous%20avez%20enlev%C3%A9%20la%20cl%C3%A9%20%28Luc%2011.45-54%29/index.html">
+        <span class="semaine__num">Semaine 65</span>
+        <span class="semaine__titre">Vous avez enlevé la clé</span>
+        <span class="semaine__ref">Luc 11.45-54<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../066%20-%20Ne%20craignez%20pas%20ceux%20qui%20tuent%20le%20corps%20%28Luc%2012.1-12%29/index.html">
+        <span class="semaine__num">Semaine 66</span>
+        <span class="semaine__titre">Ne craignez pas ceux qui tuent le corps</span>
+        <span class="semaine__ref">Luc 12.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../067%20-%20Riche%20pour%20Dieu%20%28Luc%2012.13-21%29/index.html">
+        <span class="semaine__num">Semaine 67</span>
+        <span class="semaine__titre">Riche pour Dieu</span>
+        <span class="semaine__ref">Luc 12.13-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../068%20-%20Cherchez%20le%20Royaume%20%28Luc%2012.22-34%29/index.html">
+        <span class="semaine__num">Semaine 68</span>
+        <span class="semaine__titre">Cherchez le Royaume</span>
+        <span class="semaine__ref">Luc 12.22-34<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../069%20-%20Tenez-vous%20pr%C3%AAts%20%28Luc%2012.35-40%29/index.html">
+        <span class="semaine__num">Semaine 69</span>
+        <span class="semaine__titre">Tenez-vous prêts</span>
+        <span class="semaine__ref">Luc 12.35-40<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../070%20-%20%C3%80%20qui%20l%27on%20a%20beaucoup%20donn%C3%A9%20%28Luc%2012.41-48%29/index.html">
+        <span class="semaine__num">Semaine 70</span>
+        <span class="semaine__titre">À qui l'on a beaucoup donné</span>
+        <span class="semaine__ref">Luc 12.41-48<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../071%20-%20Discerner%20ce%20temps%20%28Luc%2012.49-59%29/index.html">
+        <span class="semaine__num">Semaine 71</span>
+        <span class="semaine__titre">Discerner ce temps</span>
+        <span class="semaine__ref">Luc 12.49-59<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../072%20-%20Si%20vous%20ne%20vous%20repentez%20pas%20%28Luc%2013.1-9%29/index.html">
+        <span class="semaine__num">Semaine 72</span>
+        <span class="semaine__titre">Si vous ne vous repentez pas</span>
+        <span class="semaine__ref">Luc 13.1-9<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../073%20-%20D%C3%A9livr%C3%A9e%20un%20jour%20de%20sabbat%20%28Luc%2013.10-17%29/index.html">
+        <span class="semaine__num">Semaine 73</span>
+        <span class="semaine__titre">Délivrée un jour de sabbat</span>
+        <span class="semaine__ref">Luc 13.10-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../074%20-%20Comme%20un%20grain%20de%20moutarde%20%28Luc%2013.18-21%29/index.html">
+        <span class="semaine__num">Semaine 74</span>
+        <span class="semaine__titre">Comme un grain de moutarde</span>
+        <span class="semaine__ref">Luc 13.18-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../075%20-%20Efforcez-vous%20d%27entrer%20%28Luc%2013.22-30%29/index.html">
+        <span class="semaine__num">Semaine 75</span>
+        <span class="semaine__titre">Efforcez-vous d'entrer</span>
+        <span class="semaine__ref">Luc 13.22-30<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../076%20-%20J%C3%A9rusalem%2C%20J%C3%A9rusalem%20%28Luc%2013.31-35%29/index.html">
+        <span class="semaine__num">Semaine 76</span>
+        <span class="semaine__titre">Jérusalem, Jérusalem</span>
+        <span class="semaine__ref">Luc 13.31-35<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../077%20-%20Permis%20de%20gu%C3%A9rir%20%28Luc%2014.1-6%29/index.html">
+        <span class="semaine__num">Semaine 77</span>
+        <span class="semaine__titre">Permis de guérir?</span>
+        <span class="semaine__ref">Luc 14.1-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../078%20-%20Prends%20la%20derni%C3%A8re%20place%20%28Luc%2014.7-14%29/index.html">
+        <span class="semaine__num">Semaine 78</span>
+        <span class="semaine__titre">Prends la dernière place</span>
+        <span class="semaine__ref">Luc 14.7-14<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../079%20-%20Tout%20est%20pr%C3%AAt%2C%20venez%20%28Luc%2014.15-24%29/index.html">
+        <span class="semaine__num">Semaine 79</span>
+        <span class="semaine__titre">Tout est prêt, venez</span>
+        <span class="semaine__ref">Luc 14.15-24<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../080%20-%20Calculer%20la%20d%C3%A9pense%20%28Luc%2014.25-35%29/index.html">
+        <span class="semaine__num">Semaine 80</span>
+        <span class="semaine__titre">Calculer la dépense</span>
+        <span class="semaine__ref">Luc 14.25-35<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../081%20-%20Joie%20dans%20le%20ciel%20pour%20un%20p%C3%A9cheur%20%28Luc%2015.1-10%29/index.html">
+        <span class="semaine__num">Semaine 81</span>
+        <span class="semaine__titre">Joie dans le ciel pour un pécheur</span>
+        <span class="semaine__ref">Luc 15.1-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../082%20-%20Ce%20fils%20%C3%A9tait%20perdu%2C%20il%20est%20retrouv%C3%A9%20%28Luc%2015.11-24%29/index.html">
+        <span class="semaine__num">Semaine 82</span>
+        <span class="semaine__titre">Ce fils était perdu, il est retrouvé</span>
+        <span class="semaine__ref">Luc 15.11-24<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../083%20-%20Le%20fils%20a%C3%AEn%C3%A9%20dehors%20%28Luc%2015.25-32%29/index.html">
+        <span class="semaine__num">Semaine 83</span>
+        <span class="semaine__titre">Le fils aîné dehors</span>
+        <span class="semaine__ref">Luc 15.25-32<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../084%20-%20Servir%20Dieu%20ou%20Mammon%20%28Luc%2016.1-13%29/index.html">
+        <span class="semaine__num">Semaine 84</span>
+        <span class="semaine__titre">Servir Dieu ou Mammon</span>
+        <span class="semaine__ref">Luc 16.1-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../085%20-%20Ce%20qui%20est%20%C3%A9lev%C3%A9%20devant%20les%20hommes%20%28Luc%2016.14-18%29/index.html">
+        <span class="semaine__num">Semaine 85</span>
+        <span class="semaine__titre">Ce qui est élevé devant les hommes</span>
+        <span class="semaine__ref">Luc 16.14-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../086%20-%20Un%20grand%20ab%C3%AEme%20%28Luc%2016.19-31%29/index.html">
+        <span class="semaine__num">Semaine 86</span>
+        <span class="semaine__titre">Un grand abîme</span>
+        <span class="semaine__ref">Luc 16.19-31<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../087%20-%20Nous%20sommes%20des%20serviteurs%20inutiles%20%28Luc%2017.1-10%29/index.html">
+        <span class="semaine__num">Semaine 87</span>
+        <span class="semaine__titre">Nous sommes des serviteurs inutiles</span>
+        <span class="semaine__ref">Luc 17.1-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../088%20-%20O%C3%B9%20sont%20les%20neuf%20autres%20%28Luc%2017.11-19%29/index.html">
+        <span class="semaine__num">Semaine 88</span>
+        <span class="semaine__titre">Où sont les neuf autres?</span>
+        <span class="semaine__ref">Luc 17.11-19<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../089%20-%20Le%20Royaume%20au%20milieu%20de%20vous%20%28Luc%2017.20-25%29/index.html">
+        <span class="semaine__num">Semaine 89</span>
+        <span class="semaine__titre">Le Royaume au milieu de vous</span>
+        <span class="semaine__ref">Luc 17.20-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../090%20-%20Comme%20aux%20jours%20de%20No%C3%A9%20%28Luc%2017.26-37%29/index.html">
+        <span class="semaine__num">Semaine 90</span>
+        <span class="semaine__titre">Comme aux jours de Noé</span>
+        <span class="semaine__ref">Luc 17.26-37<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../091%20-%20Prier%20sans%20se%20rel%C3%A2cher%20%28Luc%2018.1-8%29/index.html">
+        <span class="semaine__num">Semaine 91</span>
+        <span class="semaine__titre">Prier sans se relâcher</span>
+        <span class="semaine__ref">Luc 18.1-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../092%20-%20Justifi%C3%A9%20plut%C3%B4t%20que%20l%27autre%20%28Luc%2018.9-17%29/index.html">
+        <span class="semaine__num">Semaine 92</span>
+        <span class="semaine__titre">Justifié plutôt que l'autre</span>
+        <span class="semaine__ref">Luc 18.9-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../093%20-%20Une%20seule%20chose%20te%20manque%20%28Luc%2018.18-30%29/index.html">
+        <span class="semaine__num">Semaine 93</span>
+        <span class="semaine__titre">Une seule chose te manque</span>
+        <span class="semaine__ref">Luc 18.18-30<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../094%20-%20Que%20je%20recouvre%20la%20vue%20%28Luc%2018.31-43%29/index.html">
+        <span class="semaine__num">Semaine 94</span>
+        <span class="semaine__titre">Que je recouvre la vue</span>
+        <span class="semaine__ref">Luc 18.31-43<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../095%20-%20Chercher%20et%20sauver%20ce%20qui%20%C3%A9tait%20perdu%20%28Luc%2019.1-10%29/index.html">
+        <span class="semaine__num">Semaine 95</span>
+        <span class="semaine__titre">Chercher et sauver ce qui était perdu</span>
+        <span class="semaine__ref">Luc 19.1-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../096%20-%20Fais%20valoir%20jusqu%27%C3%A0%20mon%20retour%20%28Luc%2019.11-19%29/index.html">
+        <span class="semaine__num">Semaine 96</span>
+        <span class="semaine__titre">Fais valoir jusqu'à mon retour</span>
+        <span class="semaine__ref">Luc 19.11-19<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../097%20-%20Le%20roi%20qu%27ils%20ont%20rejet%C3%A9%20%28Luc%2019.20-27%29/index.html">
+        <span class="semaine__num">Semaine 97</span>
+        <span class="semaine__titre">Le roi qu'ils ont rejeté</span>
+        <span class="semaine__ref">Luc 19.20-27<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+
+    <h3 class="mouvement-titre">La semaine de la Passion<span class="mouvement-ref">Luc 19.28 à 23.56 · semaines 98 à 123</span></h3>
+    <ul class="semaines">
+      <li class="semaine"><a href="../098%20-%20B%C3%A9ni%20soit%20le%20Roi%20qui%20vient%20%28Luc%2019.28-40%29/index.html">
+        <span class="semaine__num">Semaine 98</span>
+        <span class="semaine__titre">Béni soit le Roi qui vient</span>
+        <span class="semaine__ref">Luc 19.28-40<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../099%20-%20Si%20tu%20avais%20connu%20%28Luc%2019.41-48%29/index.html">
+        <span class="semaine__num">Semaine 99</span>
+        <span class="semaine__titre">Si tu avais connu</span>
+        <span class="semaine__ref">Luc 19.41-48<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../100%20-%20Par%20quelle%20autorit%C3%A9%20%28Luc%2020.1-8%29/index.html">
+        <span class="semaine__num">Semaine 100</span>
+        <span class="semaine__titre">Par quelle autorité?</span>
+        <span class="semaine__ref">Luc 20.1-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../101%20-%20La%20pierre%20rejet%C3%A9e%20%28Luc%2020.9-19%29/index.html">
+        <span class="semaine__num">Semaine 101</span>
+        <span class="semaine__titre">La pierre rejetée</span>
+        <span class="semaine__ref">Luc 20.9-19<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../102%20-%20Rendez%20%C3%A0%20C%C3%A9sar%2C%20et%20%C3%A0%20Dieu%20%28Luc%2020.20-26%29/index.html">
+        <span class="semaine__num">Semaine 102</span>
+        <span class="semaine__titre">Rendez à César, et à Dieu</span>
+        <span class="semaine__ref">Luc 20.20-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../103%20-%20Le%20Dieu%20des%20vivants%20%28Luc%2020.27-40%29/index.html">
+        <span class="semaine__num">Semaine 103</span>
+        <span class="semaine__titre">Le Dieu des vivants</span>
+        <span class="semaine__ref">Luc 20.27-40<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../104%20-%20Le%20Seigneur%20de%20David%2C%20et%20deux%20pites%20%28Luc%2020.41-21.4%29/index.html">
+        <span class="semaine__num">Semaine 104</span>
+        <span class="semaine__titre">Le Seigneur de David, et deux pites</span>
+        <span class="semaine__ref">Luc 20.41-21.4<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../105%20-%20Il%20ne%20restera%20pas%20pierre%20sur%20pierre%20%28Luc%2021.5-11%29/index.html">
+        <span class="semaine__num">Semaine 105</span>
+        <span class="semaine__titre">Il ne restera pas pierre sur pierre</span>
+        <span class="semaine__ref">Luc 21.5-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../106%20-%20Par%20votre%20pers%C3%A9v%C3%A9rance%20%28Luc%2021.12-19%29/index.html">
+        <span class="semaine__num">Semaine 106</span>
+        <span class="semaine__titre">Par votre persévérance</span>
+        <span class="semaine__ref">Luc 21.12-19<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../107%20-%20Le%20Fils%20de%20l%27homme%20viendra%20%28Luc%2021.20-28%29/index.html">
+        <span class="semaine__num">Semaine 107</span>
+        <span class="semaine__titre">Le Fils de l'homme viendra</span>
+        <span class="semaine__ref">Luc 21.20-28<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../108%20-%20Veillez%20en%20tout%20temps%20%28Luc%2021.29-38%29/index.html">
+        <span class="semaine__num">Semaine 108</span>
+        <span class="semaine__titre">Veillez en tout temps</span>
+        <span class="semaine__ref">Luc 21.29-38<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../109%20-%20Satan%20entra%20en%20Judas%20%28Luc%2022.1-6%29/index.html">
+        <span class="semaine__num">Semaine 109</span>
+        <span class="semaine__titre">Satan entra en Judas</span>
+        <span class="semaine__ref">Luc 22.1-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../110%20-%20Pr%C3%A9parez-nous%20la%20P%C3%A2que%20%28Luc%2022.7-13%29/index.html">
+        <span class="semaine__num">Semaine 110</span>
+        <span class="semaine__titre">Préparez-nous la Pâque</span>
+        <span class="semaine__ref">Luc 22.7-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../111%20-%20La%20nouvelle%20alliance%20en%20mon%20sang%20%28Luc%2022.14-23%29/index.html">
+        <span class="semaine__num">Semaine 111</span>
+        <span class="semaine__titre">La nouvelle alliance en mon sang</span>
+        <span class="semaine__ref">Luc 22.14-23<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../112%20-%20Comme%20celui%20qui%20sert%20%28Luc%2022.24-30%29/index.html">
+        <span class="semaine__num">Semaine 112</span>
+        <span class="semaine__titre">Comme celui qui sert</span>
+        <span class="semaine__ref">Luc 22.24-30<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../113%20-%20J%27ai%20pri%C3%A9%20pour%20toi%20%28Luc%2022.31-38%29/index.html">
+        <span class="semaine__num">Semaine 113</span>
+        <span class="semaine__titre">J'ai prié pour toi</span>
+        <span class="semaine__ref">Luc 22.31-38<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../114%20-%20Que%20ta%20volont%C3%A9%20soit%20faite%20%28Luc%2022.39-46%29/index.html">
+        <span class="semaine__num">Semaine 114</span>
+        <span class="semaine__titre">Que ta volonté soit faite</span>
+        <span class="semaine__ref">Luc 22.39-46<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../115%20-%20L%27heure%20des%20t%C3%A9n%C3%A8bres%20%28Luc%2022.47-53%29/index.html">
+        <span class="semaine__num">Semaine 115</span>
+        <span class="semaine__titre">L'heure des ténèbres</span>
+        <span class="semaine__ref">Luc 22.47-53<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../116%20-%20Le%20coq%20chanta%20%28Luc%2022.54-62%29/index.html">
+        <span class="semaine__num">Semaine 116</span>
+        <span class="semaine__titre">Le coq chanta</span>
+        <span class="semaine__ref">Luc 22.54-62<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../117%20-%20Tu%20l%27as%20dit%2C%20je%20le%20suis%20%28Luc%2022.63-71%29/index.html">
+        <span class="semaine__num">Semaine 117</span>
+        <span class="semaine__titre">Tu l'as dit, je le suis</span>
+        <span class="semaine__ref">Luc 22.63-71<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../118%20-%20Je%20ne%20trouve%20rien%20de%20coupable%20%28Luc%2023.1-12%29/index.html">
+        <span class="semaine__num">Semaine 118</span>
+        <span class="semaine__titre">Je ne trouve rien de coupable</span>
+        <span class="semaine__ref">Luc 23.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../119%20-%20Barabbas%20rel%C3%A2ch%C3%A9%20%28Luc%2023.13-25%29/index.html">
+        <span class="semaine__num">Semaine 119</span>
+        <span class="semaine__titre">Barabbas relâché</span>
+        <span class="semaine__ref">Luc 23.13-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../120%20-%20Ne%20pleurez%20pas%20sur%20moi%20%28Luc%2023.26-31%29/index.html">
+        <span class="semaine__num">Semaine 120</span>
+        <span class="semaine__titre">Ne pleurez pas sur moi</span>
+        <span class="semaine__ref">Luc 23.26-31<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../121%20-%20Aujourd%27hui%2C%20avec%20moi%20dans%20le%20paradis%20%28Luc%2023.32-43%29/index.html">
+        <span class="semaine__num">Semaine 121</span>
+        <span class="semaine__titre">Aujourd'hui, avec moi dans le paradis</span>
+        <span class="semaine__ref">Luc 23.32-43<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../122%20-%20P%C3%A8re%2C%20je%20remets%20mon%20esprit%20%28Luc%2023.44-49%29/index.html">
+        <span class="semaine__num">Semaine 122</span>
+        <span class="semaine__titre">Père, je remets mon esprit</span>
+        <span class="semaine__ref">Luc 23.44-49<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../123%20-%20D%C3%A9pos%C3%A9%20dans%20un%20tombeau%20neuf%20%28Luc%2023.50-56%29/index.html">
+        <span class="semaine__num">Semaine 123</span>
+        <span class="semaine__titre">Déposé dans un tombeau neuf</span>
+        <span class="semaine__ref">Luc 23.50-56<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+
+    <h3 class="mouvement-titre">Résurrection et ascension<span class="mouvement-ref">Luc 24 · semaines 124 à 129</span></h3>
+    <ul class="semaines">
+      <li class="semaine"><a href="../124%20-%20Pourquoi%20cherchez-vous%20parmi%20les%20morts%20%28Luc%2024.1-12%29/index.html">
+        <span class="semaine__num">Semaine 124</span>
+        <span class="semaine__titre">Pourquoi cherchez-vous parmi les morts?</span>
+        <span class="semaine__ref">Luc 24.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../125%20-%20Tout%20ce%20qui%20le%20concerne%20dans%20les%20%C3%89critures%20%28Luc%2024.13-27%29/index.html">
+        <span class="semaine__num">Semaine 125</span>
+        <span class="semaine__titre">Tout ce qui le concerne dans les Écritures</span>
+        <span class="semaine__ref">Luc 24.13-27<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../126%20-%20Reconnu%20%C3%A0%20la%20fraction%20du%20pain%20%28Luc%2024.28-35%29/index.html">
+        <span class="semaine__num">Semaine 126</span>
+        <span class="semaine__titre">Reconnu à la fraction du pain</span>
+        <span class="semaine__ref">Luc 24.28-35<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../127%20-%20Touchez-moi%20et%20voyez%20%28Luc%2024.36-43%29/index.html">
+        <span class="semaine__num">Semaine 127</span>
+        <span class="semaine__titre">Touchez-moi et voyez</span>
+        <span class="semaine__ref">Luc 24.36-43<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../128%20-%20T%C3%A9moins%20de%20ces%20choses%20%28Luc%2024.44-49%29/index.html">
+        <span class="semaine__num">Semaine 128</span>
+        <span class="semaine__titre">Témoins de ces choses</span>
+        <span class="semaine__ref">Luc 24.44-49<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../129%20-%20%C3%89lev%C3%A9%20dans%20le%20ciel%20%28Luc%2024.50-53%29/index.html">
+        <span class="semaine__num">Semaine 129</span>
+        <span class="semaine__titre">Élevé dans le ciel</span>
+        <span class="semaine__ref">Luc 24.50-53<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série « Luc : venu sauver les perdus » · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Recherche (PDF) &#8599;</a>
+    <a href="Serie.pdf" target="_blank" rel="noopener" class="pill">Plan de série (PDF) &#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

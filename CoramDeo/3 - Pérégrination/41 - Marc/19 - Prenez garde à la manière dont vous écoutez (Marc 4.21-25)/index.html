@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc 4.21-25 · Prenez garde à la manière dont vous écoutez · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Marc 4.21-25 : la lampe sur le chandelier et la loi de la mesure ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Marc 4.21-25</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Marc 4.21-25</p>
+    <h1 class="hero__title">Prenez garde à la manière dont vous écoutez</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Prenez garde à ce que vous entendez. On vous mesurera avec la mesure dont vous vous serez servis, et on y ajoutera pour vous.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Marc 4.24 · NEG</p>
+    <p class="hero__series">Série : <b>Marc : le Serviteur souffrant</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Marc 4.21-25</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Il leur dit encore: Apporte-t-on la lampe pour la mettre sous le boisseau, ou sous le lit? N'est-ce pas pour la mettre sur le chandelier?</p>
+        <cite class="verse__ref">Marc 4.21 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il leur dit encore: Prenez garde à ce que vous entendez. On vous mesurera avec la mesure dont vous vous serez servis, et on y ajoutera pour vous.</p>
+        <cite class="verse__ref">Marc 4.24 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Marc 4.21-25 prolonge directement la parabole du semeur : les deux brèves images de la lampe et de la mesure déplacent l'accent de la nature du sol vers la responsabilité de l'auditeur. La question n'est plus seulement quel terrain je suis, mais comment j'écoute.</p>
+    <div class="body">
+      <p>Marc 4.21-25 s'inscrit au cœur du grand discours en paraboles que Marc rassemble en 4.1-34, premier bloc d'enseignement suivi de tout l'Évangile du Serviteur. Le Serviteur souffrant, qui jusqu'ici a surtout agi (guérisons, exorcismes, pardon des péchés en 2.1-12), s'assoit désormais pour enseigner depuis une barque (4.1) une foule pressée sur le rivage. La parabole du semeur (4.3-9), son explication réservée aux disciples (4.13-20) et la déclaration sur la raison d'être des paraboles (4.10-12) ont établi le cadre&nbsp;: la Parole du royaume tombe sur quatre terrains, et seule la bonne terre porte du fruit. Notre péricope prolonge directement cet enseignement. Les deux brèves paraboles de la lampe (v. 21-23) et de la mesure (v. 24-25) ne sont pas un appendice; elles tirent la conséquence du semeur, en déplaçant l'accent de la nature du sol vers la responsabilité de l'auditeur. La question n'est plus seulement quel terrain je suis, mais comment j'écoute.</p>
+      <p>Le fil conducteur de la série, «&nbsp;la vérité du royaume est destinée à briller&nbsp;», trouve ici son socle textuel. MacArthur lit la lampe (v. 21) comme la vérité du royaume que Jésus vient d'enseigner&nbsp;: elle n'a pas été allumée pour rester cachée sous le boisseau ou sous le lit, mais pour être posée bien en vue sur le chandelier. Le mystère du royaume (4.11), que la parabole voile désormais à ceux du dehors, n'est caché que pour un temps&nbsp;: il est destiné à être pleinement révélé et proclamé au monde entier (v. 22; cf. Matthieu 28.19-20). Ce qui est momentanément caché l'est précisément pour être un jour découvert. Le passage est donc charnière&nbsp;: il regarde en arrière vers le semeur dont il dépend, et il prépare en avant les deux paraboles de croissance souveraine, la semence qui germe d'elle-même (4.26-29) et le grain de sénevé (4.30-34).</p>
+      <p>La structure de la péricope est binaire et soudée par la formule éditoriale de Marc, «&nbsp;Il leur dit encore&nbsp;» (v. 21, v. 24), qui agrafe les deux paraboles l'une à l'autre. Le premier volet (v. 21-23) culmine dans l'avertissement «&nbsp;Si quelqu'un a des oreilles pour entendre, qu'il entende&nbsp;», écho exact de 4.9, qui referme le semeur comme il ouvre la lampe&nbsp;: la responsabilité d'écouter est le sceau commun. Le second volet (v. 24-25) ouvre sur l'impératif programmatique «&nbsp;Prenez garde à ce que vous entendez&nbsp;», qui donne son titre à la prédication, puis énonce la loi spirituelle de la mesure (v. 24) et le principe de l'abondance et du dénuement (v. 25). L'idée maîtresse en ressort&nbsp;: la mesure dont l'auditeur use envers la Parole reçue détermine ce qu'il en recevra. À celui qui possède la vérité et l'applique, on en ajoutera; à celui qui ne la possède pas vraiment, on ôtera jusqu'à l'apparence de possession qu'il croyait avoir.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Marc 4.21 · 4.24-25</p>
+    </header>
+    <p class="lead">La lampe domestique, le chandelier et la mesure du marché ne sont pas des décors abstraits&nbsp;: ce sont des évidences de bon sens paysan que Jésus mobilise pour enraciner sa leçon spirituelle dans la logique incontestable de la vie galiléenne.</p>
+    <div class="body">
+      <p>La lampe domestique évoquée par Jésus n'a rien d'un luminaire monumental. MacArthur précise qu'il s'agit d'un très petit bol d'argile, muni d'un bec destiné à recevoir la mèche et ne contenant que quelques centilitres d'huile; en chaire, il évoque une petite lampe de terre cuite, soucoupe ou petite cruche à anse, où flottait la mèche. La flamme produite était modeste, suffisante pour éclairer la pièce unique d'une maison paysanne de Galilée. L'huile coûtait cher et la maisonnée allumait sa lampe le soir venu pour la poser en hauteur, là où sa lumière rayonnerait sur tous les occupants. L'image porte donc une évidence de bon sens immédiatement saisissable par l'auditoire&nbsp;: nul n'allume à grands frais une lampe pour l'enfouir aussitôt. Le boisseau (le récipient à mesurer le grain, d'environ neuf litres) et le lit (la natte basse ou le divan) sont nommés non comme des cachettes plausibles, mais comme des absurdités&nbsp;: les y glisser étoufferait la flamme ou risquerait l'incendie. La pointe est que la vérité du royaume, comme la lampe, est faite pour être exposée, jamais dissimulée.</p>
+    </div>
+    <p>Trois réalités enracinent la leçon spirituelle dans le quotidien galiléen.</p>
+    <ul class="points">
+      <li><b>Le chandelier de la maison paysanne.</b> Le chandelier (grec <i>luchnia</i>) n'était pas davantage un objet luxueux dans la plupart des foyers. MacArthur note que, dans les maisons populaires, ce support n'était qu'une simple étagère saillant du mur; seules les demeures cossues possédaient un pied décoré réservé à ce seul usage. Le terme renvoie au même réalisme matériel que les chandeliers d'or de la vision d'Apocalypse 1.12, où les Églises locales sont elles-mêmes ces porte-lampes appelés à faire rayonner le témoignage. En Galilée du premier siècle, poser la lampe en évidence était le geste utile par excellence; la cacher eût été un gaspillage insensé.</li>
+      <li><b>La mesure du marché et de l'aire de battage.</b> L'arrière-plan de la mesure (v. 24-25) appartient au monde du commerce et de l'agriculture. Au marché et sur l'aire de battage, on mesurait le grain, la farine ou l'huile avec un boisseau ou une coupe étalonnée; le vendeur honnête remplissait la mesure, la tassait, la secouait et la faisait déborder pour le bénéfice de l'acheteur, tandis que le fraudeur usait d'une mesure tronquée. MacArthur, lui, y entend encore l'image agricole des semailles&nbsp;: les résultats spirituels obtenus par le disciple sont mesurés à l'aune des efforts qu'il a fournis; il récolte ce qu'il a semé, et Dieu bénit au-delà de la mesure la semence que le disciple répand fidèlement.</li>
+      <li><b>Le proverbe de la moisson.</b> L'image de récolter selon ce qu'on a semé était proverbiale dans le judaïsme et reparaît chez Paul (Galates 6.7; 2 Corinthiens 9.6). Le principe du v. 25, «&nbsp;à celui qui a on donnera, à celui qui n'a pas on ôtera&nbsp;», n'est pas une injustice arbitraire mais une loi spirituelle&nbsp;: la vérité retenue et appliquée appelle toujours davantage de vérité, alors que la vérité négligée finit par se perdre, y compris l'apparence de compréhension que l'auditeur superficiel croyait détenir.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: de la lampe (<i>luchnos</i>) qui est la vérité du royaume et du caché (<i>krupton</i>) ordonné à la manifestation, jusqu'au verbe entendre (<i>akouo</i>), à la mesure (<i>metron</i>) et au verdict ôter (<i>airo</i>) qui retranche la fausse possession.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">lampe</span><span class="mot-gr">luchnos</span></th>
+            <td class="col-sens">lampe à huile portative, petite flamme domestique posée sur son support</td>
+            <td>Désigne le petit luminaire d'argile de la maison, distinct de la torche et du flambeau. MacArthur y voit ici la métaphore de la vérité du royaume que Jésus vient d'enseigner&nbsp;: une lumière allumée par Dieu et destinée à éclairer, jamais à être étouffée sous le boisseau ou le lit. Dans l'usage néotestamentaire, <i>luchnos</i> sert d'image de Jean-Baptiste, lampe ardente (Jean 5.35), des disciples porteurs de lumière, et finalement de l'Agneau lui-même comme luminaire de la cité (Apocalypse 21.23). La lampe ne produit pas sa propre lumière; elle la reçoit pour la diffuser, exactement comme le disciple reçoit la Parole pour la répandre.</td>
+            <td><span class="trad"><span><b>S21</b> lampe</span><span><b>NEG79</b> lampe</span><span><b>Darby</b> lampe</span><span><b>LSG</b> lampe</span><span><b>KJF</b> chandelle</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">caché</span><span class="mot-gr">krupton</span></th>
+            <td class="col-sens">ce qui est caché, dissimulé, tenu secret pour un temps</td>
+            <td>Substantif adjectival (de <i>kruptos</i>) désignant la chose voilée. MacArthur souligne que, dans la logique du v. 22, l'intérêt même de cacher une chose est de pouvoir la révéler un jour&nbsp;: le secret n'est que provisoire et ordonné à la manifestation. Le mystère du royaume (4.11) fut voilé aux incrédules par la forme de la parabole, mais il n'a jamais été destiné à demeurer le secret d'un cercle fermé; il appelle la proclamation au monde entier. Le terme apparente la pensée à 1 Corinthiens 4.5, où le Seigneur mettra en lumière ce qui est caché dans les ténèbres, et à Luc 12.2 sur le démasquage final de toute chose dissimulée.</td>
+            <td><span class="trad"><span><b>S21</b> caché</span><span><b>NEG79</b> caché</span><span><b>Darby</b> caché</span><span><b>LSG</b> caché</span><span><b>KJF</b> caché</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">entendez</span><span class="mot-gr">akouete</span></th>
+            <td class="col-sens">entendre, écouter, prêter l'oreille avec attention et obéissance</td>
+            <td>Verbe <i>akouo</i>, omniprésent dans le passage (v. 23 deux fois, v. 24). MacArthur insiste sur la différence entre percevoir des sons et entendre au sens où l'on reçoit la vérité, la croit, l'aime et y obéit; il lit le v. 24, <i>blepete ti akouete</i>, comme un appel à voir ce que l'on entend, c'est-à-dire à le percevoir et à le comprendre. L'appel «&nbsp;Si quelqu'un a des oreilles pour entendre, qu'il entende&nbsp;» (v. 23, cf. 4.9) n'est pas un encouragement à la concentration humaine&nbsp;: l'intelligence naturelle ne suffit pas à saisir la parabole, seuls les rachetés en perçoivent le sens réel, car le divin Maître le leur explique. L'impératif «&nbsp;Prenez garde à ce que vous entendez&nbsp;» (v. 24) fait de la qualité de l'écoute le critère décisif&nbsp;: bien entendre, c'est recevoir la vérité comme la bonne terre reçoit la semence (4.20), avec compréhension donnée d'en haut et obéissance qui porte du fruit.</td>
+            <td><span class="trad"><span><b>S21</b> écoutez</span><span><b>NEG79</b> entendre</span><span><b>Darby</b> entendez</span><span><b>LSG</b> entendez</span><span><b>KJF</b> entendez</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">mesure</span><span class="mot-gr">metron</span></th>
+            <td class="col-sens">instrument ou quantité servant à mesurer; étalon, proportion</td>
+            <td>Terme du commerce et de l'agriculture désignant le boisseau ou la coupe étalonnée et, par extension, la proportion selon laquelle on donne et reçoit. MacArthur explique la loi du v. 24&nbsp;: les résultats spirituels du disciple sont mesurés à l'aune des efforts qu'il a fournis; il récolte selon ce qu'il a semé, et, précise-t-il en chaire, Dieu rend au disciple fidèle à semer la Parole plus qu'il n'a semé. La mesure dont on use envers la Parole reçue détermine ce qu'on en recevra, et il y sera même ajouté (cf. la mesure pressée et débordante de Luc 6.38). Le mot n'enseigne pas un salut mérité par l'effort, mais la pédagogie souveraine de Dieu&nbsp;: à l'auditeur qui retient et applique fidèlement la vérité, il en confie toujours davantage.</td>
+            <td><span class="trad"><span><b>S21</b> mesure</span><span><b>NEG79</b> mesure</span><span><b>Darby</b> mesure</span><span><b>LSG</b> mesure</span><span><b>KJF</b> mesure</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ôtera</span><span class="mot-gr">arthesetai</span></th>
+            <td class="col-sens">enlever, retirer, emporter, ôter de force</td>
+            <td>Futur passif du verbe <i>airo</i>, employé au v. 25&nbsp;: à celui qui n'a pas, on ôtera même ce qu'il a. MacArthur y voit les faux disciples, qui côtoient les croyants sans en être&nbsp;: ce qu'ils croient avoir, selon la formule parallèle de Luc 8.18, leur sera retiré. Le même verbe <i>airo</i> décrit en 4.15 Satan qui enlève la parole semée. Le passif divin laisse entendre que Dieu lui-même opère ce retranchement judiciaire&nbsp;: la vérité négligée finit par se perdre. Le contraste est tranchant avec «&nbsp;on y ajoutera&nbsp;» (v. 24)&nbsp;: la Parole reçue s'accroît, la Parole méprisée s'évanouit, jusqu'à l'apparence de possession.</td>
+            <td><span class="trad"><span><b>S21</b> enlèvera</span><span><b>NEG79</b> ôtera</span><span><b>Darby</b> ôtera</span><span><b>LSG</b> ôtera</span><span><b>KJF</b> ôtera</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Marc 4.21-25</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Marc 4.21-25 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mc 4.21, 4.22, 4.24.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-145</span></th>
+            <td><a href="https://www.gty.org/sermons/81-145" target="_blank" rel="noopener">Sowing the Gospel and Sleeping Well</a></td>
+            <td>Marc 4.1-32</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-20</span></th>
+            <td><a href="https://www.gty.org/sermons/41-20" target="_blank" rel="noopener">How to Listen to the Lord</a></td>
+            <td>Marc 4.21-34</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit Marc 4.21-25 comme le prolongement direct et inséparable de la parabole du semeur&nbsp;: la compréhension du semeur est la clé qui ouvre toutes les paraboles du royaume (4.13), et la lampe en tire la première conséquence pratique et missionnaire.</p>
+    <div class="body">
+      <p>MacArthur lit Marc 4.21-25 comme le prolongement direct et inséparable de la parabole du semeur&nbsp;: la compréhension du semeur est la clé qui ouvre toutes les paraboles du royaume (4.13), et la lampe en tire la première conséquence pratique. Le sens de la première image (v. 21) est, selon lui, missionnaire&nbsp;: une commission avant la Grande Commission. La lampe, c'est la vérité du royaume que Jésus vient d'allumer par son enseignement. Or on n'allume pas une lampe pour la glisser sous le boisseau ou sous le lit; on la pose sur le chandelier pour qu'elle éclaire. Les enseignements de Jésus n'ont jamais été destinés au seul cercle fermé de quelques disciples privilégiés. Si la parabole voile désormais le mystère à ceux qui ont rejeté Jésus (4.11-12), la vérité n'est retenue que pour un temps&nbsp;: après la croix et la résurrection, il appartiendra aux disciples de communiquer l'Évangile du royaume au monde entier (cf. Matthieu 28.19-20). Le v. 22 le scelle&nbsp;: l'intérêt même de garder une chose cachée est de pouvoir la révéler un jour. Le caché est ordonné au découvert, le secret au plein jour.</p>
+      <p>L'avertissement du v. 23, «&nbsp;Si quelqu'un a des oreilles pour entendre, qu'il entende&nbsp;», est pour MacArthur bien plus qu'un appel à la concentration. Il reprend mot pour mot la clôture du semeur (4.9) et porte la même charge&nbsp;: l'intelligence humaine ne suffit pas à interpréter correctement la parabole, car seuls les rachetés en saisissent le sens réel, qui leur est expliqué par le divin Professeur. Pour MacArthur, c'est le fil de tout le passage&nbsp;: ce qui distingue le vrai croyant, c'est qu'il entend la Parole. L'auditeur de la bonne terre entend, reçoit et porte du fruit (4.20) parce que Dieu l'autorise à entendre, lui ouvre l'esprit et le cœur et transforme sa vie; l'auditeur des terrains stériles entend les mêmes mots mais reste imperméable. Ainsi, lorsque le v. 24 commande «&nbsp;Prenez garde à ce que vous entendez&nbsp;», l'impératif ne fait pas de l'homme l'auteur de sa propre compréhension; il le rend responsable de la manière dont il accueille une lumière que Dieu seul peut faire pénétrer. Le titre de la prédication, «&nbsp;Prenez garde à la manière dont vous écoutez&nbsp;», traduit fidèlement cette tension entre la souveraineté de la grâce et la responsabilité de l'auditeur.</p>
+      <p>La loi de la mesure (v. 24) reçoit chez MacArthur une explication sobre et précise&nbsp;: les résultats spirituels obtenus par le disciple doivent être mesurés à l'aune des efforts qu'il a fournis; il récoltera ce qu'il a semé. Il ne s'agit nullement d'un salut gagné par l'effort, puisque pour MacArthur nul ne contribue à la régénération ni à la justification, mais de la bénédiction de Dieu envers ceux qui sont déjà siens&nbsp;: celui qui a appris des vérités spirituelles et les a appliquées soigneusement recevra toujours davantage de vérités à appliquer fidèlement; en chaire, il y voit la promesse faite au croyant qui sème fidèlement la Parole, à qui Dieu rend plus de vérité, de grâce et de récompense éternelle qu'il n'en a semé. C'est la croissance cumulative du disciple obéissant. Le v. 25 énonce le revers&nbsp;: à celui qui a, on donnera; mais à celui qui n'a pas, on ôtera même ce qu'il a. MacArthur entend par là les faux disciples, qui fréquentent les croyants sans être de vrais croyants&nbsp;: ce qu'ils croient avoir, bénédictions reçues par ricochet, lumières restées en deçà du salut, récompense espérée, leur sera ôté, comme à ceux qui diront «&nbsp;Seigneur, Seigneur&nbsp;» (Matthieu 7.21-23). La possession apparente s'évanouit quand elle n'est pas la possession réelle de la foi qui obéit.</p>
+      <p>Lu avec MacArthur, le passage devient un diagnostic redoutable de l'écoute&nbsp;: ce qui distingue le vrai croyant n'est ni un acte passé, ni une prière, ni la fréquentation de l'Église, mais l'écoute qui reçoit la vérité, la croit, l'aime et y obéit. Entendre la Parole de façon enthousiaste mais superficielle, sans qu'elle prenne racine ni transforme la vie (4.16-17), n'est pas la foi qui sauve, et le peu que l'on croit posséder sera ôté (v. 25). À l'inverse, l'écoute de la bonne terre, qui comprend, reçoit et obéit, est le signe d'un cœur régénéré par Dieu, et elle reçoit toujours davantage. Le passage refuse aussi toute religion de cénacle qui retiendrait la vérité pour soi&nbsp;: la lampe est faite pour briller au-dehors, et la mission du témoignage au monde entier en découle nécessairement. Enfin, si l'auditeur entend vraiment, c'est que le Seigneur lui a ouvert les oreilles spirituelles; la responsabilité de bien écouter et la souveraineté de la grâce qui rend l'écoute possible ne s'opposent pas, elles se rejoignent dans l'appel pressant à prendre garde à la manière dont on écoute la vérité destinée à briller.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle interne au semeur jusqu'aux synoptiques de la lampe et de la mesure, et de l'image dominicale du témoignage destiné à briller au principe proverbial de la moisson.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 4.9</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'appel jumeau «&nbsp;Que celui qui a des oreilles pour entendre entende&nbsp;» clôt le semeur et rouvre la lampe; même charge&nbsp;: seul le racheté entend vraiment.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 4.11-12</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le mystère du royaume voilé aux incrédules par la parabole; le caché du v. 22 ne l'est que pour un temps, ordonné à la proclamation au monde entier.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 4.14-20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les quatre terrains; la mesure et le retranchement (v. 24-25) reprennent le sort des sols stériles dont Satan enlève la parole semée.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 5.14-16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Vous êtes la lumière du monde; on n'allume pas une lampe pour la mettre sous le boisseau mais sur le chandelier&nbsp;: même image du témoignage destiné à briller.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 8.16-18</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Parallèle synoptique de la lampe et de la mesure, avec l'avertissement explicite «&nbsp;prenez garde à la manière dont vous écoutez&nbsp;» qui donne son titre à la prédication.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 28.19-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le mandat de proclamer au monde entier; aboutissement missionnaire de la lampe posée sur le chandelier et du caché destiné à être découvert.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 6.7</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">On récolte ce qu'on sème; arrière-plan proverbial de la loi de la mesure du v. 24 appliquée à l'écoute attentive de la Parole.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 1.12</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les chandeliers d'or désignent les Églises porte-lampes; même réalité que le chandelier du v. 21, l'assemblée appelée à faire rayonner la vérité reçue.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La vérité du royaume est destinée à briller</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>On n'apporte pas la lampe pour la mettre sous le boisseau, mais sur le chandelier (v. 21); rien de caché qui ne doive être découvert (v. 22).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'Évangile n'est pas un savoir ésotérique réservé à une élite. MacArthur en tire le mandat missionnaire&nbsp;: la vérité reçue par les disciples doit être proclamée au monde entier (Matthieu 28.19-20). Une assemblée qui garde la lumière pour elle trahit la nature même de la lampe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La responsabilité de bien écouter</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Si quelqu'un a des oreilles pour entendre, qu'il entende (v. 23); Prenez garde à ce que vous entendez (v. 24).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'écoute n'est pas neutre&nbsp;: la manière dont on accueille la Parole engage l'âme. Bien écouter, c'est recevoir la vérité comme la bonne terre, avec compréhension et obéissance; mal écouter, c'est la laisser étouffer ou enlever. Le sermon doit presser chaque auditeur sur la qualité de son écoute.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Souveraineté de la grâce dans la compréhension (monergisme)</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Seuls ceux qui ont des oreilles pour entendre entendent (v. 23); à celui qui a, on donnera (v. 25).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur souligne que l'intelligence naturelle ne suffit pas&nbsp;: c'est Dieu qui ouvre l'oreille et donne de comprendre la parabole. La responsabilité de l'auditeur et la souveraineté de la grâce ne se contredisent pas; l'appel à prendre garde présuppose une lumière que Dieu seul fait pénétrer.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La loi spirituelle de la mesure et de la croissance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>On vous mesurera avec la mesure dont vous vous serez servis, et on y ajoutera (v. 24); à celui qui a, on donnera (v. 25).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La vérité retenue et appliquée appelle toujours davantage de vérité; le disciple obéissant croît de façon cumulative. Ce n'est pas un salut mérité par l'effort, mais la pédagogie de Dieu envers ceux qui sont siens. La sanctification progresse à proportion de l'écoute fidèle.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le retranchement de la fausse possession</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>À celui qui n'a pas, on ôtera même ce qu'il a (v. 25).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'auditeur qui côtoie les croyants sans être des leurs croit posséder ce qui lui sera finalement retiré (v. 25; cf. Luc 8.18). MacArthur y voit un avertissement pour ceux qui s'associent aux croyants sans croire vraiment&nbsp;: ce qu'ils pensent avoir leur sera ôté, comme à ceux qui diront «&nbsp;Seigneur, Seigneur&nbsp;» (Matthieu 7.21).</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>En quoi rattacher la lampe et la mesure à la parabole du semeur qui précède change-t-il votre lecture du passage&nbsp;: l'accent se déplace-t-il du terrain que je suis vers la manière dont j'écoute?</li>
+      <li>Comment prêcher l'avertissement «&nbsp;Prenez garde à ce que vous entendez&nbsp;» sans glisser vers un salut par l'effort, tout en gardant l'appel pressant à la responsabilité de l'auditeur que MacArthur maintient?</li>
+      <li>Si la lampe représente la vérité du royaume destinée à briller, quelles façons concrètes votre assemblée a-t-elle de la mettre sous le boisseau plutôt que sur le chandelier?</li>
+      <li>Le v. 23 affirme que seul celui à qui Dieu ouvre l'oreille entend vraiment. Comment tenir ensemble cette souveraineté de la grâce et l'appel à bien écouter, sans dissoudre l'un dans l'autre?</li>
+      <li>Que signifie pastoralement le verdict du v. 25, «&nbsp;on ôtera même ce qu'il a&nbsp;»&nbsp;: comment avertir l'auditeur de surface sans détruire l'assurance du croyant authentique qui doute?</li>
+      <li>La loi de la mesure (v. 24) promet que la vérité appliquée appelle plus de vérité. Quelles disciplines d'écoute obéissante voulez-vous semer cette semaine pour récolter une croissance cumulative?</li>
+      <li>En quoi le caractère missionnaire de la lampe (v. 21-22) appuyé sur Matthieu 28.19-20 doit-il façonner la manière dont votre Église transmet l'Évangile au monde plutôt que de le retenir en cercle fermé?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Marc 4.21-25 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Marc : le Serviteur souffrant&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Marc-4-21-25.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

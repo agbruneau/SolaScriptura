@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La seconde épître à Timothée · Garde le dépôt</title>
+<meta name="description" content="Présentation de la seconde épître à Timothée pour une étude biblique : la dernière lettre de Paul, écrite d'un cachot romain au seuil du martyre. Ranimer le don et l'esprit de force, n'avoir pas honte de l'Évangile, garder le bon dépôt, se fortifier comme un soldat, la fidélité de Dieu qui ne se renie pas, dispenser droitement la parole de la vérité, les derniers jours, toute Écriture inspirée de Dieu et suffisante, prêcher la Parole à temps et à contretemps, le bon combat et la couronne de justice. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">2 Timothée</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#depot">Le bon dépôt</a>
+    <a href="#fortifie">Se fortifier</a>
+    <a href="#fidelite">La fidélité de Dieu</a>
+    <a href="#ecriture">L'Écriture inspirée</a>
+    <a href="#preche">Prêche la Parole</a>
+    <a href="#couronne">La couronne</a>
+    <a href="#centrale">Leçon centrale</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#predication">La série</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Vue d'ensemble · 2 Timothée 1.1-4.22</p>
+    <h1 class="hero__title">Garde le dépôt</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;J'ai combattu le bon combat, j'ai achevé la course, j'ai gardé la foi.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">2 Timothée 4.7 · NEG</p>
+    <p class="hero__series">Série : <b>2 Timothée : Garde le dépôt</b></p>
+    <p class="hero__meta">Le testament de combat de Paul, pour tenir bon et prêcher la Parole · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Introduction</p>
+      <h2 class="sec-title">Le testament de combat de Paul, du cachot à la couronne</h2>
+      <p class="ref">La seconde épître à Timothée</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Paul, apôtre de Jésus-Christ, par la volonté de Dieu, à Timothée, mon enfant bien-aimé.</p>
+        <cite class="verse__ref">2 Timothée 1.1-2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Garde le bon dépôt, par le Saint-Esprit qui habite en nous.</p>
+        <cite class="verse__ref">2 Timothée 1.14 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La seconde épître à Timothée est l'ultime lettre de Paul, écrite d'un cachot romain peu avant son martyre, vers 67 après Jésus-Christ. Relâché de sa première détention, l'apôtre fut de nouveau arrêté lors de la persécution néronienne, et cette fois il se sait condamné : son départ approche. Abandonné de presque tous, seul Luc demeurant auprès de lui, il écrit pour transmettre à son enfant bien-aimé le pan non apostolique de son ministère. C'est un testament, mais un testament de combat, où le mourant arme son successeur pour tenir bon et garder le dépôt. Deux impératifs commandent la lettre : «&nbsp;fortifie-toi&nbsp;» (2.1) pour la première moitié, «&nbsp;prêche la parole&nbsp;» (4.2) pour la seconde.</p>
+    <ul class="points">
+      <li><b>L'auteur et le destinataire : Paul à Timothée, sa dernière lettre.</b> «&nbsp;Paul, apôtre de Jésus-Christ, par la volonté de Dieu&nbsp;» (1.1) écrit vers 67 après Jésus-Christ, au seuil du martyre, à Timothée, son enfant bien-aimé (1.2). <span class="surligne">La situation a changé du tout au tout depuis la première détention : ce n'est plus la résidence surveillée d'Actes 28, mais un cachot froid (4.13), les chaînes (2.9) et l'attente de l'exécution (4.6-8).</span> Timothée exerce son ministère à Éphèse, foyer de défections : «&nbsp;tous ceux qui sont en Asie m'ont abandonné&nbsp;» (1.15).</li>
+      <li><b>L'occasion : armer un fils tenté de faiblir.</b> Paul écrit pour inviter Timothée à le rejoindre rapidement à Rome (4.9, 21) et, surtout, pour lui confier la transmission de la vérité (2.2). L'apôtre semble avoir craint que Timothée ne fléchisse sous la double pression de l'Église et de la persécution. De là ses appels : ranimer le don (1.6), remplacer la peur par la force, l'amour et la sagesse (1.7), ne pas avoir honte de l'Évangile mais souffrir pour lui (1.8), garder la vérité (1.13-14).</li>
+      <li><b>Ranimer la flamme et l'esprit de force.</b> Paul ordonne de «&nbsp;ranimer la flamme du don&nbsp;» (1.6), image d'une braise à raviver, signe qu'il n'était pas satisfait du niveau de fidélité de Timothée. <span class="surligne">L'esprit que Dieu donne n'est pas de timidité, mais de force, d'amour et de sagesse (1.7).</span> Le mot rendu par timidité désigne une lâcheté honteuse, qui ne vient pas de Dieu ; la force est la puissance divine pour supporter l'épreuve, et la sagesse, un esprit discipliné et maître de lui-même.</li>
+      <li><b>Garder le bon dépôt.</b> Au cœur de la première moitié, Paul confie à Timothée de garder le bon dépôt par le Saint-Esprit (1.13-14), le trésor de la bonne nouvelle du salut révélé dans les Écritures. Le mot désigne un bien remis en garde dont le dépositaire répond. La saine doctrine n'est pas une propriété à manier librement, mais un dépôt sacré à transmettre intact «&nbsp;à des hommes fidèles&nbsp;» (2.2), de génération en génération.</li>
+      <li><b>La fidélité de Dieu qui ne se renie pas.</b> La parole certaine de 2.11-13 condense la sotériologie de la lettre : «&nbsp;si nous le renions, lui aussi nous reniera&nbsp;», mais «&nbsp;si nous sommes infidèles, il demeure fidèle, car il ne peut se renier lui-même&nbsp;» (2.13). <span class="surligne">Le reniement vise l'apostat déterminé, non la faiblesse passagère d'un vrai chrétien ; la sécurité du croyant et la perdition de l'apostat reposent l'une et l'autre sur l'immuable fidélité de Dieu.</span> Le solide fondement le confirme : «&nbsp;le Seigneur connaît ceux qui lui appartiennent&nbsp;» (2.19), l'élection souveraine.</li>
+      <li><b>Toute Écriture inspirée de Dieu et suffisante.</b> Le cœur doctrinal de l'épître est 3.15-17 : les saintes lettres rendent sage à salut par la foi en Jésus-Christ, et «&nbsp;toute Écriture est inspirée de Dieu&nbsp;» (3.16), soufflée par Dieu, parfaite et infaillible. Elle est utile pour enseigner, convaincre, corriger et instruire dans la justice, afin que l'homme de Dieu soit «&nbsp;accompli et propre à toute bonne œuvre&nbsp;» (3.17). C'est l'affirmation de la suffisance de l'Écriture : la Parole équipe pleinement le serviteur, sans qu'il faille y rien ajouter.</li>
+      <li><b>Prêcher la Parole et recevoir la couronne.</b> De cette suffisance découle le mandat de 4.1-5 : «&nbsp;prêche la parole, insiste en toute occasion, favorable ou non&nbsp;» (4.2), car les hommes ne supporteront pas la saine doctrine (4.3). La lettre s'achève sur le triomphe serein du condamné : «&nbsp;j'ai combattu le bon combat, j'ai achevé la course, j'ai gardé la foi&nbsp;» (4.7), et la couronne de justice réservée à tous ceux qui auront aimé l'avènement de Christ (4.8).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ I. GARDER LE BON DÉPÔT (1.6-18) ============ -->
+  <article class="section reveal" id="depot">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">L'appel à ne pas faiblir · 2 Timothée 1.6-18</p>
+      <h2 class="sec-title">Ranime la flamme et garde le bon dépôt</h2>
+      <p class="ref">2 Timothée 1.6-18</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Dieu ne nous a pas donné un esprit de timidité, mais un esprit de force, d'amour et de sagesse.</p>
+        <cite class="verse__ref">2 Timothée 1.7 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Je sais en qui j'ai cru, et je suis persuadé qu'il a la puissance de garder mon dépôt jusqu'à ce jour-là.</p>
+        <cite class="verse__ref">2 Timothée 1.12 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le danger que Paul pressent est l'affaissement spirituel de son fils sous la pression conjointe de l'Église et de la persécution. De là ses premiers appels : ranimer la flamme du don, substituer à la peur l'esprit de force, n'avoir pas honte de l'Évangile, et garder le bon dépôt par le Saint-Esprit.</p>
+    <ul class="points">
+      <li><b>Ranimer un don laissé à demi éteint.</b> <span class="surligne">Le verbe de 1.6 évoque une braise à raviver : le don déjà reçu, celui de prédication, d'enseignement et d'évangélisation, ne doit pas tomber en désuétude.</span> MacArthur y lit l'indice que Paul n'était pas satisfait du niveau de fidélité de Timothée à cette époque. L'image n'est pas celle d'un manque de don, mais d'une ardeur à ranimer.</li>
+      <li><b>La force, l'amour et la sagesse, contre la timidité.</b> L'esprit que Dieu donne n'est pas de timidité (1.7), mot qui désigne une lâcheté honteusement poltronne, et cette crainte ne vient pas de Dieu. La force est la puissance divine déjà accordée au croyant pour supporter les épreuves ; l'amour cherche le bien d'autrui ; la sagesse décrit un esprit discipliné, maître de lui-même, aux priorités justes.</li>
+      <li><b>Le dépôt confié à un Dieu qui a la puissance de le garder.</b> «&nbsp;Je sais en qui j'ai cru... il a la puissance de garder mon dépôt jusqu'à ce jour-là&nbsp;» (1.12). Le verbe «&nbsp;j'ai cru&nbsp;» renvoie à un événement passé dont les effets demeurent, et «&nbsp;ce jour-là&nbsp;» est le jour de Christ, où les croyants se tiendront devant le tribunal pour recevoir leur récompense. À son tour, Timothée doit garder le bon dépôt par le Saint-Esprit (1.14), au milieu des défections d'Asie et grâce aux fidèles comme Onésiphore.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ II. SE FORTIFIER : LA GALERIE DES MODÈLES (2.1-13) ============ -->
+  <article class="section reveal" id="fortifie">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Le mot d'ordre de la première moitié · 2 Timothée 2.1-13</p>
+      <h2 class="sec-title">Fortifie-toi : soldat, athlète, laboureur</h2>
+      <p class="ref">2 Timothée 2.1-13</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Toi donc, mon enfant, fortifie-toi dans la grâce qui est en Jésus-Christ.</p>
+        <cite class="verse__ref">2 Timothée 2.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Ce qu'il faut, c'est que le laboureur travaille avant de recueillir les fruits.</p>
+        <cite class="verse__ref">2 Timothée 2.6 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">«&nbsp;Fortifie-toi&nbsp;» (2.1) est le maître mot de la première moitié de la lettre. Pour l'illustrer, Paul propose à Timothée une galerie de modèles à imiter, le soldat, l'athlète, le laboureur, puis Jésus lui-même, l'ouvrier et le vase. Le service fidèle passe par l'endurance et la discipline.</p>
+    <ul class="points">
+      <li><b>Se fortifier dans la grâce, et transmettre à des hommes fidèles.</b> Le serviteur ne puise pas sa force en lui-même mais dans la grâce qui est en Jésus-Christ (2.1). De là la transmission : ce que Timothée a reçu, il doit le confier «&nbsp;à des hommes fidèles, qui soient capables de l'enseigner aussi à d'autres&nbsp;» (2.2). La garde du dépôt devient succession doctrinale, à travers les générations.</li>
+      <li><b>La discipline du soldat, de l'athlète et du laboureur.</b> Trois figures enseignent l'endurance : le soldat ne s'embarrasse pas des affaires de la vie pour plaire à celui qui l'a enrôlé (2.4) ; l'athlète n'est couronné que s'il a combattu selon les règles (2.5) ; le laboureur travaille avant de recueillir les fruits (2.6). Le ministère fidèle n'est pas couronné par le confort, mais par la persévérance.</li>
+      <li><b>La parole certaine : la fidélité de Dieu fonde l'endurance.</b> Le dernier et suprême modèle est Jésus ressuscité (2.8). Puis la parole certaine (2.11-13) ancre l'endurance demandée dans la fidélité immuable de Dieu : si nous persévérons, nous régnerons avec lui ; mais celui qui renie démontre qu'il n'a jamais appartenu à Christ.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ III. LA FIDÉLITÉ DE DIEU ET LE SOLIDE FONDEMENT (2.11-19) ============ -->
+  <article class="section reveal" id="fidelite">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">La sécurité du croyant · 2 Timothée 2.11-19</p>
+      <h2 class="sec-title">Il demeure fidèle, car il ne peut se renier lui-même</h2>
+      <p class="ref">2 Timothée 2.11-19</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Si nous sommes infidèles, il demeure fidèle, car il ne peut se renier lui-même.</p>
+        <cite class="verse__ref">2 Timothée 2.13 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Le Seigneur connaît ceux qui lui appartiennent.</p>
+        <cite class="verse__ref">2 Timothée 2.19 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La parole certaine de 2.11-13 condense la sotériologie de la lettre, et MacArthur y tranche avec netteté la distinction entre le vrai croyant et l'apostat. La sécurité du croyant repose non sur sa propre constance, mais sur l'immuable fidélité de Dieu, qui ne peut se renier lui-même.</p>
+    <ul class="points">
+      <li><b>Le reniement de l'apostat, non la faiblesse du croyant.</b> «&nbsp;Si nous le renions, lui aussi nous reniera&nbsp;» (2.12) désigne l'apostat définitif et déterminé, non la défaillance temporaire d'un vrai chrétien comme Pierre. <span class="surligne">Ceux qui renient ainsi Christ démontrent qu'ils ne lui ont jamais appartenu (1 Jean 2.19).</span></li>
+      <li><b>La fidélité de Dieu joue dans le jugement.</b> «&nbsp;Si nous sommes infidèles, il demeure fidèle, car il ne peut se renier lui-même&nbsp;» (2.13) n'est pas une promesse de salut aux incroyants : «&nbsp;infidèles&nbsp;» évoque l'absence de la foi qui sauve, et la fidélité de Dieu joue alors dans le jugement, car il serait contraire à sa nature sainte d'agir autrement. La sécurité du croyant et la perdition de l'apostat reposent toutes deux sur l'immuable fidélité divine.</li>
+      <li><b>Le solide fondement scellé de deux paroles.</b> «&nbsp;Le Seigneur connaît ceux qui lui appartiennent&nbsp;» (2.19) dit l'élection souveraine et la connaissance intime de Dieu pour les siens, en écho à la révolte de Coré (Nombres 16.5). La seconde inscription, «&nbsp;quiconque prononce le nom du Seigneur, qu'il s'éloigne de l'iniquité&nbsp;», en marque la preuve dans la vie : la recherche de la sainteté. Face aux faux docteurs Hyménée et Philète, dont l'hérésie ronge comme la gangrène (2.17), le fondement de Dieu tient ferme.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ IV. TOUTE ÉCRITURE INSPIRÉE DE DIEU (3.1-17) ============ -->
+  <article class="section reveal" id="ecriture">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Le sommet doctrinal · 2 Timothée 3.1-17</p>
+      <h2 class="sec-title">Toute Écriture est inspirée de Dieu</h2>
+      <p class="ref">2 Timothée 3.1-17</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Toute Écriture est inspirée de Dieu, et utile pour enseigner, pour convaincre, pour corriger, pour instruire dans la justice.</p>
+        <cite class="verse__ref">2 Timothée 3.16 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Afin que l'homme de Dieu soit accompli et propre à toute bonne œuvre.</p>
+        <cite class="verse__ref">2 Timothée 3.17 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avant d'atteindre le sommet doctrinal de la lettre, Paul avertit des derniers jours, l'ère présente ouverte par la première venue de Christ, où prolifère une religion d'apparence qui renie la force de la piété (3.5). Puis vient l'affirmation capitale sur l'Écriture, le texte clé du Nouveau Testament sur son inspiration.</p>
+    <ul class="points">
+      <li><b>Les derniers jours et la religion d'apparence.</b> «&nbsp;Dans les derniers jours&nbsp;», c'est-à-dire l'ère actuelle, surviendront des temps difficiles ; la longue liste de vices (3.2-4) décrit des incroyants «&nbsp;ayant l'apparence de la piété, mais reniant ce qui en fait la force&nbsp;» (3.5). <span class="surligne">MacArthur range ce christianisme de pure façade aux côtés des scribes et pharisiens : leurs qualités apparentes les rendent d'autant plus dangereux.</span> Et «&nbsp;tous ceux qui veulent vivre pieusement en Jésus-Christ seront persécutés&nbsp;» (3.12).</li>
+      <li><b>Soufflée par Dieu, parfaite et infaillible.</b> «&nbsp;Toute Écriture est inspirée de Dieu&nbsp;» (3.16), expirée par Dieu : l'Écriture n'est pas une œuvre humaine élevée, mais produite par le souffle même de Dieu. Dieu a parfois dicté les mots exacts, mais le plus souvent s'est servi de l'esprit, du vocabulaire et de l'expérience des auteurs pour produire sa Parole parfaite, infaillible, exempte d'erreur. L'inspiration porte sur le texte, et appartient aux écrits originaux.</li>
+      <li><b>Utile et suffisante pour équiper l'homme de Dieu.</b> L'Écriture est utile pour enseigner (le corpus complet des vérités divines), pour convaincre (mettre le péché en lumière), pour corriger (remettre debout celui qui a trébuché) et pour instruire dans la justice, afin que l'homme de Dieu soit «&nbsp;accompli et propre à toute bonne œuvre&nbsp;» (3.17). <span class="surligne">C'est l'affirmation de la suffisance de l'Écriture : la Parole équipe pleinement le serviteur, sans qu'il faille y rien ajouter.</span></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ V. PRÊCHE LA PAROLE (4.1-5) ============ -->
+  <article class="section reveal" id="preche">
+    <header class="sec-head">
+      <div class="sec-num">V</div>
+      <p class="kicker">Le mot d'ordre de la seconde moitié · 2 Timothée 4.1-5</p>
+      <h2 class="sec-title">Prêche la Parole, à temps et à contretemps</h2>
+      <p class="ref">2 Timothée 4.1-5</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Prêche la parole, insiste en toute occasion, favorable ou non, reprends, censure, exhorte, avec toute douceur et en instruisant.</p>
+        <cite class="verse__ref">2 Timothée 4.2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car il viendra un temps où les hommes ne supporteront pas la saine doctrine.</p>
+        <cite class="verse__ref">2 Timothée 4.3 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">De la suffisance de l'Écriture découle directement le mandat de 4.1-5, l'admonition centrale de la seconde moitié. Devant Dieu et devant Christ qui doit juger les vivants et les morts, Paul ordonne de prêcher la Parole, qu'elle plaise ou non. Le héraut proclame le décret du Roi, non ses propres idées.</p>
+    <ul class="points">
+      <li><b>Un ordre solennel et contraignant.</b> «&nbsp;Prêche la parole&nbsp;» (4.2) : la «&nbsp;parole&nbsp;» est la Parole de Dieu écrite tout entière. L'ordre est contraignant, lancé devant Dieu et le Juge à venir, et s'accompagne de l'urgence du soldat prêt au combat et de la sentinelle en alerte : insiste «&nbsp;à temps et à contretemps&nbsp;», que la Parole soit bien reçue ou non. C'est le fondement de la prédication expositoire.</li>
+      <li><b>Reprendre, corriger, exhorter.</b> «&nbsp;Reprends, censure&nbsp;» en est la face négative, l'écho de «&nbsp;convaincre&nbsp;» et «&nbsp;corriger&nbsp;» de 3.16, et «&nbsp;exhorte, instruisant&nbsp;» en est la face positive. La tâche du prédicateur n'est pas de flatter les oreilles, mais d'annoncer toute la Parole, fût-elle dérangeante.</li>
+      <li><b>Contre les oreilles qui démangent.</b> <span class="surligne">«&nbsp;Les hommes ne supporteront pas la saine doctrine&nbsp;» (4.3) et, ayant la démangeaison d'entendre des choses agréables, se donneront des docteurs selon leurs propres désirs.</span> Ce sont des chrétiens de nom qui dictent ce qu'ils veulent entendre, courant après des prédicateurs qui flattent leurs penchants. La réponse du fidèle est invariable : prêcher la Parole, faire l'œuvre d'un évangéliste, remplir son ministère (4.5).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ VI. LE BON COMBAT ET LA COURONNE (4.6-22) ============ -->
+  <article class="section reveal" id="couronne">
+    <header class="sec-head">
+      <div class="sec-num">VI</div>
+      <p class="kicker">Le triomphe du condamné · 2 Timothée 4.6-22</p>
+      <h2 class="sec-title">J'ai combattu le bon combat, la couronne est réservée</h2>
+      <p class="ref">2 Timothée 4.6-22</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Désormais, la couronne de justice m'est réservée ; le Seigneur, le juste juge, me la donnera dans ce jour-là.</p>
+        <cite class="verse__ref">2 Timothée 4.8 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Le Seigneur m'a assisté et m'a fortifié... le Seigneur me délivrera de toute œuvre mauvaise.</p>
+        <cite class="verse__ref">2 Timothée 4.17-18 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La lettre s'achève sur le triomphe serein du condamné. Paul considère sa mort comme l'ultime offrande, sa libation versée, et son départ comme on dénoue les amarres d'un navire. Au mourant abandonné de presque tous, l'avenir appartient.</p>
+    <ul class="points">
+      <li><b>Le bilan sans regret du martyr.</b> Les trois verbes «&nbsp;j'ai combattu le bon combat, j'ai achevé la course, j'ai gardé la foi&nbsp;» (4.7) sont des actions achevées dont les résultats demeurent : Paul fut soldat, athlète et gardien, et il a tout accompli par la puissance du Seigneur. «&nbsp;Je sers déjà de libation, et le moment de mon départ approche&nbsp;» (4.6) : il interprète sa mort comme l'ultime offrande d'une vie déjà riche en sacrifices.</li>
+      <li><b>La couronne de justice, pour tous ceux qui aiment l'avènement.</b> <span class="surligne">«&nbsp;La couronne de justice&nbsp;» (4.8) représente la justice éternelle : la justice de Christ imputée au salut, ouvrée par l'Esprit dans la sanctification, parfaite à la glorification.</span> Et cette couronne n'est pas pour Paul seul, mais «&nbsp;pour tous ceux qui auront aimé son avènement&nbsp;», c'est-à-dire la seconde venue de Christ.</li>
+      <li><b>Le Seigneur à ses côtés dans l'abandon.</b> Les adieux concrétisent tout l'enseignement : noms des fidèles et des déserteurs, le manteau et les parchemins laissés à Troas, la solitude du cachot. Pourtant, «&nbsp;le Seigneur m'a assisté et m'a fortifié&nbsp;» (4.17) : abandonné de presque tous, Paul éprouve que le Seigneur l'assiste et le sauvera pour son royaume céleste. La lettre se referme sur la grâce et le salut final.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LEÇON CENTRALE ============ -->
+  <article class="section reveal" id="centrale">
+    <header class="sec-head">
+      <div class="sec-num">◆</div>
+      <p class="kicker">La leçon centrale</p>
+      <h2 class="sec-title">Garde le dépôt : tenir bon et transmettre la Parole jusqu'au bout</h2>
+      <p class="ref">2 Timothée 1.14 · Le testament de combat de Paul</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Les choses que tu as entendues de moi... confie-les à des hommes fidèles, qui soient capables de l'enseigner aussi à d'autres.</p>
+        <cite class="verse__ref">2 Timothée 2.2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Dispense droitement la parole de la vérité.</p>
+        <cite class="verse__ref">2 Timothée 2.15 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La question qui commande toute la lettre n'est pas spéculative mais testamentaire : comment l'homme de Dieu tient-il bon et transmet-il intacte la vérité reçue, quand vient l'épreuve ? La réponse, et c'est là que MacArthur situe le cœur de l'épître, tient dans deux impératifs, fortifie-toi et prêche la parole, sous l'unique charge de garder le dépôt.</p>
+    <ul class="points">
+      <li><b>Ranimer le don et l'esprit de force.</b> <span class="surligne">Le don reçu doit être ravivé (1.6) par un esprit de force, d'amour et de sagesse, non étouffé par la peur (1.7).</span> La flamme du ministère se ranime, elle ne s'entretient pas toute seule, et la crainte poltronne ne vient pas de Dieu mais s'oppose à l'assurance enracinée dans sa souveraineté.</li>
+      <li><b>Garder et dispenser droitement le dépôt.</b> «&nbsp;Garde le bon dépôt, par le Saint-Esprit&nbsp;» (1.14) et «&nbsp;dispense droitement la parole de la vérité&nbsp;» (2.15). La vérité est un trésor confié à transmettre intact à des hommes fidèles (2.2), et à interpréter avec une exactitude d'artisan. La saine doctrine n'est pas la propriété du prédicateur, mais un dépôt dont il répond devant Dieu.</li>
+      <li><b>La fidélité de Dieu fonde la sécurité du croyant.</b> «&nbsp;Si nous sommes infidèles, il demeure fidèle&nbsp;» (2.13) ; «&nbsp;le Seigneur connaît ceux qui lui appartiennent&nbsp;» (2.19). L'assurance du salut ne repose pas sur la constance du croyant mais sur l'élection souveraine et l'immuable fidélité de Dieu, tandis que le reniement délibéré trahit un cœur qui n'a jamais été régénéré.</li>
+      <li><b>L'Écriture inspirée et suffisante, fondement de la prédication.</b> «&nbsp;Toute Écriture est inspirée de Dieu&nbsp;» (3.16) et suffit à rendre l'homme de Dieu accompli pour toute bonne œuvre (3.17). De cette suffisance jaillit l'ordre de prêcher la Parole à temps et à contretemps (4.2), malgré les oreilles qui démangent. Aucune révélation nouvelle, aucune sagesse extérieure n'a à s'ajouter à la Parole.</li>
+      <li><b>Du tremblement à la couronne.</b> Tout converge vers une seule charge : tenir bon et garder le dépôt jusqu'au retour du Seigneur. Le bilan du mentor, «&nbsp;j'ai combattu le bon combat&nbsp;» (4.7), récompense la fidélité demandée au disciple, et la couronne de justice attend tous ceux qui aiment l'avènement de Christ. De la peur à la couronne, l'auditeur traverse la même distance que Timothée, parce que Dieu demeure fidèle et que sa Parole suffit.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CONCLUSION ============ -->
+  <article class="section section--conclusion reveal" id="conclusion">
+    <header class="sec-head">
+      <p class="kicker">Conclusion</p>
+      <h2 class="sec-title">Du cachot à la couronne, le dépôt transmis</h2>
+      <p class="ref">2 Timothée 1.1 à 4.22</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Le Seigneur soit avec ton esprit ! Que la grâce soit avec vous !</p>
+        <cite class="verse__ref">2 Timothée 4.22 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Souffre avec moi, comme un bon soldat de Jésus-Christ.</p>
+        <cite class="verse__ref">2 Timothée 2.3 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">D'un bout à l'autre, 2 Timothée part d'un cachot romain et d'une flamme qui couve : un apôtre condamné supplie son fils spirituel de ne pas faiblir, et le conduit, péricope après péricope, du tremblement à la fermeté. L'arc se referme sur la présence du Seigneur auprès de l'abandonné, et l'auditeur comprend qu'il en a reçu, lui aussi, un dépôt à garder.</p>
+    <ul class="points">
+      <li><b>L'appel à ne pas faiblir.</b> La série s'ouvre sur la situation et la tension de toute la lettre : ranimer la flamme du don (semaine 1), n'avoir pas honte de l'Évangile fondé sur la grâce souveraine (semaine 2), garder le bon dépôt au milieu des défections (semaine 3). L'apôtre condamné arme un fils tenté de fléchir.</li>
+      <li><b>Se fortifier, et la fidélité de Dieu.</b> De cette base, le mot d'ordre «&nbsp;fortifie-toi&nbsp;» commande la galerie des modèles, soldat, athlète, laboureur (semaine 4), couronnée par Jésus ressuscité et la parole certaine qui ancre l'endurance dans la fidélité immuable de Dieu (semaine 5).</li>
+      <li><b>L'affrontement des faux docteurs et l'apostasie.</b> La lettre oppose alors l'ouvrier approuvé à la gangrène de l'erreur (semaine 6), le vase d'honneur purifié (semaine 7), démasque la religion d'apparence des derniers jours (semaine 8) et oppose l'exemple de Paul persécuté (semaine 9).</li>
+      <li><b>Le roc qui tient tout, et le mandat de prêcher.</b> Au cœur, la série atteint l'Écriture soufflée par Dieu et suffisante (semaine 10), d'où jaillit l'ordre de prêcher la Parole à temps et à contretemps (semaine 11). La suffisance de la Parole fonde directement le ministère de la Parole.</li>
+      <li><b>De la peur à la couronne.</b> La culmination est le bilan serein du martyr, «&nbsp;j'ai combattu le bon combat&nbsp;» (semaine 12), puis la présence du Seigneur auprès de l'abandonné (semaine 13). La lettre ne se referme pas sur l'effort du croyant, mais sur la grâce qui scelle tout : «&nbsp;que la grâce soit avec vous&nbsp;».</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LA SÉRIE ============ -->
+  <article class="section reveal" id="predication">
+    <header class="sec-head">
+      <p class="kicker">La série</p>
+      <h2 class="sec-title">Les 13 recherches de la série</h2>
+      <p class="ref">2 Timothée 1.1 à 4.22 · 13 semaines</p>
+    </header>
+    <p class="lead">La série «&nbsp;2 Timothée : Garde le dépôt&nbsp;» se déploie sur treize semaines d'exposition suivie, sans lacune ni chevauchement, de la salutation (1.1) jusqu'aux adieux et à la bénédiction finale (4.22). Chaque passage dispose d'une recherche exégétique complète : choisissez une semaine pour ouvrir sa recherche et préparer la prédication.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20Ranime%20la%20flamme%20%282%20Timoth%C3%A9e%201.1-7%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">Ranime la flamme</span>
+        <span class="semaine__ref">2 Timothée 1.1-7<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20N%27aie%20pas%20honte%20%282%20Timoth%C3%A9e%201.8-12%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">N'aie pas honte</span>
+        <span class="semaine__ref">2 Timothée 1.8-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20Garde%20le%20bon%20d%C3%A9p%C3%B4t%20%282%20Timoth%C3%A9e%201.13-18%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Garde le bon dépôt</span>
+        <span class="semaine__ref">2 Timothée 1.13-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20Soldat%2C%20athl%C3%A8te%2C%20laboureur%20%282%20Timoth%C3%A9e%202.1-7%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">Soldat, athlète, laboureur</span>
+        <span class="semaine__ref">2 Timothée 2.1-7<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../05%20-%20Souviens-toi%20de%20J%C3%A9sus-Christ%20%282%20Timoth%C3%A9e%202.8-13%29/index.html">
+        <span class="semaine__num">Semaine 5</span>
+        <span class="semaine__titre">Souviens-toi de Jésus-Christ</span>
+        <span class="semaine__ref">2 Timothée 2.8-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../06%20-%20Un%20ouvrier%20approuv%C3%A9%20%282%20Timoth%C3%A9e%202.14-19%29/index.html">
+        <span class="semaine__num">Semaine 6</span>
+        <span class="semaine__titre">Un ouvrier approuvé</span>
+        <span class="semaine__ref">2 Timothée 2.14-19<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../07%20-%20Un%20vase%20d%27honneur%20%282%20Timoth%C3%A9e%202.20-26%29/index.html">
+        <span class="semaine__num">Semaine 7</span>
+        <span class="semaine__titre">Un vase d'honneur</span>
+        <span class="semaine__ref">2 Timothée 2.20-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../08%20-%20Les%20derniers%20jours%20%282%20Timoth%C3%A9e%203.1-9%29/index.html">
+        <span class="semaine__num">Semaine 8</span>
+        <span class="semaine__titre">Les derniers jours</span>
+        <span class="semaine__ref">2 Timothée 3.1-9<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../09%20-%20Vivre%20pieusement%2C%20%C3%AAtre%20pers%C3%A9cut%C3%A9%20%282%20Timoth%C3%A9e%203.10-13%29/index.html">
+        <span class="semaine__num">Semaine 9</span>
+        <span class="semaine__titre">Vivre pieusement, être persécuté</span>
+        <span class="semaine__ref">2 Timothée 3.10-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../10%20-%20Toute%20%C3%89criture%20est%20inspir%C3%A9e%20de%20Dieu%20%282%20Timoth%C3%A9e%203.14-17%29/index.html">
+        <span class="semaine__num">Semaine 10</span>
+        <span class="semaine__titre">Toute Écriture est inspirée de Dieu</span>
+        <span class="semaine__ref">2 Timothée 3.14-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../11%20-%20Pr%C3%AAche%20la%20Parole%20%282%20Timoth%C3%A9e%204.1-5%29/index.html">
+        <span class="semaine__num">Semaine 11</span>
+        <span class="semaine__titre">Prêche la Parole</span>
+        <span class="semaine__ref">2 Timothée 4.1-5<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../12%20-%20J%27ai%20combattu%20le%20bon%20combat%20%282%20Timoth%C3%A9e%204.6-8%29/index.html">
+        <span class="semaine__num">Semaine 12</span>
+        <span class="semaine__titre">J'ai combattu le bon combat</span>
+        <span class="semaine__ref">2 Timothée 4.6-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../13%20-%20Le%20Seigneur%20%C3%A9tait%20%C3%A0%20mes%20c%C3%B4t%C3%A9s%20%282%20Timoth%C3%A9e%204.9-22%29/index.html">
+        <span class="semaine__num">Semaine 13</span>
+        <span class="semaine__titre">Le Seigneur était à mes côtés</span>
+        <span class="semaine__ref">2 Timothée 4.9-22<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;2 Timothée : Garde le dépôt&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Timothée 1 · N&#x27;aie point honte : le don ranimé et le bon dépôt gardé · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Timothée 1 dans la perspective de John MacArthur : N&#x27;aie point honte : le don ranimé et le bon dépôt gardé.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">2 Timothée 1</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">2 Timothée 1</span></p>
+    <h1 class="hero__title">N'aie point honte : le don ranimé et le bon dépôt gardé</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;N’aie donc point honte du témoignage à rendre à notre Seigneur, ni de moi son prisonnier. Mais souffre avec moi pour l’Evangile, par la puissance de Dieu;&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">2 Timothée 1.8 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 5 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">2 Timothée 1</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le chapitre 1 forme les deux premières parties de l'épître selon l'introduction de la <i>MacArthur Study Bible</i> : la salutation et l'action de grâces (1.1-⁠5), puis la persévérance de l'homme de Dieu, avec une exhortation (1.6-⁠11) et deux exemples, Paul (1.12-⁠14) et Onésiphore (1.15-⁠18). MacArthur y voit le testament de l'apôtre : du fond d'un cachot romain, peu avant son exécution, Paul passe le flambeau à Timothée, qui doit porter l'œuvre dans la génération suivante (55-⁠1, 55-⁠2).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Paul, apôtre de Jésus-Christ, par la volonté de Dieu, pour annoncer la promesse de la vie qui est en Jésus-Christ,</p><cite class="verse__ref">2 Timothée 1.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">à Timothée, mon enfant bien-aimé: Que la grâce, la miséricorde et la paix te soient données de la part de Dieu le Père et de Jésus-Christ notre Seigneur!</p><cite class="verse__ref">2 Timothée 1.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je rends grâces à Dieu, que mes ancêtres ont servi, et que je sers avec une conscience pure, de ce que nuit et jour je me souviens continuellement de toi dans mes prières,</p><cite class="verse__ref">2 Timothée 1.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">me rappelant tes larmes, et désirant te voir afin d’être rempli de joie,</p><cite class="verse__ref">2 Timothée 1.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">gardant le souvenir de la foi sincère qui est en toi, qui habita d’abord dans ton aïeule Loïs et dans ta mère Eunice, et qui, j’en suis persuadé, habite aussi en toi.</p><cite class="verse__ref">2 Timothée 1.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pourquoi je t’exhorte à ranimer la flamme du don de Dieu que tu as reçu par l’imposition de mes mains.</p><cite class="verse__ref">2 Timothée 1.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car ce n’est pas un esprit de timidité que Dieu nous a donné; au contraire, son Esprit nous remplit de force, d’amour et de sagesse.</p><cite class="verse__ref">2 Timothée 1.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">N’aie donc point honte du témoignage à rendre à notre Seigneur, ni de moi son prisonnier. Mais souffre avec moi pour l’Evangile, par la puissance de Dieu;</p><cite class="verse__ref">2 Timothée 1.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">il nous a sauvés, et nous a adressé une sainte vocation, non à cause de nos œuvres, mais selon son propre dessein, et selon la grâce qui nous a été donnée en Jésus-Christ avant les temps éternels,</p><cite class="verse__ref">2 Timothée 1.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">et qui a été manifestée maintenant par la venue de notre Sauveur Jésus-Christ, qui a réduit la mort à l’impuissance et a mis en évidence la vie et l’immortalité par l’Evangile.</p><cite class="verse__ref">2 Timothée 1.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pour cet Evangile que j’ai été établi prédicateur et apôtre, chargé d’instruire les païens.</p><cite class="verse__ref">2 Timothée 1.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et c’est à cause de cela que je souffre ces choses; mais je n’en ai point honte, car je sais en qui j’ai cru, et je suis persuadé qu’il a la puissance de garder mon dépôt jusqu’à ce jour-là.</p><cite class="verse__ref">2 Timothée 1.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Retiens dans la foi et dans l’amour qui est en Jésus-Christ le modèle des saines paroles que tu as reçues de moi.</p><cite class="verse__ref">2 Timothée 1.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Garde le bon dépôt, par le Saint-Esprit qui habite en nous.</p><cite class="verse__ref">2 Timothée 1.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Tu sais que tous ceux qui sont en Asie m’ont abandonné, entre autres Phygelle et Hermogène.</p><cite class="verse__ref">2 Timothée 1.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que le Seigneur répande sa miséricorde sur la maison d’Onésiphore, car il m’a souvent consolé, et il n’a pas eu honte de mes chaînes;</p><cite class="verse__ref">2 Timothée 1.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">au contraire, lorsqu’il est venu à Rome, il m’a cherché avec beaucoup d’empressement, et il m’a trouvé.</p><cite class="verse__ref">2 Timothée 1.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que le Seigneur lui donne d’obtenir miséricorde auprès du Seigneur en ce jour-là. Tu sais mieux que personne combien de services il m’a rendus à Ephèse.</p><cite class="verse__ref">2 Timothée 1.18 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire est celui de la lettre personnelle d'exhortation : MacArthur insiste sur son caractère privé, d'un homme de Dieu à un autre homme de Dieu, même si ses vérités ont dû parvenir à l'Église d'Éphèse (55-⁠3). Ce genre commande de lire les impératifs comme l'appel d'un père spirituel à un fils qui faiblit, et de tenir compte du ton : la lettre contient très peu d'éloges et une suite d'exhortations, ce qui laisse deviner un Timothée en train de se refroidir sans avoir rien abandonné (55-⁠2). L'introduction de la <i>MacArthur Study Bible</i> compte environ vingt-cinq impératifs dans l'épître.</p><p>MacArthur lit le chapitre comme une préparation aux exhortations des chapitres 2 à 4 : d'abord la motivation (1.1-⁠5), ensuite l'attitude qui doit sous-tendre tout ministère, ne pas avoir honte du Christ, que Paul nomme trois fois (1.8, 12, 16) (55-⁠2, 55-⁠3). Les cinq premiers versets portent six motivations : l'autorité, l'altruisme, la reconnaissance, la prière, l'affection et l'affirmation (55-⁠1, 55-⁠2). Les versets 6 à 18 donnent huit moyens de ne pas avoir honte : ranimer son don, considérer ses ressources, accepter la souffrance, se souvenir de son Dieu, comprendre son devoir, se fier à sa sécurité, affermir sa doctrine et choisir ses compagnons (55-⁠4).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">2 Timothée 1</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">MacArthur reconstitue ainsi la fin de la vie de Paul. Libéré de sa première captivité romaine, une résidence surveillée, l'apôtre retourne à Éphèse, y laisse Timothée pour redresser l'Église, puis écrit 1 Timothée; il voyage ensuite quelques années, sans doute en Macédoine, à Nicopolis, en Crète, à Milet et peut-être jusqu'en Espagne, MacArthur précisant qu'aucun récit ne le rapporte et qu'on le déduit de fragments (55-⁠1). En 64, Néron incendie Rome et en accuse les chrétiens; Paul, leur principal porte-parole, est arrêté, très probablement à Nicopolis, ramené à Rome et jeté dans un cachot (55-⁠1). L'introduction de la <i>MacArthur Study Bible</i> date la lettre d'environ 67, peu avant le martyre de Paul, cinq ou six ans après la première captivité (vers 60-⁠62) : un cachot froid (4.13), des chaînes (2.9), aucun espoir de libération (4.6), et l'abandon de presque tous (1.15; 4.9-⁠12, 16).</p><div class="body"><p>Selon MacArthur, Paul a alors soixante-six ou soixante-sept ans : il se disait déjà vieillard cinq ou six ans plus tôt (Philémon 9). Timothée en a trente-six ou trente-sept et se trouve encore à Éphèse, où il peine depuis trois à cinq ans à redresser l'Église (1.18; 4.12) (55-⁠1). Il doit affronter des conducteurs corrompus et des erreurs de toutes sortes à l'intérieur, et la persécution déclenchée par Néron à l'extérieur, à laquelle son lien avec Paul l'expose (55-⁠2, 55-⁠4). MacArthur tire de 1 Corinthiens 16.10 l'indice d'un caractère porté à la crainte (55-⁠2).</p><p>Dans la société de Timothée, Jésus n'était qu'un criminel crucifié et les chrétiens des insurgés accusés d'avoir brûlé Rome : être identifié au Christ pouvait être humiliant, et même mortel; être associé à Paul l'était tout autant (55-⁠3).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Le cachot de Paul à Rome (1.8, 16-⁠17).</b> MacArthur identifie le lieu de la seconde captivité à la prison Mamertine, dont il a visité les restes : un cachot circulaire creusé dans le sol, où l'on descendait les prisonniers par une ouverture du plafond (55-⁠1). C'est de là, selon lui, que Paul écrit sa dernière lettre, avant d'être décapité (55-⁠1, 55-⁠2). L'endroit était assez difficile à trouver pour qu'Onésiphore ait dû le chercher avec empressement (1.17; 55-⁠1, 55-⁠4).</li><li><b>Loïs, Eunice et la foi de Timothée (1.5).</b> MacArthur voit en Loïs et Eunice deux femmes juives pieuses, des saintes de l'Ancien Testament, amenées à Christ par Paul et Barnabas lors du premier voyage missionnaire en Galatie (Actes 14); lorsque Paul revient au deuxième voyage (Actes 16.1-⁠3), elles ont conduit Timothée à Christ (55-⁠1). Le père de Timothée était un Grec (Actes 16.1); MacArthur ajoute qu'il était mort (55-⁠1). Timothée est ainsi, en un sens, le fruit de la prédication antérieure de Paul (55-⁠1).</li><li><b>L'Asie et la maison d'Onésiphore (1.15-⁠18).</b> Le mot Asie désigne la province d'Asie Mineure, Éphèse et sa région (55-⁠1, 55-⁠4). Phygelle et Hermogène n'apparaissent nulle part ailleurs : MacArthur avoue ne rien savoir d'eux et suppose seulement qu'ils étaient connus de Timothée, peut-être des anciens (55-⁠4). La maison d'Onésiphore vivait à Éphèse, puisque Paul la salue en 4.19; Onésiphore était venu à Rome, peut-être pour affaires, peut-être expressément pour l'apôtre (55-⁠4). L'introduction de la <i>MacArthur Study Bible</i> note le peu de données sur ces personnages.</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">2 Timothée 1</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">2 Timothée 1.11</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>kērux kai apostolos kai didaskalos</i> (SBLGNT, Westcott et Hort, NA28, Nestle 1904, Tischendorf), ou <i>didaskalos ethnōn</i>, « docteur des nations » (Tregelles, texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« prédicateur et apôtre, chargé d’instruire les païens » : la NEG79 suit la leçon longue, comme la LSG et la Darby (« docteur des nations »); la S21 place l'ajout entre crochets (« [les non-Juifs] »), et la NBS suit la leçon courte (« héraut, apôtre et maître »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur commente la triade prédicateur, apôtre et docteur sans relever la variante; sa version anglaise suit le texte court (55-⁠4). Le sens demeure : Paul se présente comme héraut, envoyé et enseignant de l'Évangile; la mission envers les païens est attestée ailleurs (1 Timothée 2.7).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Timothée 1.17</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>spoudaiōs</i>, « avec empressement » (SBLGNT, Westcott et Hort, Tregelles, NA28, Nestle 1904, Tischendorf), ou le comparatif <i>spoudaioteron</i>, littéralement avec plus d'empressement (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« il m’a cherché avec beaucoup d’empressement » : la NEG79, la LSG et la S21 ont la même tournure, que l'une ou l'autre leçon peut fonder; la NBS (« avec empressement ») suit le positif, la Darby (« très soigneusement ») rend une intensité (texte seul).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Aucune incidence sur le sens : MacArthur souligne l'ardeur d'Onésiphore, qui a cherché Paul dans toute la ville jusqu'à le trouver (55-⁠4).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Timothée 1.1, 1.5 et 1.10</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Variantes mineures : <i>Christou Iēsou</i> (SBLGNT, Westcott et Hort, Tregelles, NA28) ou <i>Iēsou Christou</i> (texte byzantin) en 1.1; <i>labōn</i> (SBLGNT, Westcott et Hort, Tregelles, NA28) ou <i>lambanōn</i> (texte byzantin, Textus Receptus) en 1.5; <i>Iēsou Christou</i> (SBLGNT, texte byzantin, Textus Receptus) ou <i>Christou Iēsou</i> (Westcott et Hort, Tregelles, NA28, Nestle 1904) en 1.10.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« apôtre de Jésus-Christ » (1.1), « gardant le souvenir » (1.5) et « notre Sauveur Jésus-Christ » (1.10) : les versions françaises ne distinguent pas ces leçons, sauf la Darby en 1.1 (« apôtre de Jésus Christ ») et en 1.9 (« dans le Christ Jésus »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Aucune incidence sur le sens. En 1.10, la SBLGNT se range avec le texte byzantin contre Westcott et Hort et NA28.</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de 2 Timothée, LogosBible), lus aux dix-huit versets du chapitre</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante (1.1, 5, 10, 11, 17)</li><li>analyse morphologique : interlinéaire de Bible Hub</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues sur tout le chapitre</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Dix-huit versets dans toutes les éditions grecques et les versions consultées. Le grec place <i>kata dunamin theou</i> à la fin de 1.8, comme la NEG79 (« par la puissance de Dieu; ») et les autres versions; d'après bible.audio, la LSG reprend « par la puissance de Dieu » au début de 1.9, sans l'omettre en 1.8 (texte seul). En 1.7, la NEG79 rend la seconde moitié par « son Esprit nous remplit de force, d’amour et de sagesse », là où le grec, la LSG, la S21, la Darby et la NBS gardent la tournure « mais un esprit de ».</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">2 Timothée 1</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>2 Timothée</span> <span>1.1-⁠2</span></p><div class="plan__corps"><p class="plan__titre">La salutation : l'apôtre établi par la volonté de Dieu écrit à son enfant bien-aimé</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Paulos apostolos Christou Iēsou dia thelēmatos theou kat' epangelian zōēs</i> (1.1), <i>Timotheō agapētō teknō</i> et la triade <i>charis, eleos, eirēnē</i> (1.2).</p></div></li><li><p class="plan__ref"><span>2 Timothée</span> <span>1.3-⁠5</span></p><div class="plan__corps"><p class="plan__titre">L'action de grâces : le service d'une conscience pure, la prière constante, le désir de revoir Timothée et le souvenir de sa foi sincère</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Charin echō tō theō, hō latreuō</i> (1.3), participes <i>epipothōn</i> et <i>memnēmenos</i> (1.4), <i>hupomnēsin labōn tēs en soi anupokritou pisteōs</i> (1.5).</p></div></li><li><p class="plan__ref"><span>2 Timothée</span> <span>1.6-⁠7</span></p><div class="plan__corps"><p class="plan__titre">Ranimer le don de Dieu, car Dieu n'a pas donné un esprit de timidité, mais de force, d'amour et de sagesse</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>di' hēn aitian anamimnēskō se anazōpurein to charisma tou theou</i> (1.6), puis <i>ou gar edōken ... pneuma deilias, alla dunameōs kai agapēs kai sōphronismou</i> (1.7).</p></div></li><li><p class="plan__ref"><span>2 Timothée</span> <span>1.8-⁠10</span></p><div class="plan__corps"><p class="plan__titre">Ne pas avoir honte, mais souffrir pour l'Évangile selon la puissance du Dieu qui sauve, appelle et a manifesté sa grâce en Christ</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Mē oun epaischunthēs</i>, <i>alla sunkakopathēson tō euangeliō kata dunamin theou</i> (1.8), participes <i>tou sōsantos ... kai kalesantos</i> (1.9), <i>phanerōtheisan de nun</i> (1.10).</p></div></li><li><p class="plan__ref"><span>2 Timothée</span> <span>1.11-⁠12</span></p><div class="plan__corps"><p class="plan__titre">L'exemple de Paul : établi pour l'Évangile, il souffre sans honte, car il sait en qui il a cru</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>eis ho etethēn egō</i> (1.11), <i>all' ouk epaischunomai, oida gar hō pepisteuka</i> et <i>tēn parathēkēn mou phulaxai</i> (1.12).</p></div></li><li><p class="plan__ref"><span>2 Timothée</span> <span>1.13-⁠14</span></p><div class="plan__corps"><p class="plan__titre">Retenir le modèle des saines paroles et garder le bon dépôt par le Saint-Esprit</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Impératifs <i>hupotupōsin eche</i> (1.13) et <i>tēn kalēn parathēkēn phulaxon dia pneumatos hagiou</i> (1.14).</p></div></li><li><p class="plan__ref"><span>2 Timothée</span> <span>1.15-⁠18</span></p><div class="plan__corps"><p class="plan__titre">Deux groupes : ceux d'Asie qui ont abandonné Paul, et la maison d'Onésiphore, qui n'a pas eu honte de ses chaînes</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Oidas touto hoti apestraphēsan me pantes</i> (1.15), optatif <i>dōē eleos</i> (1.16, 18), <i>kai tēn halusin mou ouk epaischunthē</i> (1.16).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>2 Timothée 1.1-⁠5</dt><dd><i>Dia thelēmatos theou</i> fonde l'apostolat sur le vouloir de Dieu, que MacArthur décrit comme le désir profond de Dieu (55-⁠1); <i>kat' epangelian zōēs</i> en donne le but, annoncer la vie éternelle (55-⁠1). En 1.3, MacArthur suit l'ordre grec de <i>Charin echō</i>, la reconnaissance en tête, et rattache <i>latreuō</i> au service du temple : un culte rendu par le service (55-⁠1). Le complément <i>apo progonōn</i> reste indéterminé; MacArthur pense à tous ceux qui ont fidèlement servi Dieu avant Paul (55-⁠1). En 1.5, <i>hupomnēsin labōn</i> signifie, selon lui, « j'ai reçu un rappel », par la prière, le souvenir ou une lettre (55-⁠1).</dd></div><div><dt>2 Timothée 1.6-⁠7</dt><dd><i>Di' hēn aitian</i> renvoie à la foi sincère de 1.5 : parce que Timothée est un vrai croyant, il a un don (55-⁠2, 55-⁠3). L'infinitif présent <i>anazōpurein</i> marque, selon MacArthur, une action continue : ranimer sans cesse le feu (55-⁠2). <i>Ho estin en soi</i> situe le don à l'intérieur, une opération de la grâce (55-⁠2). En 1.7, l'aoriste <i>edōken</i> présente les ressources comme déjà données, et l'antithèse <i>ou ... alla</i> oppose la timidité aux trois génitifs <i>dunameōs kai agapēs kai sōphronismou</i> (55-⁠3). La NEG79 rend la seconde moitié par « son Esprit nous remplit », ce qui identifie l'esprit au Saint-Esprit; MacArthur rattache les trois ressources au Saint-Esprit reçu à la conversion (55-⁠3), décision d'interprétation.</dd></div><div><dt>2 Timothée 1.8</dt><dd>La défense <i>Mē oun epaischunthēs</i> est au subjonctif aoriste. MacArthur précise que Paul ne reproche pas à Timothée une honte déjà déclarée : il avait dérivé, et la tentation de la honte était là (55-⁠3). Le génitif <i>tou kuriou hēmōn</i> unit Paul et Timothée dans une même appartenance (55-⁠3), et <i>ton desmion autou</i> fait de Paul le prisonnier du Christ, non de Rome (55-⁠3). L'impératif aoriste <i>sunkakopathēson</i>, avec le datif <i>tō euangeliō</i>, appelle à prendre sa part des souffrances pour l'Évangile, et <i>kata dunamin theou</i> donne la mesure de cette souffrance (55-⁠3).</dd></div><div><dt>2 Timothée 1.9-⁠10</dt><dd>Les participes aoristes <i>tou sōsantos ... kai kalesantos</i>, au génitif, décrivent le Dieu dont la puissance soutient celui qui souffre : MacArthur y voit un abrégé de la doctrine du salut (55-⁠3). Il lit <i>klēsei hagia</i> comme un appel à la sainteté, l'appel efficace, non une invitation (55-⁠3). La double préposition <i>ou kata ta erga hēmōn alla kata idian prothesin kai charin</i> exclut toute contribution humaine, et <i>pro chronōn aiōniōn</i> signifie littéralement « avant les temps éternels » (55-⁠3). En 1.10, <i>phanerōtheisan de nun</i> oppose l'éternité à l'histoire, et le couple <i>katargēsantos men ... phōtisantos de</i> joint les deux effets de l'Évangile. MacArthur rapporte ici <i>epiphaneia</i> à la manifestation du Christ dans sa résurrection, alors que les quatre autres emplois des pastorales visent le retour (55-⁠3); Thayer y voit l'avènement déjà accompli du Christ et la lumière salutaire qu'il a répandue, décision d'interprétation.</dd></div><div><dt>2 Timothée 1.11-⁠14</dt><dd>En 1.11, <i>egō</i> est en position emphatique, et l'aoriste passif <i>etethēn</i> signifie qu'il a reçu une commission divine (55-⁠4). En 1.12, <i>oida</i> désigne une connaissance acquise par l'expérience, et le parfait <i>pepisteuka</i> une foi passée qui demeure (55-⁠4); le datif <i>hō</i> porte sur une personne, non sur un contenu (55-⁠4). Le génitif <i>tēn parathēkēn mou</i> peut désigner ce que Paul a confié ou ce qui lui a été confié : MacArthur y voit la vie de Paul déposée auprès de Dieu, puis en 1.14 la vérité que Dieu confie à Timothée (55-⁠4), décision d'interprétation. En 1.13, l'impératif présent <i>eche</i> signifie tenir fermement, et l'impératif aoriste <i>phulaxon</i> (1.14), garder à l'abri de la corruption (55-⁠4).</dd></div><div><dt>2 Timothée 1.15-⁠18</dt><dd>L'aoriste passif <i>apestraphēsan</i>, à sens moyen, signifie au sens littéral abandonner, déserter (55-⁠4). Les deux optatifs <i>dōē</i> (1.16, 18) expriment un vœu, et l'expression <i>en ekeinē tē hēmera</i> reprend « ce jour-là » de 1.12, que MacArthur rapporte au tribunal du Christ (55-⁠4). <i>Halusin</i>, littéralement la chaîne des menottes, s'étend à l'emprisonnement entier (55-⁠4).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">ranimer la flamme</a><a href="#mot-2">timidité</a><a href="#mot-3">sagesse</a><a href="#mot-4">avoir honte</a><a href="#mot-5">dépôt</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">ranimer la flamme</h3><p class="mot__translit">anazōpurein (anazōpureō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>rallumer, raviver le feu</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en donne l'étymologie : <i>zōpuron</i>, les restes d'un feu, les braises, ou ce qui rallume le feu, le soufflet; d'où rallumer, ranimer; au figuré, enflammer l'esprit, la force ou le zèle, comme chez Xénophon d'un cheval excité à son maximum; en 2 Timothée 1.6, le don, c'est-à-dire l'esprit de 1.7; à l'intransitif, se rallumer, reprendre force (Genèse 45.27 dans la Septante; Clément de Rome).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur voit un Timothée qui se refroidit, dont le feu baisse sans s'être éteint, et lit l'infinitif présent comme un appel continu : rallumer le feu et le garder vivant, l'envers positif de l'ordre de ne pas éteindre l'Esprit (1 Thessaloniciens 5.19) (55-⁠2). Il rapproche la mort quotidienne à soi-même dont Paul parle en 1 Corinthiens 15.31 (55-⁠2). Le don, <i>charisma</i>, est un don de grâce que l'Esprit distribue souverainement et qu'on ne peut rechercher (1 Corinthiens 12.11) (55-⁠2). « La première sauvegarde contre la honte du Christ, c'est de renouveler ton don. C'est la discipline du ministère » (55-⁠2). Sa lecture s'accorde avec le sens figuré de Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> ranime la flamme du don de Dieu</li><li><b>NEG79</b> ranimer la flamme du don de Dieu</li><li class="ecart"><b>Darby</b> ranimer le don de grâce de Dieu</li><li class="ecart"><b>LSG</b> ranimer le don de Dieu</li><li class="ecart"><b>NBS</b> ranimer la flamme du don de la grâce</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">timidité</h3><p class="mot__translit">deilias (deilia)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>timidité, lâcheté</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : timidité, crainte, lâcheté (2 Timothée 1.7), chez Sophocle, Hérodote, Euripide et Thucydide. Il cite Trench sur les synonymes : <i>deilia</i> se prend toujours en mauvaise part, <i>phobos</i> est un terme moyen, et <i>eulabeia</i> se prend surtout en bonne part.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur relève que c'est le seul emploi du mot dans le Nouveau Testament et le définit comme la lâcheté, la crainte, l'embarras, la honte, la faiblesse et la fragilité (55-⁠3). « Dieu ne t'a pas donné des dons pour t'équiper ensuite de lâcheté » (55-⁠3). Toute faiblesse de Timothée vient de ce qu'il ne puise pas dans les ressources déjà déposées en lui; un serviteur timide peut conclure que cela vient du péché, non de Dieu (55-⁠3). Sa lecture correspond au sens défavorable que Thayer donne au mot.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> un esprit de timidité</li><li><b>NEG79</b> un esprit de timidité</li><li class="ecart"><b>Darby</b> un esprit de crainte</li><li><b>LSG</b> un esprit de timidité</li><li class="ecart"><b>NBS</b> un esprit de lâcheté</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">sagesse</h3><p class="mot__translit">sōphronismou (sōphronismos)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>maîtrise de soi, bon sens</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : 1. l'action d'appeler quelqu'un au bon sens, à la modération et à la maîtrise de soi (Josèphe, Plutarque); 2. la maîtrise de soi, la modération : <i>pneuma sōphronismou</i>, 2 Timothée 1.7; il signale que Huther, dans ses dernières éditions, prend le mot au sens transitif de correction, que rend la Revised Version (<i>discipline</i>).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur note que le mot n'apparaît qu'ici dans le Nouveau Testament et le définit comme la maîtrise de soi devant la louange ou la douleur : la sagesse appliquée à chaque circonstance, une vie ordonnée qui sait ses priorités, sans battre l'air (1 Corinthiens 9.26) (55-⁠3). Cette discipline ne s'apprend ni à l'université ni au séminaire : c'est un don du Saint-Esprit à ceux qui marchent selon lui (55-⁠3). Avec la force et l'amour, elle forme une ressource divine, non une aptitude naturelle (55-⁠3). Sa lecture suit le second sens de Thayer; la Darby (« conseil ») et la NBS (« pondération ») en donnent d'autres nuances.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> sagesse</li><li><b>NEG79</b> sagesse</li><li class="ecart"><b>Darby</b> conseil</li><li><b>LSG</b> sagesse</li><li class="ecart"><b>NBS</b> pondération</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">avoir honte</h3><p class="mot__translit">epaischunthēs (epaischunomai)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>avoir honte de, rougir de</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : avoir honte, le préfixe marquant ce dont on a honte; absolument en 2 Timothée 1.12; d'une personne (Marc 8.38; Luc 9.26); d'une chose (Romains 1.16; 2 Timothée 1.8, 16); suivi d'un infinitif (Hébreux 2.11), ou d'une personne et d'un infinitif (Hébreux 11.16).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Le verbe revient trois fois (1.8, 12, 16) et donne, selon MacArthur, le thème de 1.6-⁠18; en positif, c'est le courage hardi de parler du Christ (55-⁠2, 55-⁠3). Il en montre la gravité par trois textes que Thayer cite aussi : Marc 8.38, où le Fils de l'homme aura honte de celui qui a eu honte de lui; Hébreux 2.11, où le Christ n'a pas honte d'appeler les siens ses frères; et Hébreux 11.16, où Dieu n'a pas honte d'être appelé leur Dieu (55-⁠2). Avoir honte du Christ, comme pratique de vie, est le péché qui marque les non-régénérés; le croyant qui en a honte agit comme eux (55-⁠2). Pierre l'a fait, et a été restauré (55-⁠2). Sa lecture rejoint les emplois relevés par Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> N’aie donc pas honte</li><li><b>NEG79</b> N’aie donc point honte</li><li class="ecart"><b>Darby</b> N’aie donc pas honte</li><li><b>LSG</b> N’aie donc point honte</li><li class="ecart"><b>NBS</b> N'aie donc pas honte</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">dépôt</h3><p class="mot__translit">parathēkēn (parathēkē)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>dépôt, bien confié à la garde d'un autre</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : un dépôt, une chose confiée à la garde fidèle de quelqu'un; employé de la juste connaissance et de la pure doctrine de l'Évangile, à garder fermement et à transmettre fidèlement : 2 Timothée 1.12, où il lit <i>mou</i> comme un génitif possessif, le dépôt qui m'a été confié, ainsi que 1 Timothée 6.20 et 2 Timothée 1.14 (Lévitique 6.2, 4 dans la Septante).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur distingue deux dépôts : en 1.12, Paul a déposé sa vie auprès de Dieu, son âme, son ministère, son temps et son éternité, et il est persuadé que Dieu est assez puissant pour la garder jusqu'au tribunal du Christ (55-⁠4); « j'ai déposé Paul », lui fait-il dire (55-⁠4). En 1.14, Dieu confie à Timothée le trésor de la vérité, sa Parole, qu'il doit garder comme 1 Timothée 6.20 le demandait déjà (55-⁠4). Pour 1.12, sa lecture diffère de celle de Thayer, qui y voit la doctrine confiée à Paul : c'est une décision d'interprétation, que suit la Darby (« ce que je lui ai confié »), alors que la S21 et la NBS suivent l'autre sens et que la NEG79 garde l'ambiguïté du grec.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> le dépôt qu’il m’a confié</li><li><b>NEG79</b> mon dépôt</li><li class="ecart"><b>Darby</b> ce que je lui ai confié</li><li><b>LSG</b> mon dépôt</li><li class="ecart"><b>NBS</b> ce qui m'a été confié</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">2 Timothée 1</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans quatre sermons prêchés de mai à juin 1987 (55-⁠1 à 55-⁠4), John MacArthur lit le chapitre 1 comme le début du testament de Paul : « C'est son chant du cygne. C'est le testament final de l'apôtre Paul » (55-⁠1). Toute l'épître est un appel à la force dans le service spirituel face à l'opposition, résumé en 2.1 (55-⁠1, 55-⁠2). Le premier chapitre prépare cet appel : la motivation (1.1-⁠5), puis l'attitude, le courage de ne pas avoir honte du Christ (1.6-⁠18) (55-⁠3).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-2-timothee-1-1-5-six-motivations-pour-un-fils-spirituel"><span class="sommaire__ref">2 Timothée 1.1-⁠5</span><span class="sommaire__lib">Six motivations pour un fils spirituel</span></a></li><li><a href="#t2-2-timothee-1-6-7-ranimer-le-don-et-considerer-ses-ressources"><span class="sommaire__ref">2 Timothée 1.6-⁠7</span><span class="sommaire__lib">Ranimer le don et considérer ses ressources</span></a></li><li><a href="#t3-2-timothee-1-8-10-accepter-la-souffrance-et-se-souvenir-de-son-dieu"><span class="sommaire__ref">2 Timothée 1.8-⁠10</span><span class="sommaire__lib">Accepter la souffrance et se souvenir de son Dieu</span></a></li><li><a href="#t4-2-timothee-1-11-14-le-devoir-la-securite-et-la-doctrine"><span class="sommaire__ref">2 Timothée 1.11-⁠14</span><span class="sommaire__lib">Le devoir, la sécurité et la doctrine</span></a></li><li><a href="#t5-2-timothee-1-15-18-choisir-ses-compagnons"><span class="sommaire__ref">2 Timothée 1.15-⁠18</span><span class="sommaire__lib">Choisir ses compagnons</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : quatre sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : quatre sermons Grace to You sur 2 Timothée 1.1 à 1.18 (55-⁠1 à 55-⁠4, série « 2 Timothy », mai à juin 1987) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">55-1</span></th><td><a href="https://www.gty.org/sermons/55-1" target="_blank" rel="noopener">Motivating a Spiritual Son</a></td><td>2 Ti 1.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">55-2</span></th><td><a href="https://www.gty.org/sermons/55-2" target="_blank" rel="noopener">Not Being Ashamed of Christ, Part 1</a></td><td>2 Ti 1.6</td></tr><tr><th scope="row"><span class="mot-fr">55-3</span></th><td><a href="https://www.gty.org/sermons/55-3" target="_blank" rel="noopener">Not Being Ashamed of Christ, Part 2</a></td><td>2 Ti 1.7-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">55-4</span></th><td><a href="https://www.gty.org/sermons/55-4" target="_blank" rel="noopener">Not Being Ashamed of Christ, Part 3</a></td><td>2 Ti 1.11-⁠18</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-2-timothee-1-1-5-six-motivations-pour-un-fils-spirituel"><span class="intertitre__ref">2 Timothée 1.1-⁠5</span>Six motivations pour un fils spirituel</h3><p>Paul ne dit pas à Timothée de se fortifier; il l'y amène par six motivations implicites (55-⁠1). L'autorité d'abord : Paul écrit en apôtre établi par la volonté de Dieu, car « l'intimité n'exclut jamais l'autorité » (55-⁠1). L'altruisme ensuite : il souhaite à Timothée la grâce, la miséricorde et la paix, et fait du Père et du Christ une même source (55-⁠1). La reconnaissance : il rend grâces à Dieu, qu'il sert avec une conscience qui ne l'accuse de rien, si bien qu'il ne meurt pas pour un péché (55-⁠1). La prière : il se souvient de Timothée sans cesse, nuit et jour (55-⁠1). L'affection : il désire ardemment le revoir et se souvient de ses larmes, sans doute lors de leur dernière rencontre (55-⁠1). L'affirmation enfin : la foi de Timothée est sans hypocrisie, et ses racines plongent dans celle de Loïs et d'Eunice (55-⁠1). MacArthur en tire une leçon sur les grands hommes de Dieu : « Ils ne sont pas mus par l'ambition; ils sont mus par la mission » (55-⁠1). Il écarte au passage les critiques qui nient que Paul ait écrit les pastorales (55-⁠1).</p><h3 class="intertitre" id="t2-2-timothee-1-6-7-ranimer-le-don-et-considerer-ses-ressources"><span class="intertitre__ref">2 Timothée 1.6-⁠7</span>Ranimer le don et considérer ses ressources</h3><p>MacArthur prend Pierre pour l'exemple classique de la honte : il a renié Jésus trois fois, mais a été restauré et est devenu le prédicateur hardi de la Pentecôte (Matthieu 26.69-⁠75; Jean 21.15-⁠19; Actes 2) (55-⁠2). « Pierre, honteux du Christ, était inutile. [...] Comment proclamer ce dont on a honte? » (55-⁠2). Le premier moyen de ne pas avoir honte est de ranimer son don : savoir ce qu'on est appelé à faire. Chaque croyant a reçu un don à sa conversion, une combinaison de catégories de dons que MacArthur compare aux couleurs d'une palette, et ce don est inséparable du ministère où il se révèle; les dons de signes, eux, ont cessé avec l'époque apostolique (55-⁠2). L'imposition des mains de Paul, jointe à celle des anciens et aux prophéties (1 Timothée 1.18; 4.14), rappelait à Timothée sa responsabilité envers Dieu, envers l'Église et envers Paul (55-⁠2). « Le courage naît du sentiment d'avoir reçu un don » : celui qui sait pourquoi il est là ne cherche pas à se protéger (55-⁠3, 55-⁠4). Le deuxième moyen est de considérer ses ressources : Dieu n'a pas donné la lâcheté, mais la puissance de l'Esprit (Actes 1.8; Éphésiens 1.18-⁠20), l'amour de Dieu répandu dans le cœur (Romains 5.5), qui chasse la crainte (1 Jean 4.18), et une discipline qui ordonne toute la vie (Galates 5.23) (55-⁠3).</p><h3 class="intertitre" id="t3-2-timothee-1-8-10-accepter-la-souffrance-et-se-souvenir-de-son-dieu"><span class="intertitre__ref">2 Timothée 1.8-⁠10</span>Accepter la souffrance et se souvenir de son Dieu</h3><p>Le troisième moyen est d'accepter la souffrance : « Tu dois être programmé pour le rejet » (55-⁠3). Quiconque veut vivre pieusement sera persécuté (3.12); les croyants qui ne le sont jamais n'affrontent pas le monde où ils vivent, et l'évangile qui promet une vie sans problèmes n'est pas l'Évangile (55-⁠3). MacArthur dénonce le message de la santé et de la prospérité, qui prépare à l'effondrement quand la souffrance vient (55-⁠4). Il s'agit de souffrir pour l'Évangile, non pour son péché (1 Pierre 4.14-⁠16) (55-⁠3). Le quatrième moyen est de se souvenir de son Dieu : 1.8-⁠10 forme « l'une des plus grandes déclarations de toute l'Écriture sur la doctrine du salut » (55-⁠3). Dieu nous a sauvés, nous a appelés à la sainteté, et l'a fait sans nos œuvres, selon son dessein et sa grâce, avant les temps éternels, ce qui suppose aussi la préexistence éternelle du Christ (55-⁠3). Dans l'histoire, il a manifesté ce plan par la résurrection du Christ, qui a rendu la mort impuissante sans la supprimer (55-⁠3). D'où la conclusion : « Le Dieu qui peut te sauver est le Dieu qui peut te garder », et « celui qui nous a sauvés sans notre aide peut aussi nous garder sans notre aide » (55-⁠3).</p><h3 class="intertitre" id="t4-2-timothee-1-11-14-le-devoir-la-securite-et-la-doctrine"><span class="intertitre__ref">2 Timothée 1.11-⁠14</span>Le devoir, la sécurité et la doctrine</h3><p>Le cinquième moyen est de comprendre son devoir : Paul a été établi, il n'a pas choisi, et il souffre parce qu'il fait ce devoir (Actes 20.24; 1 Corinthiens 9.16) (55-⁠4). « Le prédicateur, c'est la fonction; l'apôtre, l'autorité; le docteur, le contenu » (55-⁠4). Un devoir accompli est la plus grande joie, un devoir négligé détruit l'homme (55-⁠4). Le sixième moyen est de se fier à sa sécurité : Paul connaît par expérience celui en qui il a cru, et « ce n'est pas en quoi j'ai cru, c'est en qui j'ai cru »; ce qui le soutient n'est pas sa théologie, mais son Dieu (55-⁠4). Il lui a confié sa vie jusqu'au jour du tribunal du Christ, qui suit, selon MacArthur, l'enlèvement de l'Église (Romains 14.10; 2 Corinthiens 5.10) (55-⁠4). Le septième moyen est d'affermir sa doctrine : « la raison pour laquelle la plupart des gens n'ont pas le courage de leurs convictions, c'est qu'ils n'ont pas de convictions » (55-⁠4). Timothée doit tenir le modèle des saines paroles dans la foi, sans douter, et dans l'amour, sans maltraiter : ni une orthodoxie qui doute, ni une orthodoxie morte (55-⁠4). L'Église est la gardienne de la vérité, et ce dépôt est la responsabilité la plus sacrée du ministre (55-⁠4).</p><h3 class="intertitre" id="t5-2-timothee-1-15-18-choisir-ses-compagnons"><span class="intertitre__ref">2 Timothée 1.15-⁠18</span>Choisir ses compagnons</h3><p>Le huitième moyen est de choisir ses compagnons, car la mauvaise compagnie corrompt les bonnes mœurs (1 Corinthiens 15.33) (55-⁠4). MacArthur dit avoir longtemps cherché comment ces versets s'intégraient au passage, avant de comprendre que Paul y range les hommes en deux groupes : ceux qui ont honte et ceux qui n'ont pas honte (55-⁠4). Ceux d'Asie, avec Phygelle et Hermogène, ont abandonné Paul dès son arrestation pour ne pas partager son sort, comme Pierre près du feu; Paul les nomme publiquement au lieu de taire leur défection au nom de l'amour (55-⁠4). Onésiphore, au contraire, l'a souvent réconforté, n'a pas eu honte de ses chaînes et l'a cherché dans Rome jusqu'à le trouver; Paul demande pour lui la miséricorde au jour des récompenses (55-⁠4). MacArthur conclut par l'exemple de Luther à Worms et par l'exhortation d'Ézéchias, qui oppose au bras de chair de l'Assyrien l'Éternel qui combat pour son peuple (2 Chroniques 32.7-⁠8), source d'une hardiesse que Dieu seul donne (55-⁠4).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>2 Timothée 1.8, 12, 16.</b> La triple reprise de <i>epaischunomai</i>, à propos de Timothée, de Paul et d'Onésiphore, fonde la lecture de 1.6-⁠18 comme une seule unité sur le courage de ne pas avoir honte du Christ (55-⁠2, 55-⁠3, 55-⁠4).</li><li><b>2 Timothée 1.6-⁠7.</b> Le <i>gar</i> de 1.7 rattache le don à ranimer aux ressources déjà données (<i>edōken</i>), ce qui permet à MacArthur de passer du don aux moyens de l'exercer : puissance, amour et discipline (55-⁠3).</li><li><b>2 Timothée 1.9.</b> L'opposition <i>ou kata ta erga hēmōn alla kata idian prothesin kai charin</i> fonde l'argument de MacArthur : le Dieu qui a tout accompli sans nous peut aussi nous garder sans nous (55-⁠3, 55-⁠4).</li><li><b>2 Timothée 1.10.</b> Le couple <i>katargēsantos ... ton thanaton</i> et <i>phōtisantos ... zōēn kai aphtharsian</i> soutient la lecture d'une mort rendue impuissante, non supprimée, et rattache la manifestation à la résurrection (55-⁠3).</li><li><b>2 Timothée 1.12 et 1.14.</b> La reprise de <i>parathēkē</i> avec <i>phulaxai</i> puis <i>phulaxon</i> permet à MacArthur de distinguer deux dépôts qui vont en sens inverse : la vie de Paul confiée à Dieu, la vérité confiée à Timothée (55-⁠4).</li><li><b>2 Timothée 1.15-⁠16.</b> Le contraste entre <i>apestraphēsan me pantes</i> et <i>tēn halusin mou ouk epaischunthē</i> fonde la lecture des deux groupes, ceux qui ont honte et ceux qui n'ont pas honte (55-⁠4).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Timothée 6.20</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Paul demandait déjà à Timothée de garder le dépôt : MacArthur y voit le même trésor de la vérité qu'en 1.14, que l'Église doit garder et transmettre (55-⁠4).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Timothée 4.14</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Le don reçu par prophétie et par l'imposition des mains de l'assemblée des anciens : MacArthur joint cette imposition à celle de Paul (1.6) et y voit une confirmation qui engage Timothée envers Dieu, l'Église et l'apôtre (55-⁠2).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Marc 8.38</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le Fils de l'homme aura honte de quiconque aura eu honte de lui et de ses paroles : MacArthur en conclut qu'avoir honte du Christ, comme pratique de vie, marque les non-régénérés (55-⁠2).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Hébreux 2.11</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le Christ n'a pas honte d'appeler frères ceux qu'il sanctifie : MacArthur en tire que nous ne pouvons avoir honte de celui qui n'a pas honte de nous, malgré nos fautes (55-⁠2).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Hébreux 2.14-⁠15</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Par sa mort, le Christ a rendu impuissant celui qui avait la puissance de la mort : MacArthur s'en sert pour expliquer que la mort, en 1.10, est rendue impuissante sans disparaître (55-⁠3).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Jean 21.15-⁠19</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Pierre, qui avait renié Jésus trois fois, confesse trois fois son amour et reçoit la charge de paître les brebis : MacArthur y voit la restauration d'un serviteur rendu inutile par la honte (55-⁠2).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 119.46</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Le psalmiste parlera des préceptes de Dieu devant les rois sans rougir : MacArthur place Timothée dans la longue lignée des hommes de Dieu qui n'ont pas eu honte de sa vérité (55-⁠3).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Chroniques 32.7-⁠8</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Ézéchias exhorte Juda à être fort devant l'Assyrie, car celui qui est avec nous est plus grand : MacArthur y voit la source du courage auquel Paul appelle Timothée (55-⁠4).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Quatre axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">Ne pas avoir honte du Christ et souffrir pour l'Évangile</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul demande à Timothée de ne pas avoir honte du témoignage à rendre au Seigneur ni de lui, son prisonnier, mais de souffrir avec lui pour l'Évangile; lui-même n'a pas honte, et Onésiphore n'a pas eu honte de ses chaînes (1.8, 12, 16).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur voit dans le courage de confesser le Christ la marque normale du croyant : la honte du Christ, comme pratique de vie, caractérise les non-régénérés, et le croyant qui y cède agit comme eux; la persécution accompagne la fidélité à l'Évangile (55-⁠2, 55-⁠3). Rattachement : sotériologie (la foi qui confesse le Christ) et sanctification (la souffrance du croyant) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le psalmiste parle devant les rois sans rougir (Psaume 119.46); Jésus avertit que le Fils de l'homme aura honte de ceux qui ont eu honte de lui (Marc 8.38); Pierre, restauré, prêche avec hardiesse (Jean 21; Actes 2); le Christ n'a pas honte de nous appeler frères (Hébreux 2.11) (55-⁠2, 55-⁠3).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant se prépare à l'opposition au lieu de chercher une vie confortable, et la reçoit comme le signe qu'il dit vrai (55-⁠3, 55-⁠4).</p></div></div></section><section class="theme"><h3 class="theme__title">Le salut selon la puissance, le dessein et la grâce de Dieu</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Dieu nous a sauvés et nous a adressé une sainte vocation, non à cause de nos œuvres, mais selon son propre dessein et selon la grâce donnée en Jésus-Christ avant les temps éternels, manifestée par la venue du Sauveur qui a réduit la mort à l'impuissance (1.9-⁠10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur y lit un abrégé complet de la doctrine du salut : l'élection avant la fondation du monde, l'appel efficace à la sainteté, la grâce sans les œuvres, la préexistence éternelle du Christ et sa résurrection qui ôte à la mort sa puissance; il en tire la sécurité du croyant, gardé par celui qui l'a sauvé (55-⁠3). Rattachement : sotériologie (l'élection, l'appel efficace, la persévérance) et christologie (la préexistence et la résurrection) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Dieu a choisi les siens avant la fondation du monde et sauve par grâce, sans les œuvres (Éphésiens 2.8-⁠9; Tite 3.5); si la mort du Christ nous a sauvés, sa vie nous garde (Romains 5.10); la mort perd son aiguillon (1 Corinthiens 15.55-⁠57) (55-⁠3).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le serviteur n'a pas à organiser sa vie pour se protéger : il peut s'abandonner à sa cause, puisque Dieu, qui l'a sauvé sans lui, le gardera sans lui (55-⁠3, 55-⁠4).</p></div></div></section><section class="theme"><h3 class="theme__title">Le don de grâce et les ressources de l'Esprit</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Timothée doit ranimer la flamme du don de Dieu reçu par l'imposition des mains de Paul, car Dieu n'a pas donné un esprit de timidité, mais de force, d'amour et de sagesse (1.6-⁠7).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur enseigne que chaque croyant reçoit de l'Esprit, à sa conversion, un don qu'il doit exercer, que les dons de signes ont cessé avec l'époque apostolique, et que la puissance, l'amour et la maîtrise de soi sont des ressources de l'Esprit, non des aptitudes naturelles (55-⁠2, 55-⁠3). Rattachement : pneumatologie (les dons spirituels et le fruit de l'Esprit) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>L'Esprit distribue les dons comme il veut (1 Corinthiens 12.11; Romains 12.3); il donne la puissance (Actes 1.8), répand l'amour de Dieu (Romains 5.5) et produit la maîtrise de soi (Galates 5.23) (55-⁠2, 55-⁠3).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant timide ne manque pas de ressources : il doit les mettre en œuvre en marchant selon l'Esprit et en exerçant le don qu'il a reçu (55-⁠3).</p></div></div></section><section class="theme"><h3 class="theme__title">Le dépôt gardé : la vie confiée à Dieu et la vérité confiée à l'Église</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul sait en qui il a cru et est persuadé que Dieu a la puissance de garder son dépôt jusqu'à ce jour-là; il demande à Timothée de retenir le modèle des saines paroles et de garder le bon dépôt par le Saint-Esprit (1.12-⁠14).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur distingue la vie du croyant, que Dieu garde jusqu'au tribunal du Christ, et la vérité de l'Écriture, que l'Église doit garder de toute corruption et transmettre; il tient cette garde pour la responsabilité la plus sacrée du ministre (55-⁠4). Rattachement : sotériologie (la sécurité du croyant), bibliologie (la saine doctrine) et eschatologie (le tribunal du Christ) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Paul demandait déjà à Timothée de garder le dépôt (1 Timothée 6.20); Jésus déclare que nul ne ravira ses brebis de sa main (Jean 10.28); Dieu peut préserver les siens de toute chute (Jude 24); chacun comparaîtra au tribunal du Christ (2 Corinthiens 5.10) (55-⁠3, 55-⁠4).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant confie sa vie à Dieu sans crainte et tient sa doctrine avec foi et amour, ni dans le doute ni dans une orthodoxie froide (55-⁠4).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Parmi les six motivations de 1.1-⁠5, laquelle manque le plus dans notre manière d'encourager ceux que nous formons, et laquelle nous vient le plus naturellement (55-⁠1)?</li><li>Où, à l'école, au travail ou en famille, avons-nous gardé le silence alors que nous aurions dû parler du Christ, et qu'est-ce qui nous a retenus (55-⁠2)?</li><li>Si le courage naît du sentiment d'avoir reçu un don (55-⁠3), que savons-nous du don que Dieu nous a confié, et l'exerçons-nous vraiment?</li><li>Notre prédication prépare-t-elle les croyants à l'opposition, ou leur promet-elle une vie sans difficultés (55-⁠3, 55-⁠4)?</li><li>Comment la certitude que Dieu nous a sauvés sans notre aide change-t-elle notre peur des conséquences d'un témoignage fidèle (1.9; 55-⁠3)?</li><li>Avons-nous des convictions assez fermes pour en avoir le courage, et les tenons-nous avec foi et amour plutôt qu'avec doute ou froideur (1.13; 55-⁠4)?</li><li>De quel groupe nos amitiés et nos fréquentations nous rapprochent-elles : celui de Phygelle et d'Hermogène, ou celui d'Onésiphore (1.15-⁠18; 55-⁠4)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 2 Timothée 1 · 5 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-2-Timothee-1.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

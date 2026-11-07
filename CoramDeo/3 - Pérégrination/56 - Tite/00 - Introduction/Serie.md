@@ -1,0 +1,104 @@
+# Série expositive : Tite
+
+**La grâce qui forme un peuple zélé pour les bonnes œuvres**
+
+2026-06-15 · Simon Ouellette
+
+---
+
+## Niveau de source
+
+Niveau 1 pour 8 unités sur 8, sermons Grace to You (codes dans la colonne Source, tirés de l'archive par Écriture).
+
+## Introduction au livre
+
+Tite est une courte épître pastorale de trois chapitres et quarante-six versets. La lettre se découpe d'elle-même en unités de sens nettes, ce qui permet de couvrir l'intégralité du texte, de la salutation (1.1-4) à la bénédiction finale (3.15), sans lacune ni chevauchement, en unités de quatre à dix versets. Huit unités épousent la structure naturelle du livre: salutation, anciens, faux docteurs, vie sainte par groupes, cœur doctrinal de la grâce, vie dans le monde et fondement du salut, gestion des divisions, instructions finales. Le fil maître, énoncé par MacArthur, est la formation des Églises pour une évangélisation efficace: une grâce souveraine qui sauve et qui enseigne produit un peuple dont la sainteté rend l'Évangile crédible. Aucune dérive topique: c'est une exposition consécutive, livre par livre.
+
+## Structure de l'argument
+
+Après une salutation qui résume le ministère de Paul (1.1-4), le corps de la lettre expose les composantes d'une évangélisation efficace (1.5 à 3.11), avant la conclusion (3.12-14) et la bénédiction (3.15). L'insistance sur Dieu et Christ comme Sauveur (1.3-4; 2.10, 13; 3.4, 6) et sur le plan du salut (2.11-14) donne l'orientation : former les Églises de Crète pour qu'elles gagnent leurs voisins païens.
+
+Le corps parcourt trois cercles : parmi les responsables, des anciens qualifiés (1.5-9) face aux faux docteurs à réduire au silence (1.10-16); dans l'Église, une vie sainte pour chaque groupe (2.1-10) fondée sur la grâce qui sauve et enseigne (2.11-15); dans le monde, une conduite soumise et paisible (3.1-3) fondée sur le salut par la régénération et la justification (3.4-7), avec ses applications (3.8-11). Chaque fois, la doctrine du salut vient appuyer l'exhortation, et la conduite a pour but de rendre crédible l'Évangile devant ceux du dehors (2.5, 2.8, 2.10).
+
+## Découpage en unités d'exposition
+
+| No | Passage | Base du découpage | Titre | Propos central | Source |
+|---|---|---|---|---|---|
+| 1 | **Tite 1.1-4** | Salutation épistolaire complète (auteur, destinataire, bénédiction de 1.4), close avant « Je t'ai laissé en Crète » (1.5); bornes identiques chez MacArthur, qui y consacre quatre sermons (GTY 56-1 à 56-4). | Serviteur des élus de Dieu | Le ministère de Paul résume tout l'Évangile: Dieu sauve ses élus, les sanctifie par sa Parole et les amène à la gloire. | GTY 56-1, 56-2, 56-3, 56-4 |
+| 2 | **Tite 1.5-9** | « Je t'ai laissé en Crète » (1.5) ouvre le mandat d'établir des anciens, dont la liste de qualités s'achève sur « réfuter les contradicteurs » (1.9); bornes identiques chez MacArthur (GTY 56-5 à 56-9). | Des anciens irréprochables | La santé d'une Église dépend de responsables qualifiés par leur caractère et leur attachement à la vraie parole, non par leurs talents. | GTY 56-5, 56-6, 56-7, 56-8, 56-9 |
+| 3 | **Tite 1.10-16** | « En effet » (1.10) rattache aux contradicteurs de 1.9 le portrait des faux docteurs, clos par leur reniement dans les œuvres (1.16); bornes identiques chez MacArthur (GTY 56-10 et 56-11). | Fermer la bouche aux faux docteurs | Les faux docteurs se trahissent par leurs œuvres: faire profession de connaître Dieu et le renier par sa conduite, c'est démontrer une foi qui n'existe pas. | GTY 56-10, 56-11 |
+| 4 | **Tite 2.1-10** | « Pour toi, dis » (2.1) oppose Tite aux faux docteurs et ouvre les consignes par groupes, closes par leur finalité « faire honorer en tout la doctrine » (2.10); bornes identiques chez MacArthur (GTY 56-12 à 56-17). | La saine doctrine appliquée | La vérité saine produit une vie saine dans chaque groupe de l'Église, afin que la parole de Dieu ne soit pas calomniée. | GTY 56-12, 56-13, 56-14, 56-15, 56-16, 56-17 |
+| 5 | **Tite 2.11-15** | « Car la grâce de Dieu » (2.11) donne le fondement des consignes, et « Dis ces choses » (2.15) clôt la section en reprenant l'ordre de 2.1; bornes identiques chez MacArthur (GTY 56-18 à 56-22). | La grâce qui enseigne | La grâce qui sauve est la même qui enseigne à renoncer à l'impiété et à attendre, dans la sainteté, la bienheureuse espérance. | GTY 56-18, 56-19, 56-20, 56-21, 56-22, 80-133, 80-182, 90-350 |
+| 6 | **Tite 3.1-7** | « Rappelle-leur » (3.1) passe à la conduite dans le monde, fondée sur le salut par grâce jusqu'à « héritiers dans l'espérance de la vie éternelle » (3.7); MacArthur coupe autrement (GTY 56-23, 3.1-2; 56-24, 3.3-8) et reprend 3.4-7 dans un sermon distinct (GTY 56-25). | Il nous a sauvés | Sauvés non à cause de nos œuvres mais par la régénération de l'Esprit, justifiés par grâce, nous sommes faits héritiers de la vie éternelle. | GTY 56-23, 56-24, 56-25 |
+| 7 | **Tite 3.8-11** | « Cette parole est certaine » (3.8) scelle l'exposé du salut et en tire l'application (bonnes œuvres, discussions à fuir, homme de division) jusqu'à 3.11; MacArthur rattache 3.8 à GTY 56-24 et commence son dernier sermon à 3.9 (GTY 56-26). | Bonnes œuvres et fauteurs de troubles | Le peuple racheté s'applique aux bonnes œuvres et écarte les querelles vaines, retranchant après deux avertissements celui qui sème la division. | GTY 56-24, 56-26 |
+| 8 | **Tite 3.12-15** | Consignes de voyage (Artémas, Tychique, Zénas, Apollos), dernier appel aux bonnes œuvres (3.14) et salutations finales (3.15); MacArthur les prêche avec 3.9-11 (GTY 56-26), la fin coïncidant. | Ne pas être sans fruit | Jusque dans les détails de la vie missionnaire, les croyants apprennent à pratiquer de bonnes œuvres pour ne pas demeurer sans fruit. | GTY 56-26 |
+
+## Textes exigeants
+
+### Tite 1.6
+
+**Difficulté**
+
+« Des enfants fidèles » : l'ancien doit-il avoir des enfants simplement obéissants, ou des enfants croyants? Et qu'en est-il d'enfants encore jeunes?
+
+**Lecture retenue**
+
+Le mot traduit « fidèles » désigne toujours des croyants dans le Nouveau Testament : ce sont des enfants qui croient et vivent selon ce qu'ils croient. « Débauche » et « rebelles » visent surtout des enfants déjà grands; de jeunes enfants doivent être tenus dans l'ordre et affirmer, à leur mesure, la vérité qu'on leur enseigne. La famille est le lieu où l'homme a déjà fait la preuve de sa conduite spirituelle.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 56-6; Niveau 3, note sur Tt 1.6
+
+### Tite 2.11
+
+**Difficulté**
+
+« La grâce de Dieu, source de salut pour tous les hommes » semble promettre le salut universel et soulève la question de l'étendue de l'expiation.
+
+**Lecture retenue**
+
+Paul n'enseigne pas l'universalisme : « tous les hommes » désigne l'humanité comme catégorie. Le sacrifice de Christ est suffisant pour le monde mais efficace pour ceux qui croient, et qui démontrent ainsi qu'ils sont les élus de Dieu; tous les hommes en reçoivent néanmoins des bienfaits temporels, dont le sursis du jugement et l'offre sincère de l'Évangile. Pour le pécheur, la seule question posée est celle de la foi.
+
+**Niveau de source**
+
+Niveau 1, sermons GTY 56-18 et 56-19; Niveau 3, note sur Tt 2.11
+
+### Tite 2.13
+
+**Difficulté**
+
+« Notre grand Dieu et Sauveur Jésus-Christ » : un seul titre donné à Christ, ou deux personnes? Et la « bienheureuse espérance » est-elle un événement distinct de la « manifestation de la gloire »?
+
+**Lecture retenue**
+
+Un seul article régit les deux noms, le pronom singulier du v. 14 reprend tout le titre, et le Père n'est jamais associé à l'apparition du Fils : le texte affirme la divinité de Christ. La bienheureuse espérance est l'apparition de Christ lui-même; Paul ne sépare pas ici l'enlèvement du retour, que l'eschatologie distingue par ailleurs, mais embrasse tout l'avènement qui délivrera les croyants de la présence du péché.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 56-20; Niveau 3, note sur Tt 2.13
+
+### Tite 3.5
+
+**Difficulté**
+
+« Le bain de la régénération » est souvent lu comme le baptême d'eau, instrument du salut.
+
+**Lecture retenue**
+
+Le bain est la purification que Dieu opère dans la nouvelle naissance : il lave la vie morte et donne la vie nouvelle, par sa Parole et par le renouvellement du Saint-Esprit. Tout y est l'œuvre de Dieu, selon sa miséricorde, « non à cause des œuvres de justice que nous aurions faites ».
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 56-25; Niveau 3, note sur Tt 3.5
+
+## Notes de mise en œuvre
+
+**Cadence**
+
+Huit semaines, à raison d'une prédication par semaine, couvrent l'intégralité de Tite de 1.1 à 3.15, sans lacune ni chevauchement, en unités de quatre à dix versets.
+
+**Calibrage des unités**
+
+La semaine 6 (Tite 3.1-7) est doctrinalement dense: le bain de la régénération de 3.5 doit être prêché comme la purification opérée par l'Esprit dans la nouvelle naissance, et la justification de 3.7 présentée comme un verdict forensique par la foi seule. La semaine 5 (Tite 2.11-15) est aussi théologiquement chargée: bien situer tous les hommes (l'humanité comme catégorie) et présenter la bienheureuse espérance comme le retour glorieux et littéral de Christ. Les semaines 2 et 3 touchent au complémentarisme et à la discipline: les traiter sans fléchir, en laissant le texte gouverner.
+
+<!-- source_hash: 16fb98438c6a0f55 -->

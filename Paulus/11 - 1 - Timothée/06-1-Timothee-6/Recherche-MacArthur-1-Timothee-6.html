@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Timothée 6 · Le travail, le contentement et l&#x27;homme de Dieu qui garde le dépôt · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Timothée 6 dans la perspective de John MacArthur : Le travail, le contentement et l&#x27;homme de Dieu qui garde le dépôt.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">1 Timothée 6</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">1 Timothée 6</span></p>
+    <h1 class="hero__title">Le travail, le contentement et l'homme de Dieu qui garde le dépôt</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;O Timothée, garde le dépôt, en évitant les discours vains et profanes, et les disputes de la fausse science&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">1 Timothée 6.20 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 5 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">1 Timothée 6</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le chapitre 6 achève la cinquième partie de l'épître et contient toute la sixième selon l'introduction de la <i>MacArthur Study Bible</i> : les responsabilités envers les esclaves (6.1-⁠2) clôturent les devoirs pastoraux envers les membres (5.1-⁠6.2), puis viennent les instructions sur l'homme de Dieu, au sujet du faux enseignement (6.3-⁠5), de l'argent (6.6-⁠10), du caractère et de la motivation du serviteur (6.11-⁠16), des richesses (6.17-⁠19) et de la vérité (6.20-⁠21). MacArthur relève que Paul dénonce trois fois les faux docteurs dans l'épître (1.3-⁠7; 4.1-⁠5; 6.3-⁠10) et qu'il fait suivre chaque fois l'exhortation adressée à Timothée d'un rappel de son appel (1.18; 4.14; 6.12) (54-⁠47).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Que tous ceux qui sont sous le joug de l’esclavage regardent leurs maîtres comme dignes de tout honneur, afin que le nom de Dieu et la doctrine ne soient pas calomniés.</p><cite class="verse__ref">1 Timothée 6.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et que ceux qui ont des fidèles pour maîtres ne les méprisent pas, sous prétexte qu’ils sont frères; mais qu’ils les servent d’autant mieux que ce sont des fidèles et des bien-aimés qui s’attachent à leur faire du bien. Enseigne ces choses et recommande-les.</p><cite class="verse__ref">1 Timothée 6.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Si quelqu’un enseigne de fausses doctrines, et ne s’attache pas aux saines paroles de notre Seigneur Jésus-Christ et à la doctrine qui est selon la piété,</p><cite class="verse__ref">1 Timothée 6.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">il est enflé d’orgueil, il ne sait rien; il a la maladie des questions oiseuses et des disputes de mots, d’où naissent l’envie, les querelles, les calomnies, les mauvais soupçons,</p><cite class="verse__ref">1 Timothée 6.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">les vaines discussions d’hommes corrompus d’entendement, privés de la vérité, et croyant que la piété est une source de gain.</p><cite class="verse__ref">1 Timothée 6.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est, en effet, une grande source de gain que la piété avec le contentement;</p><cite class="verse__ref">1 Timothée 6.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">car nous n’avons rien apporté dans le monde, et il est évident que nous n’en pouvons rien emporter;</p><cite class="verse__ref">1 Timothée 6.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">si donc nous avons la nourriture et le vêtement, cela nous suffira.</p><cite class="verse__ref">1 Timothée 6.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais ceux qui veulent s’enrichir tombent dans la tentation, dans le piège, et dans beaucoup de désirs insensés et pernicieux qui plongent les hommes dans la ruine et la perdition.</p><cite class="verse__ref">1 Timothée 6.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car l’amour de l’argent est une racine de tous les maux; et quelques-uns, en étant possédés, se sont égarés loin de la foi, et se sont jetés eux-mêmes dans bien des tourments.</p><cite class="verse__ref">1 Timothée 6.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Pour toi, homme de Dieu, fuis ces choses, et recherche la justice, la piété, la foi, l’amour, la patience, la douceur.</p><cite class="verse__ref">1 Timothée 6.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Combats le bon combat de la foi, saisis la vie éternelle, à laquelle tu as été appelé, et pour laquelle tu as fait une belle confession en présence d’un grand nombre de témoins.</p><cite class="verse__ref">1 Timothée 6.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je te recommande, devant Dieu qui donne la vie à toutes choses, et devant Jésus-Christ qui fit une belle confession devant Ponce Pilate,</p><cite class="verse__ref">1 Timothée 6.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">de garder le commandement, et de vivre sans tache, sans reproche, jusqu’à l’apparition de notre Seigneur Jésus-Christ,</p><cite class="verse__ref">1 Timothée 6.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">que manifestera en son temps le bienheureux et seul souverain, le Roi des rois et le Seigneur des seigneurs,</p><cite class="verse__ref">1 Timothée 6.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">qui seul possède l’immortalité, qui habite une lumière inaccessible, que nul homme n’a vu ni ne peut voir, à qui appartiennent l’honneur et la puissance éternelle. Amen!</p><cite class="verse__ref">1 Timothée 6.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Recommande aux riches du présent siècle de ne pas être orgueilleux, et de ne pas mettre leur espérance dans des richesses incertaines, mais de la mettre en Dieu, qui nous donne avec abondance toutes choses pour que nous en jouissions.</p><cite class="verse__ref">1 Timothée 6.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">Recommande-leur de faire du bien, d’être riches en bonnes œuvres, d’avoir de la libéralité, de la générosité,</p><cite class="verse__ref">1 Timothée 6.18 · NEG</cite></figure><figure class="verse"><p class="verse__text">et de s’amasser ainsi pour l’avenir un trésor placé sur un fondement solide, afin de saisir la vie véritable.</p><cite class="verse__ref">1 Timothée 6.19 · NEG</cite></figure><figure class="verse"><p class="verse__text">O Timothée, garde le dépôt, en évitant les discours vains et profanes, et les disputes de la fausse science</p><cite class="verse__ref">1 Timothée 6.20 · NEG</cite></figure><figure class="verse"><p class="verse__text">dont font profession quelques-uns, qui se sont ainsi détournés de la foi. Que la grâce soit avec vous!</p><cite class="verse__ref">1 Timothée 6.21 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire est celui de l'instruction pastorale conclusive, où alternent les ordres, une description polémique des adversaires, une doxologie et une charge solennelle. Ce genre commande de lire chaque section comme un correctif, puisque Paul traite des sujets abusés à Éphèse, et la doxologie comme le fondement des ordres : selon MacArthur, la motivation au devoir spirituel tient à la nature du Dieu qu'on sert (54-⁠46, 54-⁠48).</p><p>Le chapitre suit trois mouvements : la conduite des serviteurs, qui engage le nom de Dieu et la doctrine (6.1-⁠2); le contraste entre les faux docteurs, qui font de la piété une source de gain, et l'homme de Dieu, qui fuit l'amour de l'argent, poursuit la piété, combat le bon combat et garde le commandement jusqu'à l'apparition du Christ, sous le regard du Dieu souverain (6.3-⁠16); enfin, les deux trésors à gérer, les richesses et la vérité, avant la brève salutation finale (6.17-⁠21) (54-⁠49, 54-⁠50).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">1 Timothée 6</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">MacArthur demande de ne pas lire « esclave » et « maître » à partir de l'esclavage racial de l'histoire américaine, qu'il qualifie de totalement inacceptable (54-⁠43). Il soutient que, dans l'Ancien Testament et dans une grande partie du monde gréco-romain du premier siècle, l'esclavage était surtout un emploi domestique sous contrat : la loi limitait le service d'un Hébreu à six ans (Exode 21.2; Deutéronome 15.12), punissait de mort l'enlèvement (Exode 21.16) et libérait l'esclave blessé; il cite Joachim Jeremias, selon qui un esclave juif ne devait pas laver les pieds, et Tenney Frank, selon qui un esclave domestique, nourri, logé et vêtu, recevait plus qu'un journalier libre (54-⁠43). Il reconnaît des abus, notamment romains, mais estime que ni l'Ancien Testament ni les apôtres n'appellent à renverser le système; ils visent le cœur (54-⁠43, 54-⁠44).</p><div class="body"><p>Éphèse était une cité prospère, et l'Église comptait des maîtres et des croyants aisés (54-⁠49). Pour l'autarcie de 6.6, MacArthur rappelle que les Cyniques et les Stoïciens en faisaient la maîtrise de soi face aux circonstances (54-⁠46). Il voit dans la doxologie de 6.15-⁠16 une réponse consciente au culte impérial, qui divinisait les Césars après leur mort (54-⁠48). Quant au « dépôt » de 6.20, il le relie à l'usage du mot <i>phulassō</i> pour des objets de valeur gardés en lieu sûr, et note que <i>bebēlos</i> désignait d'abord ce qui était hors de l'enceinte sacrée d'un temple (54-⁠50). Enfin, Paul a laissé Timothée à Éphèse en partant pour la Macédoine (1.3), et MacArthur termine ce dernier sermon, le 3 mai 1987, en annonçant qu'il prêchera ensuite 2 Timothée, étroitement liée à la première lettre (54-⁠49, 54-⁠50).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>L'autarcie des philosophes (6.6).</b> Le mot <i>autarkeia</i>, cher aux Cyniques et aux Stoïciens, désignait l'homme qui se suffit à lui-même, insensible aux circonstances. MacArthur montre que Paul le sanctifie : le contentement chrétien repose sur la suffisance de Dieu et du Christ (2 Corinthiens 3.5; 9.8; Philippiens 4.11-⁠13, 19), non sur la seule maîtrise de soi (54-⁠46).</li><li><b>L'esclavage domestique dans le monde biblique (6.1-⁠2).</b> Selon MacArthur, l'esclave était le plus souvent un serviteur de maison, gérant, artisan ou précepteur, lié par un contrat qui assurait le gîte, le couvert et un pécule; les travaux des champs revenaient surtout à des journaliers (Matthieu 20.1-⁠7) (54-⁠43). Il en conclut que « esclave » et « maître » se transposent aujourd'hui en « employé » et « employeur » (54-⁠43, 54-⁠44).</li><li><b>Le culte impérial et la doxologie (6.15-⁠16).</b> Le monde romain divinisait les empereurs défunts. MacArthur lit les titres de Dieu en 6.15-⁠16, seul souverain, Roi des rois, seul à posséder l'immortalité, comme une réplique à ce culte : il n'y a qu'un seul Dieu, monarque absolu (54-⁠48).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">1 Timothée 6</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">1 Timothée 6.5</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Le verset s'achève sur <i>porismon einai tēn eusebeian</i> (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, NA28), ou ajoute <i>Aphistaso apo tōn toioutōn</i>, « éloigne-toi de tels hommes » (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« croyant que la piété est une source de gain » : la NEG79 suit le texte court, comme la LSG, la Darby et la NBS; la S21 place l'ajout entre crochets (« [Éloigne-toi de telles personnes.] »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur signale que sa version anglaise porte cet ordre, mais que les manuscrits plus anciens ne l'ont pas et qu'un copiste l'a sans doute ajouté (54-⁠45). Le sens général demeure, puisque 6.11 et 6.20 commandent de fuir et d'éviter.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 6.7 et 6.17</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 6.7, <i>hoti oude exenenkein ti dunametha</i> (SBLGNT, Nestle 1904, Westcott et Hort, NA28) ou <i>dēlon hoti</i>, « il est évident que » (texte byzantin, Textus Receptus); en 6.17, <i>epi theō</i> (texte critique) ou <i>en tō theō tō zōnti</i>, « dans le Dieu vivant » (texte byzantin).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« et il est évident que nous n’en pouvons rien emporter » (6.7) : la NEG79 suit ici le texte byzantin, comme la LSG et la Darby; la S21 met « [il est évident que] » entre crochets et la NBS suit le texte court (« comme d'ailleurs »). En 6.17, la NEG79 lit « en Dieu », et la S21 « dans le Dieu [vivant] ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">En 6.7, MacArthur lit « et il est certain » et note qu'on peut traduire de plusieurs manières (54-⁠46); en 6.17, il précise que « vivant » ne figure pas dans les manuscrits originaux (54-⁠49). Aucune des deux leçons ne change le sens.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 6.19</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hina epilabōntai tēs ontōs zōēs</i>, « la vie véritable » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, NA28), ou <i>tēs aiōniou zōēs</i>, « la vie éternelle » (texte byzantin, Église orthodoxe grecque, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« afin de saisir la vie véritable » : la NEG79 suit le texte critique, comme la LSG, la Darby (« ce qui est vraiment la vie ») et la NBS (« la vraie vie »); la S21 suit le texte byzantin (« la vie éternelle »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur lit « the real life » : saisir dès maintenant la vraie vie en vivant pour l'éternité (54-⁠49). La leçon byzantine reprend l'expression de 6.12; les deux leçons convergent, puisque la vie véritable est la vie éternelle.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 6.21</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>Hē charis meth' humōn</i>, « la grâce soit avec vous » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, NA28), ou <i>meta sou. Amēn</i>, « avec toi. Amen » (texte byzantin, Textus Receptus, qui ajoute une souscription situant la rédaction à Laodicée).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Que la grâce soit avec vous! » : la NEG79 suit le texte critique, comme la LSG et la NBS; la S21 et la Darby lisent « avec toi ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur souligne que le « vous » est pluriel : Paul englobe toute l'Église, à qui revient aussi la garde de la vérité, et la brièveté de la salutation, sans verbe, souligne le besoin de grâce (54-⁠50). Avec la leçon byzantine, la bénédiction vise Timothée seul.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 6.11 et 6.13</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Variantes mineures : <i>theou</i> ou <i>tou theou</i> et <i>praupathian</i> ou <i>praotēta</i> (texte byzantin) en 6.11; <i>zōogonountos</i> (texte critique) ou <i>zōopoiountos</i> (texte byzantin) en 6.13.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« la douceur » (6.11) et « Dieu qui donne la vie à toutes choses » (6.13); la Darby rend <i>praupathia</i> par « la douceur d’esprit » et 6.13 par « qui appelle toutes choses à l’existence ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Aucune incidence sur le sens. MacArthur lit en 6.13 « who makes all things alive » et y voit d'abord le Dieu qui ressuscite les morts (54-⁠47, 54-⁠48).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de 1 Timothée, LogosBible), lus aux vingt et un versets du chapitre</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante (6.5, 7, 11, 13, 17, 19, 21)</li><li>analyse morphologique : interlinéaire de Bible Hub</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com), lues sur tout le chapitre</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Vingt et un versets dans toutes les éditions grecques et les versions consultées. Deux différences de découpage dans la LSG : elle rattache « de garder le commandement » à la fin de 6.13, et « les disputes de la fausse science » au début de 6.21, alors que le grec et la NEG79 les placent respectivement en 6.14 et à la fin de 6.20.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">1 Timothée 6</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>1 Timothée</span> <span>6.1-⁠2</span></p><div class="plan__corps"><p class="plan__titre">Les serviteurs sous le joug : honorer le maître incroyant, et servir d'autant mieux le maître croyant</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Hosoi eisin hupo zugon douloi ... hēgeisthōsan</i>, finale <i>hina mē ... blasphēmētai</i> (6.1), <i>mē kataphroneitōsan ... alla mallon douleuetōsan</i> et <i>Tauta didaske kai parakalei</i> (6.2).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>6.3-⁠5</span></p><div class="plan__corps"><p class="plan__titre">La pathologie des faux docteurs : un autre enseignement, l'orgueil, l'ignorance, la maladie des disputes et l'amour du gain</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>ei tis heterodidaskalei kai mē proserchetai hugiainousi logois</i> (6.3), <i>tetuphōtai, mēden epistamenos, alla nosōn</i> (6.4) et <i>nomizontōn porismon einai tēn eusebeian</i> (6.5).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>6.6-⁠10</span></p><div class="plan__corps"><p class="plan__titre">Le vrai gain de la piété avec le contentement, et le danger de vouloir s'enrichir</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>estin de porismos megas hē eusebeia meta autarkeias</i> (6.6), <i>hoi de boulomenoi ploutein empiptousin</i> (6.9) et <i>rhiza gar pantōn tōn kakōn estin hē philarguria</i> (6.10).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>6.11-⁠12</span></p><div class="plan__corps"><p class="plan__titre">L'homme de Dieu fuit, poursuit, combat et saisit la vie éternelle</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Su de, ō anthrōpe theou</i>, impératifs <i>pheuge</i>, <i>diōke</i>, <i>agōnizou</i> et <i>epilabou tēs aiōniou zōēs</i>.</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>6.13-⁠16</span></p><div class="plan__corps"><p class="plan__titre">La charge solennelle de garder le commandement jusqu'à l'apparition du Christ, couronnée par la doxologie au seul Souverain</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>parangellō soi enōpion tou theou ... kai Christou Iēsou</i> (6.13), <i>tērēsai se tēn entolēn ... mechri tēs epiphaneias</i> (6.14), puis la suite de titres jusqu'à <i>hō timē kai kratos aiōnion, amēn</i> (6.15-⁠16).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>6.17-⁠19</span></p><div class="plan__corps"><p class="plan__titre">Les riches de ce siècle : ni orgueil ni espoir dans les richesses, mais générosité et trésor pour l'avenir</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Tois plousiois en tō nun aiōni parangelle mē hupsēlophronein</i> (6.17), quatre infinitifs du bien (6.18) et <i>hina epilabōntai tēs ontōs zōēs</i> (6.19).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>6.20-⁠21</span></p><div class="plan__corps"><p class="plan__titre">La charge finale de garder le dépôt et d'éviter la fausse connaissance, et la salutation</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Ō Timothee, tēn parathēkēn phulaxon, ektrepomenos</i> (6.20), <i>ēstochēsan</i> et <i>Hē charis meth' humōn</i> (6.21).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>1 Timothée 6.1-⁠2</dt><dd><i>Hupo zugon</i> est, selon MacArthur, une expression courante pour la relation de service, sans idée nécessaire d'abus (Matthieu 11.29) (54-⁠44). <i>Tous idious despotas</i>, « leurs propres maîtres », exprime un lien personnel, comme les « propres » maris d'Éphésiens 5.22 (54-⁠44). L'impératif présent <i>hēgeisthōsan</i> demande une estimation objective, non un sentiment (54-⁠44). En 6.2, <i>mē kataphroneitōsan</i> interdit de rabaisser le maître croyant au rang d'égal, et <i>mallon douleuetōsan</i> demande de le servir d'autant mieux (54-⁠44). MacArthur rapporte <i>hoi tēs euergesias antilambanomenoi</i> aux maîtres, qui bénéficient du bon service (54-⁠44).</dd></div><div><dt>1 Timothée 6.3-⁠5</dt><dd><i>Ei tis heterodidaskalei</i> est une condition de premier type que MacArthur rend « puisque certains enseignent autrement » (54-⁠45). <i>Mē proserchetai</i> (présent) décrit un refus durable des <i>hugiainousi logois</i>, les paroles « saines », d'où vient « hygiène » (54-⁠45). Le parfait passif <i>tetuphōtai</i> marque un état : enveloppé de sa propre fumée (54-⁠45). Le participe <i>nosōn</i> parle d'une maladie, et <i>diaparatribai</i>, double composé, d'un frottement mutuel incessant (54-⁠45). Le participe <i>apesterēmenōn</i> peut être moyen ou passif : ils se sont privés de la vérité, ou en ont été privés (54-⁠45).</dd></div><div><dt>1 Timothée 6.6-⁠10</dt><dd>La particule <i>de</i> de 6.6 reprend le mot <i>porismos</i> de 6.5 pour en inverser le sens : la piété accompagnée de contentement est un grand gain (54-⁠46). En 6.9, <i>hoi boulomenoi ploutein</i> décrit une décision réfléchie, et le présent <i>empiptousin</i> une chute répétée; <i>buthizousin</i> évoque un navire entraîné au fond (54-⁠46). En 6.10, <i>rhiza</i> est sans article : la NEG79 rend « une racine de tous les maux » (texte seul); MacArthur entend <i>pantōn tōn kakōn</i> au sens de « toutes sortes de maux » (54-⁠46). Le participe <i>oregomenoi</i>, « en étant possédés », peint ceux qui tendent la main vers l'argent (54-⁠46).</dd></div><div><dt>1 Timothée 6.11-⁠12</dt><dd><i>Su de, ō anthrōpe theou</i> oppose Timothée aux faux docteurs, et l'interjection <i>ō</i>, rare dans une adresse personnelle, exprime l'appel pressant de Paul (54-⁠47). Trois impératifs présents marquent des actions continues, <i>pheuge</i>, <i>diōke</i> et <i>agōnizou</i>, avec le jeu <i>agōnizou ton kalon agōna</i> (54-⁠47). L'impératif aoriste <i>epilabou</i> diffère des trois autres (texte seul); MacArthur le rend « empare-toi », c'est-à-dire vis à la lumière de l'éternité, et voit dans <i>eklēthēs</i> l'appel efficace au salut (54-⁠47).</dd></div><div><dt>1 Timothée 6.13-⁠16</dt><dd><i>Parangellō</i> introduit une charge prononcée devant Dieu, désigné par le participe présent <i>tou zōogonountos</i>, que MacArthur entend surtout de la résurrection, et devant le Christ qui a fait la belle confession devant Pilate (54-⁠47, 54-⁠48). L'infinitif aoriste <i>tērēsai</i> a pour complément <i>tēn entolēn</i>, le commandement, avec deux adjectifs, <i>aspilon anepilēmpton</i> (54-⁠47). En 6.15, le sujet de <i>deixei</i> est, selon MacArthur, Dieu le Père, puisque les titres suivants ne peuvent s'appliquer au Christ incarné (54-⁠48). Les participes <i>tōn basileuontōn</i> et <i>tōn kurieuontōn</i> donnent littéralement, comme la Darby, « le roi de ceux qui règnent et le seigneur de ceux qui dominent » (54-⁠48).</dd></div><div><dt>1 Timothée 6.17-⁠21</dt><dd>En 6.17, les infinitifs <i>mē hupsēlophronein mēde ēlpikenai</i> (parfait) visent l'orgueil et un espoir installé dans la richesse (54-⁠49). En 6.18, quatre termes forment ce que MacArthur appelle un entonnoir : faire le bien, être riche en œuvres bonnes, être généreux, partager (54-⁠49). En 6.20, l'impératif aoriste <i>phulaxon</i>, précédé de <i>ō Timothee</i>, et le participe présent <i>ektrepomenos</i> joignent la garde du dépôt à l'évitement continu de l'erreur (54-⁠50). En 6.21, la salutation est sans verbe et au pluriel, <i>meth' humōn</i> (54-⁠50).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">contentement</a><a href="#mot-2">l'amour de l'argent</a><a href="#mot-3">apparition</a><a href="#mot-4">souverain</a><a href="#mot-5">dépôt</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">contentement</h3><p class="mot__translit">autarkeias (autarkeia)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>le fait de se suffire</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : une condition parfaite de vie où aucune aide n'est requise (Platon; Aristote, pour qui c'est avoir tout et n'avoir besoin de rien); d'où une suffisance du nécessaire (2 Corinthiens 9.8); subjectivement, un esprit content de son sort, le contentement (1 Timothée 6.6).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur rappelle l'usage des Cyniques et des Stoïciens, la maîtrise de soi de l'homme que rien n'ébranle, et montre que Paul en fait une suffisance reçue de Dieu (2 Corinthiens 3.5; Philippiens 4.11-⁠13) (54-⁠46). « La richesse ne dépend pas de ce qu'on possède, mais de ce dont on se contente »; il cite Épicure, pour qui le secret n'est pas d'ajouter aux biens mais de retrancher aux désirs, et Proverbes 30.8-⁠9 (54-⁠46). Sa lecture correspond au sens subjectif de Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> quand on se contente de ce que l’on a</li><li><b>NEG79</b> le contentement</li><li><b>Darby</b> le contentement</li><li><b>LSG</b> le contentement</li><li class="ecart"><b>NBS</b> si l'on se contente de ce qu'on a</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">l'amour de l'argent</h3><p class="mot__translit">philarguria</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>amour de l'argent (métal)</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : l'amour de l'argent, l'avarice (1 Timothée 6.10, seul emploi du Nouveau Testament; Isocrate, Polybe, Plutarque, 4 Maccabées 1.26).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur le rend « affection pour l'argent » : le danger n'est pas l'argent, mais l'attachement qu'on lui porte, comme une arme chargée qui peut servir ou tuer (54-⁠46). Parce que celui qui aime l'argent ne s'arrête devant rien, il n'est aucun péché qui ne puisse en sortir; MacArthur propose cinq tests : penser plus au gain qu'au travail bien fait, n'en avoir jamais assez, aimer l'étaler, regretter de donner, pécher pour l'obtenir (54-⁠46). On peut aimer l'argent sans en avoir, et en avoir sans l'aimer (54-⁠46). Sa lecture rejoint Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> l’amour de l’argent</li><li><b>NEG79</b> l’amour de l’argent</li><li><b>Darby</b> l’amour de l’argent</li><li><b>LSG</b> l’amour de l’argent</li><li class="ecart"><b>NBS</b> l'amour de l'argent</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">apparition</h3><p class="mot__translit">epiphaneias (epiphaneia)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>manifestation éclatante</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : une apparition; chez les Grecs, la manifestation glorieuse des dieux venus secourir; dans le Nouveau Testament, l'avènement du Christ, celui qui a déjà eu lieu (2 Timothée 1.10) et son retour glorieux du ciel sur la terre (1 Timothée 6.14; 2 Timothée 4.1, 8; Tite 2.13; 2 Thessaloniciens 2.8).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur y voit le déploiement visible et glorieux du Christ à son retour sur la terre pour établir son royaume, qu'il distingue de l'enlèvement de l'Église, plus discret (54-⁠48). Ce sera la justification du Christ, que la terre a jugé digne de mort, et de ceux qui sont à lui, qui paraîtront avec lui dans la gloire (Colossiens 3.4; 1 Jean 3.2) (54-⁠48). Le moment appartient au Père (Marc 13.32; Actes 1.7), et l'Église vit dans l'attente (54-⁠48). Sa lecture suit le second emploi de Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> l’apparition</li><li><b>NEG79</b> l’apparition</li><li><b>Darby</b> l’apparition</li><li><b>LSG</b> l’apparition</li><li class="ecart"><b>NBS</b> la manifestation</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">souverain</h3><p class="mot__translit">dunastēs</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>celui qui détient la puissance</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : puissant; un prince, un potentat (Luc 1.52), employé de Dieu (Siracide 46.5; 2 Maccabées 15.3, 23; 1 Timothée 6.15); un haut dignitaire de cour (Actes 8.27).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur rattache le mot au groupe de <i>dunamis</i> : une puissance inhérente, non déléguée, que Dieu seul possède; il n'a pas de rival, et Satan lui-même n'est pas à son niveau (54-⁠48). Il en tire le réconfort de la souveraineté : « Dieu est en charge de tout », ce qui libère de l'anxiété, de la manipulation et du compromis, et il dit qu'il ferait « le pire arminien du monde » (54-⁠48). Il joint à ce titre ceux de 6.15-⁠16 : bienheureux, Roi de ceux qui règnent, seul immortel, habitant une lumière inaccessible (Deutéronome 10.17; Daniel 2.47) (54-⁠48). Sa lecture correspond au premier sens de Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> seul souverain</li><li><b>NEG79</b> seul souverain</li><li><b>Darby</b> seul Souverain</li><li><b>LSG</b> seul souverain</li><li><b>NBS</b> seul Souverain</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">dépôt</h3><p class="mot__translit">parathēkēn (parathēkē)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>ce qui est confié en garde</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : un dépôt, une chose confiée à la garde fidèle d'autrui (Vulgate <i>depositum</i>); employé de la connaissance exacte et de la doctrine pure de l'Évangile, à tenir fermement et à transmettre fidèlement (1 Timothée 6.20; 2 Timothée 1.12, 14); la forme <i>parakatathēkē</i> est plus courante chez les auteurs grecs.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur le rend « le dépôt » : la vérité confiée à Timothée, que <i>phulassō</i> présente comme un bien précieux gardé en lieu sûr (54-⁠50). « Le message chrétien n'est pas quelque chose que le ministre invente », il ne peut ni le réduire ni l'enrichir; et l'on ne peut tordre l'Écriture sans tordre Dieu, puisqu'elle est sa propre révélation (54-⁠50). Il relit toute l'épître comme un appel à garder la vérité (1.3, 19; 3.2; 4.6, 16; 5.17; 6.3, 12) (54-⁠50). Sa lecture rejoint Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> le dépôt qui t’a été confié</li><li><b>NEG79</b> le dépôt</li><li class="ecart"><b>Darby</b> ce qui t’a été confié</li><li><b>LSG</b> le dépôt</li><li class="ecart"><b>NBS</b> ce qui t'a été confié</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">1 Timothée 6</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans huit sermons prêchés de février à mai 1987 (54-⁠43 à 54-⁠50), John MacArthur lit le chapitre 6 comme la conclusion d'une épître consacrée au devoir : Paul y traite encore de sujets abusés à Éphèse, le travail, l'erreur, l'argent, les richesses, puis ramasse tout dans la charge de garder la vérité (54-⁠46, 54-⁠49, 54-⁠50).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-1-timothee-6-1-2-le-serviteur-chretien-et-son-maitre"><span class="sommaire__ref">1 Timothée 6.1-⁠2</span><span class="sommaire__lib">Le serviteur chrétien et son maître</span></a></li><li><a href="#t2-1-timothee-6-3-10-la-pathologie-de-l-erreur-et-le-danger-de-l-argent"><span class="sommaire__ref">1 Timothée 6.3-⁠10</span><span class="sommaire__lib">La pathologie de l'erreur et le danger de l'argent</span></a></li><li><a href="#t3-1-timothee-6-11-16-l-homme-de-dieu-et-le-dieu-qu-il-sert"><span class="sommaire__ref">1 Timothée 6.11-⁠16</span><span class="sommaire__lib">L'homme de Dieu et le Dieu qu'il sert</span></a></li><li><a href="#t4-1-timothee-6-17-21-gerer-les-tresors-les-richesses-et-la-verite"><span class="sommaire__ref">1 Timothée 6.17-⁠21</span><span class="sommaire__lib">Gérer les trésors : les richesses et la vérité</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : huit sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : huit sermons Grace to You sur 1 Timothée 6.1 à 6.21 (54-⁠43 à 54-⁠50, série « 1 Timothy », février à mai 1987) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">54-43</span></th><td><a href="https://www.gty.org/sermons/54-43" target="_blank" rel="noopener">The Conscientious Christian Employee, Part 1</a></td><td>1 Ti 6.1</td></tr><tr><th scope="row"><span class="mot-fr">54-44</span></th><td><a href="https://www.gty.org/sermons/54-44" target="_blank" rel="noopener">The Conscientious Christian Employee, Part 2</a></td><td>1 Ti 6.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">54-45</span></th><td><a href="https://www.gty.org/sermons/54-45" target="_blank" rel="noopener">The Pathology of False Teachers</a></td><td>1 Ti 6.3-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">54-46</span></th><td><a href="https://www.gty.org/sermons/54-46" target="_blank" rel="noopener">The Danger in Loving Money</a></td><td>1 Ti 6.6-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">54-47</span></th><td><a href="https://www.gty.org/sermons/54-47" target="_blank" rel="noopener">The Man of God</a></td><td>1 Ti 6.11-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">54-48</span></th><td><a href="https://www.gty.org/sermons/54-48" target="_blank" rel="noopener">A Solemn Call to Spiritual Duty</a></td><td>1 Ti 6.13-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">54-49</span></th><td><a href="https://www.gty.org/sermons/54-49" target="_blank" rel="noopener">Handling Treasure, Part 1</a></td><td>1 Ti 6.17-⁠19</td></tr><tr><th scope="row"><span class="mot-fr">54-50</span></th><td><a href="https://www.gty.org/sermons/54-50" target="_blank" rel="noopener">Handling Treasure, Part 2</a></td><td>1 Ti 6.20-⁠21</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-1-timothee-6-1-2-le-serviteur-chretien-et-son-maitre"><span class="intertitre__ref">1 Timothée 6.1-⁠2</span>Le serviteur chrétien et son maître</h3><p>MacArthur part d'une théologie du travail : l'homme a été créé pour travailler avant la chute (Genèse 2.15), et « le travail ne fait pas partie de la malédiction, la sueur en fait partie » (54-⁠44). Tout travail est un devoir sacré, car il devient l'arène où le chrétien vit sa foi devant le monde; il cite Tyndale : il y a une différence entre laver la vaisselle et prêcher la Parole, mais pour ce qui est de plaire à Dieu, il n'y en a aucune (54-⁠44). Le serviteur d'un maître incroyant le juge digne de tout honneur, sans se croire supérieur, pour que le nom de Dieu et la doctrine ne soient pas blasphémés, même si ce maître est injuste (1 Pierre 2.18-⁠23) (54-⁠44). Le serviteur d'un maître croyant ne profite pas de la fraternité pour effacer l'autorité, mais le sert d'autant mieux; les croyants et bien-aimés, dit MacArthur, regardent de l'homme vers Dieu et sont aimés de Dieu (54-⁠44). La récompense éternelle tient aussi à la manière de travailler (Éphésiens 6.5-⁠8; Colossiens 3.22-⁠25) (54-⁠44).</p><h3 class="intertitre" id="t2-1-timothee-6-3-10-la-pathologie-de-l-erreur-et-le-danger-de-l-argent"><span class="intertitre__ref">1 Timothée 6.3-⁠10</span>La pathologie de l'erreur et le danger de l'argent</h3><p>MacArthur décrit les faux docteurs en huit traits : leur marque, un enseignement différent de l'Écriture qui ne consent pas aux saines paroles du Seigneur; leur attitude, l'orgueil; leur mentalité, l'ignorance malade des spéculations et des querelles de mots; leurs effets, l'envie, les querelles, les calomnies et le chaos; leur cause, une intelligence corrompue; leur condition, l'apostasie; leur pronostic, le jugement (2 Pierre 2; Jude); leur motif, le gain (54-⁠45). Deux tests en découlent : « le test ultime d'un enseignement, c'est de savoir s'il produit la piété », et « l'unité est le test de la vérité » (54-⁠45). Le seul remède est de connaître l'Écriture (Actes 20.27-⁠32; Éphésiens 4.11-⁠14) (54-⁠45).</p><p>Paul retourne ensuite le mot « gain » : la piété avec le contentement est un grand gain (54-⁠46). L'amour de l'argent est dangereux par sa nature, parce qu'il ignore le vrai gain, s'attache au temporel, puisqu'on ne peut rien emporter (Job 1.21; Luc 12.15-⁠21), et obscurcit la simplicité de la vie; il l'est par ses effets, le piège, des désirs insensés et la ruine de l'âme et du corps (54-⁠46). MacArthur cite Judas et Démas, et propose des principes concrets : reconnaître Dieu comme propriétaire, cultiver la reconnaissance, distinguer besoins et désirs, dépenser moins qu'on gagne et donner avec sacrifice (54-⁠46).</p><h3 class="intertitre" id="t3-1-timothee-6-11-16-l-homme-de-dieu-et-le-dieu-qu-il-sert"><span class="intertitre__ref">1 Timothée 6.11-⁠16</span>L'homme de Dieu et le Dieu qu'il sert</h3><p>L'expression « homme de Dieu », fréquente dans l'Ancien Testament pour les porte-parole de Dieu (Deutéronome 33.1; 1 Samuel 9.6; 1 Rois 17.18), n'est appliquée nommément qu'à Timothée dans le Nouveau Testament, et 2 Timothée 3.17 l'élargit à tout serviteur de la Parole (54-⁠47). L'homme de Dieu se reconnaît à ce qu'il fuit, l'amour de l'argent : « Vous ne pouvez pas être l'homme de Dieu et l'homme de l'argent »; à ce qu'il poursuit, la justice pratique, la piété intérieure, la foi, l'amour, l'endurance et la douceur; à ce pour quoi il combat, la foi, en vivant à la lumière de l'éternité; et à ce à quoi il est fidèle, le commandement de Dieu, gardé sans tache jusqu'au retour du Christ (54-⁠47).</p><p>La motivation vient de Dieu lui-même : « Vous êtes le reflet vivant de votre théologie » (54-⁠48). MacArthur dégage six attributs : le Dieu qui ressuscite les morts, en sorte que le pire qui puisse arriver au serviteur est aussi le meilleur (Philippiens 1.21); la promesse de l'apparition glorieuse, au temps choisi par le Père; la béatitude d'un Dieu parfaitement content, parce que rien n'échappe à sa souveraineté; sa souveraineté de seul potentat, Roi de ceux qui règnent; son immortalité, qui le place au-dessus de l'histoire (Habacuc 1.12); et sa sainteté, lumière inaccessible, qui ne commet jamais d'erreur (54-⁠48). Christ, qui a confessé sa royauté devant Pilate au prix de sa vie, en est le modèle (Jean 18.33-⁠37) (54-⁠47, 54-⁠48).</p><h3 class="intertitre" id="t4-1-timothee-6-17-21-gerer-les-tresors-les-richesses-et-la-verite"><span class="intertitre__ref">1 Timothée 6.17-⁠21</span>Gérer les trésors : les richesses et la vérité</h3><p>« Être riche, c'est avoir plus que ce dont on a besoin » : MacArthur s'inclut parmi les riches et rappelle que Dieu donne la richesse (Deutéronome 8.18) (54-⁠49). Deux dangers la guettent, l'orgueil et la confiance dans des richesses incertaines, alors que Dieu donne tout pour notre joie, dont la plus haute est de le glorifier (54-⁠49). Le devoir se resserre comme un entonnoir : faire le bien, être riche en œuvres bonnes, être généreux et partager dans la communion, comme David et le peuple qui disaient rendre à Dieu ce qui venait de sa main (1 Chroniques 29.14) (54-⁠49). On s'amasse ainsi un trésor pour l'avenir, et l'on saisit dès maintenant la vraie vie (Luc 16.9) (54-⁠49).</p><p>Le dernier trésor est la vérité : MacArthur dit qu'en choisissant une Église, il n'y a qu'une chose à chercher, la manière dont elle traite la vérité (54-⁠50). Il parcourt toute l'épître et 2 Timothée pour montrer que la garde de la vérité en est le fil (54-⁠50). Timothée doit garder le dépôt et éviter les bavardages profanes et les objections d'une fausse connaissance, qui ont fait dévier certains de la foi; la salutation au pluriel associe toute l'Église à cette tâche, qui demande la grâce (54-⁠50). MacArthur conclut par sept réponses : croire la Parole, l'honorer, l'étudier, lui obéir, l'aimer, la défendre et la proclamer (54-⁠50).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>1 Timothée 6.1.</b> La finale <i>hina mē to onoma tou theou kai hē didaskalia blasphēmētai</i> lie la conduite au travail à la réputation de Dieu et de l'Évangile (54-⁠44).</li><li><b>1 Timothée 6.5-⁠6.</b> La reprise du mot <i>porismos</i>, de la fausse piété source de gain au grand gain de la piété avec contentement, fonde la transition de MacArthur des faux docteurs à l'amour de l'argent (54-⁠46).</li><li><b>1 Timothée 6.3 et 6.20.</b> L'opposition entre <i>hugiainousi logois</i> et <i>bebēlous kenophōnias</i> encadre la section : les paroles saines du Seigneur contre les bavardages vides et profanes (54-⁠45, 54-⁠50).</li><li><b>1 Timothée 6.11.</b> Le contraste <i>Su de</i> avec les faux docteurs de 6.3-⁠10, et la paire <i>pheuge</i> / <i>diōke</i>, structurent le portrait de l'homme de Dieu (54-⁠47).</li><li><b>1 Timothée 6.15-⁠16.</b> L'accumulation des titres réservés à Dieu (<i>monos dunastēs</i>, <i>ho monos echōn athanasian</i>) appuie la lecture de la doxologie comme fondement de la motivation du serviteur et comme réplique au culte impérial (54-⁠48).</li><li><b>1 Timothée 6.17-⁠18.</b> Le jeu sur la richesse (<i>plousiois</i>, <i>ploutou</i>, <i>plousiōs</i>, <i>ploutein en ergois kalois</i>) transpose la richesse matérielle en richesse de bonnes œuvres (54-⁠49).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Éphésiens 6.5-⁠8</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Les esclaves obéissent à leurs maîtres avec crainte, d'un cœur simple, comme au Christ, non pour être vus, sachant que chacun recevra du Seigneur selon le bien qu'il aura fait : MacArthur y trouve la nature du service de 6.1-⁠2 et la récompense éternelle attachée au travail (54-⁠44).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Tite 2.9-⁠10</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Les esclaves sont soumis à leurs maîtres, ne contredisent pas, ne dérobent rien et montrent une parfaite fidélité, afin de faire honorer en tout la doctrine de Dieu notre Sauveur : même motif qu'en 6.1, la réputation de la doctrine (54-⁠44).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Job 1.21; Ecclésiaste 5.14</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">L'homme sort nu du sein de sa mère et s'en retourne nu, sans rien emporter de son travail : MacArthur rapproche ces textes de 6.7 pour montrer que l'amour de l'argent s'attache à ce qui reste ici-bas (54-⁠46).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Luc 12.15-⁠21</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">La vie d'un homme ne dépend pas de l'abondance de ses biens, et le riche insensé qui agrandit ses greniers perd son âme la nuit même : MacArthur l'applique à 6.7-⁠9 et à 6.17 (54-⁠46, 54-⁠49).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 6.19-⁠24</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Là où est ton trésor, là aussi sera ton cœur, et nul ne peut servir Dieu et l'argent : MacArthur en fait la mesure de l'attachement à l'argent (6.10) et le principe du trésor pour l'avenir (6.19) (54-⁠46, 54-⁠49).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Jean 18.33-⁠37</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Devant Pilate, Jésus confesse qu'il est roi et qu'il est venu rendre témoignage à la vérité : c'est la belle confession de 6.13, que MacArthur donne en modèle de courage au serviteur menacé (54-⁠47, 54-⁠48).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 10.17</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">L'Éternel est le Dieu des dieux et le Seigneur des seigneurs : MacArthur y voit l'origine vétérotestamentaire des titres de 6.15, appliqués ici à Dieu le Père, avec Psaume 136.3 et Daniel 2.47 (54-⁠48).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Timothée 1.13-⁠14</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Paul demande à Timothée de retenir le modèle des saines paroles et de garder le bon dépôt par le Saint-Esprit : MacArthur relie 6.20 à cette charge, reprise dans la seconde lettre (54-⁠50).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">Le travail comme service rendu à Dieu</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Que ceux qui sont sous le joug regardent leurs maîtres comme dignes de tout honneur, afin que le nom de Dieu et la doctrine ne soient pas calomniés; et que ceux qui ont des maîtres fidèles les servent d'autant mieux (6.1-⁠2).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme que le travail, voulu par Dieu avant la chute, est un devoir sacré : le chrétien sert son employeur en servant Dieu, et sa manière de travailler honore ou discrédite l'Évangile (54-⁠44). Rattachement : anthropologie (la vocation de l'homme au travail) et sanctification (la vie chrétienne dans le monde) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Dieu place l'homme dans le jardin pour le cultiver (Genèse 2.15); Paul renvoie Onésime à Philémon et demande aux esclaves de servir comme pour le Seigneur (Éphésiens 6.5-⁠8; Colossiens 3.22-⁠25); Pierre appelle à servir même les maîtres difficiles, à l'exemple du Christ (1 Pierre 2.18-⁠23) (54-⁠43, 54-⁠44).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le lieu de travail est le principal lieu où le monde observe la foi d'un chrétien, et donc l'un des terrains essentiels de l'évangélisation (54-⁠44).</p></div></div></section><section class="theme"><h3 class="theme__title">La saine doctrine contre la maladie de l'erreur</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Si quelqu'un enseigne de fausses doctrines et ne s'attache pas aux saines paroles de notre Seigneur Jésus-Christ et à la doctrine qui est selon la piété, il est enflé d'orgueil, il ne sait rien, il a la maladie des questions oiseuses (6.3-⁠5).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme que l'Écriture entière est la parole du Seigneur, que son enseignement produit la piété et l'unité, et que l'erreur, née d'une intelligence corrompue, produit l'orgueil, le chaos et la ruine (54-⁠45). Rattachement : bibliologie (l'autorité et la suffisance de l'Écriture) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le diable est père du mensonge (Jean 8.44); Jésus annonce de faux christs et de faux prophètes (Matthieu 24.24); Pierre et Jude décrivent les faux docteurs et leur jugement (2 Pierre 2; Jude 4-⁠16) (54-⁠45).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'Église se protège de l'erreur en connaissant l'Écriture, et elle juge un enseignement à la piété qu'il produit (54-⁠45).</p></div></div></section><section class="theme"><h3 class="theme__title">Le contentement et le danger de l'amour de l'argent</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>C'est une grande source de gain que la piété avec le contentement; ceux qui veulent s'enrichir tombent dans la tentation et dans le piège, car l'amour de l'argent est une racine de tous les maux (6.6-⁠10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme que la vraie richesse est le contentement, fruit de la piété et de la confiance dans la suffisance de Dieu, et que l'amour de l'argent conduit au péché et à la perdition (54-⁠46). Rattachement : sanctification (le contentement et l'intendance) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>L'homme sort nu du sein maternel (Job 1.21; Ecclésiaste 5.14); le sage ne demande ni pauvreté ni richesse (Proverbes 30.8-⁠9); Jésus avertit qu'on ne peut servir Dieu et l'argent (Matthieu 6.24) et que la vie ne dépend pas des biens (Luc 12.15), et l'épître aux Hébreux fonde le contentement sur la présence de Dieu (Hébreux 13.5) (54-⁠46).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant reconnaît Dieu comme propriétaire de tout, distingue ses besoins de ses désirs et donne avec générosité (54-⁠46, 54-⁠49).</p></div></div></section><section class="theme"><h3 class="theme__title">L'homme de Dieu et le Dieu souverain qui le motive</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Pour toi, homme de Dieu, fuis ces choses, recherche la justice, la piété, la foi, l'amour, la patience, la douceur; combats le bon combat de la foi; garde le commandement jusqu'à l'apparition de notre Seigneur Jésus-Christ, que manifestera en son temps le bienheureux et seul souverain (6.11-⁠16).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme que la fidélité du serviteur découle de sa connaissance de Dieu : le Dieu qui ressuscite les morts, qui accomplira l'apparition glorieuse du Christ, parfaitement bienheureux, seul souverain, seul immortel et saint (54-⁠47, 54-⁠48). Rattachement : théologie propre (les attributs de Dieu) et eschatologie (le retour glorieux du Christ) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Les hommes de Dieu de l'Ancien Testament parlaient de sa part (Deutéronome 33.1; 1 Rois 17.24); Dieu se nomme Dieu des dieux (Deutéronome 10.17) et seul Dieu (Ésaïe 44.6); le Christ a rendu témoignage devant Pilate (Jean 18.37) et reviendra dans la gloire (Apocalypse 19.11-⁠16) (54-⁠47, 54-⁠48).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le serviteur qui sait que Dieu est souverain et qu'il ressuscite les morts ne craint ni l'opposition ni la mort, et ne compromet pas la vérité (54-⁠48).</p></div></div></section><section class="theme"><h3 class="theme__title">L'intendance des richesses et la garde du dépôt</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Recommande aux riches de ne pas être orgueilleux et de mettre leur espérance en Dieu, de faire du bien et d'être riches en bonnes œuvres; ô Timothée, garde le dépôt, en évitant les discours vains et profanes (6.17-⁠20).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme que le croyant n'est pas propriétaire mais intendant de ce que Dieu lui confie, les richesses et la vérité, et que l'Église est d'abord la dépositaire de la Parole, qu'elle ne peut ni réduire ni augmenter (54-⁠49, 54-⁠50). Rattachement : ecclésiologie (l'Église gardienne de la vérité) et bibliologie dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>David reconnaît que tout vient de la main de Dieu (1 Chroniques 29.11-⁠14); Israël avait reçu les oracles de Dieu (Romains 3.2); Paul demande de transmettre le dépôt à des hommes fidèles (2 Timothée 1.13-⁠14; 2.2) et Jude de combattre pour la foi transmise une fois pour toutes (Jude 3) (54-⁠49, 54-⁠50).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>On juge une Église à la manière dont elle traite la vérité, et chaque croyant croit, honore, étudie, pratique, aime, défend et proclame la Parole (54-⁠50).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Si le travail est l'arène où le monde observe notre foi (54-⁠44), que dirait de notre christianisme un collègue incroyant qui nous voit travailler chaque jour?</li><li>Quand un employé chrétien travaille pour un patron chrétien, comment éviter la familiarité qui efface l'autorité, que MacArthur dénonce en 6.2 (54-⁠44)?</li><li>Les deux tests de MacArthur, la piété et l'unité (54-⁠45), que révèlent-ils des enseignements que nous écoutons ou que nous diffusons?</li><li>Lequel des cinq tests de l'amour de l'argent nous met le plus mal à l'aise, et que changerait concrètement le contentement de 6.6-⁠8 (54-⁠46)?</li><li>Qu'est-ce que nous fuyons, poursuivons, combattons et gardons, et ces quatre verbes décrivent-ils notre ministère (6.11-⁠14; 54-⁠47)?</li><li>MacArthur affirme que nous sommes le reflet vivant de notre théologie (54-⁠48) : lequel des attributs de Dieu en 6.13-⁠16 notre manière de vivre et de servir contredit-elle?</li><li>Si nous sommes riches dès que nous avons plus que le nécessaire (54-⁠49), quelle part de notre superflu sert à faire du bien et à partager, et notre Église se reconnaît-elle d'abord à sa garde de la vérité (54-⁠50)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 1 Timothée 6 · 5 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-1-Timothee-6.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacques 5.13-20 · La prière qui agit · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jacques 5.13-20 : la prière qui agit, le ministère des anciens, le relèvement de l'affligé, la confession mutuelle et la restauration de l'égaré, lue selon la théologie de John MacArthur. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jacques 5.13-20</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Jacques 5.13-20</p>
+    <h1 class="hero__title">La prière qui agit</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;La prière fervente du juste a une grande efficace.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jacques 5.16 · NEG</p>
+    <p class="hero__series">Série : <b>La foi qui agit</b></p>
+    <p class="hero__meta">Recherche exégétique · 6 juin 2026 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Jacques 5.13-20</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Quelqu'un parmi vous est-il dans la souffrance? Qu'il prie. Quelqu'un est-il dans la joie? Qu'il chante des cantiques.</p>
+        <cite class="verse__ref">Jacques 5.13 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">La prière fervente du juste a une grande efficace.</p>
+        <cite class="verse__ref">Jacques 5.16 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Jacques 5.13-20 clôt l'épître non par un appendice détaché mais par le couronnement de son argument central : la foi authentique se prouve par les œuvres, et son dernier terrain de vérification est la prière et le soin mutuel.</p>
+    <div class="body">
+      <p>L'épître de Jacques est l'œuvre de Jacques le Juste, demi-frère du Seigneur Jésus (Matthieu 13.55; Galates 1.19) et conducteur reconnu de l'assemblée de Jérusalem (Actes 15.13-21). Incrédule durant le ministère terrestre de Jésus (Jean 7.5), il fut transformé par une apparition du Ressuscité (1 Corinthiens 15.7) et devint un pilier de l'Église primitive. Il écrit vraisemblablement avant 49, ce qui fait de sa lettre l'un des plus anciens documents du Nouveau Testament. Ses destinataires sont «&nbsp;les douze tribus qui sont dans la dispersion&nbsp;» (1.1), des croyants d'origine juive éparpillés hors de Palestine, éprouvés par la pauvreté, l'oppression des riches et la pression de l'épreuve. Le genre est celui de la littérature de sagesse appliquée à l'éthique chrétienne : une succession d'exhortations brèves et denses, marquées par l'impératif, dans la lignée des Proverbes et du Sermon sur la montagne.</p>
+      <p>La péricope 5.13-20 ne forme pas un appendice détaché mais le couronnement de l'argument central de la lettre : la foi authentique se prouve par les œuvres (2.14-26). Après avoir appelé à la patience jusqu'au retour du Seigneur (5.7-12), Jacques tourne le regard de l'assemblée vers le dernier terrain où la foi vivante se manifeste, la prière et le soin mutuel. La transition est nette : il abandonne les avertissements sévères adressés aux riches (5.1-6) et la mise en garde contre le serment (5.12) pour décrire la vie d'une communauté qui prie dans toutes les saisons de l'existence.</p>
+      <p>Les bornes du passage sont claires. Le verset 13 ouvre par une série de questions rhétoriques qui balaient tout l'éventail de la condition humaine (souffrance, joie, faiblesse). Les versets 14 à 18 développent la prière de relèvement des anciens, la confession mutuelle et l'exemple d'Élie. Les versets 19 et 20 forment la conclusion de toute l'épître : ramener celui qui s'égare de la vérité. L'unité thématique est la prière qui agit et le soin des âmes, encadrant la lettre par un dernier appel à veiller les uns sur les autres jusqu'à la fin.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Jacques 5.14 · 5.16 · 5.17-18</p>
+    </header>
+    <p class="lead">Les destinataires sont des croyants juifs de la dispersion, formés à une vie communautaire où la prière, la confession et le soin mutuel s'enracinent dans la solidarité du peuple de l'alliance.</p>
+    <div class="body">
+      <p>Le lecteur moderne doit d'abord saisir la fonction des anciens (<i>presbyteroi</i>) dans l'Église apostolique. Jacques ne renvoie pas le malade à un «&nbsp;guérisseur&nbsp;» charismatique doté d'un don particulier, mais aux conducteurs ordinaires et reconnus de l'assemblée locale (comparer Actes 14.23; 20.17; Tite 1.5). C'est un détail décisif : l'initiative revient au croyant affaibli par ses souffrances, qui appelle les anciens pour obtenir force, soutien et prière, et la réponse est un acte pastoral collégial, exercé par une pluralité d'hommes qualifiés. Rien dans le texte ne suppose un thaumaturge itinérant ou un office de «&nbsp;guérison&nbsp;» distinct du gouvernement ordinaire de l'Église.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur pressé.</p>
+    <ul class="points">
+      <li><b>L'usage de l'huile.</b> Le verbe employé en 5.14 est <i>aleiphō</i>, qu'on rend littéralement par «&nbsp;en le frottant avec de l'huile&nbsp;». La note de MacArthur relève trois lectures : une allusion à l'onction rituelle (Lévitique 14.18; Marc 6.13); un traitement médical, l'huile servant à adoucir les plaies, dont bénéficiaient les croyants blessés physiquement et abattus moralement par la persécution (Ésaïe 1.6; Luc 10.34, où le bon Samaritain verse huile et vin); enfin un sens métaphorique et pastoral, qui décrit un encouragement des anciens propre à réconforter et affermir le croyant; en chaire, MacArthur écarte toutefois l'onction rituelle, car <i>aleiphō</i> ne désigne jamais dans l'Écriture une onction cérémonielle, réservée à <i>chriō</i>. MacArthur juge ce dernier sens «&nbsp;sans doute préférable&nbsp;». Le lecteur entend donc avant tout un soutien des conducteurs, et non un sacrement transmettant une grâce <i>ex opere operato</i>.</li>
+      <li><b>L'initiative du faible.</b> Dans la pratique synagogale et la solidarité du peuple de l'alliance, le croyant juif de la dispersion savait que le péché d'un membre affecte le corps entier et que la restauration passe par la communauté. Le mouvement de la péricope est inattendu : ce ne sont pas les forts qui repèrent le faible, c'est le faible qui prend l'initiative et appelle les anciens vers lui.</li>
+      <li><b>L'exemple d'Élie.</b> L'exemple d'Élie (5.17-18) suppose connue toute la sécheresse de 1 Rois 17 et 18, où la prière d'un homme «&nbsp;de même nature que nous&nbsp;» gouverne le ciel : la pluie cesse puis revient à sa demande. Pour des lecteurs juifs, ce récit n'était pas une légende édifiante mais l'histoire familière d'un prophète ordinaire dont la prière efficace écarte toute idée d'une élite spirituelle.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq termes portent le poids de la péricope : ils balisent le chemin qui va de la souffrance et de la faiblesse (<i>kakopatheō</i>, <i>astheneō</i>, <i>kamnō</i>) au relèvement promis (<i>sōzō</i>, <i>egeirō</i>), par la prière efficace que Dieu rend opérante (<i>energeō</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">souffre / est malade</span><span class="mot-gr">kakopatheō / astheneō</span></th>
+            <td class="col-sens">kakopatheō : endurer le mal, souffrir l'affliction; astheneō : être sans force, être faible, défaillir</td>
+            <td><i>kakopatheō</i> (5.13) décrit l'endurance dans l'épreuve et la persécution (2 Timothée 2.9; 4.5). <i>astheneō</i> (5.14) couvre un large registre : faiblesse physique, mais aussi faiblesse morale ou spirituelle, défaillance, épuisement (Romains 4.19; 14.1-2; 1 Corinthiens 8.11-12; 2 Corinthiens 11.29). Pour MacArthur, le «&nbsp;malade&nbsp;» de 5.14 est le croyant affaibli par ses souffrances, qui fait appel aux anciens pour obtenir force, soutien et prière; en chaire, il précise que le sens premier d'<i>astheneō</i> est d'être faible et que Jacques ne vise pas la maladie physique, mais la faiblesse spirituelle du croyant épuisé par la persécution et les épreuves.</td>
+            <td><span class="trad"><span><b>S21</b> est malade</span><span><b>NEG79</b> est malade</span><span><b>Darby</b> est malade</span><span><b>LSG</b> est malade</span><span><b>KJF</b> est malade</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">le malade (l'affaibli)</span><span class="mot-gr">kamnō</span></th>
+            <td class="col-sens">être épuisé de fatigue, défaillir, se lasser, perdre cœur</td>
+            <td>Verbe rare (5.15; comparer Hébreux 12.3, où il décrit l'âme qui se lasse et se décourage dans la course de la foi). Le sens premier joint la fatigue à l'affliction : être à bout de forces, abattu, accablé. Sa présence en 5.15, après <i>astheneō</i>, confirme la lecture de MacArthur, qui s'appuie lui-même sur Hébreux 12.3 : il s'agit du croyant las et découragé, que la prière de la foi vient relever, et non d'une guérison physique.</td>
+            <td><span class="trad"><span><b>S21</b> le malade</span><span><b>NEG79</b> le malade</span><span><b>Darby</b> celui qui est abattu</span><span><b>LSG</b> le malade</span><span><b>KJF</b> le malade</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ayant oint d'huile</span><span class="mot-gr">aleiphō</span></th>
+            <td class="col-sens">enduire, frotter, appliquer un corps gras sur la peau (usage physique, médical ou cosmétique)</td>
+            <td><i>aleiphō</i> (5.14) désigne une application matérielle, littéralement «&nbsp;en le frottant avec de l'huile&nbsp;» : oindre un corps fatigué (Matthieu 6.17), un malade soigné (Marc 6.13), un mort embaumé (Marc 16.1), les pieds de Jésus (Luc 7.38; Jean 12.3). Il se distingue de <i>chriō</i>, réservé à l'onction sacrée et messianique (Luc 4.18; Actes 4.27; 10.38; Hébreux 1.9), et Jacques n'emploie pas <i>chriō</i>, ce qui écarte un rite sacramentel. Dans sa note, MacArthur ouvre trois lectures du geste (onction rituelle, traitement médical, sens métaphorique) et juge «&nbsp;sans doute préférable&nbsp;» le sens métaphorique-pastoral : un encouragement des anciens qui réconforte et affermit le croyant; en chaire, il écarte l'onction rituelle par ce même argument lexical.</td>
+            <td><span class="trad"><span><b>S21</b> en lui appliquant de l'huile</span><span><b>NEG79</b> en l'oignant d'huile</span><span><b>Darby</b> l'ayant oint d'huile</span><span><b>LSG</b> en l'oignant d'huile</span><span><b>KJF</b> l'oignant d'huile</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">sauvera / relèvera</span><span class="mot-gr">sōzō / egeirō</span></th>
+            <td class="col-sens">sōzō : sauver, délivrer, rendre sain; egeirō : relever, faire lever, redresser, réveiller</td>
+            <td><i>sōzō</i> a chez Jacques une forte charge sotériologique (1.21; 2.14; 4.12; 5.20), mais désigne aussi la délivrance d'une détresse concrète. <i>egeirō</i> signifie relever, redresser celui qui est tombé (Matthieu 12.11; Actes 3.7). Pour MacArthur, «&nbsp;la prière de la foi sauvera le malade et le Seigneur le relèvera&nbsp;» signifie que Dieu le délivrera de ses souffrances et de la faiblesse due à son infirmité, puis lui pardonnera ses péchés une fois confessés. En chaire, il précise que les deux verbes ne visent pas une guérison physique : <i>sōzō</i> désigne ici la restauration du croyant las, <i>egeirō</i> son réveil et son relèvement, et ce relèvement est une promesse, car le Seigneur entend et exauce la prière des justes.</td>
+            <td><span class="trad"><span><b>S21</b> sauvera / relèvera</span><span><b>NEG79</b> sauvera / relèvera</span><span><b>Darby</b> sauvera / relèvera</span><span><b>LSG</b> sauvera / relèvera</span><span><b>KJF</b> sauvera / relèvera</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">fervente / efficace</span><span class="mot-gr">energeō (energoumenē)</span></th>
+            <td class="col-sens">être à l'œuvre, opérer avec puissance, déployer une énergie efficace</td>
+            <td>Le participe <i>energoumenē</i> (5.16) qualifie la prière du juste qui «&nbsp;a une grande efficace&nbsp;». Le verbe <i>energeō</i> décrit ailleurs l'œuvre puissante de Dieu et de sa Parole (Galates 2.8; Éphésiens 1.11; 3.20; Philippiens 2.13; 1 Thessaloniciens 2.13). Le point n'est pas l'intensité émotionnelle de l'orant mais la puissance opérante que Dieu attache à la prière du juste, c'est-à-dire du croyant justifié et marchant dans l'obéissance. MacArthur insiste sur la condition du juste, car Dieu n'écoute pas celui qui garde l'iniquité dans son cœur (Psaume 66.18); mais il n'y a ni vertu dans l'homme ni magie dans les mots : c'est Dieu qui déploie sa puissance par la prière.</td>
+            <td><span class="trad"><span><b>S21</b> agissante</span><span><b>NEG79</b> fervente</span><span><b>Darby</b> fervente</span><span><b>LSG</b> fervente</span><span><b>KJF</b> fervente</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Jacques 5.14-20</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Jacques 5.13-20 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Jc 5.13, 5.14-15, 5.14, 5.15, 5.16, 5.17-18, 5.19, 5.20.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-33</span></th>
+            <td><a href="https://www.gty.org/sermons/59-33" target="_blank" rel="noopener">The Power of Righteous Praying</a></td>
+            <td>Jacques 5.13-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-202</span></th>
+            <td><a href="https://www.gty.org/sermons/90-202" target="_blank" rel="noopener">Bearing Up the Weak in Prayer</a></td>
+            <td>Jacques 5.13-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-34</span></th>
+            <td><a href="https://www.gty.org/sermons/59-34" target="_blank" rel="noopener">Saving a Soul from Death</a></td>
+            <td>Jacques 5.19-20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question interprétative principale de la péricope se concentre sur 5.14-15 : ce texte enseigne-t-il une guérison physique miraculeuse, obtenue par la prière et l'onction, à la manière des dons de signe de l'ère apostolique? La lecture charismatique y voit la promesse d'une guérison surnaturelle garantie à quiconque croit; la tradition sacramentelle romaine y a fondé l'extrême-onction administrée aux mourants. MacArthur rejette ces deux lectures.</p>
+    <div class="body">
+      <p>Pour MacArthur, Jacques ordonne au croyant affaibli par ses souffrances de faire appel aux anciens de l'Église afin d'obtenir force, soutien et prière, et la prière de la foi le délivre de ses souffrances et de la faiblesse due à son infirmité, tandis que ses péchés, une fois confessés, lui sont pardonnés. Sa note lit donc le «&nbsp;malade&nbsp;» comme un croyant réellement affligé, abattu, possiblement éprouvé par la persécution; en chaire, MacArthur précise que cette faiblesse est d'abord spirituelle (lassitude, épuisement, abattement nés de la persécution et des épreuves) et que le passage ne traite pas de la maladie physique.</p>
+      <p>Le geste de l'huile (<i>aleiphō</i>, littéralement «&nbsp;en le frottant avec de l'huile&nbsp;») peut s'entendre, selon la note, de trois manières : une onction rituelle (Lévitique 14.18; Marc 6.13), un traitement médical reçu par les croyants blessés et accablés par la persécution, ou un sens métaphorique. MacArthur juge cette dernière lecture «&nbsp;sans doute préférable&nbsp;» : l'onction décrit alors un encouragement des anciens qui réconforte et affermit le croyant. Le soin physique des plaies demeure une option secondaire recevable; l'argument lexical <i>aleiphō</i> (et non <i>chriō</i>), absent de la note mais développé par MacArthur en chaire, confirme qu'aucun rite sacramentel n'est en vue et que l'extrême-onction n'a pas de fondement ici.</p>
+      <p>Le relèvement promis n'est donc ni une guérison charismatique garantie ni un sacrement. «&nbsp;La prière de la foi sauvera le malade, et le Seigneur le relèvera&nbsp;», aussitôt suivi de «&nbsp;s'il a commis des péchés, ils lui seront pardonnés&nbsp;» : Dieu délivre le croyant de ses souffrances et de la faiblesse de son infirmité, et accorde le pardon des fautes confessées. La «&nbsp;prière de la foi&nbsp;» n'est pas une formule qui contraint Dieu : c'est la prière croyante des anciens, présentée au nom du croyant affaibli, dont leur foi affermie soutient la foi défaillante. Le texte ne traite pas de la guérison du corps : il promet que le Seigneur, qui entend et exauce la prière des justes, relèvera le croyant las et découragé. Il faut préciser que la note du <i>Study Bible</i> sur 5.13-18 ne traite pas des dons de signe ni du cessationnisme; cette doctrine (Hébreux 2.3-4), cohérente avec cette lecture du passage, n'est pas le contenu de la note de verset elle-même.</p>
+      <p>Les versets suivants confirment l'orientation pastorale. Le verset 16 généralise : «&nbsp;confessez donc vos péchés les uns aux autres, et priez les uns pour les autres, afin que vous soyez guéris&nbsp;», reliant explicitement la restauration à la confession et à la prière mutuelle au sein du corps. La «&nbsp;grande efficace&nbsp;» de la prière du juste (<i>energoumenē</i>) suppose un orant qui marche droit devant Dieu, mais elle tient à la puissance de Dieu qui agit, non à une vertu de l'orant. L'exemple d'Élie (5.17-18), «&nbsp;homme de même nature que nous&nbsp;», écarte toute idée d'une élite spirituelle : la prière efficace est offerte à tout croyant justifié et obéissant. Enfin, la conclusion (5.19-20) couronne l'épître par l'appel à ramener celui qui s'égare de la vérité, ce qui «&nbsp;sauvera une âme de la mort et couvrira une multitude de péchés&nbsp;». MacArthur y lit un appel à évangéliser les faux professants de l'assemblée : l'égaré est un croyant déclaré dont l'égarement révèle une foi morte (cf. 2.14-26), et le ramener, c'est l'amener au salut, l'arrachant à la mort éternelle. Cela verrouille la doctrine de la persévérance des saints, celui qui persévère démontrant l'authenticité de sa foi : la communauté de la foi vivante veille les uns sur les autres et va rechercher celui qui dérive, car la vraie foi se prouve jusque dans ce soin mutuel. Cette lecture s'accorde avec une ecclésiologie d'une pluralité d'anciens et une sotériologie monergique.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle direct sur le geste de l'huile jusqu'à l'arrière-plan vétérotestamentaire qui nourrit l'image de la prière efficace et du soin de l'égaré.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 6.13</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les disciples «&nbsp;oignaient d'huile (<i>aleiphō</i>) beaucoup de malades et les guérissaient&nbsp;» : même verbe et même geste de soin associé à la prière, dans un contexte de mission apostolique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Rois 17.1; 18.41-46</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le récit de la sécheresse et de la pluie obtenues par la prière d'Élie, que Jacques cite explicitement en 5.17-18 comme modèle de prière efficace.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 6.1</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Si un homme vient à être surpris en quelque faute, vous qui êtes spirituels, redressez-le&nbsp;» : parallèle direct du soin restaurateur de celui qui chancelle, écho de 5.19-20.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 18.15-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La procédure de restauration du frère qui pèche et la promesse attachée à la prière commune de l'assemblée éclairent le soin mutuel de Jacques 5.16, 19-20.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 5.14-16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'assurance que Dieu exauce la prière «&nbsp;selon sa volonté&nbsp;» et l'intercession pour le frère qui pèche encadrent la «&nbsp;prière de la foi&nbsp;» de Jacques sans en faire une formule contraignante.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Hébreux 12.3</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le verbe <i>kamnō</i> y décrit l'âme qui se lasse et se décourage dans la course de la foi, éclairant le registre du «&nbsp;malade&nbsp;» affaibli et accablé de Jacques 5.15.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jacques 4.15</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Si le Seigneur le veut&nbsp;» : principe de soumission à la volonté souveraine de Dieu, arrière-plan de toute prière croyante, y compris la «&nbsp;prière de la foi&nbsp;» de 5.15.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 23.5; Luc 10.34</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'huile comme soin, réconfort et remède ordinaire dans le monde biblique, arrière-plan culturel du geste de 5.14 que MacArthur retient parmi les lectures possibles.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La prière dans toutes les saisons de la vie</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les questions rhétoriques de 5.13 (souffrance, joie, faiblesse) couvrent toute la condition du croyant et renvoient chacune à la prière ou à la louange comme réponse normale de la foi.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour l'assemblée, la prière n'est pas un recours d'urgence mais le souffle constant de la foi vivante. Elle répond à la souveraineté de Dieu qui règne sur l'épreuve comme sur la joie, et elle se déploie par l'Esprit dans le cœur uni à Christ, non par discipline volontariste.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le ministère pastoral des anciens et le soin des âmes</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le croyant affaibli par ses souffrances appelle les anciens (<i>presbyteroi</i>) qui prient sur lui en l'oignant d'huile (<i>aleiphō</i>) : un acte collégial, ordinaire et réconfortant des conducteurs de l'Église, qui apporte force, soutien et prière.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'ecclésiologie biblique confie le soin des âmes à une pluralité d'anciens qualifiés. L'assemblée est invitée à ne pas porter seule sa détresse mais à se confier aux conducteurs que Dieu a donnés pour relever les affligés.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le relèvement de l'affligé et la volonté souveraine de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;La prière de la foi sauvera (<i>sōzō</i>) le malade, le Seigneur le relèvera (<i>egeirō</i>), et s'il a commis des péchés, ils lui seront pardonnés&nbsp;» (5.15) : Dieu délivre le croyant de ses souffrances et de la faiblesse de son infirmité, et pardonne ses fautes confessées : un relèvement promis au croyant las, non la guérison du corps.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'assemblée fonde son espérance sur le relèvement de l'affligé et le pardon, que le Seigneur promet en réponse à la prière des justes, non sur une technique de guérison. Dieu guérit encore le corps selon son bon plaisir, mais ce texte traite du relèvement de l'âme lasse. La pneumatologie cessationniste reste cohérente avec cette lecture sans être le contenu de la note de verset, qui ne traite pas des dons de signe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La confession mutuelle et la prière efficace du juste</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>5.16 unit la confession des péchés les uns aux autres, la prière mutuelle et la «&nbsp;grande efficace&nbsp;» (<i>energoumenē</i>) de la prière du juste; 5.17-18 le prouve par Élie, «&nbsp;homme de même nature que nous&nbsp;».</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La justification par la foi seule rend l'orant «&nbsp;juste&nbsp;» devant Dieu et libre d'intercéder avec assurance; l'efficacité vient de la puissance de Dieu, non du mérite humain. L'assemblée est appelée à une transparence et à une intercession concrètes, fruit de l'union à Christ et non d'un perfectionnisme moralisateur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La persévérance des saints et la restauration de l'égaré</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>5.19-20 conclut l'épître : ramener celui qui s'égare de la vérité «&nbsp;sauvera une âme de la mort et couvrira une multitude de péchés&nbsp;».</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La doctrine de la persévérance des saints et la mise en garde contre la fausse profession se rejoignent ici : celui qui persévère démontre l'authenticité de sa foi. L'égaré de 5.19-20 est un croyant déclaré dont l'égarement révèle une foi morte; le ramener, c'est l'amener au salut, l'arrachant à la mort éternelle. La vraie foi se prouve jusque dans ce soin : l'assemblée ne se résigne pas à le voir dériver, mais va le rechercher, instrument de Dieu pour son salut.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Votre assemblée suppose-t-elle spontanément que le «&nbsp;malade&nbsp;» de 5.14 est d'abord un grabataire physique? Comment la lecture de MacArthur (le croyant affaibli par ses souffrances, épuisé spirituellement par la persécution et les épreuves, qui appelle les anciens pour obtenir force, soutien et prière) ajuste-t-elle l'application sans forcer le texte?</li>
+      <li>Si vous prêchez 5.15 comme une promesse de guérison physique, que faites-vous des croyants fidèles qui prient et ne guérissent pas? Comment montrer que la promesse du texte porte sur le relèvement du croyant las et découragé, que le Seigneur accorde réellement en réponse à la prière des justes?</li>
+      <li>Le geste de l'huile (<i>aleiphō</i>) admet dans la note de MacArthur trois lectures, dont la métaphorique qu'il juge «&nbsp;sans doute préférable&nbsp;» (un encouragement des anciens qui réconforte et affermit), et il écarte en chaire l'onction rituelle. Où votre tradition risque-t-elle de re-sacraliser ce geste en rite, et comment expliquer simplement à l'assemblée la différence avec l'extrême-onction et avec la guérison charismatique?</li>
+      <li>L'initiative de 5.14 vient du faible qui appelle les anciens. Votre assemblée sait-elle qu'elle peut et doit solliciter ce soin pastoral, ou porte-t-elle sa détresse seule? Qu'est-ce que cela révèle de votre culture d'Église?</li>
+      <li>5.16 lie la restauration à la confession mutuelle. Où l'application devient-elle trop facile («&nbsp;confessez-vous&nbsp;») et où devient-elle plus coûteuse qu'il n'y paraît dans une communauté réelle?</li>
+      <li>L'exemple d'Élie présente un prophète «&nbsp;de même nature que nous&nbsp;». Comment prêcher la «&nbsp;grande efficace&nbsp;» de la prière du juste sans glisser vers un mérite humain, en ancrant l'efficacité dans la puissance de Dieu et la justification par la foi seule?</li>
+      <li>5.19-20 clôt l'épître par la recherche de l'égaré. Votre application laisse-t-elle l'assemblée confortable, ou l'envoie-t-elle réellement veiller les uns sur les autres et aller rechercher celui qui dérive de la vérité?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Jacques 5.13-20 · 6 juin 2026 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La foi qui agit&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Jacques-5-13-20.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

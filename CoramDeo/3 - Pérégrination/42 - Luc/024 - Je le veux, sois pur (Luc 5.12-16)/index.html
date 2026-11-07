@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luc 5.12-16 · Je le veux, sois pur · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Luc 5.12-16 : la purification du lépreux ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc 5.12-16</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Luc 5.12-16</p>
+    <h1 class="hero__title">Je le veux, sois pur</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Jésus étendit la main, le toucha, et dit&nbsp;: Je le veux, sois pur. Aussitôt la lèpre le quitta.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 5.13 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Luc 5.12-16</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Un homme couvert de lèpre, l'ayant vu, tomba sur sa face, et lui fit cette prière&nbsp;: Seigneur, si tu le veux, tu peux me rendre pur.</p>
+        <cite class="verse__ref">Luc 5.12 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et lui, il se retirait dans les déserts, et priait.</p>
+        <cite class="verse__ref">Luc 5.16 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Luc 5.12-16 est la scène médiane du triptyque qui inaugure le ministère galiléen&nbsp;: à la confession du pécheur conscient de sa souillure morale répond le tableau du lépreux conscient de sa souillure physique et rituelle, deux fois la grâce qui touche et purifie.</p>
+    <div class="body">
+      <p>Notre péricope appartient à la section où Luc inaugure le ministère galiléen de Jésus par l'appel des premiers disciples (5.1 à 6.16). Le plan de la Bible d'étude MacArthur ouvre ce bloc par la sous-section «&nbsp;quatre pêcheurs&nbsp;» (5.1-26), en trois volets&nbsp;: «&nbsp;des pêcheurs d'hommes&nbsp;» (5.1-11), «&nbsp;des malades guéris&nbsp;» (5.12-16) et «&nbsp;des péchés pardonnés&nbsp;» (5.17-26). Notre passage est la scène médiane. Il suit immédiatement la pêche miraculeuse au terme de laquelle Pierre, écrasé par la sainteté de l'Oint de Dieu, s'est écrié «&nbsp;retire-toi de moi, car je suis un homme pécheur&nbsp;» (5.8), et où les quatre pêcheurs ont «&nbsp;laissé tout&nbsp;» pour suivre Jésus (5.11). À la confession du pécheur conscient de sa souillure morale répond aussitôt le tableau du lépreux conscient de sa souillure physique et rituelle&nbsp;: deux hommes qui se savent perdus, deux fois la grâce qui touche et purifie.</p>
+      <p>Luc rapporte ici le premier des miracles de guérison de son Évangile présenté en détail, et il le compose avec un soin de médecin. La tournure «&nbsp;un homme couvert de lèpre&nbsp;» est, selon MacArthur, une formule insistante qui laisse entendre un cas particulièrement grave, à un stade avancé de la maladie. Le récit se déploie en quatre temps&nbsp;: l'approche suppliante du lépreux qui tombe sur sa face (5.12), le contact et la parole souveraine de Jésus avec la guérison instantanée (5.13), l'ordre de se taire et d'aller se montrer au sacrificateur selon la loi de Moïse (5.14), puis le contraste final entre les foules qui affluent et le Seigneur qui se retire pour prier (5.15-16). L'unité du passage est tenue par un seul thème&nbsp;: la volonté toute-puissante de Jésus qui purifie l'intouchable.</p>
+      <p>Dans le fil de la série, ce signe marque une montée. Après l'appel des disciples, la purification du lépreux manifeste le pouvoir du Sauveur sur la corruption la plus redoutée, et elle prépare directement la controverse qui éclatera dès la scène suivante&nbsp;: au paralytique de Capernaüm, Jésus n'offrira plus seulement la guérison du corps mais le pardon des péchés, prérogative que les scribes et les pharisiens réservaient à Dieu seul (5.21). Luc place ainsi côte à côte la lèpre et le péché, la guérison et le pardon, pour révéler progressivement l'identité de celui qui peut dire «&nbsp;je le veux, sois pur&nbsp;» comme il dira «&nbsp;tes péchés te sont pardonnés&nbsp;». La compassion qui touche l'intouchable et la sainteté qui ne se souille pas mais purifie pointent vers la même personne&nbsp;: le Fils de l'homme venu chercher et sauver ce qui était perdu (19.10).</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Luc 5.12 · 5.13 · 5.14</p>
+    </header>
+    <p class="lead">La lèpre n'était pas qu'une calamité médicale&nbsp;: condition rituelle qui retranchait du camp, du culte et de l'alliance, elle faisait du lépreux l'image vivante du pécheur, souillé et incapable de se purifier lui-même.</p>
+    <div class="body">
+      <p>La lèpre de la Bible recouvrait un éventail d'affections cutanées, mais le terme employé ici visait selon toute vraisemblance la véritable maladie de Hansen, sans quoi, note MacArthur, la guérison n'aurait pas provoqué une telle sensation. C'était l'une des maladies les plus redoutées de l'Antiquité&nbsp;: lente, défigurante, réputée incurable, elle rongeait les chairs, faisait perdre la sensibilité des extrémités et condamnait son porteur à une dégradation visible et à une mort sociale avant la mort physique. Aucun rabbin n'en guérissait&nbsp;; le judaïsme considérait la purification d'un lépreux comme une œuvre aussi inouïe que la résurrection d'un mort, réservée au Messie. Que Jésus accomplisse précisément ce signe le désignait comme l'Oint annoncé.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La lèpre, condition rituelle plus que maladie.</b> La loi de Lévitique 13 chargeait le sacrificateur d'examiner le malade et de le déclarer impur&nbsp;; le lépreux devait alors porter ses vêtements déchirés, laisser ses cheveux en désordre, se couvrir la barbe et crier «&nbsp;impur, impur&nbsp;» à l'approche d'autrui (Lévitique 13.45). Exclu du camp, condamné à vivre à l'écart de la société (Lévitique 13.46&nbsp;; Nombres 5.2-3), il était retranché du Temple, du culte et de la communauté de l'alliance. Toucher un lépreux, ou en être touché, rendait soi-même cérémoniellement impur. Le lépreux incarnait ainsi, aux yeux d'Israël, l'image vivante du pécheur&nbsp;: souillé, retranché, incapable de se purifier lui-même et tenu à distance de Dieu et des hommes.</li>
+      <li><b>Le contact qui renverse l'impureté.</b> Selon l'ordre lévitique, l'impureté est contagieuse et se transmet du souillé au pur&nbsp;; avec Jésus, souligne MacArthur à propos de l'hémorroïsse (8.44) et du cercueil de Naïn (7.14), c'est l'inverse qui se produit&nbsp;: sa puissance chasse l'impureté au lieu de le souiller. Il en va de même ici&nbsp;: au lieu que la souillure du lépreux contamine Jésus, la pureté et la puissance de Jésus purifient le lépreux. La sainteté du Fils de Dieu n'est pas passive mais agissante&nbsp;; elle ne recule pas devant la souillure, elle la dissout. C'est dans ce cadre qu'éclate le scandale du verset 13&nbsp;: Jésus «&nbsp;étendit la main&nbsp;» et «&nbsp;le toucha&nbsp;».</li>
+      <li><b>L'ordre au sacrificateur, ancré dans la loi.</b> L'ordre «&nbsp;va te montrer au sacrificateur, et offre pour ta purification ce que Moïse a prescrit&nbsp;» (5.14&nbsp;; cf. Lévitique 14.1-32) ancre le miracle dans la loi&nbsp;: le sacrificateur en fonction au Temple, en acceptant l'offrande, devait constater officiellement et publiquement que l'homme était guéri et réintégré, et cette attestation servait «&nbsp;de témoignage&nbsp;» à l'autorité religieuse, preuve qu'un guérisseur dont les rabbins n'avaient pas l'équivalent était à l'œuvre en Israël.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: de la <i>lèpre</i> (<i>lepra</i>), emblème du péché, au verbe «&nbsp;rendre pur&nbsp;» (<i>katharizo</i>) et au «&nbsp;toucher&nbsp;» (<i>hapto</i>) qui purifie au lieu de souiller, jusqu'au «&nbsp;je le veux&nbsp;» souverain (<i>thelo</i>) et à la retraite priante du Seigneur (<i>hypochoreo</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">lèpre</span><span class="mot-gr">lepra</span></th>
+            <td class="col-sens">lèpre, maladie de peau écailleuse rendant rituellement impur</td>
+            <td>Le mot grec couvrait un éventail d'affections cutanées, mais la tournure insistante de Luc («&nbsp;un homme couvert de lèpre&nbsp;») indique, pour MacArthur, un cas particulièrement grave, vraisemblablement la véritable maladie de Hansen. Dans l'Ancien Testament comme ici, la lèpre n'est pas qu'une pathologie&nbsp;: elle rend rituellement impur et retranche de la communauté de l'alliance (Lévitique 13). Elle fonctionne comme l'emblème de la corruption du péché, qui souille, isole et tue, et que l'homme ne peut ôter de lui-même.</td>
+            <td><span class="trad"><span><b>S21</b> couvert de lèpre</span><span><b>NEG79</b> couvert de lèpre</span><span><b>Darby</b> plein de lèpre</span><span><b>LSG</b> couvert de lèpre</span><span><b>KJF</b> plein de lèpre</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">rendre pur</span><span class="mot-gr">katharizo</span></th>
+            <td class="col-sens">rendre net, purifier, nettoyer; déclarer ou rendre rituellement pur</td>
+            <td>Verbe qui dépasse la simple guérison médicale&nbsp;: le lépreux ne demande pas d'abord d'être «&nbsp;guéri&nbsp;» mais d'être «&nbsp;rendu pur&nbsp;» (<i>katharisai</i>), car son drame est autant rituel et spirituel que physique. Le même verbe sert dans la Septante au rite lévitique de purification et, dans le Nouveau Testament, à la purification du cœur et de la conscience par le sang de Christ (cf. 1 Jean 1.7). En répondant «&nbsp;sois pur&nbsp;» (<i>katharistheti</i>), Jésus opère en un instant ce que la loi pouvait seulement constater&nbsp;: il rend l'impur capable de reparaître devant Dieu et devant les hommes, figure de la purification que seul le Sauveur accorde au pécheur.</td>
+            <td><span class="trad"><span><b>S21</b> rendre pur</span><span><b>NEG79</b> rendre pur</span><span><b>Darby</b> rendre net</span><span><b>LSG</b> rendre pur</span><span><b>KJF</b> rendre net</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il toucha</span><span class="mot-gr">hapto</span></th>
+            <td class="col-sens">toucher, saisir, mettre la main sur, entrer en contact</td>
+            <td>Le verbe dit un contact volontaire et appuyé, non un effleurement accidentel. Jésus aurait pu guérir d'une parole à distance, comme il le fit pour le serviteur du centenier (7.7)&nbsp;; il choisit de toucher l'intouchable. Selon la logique de Lévitique, ce contact aurait dû transmettre l'impureté du lépreux à Jésus&nbsp;; MacArthur observe au contraire, à propos de la femme qui touche Jésus en 8.44, que c'est exactement l'inverse qui se produit&nbsp;: la pureté de Jésus se communique au souillé. Le geste manifeste à la fois la compassion réelle du Fils de l'homme, qui ne tient pas le misérable à distance, et la sainteté souveraine du Fils de Dieu, que la souillure n'atteint pas.</td>
+            <td><span class="trad"><span><b>S21</b> le toucha</span><span><b>NEG79</b> le toucha</span><span><b>Darby</b> le toucha</span><span><b>LSG</b> le toucha</span><span><b>KJF</b> le toucha</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">je le veux</span><span class="mot-gr">thelo</span></th>
+            <td class="col-sens">vouloir, désirer, avoir la volonté de, consentir</td>
+            <td>Le lépreux n'a pas mis en doute la puissance de Jésus («&nbsp;tu peux me rendre pur&nbsp;»)&nbsp;; il s'en remet entièrement à sa volonté&nbsp;: «&nbsp;si tu le veux&nbsp;» (<i>ean theles</i>). La réponse reprend mot pour mot ce verbe et le retourne en affirmation souveraine&nbsp;: «&nbsp;je le veux&nbsp;» (<i>thelo</i>). Le pouvoir et la volonté de purifier coïncident en Jésus comme en Dieu seul. Cette volonté n'est ni hésitante ni arrachée&nbsp;: elle jaillit, dit le parallèle de Marc 1.41, d'une compassion profonde. Pour le pécheur qui se demande si Dieu veut le recevoir, la parole de Jésus est l'assurance que la volonté du Sauveur et sa toute-puissance ne font qu'un.</td>
+            <td><span class="trad"><span><b>S21</b> je le veux</span><span><b>NEG79</b> je le veux</span><span><b>Darby</b> je veux</span><span><b>LSG</b> je le veux</span><span><b>KJF</b> je le veux</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il se retirait</span><span class="mot-gr">hypochoreo</span></th>
+            <td class="col-sens">se retirer, s'éloigner, battre en retraite vers un lieu écarté</td>
+            <td>Verbe propre à Luc dans les Évangiles (5.16&nbsp;; 9.10) qui décrit le mouvement de Jésus s'éloignant des foules vers les lieux déserts. Au sommet de sa renommée, alors que «&nbsp;les gens venaient en foule&nbsp;» (5.15), Jésus se retire «&nbsp;dans les déserts&nbsp;» non par fatigue ou dérobade mais pour prier. Luc, qui accentue plus que tout autre évangéliste la vie de prière du Seigneur (3.21&nbsp;; 6.12&nbsp;; 9.18,28&nbsp;; 22.41-44), montre ici que le Fils dépendant cherche la communion avec le Père et refuse de se laisser détourner de sa mission par la popularité. La retraite priante est le contrepoids du succès public.</td>
+            <td><span class="trad"><span><b>S21</b> se retirait</span><span><b>NEG79</b> se retirait</span><span><b>Darby</b> se tenait retiré</span><span><b>LSG</b> se retirait</span><span><b>KJF</b> se retira</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Luc 5.12-16</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Luc 5.12-16 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Lc 5.12, 5.13, 5.14.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-63</span></th>
+            <td><a href="https://www.gty.org/sermons/42-63" target="_blank" rel="noopener">A Lesson from a Leper</a></td>
+            <td>Luc 5.12-15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La scène illustre le salut avec force&nbsp;: un homme dans la condition la plus désespérée vient à celui qui seul peut le purifier, et la compassion du Seigneur le recrée d'une parole et d'un toucher.</p>
+    <div class="body">
+      <p>La scène s'ouvre sur un homme «&nbsp;couvert de lèpre&nbsp;» qui, ayant vu Jésus, «&nbsp;tomba sur sa face&nbsp;» et le supplia&nbsp;: «&nbsp;Seigneur, si tu le veux, tu peux me rendre pur.&nbsp;» MacArthur relève la qualité remarquable de cette approche. Le lépreux ne doute pas un instant de la puissance de Jésus&nbsp;: il affirme avec une foi entière «&nbsp;tu peux&nbsp;». Sa seule incertitude porte sur la volonté&nbsp;: «&nbsp;si tu le veux.&nbsp;» Il tombe sur sa face dans une attitude d'adoration et l'appelle «&nbsp;Seigneur&nbsp;», titre qui pourrait ne signifier que «&nbsp;monsieur&nbsp;» mais qui, joint à ce geste, semble dire davantage&nbsp;; sans revendiquer aucun droit, il s'en remet au bon vouloir de Jésus. Désespoir, révérence, urgence, humilité et foi&nbsp;: sans être le propos premier du passage, l'analogie est irrésistible, c'est ainsi que le pécheur vient à Christ. À l'image de Pierre quelques versets plus haut (5.8), le lépreux incarne le pécheur qui ne s'approche que sur sa face.</p>
+      <p>La réponse de Jésus condense tout l'Évangile en trois gestes. D'abord il «&nbsp;étendit la main&nbsp;» et «&nbsp;le toucha&nbsp;»&nbsp;: geste inouï, car la loi interdisait le contact avec un lépreux et tout autre se serait reculé d'horreur. Jésus, lui, ne guérit pas à distance par crainte de la contagion&nbsp;; il touche. Marc, dans le récit parallèle, note que Jésus fut «&nbsp;ému de compassion&nbsp;» (Marc 1.41), le seul évangéliste à rapporter cette émotion. Ce toucher ne souille pas le Saint&nbsp;: il purifie l'impur, renversant la logique de l'impureté lévitique selon laquelle la souillure se transmet toujours du contaminé au pur. Ici la sainteté est la plus forte. Ensuite la parole&nbsp;: «&nbsp;Je le veux, sois pur&nbsp;», qui répond terme à terme à la supplique et révèle que la volonté et la puissance de purifier coïncident en Jésus comme en Dieu. Enfin l'effet&nbsp;: «&nbsp;Aussitôt la lèpre le quitta.&nbsp;» MacArthur souligne que les guérisons de Jésus se caractérisaient par un rétablissement immédiat et total&nbsp;: opérés d'une parole et d'un toucher, instantanés et complets, ses miracles étaient des œuvres de création, qui refaisaient les chairs rongées.</p>
+      <p>L'ordre qui suit a longtemps intrigué les lecteurs&nbsp;: pourquoi Jésus commande-t-il à l'homme de «&nbsp;n'en parler à personne&nbsp;»? Selon MacArthur, la nouvelle d'un tel miracle risquait d'entraver la mission de Jésus en détournant l'attention de son message, et d'attirer des foules plus grandes encore qui paralyseraient son ministère&nbsp;; en envoyant l'homme au sacrificateur, Jésus gagnait aussi du temps. La consigne «&nbsp;va te montrer au sacrificateur, et offre pour ta purification ce que Moïse a prescrit&nbsp;» (cf. Lévitique 14.1-32) poursuit un double but. D'une part, elle inscrit l'obéissance de l'homme guéri dans la loi&nbsp;: tant qu'il n'avait pas offert les sacrifices prescrits et reçu l'attestation officielle, il demeurait rituellement impur et exclu du culte. D'autre part, en acceptant l'offrande, le sacrificateur en fonction au Temple démontrait publiquement que la guérison était réelle&nbsp;: c'était «&nbsp;un témoignage&nbsp;» rendu aux sacrificateurs, à qui l'homme pourrait raconter que Jésus l'avait guéri. Le sacrificateur devenait ainsi témoin de la puissance de Jésus.</p>
+      <p>Les deux derniers versets dressent un contraste éloquent qui révèle le cœur du Sauveur. D'un côté, «&nbsp;sa renommée se répandait de plus en plus, et les gens venaient en foule pour l'entendre et pour être guéris&nbsp;»&nbsp;: le succès public, l'affluence, la pression de la popularité. De l'autre, «&nbsp;lui, il se retirait dans les déserts, et priait&nbsp;». MacArthur y voit une habitude de Jésus, présente dans tous les Évangiles et que Luc met en relief (ch. 3, 4, 6, 9 et 11)&nbsp;: Jésus entretenait sa communion avec le Père. Le Fils de Dieu, dans sa vraie humanité, avait besoin de cette communion&nbsp;: saint, innocent, sans souillure, il compatit pourtant à nos faiblesses, et c'est dans la prière qu'il soutenait sa puissance et son ministère. Il bannit pratiquement la maladie du pays, et on le fit pourtant mourir&nbsp;: les miracles ne suffisent pas à faire croire. Cette scène modeste illustre ainsi le salut avec force&nbsp;: le pécheur, atteint d'un mal plus mortel que la lèpre, vient à Jésus, et d'une parole et d'un toucher le Sauveur le recrée.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope&nbsp;: des récits synoptiques parallèles à l'arrière-plan vétérotestamentaire de la lèpre et de sa purification, jusqu'aux liens lucaniens qui relient la guérison du corps au salut de l'âme par la foi.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 1.40-45</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Récit parallèle du même miracle, plus complet sur certains points&nbsp;: Marc seul rapporte que Jésus fut «&nbsp;ému de compassion&nbsp;» (1.41) et que l'homme désobéit en publiant la chose. Sur 5.12, la note JMA de Luc renvoie à la note sur Marc 1.40, qui identifie la véritable lèpre.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 8.1-4</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Troisième récit synoptique de la purification du lépreux, premier miracle après le Sermon sur la montagne&nbsp;; même ordre de se taire et d'aller se montrer au sacrificateur «&nbsp;en témoignage&nbsp;».</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Lévitique 13.1-46</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La loi qui définissait la lèpre, chargeait le sacrificateur de déclarer le malade impur et l'excluait du camp&nbsp;; arrière-plan rituel indispensable de l'impureté du lépreux et de son exclusion.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Lévitique 14.1-32</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le rituel précis de purification du lépreux guéri auquel Jésus renvoie l'homme&nbsp;: examen par le sacrificateur et offrandes prescrites par Moïse, condition de sa réintégration officielle.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Rois 5.1-14</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Guérison du lépreux Naaman par Élisée&nbsp;; rareté absolue d'une purification de la lèpre dans l'Ancien Testament, signe prophétique que Jésus évoque lui-même en Luc 4.27 comme prélude à son ministère.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 5.17-26</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Scène suivante immédiate&nbsp;: au paralytique, Jésus offre non plus la guérison du corps mais le pardon des péchés, ce qui fait monter la controverse d'un cran&nbsp;; la lèpre purifiée et le péché pardonné se répondent.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 17.11-19</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Purification des dix lépreux, dont un seul, un Samaritain, revient rendre grâce&nbsp;; même verbe de purification (<i>katharizo</i>) et même envoi vers les sacrificateurs, avec l'accent lucanien sur la foi qui sauve.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 7.50</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Ta foi t'a sauvée&nbsp;»&nbsp;: la formule lucanienne qui distingue la guérison physique du salut véritable reçu par la foi, en pleine harmonie avec la justification paulinienne&nbsp;; éclaire la foi du lépreux qui se remet à la volonté du Seigneur.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La pleine divinité et la vraie humanité du Sauveur</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus purifie d'une parole souveraine, «&nbsp;je le veux, sois pur&nbsp;» (5.13), accomplissant ce que la tradition juive réservait au Messie et que Dieu seul peut faire&nbsp;; et pourtant, dans sa vraie humanité, il «&nbsp;se retirait dans les déserts, et priait&nbsp;» (5.16), en dépendance du Père.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le même Jésus qui guérit la lèpre par sa seule volonté divine prie comme un homme dépendant. La purification instantanée atteste sa divinité&nbsp;; la retraite priante atteste son humanité réelle. Pour l'assemblée&nbsp;: nous adorons le Dieu-homme, pleinement Dieu et vraiment homme, dont le pouvoir de sauver est divin et dont la compassion s'est faite chair. Aucune des deux natures n'efface l'autre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La sainteté qui purifie au lieu de se souiller</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus «&nbsp;étendit la main, le toucha&nbsp;» (5.13), alors que la loi rendait impur quiconque touchait un lépreux&nbsp;; mais ce contact ne souille pas le Saint, il purifie l'impur, «&nbsp;aussitôt la lèpre le quitta&nbsp;».</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La logique de Lévitique 13 veut que l'impureté se transmette du souillé au pur&nbsp;; en Christ, c'est la pureté qui se communique au souillé. Pour l'assemblée&nbsp;: la sainteté de Christ n'est pas une distance craintive mais une puissance qui guérit&nbsp;; il ne nous tient pas à l'écart de notre souillure, il l'ôte. Le pécheur n'a pas à se purifier d'abord pour venir&nbsp;; c'est en venant qu'il est purifié.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La lèpre, image du péché et de l'impuissance humaine</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'homme «&nbsp;couvert de lèpre&nbsp;» est rituellement impur, retranché de la communauté et incapable de se guérir lui-même&nbsp;; il ne peut que tomber sur sa face et supplier (5.12).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Comme le lépreux, le pécheur est souillé, retranché de Dieu et radicalement incapable de se purifier par ses propres œuvres. Pour l'assemblée&nbsp;: cette scène prêche la dépravation et l'incapacité de l'homme déchu, et donc le monergisme de la grâce. Le salut ne s'obtient pas, il se reçoit des mains du seul qui peut dire «&nbsp;je le veux&nbsp;»&nbsp;; toute la gloire revient au Sauveur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi qui s'abandonne à la volonté souveraine de Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Seigneur, si tu le veux, tu peux me rendre pur&nbsp;» (5.12)&nbsp;: le lépreux ne doute pas de la puissance, il se remet à la volonté de celui qu'il appelle Seigneur et devant lequel il se prosterne.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La foi véritable ne dicte pas ses conditions à Dieu&nbsp;; elle confesse sa toute-puissance et se soumet à sa seigneurie. Pour l'assemblée&nbsp;: c'est le cœur de la <i>Lordship Salvation</i>, la foi qui sauve s'approche en reconnaissant Christ comme Seigneur et s'abandonne à sa volonté. Le «&nbsp;si tu le veux&nbsp;» du lépreux n'est pas un doute mais une humble reddition, et la réponse «&nbsp;je le veux&nbsp;» assure le pécheur que la volonté du Sauveur est de recevoir qui vient à lui.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La marche vers la croix au-dessus de la gloire des foules</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Au sommet de sa renommée, alors que «&nbsp;les gens venaient en foule&nbsp;» (5.15), Jésus ordonne le silence (5.14) et «&nbsp;se retirait dans les déserts, et priait&nbsp;» (5.16), refusant de se laisser couronner par la popularité.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Jésus ne cherche pas l'acclamation populaire mais la volonté du Père et la route de la croix qui sauve. Pour l'assemblée&nbsp;: le ministère fidèle ne se mesure pas à l'affluence ni à la renommée&nbsp;; il se nourrit de la prière et reste centré sur l'Évangile de la croix. La popularité est une tentation à fuir, non un succès à rechercher, quand elle détourne de la mission de sauver les perdus.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le lépreux confesse la puissance de Jésus («&nbsp;tu peux&nbsp;») et s'abandonne à sa volonté («&nbsp;si tu le veux&nbsp;»). Comment aider votre assemblée à distinguer la foi qui dicte ses conditions à Dieu de la foi qui se prosterne et se remet à la seigneurie de Christ?</li>
+      <li>La loi de Lévitique 13 faisait du lépreux l'image vivante du pécheur&nbsp;: souillé, retranché, incapable de se purifier. Comment prêcher cette correspondance sans la forcer, de sorte que l'auditeur se reconnaisse dans le lépreux avant d'entendre le «&nbsp;je le veux&nbsp;»?</li>
+      <li>Jésus touche l'intouchable et sa pureté purifie au lieu de se souiller. Que dit ce renversement de la logique de l'impureté sur la manière dont Christ s'approche aujourd'hui du pécheur le plus dégradé, et sur l'incapacité de l'homme à se rendre pur d'abord?</li>
+      <li>La guérison fut «&nbsp;aussitôt&nbsp;» et totale. En quoi le caractère instantané et complet des miracles de Jésus, distinct de toute guérison progressive ou suggérée, sert-il à authentifier sa divinité plutôt qu'un pouvoir thaumaturgique ordinaire?</li>
+      <li>Pourquoi Jésus ordonne-t-il le silence et renvoie-t-il l'homme au sacrificateur «&nbsp;en témoignage&nbsp;»? Comment exposer son refus d'un messianisme populaire et charnel sans en faire un simple détail historique, mais une fenêtre sur sa marche délibérée vers la croix?</li>
+      <li>Au faîte de sa renommée, Jésus se retire pour prier (5.16). Quel diagnostic ce contraste pose-t-il sur la tentation contemporaine de mesurer le ministère à l'affluence, et comment la vie de prière du Seigneur corrige-t-elle nos critères de succès?</li>
+      <li>Cette scène précède immédiatement le pardon offert au paralytique (5.17-26). Comment préparer votre assemblée à voir que celui qui dit «&nbsp;je le veux, sois pur&nbsp;» à la lèpre dira «&nbsp;tes péchés te sont pardonnés&nbsp;», et que la purification du corps annonce la purification plus grande de l'âme?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Luc 5.12-16 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Luc : venu sauver les perdus&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Luc-5-12-16.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

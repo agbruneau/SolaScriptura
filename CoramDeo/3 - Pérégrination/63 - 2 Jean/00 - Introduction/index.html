@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La deuxième épître de Jean · La vérité et l'amour</title>
+<meta name="description" content="Présentation de la deuxième épître de Jean pour une étude biblique : introduction, les quatre mouvements de la lettre et la leçon centrale. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">2 Jean</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#verite">La vérité qui demeure</a>
+    <a href="#amour">Marcher dans l'amour</a>
+    <a href="#bornes">Les bornes de l'amour</a>
+    <a href="#joie">La joie de la communion</a>
+    <a href="#centrale">Leçon centrale</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#predication">La série</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Vue d'ensemble · 2 Jean 1.1-13</p>
+    <h1 class="hero__title">2 Jean</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Et l'amour consiste à marcher selon ses commandements.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">2 Jean 1.6 · NEG</p>
+    <p class="hero__series">Série : <b>2 Jean : la vérité et l'amour</b></p>
+    <p class="hero__meta">Quand la vérité fixe les bornes de l'amour · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Introduction</p>
+      <h2 class="sec-title">Un billet où la vérité borne l'amour</h2>
+      <p class="ref">Deuxième épître de Jean</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">L'ancien, à Kyria l'élue et à ses enfants, que j'aime dans la vérité.</p>
+        <cite class="verse__ref">2 Jean 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Plusieurs séducteurs sont entrés dans le monde, qui ne confessent point que Jésus-Christ est venu en chair.</p>
+        <cite class="verse__ref">2 Jean 1.7 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La deuxième épître de Jean ; la plus brève des deux billets jumeaux, treize versets et moins de trois cents mots grecs tenant sur une seule feuille de papyrus, où l'hospitalité chrétienne, devoir sacré du monde antique, se voit fixer une borne par la vérité : l'amour véritable refuse de cautionner ceux qui nient Christ.</p>
+    <ul class="points">
+      <li><b>L'auteur : l'apôtre Jean, «&nbsp;l'ancien&nbsp;».</b> Jean se présente non par son nom mais par un titre : «&nbsp;l'ancien&nbsp;» (verset 1). Selon MacArthur, ce mot ne désigne pas un simple office presbytéral, mais souligne son grand âge, son autorité d'apôtre et son statut de témoin oculaire de la période fondatrice du christianisme. L'épître fut écrite vers 90 à 95 après Jésus-Christ, depuis Éphèse, à la même époque que 1 Jean, comme le confirme la parenté étroite des formulations.</li>
+      <li><b>La destinataire : Kyria l'élue, au sens littéral.</b> «&nbsp;Kyria l'élue et ses enfants&nbsp;» (verset 1) désigne, selon la lecture la plus naturelle de MacArthur, une femme bien connue de Jean et ses enfants biologiques, et non la métaphore d'une Église locale et de ses membres ; de même, «&nbsp;les enfants de ta sœur l'élue&nbsp;» (verset 13) sont les neveux et nièces de la destinataire. Cette lecture littérale ancre l'épître dans une relation pastorale concrète, et non dans une allégorie ecclésiale.</li>
+      <li><b>L'occasion : des séducteurs qui nient l'incarnation.</b> L'arrière-plan est la même crise doctrinale que celle de 1 Jean : de faux docteurs, influencés par la pensée gnostique naissante et l'erreur de Cérinthe rattachée à Éphèse, niaient l'union réelle du divin et de la chair en Jésus-Christ (verset 7). Confesser que «&nbsp;Jésus-Christ est venu en chair&nbsp;», c'est-à-dire affirmer la pleine divinité et la vraie humanité du Dieu-homme, devient la ligne de partage entre la foi et l'imposture.</li>
+      <li><b>L'hospitalité, institution exploitée par l'erreur.</b> Faute d'auberges sûres, les prédicateurs itinérants dépendaient de l'accueil dans les maisons des croyants (Romains 12.13 ; Hébreux 13.2). Recevoir un maître chez soi, c'était lui offrir le gîte, une base d'opération et surtout une caution publique. Les faux docteurs exploitaient ce mécanisme, allant de congrégation en congrégation pour gagner des adeptes en se prévalant de la générosité chrétienne.</li>
+      <li><b>Le thème unique : l'amour exercé dans les bornes de la vérité.</b> MacArthur lit 2 Jean comme un prolongement direct de 1 Jean, ramené à un seul fil : l'hospitalité chrétienne exercée avec discernement. Les croyants ne sont pas appelés à recevoir sans restriction quiconque se réclame de la foi ; l'amour doit s'accompagner de discernement, sinon il risque de prêter assistance à ceux qui veulent détruire les vérités fondamentales.</li>
+      <li><b>Quatre mouvements d'une grande netteté.</b> Le corps de la lettre se déploie en quatre unités de sens qui se suivent sans rupture. Les <span class="surligne">fondements dans la vérité (versets 1-3)</span> posent la sphère où l'amour se reçoit. La <span class="surligne">manière par l'amour obéissant (versets 4-6)</span> définit l'amour comme une marche. Les <span class="surligne">limites face aux faux docteurs (versets 7-11)</span> portent le cœur de la lettre. Les <span class="surligne">bénédictions de joie (versets 12-13)</span> referment le billet sur la communion préservée.</li>
+      <li><b>Le cœur qui commande tout le livre.</b> <span class="surligne">Les versets 7 à 11 gouvernent l'épître : parce que nier l'incarnation est la marque de l'antichrist, la vérité doit fixer les bornes de l'amour.</span> Le test christologique du verset 7 et l'interdiction des versets 10-11 répondent directement aux appels superficiels à l'œcuménisme : là où l'unité ne repose pas sur la vérité, il ne subsiste qu'un sentimentalisme creux. Cette page suit ce fil d'un bout à l'autre.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ I. LA VÉRITÉ (versets 1-3) ============ -->
+  <article class="section reveal" id="verite">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Premier mouvement · Versets 1-3</p>
+      <h2 class="sec-title">La vérité qui demeure</h2>
+      <p class="ref">2 Jean 1.1-3</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">À cause de la vérité qui demeure en nous, et qui sera avec nous pour l'éternité.</p>
+        <cite class="verse__ref">2 Jean 1.2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Que la grâce, la miséricorde et la paix soient avec vous de la part de Dieu le Père, et de la part de Jésus-Christ.</p>
+        <cite class="verse__ref">2 Jean 1.3 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avant tout appel à l'amour, Jean ancre la relation dans la vérité : le mot revient cinq fois dans les quatre premiers versets. L'amour chrétien véritable prend sa source et son fondement dans la vérité qui demeure en nous pour l'éternité, sphère où grâce, miséricorde et paix se reçoivent.</p>
+    <ul class="points">
+      <li><b>Un amour situé dans la vérité.</b> Jean aime la destinataire et ses enfants «&nbsp;dans la vérité&nbsp;» (verset 1), comme tous ceux qui ont connu la vérité. Chez Jean, la vérité (alêtheia) n'est pas une abstraction, mais le contenu objectif de la foi révélée : la saine doctrine de la personne et de l'œuvre de Christ. L'insistance est massive : le mot est répété cinq fois dès l'ouverture.</li>
+      <li><b>La vérité qui demeure pour l'éternité.</b> «&nbsp;À cause de la vérité qui demeure en nous, et qui sera avec nous pour l'éternité&nbsp;» (verset 2). Cette vérité cognitive de la Parole de Dieu n'est pas un attachement passager : elle habite le croyant et l'accompagnera sans fin. Elle est la racine d'où toute la série va croître.</li>
+      <li><b>Grâce, miséricorde et paix.</b> La triple bénédiction (verset 3) suit, selon MacArthur, l'ordre des événements, de l'intervention de Dieu jusqu'à la satisfaction finale de l'homme, et se situe «&nbsp;dans la vérité et l'amour&nbsp;». Loin d'être une formule, ce vœu fixe le sol de toute la lettre : la vérité reçue de Dieu réclame une réponse.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ II. L'AMOUR (versets 4-6) ============ -->
+  <article class="section reveal" id="amour">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Deuxième mouvement · Versets 4-6</p>
+      <h2 class="sec-title">Marcher dans l'amour</h2>
+      <p class="ref">2 Jean 1.4-6</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Que nous nous aimions les uns les autres ; non comme te prescrivant un commandement nouveau, mais celui que nous avons eu dès le commencement.</p>
+        <cite class="verse__ref">2 Jean 1.5 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et l'amour consiste à marcher selon ses commandements.</p>
+        <cite class="verse__ref">2 Jean 1.6 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La vérité reçue se vit par l'obéissance. L'amour que Dieu commande n'est pas un sentiment ni une émotion, mais une marche permanente d'obéissance à sa Parole. Ce critère prépare le discernement à venir : il permettra de distinguer le vrai docteur du faux.</p>
+    <ul class="points">
+      <li><b>Une joie devant l'obéissance.</b> Jean se réjouit d'avoir trouvé des enfants de la destinataire «&nbsp;marchant dans la vérité&nbsp;» (verset 4). Le verbe «&nbsp;marcher&nbsp;» renvoie à une marche permanente : faire de l'obéissance à la vérité un mode de vie, et non un élan passager.</li>
+      <li><b>Un commandement ancien, non nouveau.</b> Le commandement de s'aimer les uns les autres n'est pas une nouveauté ; il était là «&nbsp;dès le commencement&nbsp;» (verset 5). Jean reprend ici le fil de sa première épître : l'amour fraternel est la marque constante du peuple de Dieu.</li>
+      <li><b>L'amour défini comme obéissance.</b> «&nbsp;L'amour consiste à marcher selon ses commandements&nbsp;» (verset 6). MacArthur souligne que Jean définit l'amour non comme une émotion, mais comme l'obéissance aux commandements de Dieu. L'amour véritable et la vérité sont ainsi indissociables : la vérité dirige la façon d'exercer l'amour, et l'amour résiste à l'épreuve de la vérité.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ III. LES BORNES (versets 7-11) ============ -->
+  <article class="section reveal" id="bornes">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Troisième mouvement · Versets 7-11</p>
+      <h2 class="sec-title">Les bornes de l'amour</h2>
+      <p class="ref">2 Jean 1.7-11</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Quiconque va plus loin et ne demeure pas dans la doctrine de Christ n'a point Dieu.</p>
+        <cite class="verse__ref">2 Jean 1.9 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Si quelqu'un vient à vous et n'apporte pas cette doctrine, ne le recevez pas dans votre maison, et ne lui dites pas : Salut !</p>
+        <cite class="verse__ref">2 Jean 1.10 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le sommet de la lettre et de la série : parce que nier l'incarnation de Christ est la marque de l'antichrist, l'amour véritable refuse de cautionner l'erreur et se sépare des faux docteurs. La vérité et l'amour obéissant fixent ensemble les limites de l'hospitalité.</p>
+    <ul class="points">
+      <li><b>Le test christologique.</b> «&nbsp;Plusieurs séducteurs sont entrés dans le monde, qui ne confessent point que Jésus-Christ est venu en chair&nbsp;» (verset 7). Le terme planos désigne celui qui fait errer, l'imposteur au service de l'erreur. Pour MacArthur, une christologie biblique doit affirmer que Jésus-Christ est à la fois pleinement humain et pleinement divin ; celui qui nie l'incarnation est «&nbsp;le séducteur et l'Antéchrist&nbsp;».</li>
+      <li><b>La pleine récompense.</b> «&nbsp;Prenez garde à vous-mêmes, afin que vous ne perdiez pas le fruit de votre travail&nbsp;» (verset 8). La «&nbsp;pleine récompense&nbsp;» (misthon plêrê) n'est pas le salut, qui est don de la grâce, mais la rétribution éternelle évaluée au tribunal de Christ pour les œuvres du croyant. Elle peut être diminuée si, par manque de discernement, le croyant favorise la propagation de l'erreur.</li>
+      <li><b>Demeurer dans la doctrine de Christ.</b> «&nbsp;Quiconque va plus loin et ne demeure pas dans la doctrine de Christ n'a point Dieu&nbsp;» (verset 9). Le verbe menô, «&nbsp;demeurer&nbsp;», marque une adhésion permanente : celui qui abandonne cette doctrine prouve par là qu'il n'a jamais été né de nouveau. La vraie foi tient bon ; c'est la note de la persévérance des saints.</li>
+      <li><b>Ne pas recevoir, ne pas saluer.</b> «&nbsp;Ne le recevez pas dans votre maison, et ne lui dites pas : Salut&nbsp;!&nbsp;» (verset 10). La salutation (chairein) n'était pas un simple bonjour, mais un souhait public de bénédiction ; recevoir un docteur, c'était l'accréditer aux yeux de tous. Face aux destructeurs des fondements de la foi, la seule attitude appropriée est la rupture totale.</li>
+      <li><b>Saluer, c'est participer.</b> «&nbsp;Celui qui lui dit : Salut ! participe à ses mauvaises œuvres&nbsp;» (verset 11). Cautionner l'hérétique itinérant, c'est contribuer à la diffusion de son hérésie. MacArthur y voit la réponse directe de l'Écriture aux appels superficiels à l'œcuménisme : les limites de l'amour, et donc de l'unité, sont fixées par la vérité.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ IV. LA JOIE (versets 12-13) ============ -->
+  <article class="section reveal" id="joie">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Quatrième mouvement · Versets 12-13</p>
+      <h2 class="sec-title">La joie de la communion préservée</h2>
+      <p class="ref">2 Jean 1.12-13</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">J'espère aller chez vous, et vous parler de vive voix, afin que notre joie soit parfaite.</p>
+        <cite class="verse__ref">2 Jean 1.12 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Les enfants de ta sœur l'élue te saluent.</p>
+        <cite class="verse__ref">2 Jean 1.13 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Après la mise en garde sévère, Jean referme la lettre sur la joie du face à face. Quand la communion fraternelle est gardée dans la vérité, il en découle une joie authentique et parfaite. La vérité défendue n'étouffe pas l'amour, elle en libère la joie.</p>
+    <ul class="points">
+      <li><b>De vive voix, pour une joie parfaite.</b> Jean a «&nbsp;beaucoup de choses à écrire&nbsp;» mais préfère parler «&nbsp;de vive voix&nbsp;» (verset 12), littéralement «&nbsp;bouche à bouche&nbsp;», expression qui rappelle Nombres 12.8, où Dieu parle ainsi à Moïse. Le but est clair : «&nbsp;afin que notre joie soit parfaite&nbsp;», reprise exacte de 1 Jean 1.4.</li>
+      <li><b>Une joie née de la communion.</b> Cette joie parfaite découle d'une communion fraternelle préservée selon les normes bibliques. La sévérité des versets 10 et 11 ne s'oppose pas à la joie : elle la protège, en gardant la communion pure de toute compromission doctrinale.</li>
+      <li><b>Les salutations de l'élue.</b> «&nbsp;Les enfants de ta sœur l'élue te saluent&nbsp;» (verset 13). Conformément à la lecture littérale de MacArthur, ce sont les neveux et nièces de la destinataire qui transmettent leurs salutations, ancrant l'épître dans un réseau familial concret. La lettre s'achève dans la chaleur d'une parenté chrétienne.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LEÇON CENTRALE ============ -->
+  <article class="section reveal" id="centrale">
+    <header class="sec-head">
+      <div class="sec-num">◆</div>
+      <p class="kicker">La leçon centrale</p>
+      <h2 class="sec-title">La vérité et l'amour</h2>
+      <p class="ref">2 Jean 1.7-11 · La vérité fixe les bornes de l'amour</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Si quelqu'un vient à vous et n'apporte pas cette doctrine, ne le recevez pas dans votre maison.</p>
+        <cite class="verse__ref">2 Jean 1.10 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et l'amour consiste à marcher selon ses commandements.</p>
+        <cite class="verse__ref">2 Jean 1.6 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La question qui commande tout 2 Jean n'est pas accessoire : faut-il opposer l'amour et la vérité, comme si tenir ferme sur la doctrine trahissait la charité ? La réponse, et c'est là que MacArthur situe le cœur de l'épître, est que la vérité n'est pas le rival de l'amour, mais sa source et sa borne.</p>
+    <ul class="points">
+      <li><b>La vérité, sphère de l'amour.</b> Le mot vérité revient cinq fois dans les quatre premiers versets : toute l'épître pose la vérité comme la sphère où l'amour se vit (versets 1-3) et la borne au-delà de laquelle l'unité devient compromission (versets 9-11). Une unité achetée au prix d'un compromis doctrinal n'est pas de l'amour chrétien, mais un sentimentalisme creux.</li>
+      <li><b>L'incarnation, ligne de partage de la foi.</b> Le verset 7 fait de la confession que «&nbsp;Jésus-Christ est venu en chair&nbsp;» le test décisif ; le verset 9 ajoute que sortir de la doctrine de Christ, c'est «&nbsp;n'avoir point Dieu&nbsp;». La pleine divinité et la vraie humanité du Dieu-homme ne sont pas un raffinement facultatif : elles sont le sol de la rédemption, et toute hérésie majeure se trompe d'abord sur la personne de Christ.</li>
+      <li><b>L'amour, une obéissance et non un sentiment.</b> Aux versets 5 et 6, Jean définit l'amour : marcher selon les commandements de Dieu, en faire un mode de vie permanent. L'amour biblique n'est pas d'abord un sentiment chaud, mais une obéissance constante qui découle de l'union avec Christ et de l'œuvre de l'Esprit ; aimer Dieu et le prochain, c'est garder sa Parole.</li>
+      <li><b>Le discernement, protection du troupeau.</b> Les versets 10 et 11 interdisent de recevoir le faux docteur et même de le saluer, car le saluer revient à participer à ses mauvaises œuvres. Le devoir d'hospitalité n'est pas un blanc-seing : cautionner l'erreur, c'est en devenir complice. Le discernement n'est pas un manque de charité, mais un refus de prêter assistance à ceux qui veulent détruire la vérité.</li>
+      <li><b>La persévérance et la pleine récompense.</b> Le verbe demeurer (menô) au verset 9 marque l'adhésion permanente du vrai croyant, tandis que le verset 8 avertit de recevoir une pleine récompense. Celui qui abandonne la doctrine prouve qu'il n'a jamais été régénéré, sans que la sécurité éternelle de l'enfant de Dieu soit menacée ; l'avertissement n'enseigne pas la perte du salut, mais appelle au discernement.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CONCLUSION ============ -->
+  <article class="section section--conclusion reveal" id="conclusion">
+    <header class="sec-head">
+      <p class="kicker">Conclusion</p>
+      <h2 class="sec-title">De la vérité reçue à la joie préservée</h2>
+      <p class="ref">2 Jean 1.1 à 1.13</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">L'ancien, à Kyria l'élue et à ses enfants, que j'aime dans la vérité.</p>
+        <cite class="verse__ref">2 Jean 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">J'espère aller chez vous, et vous parler de vive voix, afin que notre joie soit parfaite.</p>
+        <cite class="verse__ref">2 Jean 1.12 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">D'un bout à l'autre, 2 Jean pose une seule question, et c'est aussi la nôtre : la vérité et l'amour sont-ils des rivaux à équilibrer, ou la première est-elle la source et la borne du second ? Le billet fait de la doctrine la condition même de la charité, et ramène tout à la communion préservée dans la vérité.</p>
+    <ul class="points">
+      <li><b>Le chemin parcouru.</b> La série épouse le mouvement même de la lettre. Elle part de la vérité qui demeure dans le croyant (semaine 1), montre comment cette vérité se vit par une marche d'obéissance (semaine 2), monte vers son sommet où l'amour refuse de cautionner ceux qui nient Christ (semaine 3), puis se résout dans la joie d'une communion préservée (semaine 4).</li>
+      <li><b>La vérité, source et borne de l'amour.</b> L'arc va de la racine, la vérité reçue, à la marche d'obéissance qui est le vrai visage de l'amour, puis au passage décisif où l'amour, pour rester l'amour, doit se séparer de l'erreur. L'auditeur quitte la série non pas durci, mais affermi et rempli de joie.</li>
+      <li><b>L'incarnation, question de vie ou de mort.</b> Confesser que Jésus-Christ est venu en chair n'est pas un test scolaire, mais une ligne de partage spirituelle. Aidez l'assemblée à voir que toute hérésie majeure se trompe d'abord sur la personne de Christ, et que la pleine divinité et la vraie humanité du Dieu-homme sont le sol de la rédemption.</li>
+      <li><b>Le discernement contre l'œcuménisme creux.</b> Les versets 10 et 11 heurtent la sensibilité contemporaine, mais leur portée est précise : ils visent les destructeurs des fondements de la foi, non les désaccords mineurs. Situez l'interdiction dans le contexte de l'hospitalité antique : refuser le gîte et la salutation à l'hérétique itinérant n'était pas de l'inhospitalité, mais une protection de l'Église.</li>
+      <li><b>La leçon centrale.</b> La culmination est la joie d'une communion gardée dans la vérité. Jean ne ferme pas le billet sur la sévérité, mais sur l'espérance du face à face. L'appel n'est donc pas de durcir le cœur, mais de tenir ensemble la vérité et l'amour, car la vérité défendue ne tue pas la joie : elle la libère.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LA SÉRIE ============ -->
+  <article class="section reveal" id="predication">
+    <header class="sec-head">
+      <p class="kicker">La série</p>
+      <h2 class="sec-title">Les 4 recherches de la série</h2>
+      <p class="ref">2 Jean 1.1 à 1.13 · 4 semaines</p>
+    </header>
+    <p class="lead">La série «&nbsp;2 Jean : la vérité et l'amour&nbsp;» se déploie sur quatre semaines d'exposition suivie, sans lacune ni chevauchement, des fondements dans la vérité (1.1-3) à la joie de la communion préservée (1.12-13). Chaque passage dispose d'une recherche exégétique complète : choisissez une semaine pour ouvrir sa recherche et préparer la prédication.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20La%20v%C3%A9rit%C3%A9%20qui%20demeure%20%282%20Jean%201.1-3%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">La vérité qui demeure</span>
+        <span class="semaine__ref">2 Jean 1.1-3<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20Marcher%20dans%20l%27amour%20%282%20Jean%201.4-6%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Marcher dans l'amour</span>
+        <span class="semaine__ref">2 Jean 1.4-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20Les%20bornes%20de%20l%27amour%20%282%20Jean%201.7-11%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Les bornes de l'amour</span>
+        <span class="semaine__ref">2 Jean 1.7-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20La%20joie%20de%20la%20communion%20pr%C3%A9serv%C3%A9e%20%282%20Jean%201.12-13%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">La joie de la communion préservée</span>
+        <span class="semaine__ref">2 Jean 1.12-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;2 Jean : la vérité et l'amour&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

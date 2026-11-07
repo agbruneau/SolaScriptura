@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc 14.12-26 · Ceci est mon corps · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Marc 14.12-26 : l'institution de la cène ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Marc 14.12-26</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Marc 14.12-26</p>
+    <h1 class="hero__title">Ceci est mon corps</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Pendant qu'ils mangeaient, Jésus prit du pain; et, après avoir rendu grâces, il le rompit, et le leur donna, en disant: Prenez, ceci est mon corps.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Marc 14.22 · NEG</p>
+    <p class="hero__series">Série : <b>Marc : le Serviteur souffrant</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Marc 14.12-26</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Pendant qu'ils mangeaient, Jésus prit du pain; et, après avoir rendu grâces, il le rompit, et le leur donna, en disant: Prenez, ceci est mon corps.</p>
+        <cite class="verse__ref">Marc 14.22 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et il leur dit: Ceci est mon sang, le sang de l'alliance, qui est répandu pour beaucoup.</p>
+        <cite class="verse__ref">Marc 14.24 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Marc 14.12-26 ouvre le grand récit de la Passion : sur la table de la Pâque, Jésus institue la cène et livre lui-même le sens de la croix qui approche, mémorial de son corps donné et de son sang versé.</p>
+    <div class="body">
+      <p>Notre péricope ouvre le grand récit de la Passion selon Marc, le cœur vers lequel tend depuis 8.31 l'Évangile du Serviteur souffrant. Après l'onction de Béthanie (14.3-9) et le pacte de Judas avec les principaux sacrificateurs (14.10-11), Marc enchaîne sur le dernier repas. Le contraste voulu est saisissant : la consécration de Marie répandant le parfum, encadrée par le complot des chefs et la traîtrise de Judas marchandant son Maître, et c'est sur cette toile de fond que Jésus institue la cène. Le lecteur de Marc sait déjà pourquoi le Fils de l'homme monte à Jérusalem : non pour être servi, mais pour servir et donner sa vie comme rançon pour beaucoup (10.45). La Cène est l'explication, par Jésus lui-même, du sens de la croix qui approche.</p>
+      <p>La structure du passage est nette et se déploie en trois mouvements. D'abord les préparatifs de la Pâque (14.12-16) : les disciples interrogent Jésus, qui envoie deux d'entre eux avec une consigne au déroulement surnaturellement exact, signe de sa pleine maîtrise des événements à l'heure même où il marche vers la mort. Ensuite l'annonce du traître à table (14.17-21) : Jésus dévoile que l'un des douze le livrera, scellant que sa mort s'accomplit selon les Écritures, sans pour autant disculper l'homme par qui le scandale arrive. Enfin l'institution de la cène (14.22-25) : sur le pain et la coupe, Jésus prononce les paroles qui transforment la Pâque de l'ancienne alliance en mémorial de la nouvelle alliance dans son sang. Le passage se referme (14.26) sur le chant du Hallel et la sortie vers la montagne des Oliviers, charnière vers Gethsémané.</p>
+      <p>Le titre thématique, <i>Ceci est mon corps</i>, désigne le sommet doctrinal de la péricope. Selon MacArthur, Jésus confère ici une signification nouvelle aux éléments mêmes de la Pâque : le pain sans levain et la coupe deviennent les mémoriaux de son corps livré et de son sang versé. Le fil conducteur de la semaine relie l'annonce du sang de l'alliance à la marche vers Gethsémané, où Jésus prédira la défection de tous les siens et le triple reniement de Pierre. La péricope tient donc ensemble trois certitudes du plan divin : la mort de Jésus est délibérément donnée, scripturairement nécessaire, et substitutivement efficace pour le pardon des péchés.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Marc 14.12-16 · 14.22-25</p>
+    </header>
+    <p class="lead">La Pâque et la fête des pains sans levain encadraient huit jours de célébration ; le repas ritualisé, avec ses trois coupes et son pain sans levain, fournit la trame exacte des gestes que Jésus accomplit.</p>
+    <div class="body">
+      <p>La Pâque (héb. <i>pesach</i>) et la fête des pains sans levain étaient si étroitement associées qu'on employait les deux termes l'un pour l'autre afin de désigner les huit jours de célébration ouverts par la Pâque. MacArthur précise que, bien que Marc nomme ici la fête des pains sans levain, il pense manifestement à la préparation de la Pâque proprement dite. L'agneau était immolé le 14 Nisan au crépuscule, en hébreu entre les deux soirs, soit entre trois et cinq heures de l'après-midi. Après l'égorgement, on aspergeait l'autel d'un peu de sang, puis chaque famille emportait son agneau pour le rôtir entier et le manger le soir, accompagné de pains sans levain, d'herbes amères et de vin. Seules deux personnes étaient autorisées à conduire l'agneau au sacrifice; Jésus envoie deux disciples, dans le secret que la menace de Judas imposait, Pierre et Jean selon Luc 22.8.</p>
+    </div>
+    <p>Trois réalités du repas pascal éclairent la scène.</p>
+    <ul class="points">
+      <li><b>L'homme à la cruche d'eau.</b> Le signe de l'homme portant une cruche d'eau était un repère remarquable car peu courant : cette corvée revenait d'ordinaire aux femmes, de sorte qu'un homme ainsi chargé se distinguait aisément dans la foule des pèlerins. La grande chambre haute indiquait une pièce à l'étage, peut-être un grenier aménagé en haut de la maison, déjà meublée et toute prête.</li>
+      <li><b>Le déroulement ritualisé du repas.</b> MacArthur décrit le déroulement ritualisé du repas pascal, qui éclaire les gestes de Jésus : après une prière d'action de grâces, on buvait une première coupe de vin rouge doublement coupé d'eau, on se lavait les mains en signe du besoin de purification et de sainteté, on mangeait les herbes amères avec le pain plat, rompu et trempé dans une pâte de fruits et de noix, on chantait les Psaumes 113 et 114, début du Hallel, on buvait une deuxième coupe, on mangeait l'agneau, puis venait la troisième coupe, suivie du reste du Hallel (Psaumes 115 à 118). C'est cette troisième coupe, dite coupe de la bénédiction, que Jésus prend pour parler de son sang.</li>
+      <li><b>Le pain sans levain et le départ d'Égypte.</b> Le pain sans levain commémorait le départ précipité d'Égypte (Exode 23.15) : il symbolisait l'absence du levain du péché dans la vie et le foyer, la séparation d'avec le monde ancien et le commencement d'une vie nouvelle de sainteté. Sur cet arrière-plan, le geste de Jésus est révolutionnaire : au moment du repas qui célébrait la délivrance d'Israël hors d'Égypte, il institue le mémorial d'une délivrance plus grande, celle du péché accomplie par sa propre mort. MacArthur note que Judas, selon Jean 13.30, était déjà sorti lorsque Jésus institua la cène : le Seigneur se trouvait alors seul avec les onze fidèles. Le repas se termine, selon la coutume, par le reste du Hallel, puis par un dernier cantique, sans doute le Psaume 136 selon MacArthur, avant la montée vers la montagne des Oliviers.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : de la <i>Pâque</i> (<i>pascha</i>) que Jésus accomplit, au <i>corps</i> (<i>soma</i>) livré et au sang de l'<i>alliance</i> (<i>diathēkē</i>) <i>répandu</i> (<i>ekchunnomenon</i>) <i>pour beaucoup</i> (<i>pollōn</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">Pâque</span><span class="mot-gr">pascha</span></th>
+            <td class="col-sens">passage, le fait de passer par-dessus; la fête commémorant la sortie d'Égypte et l'agneau immolé</td>
+            <td>Translittération grecque de l'araméen <i>pascha</i> (héb. <i>pesach</i>). Le terme désigne à la fois la fête, le repas et l'agneau sacrifié. MacArthur insiste sur la portée typologique : l'agneau pascal dont le sang épargnait les premiers-nés (Exode 12) préfigurait Christ, l'Agneau de Dieu dont le sang procure le pardon. En instituant la cène pendant la Pâque, Jésus se désigne lui-même comme l'accomplissement de toute la fête; Paul le formulera explicitement : Christ, notre Pâque, a été immolé (1 Corinthiens 5.7).</td>
+            <td><span class="trad"><span><b>S21</b> Pâque</span><span><b>NEG79</b> Pâque</span><span><b>Darby</b> pâque</span><span><b>LSG</b> Pâque</span><span><b>KJF</b> Pâque</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">corps</span><span class="mot-gr">soma</span></th>
+            <td class="col-sens">le corps physique, l'organisme vivant; par extension, la personne tout entière dans son existence concrète</td>
+            <td>Dans la parole sur le pain, <i>ceci est mon corps</i>, <i>soma</i> désigne la chair même de Jésus, livrée à la mort. MacArthur lit le verbe <i>est</i> comme un mémorial, et rien de plus, ni transsubstantiation ni consubstantiation : le pain, rompu seulement pour être partagé, puisqu'aucun os du Christ ne fut brisé, rappelle le corps sacrifié pour le salut des hommes, comme le pain sans levain rappelait jadis la délivrance d'Égypte. Le terme soutient à la fois la vraie humanité du Serviteur, qui a un corps réel qui souffre et meurt, et le caractère substitutif de ce corps donné pour les siens.</td>
+            <td><span class="trad"><span><b>S21</b> corps</span><span><b>NEG79</b> corps</span><span><b>Darby</b> corps</span><span><b>LSG</b> corps</span><span><b>KJF</b> corps</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">alliance</span><span class="mot-gr">diathēkē</span></th>
+            <td class="col-sens">disposition souveraine, testament, pacte établi unilatéralement par une partie supérieure</td>
+            <td><i>Diathēkē</i> traduit l'hébreu <i>berith</i>. Contrairement au contrat négocié entre égaux (<i>synthēkē</i>), <i>diathēkē</i> désigne une disposition que Dieu établit de sa propre autorité. MacArthur rappelle que toute alliance biblique exigeait l'effusion du sang d'un sacrifice (Genèse 8.20; 15.10; Exode 24.5-8). Le sang de l'alliance évoque directement Exode 24.8, où Moïse asperge le peuple du sang de l'alliance; Jésus inaugure la nouvelle alliance annoncée par Jérémie 31.31-34, fondée non sur le sang des taureaux mais sur le sien propre, qui procure le pardon réel des péchés (Hébreux 9.22).</td>
+            <td><span class="trad"><span><b>S21</b> alliance</span><span><b>NEG79</b> alliance</span><span><b>Darby</b> alliance</span><span><b>LSG</b> alliance</span><span><b>KJF</b> testament</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">répandu</span><span class="mot-gr">ekchunnomenon</span></th>
+            <td class="col-sens">versé, répandu, déversé; participe présent évoquant un sang qui coule en sacrifice</td>
+            <td>Le participe <i>ekchunnomenon</i> (du verbe <i>ekcheō</i>) décrit l'effusion sacrificielle du sang. MacArthur souligne qu'il fallait que le sang de Christ soit versé pour le pardon des péchés : victime innocente substituée aux pécheurs, Christ paie le prix du péché et satisfait la justice de Dieu. Le présent peut porter une valeur de futur imminent et certain : le sang va être répandu sur la croix le lendemain. Le lien avec la rançon de 10.45 et avec Ésaïe 53.12, où le Serviteur livre son âme à la mort, est direct.</td>
+            <td><span class="trad"><span><b>S21</b> versé</span><span><b>NEG79</b> répandu</span><span><b>Darby</b> versé</span><span><b>LSG</b> répandu</span><span><b>KJF</b> répandu</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">beaucoup</span><span class="mot-gr">pollōn</span></th>
+            <td class="col-sens">beaucoup, un grand nombre, une multitude; ici au sens de en faveur de beaucoup</td>
+            <td>Le génitif <i>pollōn</i> dans <i>répandu pour beaucoup</i> reprend exactement le <i>pour beaucoup</i> de 10.45 (la rançon de beaucoup) et fait écho à Ésaïe 53.11-12. En chaire, MacArthur relève seulement la reprise d'Ésaïe 53.12 (« il l'a fait pour beaucoup ») et y voit le paiement définitif de la rédemption, qui rend inutiles les agneaux symboliques ; Matthieu ajoute « pour le pardon des péchés ».</td>
+            <td><span class="trad"><span><b>S21</b> beaucoup</span><span><b>NEG79</b> beaucoup</span><span><b>Darby</b> plusieurs</span><span><b>LSG</b> plusieurs</span><span><b>KJF</b> beaucoup</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Marc 14.12-26</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Marc 14.12-26 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mc 14.12, 14.13, 14.14, 14.15, 14.17, 14.18, 14.20, 14.21, 14.22-25, 14.22, 14.23, 14.24, 14.25, 14.26.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-72</span></th>
+            <td><a href="https://www.gty.org/sermons/41-72" target="_blank" rel="noopener">Players in the Drama of the Cross, Part 2</a></td>
+            <td>Marc 14.3-16</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-73</span></th>
+            <td><a href="https://www.gty.org/sermons/41-73" target="_blank" rel="noopener">The New Passover</a></td>
+            <td>Marc 14.17-26</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit le repas en deux parties, la dernière Pâque et la première communion, après des préparatifs où Jésus déjoue Judas : la maîtrise de Jésus, la souveraineté de Dieu et la responsabilité du traître, l'institution de la cène et la promesse du royaume s'y succèdent.</p>
+    <div class="body">
+      <p>MacArthur lit d'abord les préparatifs (14.12-16) comme une démonstration de la souveraine maîtrise de Jésus à l'heure de sa Passion : connaissant les pensées de Judas, il garde secret le lieu du repas, arrangé d'avance par des moyens ordinaires ou surnaturels, pour ne pas être arrêté avant d'avoir célébré la Pâque avec les siens. Les instructions données aux deux disciples, l'homme à la cruche d'eau, la chambre haute déjà prête, tout se vérifie au mot près : les disciples trouvèrent les choses comme il le leur avait dit. Le Serviteur qui marche vers la mort n'est pas une victime débordée par les événements, mais le Fils de Dieu qui orchestre chaque détail de sa propre offrande. Cette maîtrise tranquille prépare le lecteur à entendre que la croix n'est pas un accident, mais le plan délibéré de Dieu accompli par le Fils consentant.</p>
+      <p>L'annonce du traître (14.17-21) tient ensemble deux vérités que MacArthur refuse de dissocier : la souveraineté de Dieu et la responsabilité de l'homme. Le Fils de l'homme s'en va selon ce qui est écrit de lui : la trahison était prophétisée (Psaume 41.10; Psaume 22; Ésaïe 53) et faisait partie du plan divin pour procurer le salut (Actes 2.23). Jésus n'est pas une victime du hasard. Et pourtant, malheur à l'homme par qui le Fils de l'homme est livré : mieux vaudrait pour cet homme qu'il ne soit pas né. MacArthur y voit la déclaration la plus forte qu'il connaisse dans l'Écriture sur la responsabilité humaine : mieux vaut n'être jamais né que damné pour toujours. Sa note y lit la responsabilité qu'a l'homme de croire en Jésus-Christ et les conséquences de l'incrédulité. Le décret divin n'excuse jamais le pécheur; Judas n'a jamais été un vrai disciple, il était attiré par l'espoir de puissance et de richesse, et son cas illustre la perdition de qui s'approche du Christ sans foi véritable.</p>
+      <p>Le cœur de la péricope est l'institution de la cène (14.22-25), où, selon MacArthur, Jésus change la Pâque de l'ancienne alliance en cène de la nouvelle alliance, créant un mémorial de la délivrance du péché opérée par Dieu. Sur le pain, <i>ceci est mon corps</i> confère une signification nouvelle au pain sans levain : il rappellera désormais le corps de Christ sacrifié pour le salut des hommes. Sur la troisième coupe, <i>ceci est mon sang, le sang de l'alliance, qui est répandu pour beaucoup</i>, énonce le cœur de l'Évangile selon Marc. MacArthur rattache ce verset à 10.45 : la rançon est ici versée, le sang est répandu en faveur de beaucoup, pour le pardon des péchés. L'expiation est substitutive et effective : Christ, victime innocente, a réellement acquis la rédemption, et les beaucoup sont tous ceux qui croient, Juifs et non-Juifs. C'est la mort substitutive de Christ, qui paie le prix du péché, satisfait la justice de Dieu et ratifie la nouvelle alliance, qui est ici scellée par les paroles mêmes du Sauveur sur les éléments de la table.</p>
+      <p>Enfin, la parole eschatologique (14.25) oriente l'espérance : je ne boirai plus du fruit de la vigne jusqu'au jour où je le boirai nouveau dans le royaume de Dieu. MacArthur y entend l'annonce du dernier repas terrestre de Jésus avant la croix, mais aussi l'assurance de son retour et de l'établissement de son règne millénaire littéral sur la terre. Le royaume de Dieu désigne ici le royaume millénaire. La Cène est donc tendue entre la croix passée qu'elle commémore et le royaume à venir qu'elle anticipe : les croyants doivent la célébrer jusqu'à ce qu'il vienne. Le dernier cantique, sans doute le Psaume 136 selon MacArthur, et la sortie vers les Oliviers (14.26) referment la scène en conduisant vers Gethsémané, où le Serviteur, vrai homme dans son agonie, boira la coupe de la colère pour que les siens boivent un jour la coupe du royaume.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de la typologie pascale de l'Exode au substrat prophétique d'Ésaïe 53, jusqu'au parallèle dominical de Marc 10.45 et à la transmission paulinienne de la cène.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Exode 12.1-14</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Institution de la Pâque et de l'agneau dont le sang épargne les premiers-nés : la typologie que Jésus accomplit en se désignant comme l'Agneau véritable au cours du repas pascal.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Exode 24.6-8</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Moïse asperge le peuple du sang de l'alliance : la formule même que Jésus reprend en 14.24, montrant que la nouvelle alliance est inaugurée par son sang comme l'ancienne le fut par celui des sacrifices.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jérémie 31.31-34</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Promesse de la nouvelle alliance qui pardonne l'iniquité et n'en garde plus le souvenir : l'alliance que Jésus déclare scellée dans son sang répandu pour le pardon des péchés.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 53.10-12</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le Serviteur souffrant livre son âme en sacrifice de culpabilité et porte les péchés de beaucoup : substrat prophétique du sang répandu pour beaucoup et de la mort substitutive.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 10.45</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le Fils de l'homme donne sa vie comme rançon pour beaucoup : la clé christologique de Marc, dont 14.24 est l'accomplissement liturgique au moment où le sang va effectivement être versé.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 11.23-26</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Transmission paulinienne de l'institution de la cène avec le mandat de la célébrer jusqu'au retour du Seigneur : confirme le caractère mémoriel et eschatologique du repas institué en Marc 14.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 5.7</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Christ, notre Pâque, a été immolé : formulation explicite de la typologie pascale que Jésus inaugure en transformant la Pâque en cène.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Hébreux 9.22</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Sans effusion de sang il n'y a pas de pardon : principe qui éclaire pourquoi il fallait que le sang de l'alliance soit répandu pour beaucoup, et non un simple repas symbolique.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'expiation substitutive scellée dans le sang de l'alliance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ceci est mon sang, le sang de l'alliance, qui est répandu pour beaucoup (14.24), en écho direct à la rançon de beaucoup de 10.45.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, la mort de Christ est une substitution réelle : son sang est versé à la place de beaucoup et pour le pardon de leurs péchés, satisfaisant la justice de Dieu. Pour l'assemblée : votre acceptation devant Dieu ne repose sur aucun mérite, mais entièrement sur le corps livré et le sang répandu du Sauveur, reçus par la foi seule. Cette vérité exclut toute expiation universelle indéfinie qui sauverait tous les hommes sans foi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La nouvelle alliance accomplit et dépasse l'ancienne</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus transforme le repas pascal de l'ancienne alliance en cène de la nouvelle alliance, reprenant la formule sang de l'alliance d'Exode 24.8 (14.22-24).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Jésus se place comme l'accomplissement de la Pâque et l'inaugurateur de l'alliance promise en Jérémie 31. Pour l'assemblée : la cène n'est pas un sacrifice répété ni une simple coutume, mais le mémorial institué par le Seigneur de l'unique sacrifice qui pardonne réellement le péché. La distinction Israël et Église est maintenue : les promesses faites à Israël ne sont pas évacuées, mais le pardon de la nouvelle alliance est désormais offert aux Juifs comme aux non-Juifs qui croient.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La souveraineté divine et la responsabilité de l'homme dans la trahison</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le Fils de l'homme s'en va selon ce qui est écrit de lui, mais malheur à l'homme par qui il est livré (14.21).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur tient ensemble le décret de Dieu, qui avait prophétisé la trahison et l'intégrait au plan du salut (Actes 2.23), et la pleine culpabilité de Judas. Pour l'assemblée : la souveraineté de Dieu n'excuse jamais l'incrédulité ni le péché. Le cas de Judas avertit que l'on peut côtoyer le Christ de près sans le connaître par la foi, et que les conséquences de l'incrédulité sont éternelles.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le Serviteur, vrai Dieu et vrai homme, maître de sa Passion</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les préparatifs s'accomplissent au mot près (14.13-16) et Jésus annonce d'avance le traître et sa propre mort : maîtrise souveraine au milieu de la marche vers la croix.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Marc montre le Fils de Dieu qui orchestre les détails de sa mort tout en marchant en vrai homme vers l'agonie de Gethsémané. Pour l'assemblée : nul n'a ôté la vie de Jésus contre son gré; il l'a donnée librement. Cette déité et cette humanité conjointes du Serviteur fondent l'assurance du croyant : celui qui s'est livré pour nous est aussi le Seigneur souverain qui reviendra régner.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'espérance eschatologique du royaume</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Je ne boirai plus du fruit de la vigne jusqu'au jour où je le boirai nouveau dans le royaume de Dieu (14.25).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur entend ici l'annonce du retour de Christ et de son règne millénaire littéral sur la terre, le royaume de Dieu désignant le royaume millénaire. Pour l'assemblée : la cène regarde en arrière vers la croix et en avant vers le royaume; elle se célèbre jusqu'à ce qu'il vienne. L'espérance chrétienne n'est pas une fuite spiritualisée mais l'attente du retour personnel, corporel et glorieux du Roi crucifié.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Comment la maîtrise souveraine de Jésus sur les préparatifs (14.13-16) nourrit-elle l'assurance du croyant que la croix fut un plan délibéré de Dieu, et non un accident ou une défaite?</li>
+      <li>En quoi la formule sang de l'alliance (14.24) rattache-t-elle la cène à Exode 24 et à Jérémie 31, et que perd-on à oublier que ce repas commémoratif rappelle un sacrifice?</li>
+      <li>Pourquoi l'expression répandu pour beaucoup, reliée à 10.45, exclut-elle une expiation universelle indéfinie, et comment cela affermit-il l'assurance de ceux qui croient sans nourrir la présomption?</li>
+      <li>Le cas de Judas tient ensemble la prophétie accomplie et la pleine responsabilité du traître : comment prêcher cette tension sans atténuer ni la souveraineté de Dieu ni la culpabilité de l'incrédule?</li>
+      <li>Que signifie concrètement, pour la table du Seigneur dans votre assemblée, que la cène regarde à la fois vers la croix passée et vers le royaume millénaire à venir (14.25)?</li>
+      <li>Comment l'humanité réelle de Jésus, qui a un corps livré et un sang versé, prépare-t-elle son agonie de Gethsémané et confirme-t-elle qu'il fut éprouvé en toutes choses tout en restant le Fils de Dieu souverain?</li>
+      <li>En quoi le mémorial du corps et du sang de Christ appelle-t-il chaque participant à un examen de soi qui distingue la foi vivante de la simple proximité religieuse, comme l'illustre par contraste la présence passée de Judas à table?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Marc 14.12-26 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Marc : le Serviteur souffrant&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Marc-14-12-26.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

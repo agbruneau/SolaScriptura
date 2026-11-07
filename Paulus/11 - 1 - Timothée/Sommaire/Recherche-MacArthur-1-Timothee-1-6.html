@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Timothée 1-⁠6 · La conduite dans la maison de Dieu : saine doctrine, piété et conducteurs qualifiés · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Timothée 1-⁠6 dans la perspective de John MacArthur : La conduite dans la maison de Dieu : saine doctrine, piété et conducteurs qualifiés.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">1 Timothée 1-⁠6</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">1 Timothée 1-⁠6</span></p>
+    <h1 class="hero__title">La conduite dans la maison de Dieu : saine doctrine, piété et conducteurs qualifiés</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;mais, si je tarde, tu sauras comment il faut se conduire dans la maison de Dieu, qui est l’Eglise du Dieu vivant, la colonne et l’appui de la vérité.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">1 Timothée 3.15 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 5 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">1 Timothée 1-⁠6</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">La lettre se réclame de l'apôtre Paul (1.1). L'introduction de la <i>MacArthur Study Bible</i> réfute les critiques qui attribuent les épîtres pastorales à un disciple du deuxième siècle : les faits relatés se situent après la fin du récit des Actes, puisque Paul fut libéré de sa première captivité; les faux docteurs étaient encore dans l'Église et leur enseignement reposait sur un légalisme judaïsant; l'organisation de l'Église est celle que Paul avait établie (Actes 14.23; Philippiens 1.1); les grands thèmes pauliniens y figurent; et un autre sujet appelle un autre vocabulaire. Selon la même introduction, Paul écrivit 1 Timothée et Tite peu après sa libération, vers 62-⁠64, et 2 Timothée pendant sa seconde captivité, vers 66-⁠67; MacArthur parle en chaire d'environ 64 (54-⁠1). Dans la série du dépôt, l'épître vient au onzième rang, après Philippiens.</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Je te rappelle l’exhortation que je t’adressai à mon départ pour la Macédoine, lorsque je t’engageai à rester à Ephèse, afin de recommander à certaines personnes de ne pas enseigner d’autres doctrines,</p><cite class="verse__ref">1 Timothée 1.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">Le but de cette recommandation, c’est un amour venant d’un cœur pur, d’une bonne conscience, et d’une foi sincère.</p><cite class="verse__ref">1 Timothée 1.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est une parole certaine et entièrement digne d’être reçue, que Jésus-Christ est venu dans le monde pour sauver les pécheurs, dont je suis le premier.</p><cite class="verse__ref">1 Timothée 1.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car il y a un seul Dieu, et aussi un seul médiateur entre Dieu et les hommes, Jésus-Christ homme, qui s’est donné lui-même en rançon pour tous. C’est là le témoignage rendu en son propre temps,</p><cite class="verse__ref">1 Timothée 2.5-⁠6 · NEG</cite></figure><figure class="verse"><p class="verse__text">mais, si je tarde, tu sauras comment il faut se conduire dans la maison de Dieu, qui est l’Eglise du Dieu vivant, la colonne et l’appui de la vérité. Et, sans contredit, le mystère de la piété est grand: Dieu a été manifesté en chair, justifié par l’Esprit, vu des anges, prêché aux nations, cru dans le monde, élevé dans la gloire.</p><cite class="verse__ref">1 Timothée 3.15-⁠16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que personne ne méprise ta jeunesse; mais sois un modèle pour les fidèles, en parole, en conduite, en amour, en foi, en pureté.</p><cite class="verse__ref">1 Timothée 4.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Veille sur toi-même et sur ton enseignement; persévère dans ces choses, car, en agissant ainsi, tu te sauveras toi-même, et tu sauveras ceux qui t’écoutent.</p><cite class="verse__ref">1 Timothée 4.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Que les anciens qui dirigent bien soient jugés dignes d’un double honneur, surtout ceux qui travaillent à la prédication et à l’enseignement.</p><cite class="verse__ref">1 Timothée 5.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est, en effet, une grande source de gain que la piété avec le contentement;</p><cite class="verse__ref">1 Timothée 6.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">Pour toi, homme de Dieu, fuis ces choses, et recherche la justice, la piété, la foi, l’amour, la patience, la douceur. Combats le bon combat de la foi, saisis la vie éternelle, à laquelle tu as été appelé, et pour laquelle tu as fait une belle confession en présence d’un grand nombre de témoins.</p><cite class="verse__ref">1 Timothée 6.11-⁠12 · NEG</cite></figure><figure class="verse"><p class="verse__text">O Timothée, garde le dépôt, en évitant les discours vains et profanes, et les disputes de la fausse science</p><cite class="verse__ref">1 Timothée 6.20 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire est celui de la lettre pastorale : une lettre personnelle d'un apôtre à son délégué, que MacArthur décrit d'abord comme la lettre d'un homme à un autre homme (54-⁠1), mais destinée à être entendue par toute l'Église, comme le montre la salutation au pluriel (6.21; 54-⁠50). Ce genre commande de lire les instructions comme un correctif : MacArthur répète que l'épître est polémique et que ses prescriptions laissent voir les désordres d'Éphèse (54-⁠2, 54-⁠18). Il propose 3.15 comme verset clé : la première épître à Timothée porte sur la conduite dans l'Église (54-⁠1).</p><p>L'introduction de la <i>MacArthur Study Bible</i> divise la lettre en six parties : la salutation (1.1-⁠2); les instructions sur la fausse doctrine (1.3-⁠20); les instructions sur l'Église, la prière, les femmes, les conducteurs et la raison de la lettre (2.1-⁠3.16); les instructions sur les faux docteurs et le vrai docteur (4.1-⁠16); les responsabilités pastorales envers les membres (5.1-⁠6.2); et les instructions sur l'homme de Dieu (6.3-⁠21). MacArthur relève que les mots <i>didaskalia</i> et <i>eusebeia</i>, la doctrine et la piété, reviennent chacun huit fois dans l'épître : ce sont ses deux axes (54-⁠5).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">1 Timothée 1-⁠6</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Timothée était originaire de Lystre, en Galatie; Paul l'amena au Christ lors de son premier voyage et le prit avec lui lors du second (Actes 14.6-⁠23; 16.1-⁠3); de mère juive croyante et de père grec, instruit dans les Écritures par sa mère Eunice et sa grand-mère Loïs (2 Timothée 1.5; 3.15), il devint le disciple et le collaborateur de Paul, son représentant auprès des Églises (1 Corinthiens 4.17; Philippiens 2.19-⁠22) (Introduction <i>MacArthur Study Bible</i>; 54-⁠1). MacArthur l'estime âgé d'environ trente-cinq ans (54-⁠1), puis le situe à la fin de la trentaine, encore jeune selon l'usage du temps (4.12; 54-⁠32).</p><div class="body"><p>L'Église d'Éphèse avait été fondée par Paul, qui y avait exercé trois ans de ministère et formé les premiers anciens (Actes 19; 20.17-⁠38). Après sa libération, Paul y revint, y trouva des apostats parmi les anciens, livra Hyménée et Alexandre à Satan (1.20), puis partit pour la Macédoine en laissant Timothée pour remettre l'Église en ordre (1.3) (54-⁠2, 54-⁠34). Selon l'introduction de la <i>MacArthur Study Bible</i>, les problèmes étaient la fausse doctrine (1.3-⁠7; 4.1-⁠3; 6.3-⁠5), le désordre dans le culte (2.1-⁠15), le besoin de conducteurs qualifiés (3.1-⁠14) et le matérialisme (6.6-⁠19). MacArthur juge difficile de reconstituer l'hérésie, qui mêlait des éléments juifs et hellénistiques, peut-être un gnosticisme naissant (54-⁠1, 54-⁠3).</p><p>La cité était dominée par le temple d'Artémis, dont MacArthur évoque les colonnes (3.15) et le cri de la foule (Actes 19.28, 34; 3.16) (54-⁠27, 54-⁠28). Il rappelle que l'Église d'Éphèse finira par perdre son premier amour (Apocalypse 2.4) : si l'ennemi ne peut corrompre la théologie, il amène l'apathie (54-⁠1). Paul ne semble pas être revenu à Éphèse; il écrivit ensuite Tite, puis 2 Timothée, son chant du cygne (54-⁠2, 54-⁠27).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>L'authenticité des épîtres pastorales.</b> L'introduction de la <i>MacArthur Study Bible</i> répond aux cinq objections de la critique : la chronologie, la nature de l'hérésie, l'organisation de l'Église, la théologie et le vocabulaire. Elle ajoute qu'un faussaire pieux n'aurait pas fait dire à son maître qu'il était le premier des pécheurs (1.13, 15), ni averti contre les imposteurs (2 Timothée 3.13), et que l'Église primitive condamnait de telles pratiques (2 Thessaloniciens 2.2; 3.17).</li><li><b>Timothée, enfant véritable dans la foi.</b> Seuls Timothée et Tite reçoivent le titre d'« enfant légitime en la foi » (1.2; Tite 1.4). MacArthur rapproche le mot <i>gnēsios</i>, légitime, de son contraire, l'enfant illégitime, et voit en Timothée le test vivant de l'authenticité face aux faux conducteurs (54-⁠1, 54-⁠2). Le nom même de Timothée signifie, selon lui, « celui qui honore Dieu » (54-⁠1, 54-⁠50).</li><li><b>Cinquante sermons en dix-neuf mois.</b> MacArthur prêcha l'épître à Grace Community Church en cinquante sermons, du 15 septembre 1985 au 3 mai 1987, avec quelques interruptions. Il dit à plusieurs reprises que ces textes sur le ministère s'adressaient d'abord à lui-même, et annonce en terminant qu'il poursuivra avec 2 Timothée, étroitement liée à la première lettre (54-⁠30, 54-⁠31, 54-⁠49).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">1 Timothée 1-⁠6</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">1 Timothée 3.16</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>Hos ephanerōthē en sarki</i>, « celui qui a été manifesté en chair » (SBLGNT, Nestle 1904, Westcott et Hort, Tregelles, NA28), ou <i>Theos ephanerōthē</i>, « Dieu a été manifesté » (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Dieu a été manifesté en chair » : la NEG79 suit ici le texte byzantin, comme la Darby et la S21; la LSG lit « celui qui » et la NBS « Il s'est manifesté ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur retient <i>hos</i>, attesté par les manuscrits les plus anciens, et pense qu'un copiste a écrit « Dieu » pour souligner l'incarnation (54-⁠28). La doctrine ne change pas : celui qui est manifesté est le Christ préexistant.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 1.17; 4.10; 4.12</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 1.17, <i>monō theō</i> ou <i>monō sophō theō</i> (texte byzantin); en 4.10, <i>agōnizometha</i> (Westcott et Hort, NA28) ou <i>oneidizometha</i> (SBLGNT, texte byzantin); en 4.12, ajout de <i>en pneumati</i> (texte byzantin).</dd></div><div><dt class="mot__label">NEG79</dt><dd>La NEG79 lit « seul Dieu » (1.17), « nous combattons » (4.10) et cinq domaines sans « en esprit » (4.12).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur lit « the only God », commente <i>agōnizomai</i> et tient « en esprit » pour un ajout tardif (54-⁠6, 54-⁠31, 54-⁠32). Le sens n'est pas modifié.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 5.16</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>ei tis pistē</i>, « si une croyante » (texte critique), ou <i>ei tis pistos ē pistē</i>, « si un croyant ou une croyante » (texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Si quelque fidèle, homme ou femme » : la NEG79 suit le texte byzantin; la NBS suit le texte court.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur lit le texte court et en fait une troisième ligne de responsabilité envers les veuves, après les enfants et les hommes de la famille (54-⁠38, 54-⁠39).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Timothée 3.3; 6.5; 6.19; 6.21</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Ajouts byzantins de <i>mē aischrokerdē</i> (3.3) et de <i>Aphistaso apo tōn toioutōn</i> (6.5); <i>ontōs zōēs</i> ou <i>aiōniou zōēs</i> (6.19); <i>meth' humōn</i> ou <i>meta sou. Amēn</i> (6.21).</dd></div><div><dt class="mot__label">NEG79</dt><dd>La NEG79 suit le texte critique dans ces quatre cas : pas d'ajout en 3.3 et 6.5, « la vie véritable » (6.19), « avec vous » (6.21).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur signale les deux ajouts absents des meilleurs manuscrits et souligne le pluriel final, qui associe toute l'Église à la garde de la vérité (54-⁠22, 54-⁠45, 54-⁠50).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de 1 Timothée, LogosBible), lus sur les six chapitres</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub), lus aux versets où l'apparat marque une variante</li><li>analyse morphologique : interlinéaire de Bible Hub</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21 et Darby (bible.audio), NBS (bible.com)</li><li>détail par chapitre dans les recherches 1 à 6</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Cent treize versets dans toutes les éditions et versions consultées. Les seules différences portent sur le découpage : la LSG en 1.12-⁠13, 6.13-⁠14 et 6.20-⁠21, la Darby en 3.2-⁠3, la NEG79 et la LSG en 4.7-⁠8.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">1 Timothée 1-⁠6</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>1 Timothée</span> <span>1.1-⁠2</span></p><div class="plan__corps"><p class="plan__titre">Salutation : l'apôtre par ordre de Dieu à son véritable enfant dans la foi</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Paulos apostolos Christou Iēsou kat' epitagēn</i> (1.1) et <i>Timotheō gnēsiō teknō en pistei</i> (1.2).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>1.3-⁠20</span></p><div class="plan__corps"><p class="plan__titre">La fausse doctrine à Éphèse, le témoignage de la grâce et la recommandation à combattre le bon combat</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>hina parangeilēs tisin mē heterodidaskalein</i> (1.3), <i>pistos ho logos</i> (1.15) et <i>Tautēn tēn parangelian paratithemai soi</i> (1.18).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>2.1-⁠3.16</span></p><div class="plan__corps"><p class="plan__titre">L'Église : la prière pour tous, les hommes et les femmes, les anciens et les diacres, et la raison de la lettre</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Parakalō oun prōton pantōn</i> (2.1), <i>hōsautōs</i> (2.9; 3.8, 11) et <i>hina eidēs pōs dei en oikō theou anastrephesthai</i> (3.15).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>4.1-⁠16</span></p><div class="plan__corps"><p class="plan__titre">Les faux docteurs et le bon ministre de Jésus-Christ</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>To de pneuma rhētōs legei</i> (4.1) et <i>kalos esē diakonos Christou Iēsou</i> (4.6).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>5.1-⁠6.2</span></p><div class="plan__corps"><p class="plan__titre">Les responsabilités pastorales envers les membres : les pécheurs, les veuves, les anciens et les esclaves</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Presbuterō mē epiplēxēs</i> (5.1), <i>Chēras tima</i> (5.3), <i>Hoi kalōs proestōtes presbuteroi</i> (5.17) et <i>Hosoi eisin hupo zugon douloi</i> (6.1).</p></div></li><li><p class="plan__ref"><span>1 Timothée</span> <span>6.3-⁠21</span></p><div class="plan__corps"><p class="plan__titre">L'homme de Dieu face au faux enseignement et à l'argent, la doxologie, les riches et la garde du dépôt</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>ei tis heterodidaskalei</i> (6.3), <i>Su de, ō anthrōpe theou</i> (6.11) et <i>Ō Timothee, tēn parathēkēn phulaxon</i> (6.20).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>1 Timothée 1.3, 5, 18; 4.11; 5.7; 6.13, 17</dt><dd>Le verbe <i>parangellō</i> et le nom <i>parangelia</i> reviennent tout au long de l'épître : MacArthur y entend un ordre de type militaire, qui fait de l'épître une charge confiée à un officier (54-⁠4, 54-⁠8). Le premier emploi ouvre la mission de Timothée, « recommander à certaines personnes de ne pas enseigner d’autres doctrines » (1.3), et le dernier vise les riches (6.17) (texte seul).</dd></div><div><dt>1 Timothée 1.15; 3.1; 4.9</dt><dd>La formule <i>pistos ho logos</i>, « C’est une parole certaine », se lit trois fois dans l'épître et cinq fois dans les pastorales, nulle part ailleurs; deux fois s'ajoute <i>kai pasēs apodochēs axios</i> (1.15; 4.9). MacArthur y voit des paroles déjà connues de l'Église, proches d'un credo, et rattache celle de 4.9 à la maxime de 4.8 (54-⁠6, 54-⁠18, 54-⁠30).</dd></div><div><dt>1 Timothée 1.10; 6.3</dt><dd>Le participe <i>hugiainousa</i>, « saine », qualifie la doctrine (1.10) et les paroles du Seigneur (6.3) : MacArthur y entend des paroles qui produisent la santé spirituelle, d'où vient le mot « hygiène », par opposition au vocabulaire de la maladie appliqué aux faux docteurs (<i>nosōn</i>, 6.4) (54-⁠5, 54-⁠45).</dd></div><div><dt>1 Timothée 1.1; 2.3; 4.10</dt><dd>L'expression <i>theos sōtēr hēmōn</i>, « Dieu notre Sauveur », propre aux pastorales, revient en 1.1 et 2.3, et 4.10 appelle Dieu <i>sōtēr pantōn anthrōpōn</i>. MacArthur y voit l'enracinement du salut en Dieu le Père, non dans un Christ qui apaiserait un Dieu irrité (54-⁠1), et la réponse au titre de <i>sōtēr</i> que se donnait César (54-⁠12).</dd></div><div><dt>1 Timothée 1.17; 6.15-⁠16</dt><dd>Deux doxologies encadrent l'épître, l'une au Roi des siècles, immortel, invisible, seul Dieu (1.17), l'autre au bienheureux et seul souverain qui seul possède l'immortalité (6.15-⁠16). MacArthur relève que la lettre commence et finit par la louange de la nature de Dieu, et que la seconde jaillit de la pensée du retour du Christ (54-⁠48, 54-⁠49).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">doctrine</a><a href="#mot-2">piété</a><a href="#mot-3">saine</a><a href="#mot-4">commandement</a><a href="#mot-5">dépôt</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">doctrine</h3><p class="mot__translit">didaskalia</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>enseignement, ce qui est enseigné</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer distingue l'acte d'enseigner (Romains 12.7; 1 Timothée 4.13, 16; 5.17; 2 Timothée 3.16) et le contenu enseigné, la doctrine (1 Timothée 1.10; 4.6; 6.1, 3; Tite 1.9; 2.1, 10), ainsi que, au pluriel, les enseignements des hommes ou des démons (Colossiens 2.22; 1 Timothée 4.1).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur relève que le mot apparaît vingt et une fois dans le Nouveau Testament, quinze fois dans les pastorales et huit fois dans cette seule épître : la saine doctrine est l'un des deux axes de la lettre (54-⁠5). Le ministère consiste à lire, appliquer et enseigner l'Écriture à tous les niveaux de l'Église (4.13; 54-⁠33), et le seul talent exigé de l'ancien est d'être propre à l'enseignement (3.2; 54-⁠21, 54-⁠50). Sa lecture embrasse les deux sens de Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> la saine doctrine (1.10); l’enseignement (6.3)</li><li><b>NEG79</b> la saine doctrine (1.10); la doctrine (6.3)</li><li><b>Darby</b> la saine doctrine (1.10); la doctrine (6.3)</li><li><b>LSG</b> la saine doctrine (1.10); la doctrine (6.3)</li><li class="ecart"><b>NBS</b> l'enseignement (1.10, 6.3)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">piété</h3><p class="mot__translit">eusebeia</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>révérence envers Dieu</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : révérence, respect; dans la Bible, la piété envers Dieu (1 Timothée 2.2; 4.7-⁠8; 6.5-⁠6, 11); la doctrine qui y conduit (6.3); le mystère que la piété embrasse (3.16).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Second axe de l'épître, avec la doctrine (54-⁠5). MacArthur la définit comme une juste attitude envers Dieu et les choses divines, la plus haute des vertus, qui commence à la maison (5.4) (54-⁠31). Le test ultime d'un enseignement est la piété qu'il produit (6.3; 54-⁠45), et les faux docteurs font de la piété une source de gain, alors que la piété avec le contentement est le vrai gain (6.5-⁠6; 54-⁠46). Sa lecture rejoint Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> la piété</li><li><b>NEG79</b> la piété</li><li><b>Darby</b> la piété</li><li><b>LSG</b> la piété</li><li><b>NBS</b> la piété</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">saine</h3><p class="mot__translit">hugiainousē (hugiainō)</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>être en bonne santé</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : être sain, bien portant (Luc 5.31; 7.10); au figuré, être sain dans la foi, sans mélange d'erreur (Tite 1.13; 2.2); la saine doctrine, vraie et incorrompue (1 Timothée 1.10; 2 Timothée 4.3; Tite 1.9; 2.1), et les saines paroles (1 Timothée 6.3; 2 Timothée 1.13).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur rattache le mot à « hygiène » : des paroles saines, salutaires, qui donnent la vie et la santé (54-⁠5, 54-⁠45). Il oppose ce vocabulaire de la santé à la pathologie des faux docteurs, malades de questions et de querelles, dont l'enseignement est plus mortel qu'une maladie du corps, parce qu'il perd les âmes (6.3-⁠5; 54-⁠45). Sa lecture rejoint le sens figuré de Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> la saine doctrine (1.10); aux saines paroles (6.3)</li><li><b>NEG79</b> la saine doctrine (1.10); aux saines paroles (6.3)</li><li class="ecart"><b>Darby</b> la saine doctrine (1.10); à de saines paroles (6.3)</li><li><b>LSG</b> la saine doctrine (1.10); aux saines paroles (6.3)</li><li class="ecart"><b>NBS</b> l'enseignement sain (1.10); les saines paroles (6.3)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">commandement</h3><p class="mot__translit">parangelia</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>ordre transmis</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer : proprement, l'annonce d'un message; d'où une charge, un commandement (Actes 16.24), une interdiction (Actes 5.28); employé de la doctrine chrétienne relative à la conduite (1 Timothée 1.5) et d'instructions particulières (1.18; 1 Thessaloniciens 4.2); chez Xénophon et Polybe, un ordre militaire.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur souligne la connotation militaire : Timothée reçoit un ordre de son chef et doit combattre le bon combat (1.18; 54-⁠4, 54-⁠8). Le but de cet ordre est l'amour, issu d'un cœur pur, d'une bonne conscience et d'une foi sincère (1.5), ce que MacArthur juge trop négligé dans l'enseignement évangélique (54-⁠4, 54-⁠5). Sa lecture rejoint Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> le but de cette instruction (1.5); l’ordre (1.18)</li><li><b>NEG79</b> le but du commandement (1.5); le commandement (1.18)</li><li class="ecart"><b>Darby</b> la fin de l’injonction (1.5); le commandement (1.18)</li><li><b>LSG</b> le but du commandement (1.5); le commandement (1.18)</li><li class="ecart"><b>NBS</b> le but de cette recommandation (1.5); la recommandation (1.18)</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">dépôt</h3><p class="mot__translit">parathēkē</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>bien confié en garde</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer (sous <i>parathēkē</i> et <i>parakatathēkē</i>) : un dépôt, une fiducie ou une chose confiée à un autre pour être gardée fidèlement; dans le Nouveau Testament, employé de la vraie doctrine et de la charge ministérielle confiées à Timothée (1 Timothée 6.20; 2 Timothée 1.12, 14).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur voit dans ce mot le fil conducteur de toute l'épître : la révélation de Dieu est un bien précieux confié en garde à Timothée et à l'Église, qui n'en sont pas les auteurs mais les dépositaires, tenus de la rendre intacte sans rien y retrancher ni rien y ajouter (6.20; 54-⁠50). Sa lecture rejoint Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> garde le dépôt (6.20)</li><li><b>NEG79</b> garde le dépôt (6.20)</li><li><b>Darby</b> garde le dépôt (6.20)</li><li><b>LSG</b> garde le dépôt (6.20)</li><li><b>NBS</b> garde le dépôt (6.20)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">1 Timothée 1-⁠6</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans cinquante sermons prêchés du 15 septembre 1985 au 3 mai 1987 (54-⁠1 à 54-⁠50), John MacArthur lit 1 Timothée comme le manuel de la conduite dans l'Église, verset clé 3.15, et comme une lettre polémique, écrite pour remettre en ordre une Église que Paul avait fondée et qui avait dévié dans sa doctrine et dans sa vie (54-⁠1, 54-⁠2). Le fil qu'il dégage à la fin est la garde de la vérité : le ministre et l'Église reçoivent un dépôt qu'ils doivent garder, vivre et transmettre (54-⁠50).</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-1-timothee-1-contre-l-enseignement-etranger-l-evangile-de-la-grace"><span class="sommaire__ref">1 Timothée 1</span><span class="sommaire__lib">Contre l'enseignement étranger, l'Évangile de la grâce</span></a></li><li><a href="#t2-1-timothee-2-3-l-ordre-de-l-eglise-et-ses-conducteurs"><span class="sommaire__ref">1 Timothée 2-⁠3</span><span class="sommaire__lib">L'ordre de l'Église et ses conducteurs</span></a></li><li><a href="#t3-1-timothee-4-l-apostasie-et-le-bon-ministre"><span class="sommaire__ref">1 Timothée 4</span><span class="sommaire__lib">L'apostasie et le bon ministre</span></a></li><li><a href="#t4-1-timothee-5-6-la-famille-de-dieu-et-l-homme-de-dieu"><span class="sommaire__ref">1 Timothée 5-⁠6</span><span class="sommaire__lib">La famille de Dieu et l'homme de Dieu</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : 50 sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : cinquante sermons Grace to You sur 1 Timothée 1.1 à 6.21 (54-⁠1 à 54-⁠50, série « 1 Timothy » en cinq volumes, du 15 septembre 1985 au 3 mai 1987) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">54-1</span></th><td><a href="https://www.gty.org/sermons/54-1" target="_blank" rel="noopener">A True Child in the Faith, Part 1</a></td><td>1 Ti 1.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">54-2</span></th><td><a href="https://www.gty.org/sermons/54-2" target="_blank" rel="noopener">A True Child in the Faith, Part 2</a></td><td>1 Ti 1.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">54-3</span></th><td><a href="https://www.gty.org/sermons/54-3" target="_blank" rel="noopener">A True Child in the Faith, Part 3</a></td><td>1 Ti 1.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">54-4</span></th><td><a href="https://www.gty.org/sermons/54-4" target="_blank" rel="noopener">How to Treat False Teachers, Part 1</a></td><td>1 Ti 1.3-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">54-5</span></th><td><a href="https://www.gty.org/sermons/54-5" target="_blank" rel="noopener">How to Treat False Teachers, Part 2</a></td><td>1 Ti 1.7-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">54-6</span></th><td><a href="https://www.gty.org/sermons/54-6" target="_blank" rel="noopener">A Personal Testimony of God's Saving Grace</a></td><td>1 Ti 1.12-⁠17</td></tr><tr><th scope="row"><span class="mot-fr">54-7</span></th><td><a href="https://www.gty.org/sermons/54-7" target="_blank" rel="noopener">Fighting the Noble War, Part 1</a></td><td>1 Ti 1.18</td></tr><tr><th scope="row"><span class="mot-fr">54-8</span></th><td><a href="https://www.gty.org/sermons/54-8" target="_blank" rel="noopener">Fighting the Noble War, Part 2</a></td><td>1 Ti 1.18-⁠19</td></tr><tr><th scope="row"><span class="mot-fr">54-9</span></th><td><a href="https://www.gty.org/sermons/54-9" target="_blank" rel="noopener">Delivered to Satan, Part 1</a></td><td>1 Ti 1.20</td></tr><tr><th scope="row"><span class="mot-fr">54-10</span></th><td><a href="https://www.gty.org/sermons/54-10" target="_blank" rel="noopener">Delivered to Satan, Part 2</a></td><td>1 Ti 1.20</td></tr><tr><th scope="row"><span class="mot-fr">54-11</span></th><td><a href="https://www.gty.org/sermons/54-11" target="_blank" rel="noopener">Evangelistic Praying, Part 1</a></td><td>1 Ti 2.1</td></tr><tr><th scope="row"><span class="mot-fr">54-12</span></th><td><a href="https://www.gty.org/sermons/54-12" target="_blank" rel="noopener">Evangelistic Praying, Part 2</a></td><td>1 Ti 2.2-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">54-13</span></th><td><a href="https://www.gty.org/sermons/54-13" target="_blank" rel="noopener">Evangelistic Praying, Part 3</a></td><td>1 Ti 2.5-⁠8</td></tr><tr><th scope="row"><span class="mot-fr">54-14</span></th><td><a href="https://www.gty.org/sermons/54-14" target="_blank" rel="noopener">God's High Calling for Women, Part 1</a></td><td>1 Ti 2.9</td></tr><tr><th scope="row"><span class="mot-fr">54-15</span></th><td><a href="https://www.gty.org/sermons/54-15" target="_blank" rel="noopener">God's High Calling for Women, Part 2</a></td><td>1 Ti 2.10-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">54-16</span></th><td><a href="https://www.gty.org/sermons/54-16" target="_blank" rel="noopener">God's High Calling for Women, Part 3</a></td><td>1 Ti 2.11</td></tr><tr><th scope="row"><span class="mot-fr">54-17</span></th><td><a href="https://www.gty.org/sermons/54-17" target="_blank" rel="noopener">God's High Calling for Women, Part 4</a></td><td>1 Ti 2.12-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">54-18</span></th><td><a href="https://www.gty.org/sermons/54-18" target="_blank" rel="noopener">The Call to Lead the Church--Elders, Part 1</a></td><td>1 Ti 3.1</td></tr><tr><th scope="row"><span class="mot-fr">54-19</span></th><td><a href="https://www.gty.org/sermons/54-19" target="_blank" rel="noopener">The Call to Lead the Church--Elders, Part 2</a></td><td>1 Ti 3.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">54-20</span></th><td><a href="https://www.gty.org/sermons/54-20" target="_blank" rel="noopener">The Call to Lead the Church--Elders, Part 3</a></td><td>1 Ti 3.2</td></tr><tr><th scope="row"><span class="mot-fr">54-21</span></th><td><a href="https://www.gty.org/sermons/54-21" target="_blank" rel="noopener">The Call to Lead the Church--Elders, Part 4</a></td><td>1 Ti 3.2</td></tr><tr><th scope="row"><span class="mot-fr">54-22</span></th><td><a href="https://www.gty.org/sermons/54-22" target="_blank" rel="noopener">The Call to Lead the Church--Elders, Part 5</a></td><td>1 Ti 3.3</td></tr><tr><th scope="row"><span class="mot-fr">54-23</span></th><td><a href="https://www.gty.org/sermons/54-23" target="_blank" rel="noopener">The Call to Lead the Church--Elders, Part 6</a></td><td>1 Ti 3.4-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">54-24</span></th><td><a href="https://www.gty.org/sermons/54-24" target="_blank" rel="noopener">The Call to Lead the Church--Elders, Part 7</a></td><td>1 Ti 3.6-⁠7</td></tr><tr><th scope="row"><span class="mot-fr">54-25</span></th><td><a href="https://www.gty.org/sermons/54-25" target="_blank" rel="noopener">Qualified Servants for the Church--Deacons, Part 1</a></td><td>1 Ti 3.8</td></tr><tr><th scope="row"><span class="mot-fr">54-26</span></th><td><a href="https://www.gty.org/sermons/54-26" target="_blank" rel="noopener">Qualified Servants for the Church: Deacons, Part 2</a></td><td>1 Ti 3.8-⁠12</td></tr><tr><th scope="row"><span class="mot-fr">54-27</span></th><td><a href="https://www.gty.org/sermons/54-27" target="_blank" rel="noopener">The Heart of the Church's Mission and Message, Part 1</a></td><td>1 Ti 3.14-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">54-28</span></th><td><a href="https://www.gty.org/sermons/54-28" target="_blank" rel="noopener">The Heart of the Church's Mission and Message, Part 2</a></td><td>1 Ti 3.16</td></tr><tr><th scope="row"><span class="mot-fr">54-29</span></th><td><a href="https://www.gty.org/sermons/54-29" target="_blank" rel="noopener">Understanding the Seducing Spirit</a></td><td>1 Ti 4.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">54-30</span></th><td><a href="https://www.gty.org/sermons/54-30" target="_blank" rel="noopener">Qualities of an Excellent Servant, Part 1</a></td><td>1 Ti 4.6-⁠9</td></tr><tr><th scope="row"><span class="mot-fr">54-31</span></th><td><a href="https://www.gty.org/sermons/54-31" target="_blank" rel="noopener">Qualities of an Excellent Servant, Part 2</a></td><td>1 Ti 4.10-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">54-32</span></th><td><a href="https://www.gty.org/sermons/54-32" target="_blank" rel="noopener">Qualities of an Excellent Servant, Part 3</a></td><td>1 Ti 4.12</td></tr><tr><th scope="row"><span class="mot-fr">54-33</span></th><td><a href="https://www.gty.org/sermons/54-33" target="_blank" rel="noopener">Qualities of an Excellent Servant, Part 4</a></td><td>1 Ti 4.13-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">54-34</span></th><td><a href="https://www.gty.org/sermons/54-34" target="_blank" rel="noopener">Qualities of an Excellent Servant, Part 5</a></td><td>1 Ti 4.15-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">54-35</span></th><td><a href="https://www.gty.org/sermons/54-35" target="_blank" rel="noopener">Confronting Sin in Our Spiritual Family</a></td><td>1 Ti 5.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">54-36</span></th><td><a href="https://www.gty.org/sermons/54-36" target="_blank" rel="noopener">Widows in the Church, Part 1</a></td><td>1 Ti 5.3-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">54-37</span></th><td><a href="https://www.gty.org/sermons/54-37" target="_blank" rel="noopener">Widows in the Church, Part 2</a></td><td>1 Ti 5.5-⁠8</td></tr><tr><th scope="row"><span class="mot-fr">54-38</span></th><td><a href="https://www.gty.org/sermons/54-38" target="_blank" rel="noopener">Widows in the Church, Part 3</a></td><td>1 Ti 5.9-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">54-39</span></th><td><a href="https://www.gty.org/sermons/54-39" target="_blank" rel="noopener">Widows in the Church, Part 4</a></td><td>1 Ti 5.11-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">54-40</span></th><td><a href="https://www.gty.org/sermons/54-40" target="_blank" rel="noopener">Restoring Biblical Eldership, Part 1</a></td><td>1 Ti 5.17-⁠18</td></tr><tr><th scope="row"><span class="mot-fr">54-41</span></th><td><a href="https://www.gty.org/sermons/54-41" target="_blank" rel="noopener">Restoring Biblical Eldership, Part 2</a></td><td>1 Ti 5.19-⁠21</td></tr><tr><th scope="row"><span class="mot-fr">54-42</span></th><td><a href="https://www.gty.org/sermons/54-42" target="_blank" rel="noopener">Restoring Biblical Eldership, Part 3</a></td><td>1 Ti 5.22-⁠25</td></tr><tr><th scope="row"><span class="mot-fr">54-43</span></th><td><a href="https://www.gty.org/sermons/54-43" target="_blank" rel="noopener">The Conscientious Christian Employee, Part 1</a></td><td>1 Ti 6.1</td></tr><tr><th scope="row"><span class="mot-fr">54-44</span></th><td><a href="https://www.gty.org/sermons/54-44" target="_blank" rel="noopener">The Conscientious Christian Employee, Part 2</a></td><td>1 Ti 6.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">54-45</span></th><td><a href="https://www.gty.org/sermons/54-45" target="_blank" rel="noopener">The Pathology of False Teachers</a></td><td>1 Ti 6.3-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">54-46</span></th><td><a href="https://www.gty.org/sermons/54-46" target="_blank" rel="noopener">The Danger in Loving Money</a></td><td>1 Ti 6.6-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">54-47</span></th><td><a href="https://www.gty.org/sermons/54-47" target="_blank" rel="noopener">The Man of God</a></td><td>1 Ti 6.11-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">54-48</span></th><td><a href="https://www.gty.org/sermons/54-48" target="_blank" rel="noopener">A Solemn Call to Spiritual Duty</a></td><td>1 Ti 6.13-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">54-49</span></th><td><a href="https://www.gty.org/sermons/54-49" target="_blank" rel="noopener">Handling Treasure, Part 1</a></td><td>1 Ti 6.17-⁠19</td></tr><tr><th scope="row"><span class="mot-fr">54-50</span></th><td><a href="https://www.gty.org/sermons/54-50" target="_blank" rel="noopener">Handling Treasure, Part 2</a></td><td>1 Ti 6.20-⁠21</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-1-timothee-1-contre-l-enseignement-etranger-l-evangile-de-la-grace"><span class="intertitre__ref">1 Timothée 1</span>Contre l'enseignement étranger, l'Évangile de la grâce</h3><p>Paul écrit en apôtre par ordre de Dieu, pour affermir l'autorité de Timothée, son véritable enfant dans la foi, dont MacArthur détaille les marques : la foi salvatrice, l'obéissance, le service, la saine doctrine et la piété (54-⁠1 à 54-⁠3). Timothée doit faire cesser les autres doctrines, fables et généalogies, et MacArthur définit le but du commandement, l'amour issu d'un cœur pur, d'une bonne conscience et d'une foi sincère (54-⁠4). La loi est bonne, mais la loi seule n'est pas une bonne nouvelle : elle convainc le pécheur, selon une liste qui suit le Décalogue (54-⁠5); Paul, le premier des pécheurs, témoigne de la grâce qui l'a sauvé, et éclate en doxologie (54-⁠6). Timothée doit combattre le bon combat en gardant la foi et une bonne conscience, contrairement à Hyménée et Alexandre, livrés à Satan pour apprendre à ne pas blasphémer (54-⁠7 à 54-⁠10).</p><h3 class="intertitre" id="t2-1-timothee-2-3-l-ordre-de-l-eglise-et-ses-conducteurs"><span class="intertitre__ref">1 Timothée 2-⁠3</span>L'ordre de l'Église et ses conducteurs</h3><p>L'Église prie d'abord pour tous les hommes, y compris les gouvernants, parce que Dieu notre Sauveur veut que tous soient sauvés et qu'il n'y a qu'un seul médiateur, qui s'est donné en rançon pour tous (54-⁠11 à 54-⁠13). Les hommes conduisent la prière publique; les femmes se parent de bonnes œuvres, s'instruisent et n'enseignent ni ne dominent dans l'assemblée, selon l'ordre de la création et de la chute, et sont délivrées de l'opprobre de la chute par la vocation de mère (54-⁠14 à 54-⁠17). Les anciens doivent être irréprochables en quatre domaines, caractère moral, famille, maturité et réputation; les diacres, hommes et femmes, partagent les mêmes exigences morales, la fonction d'enseignement en moins (54-⁠18 à 54-⁠26). Tout converge vers 3.14-⁠16 : l'Église du Dieu vivant est la colonne et l'appui de la vérité, et le cœur de cette vérité est le Christ manifesté en chair et élevé dans la gloire (54-⁠27, 54-⁠28).</p><h3 class="intertitre" id="t3-1-timothee-4-l-apostasie-et-le-bon-ministre"><span class="intertitre__ref">1 Timothée 4</span>L'apostasie et le bon ministre</h3><p>L'Esprit annonce l'apostasie de ceux qui ont professé la foi sans la posséder, sous l'influence de démons et de docteurs à la conscience cautérisée, qui imposent un ascétisme contraire à la bonté de la création (54-⁠29). Face à eux, le bon ministre avertit, se nourrit de l'Écriture, s'exerce à la piété, travaille en vue de l'éternité, enseigne avec autorité, sert de modèle, se consacre à la lecture, à l'exhortation et à l'enseignement, accomplit sa vocation et veille sur lui-même et sur sa doctrine (54-⁠30 à 54-⁠34).</p><h3 class="intertitre" id="t4-1-timothee-5-6-la-famille-de-dieu-et-l-homme-de-dieu"><span class="intertitre__ref">1 Timothée 5-⁠6</span>La famille de Dieu et l'homme de Dieu</h3><p>L'Église est une famille où l'on corrige avec respect, humilité, douceur et pureté; elle soutient les vraies veuves après les familles, inscrit des veuves âgées pour servir, exhorte les jeunes à se remarier; elle honore, protège, reprend et choisit avec soin ses anciens (54-⁠35 à 54-⁠42). Les serviteurs travaillent pour la réputation de l'Évangile; les faux docteurs, malades de l'orgueil, font de la piété une source de gain, alors que la piété avec le contentement est le vrai gain et que l'amour de l'argent est une racine de tous les maux (54-⁠43 à 54-⁠46). L'homme de Dieu fuit, poursuit, combat et garde, motivé par le Dieu souverain et immortel; les riches donnent avec générosité; et Timothée garde le dépôt (54-⁠47 à 54-⁠50).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>1 Timothée 3.14-⁠15.</b> La finale <i>hina eidēs pōs dei en oikō theou anastrephesthai</i> nomme le but de toute la lettre, la conduite dans la maison de Dieu, et fonde le choix de 3.15 comme verset clé (54-⁠1, 54-⁠27).</li><li><b>1 Timothée 1.3; 4.1; 6.3.</b> Trois sections sur les faux docteurs, chacune suivie d'une exhortation à Timothée et d'un rappel de son appel (1.18; 4.14; 6.12), structurent l'épître selon MacArthur (54-⁠47).</li><li><b>1 Timothée 1.10; 4.6, 13, 16; 6.3.</b> La récurrence de <i>didaskalia</i> et la qualification de la doctrine comme « saine » placent l'enseignement au centre du ministère (54-⁠5, 54-⁠33).</li><li><b>1 Timothée 2.2; 3.16; 4.7-⁠8; 6.3, 5-⁠6, 11.</b> La récurrence de <i>eusebeia</i> associe la vérité à la vie : la doctrine est « selon la piété » (6.3), et le mystère est celui « de la piété » (3.16) (54-⁠5, 54-⁠45).</li><li><b>1 Timothée 1.18; 6.20.</b> L'épître s'ouvre et se ferme sur un dépôt confié : <i>parangelian paratithemai soi</i> (1.18) et <i>tēn parathēkēn phulaxon</i> (6.20), ce que MacArthur relit comme la garde de la vérité (54-⁠8, 54-⁠50).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Sept passages</p></header>
+<p class="lead">Sept passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 20.17-⁠38</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Paul exhorte les anciens d'Éphèse à veiller sur eux-mêmes et sur le troupeau et annonce des loups venus du dehors et des hommes pervers du dedans : MacArthur y voit la prophétie que 1 Timothée trouve accomplie et la charge que la lettre reprend (54-⁠18, 54-⁠29, 54-⁠34).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Tite 1.5-⁠9</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Paul charge Tite d'établir des anciens en Crète et donne une liste voisine de celle de 3.1-⁠7 : MacArthur compare les deux listes, et note que Tite est le seul autre « véritable enfant » de Paul (54-⁠2, 54-⁠24).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Timothée 1.13-⁠14; 4.1-⁠8</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Dans sa dernière lettre, Paul demande encore à Timothée de garder le bon dépôt et de prêcher la Parole, et témoigne avoir gardé la foi : MacArthur montre que la seconde lettre reprend la charge de la première (54-⁠50).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 16.1-⁠3</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Paul prend avec lui Timothée, disciple de Lystre bien recommandé, fils d'une Juive croyante et d'un père grec : c'est l'origine de la relation que la lettre suppose, et MacArthur y situe la prophétie et l'imposition des mains de 4.14 (54-⁠1, 54-⁠33).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Apocalypse 2.1-⁠7</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Le Seigneur loue Éphèse d'avoir éprouvé les faux apôtres, mais lui reproche d'avoir abandonné son premier amour : MacArthur y lit l'issue de l'Église que Timothée devait redresser (54-⁠1, 54-⁠33).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Osée 4.9</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Tel peuple, tel prêtre : MacArthur cite souvent ce principe pour expliquer l'insistance de l'épître sur la qualité des conducteurs (54-⁠18, 54-⁠31, 54-⁠40).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 3.2</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Les oracles de Dieu avaient été confiés à Israël : MacArthur en tire que l'Église est désormais le dépositaire de la vérité, colonne et appui (3.15) et gardienne du dépôt (6.20) (54-⁠27, 54-⁠50).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La saine doctrine et la garde du dépôt</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Timothée doit ordonner à certains de ne pas enseigner d'autres doctrines (1.3), se nourrir des paroles de la foi et de la bonne doctrine (4.6), veiller sur lui-même et sur son enseignement (4.16), et garder le dépôt en évitant les discours vains et profanes (6.20).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme que l'Écriture est la parole du Seigneur, suffisante et saine, que l'erreur vient finalement des démons, et que l'Église a pour mission de garder, vivre et proclamer la vérité (54-⁠29, 54-⁠45, 54-⁠50). Rattachement : bibliologie (l'inspiration, l'autorité et la suffisance de l'Écriture) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Israël a reçu les oracles de Dieu (Romains 3.2); Paul confie la Parole aux anciens d'Éphèse (Actes 20.32) puis à Timothée, qui doit la transmettre à des hommes fidèles (2 Timothée 2.2); Jude appelle à combattre pour la foi transmise une fois pour toutes (Jude 3) (54-⁠27, 54-⁠50).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>On juge un ministère et une Église à la manière dont ils traitent la vérité (54-⁠50).</p></div></div></section><section class="theme"><h3 class="theme__title">Dieu notre Sauveur et l'unique médiateur</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Le Christ Jésus est venu dans le monde pour sauver les pécheurs (1.15); Dieu notre Sauveur veut que tous les hommes soient sauvés; il y a un seul Dieu et un seul médiateur, qui s'est donné en rançon pour tous (2.3-⁠6); il est le Sauveur de tous les hommes, surtout des croyants (4.10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme le salut par grâce d'un pécheur indigne, la volonté de désir de Dieu pour le salut de tous, distincte de son décret, l'unique médiation du Christ et sa rançon substitutive, et une délivrance temporelle de tous qui distingue le salut éternel des croyants (54-⁠6, 54-⁠12, 54-⁠13, 54-⁠31). Rattachement : sotériologie dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Les prophètes appelaient les extrémités de la terre au Dieu unique (Ésaïe 45.22); Job cherchait un arbitre (Job 9.33); Jésus est venu chercher et sauver ce qui était perdu, et donner sa vie en rançon (Marc 10.45; texte seul) (54-⁠12, 54-⁠13).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'Église prie pour tous et annonce l'Évangile à tous, parce que nul ne vient à Dieu que par le Christ (54-⁠11, 54-⁠13).</p></div></div></section><section class="theme"><h3 class="theme__title">L'ordre de la maison de Dieu</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Paul écrit pour qu'on sache comment se conduire dans la maison de Dieu (3.15) : la prière publique des hommes, la place des femmes (2.8-⁠15), les qualifications des évêques et des diacres (3.1-⁠13), le soin des veuves (5.3-⁠16), l'honneur et la discipline des anciens (5.17-⁠25).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme une Église conduite par une pluralité d'anciens qualifiés, servie par des diacres hommes et femmes, où l'égalité spirituelle de l'homme et de la femme s'accompagne d'une différence de rôles fondée sur la création, et où les conducteurs sont honorés et repris selon l'Écriture (54-⁠16, 54-⁠18, 54-⁠26, 54-⁠40, 54-⁠41). Rattachement : ecclésiologie dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Israël a suivi ses conducteurs (Osée 4.9); le Nouveau Testament établit des anciens dans chaque Église (Actes 14.23; Tite 1.5) et donne aux femmes âgées l'instruction des plus jeunes (Tite 2.3-⁠5) (54-⁠18, 54-⁠38).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'Église choisit ses conducteurs d'après leur vie, les soutient et les protège, et ne tolère pas leur péché (54-⁠40, 54-⁠41, 54-⁠42).</p></div></div></section><section class="theme"><h3 class="theme__title">La piété, fruit et preuve de la vérité</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>La doctrine est « selon la piété » (6.3); Timothée doit s'exercer à la piété, utile à tout (4.7-⁠8), la poursuivre avec la justice, la foi et l'amour (6.11); la piété avec le contentement est un grand gain (6.6).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme que la vérité produit la piété, que la piété se prouve d'abord à la maison et dans le travail, et que l'erreur se trahit par l'orgueil, les querelles et l'amour du gain (54-⁠31, 54-⁠36, 54-⁠44, 54-⁠45). Rattachement : sanctification dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le fruit fait connaître l'arbre (Matthieu 7.16-⁠20); Pierre décrit la piété reçue du Christ (2 Pierre 1.3) et la conduite des faux docteurs (2 Pierre 2) (54-⁠31, 54-⁠45).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant vérifie ses convictions à la sainteté qu'elles produisent, et le ministre ne peut donner ce qu'il ne reçoit pas lui-même (54-⁠30, 54-⁠45).</p></div></div></section><section class="theme"><h3 class="theme__title">Le Roi des siècles et le Christ manifesté</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Au Roi des siècles, immortel, invisible, seul Dieu, honneur et gloire (1.17); le mystère de la piété est grand, manifesté en chair, élevé dans la gloire (3.16); le bienheureux et seul souverain manifestera l'apparition du Christ (6.14-⁠16).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur affirme la souveraineté, la béatitude, l'immortalité et la sainteté de Dieu, l'incarnation du Fils préexistant, sa justification par l'Esprit, son ascension et son retour glorieux, et fait de cette théologie la source de la motivation du serviteur (54-⁠6, 54-⁠28, 54-⁠48). Rattachement : théologie propre, christologie et eschatologie dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Dieu est le Dieu des dieux et le Seigneur des seigneurs (Deutéronome 10.17); la Parole a été faite chair (Jean 1.14); le Père a souverainement élevé le Fils (Philippiens 2.9-⁠11), qui reviendra dans la gloire (Apocalypse 19.11-⁠16) (54-⁠28, 54-⁠48).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le serviteur qui connaît ce Dieu ne craint ni l'opposition ni la mort, et place sa louange au centre de son devoir (54-⁠48, 54-⁠49).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Sept questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>MacArthur fait de 3.15 le verset clé : si quelqu'un jugeait notre Église uniquement à la manière dont elle se conduit comme maison de Dieu, colonne et appui de la vérité, que conclurait-il (54-⁠1, 54-⁠27)?</li><li>Le but du commandement est l'amour issu d'un cœur pur, d'une bonne conscience et d'une foi sincère (1.5; 54-⁠4) : notre enseignement vise-t-il ce but ou seulement l'exactitude?</li><li>L'épître joint constamment la doctrine et la piété (54-⁠5) : où notre assemblée tient-elle l'une sans l'autre?</li><li>Nos critères pour choisir, soutenir et reprendre nos conducteurs suivent-ils 3.1-⁠13 et 5.17-⁠25, ou nos préférences culturelles (54-⁠18, 54-⁠40)?</li><li>Comment notre Église honore-t-elle à la fois l'égalité spirituelle des hommes et des femmes et la différence de leurs rôles (2.8-⁠15; 54-⁠15, 54-⁠17)?</li><li>Quelles formes modernes prennent l'ascétisme, les spéculations et l'amour du gain que Paul dénonce (4.1-⁠5; 6.3-⁠10), et comment les reconnaître (54-⁠29, 54-⁠45)?</li><li>Qu'est-ce qui, dans notre vie et notre ministère, montre que nous gardons le dépôt (6.20) plutôt que de l'adapter (54-⁠50)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 1 Timothée 1-⁠6 · 5 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-1-Timothee-1-6.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

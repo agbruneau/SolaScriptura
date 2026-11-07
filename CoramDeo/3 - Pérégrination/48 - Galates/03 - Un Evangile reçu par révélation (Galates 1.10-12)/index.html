@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galates 1.10-12 · Un Evangile reçu par révélation · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Galates 1.10-12 : l'Evangile de Paul n'est pas de l'homme mais reçu par une révélation de Jésus-Christ ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Galates 1.10-12</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Galates 1.10-12</p>
+    <h1 class="hero__title">Un Evangile reçu par révélation</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Je ne l'ai ni reçu ni appris d'un homme, mais par une révélation de Jésus-Christ.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Galates 1.12 · NEG</p>
+    <p class="hero__series">Série : <b>Galates : l'Évangile de la grâce</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Galates 1.10-12</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Et maintenant, est-ce la faveur des hommes que je désire, ou celle de Dieu? Est-ce que je cherche à plaire aux hommes? Si je plaisais encore aux hommes, je ne serais pas serviteur de Christ.</p>
+        <cite class="verse__ref">Galates 1.10 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Je ne l'ai ni reçu ni appris d'un homme, mais par une révélation de Jésus-Christ.</p>
+        <cite class="verse__ref">Galates 1.12 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Galates 1.10-12 est la charnière de l'épître : après l'anathème le plus solennel du Nouveau Testament, Paul pose le fondement même de son autorité, un Evangile reçu non de l'homme mais par une révélation de Jésus-Christ.</p>
+    <div class="body">
+      <p>Notre péricope s'ouvre sur un pivot. Paul vient de prononcer, par deux fois, l'anathème le plus solennel du Nouveau Testament sur quiconque, fût-ce lui-même ou un ange du ciel, annoncerait un évangile s'écartant de celui qu'il a prêché (1.8-9). Le verset 10 enchaîne aussitôt par une question abrupte : «&nbsp;Et maintenant, est-ce la faveur des hommes que je désire, ou celle de Dieu?&nbsp;» MacArthur lit ici une riposte directe à la calomnie des judaïsants, qui dénigraient les références de Paul en l'accusant d'adoucir l'Evangile pour plaire aux païens. La logique est implacable : un homme qui vient de damner solennellement de faux docteurs ne saurait être un flatteur en quête de popularité. La malédiction de 1.8-9 est elle-même la preuve que Paul ne cherche pas l'approbation humaine.</p>
+      <p>Le passage forme une charnière dans le plan que MacArthur reconnaît à l'épître. La correction apportée par l'apôtre s'achevait en 1.9; le crédit de l'apôtre s'ouvre en 1.10 et court jusqu'en 2.10. Du fait que les adversaires cherchaient à miner sa légitimité, Paul se consacre désormais à défendre son apostolat, en répétant ce qu'il avait déjà affirmé au verset 1 : il a été désigné par Dieu et non par des hommes. Les versets 10 à 12 énoncent la thèse, et les versets 13 à 24 la démontreront par le récit autobiographique de sa conversion et de ses premières années. La structure est donc nette : une affirmation de principe (l'Evangile n'est pas d'origine humaine) suivie d'une preuve narrative tirée de la vie même de Paul.</p>
+      <p>Les bornes du texte sont fermes. Le verset 10 démolit l'accusation de complaisance et pose le motif réel de Paul : il est serviteur de Christ, non flatteur des hommes. Les versets 11 et 12 énoncent alors la double affirmation positive qui commande toute la suite : l'Evangile annoncé par Paul n'est pas de l'homme (v. 11), car il ne l'a ni reçu ni appris d'un homme, mais par une révélation de Jésus-Christ (v. 12). L'idée maîtresse de la péricope tient en un mot que MacArthur souligne : révélation. La source de l'Evangile de Paul est divine, non humaine; et un message d'origine divine ne peut être amendé par l'homme sans être détruit. C'est ici, après l'anathème, que Paul établit le fondement même de son autorité.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Galates 1.10 · 1.11-12</p>
+    </header>
+    <p class="lead">Le conflit qui traverse Galates est religieux avant d'être géographique : ce ne sont pas des païens mais des judaïsants qui, pour ruiner le message de Paul, devaient d'abord présenter son Evangile comme une invention humaine.</p>
+    <div class="body">
+      <p>Les adversaires de Paul ne sont pas des païens mais des judaïsants, des hommes se réclamant de Christ tout en exigeant que les croyants d'origine païenne se fassent circoncire et observent la loi de Moïse pour être pleinement sauvés (1.7; 5.2-12; 6.12-13). Ignorant le décret du concile de Jérusalem (Actes 15.23-29), ils ajoutaient l'œuvre humaine à l'œuvre de Christ. Leur stratégie, comme à Corinthe, consistait à discréditer Paul lui-même : s'ils parvenaient à présenter son évangile comme une invention humaine, plus souple et plus accommodante que la voie rigoureuse de la loi, ils ruinaient du même coup son message. C'est pourquoi Paul doit d'abord établir, avant toute démonstration doctrinale, que son Evangile vient de Dieu et non des hommes.</p>
+    </div>
+    <p>Deux arrière-plans décisifs échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>L'accusation de plaire aux hommes.</b> L'accusation visée au verset 10 doit être entendue dans son poids ancien. Reprocher à un docteur de chercher à plaire aux hommes, c'était l'accuser de vénalité et de flagornerie, de tailler son message à la mesure de son auditoire pour s'attirer des faveurs. MacArthur note que le mot grec d'ouverture, <i>gar</i>, peut signifier «&nbsp;car&nbsp;» ou «&nbsp;parce que&nbsp;», mais aussi former une forte exclamation, littéralement «&nbsp;voilà, voilà&nbsp;», peut-être la meilleure traduction : Paul vient de prononcer une double damnation, et il défie quiconque d'y voir le langage d'un flatteur. Aux yeux de l'apôtre, la complaisance et le service de Christ s'excluent radicalement. Le terme qu'il emploie, <i>doulos</i>, ne désigne pas un employé mais un esclave acheté, propriété entière de son maître, sans volonté propre. Paul s'était volontairement fait l'esclave de Christ, et ce statut lui valait persécutions et cicatrices (6.17), exact contraire de ce que recherche un homme avide d'approbation humaine.</li>
+      <li><b>La transmission rabbinique du savoir.</b> Le deuxième arrière-plan décisif est celui de la transmission du savoir religieux dans le judaïsme du Ier siècle. MacArthur insiste : à la différence de Paul, les judaïsants recevaient leurs instructions de la tradition rabbinique. La plupart des Juifs n'étudiaient pas directement les Ecritures, mais s'en remettaient à l'autorité des interprétations humaines accumulées, la halakah, cet enseignement oral qui avait fini par acquérir une autorité égale ou supérieure à la loi écrite. Un rabbin tenait sa doctrine d'une chaîne de maîtres : reçue d'un homme, apprise d'un homme. Paul retourne précisément ce schéma. Son Evangile ne lui vient d'aucune chaîne de transmission humaine; il l'a reçu directement du Christ ressuscité et glorifié sur le chemin de Damas (Actes 9.1-16). Le verbe qu'il choisit au verset 11 pour introduire sa déclaration, <i>gnorizo</i>, «&nbsp;je vous fais savoir&nbsp;», est un terme grec au sens très fort, généralement employé pour appuyer une affirmation solennelle (1 Co 12.3; 2 Co 8.1). Paul ne donne pas une opinion : il déclare solennellement l'origine surnaturelle de son message.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Quatre termes grecs</p>
+    </header>
+    <p class="lead">Quatre mots portent le poids théologique de la péricope : du verbe «&nbsp;plaire&nbsp;» (<i>aresko</i>) qui nomme la complaisance refusée, au titre d'esclave (<i>doulos</i>) qui scelle l'allégeance unique, jusqu'à l'unique Evangile (<i>euangelion</i>) dont la source est une révélation (<i>apokalupsis</i>) divine.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">plaire</span><span class="mot-gr">aresko</span></th>
+            <td class="col-sens">plaire à, chercher à satisfaire, s'accommoder pour gagner la faveur</td>
+            <td>Le verbe désigne l'effort pour gagner l'agrément d'autrui. Paul l'emploie deux fois au verset 10 («&nbsp;est-ce que je cherche à plaire aux hommes? Si je plaisais encore aux hommes...&nbsp;»). MacArthur y voit nommée la motivation même qui animait Saul le persécuteur : plaire à ses coreligionnaires juifs en pourchassant les chrétiens. La forme «&nbsp;plaisais encore&nbsp;» suppose une rupture nette : la conversion a brisé cette logique de complaisance. L'enjeu n'est pas accessoire, car chercher à plaire aux hommes et servir Christ s'excluent : qui ajuste son message au goût de l'auditoire ne peut être l'esclave fidèle de son Maître.</td>
+            <td><span class="trad"><span><b>S21</b> chercher à plaire</span><span><b>NEG79</b> plaire</span><span><b>Darby</b> complaire</span><span><b>LSG</b> plaire</span><span><b>KJF</b> plaire</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">serviteur</span><span class="mot-gr">doulos</span></th>
+            <td class="col-sens">esclave, serf acheté, propriété entière d'un maître, sans volonté propre</td>
+            <td>Le mot ne signifie pas «&nbsp;employé&nbsp;» ni «&nbsp;ministre&nbsp;» au sens adouci, mais esclave au sens fort : un homme qui appartient corps et biens à son seigneur. MacArthur souligne que Paul s'était volontairement fait l'esclave de Christ, statut qui lui attira bien des souffrances (6.17) et qui constitue l'exact opposé de l'objectif de plaire aux êtres humains (6.12). Le titre est un titre d'honneur dans l'Ancien Testament (Moïse, David, les prophètes, serviteurs de l'Eternel). Il scelle l'argument du verset 10 : l'allégeance unique à Christ interdit la flagornerie. On ne peut servir deux maîtres.</td>
+            <td><span class="trad"><span><b>S21</b> serviteur</span><span><b>NEG79</b> serviteur</span><span><b>Darby</b> esclave</span><span><b>LSG</b> serviteur</span><span><b>KJF</b> serviteur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">évangile</span><span class="mot-gr">euangelion</span></th>
+            <td class="col-sens">bonne nouvelle, annonce du salut accompli par Dieu en Christ</td>
+            <td>Pour Paul il n'existe qu'un seul Evangile, la bonne nouvelle du salut obtenu par la seule grâce, au moyen de la foi seule en Christ seul (note sur 1.7). MacArthur précise que tout message ajoutant l'œuvre humaine à la grâce n'est pas un autre évangile mais une altération de l'unique Evangile (1.6-7). Au verset 11, Paul affirme que cet Evangile «&nbsp;n'est pas de l'homme&nbsp;» : il n'est pas d'origine humaine, car autrement sa doctrine ressemblerait aux autres religions humaines, imprégnées de bonnes œuvres et de propre justice, inspirées par l'orgueil de l'homme et la tromperie de Satan. L'origine divine du message fonde son intangibilité.</td>
+            <td><span class="trad"><span><b>S21</b> Evangile</span><span><b>NEG79</b> Evangile</span><span><b>Darby</b> évangile</span><span><b>LSG</b> Evangile</span><span><b>KJF</b> évangile</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">révélation</span><span class="mot-gr">apokalupsis</span></th>
+            <td class="col-sens">dévoilement, action d'ôter le voile, mise au jour de ce qui était caché</td>
+            <td>Le terme, d'où vient «&nbsp;apocalypse&nbsp;», signifie le dévoilement de quelque chose qui était auparavant secret. MacArthur précise que l'objet de cette révélation est Jésus-Christ lui-même : Paul avait certes entendu parler de Christ, mais il l'a ensuite rencontré personnellement sur le chemin de Damas et a reçu de lui la vérité de l'Evangile (Actes 9.1-16). La révélation n'est donc pas une intuition intérieure ni une déduction humaine, mais une manifestation surnaturelle et directe du Christ ressuscité et glorifié. C'est le mot pivot de la péricope : il oppose frontalement la source divine de l'Evangile de Paul à toute transmission rabbinique ou humaine.</td>
+            <td><span class="trad"><span><b>S21</b> révélation</span><span><b>NEG79</b> révélation</span><span><b>Darby</b> révélation</span><span><b>LSG</b> révélation</span><span><b>KJF</b> révélation</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Galates 1.10-12</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Galates 1.10-12 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ga 1.10-12, 1.10, 1.11, 1.12.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-5</span></th>
+            <td><a href="https://www.gty.org/sermons/48-5" target="_blank" rel="noopener">Paul Defends His Apostleship, Part 1</a></td>
+            <td>Galates 1.10-15</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-6</span></th>
+            <td><a href="https://www.gty.org/sermons/48-6" target="_blank" rel="noopener">Paul Defends His Apostleship, Part 2</a></td>
+            <td>Galates 1.10-24</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question interprétative qui commande la péricope est celle de l'autorité : de quel droit Paul prétend-il que son évangile est le seul vrai, au point de damner tout autre? MacArthur y lit la défense de l'autorité apostolique de Paul : le verset 10 tire de l'anathème qui précède la preuve que Paul n'est pas un flatteur, et les versets 11 et 12 montrent que son Evangile, reçu du ciel, ne peut être altéré sans malédiction.</p>
+    <div class="body">
+      <p>Si l'Evangile de Paul venait des hommes, il serait amendable, négociable, soumis au débat comme toute opinion humaine; mais s'il vient d'une révélation de Jésus-Christ, alors le modifier d'un iota, c'est se dresser contre Dieu lui-même. L'anathème de 1.8-9 et la défense de 1.10-12 sont donc indissociables : l'intransigeance de Paul sur la pureté de l'Evangile découle de sa condition d'esclave de Christ et de l'origine divine de son message.</p>
+      <p>Le verset 10 désamorce d'abord l'accusation de complaisance. MacArthur entend le <i>gar</i> d'ouverture comme une forte exclamation : «&nbsp;Voilà, est-ce que je cherche maintenant la faveur des hommes? Cela ressemble-t-il à un flatteur?&nbsp;» Celui qui vient de prononcer une double damnation ne peut être un flatteur. Paul oppose alors les deux maîtrises incompatibles : plaire aux hommes ou être l'esclave (<i>doulos</i>) de Christ. MacArthur note que plaire aux hommes était précisément la motivation de Saul le persécuteur, du temps où il pourchassait les chrétiens pour la faveur de ses coreligionnaires. La conversion a renversé cette logique : devenu esclave de Christ, Paul a hérité non d'applaudissements mais de cicatrices (6.17). Le service exclusif de Christ et la quête de l'approbation humaine ne peuvent coexister; le ministre fidèle accepte d'être haï des hommes plutôt que de trahir son Maître.</p>
+      <p>Les versets 11 et 12 énoncent alors la thèse positive en trois temps que MacArthur déplie soigneusement. Premièrement, l'Evangile «&nbsp;n'est pas de l'homme&nbsp;» : il n'est pas d'origine humaine, sans quoi il ressemblerait aux religions de propre justice que l'orgueil humain produit et que Satan inspire. Deuxièmement, Paul ne l'a «&nbsp;ni reçu ni appris d'un homme&nbsp;» : double négation visant directement les judaïsants, qui tenaient leur doctrine de la tradition rabbinique transmise de maître en disciple. Paul n'a pas hérité son Evangile d'une chaîne humaine, contrairement aux rabbins qui se fiaient à l'autorité d'interprétations humaines souvent étrangères, voire contraires à l'Ecriture (Mc 7.13). Troisièmement, il l'a reçu «&nbsp;par une révélation de Jésus-Christ&nbsp;» : un dévoilement surnaturel et direct, opéré sur le chemin de Damas, où le Christ ressuscité et glorifié se manifesta en personne et lui confia la vérité de l'Evangile (Actes 9.1-16).</p>
+      <p>L'atterrissage de MacArthur, qu'il faut recevoir comme le sens même du texte, est que l'apostolat et l'Evangile de Paul portent un sceau divin et non humain, et que cette origine commande l'intangibilité du message. La défense n'a rien de personnel : elle protège l'Evangile lui-même. Ce que Paul affirme ici de la source de sa prédication, MacArthur l'étend à ses treize lettres : écrites sous l'inspiration du Saint-Esprit, elles sont Ecriture au même titre que le reste de la Bible (2 Pi 3.15-16), et Paul y parle avec l'autorité de Dieu. Les apôtres ont été établis pour poser le fondement de l'Eglise et devenir les canaux par lesquels Dieu a complété sa révélation (Ep 2.20). Affirmer que l'Evangile de Paul vient d'une révélation de Jésus-Christ, c'est donc affirmer que les Galates ne sont pas libres de le retoucher : reçu de Dieu, il ne peut être amendé par l'homme sans être perdu.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle direct de l'apostolat reçu de Dieu (1.1) et de la révélation de Damas, au socle de bibliologie qui fonde la primauté de la révélation, jusqu'à l'arrière-plan de la tradition humaine que Paul oppose à l'Ecriture.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 1.1</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Au seuil de l'épître, Paul s'est déjà déclaré apôtre non de la part des hommes ni par un homme, mais par Jésus-Christ; les versets 10 à 12 reprennent et développent cette même affirmation d'origine divine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 9.1-16</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le récit de la rencontre de Saul avec le Christ ressuscité sur le chemin de Damas : la révélation directe à laquelle renvoie le verset 12 et qui fonde tout l'argument autobiographique de Galates 1.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 1.15-16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Dieu se plut à révéler son Fils en Paul pour qu'il l'annonce parmi les païens : prolongement immédiat de la thèse de 1.12 dans le récit qui la démontre.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 15.1-4</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Définition de l'Evangile reçu et transmis par Paul, centré sur la mort, l'ensevelissement et la résurrection de Christ : le contenu même du message dont Galates 1 défend l'origine divine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 2.4</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul parle non pour plaire aux hommes mais à Dieu qui éprouve les cœurs : parallèle exact de l'antithèse plaire aux hommes contre servir Dieu posée en Galates 1.10.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Pierre 1.20-21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Aucune prophétie de l'Ecriture ne vient d'une interprétation humaine, mais des hommes ont parlé de la part de Dieu, poussés par l'Esprit : socle de bibliologie qui confirme que la révélation prime sur toute source humaine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 7.13</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Jésus reproche aux pharisiens d'annuler la Parole de Dieu par leur tradition : arrière-plan de la transmission rabbinique humaine que Paul oppose à la révélation reçue de Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jérémie 1.5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le Seigneur déclare avoir mis Jérémie à part avant sa naissance et l'avoir établi prophète : modèle vétérotestamentaire de l'appel et de la mise à part souverains que Paul revendique en 1.15.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'inspiration et l'origine divine de la Parole apostolique</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul affirme que son Evangile n'est pas de l'homme, qu'il ne l'a ni reçu ni appris d'un homme, mais par une révélation de Jésus-Christ (1.11-12); le message porte un sceau divin et non humain.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la bibliologie de <i>Biblical Doctrine</i>, l'Ecriture est la révélation inspirée, verbale et plénière de Dieu, infaillible et suffisante, et non la sagesse des hommes (2 Pi 1.20-21). Pour l'assemblée : l'autorité de la prédication ne tient pas à l'éloquence ou à l'érudition du prédicateur, mais à la Parole révélée qu'il transmet fidèlement; on n'amende pas ce que Dieu a dit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'unicité et l'intangibilité de l'Evangile</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le seul vrai Evangile est celui que Paul a reçu par révélation (1.11-12); de là l'anathème qui précède sur quiconque, homme ou ange, en annoncerait un autre (1.8-9).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'Evangile est le salut par la grâce seule, au moyen de la foi seule, en Christ seul. Parce qu'il vient de Dieu, nul n'a le droit de le retoucher. Pour l'assemblée : distinguer ce qui est négociable de ce qui ne l'est jamais; la fidélité au cœur de l'Evangile n'est pas de l'intolérance mais de la loyauté envers Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'appel apostolique et la clôture du fondement</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul reçoit son Evangile directement du Christ ressuscité (1.12; cf. 1.1), comme les apôtres établis pour poser le fondement de l'Eglise et compléter la révélation.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'ecclésiologie réformée, les offices fondateurs d'apôtre et de prophète sont clos avec le canon (Ep 2.20); leur révélation directe ne se répète pas. Pour l'assemblée : aucune nouvelle révélation ne vient s'ajouter à l'Ecriture achevée; on se garde de toute prétention contemporaine à une parole divine directe qui concurrencerait la Parole écrite.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le service exclusif de Christ contre la complaisance envers les hommes</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Si Paul plaisait encore aux hommes, il ne serait pas serviteur, esclave (<i>doulos</i>), de Christ (1.10); l'allégeance unique à Christ exclut la flagornerie.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La seigneurie de Christ revendique l'allégeance entière du croyant : on ne sert pas deux maîtres. Pour l'assemblée : le ministre et le disciple fidèles cherchent l'approbation de Dieu et non des hommes, acceptant d'être méprisés plutôt que de trahir la vérité; la peur de déplaire est l'ennemie de la fidélité.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce souveraine dans l'appel et la conversion</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'Evangile parvient à Paul par une révélation de Jésus-Christ sur le chemin de Damas (1.12), non par recherche ou mérite humain; Dieu l'avait mis à part dès le sein de sa mère (1.15).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la sotériologie monergique, l'appel efficace est l'œuvre souveraine de Dieu qui amène effectivement l'élu au salut, indépendamment de ses efforts. Pour l'assemblée : nul ne se donne lui-même la lumière de l'Evangile; le persécuteur devenu apôtre est le trophée vivant de la grâce qui saisit et transforme sans l'avoir mérité.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Vos auditeurs perçoivent-ils le lien que MacArthur établit entre l'anathème de 1.8-9 et la défense de 1.10-12 : l'anathème prouve que Paul n'est pas un flatteur, et un Evangile reçu du ciel ne peut être altéré sans attirer la malédiction?</li>
+      <li>Comment montrer à votre assemblée que plaire aux hommes et servir Christ s'excluent (1.10), sans transformer cette vérité en prétexte à une dureté qui se croirait fidèle simplement parce qu'elle déplaît?</li>
+      <li>Le terme <i>doulos</i>, esclave et non employé, dérange l'oreille contemporaine : votre prédication laisse-t-elle entendre l'allégeance totale et coûteuse que ce mot impose, ou l'adoucit-elle pour ménager l'auditoire?</li>
+      <li>Si l'Evangile de Paul vient d'une révélation et non d'un homme (1.11-12), quelles formes contemporaines de tradition humaine, de mode culturelle ou de consensus religieux votre assemblée est-elle tentée d'ajouter au message reçu?</li>
+      <li>Comment prêcher la révélation directe reçue par Paul (1.12) tout en gardant la clôture du fondement apostolique (Ep 2.20), de sorte que nul n'en infère une légitimité pour des révélations privées concurrentes de l'Ecriture?</li>
+      <li>La conversion de Paul, le persécuteur fait apôtre par pure grâce, est-elle présentée à votre assemblée comme un trophée de la grâce souveraine, ou réduite à un simple récit édifiant de changement de vie?</li>
+      <li>Sur quoi vos auditeurs fondent-ils en pratique l'autorité de la prédication qu'ils écoutent : sur la personnalité du prédicateur, ou sur la Parole révélée qu'il est tenu de transmettre sans la retoucher?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Galates 1.10-12 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Galates : l'Évangile de la grâce&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Galates-1-10-12.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

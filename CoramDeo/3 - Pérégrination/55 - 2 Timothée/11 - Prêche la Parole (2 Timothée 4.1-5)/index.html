@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Timothée 4.1-5 · Prêche la Parole · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Timothée 4.1-5 : prêche la Parole ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">2 Timothée 4.1-5</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 2 Timothée 4.1-5</p>
+    <h1 class="hero__title">Prêche la Parole</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Prêche la parole, insiste en toute occasion, favorable ou non, reprends, censure, exhorte, avec toute douceur et en instruisant.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">2 Timothée 4.2 · NEG</p>
+    <p class="hero__series">Série : <b>2 Timothée : garde le bon dépôt</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">2 Timothée 4.1-5</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je t'en conjure devant Dieu et devant Jésus-Christ, qui doit juger les vivants et les morts, et au nom de son avènement et de son royaume.</p>
+        <cite class="verse__ref">2 Timothée 4.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Mais toi, sois sobre en toutes choses, supporte les souffrances, fais l'œuvre d'un évangéliste, remplis bien ton ministère.</p>
+        <cite class="verse__ref">2 Timothée 4.5 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">2 Timothée 4.1-5 forme le sommet de toute l'épître&nbsp;: parce que «&nbsp;toute Écriture est inspirée de Dieu&nbsp;» (3.16), Timothée doit maintenant «&nbsp;prêcher la Parole&nbsp;». La péricope se divise en deux, le devoir de prêcher (4.1-2) puis la nécessité de prêcher (4.3-5).</p>
+    <div class="body">
+      <p>2 Timothée 4.1-5 forme le sommet de toute l'épître. Selon le plan que MacArthur reçoit de la Bible d'étude, ces versets constituent la cinquième grande section, «&nbsp;La prédication de l'homme de Dieu&nbsp;» (4.1-5), aussitôt après le texte clé sur l'inspiration de l'Écriture (3.16-17). L'enchaînement est délibéré&nbsp;: parce que «&nbsp;toute Écriture est inspirée de Dieu&nbsp;» et rend l'homme de Dieu «&nbsp;accompli et propre à toute bonne œuvre&nbsp;», Timothée doit maintenant «&nbsp;prêcher la Parole&nbsp;». La péricope se divise en deux, le devoir de prêcher (4.1-2) puis la nécessité de prêcher (4.3-5). Le premier énonce le mandat, le second en donne la raison urgente.</p>
+      <p>Cette admonition à «&nbsp;prêcher la Parole&nbsp;» (4.2) est, dans l'analyse de MacArthur, l'exhortation principale de toute la seconde partie de la lettre, comme «&nbsp;fortifie-toi&nbsp;» (2.1) l'était de la première. Paul, qui sait sa mort imminente (4.6), confie ici à son fils dans la foi le pan non apostolique de son ministère (2.2). Toute l'épître a craint que Timothée ne faiblisse sous la double pression de la persécution romaine et de l'hostilité interne&nbsp;; l'apôtre lui remet donc, comme testament, l'ordre solennel qui résume la vocation pastorale tout entière.</p>
+      <p>Les bornes de la péricope sont nettes. Le verset 1 s'ouvre sur une adjuration solennelle, «&nbsp;Je t'en conjure devant Dieu et devant Jésus-Christ&nbsp;», qui place le mandat sous le regard du Juge à venir. Le verset 5 le referme par quatre impératifs récapitulatifs («&nbsp;sois sobre&nbsp;», «&nbsp;supporte les souffrances&nbsp;», «&nbsp;fais l'œuvre d'un évangéliste&nbsp;», «&nbsp;remplis bien ton ministère&nbsp;»). Le verset 6 amorce aussitôt un mouvement nouveau et personnel&nbsp;: Paul tourne le regard vers son propre départ («&nbsp;je sers déjà de libation&nbsp;»). Le contraste est voulu&nbsp;: ayant remis le mandat, le mentor cède la place au disciple.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">2 Timothée 4.1 · 4.2 · 4.3</p>
+    </header>
+    <p class="lead">Le mandat «&nbsp;prêche la Parole&nbsp;» porte le poids d'un homme qui sait sa course achevée (4.7)&nbsp;: depuis un cachot romain, enchaîné et abandonné, Paul transmet son testament spirituel à la génération suivante.</p>
+    <div class="body">
+      <p>Paul écrit 2 Timothée vers 66-67 apr. J.-C., depuis un cachot romain froid et sombre (4.13), enchaîné comme un malfaiteur (2.9), abandonné de presque tous (1.15&nbsp;; 4.16), dans l'attente d'une exécution qu'il n'espère plus éviter (4.6). C'est la dernière de ses épîtres inspirées, son testament spirituel. Le mandat «&nbsp;prêche la Parole&nbsp;» porte donc le poids d'un homme qui sait que sa course est achevée (4.7) et qui transmet le flambeau à la génération suivante (2.2).</p>
+    </div>
+    <p>Trois traits éclairent la solennité du passage.</p>
+    <ul class="points">
+      <li><b>L'adjuration comme ordre contraignant.</b> Le verbe rendu par «&nbsp;je t'en conjure&nbsp;» exprime, dans le grec, une directive contraignante, mieux traduite par «&nbsp;je t'ordonne&nbsp;». Paul convoque trois réalités comme témoins et garants de cet ordre&nbsp;: la présence de Dieu et de Christ, la fonction de Christ comme juge des vivants et des morts, et son avènement avec son royaume. Le ministère de la Parole se déploie sous le regard omniscient de Christ.</li>
+      <li><b>L'avènement, manifestation du Roi.</b> Le mot grec pour «&nbsp;avènement&nbsp;» (<i>epiphaneia</i>) signifie littéralement «&nbsp;apparition, action de se montrer&nbsp;»&nbsp;; les Grecs de l'Antiquité l'employaient pour décrire la manifestation supposée d'un dieu païen aux hommes. Paul l'applique à la seconde venue de Christ, où il jugera les vivants et les morts et établira son royaume millénaire et éternel. Le mandat est ainsi encadré par deux pôles, le tribunal et le royaume.</li>
+      <li><b>Les images militaires et la flatterie ancienne.</b> Le verbe «&nbsp;insiste&nbsp;» (4.2) servait à désigner le soldat prêt à se lancer dans la bataille ou la sentinelle toujours en alerte. La «&nbsp;démangeaison d'entendre des choses agréables&nbsp;» (4.3) renvoie au goût ancien des auditoires pour les rhéteurs flatteurs&nbsp;; dans l'Église, ce penchant pousse de faux chrétiens à se constituer «&nbsp;une foule de docteurs selon leurs propres désirs&nbsp;», au lieu de laisser Dieu inspirer les prédicateurs par sa Parole.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du mandat&nbsp;: du <i>kêrussô</i> qui fait du prédicateur un héraut, jusqu'à l'<i>euangelistês</i> dont Timothée doit «&nbsp;faire l'œuvre&nbsp;», en passant par le «&nbsp;à temps et à contretemps&nbsp;» qui affranchit la prédication de la commodité.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">prêche</span><span class="mot-gr">kêrussô</span></th>
+            <td class="col-sens">proclamer en héraut, annoncer publiquement et avec autorité le message d'un souverain</td>
+            <td>Le verbe évoque le héraut officiel qui crie la proclamation de son roi sans rien y ajouter ni retrancher. Le complément d'objet est «&nbsp;la parole&nbsp;», c'est-à-dire, selon MacArthur, la Parole de Dieu écrite tout entière, sa vérité révélée telle qu'elle est contenue dans la Bible (cf. 3.15-16&nbsp;; Ac 20.27). Le mandat n'est donc pas de partager des opinions ni de divertir, mais de proclamer fidèlement le dépôt révélé&nbsp;: c'est le fondement scripturaire de la prédication expositoire.</td>
+            <td><span class="trad"><span><b>S21</b> prêche</span><span><b>NEG79</b> prêche</span><span><b>Darby</b> prêche</span><span><b>LSG</b> prêche</span><span><b>KJF</b> prêche</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">insiste</span><span class="mot-gr">ephistêmi</span></th>
+            <td class="col-sens">se tenir prêt, se présenter sur-le-champ, être en faction avec vigilance et urgence</td>
+            <td>MacArthur note que ce mot grec couvre une gamme étendue de sens, dont la soudaineté (Lu 2.9&nbsp;; Ac 12.7) et la force (Lu 20.1&nbsp;; Ac 4.1). La forme du verbe suggère ici les idées complémentaires d'urgence, de bonne volonté et de préparation. On l'employait pour un soldat prêt à se lancer dans la bataille ou une sentinelle toujours en alerte pour ne pas se laisser surprendre par l'ennemi. Ce sont des attitudes indispensables au prédicateur fidèle.</td>
+            <td><span class="trad"><span><b>S21</b> interviens</span><span><b>NEG79</b> insiste</span><span><b>Darby</b> insiste</span><span><b>LSG</b> prêche</span><span><b>KJF</b> sois prêt</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">favorable ou non</span><span class="mot-gr">eukairôs akairôs</span></th>
+            <td class="col-sens">en temps opportun, hors de temps&nbsp;; à temps et à contretemps, que le moment soit propice ou non</td>
+            <td>L'expression accole deux adverbes opposés pour dire que la prédication ne dépend pas de la commodité. MacArthur explique qu'un prédicateur fidèle prêche la Parole, qu'elle soit bien reçue ou non, que cela soit pratique ou non, opportun de l'avis des auditeurs ou non. Les diktats communément en vigueur dans le monde, réputation, tradition, acceptation, estime sociale ou ecclésiale, ne doivent avoir aucun impact sur son engagement à proclamer la Parole de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> favorable ou non</span><span><b>NEG79</b> favorable ou non</span><span><b>Darby</b> en temps et hors de temps</span><span><b>LSG</b> favorable ou non</span><span><b>KJF</b> à temps, à contretemps</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">saine doctrine</span><span class="mot-gr">hugiainousa didaskalia</span></th>
+            <td class="col-sens">enseignement sain, salubre&nbsp;; doctrine qui produit la santé spirituelle, par opposition à la doctrine malade</td>
+            <td>L'adjectif est de la famille du mot qui a donné «&nbsp;hygiène&nbsp;»&nbsp;; il dépeint une doctrine qui guérit et fortifie. MacArthur la rattache au «&nbsp;modèle des saines paroles&nbsp;» (1.13) et au «&nbsp;bon dépôt&nbsp;» à garder. Au verset 3, Paul avertit que viendra un temps où les hommes «&nbsp;ne supporteront pas&nbsp;» cette saine doctrine&nbsp;: le verbe contient la notion de tenir bon dans l'adversité et peut se traduire par «&nbsp;tolérer&nbsp;». Beaucoup feront preuve d'intolérance vis-à-vis de la prédication de la Parole, de ses remises en question et de ses exigences.</td>
+            <td><span class="trad"><span><b>S21</b> saine doctrine</span><span><b>NEG79</b> saine doctrine</span><span><b>Darby</b> saint enseignement</span><span><b>LSG</b> saine doctrine</span><span><b>KJF</b> saine doctrine</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">évangéliste</span><span class="mot-gr">euangelistês</span></th>
+            <td class="col-sens">porteur de la bonne nouvelle&nbsp;; celui dont le ministère est d'annoncer l'Évangile aux non-chrétiens</td>
+            <td>Le mot n'est utilisé qu'à deux autres occasions dans le Nouveau Testament (Ac 21.8&nbsp;; Ep 4.11). Il désigne une fonction ou un ministère spécifique ayant pour objectif de prêcher l'Évangile aux non-chrétiens. MacArthur précise que Paul ne suggère pas à Timothée de devenir un évangéliste, mais de «&nbsp;faire l'œuvre&nbsp;» d'un évangéliste&nbsp;: chaque chrétien, et en particulier les prédicateurs et les enseignants, est appelé à proclamer la bonne nouvelle, même quand son office premier est l'enseignement de l'Église.</td>
+            <td><span class="trad"><span><b>S21</b> d'un évangéliste</span><span><b>NEG79</b> d'un évangéliste</span><span><b>Darby</b> d'un évangéliste</span><span><b>LSG</b> d'un évangéliste</span><span><b>KJF</b> d'un évangéliste</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">2 Timothée 4.1-5</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 2 Timothée 4.1-5 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 2 Tm 4.1, 4.2, 4.3, 4.4, 4.5.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-180</span></th>
+            <td><a href="https://www.gty.org/sermons/80-180" target="_blank" rel="noopener">Five Reasons to Preach the Word</a></td>
+            <td>2 Timothée 3.1-4.4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-226</span></th>
+            <td><a href="https://www.gty.org/sermons/80-226" target="_blank" rel="noopener">Preaching the Word in an Out-of-Season Culture</a></td>
+            <td>2 Timothée 3.1-4.4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-351</span></th>
+            <td><a href="https://www.gty.org/sermons/90-351" target="_blank" rel="noopener">Compelling Reasons for Biblical Preaching, Part 1</a></td>
+            <td>2 Timothée 3.1-4.4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-352</span></th>
+            <td><a href="https://www.gty.org/sermons/90-352" target="_blank" rel="noopener">Compelling Reasons for Biblical Preaching, Part 2</a></td>
+            <td>2 Timothée 3.1-4.4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-37</span></th>
+            <td><a href="https://www.gty.org/sermons/81-37" target="_blank" rel="noopener">The Work of the Word (Fiftieth Anniversary Celebration)</a></td>
+            <td>2 Timothée 3.16-4.5</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-20</span></th>
+            <td><a href="https://www.gty.org/sermons/55-20" target="_blank" rel="noopener">Marks of the Faithful Preacher, Part 1</a></td>
+            <td>2 Timothée 4.1</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-116</span></th>
+            <td><a href="https://www.gty.org/sermons/80-116" target="_blank" rel="noopener">Ministry in an Age of Itching Ears</a></td>
+            <td>2 Timothée 4.1-5</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-21</span></th>
+            <td><a href="https://www.gty.org/sermons/55-21" target="_blank" rel="noopener">Marks of the Faithful Preacher, Part 2</a></td>
+            <td>2 Timothée 4.2</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-22</span></th>
+            <td><a href="https://www.gty.org/sermons/55-22" target="_blank" rel="noopener">Marks of the Faithful Preacher, Part 3</a></td>
+            <td>2 Timothée 4.3-4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-23</span></th>
+            <td><a href="https://www.gty.org/sermons/55-23" target="_blank" rel="noopener">Marks of the Faithful Preacher, Part 4</a></td>
+            <td>2 Timothée 4.5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Devant le Juge à venir, et dans une ère vouée à la démangeaison des oreilles et aux fables, le serviteur n'a qu'un recours et qu'un devoir&nbsp;: proclamer la Parole inspirée, à temps et à contretemps.</p>
+    <div class="body">
+      <p>Le mandat s'ouvre sur une adjuration d'une exceptionnelle solennité. «&nbsp;Je t'en conjure&nbsp;», rend MacArthur, signifie mieux «&nbsp;je t'ordonne&nbsp;»&nbsp;: le grec exprime une directive contraignante, comme en 1 Timothée 5.21. Paul ne donne pas un conseil que Timothée serait libre de suivre ou non&nbsp;; il transmet un ordre apostolique. Et il le place sous le regard de Dieu et de Christ. La construction grecque autorise même à lire «&nbsp;dans la présence de Dieu, à savoir du Christ Jésus&nbsp;», ce que MacArthur tient pour la meilleure traduction, puisque Christ est sur le point d'être introduit dans son rôle de juge (cf. Jn 5.22). Tous ceux dont le ministère a trait à la Parole de Dieu agissent sous le regard omniscient de Christ.</p>
+      <p>Ce Christ «&nbsp;doit juger les vivants et les morts&nbsp;». La formulation grecque, observe MacArthur, suggère l'imminence de l'événement&nbsp;: Christ nous jugera bientôt. L'apôtre souligne ainsi la responsabilité spécifique et individuelle de tous les croyants, particulièrement de ceux dont le ministère touche à la Parole. Ils devront rendre compte devant Christ, le juge suprême. MacArthur précise que Christ rendra son jugement en trois actes distincts&nbsp;: le jugement des croyants après l'enlèvement de l'Église (1 Co 3.12-15&nbsp;; 2 Co 5.10), le jugement des brebis et des boucs à l'entrée du millénium (Mt 25.31-33), et le jugement devant le grand trône blanc réservé aux incroyants (Ap 20.11-15)&nbsp;; Paul renvoie ici au jugement au sens large. Pour le croyant, observe l'auteur, ce tribunal ne vise pas à condamner mais à évaluer en vue de la distribution de récompenses&nbsp;: quant au salut, les croyants ont déjà été jugés et déclarés justes, et ne sont plus sous la condamnation du péché (Ro 8.1-4). La motivation du prédicateur n'est donc pas la peur de la perdition, mais la conscience que le Maître pèsera un jour son ouvrage.</p>
+      <p>L'adjuration culmine «&nbsp;au nom de son avènement et de son royaume&nbsp;». MacArthur entend ici la seconde venue de Christ, au cours de laquelle il jugera les vivants et les morts et établira son royaume millénaire et éternel. Le mandat de prêcher est donc encadré par deux pôles eschatologiques, le tribunal et le royaume&nbsp;: c'est devant le Juge à venir, et en vue du règne qu'il instaurera, que le serviteur doit proclamer la Parole. Pour MacArthur, c'est à cet avènement que le jugement a lieu, et c'est le regard de ce Juge, qui voit tout, qui donne au ministère son sérieux&nbsp;: le premier trait du prédicateur fidèle est le sérieux de sa mission.</p>
+      <p>Vient alors le cœur de l'ordre&nbsp;: «&nbsp;prêche la parole, insiste en toute occasion, favorable ou non, reprends, censure, exhorte, avec toute douceur et en instruisant.&nbsp;» MacArthur lit «&nbsp;la parole&nbsp;» comme la Parole de Dieu écrite tout entière (cf. 3.15-16&nbsp;; Ac 20.27)&nbsp;: il n'y a pas d'autre matière légitime à la prédication. «&nbsp;Insiste&nbsp;» dit l'urgence du soldat prêt à la bataille et de la sentinelle en alerte&nbsp;; «&nbsp;favorable ou non&nbsp;» interdit que la commodité, l'accueil ou la réputation gouvernent l'engagement du prédicateur. Suivent deux faces de l'œuvre. La face négative&nbsp;: «&nbsp;reprends, censure&nbsp;» correspond au «&nbsp;convaincre&nbsp;» et au «&nbsp;corriger&nbsp;» de 3.16&nbsp;; reprendre, c'est corriger les comportements ou doctrines erronés par des arguments tirés de la Bible, et censurer, c'est convaincre l'autre de son péché pour le conduire à la repentance. La face positive&nbsp;: «&nbsp;exhorte... en instruisant&nbsp;» répond à «&nbsp;enseigner&nbsp;» et «&nbsp;instruire&nbsp;» de 3.16. L'ensemble doit se faire «&nbsp;avec toute douceur&nbsp;», que MacArthur entend comme une patience envers les gens qui ne s'irrite ni ne s'aigrit, car ils ne changent pas du jour au lendemain, et «&nbsp;en instruisant&nbsp;», car reprendre sans enseigner laisse l'auditeur sans savoir où aller.</p>
+      <p>La seconde moitié (4.3-5) donne la raison pressante de ce mandat. «&nbsp;Il viendra un temps où les hommes ne supporteront pas la saine doctrine.&nbsp;» MacArthur avertit que, dans les moments critiques de notre ère, beaucoup feront preuve d'intolérance vis-à-vis de la prédication de la Parole, de ses remises en question et de ses exigences. Pire, «&nbsp;ayant la démangeaison d'entendre des choses agréables, ils se donneront une foule de docteurs selon leurs propres désirs&nbsp;». L'auteur démasque ici une religiosité de nom&nbsp;: ceux qui se prétendent chrétiens mais ne le sont que de nom suivent leurs propres penchants&nbsp;; ils se précipitent pour écouter des prédicateurs qui leur promettent les bénédictions de Dieu en dehors de son pardon et le salut indépendamment de leur repentance. Ils aiment se divertir par des enseignements qui leur procurent des sensations agréables et une bonne image d'eux-mêmes. En somme, ces gens dictent ce qu'ils souhaitent entendre, au lieu de laisser Dieu inspirer les prédicateurs par sa Parole. Le mouvement s'achève en apostasie&nbsp;: ils «&nbsp;détourneront l'oreille de la vérité, et se tourneront vers les fables&nbsp;», ces fausses idéologies et philosophies qui s'opposent à la vraie doctrine.</p>
+      <p>Face à cette dérive, le verset 5 oppose un «&nbsp;Mais toi&nbsp;» emphatique et quatre impératifs. «&nbsp;Sois sobre en toutes choses&nbsp;» appelle, selon MacArthur, à une stabilité équilibrée et lucide, qui ne se laisse pas gagner par ce qui chatouille les oreilles&nbsp;; «&nbsp;supporte les souffrances&nbsp;» prolonge l'appel de l'épître à accepter la persécution pour l'Évangile (1.8&nbsp;; 2.3)&nbsp;; «&nbsp;fais l'œuvre d'un évangéliste&nbsp;» étend le ministère de Timothée à la proclamation de la bonne nouvelle aux perdus, MacArthur précisant qu'il s'agit non de changer d'office mais de faire cette œuvre&nbsp;; «&nbsp;remplis bien ton ministère&nbsp;» récapitule le tout. L'observation d'ensemble s'impose&nbsp;: devant le Juge à venir, et dans une ère vouée à la démangeaison des oreilles et aux fables, le serviteur n'a qu'un recours et qu'un devoir, proclamer la Parole inspirée, à temps et à contretemps, jusqu'à ce que sa course soit achevée.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le mandat de prêcher, du fondement de l'inspiration (3.16-17) au tribunal de Christ, jusqu'à l'arrière-plan vétérotestamentaire du prophète au feu intérieur et du peuple qui refuse la vérité.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Timothée 3.16-17</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le fondement immédiat du mandat&nbsp;: parce que «&nbsp;toute Écriture est inspirée de Dieu&nbsp;» et rend l'homme de Dieu accompli, Timothée peut et doit «&nbsp;prêcher la parole&nbsp;». L'inspiration verbale et plénière commande la prédication expositoire.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 20.26-27</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul atteste avoir annoncé «&nbsp;tout le conseil de Dieu&nbsp;» sans rien dérober&nbsp;: modèle apostolique de la prédication complète de la Parole que MacArthur identifie au «&nbsp;la parole&nbsp;» de 4.2.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Timothée 2.1-2</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le mandat de transmettre le dépôt à des hommes fidèles encadre l'ordre de prêcher&nbsp;: la chaîne de la saine doctrine se perpétue par la prédication fidèle, de Paul à Timothée et au-delà.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 5.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le tribunal de Christ où chaque croyant rendra compte éclaire «&nbsp;qui doit juger les vivants et les morts&nbsp;» (4.1)&nbsp;: jugement d'évaluation et de récompense, non de condamnation, qui motive le serviteur.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Timothée 4.1-2</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'annonce que, dans les derniers temps, certains s'éloigneront de la foi pour des doctrines de démons préfigure «&nbsp;les hommes ne supporteront pas la saine doctrine&nbsp;» (4.3)&nbsp;: même apostasie diagnostiquée.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 20.11-15</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le jugement devant le grand trône blanc réservé aux incroyants&nbsp;: l'un des trois actes distincts du jugement que MacArthur range sous «&nbsp;les vivants et les morts&nbsp;» (4.1).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jérémie 20.9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Il y avait dans mon cœur comme un feu dévorant&nbsp;»&nbsp;: l'urgence intérieure du prophète contraint d'annoncer la Parole, arrière-plan de l'«&nbsp;insiste en toute occasion&nbsp;» (4.2) que MacArthur rapproche de la sentinelle en alerte.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 30.10-11</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le peuple qui dit aux voyants «&nbsp;ne nous prophétisez pas la vérité, dites-nous des choses agréables&nbsp;»&nbsp;: prototype vétérotestamentaire de la «&nbsp;démangeaison d'entendre des choses agréables&nbsp;» (4.3).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent le mandat de prêcher. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La prédication expositoire de la Parole inspirée</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Prêche la parole&nbsp;» (4.2), placé aussitôt après 3.16-17&nbsp;: le verbe <i>kêrussô</i> dit la proclamation du héraut, et «&nbsp;la parole&nbsp;» désigne, selon MacArthur, la Parole de Dieu écrite tout entière. Le mandat n'autorise aucune autre matière.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la chaire n'appartient ni aux opinions du prédicateur, ni à l'air du temps, ni au divertissement&nbsp;: elle est l'estrade du héraut qui répète le message de son Roi. Une Église se mesure non à l'éloquence ni à la nouveauté de ses prédications, mais à leur fidélité au texte inspiré. Exiger une prédication expositoire, c'est protéger le troupeau de la parole d'homme.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le ministère sous le regard du Juge à venir</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je t'en conjure devant Dieu et devant Jésus-Christ, qui doit juger les vivants et les morts, et au nom de son avènement et de son royaume&nbsp;» (4.1)&nbsp;: le mandat est encadré par le tribunal et le royaume de Christ. La forme grecque suggère l'imminence du jugement.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, ceux qui enseignent rendront un compte plus strict, et tous comparaîtront devant le tribunal de Christ. Cette vérité, loin d'écraser le croyant, le libère&nbsp;: son salut est déjà jugé et acquis (Ro 8.1), de sorte que le tribunal n'est plus une menace de condamnation mais une évaluation en vue de récompenses. Le sérieux du ministère naît de cette double conscience, déjà sauvé, bientôt évalué.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La persévérance contre les oreilles qui démangent</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il viendra un temps où les hommes ne supporteront pas la saine doctrine&nbsp;; mais, ayant la démangeaison d'entendre des choses agréables, ils se donneront une foule de docteurs selon leurs propres désirs&nbsp;» (4.3)&nbsp;: MacArthur y voit des chrétiens de nom qui dictent ce qu'ils veulent entendre, au lieu de laisser Dieu parler aux prédicateurs par sa Parole.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, le test diagnostique est clair&nbsp;: on ne juge pas l'authenticité d'une foi à la chaleur du sentiment religieux, mais à la soumission à la saine doctrine, même lorsqu'elle reprend et corrige. L'auditeur qui ne supporte que les «&nbsp;choses agréables&nbsp;» et fuit l'exigence de la Parole se trahit lui-même. La prédication fidèle filtre les vrais des faux disciples.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le royaume millénaire à venir et l'avènement de Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Au nom de son avènement et de son royaume&nbsp;» (4.1)&nbsp;: le mot grec <i>epiphaneia</i> désigne la seconde venue de Christ, au cours de laquelle, selon MacArthur, il jugera les vivants et les morts et établira son royaume millénaire et éternel.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, l'espérance n'est pas un règne spiritualisé déjà pleinement réalisé, mais le retour personnel, littéral et corporel de Christ, suivi de son règne terrestre annoncé. Cette attente futuriste donne au ministère son horizon&nbsp;: on prêche aujourd'hui en vue du royaume que le Roi instaurera demain, et l'on tient ferme parce que le Juge vient. L'eschatologie n'est pas un appendice mais le moteur de la fidélité présente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'œuvre d'évangéliste et la fidélité jusqu'au bout</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Mais toi, sois sobre en toutes choses, supporte les souffrances, fais l'œuvre d'un évangéliste, remplis bien ton ministère&nbsp;» (4.5)&nbsp;: quatre impératifs récapitulatifs. MacArthur précise que Timothée n'est pas appelé à changer d'office mais à «&nbsp;faire l'œuvre&nbsp;» d'un évangéliste.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la proclamation de l'Évangile aux perdus n'est pas réservée à des spécialistes&nbsp;: tout serviteur de la Parole, et tout chrétien, est appelé à annoncer la bonne nouvelle, fût-ce au prix de la souffrance. La sobriété vigilante, l'endurance dans l'épreuve et l'accomplissement entier du ministère composent le portrait du serviteur fidèle, à imiter dans chaque vocation jusqu'à ce que la course soit achevée (4.7).</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul place le mandat de prêcher «&nbsp;devant Dieu et devant Jésus-Christ, qui doit juger les vivants et les morts&nbsp;» (4.1). Comment la conscience du tribunal de Christ doit-elle façonner la préparation et la livraison de la prédication, sans pour autant réintroduire la peur de la condamnation que Romains 8.1 a levée pour le croyant&nbsp;?</li>
+      <li>«&nbsp;Prêche la parole&nbsp;» (4.2) limite la matière de la chaire à la Parole inspirée. Quelles substitutions contemporaines, témoignages, opinions, actualité, psychologie, viennent aujourd'hui concurrencer le texte dans nos prédications, et comment les discerner sans tomber dans l'aridité&nbsp;?</li>
+      <li>L'ordre «&nbsp;favorable ou non&nbsp;» (4.2) interdit que la réception de l'auditoire gouverne la prédication. Où se situe, pour votre assemblée, la frontière entre la fidélité courageuse à un message impopulaire et la dureté qui oublie le «&nbsp;avec toute douceur&nbsp;» du même verset&nbsp;?</li>
+      <li>Reprendre et censurer (face négative) puis exhorter et instruire (face positive) composent la prédication complète (4.2). Vos prédications tiennent-elles les deux faces, ou penchent-elles habituellement vers l'une seule&nbsp;? Que révèle ce déséquilibre éventuel&nbsp;?</li>
+      <li>La «&nbsp;démangeaison d'entendre des choses agréables&nbsp;» (4.3) décrit une religiosité de nom. Comment prêcher de manière à servir les vrais croyants affamés de la saine doctrine, sans pour autant flatter ceux qui ne cherchent que des sensations et une bonne image d'eux-mêmes&nbsp;?</li>
+      <li>Le mandat est encadré par «&nbsp;son avènement et son royaume&nbsp;» (4.1). En quoi une espérance prémillénariste claire du retour littéral de Christ et de son règne change-t-elle concrètement la manière de prêcher et l'endurance du serviteur face à l'apostasie croissante de 4.3-4&nbsp;?</li>
+      <li>Au seuil de sa mort (4.6), Paul confie à Timothée «&nbsp;remplis bien ton ministère&nbsp;» (4.5). Qu'est-ce qui, dans votre propre ministère, resterait inachevé si votre course s'arrêtait cette année, et comment l'ordre de Paul vous oriente-t-il dès aujourd'hui&nbsp;?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 2 Timothée 4.1-5 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;2 Timothée : garde le bon dépôt&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-2%20Timoth%C3%A9e-4-1-5.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

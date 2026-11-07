@@ -1,0 +1,114 @@
+# Série expositive : 2 Jean
+
+**la vérité et l'amour**
+
+2026-06-15 · Simon Ouellette
+
+---
+
+## Niveau de source
+
+Niveau 1 pour 4 unités sur 4, sermons Grace to You (codes dans la colonne Source, tirés de l'archive par Écriture).
+
+## Introduction au livre
+
+La deuxième épître de Jean est l'un des plus courts livres du Nouveau Testament: treize versets, moins de trois cents mots grecs tenant sur une seule feuille de papyrus. Sa brièveté n'autorise pourtant pas un seul sermon survol: le billet est doctrinalement dense et son cœur (vv.7-11) touche à des questions vives, l'incarnation réelle de Christ, les limites de l'amour et la séparation d'avec l'erreur. L'exposition suivie épouse les quatre divisions naturelles du texte, chacune une unité de sens cohérente: les fondements de l'hospitalité dans la vérité (vv.1-3), sa manière par l'amour obéissant (vv.4-6), ses limites face aux faux docteurs (vv.7-11), et ses bénédictions de joie (vv.12-13). Ces quatre unités couvrent ainsi l'épître du premier au dernier verset, sans lacune ni chevauchement, en respectant le découpage par unités de sens plutôt qu'un chiffre arbitraire. Le centre de gravité doctrinal tombe à l'unité 3, qui demandera une exposition lente et ferme; les unités d'ouverture et de clôture sont plus brèves mais portent le thème unificateur, la vérité comme sphère et borne de l'amour, dans la ligne de la théologie de John MacArthur.
+
+## Structure de l'argument
+
+Le billet tient en un seul fil : la vérité gouverne l'amour. Le mot vérité revient cinq fois dans les quatre premiers versets, et MacArthur suit la lettre en cinq temps : vivre dans la vérité (vv. 1-4), aimer dans la vérité (vv. 5-6), rester loyal à la vérité (vv. 7-8), chercher la vérité chez ceux qui se présentent (vv. 9-11), apprendre davantage la vérité (vv. 12-13). La Bible d'étude lit le même mouvement sous l'angle de l'hospitalité : ses fondements (vv. 1-3), sa manière (vv. 4-6), ses limites (vv. 7-11), ses bénédictions (vv. 12-13).
+
+La charnière est le « Car » du v. 7 : parce que des séducteurs nient que Jésus-Christ est venu en chair, l'amour commandé aux vv. 5-6 reçoit ses bornes. La destinataire risquait, par hospitalité et faute de discernement, d'ouvrir sa maison à ces enseignants itinérants; Jean lui interdit de les recevoir et même de les saluer (vv. 10-11), puis remet le reste à une visite (v. 12).
+
+## Découpage en unités d'exposition
+
+| No | Passage | Base du découpage | Titre | Propos central | Source |
+|---|---|---|---|---|---|
+| 1 | **2 Jean 1.1-3** | Prescrit épistolaire (l'ancien, Kyria l'élue, souhait de grâce, de miséricorde et de paix) clos au v. 3, avant que « J'ai été fort réjoui » (v. 4) ouvre le corps de la lettre; bornes du plan de la Bible d'étude (I, 1-3), qui diffèrent de MacArthur : il prêche les vv. 1-4 ensemble (GTY 63-1, 63-2). | La vérité qui demeure | L'amour chrétien véritable prend sa source et son fondement dans la vérité qui demeure en nous pour l'éternité. | GTY 63-1, 63-2 |
+| 2 | **2 Jean 1.4-6** | La joie de voir des enfants qui « marchent dans la vérité » (v. 4) introduit la demande « Et maintenant, ce que je te demande, Kyria » (v. 5), inclus par le verbe marcher (vv. 4, 6); bornes du plan de la Bible d'étude (II, 4-6), qui diffèrent de MacArthur : v. 4 avec l'ouverture (GTY 63-2), vv. 5-8 ensemble (GTY 63-3). | Marcher dans l'amour | L'amour que Dieu commande n'est pas un sentiment, mais une marche permanente d'obéissance à sa Parole. | GTY 63-1, 63-2, 63-3 |
+| 3 | **2 Jean 1.7-11** | « Car plusieurs séducteurs » (v. 7) ouvre l'avertissement, clos par l'interdit d'accueil et sa raison (vv. 10-11), avant la clôture épistolaire (v. 12); bornes du plan de la Bible d'étude (III, 7-11), qui diffèrent de MacArthur : il coupe après le v. 8 (GTY 63-3) et prêche les vv. 9-13 ensemble (GTY 63-4). | Les bornes de l'amour | Parce que nier l'incarnation de Christ est la marque de l'antichrist, l'amour véritable refuse de cautionner l'erreur et se sépare des faux docteurs. | GTY 63-3, 63-4 |
+| 4 | **2 Jean 1.12-13** | Formules de clôture : projet de visite « de vive voix » (v. 12) et salutations (v. 13); bornes du plan de la Bible d'étude (IV, 12-13), qui diffèrent de MacArthur : il les rattache aux vv. 9-11 (GTY 63-4). | La joie de la communion préservée | Quand la communion fraternelle est gardée dans la vérité, il en découle une joie authentique et parfaite. | GTY 63-4 |
+
+## Textes exigeants
+
+### 2 Jean 1.1, 13
+
+**Difficulté**
+
+« Kyria l'élue et ses enfants » : une femme réelle ou une Église locale personnifiée?
+
+**Lecture retenue**
+
+Une femme réelle et ses enfants, que Jean connaissait : le billet, parallèle à 3 Jean adressée à Gaïus, mentionne sa maison (v. 10), sa sœur et les enfants de celle-ci (v. 13), et soutenir une figure jusqu'au dernier verset serait artificiel. « Élue » la désigne comme choisie par Dieu pour le salut, ce qui contredit une élection seulement collective.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 63-2 ; Niveau 3, introduction de 2 Jean et note sur 2 Jn 1
+
+### 2 Jean 1.7
+
+**Difficulté**
+
+« Ne déclarent pas publiquement que Jésus-Christ est venu en chair » : quelle erreur est visée, et pourquoi la nommer antichrist?
+
+**Lecture retenue**
+
+Le docétisme d'inspiration cérinthienne, issu du dualisme philosophique : le Christ n'aurait fait que paraître homme. Nier la vraie humanité du Dieu-homme défait tout l'Évangile, car il fallait qu'il soit Dieu pour vaincre la mort et le péché, et homme pour se substituer au pécheur. Nier le Dieu incarné est une séduction de l'antichrist, et quiconque altère la christologie biblique est hérétique.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 63-3 ; Niveau 3, note sur 2 Jn 7
+
+### 2 Jean 1.8
+
+**Difficulté**
+
+« Afin que vous ne perdiez pas le fruit de votre travail, mais que vous receviez une pleine récompense » : accueillir l'erreur peut-il faire perdre le salut?
+
+**Lecture retenue**
+
+Ce qui est en jeu est la pleine récompense, non le salut : la complaisance envers les séducteurs fait reculer spirituellement, défait le travail des pasteurs et diminue la récompense éternelle (Col 2.18; 3.24).
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 63-3 ; Niveau 3, note sur 2 Jn 8
+
+### 2 Jean 1.9
+
+**Difficulté**
+
+« Quiconque va plus loin et ne demeure pas dans la doctrine de Christ n'a point Dieu » : progrès doctrinal légitime ou apostasie?
+
+**Lecture retenue**
+
+« Aller plus loin », c'est avancer un enseignement sur Christ au-delà de l'Écriture. Avoir Dieu exige de croire la vérité sur Christ; celui qui ne demeure pas dans cette doctrine prouve qu'il n'est pas né de nouveau.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 63-4 ; Niveau 3, note sur 2 Jn 9
+
+### 2 Jean 1.10-11
+
+**Difficulté**
+
+Ne pas recevoir ni saluer celui qui n'apporte pas cette doctrine : cela interdit-il d'accueillir un incroyant ou un frère en désaccord secondaire?
+
+**Lecture retenue**
+
+Non. L'interdit vise le faux docteur qui vient enseigner le mensonge sur les vérités fondamentales, non celui qui cherche à comprendre ni le frère en désaccord sur des points mineurs. On ne lui offre ni gîte ni la salutation chrétienne qui affirmerait la communion, car celui qui le salue participe à ses mauvaises œuvres.
+
+**Niveau de source**
+
+Niveau 1, sermon GTY 63-4 ; Niveau 3, note sur 2 Jn 10-11
+
+## Notes de mise en œuvre
+
+**Cadence**
+
+Quatre semaines est la durée juste pour ce billet de treize versets: une semaine par unité de sens naturelle du texte, sans étirer ni comprimer. La brièveté de l'épître permet une exposition verset par verset soignée dans chaque sermon. On résistera à la tentation de tout dire en un seul message: les versets 7 à 11 portent à eux seuls la charge doctrinale et méritent leur propre prédication.
+
+**Calibrage des unités**
+
+L'unité 3 (vv.7-11) est la plus exigeante. Doctrinalement dense, elle touche le test christologique de l'incarnation réelle (à exposer contre le docétisme et l'erreur de Cérinthe, en affirmant la pleine divinité et la vraie humanité du Dieu-homme) et la persévérance des saints au verset 8-9 (la pleine récompense n'est pas le salut, et celui qui abandonne la doctrine prouve qu'il n'a jamais été régénéré: il ne s'agit pas d'une perte du salut). Pastoralement, les versets 10-11 heurtent la sensibilité contemporaine et l'air du temps œcuménique; il faut prêcher sans fléchir que les limites de l'amour sont fixées par la vérité, en situant l'interdiction dans le contexte de l'hospitalité antique. L'unité 2 demandera de bien distinguer l'amour-obéissance de tout moralisme: l'obéissance découle de l'union avec Christ et de l'œuvre de l'Esprit.
+
+<!-- source_hash: 80ae9b17c433b031 -->

@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc 1.16-20 · Suivez-moi · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Marc 1.16-20 : l'appel des quatre pêcheurs, « Suivez-moi, et je vous ferai pêcheurs d'hommes » ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Marc 1.16-20</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Marc 1.16-20</p>
+    <h1 class="hero__title">Suivez-moi</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Suivez-moi, et je vous ferai pêcheurs d'hommes.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Marc 1.17 · NEG</p>
+    <p class="hero__series">Série : <b>Marc : le Serviteur souffrant</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Marc 1.16-20</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Jésus leur dit: Suivez-moi, et je vous ferai pêcheurs d'hommes.</p>
+        <cite class="verse__ref">Marc 1.17 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Aussitôt, ils laissèrent leurs filets, et le suivirent.</p>
+        <cite class="verse__ref">Marc 1.18 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Marc 1.16-20 est la première démonstration narrative du royaume annoncé au verset 15 : Jésus voit, Jésus appelle, et les pêcheurs laissent tout pour le suivre. C'est ici que Marc pose le paradigme du disciple.</p>
+    <div class="body">
+      <p>Marc vient de résumer en deux versets la prédication inaugurale du Serviteur : «&nbsp;Le temps est accompli, et le royaume de Dieu est proche. Repentez-vous, et croyez à la bonne nouvelle&nbsp;» (1.15). Cette proclamation n'est pas une théorie suspendue dans le vide; elle exige aussitôt des sujets. Marc 1.16-20 montre donc concrètement à quoi ressemble un homme qui se repent et qui croit : il laisse tout et il suit. La péricope est la première démonstration narrative du royaume annoncé au verset 15, et MacArthur y voit la preuve de l'autorité du nouveau Roi sur les pécheurs : après sa victoire sur Satan (1.12-13) et l'annonce de son pouvoir sur le péché (1.14-15), Jésus adresse à quatre hommes un commandement auquel ils obéissent aussitôt, à un coût immense. Le récit est encadré par le prologue du désert (1.1-13) en amont et par l'irruption de l'autorité de Jésus à la synagogue de Capernaüm (1.21-28) en aval : entre la Parole proclamée et la Parole faisant autorité, Marc place ces quatre hommes arrachés à leurs filets.</p>
+      <p>Les bornes de l'unité sont nettes. Elle s'ouvre en 1.16 par le déplacement de Jésus «&nbsp;le long de la mer de Galilée&nbsp;» et le repérage de Simon et André, puis se referme en 1.20 par le départ de Jacques et Jean qui abandonnent leur père dans la barque. Deux scènes jumelles structurent le passage : la première paire de frères pêcheurs (1.16-18), la seconde paire (1.19-20). Chaque scène suit le même rythme de fer : Jésus voit, Jésus appelle, ils suivent. Marc, fidèle à son style d'action rapide, scande le récit de son adverbe favori «&nbsp;aussitôt&nbsp;» (v. 18 et v. 20), pour marteler l'immédiateté de l'obéissance. Aucun atermoiement, aucune négociation, aucune condition posée.</p>
+      <p>Le cœur de la péricope est le mot souverain du Maître : «&nbsp;Suivez-moi, et je vous ferai pêcheurs d'hommes&nbsp;» (1.17). Tout dans le récit converge vers ce commandement et vers la réponse qu'il produit. MacArthur insiste sur le fait que ces hommes avaient déjà rencontré Jésus, passé du temps avec lui et cru en lui (cf. Jn 1.35-42), et qu'ils sont ici appelés à le suivre de façon permanente. Ce n'est donc pas la décision impulsive d'inconnus séduits. Marc ne raconte pas une vocation parmi d'autres : il pose le paradigme du disciple, celui qui répond à l'appel efficace du Roi en quittant son ancienne vie pour une mission entièrement neuve.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Marc 1.16 · 1.19-20</p>
+    </header>
+    <p class="lead">La mer de Galilée abritait une industrie de pêche prospère et organisée. Les quatre hommes appelés ici ne sont pas des marginaux désœuvrés : quitter les filets, c'était renoncer à un gagne-pain solide pour suivre celui qui prend l'initiative de l'appel.</p>
+    <div class="body">
+      <p>La mer de Galilée, que Marc désigne sous son nom le plus courant (elle s'appelle aussi lac de Génésareth, mer de Kinnéreth ou mer de Tibériade), est un grand lac d'eau douce d'environ 21 km sur 11, situé à quelque 208 m sous le niveau de la mer, ce qui en fait la plus basse étendue d'eau douce du monde. MacArthur rappelle qu'elle abritait une industrie de pêche prospère. Sur ses rives s'activaient des villages entiers vivant du poisson : on le salait, on le séchait, on l'exportait jusqu'à Jérusalem et au-delà. La pêche n'était donc pas un loisir misérable mais un métier organisé, rentable, exigeant. Le «&nbsp;filet&nbsp;» que Simon et André jetaient à la main était une corde formant un cercle d'environ 2,70 m de diamètre, muni d'un filet lesté, qu'on lançait dans l'eau et qu'on remontait au moyen de la corde : un geste de précision répété mille fois, le savoir-faire d'une vie.</p>
+    </div>
+    <p>Trois réalités éclairent la portée de l'appel.</p>
+    <ul class="points">
+      <li><b>Des hommes établis, non des marginaux.</b> Les quatre hommes appelés ici ne sont pas des marginaux désœuvrés. Simon et André avaient une activité établie; Jacques et Jean travaillaient dans l'entreprise familiale de leur père Zébédée, lequel employait des «&nbsp;ouvriers&nbsp;» (v. 20). MacArthur y voit le signe que l'affaire de Zébédée était prospère et que celui-ci était un notable; le quatrième Évangile montre d'ailleurs que cette famille avait des relations jusque dans la maison du souverain sacrificateur (Jn 18.15). Quitter les filets n'était donc pas fuir la pauvreté : c'était renoncer à un gagne-pain solide, à un patrimoine, à un avenir assuré.</li>
+      <li><b>Des hommes spirituellement éveillés.</b> André, et probablement Simon, avaient en outre été disciples de Jean-Baptiste (Jn 1.40); ayant repris leur métier après l'arrestation de Jean, ils étaient des hommes spirituellement éveillés, en attente du Messie annoncé. L'appel de Marc 1 ne tombe pas sur des indifférents, mais sur des cœurs que la grâce avait préparés.</li>
+      <li><b>L'inversion du modèle rabbinique.</b> Le rapport maître-disciple s'inscrit dans une pratique juive connue : le rabbin enseignait, et l'élève le suivait pas à pas pour s'imprégner non seulement de sa doctrine mais de toute sa vie; d'ordinaire, c'était le disciple qui choisissait son rabbin et le sollicitait. Mais MacArthur souligne que le commandement de Jésus est tout à fait inhabituel : aucun écrit juif ne rapporte qu'un rabbin ait ordonné à ses auditeurs de le suivre, car les rabbins, comme les prophètes, appelaient à suivre Dieu et à obéir à la loi. Ici, c'est le Maître qui choisit, qui appelle, qui ordonne. L'initiative est tout entière du côté de Jésus. Et la réponse attendue n'est pas l'admiration polie d'un auditeur, mais l'abandon total : ils «&nbsp;laissèrent leurs filets&nbsp;» (v. 18), ils laissèrent «&nbsp;leur père Zébédée dans la barque&nbsp;» (v. 20). Le métier, les biens, la famille : tout passe au second rang devant la seigneurie de celui qui dit «&nbsp;Suivez-moi&nbsp;».</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Quatre termes grecs</p>
+    </header>
+    <p class="lead">Quatre mots portent le poids de la péricope : l'appel à suivre (<i>deute opisō mou</i>), la mission de pêcheurs d'hommes (<i>halieis anthrōpōn</i>), l'immédiateté de la réponse (<i>euthys</i>) et le renoncement accompli (<i>aphentes</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">Suivez</span><span class="mot-gr">deute opisō mou</span></th>
+            <td class="col-sens">Venez ici derrière moi, mettez-vous à ma suite</td>
+            <td>L'expression conjugue l'interjection <i>deute</i> («&nbsp;venez ici, approchez&nbsp;») et <i>opisō mou</i> («&nbsp;derrière moi, à ma suite&nbsp;»). Selon MacArthur, le verbe «&nbsp;suivre&nbsp;» est souvent employé dans les Évangiles pour l'engagement du disciple (cf. 2.14; 8.34; 10.21; Jn 10.27), et l'appel lancé ici est extrême : Jésus demande à ces hommes d'abandonner absolument tout. Suivre, c'est se ranger derrière lui, abandonner sa propre direction pour épouser la sienne. L'appel de 1.17 anticipe ainsi 8.34, où suivre Jésus c'est se renier soi-même et prendre sa croix : la même soumission de la volonté qui définit la foi salvatrice contre tout christianisme de surface.</td>
+            <td><span class="trad"><span><b>S21</b> Suivez-moi</span><span><b>NEG79</b> Suivez-moi</span><span><b>Darby</b> Venez après moi</span><span><b>LSG</b> Suivez-moi</span><span><b>KJF</b> Venez à ma suite</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">pêcheurs</span><span class="mot-gr">halieis anthrōpōn</span></th>
+            <td class="col-sens">pêcheurs d'hommes, ceux qui prennent les hommes au filet</td>
+            <td>Le mot <i>halieus</i> désigne le pêcheur de métier; Jésus le retourne en image de mission : <i>halieis anthrōpōn</i>, «&nbsp;pêcheurs d'hommes&nbsp;». MacArthur précise que la raison principale pour laquelle Jésus appela des disciples était l'évangélisation, qui demeure la mission centrale confiée à son peuple (cf. Mt 28.19-20; Ac 1.8). L'image n'a rien de violent ni de captieux : comme le pêcheur tire le poisson hors de l'élément où il périrait pour le ramener à la vie utile, le disciple est envoyé arracher les hommes au jugement par la proclamation de l'Évangile. Le métier ancien devient la figure prophétique du nouveau : Jésus ne supprime pas leur compétence, il la transfigure au service du royaume.</td>
+            <td><span class="trad"><span><b>S21</b> pêcheurs d'hommes</span><span><b>NEG79</b> pêcheurs d'hommes</span><span><b>Darby</b> pêcheurs d'hommes</span><span><b>LSG</b> pêcheurs d'hommes</span><span><b>KJF</b> pêcheurs d'hommes</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Aussitôt</span><span class="mot-gr">euthys</span></th>
+            <td class="col-sens">immédiatement, sur-le-champ, sans délai</td>
+            <td>Adverbe de prédilection de Marc, qui l'emploie plus souvent que les trois autres évangélistes réunis, <i>euthys</i> imprime à son Évangile son rythme haletant d'action rapide. MacArthur note que ce mot traduit la vivacité narrative caractéristique de Marc. Placé deux fois dans notre péricope (v. 18 et v. 20), il ne décrit pas seulement la rapidité matérielle de la réponse mais sa qualité spirituelle : l'obéissance du disciple véritable ne tergiverse pas. Quand le Roi appelle, le sujet ne soumet pas de conditions et ne demande pas de délai. Cette immédiateté est la signature de l'appel efficace : la grâce souveraine produit une réponse certaine et empressée, non un consentement de pure forme.</td>
+            <td><span class="trad"><span><b>S21</b> Aussitôt</span><span><b>NEG79</b> Aussitôt</span><span><b>Darby</b> aussitôt</span><span><b>LSG</b> Aussitôt</span><span><b>KJF</b> Et aussitôt</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">laissèrent</span><span class="mot-gr">aphentes</span></th>
+            <td class="col-sens">ayant laissé, abandonné, lâché</td>
+            <td>Le verbe <i>aphiēmi</i> signifie laisser aller, abandonner, renvoyer, et sert ailleurs pour le pardon (laisser aller les péchés). Au participe aoriste <i>aphentes</i> («&nbsp;ayant laissé&nbsp;»), il marque l'acte décisif et accompli par lequel les disciples se détachent de leur ancienne vie : ils laissent les filets (v. 18), ils laissent le père dans la barque (v. 20). Ce renoncement exprime concrètement la repentance et la foi proclamées au verset 15 : se tourner vers Christ implique de se détourner de tout ce qui rivalise avec sa seigneurie. MacArthur y voit un appel souverain accompagné d'une habilitation souveraine : c'est là, pense-t-il, que la puissance de Dieu vint sur ces hommes, qui furent souverainement amenés à suivre. Ce n'est pas un mérite qui achèterait le salut, mais le fruit immédiat de l'appel souverain : la vraie conversion arrache et réoriente toute l'existence.</td>
+            <td><span class="trad"><span><b>S21</b> laissèrent</span><span><b>NEG79</b> laissèrent</span><span><b>Darby</b> ayant quitté</span><span><b>LSG</b> laissèrent</span><span><b>KJF</b> abandonnèrent</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Marc 1.16-20</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Marc 1.16-20 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mc 1.16, 1.17, 1.18, 1.19, 1.20.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-4</span></th>
+            <td><a href="https://www.gty.org/sermons/41-4" target="_blank" rel="noopener">Jesus’ Strategy for Effective Ministry</a></td>
+            <td>Marc 1.12-20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">L'appel des quatre pêcheurs démontre l'autorité du Roi sur les pécheurs : un commandement souverain qui exige tout, obéi sur-le-champ, et tourné vers la mission.</p>
+    <div class="body">
+      <p>MacArthur situe l'appel des quatre pêcheurs dans la logique serrée du début de Marc : trois brefs paragraphes, choisis avec soin, montrent l'autorité du nouveau Roi sur Satan (1.12-13), sur le péché par la prédication de l'Évangile (1.14-15), puis sur les pécheurs eux-mêmes, lorsque quatre hommes obéissent aussitôt à son commandement (1.16-20). Le récit fait voir du même coup la repentance et la foi que Jésus venait de réclamer (1.15) : elles prennent corps dans ces filets abandonnés et ce père laissé dans la barque, et il n'existe pas, dans cet Évangile, de croyant qui ne soit pas disciple. Pour MacArthur, l'appel «&nbsp;Suivez-moi&nbsp;» est un commandement extrême, dont on ne trouve aucun équivalent chez les rabbins : Jésus appelle ces hommes à tout abandonner, ce qu'il formulera en 8.34 (se renier soi-même, prendre sa croix et le suivre), et il exerce là une autorité qui n'appartient qu'à lui et qui exige tout.</p>
+      <p>MacArthur relève, dans sa note comme en chaire, l'antériorité de la rencontre. Ces hommes avaient déjà côtoyé Jésus, passé du temps avec lui et cru en lui (Jn 1.35-42); André avait été disciple de Jean-Baptiste, et peut-être Simon aussi. L'appel de Marc 1.16-20 n'est donc pas une vocation à froid arrachant des inconnus à leur indifférence, mais l'appel à le suivre de façon permanente. MacArthur y voit un appel souverain accompagné d'une habilitation souveraine : Jésus identifie et appelle souverainement les pécheurs par qui son royaume avancera, et c'est lui qui les a choisis, eux ne l'ont pas choisi (Jn 15.16). L'initiative est souveraine; la réponse, certaine. Le texte interdit donc d'y construire une théologie du libre arbitre autonome.</p>
+      <p>MacArthur insiste aussi sur le coût et la dignité de ce qui est abandonné. Loin d'être des misérables sans rien à perdre, ces hommes laissent un métier prospère et, pour Jacques et Jean, une entreprise familiale employant des ouvriers, signe que Zébédée était un notable. Le renoncement est réel, mesurable, immédiat. Précisons toutefois qu'il n'achète rien : il manifeste. Les œuvres du disciple, ici l'abandon des filets, démontrent l'authenticité de la foi sans jamais la procurer. C'est le monergisme appliqué à la vocation : si ces pêcheurs voient et suivent le Serviteur, c'est par grâce et non par mérite, comme le souligne la recherche d'introduction du livre.</p>
+      <p>Enfin, MacArthur dégage la finalité missionnaire : «&nbsp;je vous ferai pêcheurs d'hommes&nbsp;». Jésus ne se contente pas d'appeler, il assigne une mission qui demeure centrale pour son peuple jusqu'au mandat de Matthieu 28.19-20 et d'Actes 1.8. L'évangélisation n'est pas une option de la vie chrétienne mais sa trajectoire normale : le disciple appelé devient un instrument d'appel. Toute l'Église baptiste de Charlesbourg est ainsi convoquée à se reconnaître dans ces quatre hommes, non comme spectatrice d'un épisode pittoresque, mais comme héritière de la même vocation à prendre les hommes au filet de l'Évangile.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope : du commandement qui la précède immédiatement aux parallèles évangéliques, jusqu'à l'arrière-plan vétérotestamentaire de l'appel prophétique.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 1.15</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le commandement «&nbsp;repentez-vous, et croyez à la bonne nouvelle&nbsp;» précède immédiatement l'appel; l'abandon des filets est la repentance et la foi mises en acte.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 4.18-22</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Récit parallèle de l'appel des deux paires de frères, qui précise le contexte galiléen et confirme l'immédiateté de la réponse.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 1.35-42</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Première rencontre d'André et de Simon avec Jésus; explique que l'appel de Marc 1 vise un suivi permanent de disciples déjà préparés, non une décision impulsive.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 8.34-38</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Définit ce que «&nbsp;suivre&nbsp;» exige : se renier soi-même, prendre sa croix, perdre sa vie pour la sauver; développe la seigneurie implicite dans «&nbsp;Suivez-moi&nbsp;».</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 10.28-31</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Pierre rappelle que les disciples ont tout quitté pour suivre Jésus; Jésus confirme la récompense de ce renoncement, éclairant rétrospectivement Marc 1.18, 20.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 28.19-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le mandat missionnaire accomplit la promesse «&nbsp;je vous ferai pêcheurs d'hommes&nbsp;»; l'évangélisation reste la mission centrale du peuple de Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Rois 19.19-21</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Élie appelle Élisée qui abandonne ses bœufs et son père pour suivre; figure vétérotestamentaire de l'appel prophétique qui arrache à l'ancienne vie.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jérémie 16.16</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Dieu annonce qu'il enverra des pêcheurs pour rassembler son peuple; arrière-plan prophétique de l'image «&nbsp;pêcheurs d'hommes&nbsp;».</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'appel souverain et efficace</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus voit, appelle et les pêcheurs suivent aussitôt (v. 16-18, 19-20); l'initiative est tout entière du Maître, et l'appel produit infailliblement la réponse.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le salut est l'œuvre de Dieu du commencement à la fin. L'assemblée est appelée à l'humilité et à la dépendance : si elle voit et suit le Serviteur, c'est par grâce souveraine et non par mérite, ce qui fonde la prière et l'évangélisation dans la confiance en Dieu plutôt que dans le pragmatisme humain.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi qui sauve est une foi qui suit</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Suivez-moi&nbsp;» reçoit pour réponse l'abandon immédiat des filets et du père; suivre est ici le terme même de l'engagement du disciple (cf. 8.34).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Contre l'<i>easy-believism</i>, l'Évangile montre que croire la bonne nouvelle (1.15) est inséparable de la repentance et de la soumission à Christ comme Seigneur. Aucun croyant véritable n'est un non-disciple; une profession de foi qui ne réoriente pas la vie n'est pas la foi de Marc 1.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le renoncement, fruit et non prix du salut</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Ils laissent un métier prospère, leurs filets et leur père Zébédée, notable employant des ouvriers (v. 18, 20).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Les œuvres du disciple démontrent l'authenticité de la foi sans jamais la procurer. Le coût du suivi est réel mais il n'achète rien : il manifeste une grâce déjà reçue. L'assemblée apprend que la générosité du renoncement n'est pas un marchandage avec Dieu mais la signature d'un cœur saisi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La vocation missionnaire du disciple</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je vous ferai pêcheurs d'hommes&nbsp;» (v. 17) : l'appel à suivre est immédiatement un appel à prendre les hommes au filet de l'Évangile.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'évangélisation n'est pas une activité réservée à quelques-uns mais la trajectoire normale de tout disciple appelé. Toute l'Église baptiste de Charlesbourg est convoquée à se reconnaître dans ces pêcheurs et à recevoir la même mission de proclamation jusqu'aux extrémités de la terre.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Marc place l'appel des disciples juste après «&nbsp;repentez-vous, et croyez&nbsp;» (1.15) : comment montrerez-vous à votre assemblée que l'abandon des filets est la repentance et la foi mises en acte, et non un héroïsme réservé à quelques élus?</li>
+      <li>«&nbsp;Suivez-moi&nbsp;» est le langage du disciple jusqu'à 8.34 (se renier, prendre sa croix) : votre prédication présente-t-elle la foi qui sauve comme une soumission à la seigneurie de Christ, ou la réduisez-vous à une décision sans suite que Marc ne permet pas?</li>
+      <li>Ces hommes avaient déjà rencontré Jésus (Jn 1.35-42) avant d'être appelés à le suivre définitivement : comment cette préparation par la grâce nourrit-elle votre compréhension de l'appel efficace et votre patience dans l'évangélisation?</li>
+      <li>Zébédée emploie des ouvriers et l'entreprise est prospère (v. 20) : que dit à votre assemblée le fait que ces disciples renoncent non à la misère mais à un avenir assuré? Où la seigneurie de Christ rencontre-t-elle aujourd'hui le confort de vos auditeurs?</li>
+      <li>Si le renoncement démontre la foi sans jamais l'acheter, comment prêcherez-vous le coût du suivi sans glisser vers un salut par les œuvres, et sans davantage l'édulcorer en un christianisme sans croix?</li>
+      <li>«&nbsp;Je vous ferai pêcheurs d'hommes&nbsp;» fait de chaque disciple un instrument d'appel : votre assemblée se voit-elle héritière de cette vocation missionnaire, ou la délègue-t-elle à des spécialistes?</li>
+      <li>Marc scande la réponse par «&nbsp;aussitôt&nbsp;» (v. 18, 20) : qu'est-ce qui, dans votre cœur et dans celui de votre assemblée, négocie encore des délais quand le Roi appelle, et comment l'immédiateté de ces pêcheurs vous interpelle-t-elle?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Marc 1.16-20 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Marc : le Serviteur souffrant&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Marc-1-16-20.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

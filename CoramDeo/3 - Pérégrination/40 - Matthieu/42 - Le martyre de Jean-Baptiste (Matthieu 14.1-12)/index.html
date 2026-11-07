@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthieu 14.1-12 · Le martyre de Jean-Baptiste · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Matthieu 14.1-12 : le martyre de Jean-Baptiste ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Matthieu 14.1-12</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Matthieu 14.1-12</p>
+    <h1 class="hero__title">Le martyre de Jean-Baptiste</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;parce que Jean lui disait: Il ne t’est pas permis de l’avoir pour femme.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Matthieu 14.4 · NEG</p>
+    <p class="hero__series">Série : <b>Matthieu : le Roi-Messie d’Israël</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Matthieu 14.1-12</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">En ce temps-là, Hérode le tétrarque, ayant entendu parler de Jésus, dit à ses serviteurs: C’est Jean-Baptiste!</p>
+        <cite class="verse__ref">Matthieu 14.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il est ressuscité des morts, et c’est pour cela qu’il se fait par lui des miracles.</p>
+        <cite class="verse__ref">Matthieu 14.2 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le martyre de Jean-Baptiste n’est pas un fait divers de cour, mais une charnière théologique : le héraut qui avait crié dans le désert pour préparer le chemin du Roi tombe sous la hache d’un tétrarque corrompu, et son sort annonce celui du Roi qu’il annonçait.</p>
+    <div class="body">
+      <p>Notre péricope appartient à la troisième grande section narrative de Matthieu, celle que MacArthur intitule le conflit du Royaume (13.53 à 17.27). Elle suit immédiatement le rejet de Jésus à Nazareth, sa patrie (13.53-58), où l’incrédulité de ses concitoyens l’empêcha d’y faire beaucoup de miracles. Matthieu place côte à côte ces deux scènes de rejet, celui des villageois de Nazareth et celui d’Hérode envers le précurseur, pour préparer son lecteur à la grande vérité de l’Évangile : le Roi-Messie d’Israël est repoussé par les siens. Le héraut qui avait crié dans le désert pour préparer le chemin du Roi (3.1-12) tombe sous la hache d’un tétrarque corrompu, et son sort annonce celui du Roi qu’il annonçait.</p>
+      <p>Matthieu construit le récit comme un retour en arrière (analepse). Le déclencheur du présent, c’est la conscience troublée d’Hérode Antipas qui, entendant parler des miracles de Jésus, s’écrie : C’est Jean-Baptiste! Il est ressuscité des morts (14.1-2). Cette frayeur superstitieuse provoque le narrateur à expliquer comment Jean est mort (14.3-12), épisode déjà accompli au moment où Hérode entend parler de Jésus. MacArthur rappelle que la même scène se lit en Marc 6.14-29, plus détaillée, et en Luc 9.7-9, et que Matthieu en donne une version resserrée, fidèle à son habitude de distribuer librement la matière sans viser une chronologie stricte. Le rejet atteint le précurseur, et la nouvelle de sa mort (14.12) déclenchera aussitôt le retrait du Roi (14.13) et la manifestation de sa puissance de pourvoyeur dans la multiplication des pains (14.13-21).</p>
+      <p>L’idée maîtresse du passage tient en une opposition : d’un côté Jean, le plus grand des hommes nés de femme (11.11), prophète fidèle jusqu’au sang; de l’autre Hérode, roitelet faible et débauché, esclave de sa concupiscence, de son orgueil et de la peur des hommes. Entre les deux se joue le coût de la fidélité : Jean meurt pour avoir dit à un roi la vérité que ce roi ne voulait pas entendre, «&nbsp;Il ne t’est pas permis de l’avoir pour femme&nbsp;» (14.4). La péricope expose ainsi la collision entre la sainteté prophétique et le pouvoir impie, collision qui, dans tout l’Évangile de Matthieu, conduit inexorablement à la croix.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Matthieu 14.1 · 14.3-4 · 14.6-9</p>
+    </header>
+    <p class="lead">Le personnage central de l’arrière-plan est Hérode Antipas, l’un des fils d’Hérode le Grand, ce tyran iduméen qui avait ordonné le massacre des enfants de Bethléhem (2.16) : un roitelet dépendant de Rome, étranger à la véritable piété d’Israël.</p>
+    <div class="body">
+      <p>MacArthur précise qu’à la mort d’Hérode le Grand, le territoire d’Israël fut réparti entre ses fils, et qu’Antipas reçut la Galilée et la Pérée avec le titre de tétrarque, c’est-à-dire littéralement chef du quart, l’un des quatre souverains régnant chacun sur une portion de la région. Matthieu l’appelle ensuite roi au verset 9, non par exactitude juridique, mais parce que c’était sous ce titre flatteur qu’il était connu de ses sujets galiléens. Antipas régna de l’an 4 avant notre ère à l’an 39 de notre ère; c’est lui que Jésus appellera ce renard (Luc 13.32) et devant qui il comparaîtra, muet, lors de sa passion (Luc 23.7-11). Le tétrarque appartenait à une dynastie marquée par l’ambition, la ruse et la cruauté, soumise à Rome et étrangère à la véritable piété d’Israël.</p>
+    </div>
+    <p>Trois réalités éclairent le drame.</p>
+    <ul class="points">
+      <li><b>L’imbroglio matrimonial incestueux.</b> Hérodias, l’épouse fatale, était la fille d’Aristobule, lui-même fils d’Hérode le Grand; en épousant d’abord Philippe, demi-frère de son père, elle s’était déjà mariée avec son propre oncle. Puis elle quitta Philippe à l’instigation d’Antipas, un autre de ses oncles, qui la prit pour femme. Cet arrangement aggravait l’inceste et violait ouvertement la loi du Lévitique qui interdit de prendre la femme de son frère (Lévitique 18.16; 20.21). Jean, le prophète du désert, fut horrifié qu’un roi pût commettre publiquement un tel péché en Israël; sa dénonciation répétée lui valut l’emprisonnement, puis la mort.</li>
+      <li><b>La danse de la fille d’Hérodias.</b> Matthieu tait le nom de la fille d’Hérodias, mais Flavius Josèphe l’identifie à Salomé; le réseau de l’inceste se resserra encore, note MacArthur, puisqu’elle épousa plus tard un autre fils d’Hérode le Grand, son oncle, qui était aussi celui de sa mère. Antipas avait réuni grands officiers, tribuns et notables de Galilée (Marc 6.21), et la danse d’une princesse royale devant pareille assemblée d’hommes échauffés par le vin était déjà un avilissement révélateur de la décadence de cette cour. Selon Josèphe, l’exécution eut lieu à la forteresse de Machéronte, place forte d’Antipas à l’est de la mer Morte.</li>
+      <li><b>La gravité du serment.</b> MacArthur souligne qu’une promesse scellée par un serment était tenue pour sacrée et inviolable, surtout dans la bouche d’un monarque au pouvoir. Mais, ajoute-t-il, Hérode étant réputé pour sa duplicité, ce n’était pas l’honnêteté qui le guidait : c’était la sauvegarde des apparences, la peur de perdre la face devant ses convives. Le roi se retrouva piégé non par un devoir sacré, mais par sa propre vanité et sa lâcheté politique, et il sacrifia un juste pour ne pas paraître se dédire devant ses invités.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du récit : du <i>tétrarque</i> (<i>tetraarchēs</i>), roitelet vassal, à la double crainte d’Hérode (<i>ephobēthē</i>), du <i>prophète</i> (<i>prophētēs</i>) qui paie sa fidélité de sa vie aux <i>serments</i> (<i>horkos</i>) qui couvrent le crime, jusqu’à la résurrection (<i>ēgerthē</i>) que la conscience coupable prête à sa victime.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">tétrarque</span><span class="mot-gr">tetraarchēs</span></th>
+            <td class="col-sens">chef du quart, gouverneur de la quatrième partie d’un territoire</td>
+            <td>Composé de <i>tetra</i> (quatre) et <i>archē</i> (commandement). Désigne à l’origine le souverain de l’une des quatre divisions d’un royaume, puis, plus largement, un prince de rang inférieur au roi, vassal de Rome. MacArthur note que le territoire d’Israël avait été réparti entre les fils d’Hérode le Grand, et qu’Antipas, comme tétrarque de Galilée et de Pérée, n’avait pas le titre royal; Matthieu l’appelle roi au verset 9 seulement parce que ses sujets galiléens le désignaient ainsi. Le mot situe Antipas dans sa vraie mesure : un roitelet dépendant, étranger à la royauté véritable que Matthieu attribue à Jésus, le Fils de David.</td>
+            <td><span class="trad"><span><b>S21</b> le tétrarque</span><span><b>NEG79</b> le tétrarque</span><span><b>Darby</b> le tétrarque</span><span><b>LSG</b> le tétrarque</span><span><b>KJF</b> le tétrarque</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il craignait</span><span class="mot-gr">ephobēthē</span></th>
+            <td class="col-sens">il fut saisi de crainte, il eut peur</td>
+            <td>Du verbe <i>phobeō</i>, craindre, redouter, être effrayé; à l’origine prendre la fuite devant. Le terme couvre toute la gamme de la peur, de la frayeur servile à la révérence sainte. Matthieu l’emploie avec une ironie tranchante : Hérode craignait la foule (14.5) parce qu’elle tenait Jean pour un prophète, et plus tôt sa conscience coupable le fait trembler à l’idée que Jésus serait Jean ressuscité. MacArthur fait ressortir le contraste : ce roi qui ne craignait pas Dieu était esclave de la peur des hommes et de ses propres terreurs superstitieuses. La crainte de l’homme, et non la crainte du Seigneur, gouvernait sa décision.</td>
+            <td><span class="trad"><span><b>S21</b> il redoutait</span><span><b>NEG79</b> il craignait</span><span><b>Darby</b> il craignait</span><span><b>LSG</b> il craignait</span><span><b>KJF</b> il craignait</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">prophète</span><span class="mot-gr">prophētēs</span></th>
+            <td class="col-sens">celui qui parle au nom de Dieu, porte-parole de la révélation divine</td>
+            <td>De <i>pro</i> (devant, au nom de) et <i>phēmi</i> (parler) : non d’abord celui qui prédit l’avenir, mais celui qui proclame la parole reçue de Dieu. La foule regardait Jean comme un prophète (14.5), et à juste titre, car Jésus avait déclaré qu’il était plus qu’un prophète, le messager annoncé qui prépare le chemin du Roi (11.9-10) et l’Élie qui devait venir (11.14; 17.12-13). MacArthur précise que Jean fut plus grand que les prophètes de l’Ancien Testament parce qu’il put voir et désigner du doigt l’accomplissement que les autres n’avaient fait qu’annoncer de loin. Son martyre s’inscrit dans la longue lignée des prophètes persécutés par Israël (23.31-37), et préfigure le rejet du Prophète par excellence.</td>
+            <td><span class="trad"><span><b>S21</b> un prophète</span><span><b>NEG79</b> un prophète</span><span><b>Darby</b> un prophète</span><span><b>LSG</b> un prophète</span><span><b>KJF</b> un prophète</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">serments</span><span class="mot-gr">horkos</span></th>
+            <td class="col-sens">serment, engagement solennel pris en invoquant un témoin sacré</td>
+            <td>Le serment liait celui qui le prononçait par une garantie tenue pour sacrée et inviolable, particulièrement dans la bouche d’un monarque. MacArthur renvoie à l’enseignement de Jésus sur les serments (5.34-37) : Jésus y interdit l’emploi désinvolte ou trompeur des serments, et veut que toutes nos paroles soient prononcées comme sous le serment de la vérité. Hérode, lui, invoque ses serments (14.9) non par respect du sacré, mais par calcul d’apparences; sa duplicité notoire montre qu’il se sert d’un engagement religieux pour couvrir un meurtre. Le terme révèle l’hypocrisie d’un pouvoir qui sacralise sa propre parole tout en foulant aux pieds la loi de Dieu : un serment impie ne saurait obliger à commettre un crime.</td>
+            <td><span class="trad"><span><b>S21</b> ses serments</span><span><b>NEG79</b> ses serments</span><span><b>Darby</b> ses serments</span><span><b>LSG</b> ses serments</span><span><b>KJF</b> ses serments</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ressuscité</span><span class="mot-gr">ēgerthē</span></th>
+            <td class="col-sens">il a été relevé, réveillé, ressuscité d’entre les morts</td>
+            <td>Du verbe <i>egeirō</i>, éveiller, faire lever, relever; au passif, être relevé d’entre les morts. Hérode déclare de Jésus : Jean-Baptiste est ressuscité des morts, et c’est pour cela qu’il se fait par lui des miracles (14.2). MacArthur relève l’ironie : un homme dont la conscience est tourmentée prête à sa victime une résurrection, alors qu’il refuse de se repentir. Le même verbe domine l’annonce de la résurrection de Jésus (28.6, il n’est pas ici, il est ressuscité). La superstition d’Hérode témoigne malgré lui que la puissance manifestée en Jésus dépassait l’humain; mais cette puissance n’attestait pas un Jean revenu de la mort, elle attestait l’identité messianique du Fils de Dieu, et Hérode resta aveugle au Roi qui se tenait à sa porte.</td>
+            <td><span class="trad"><span><b>S21</b> est ressuscité</span><span><b>NEG79</b> est ressuscité</span><span><b>Darby</b> est ressuscité</span><span><b>LSG</b> est ressuscité</span><span><b>KJF</b> il est ressuscité</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Matthieu 14.1-12</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Matthieu 14.1-12 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mt 14.1-12, 14.1, 14.3, 14.6, 14.8, 14.9, 14.12.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">2307</span></th>
+            <td><a href="https://www.gty.org/sermons/2307" target="_blank" rel="noopener">Fear that Forfeits Christ</a></td>
+            <td>Matthieu 14.1-13</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit Matthieu 14.1-12 sous l’éclairage du thème directeur de tout l’Évangile : le rejet du Roi-Messie par Israël. Le martyre du précurseur est le premier coup de tonnerre annonçant l’orage de la croix.</p>
+    <div class="body">
+      <p>Jean-Baptiste n’est pas un personnage secondaire; il est le précurseur, la voix qui prépare le chemin (3.3), l’Élie annoncé par Malachie (11.14; 17.12-13). Or ce héraut du Roi est jeté en prison puis décapité, et MacArthur souligne que son sort préfigure celui du Roi lui-même : Jean est venu dans l’esprit et la puissance d’Élie, pourtant on l’a tué, et le Messie devait souffrir pareillement (note sur 17.12). Le rejet qui atteint le serviteur va bientôt atteindre le Maître; ce qui est arrivé au héraut arrivera au Roi qu’il annonçait.</p>
+      <p>Le portrait d’Hérode Antipas, chez MacArthur, est celui d’un homme déchiré et finalement durci. La conscience du tétrarque le trahit : entendant parler des œuvres de Jésus, il est d’abord perplexe (Luc 9.7), puis finit par conclure que Jean est revenu d’entre les morts pour le hanter (14.1-2). MacArthur y voit la marque d’une conscience coupable et superstitieuse, incapable de se repentir mais incapable d’oublier. Hérode avait pourtant été touché; Marc rapporte qu’il écoutait Jean volontiers et le protégeait, sachant que c’était un homme juste et saint (Marc 6.20). Mais cet intérêt religieux mêlé de crainte n’était pas la foi salvatrice. Devant le choix décisif, Hérode préféra sa concubine incestueuse, son orgueil de banquet et la peur de perdre la face plutôt que le repentir. Sa conscience l’accusait sans le convertir : exemple, pour MacArthur, de l’homme qui, par peur, perd le Christ et va jusqu’à tuer le messager de Dieu.</p>
+      <p>La fidélité de Jean est l’autre pôle de la prédication de MacArthur sur ce texte. Le prophète a dit la vérité à un roi sans la diluer : «&nbsp;Il ne t’est pas permis de l’avoir pour femme&nbsp;» (14.4). MacArthur insiste sur le caractère public et persistant de cette dénonciation : Jean était horrifié qu’un souverain commette ouvertement l’inceste en Israël, et il reprit Hérode sévèrement, sachant le risque. C’est l’image même du courage prophétique qui place l’obéissance à Dieu au-dessus de la sécurité et de la faveur des grands. Le coût de cette fidélité fut la prison puis la mort; mais Jean ouvre ainsi la lignée de ceux qui paieront de leur vie la prédication du royaume : le Christ après lui, puis la plupart des douze. Le contraste est total avec Hérode, esclave de la peur des hommes : le prophète sans pouvoir est libre parce qu’il craint Dieu, le roi qui tient sa vie entre ses mains est captif parce qu’il craint les hommes.</p>
+      <p>MacArthur dégage enfin la providence souveraine qui domine la scène. Le meurtre est un crime entier, dont Hérode, Hérodias et Salomé portent la pleine responsabilité morale; rien n’excuse le serment impie ni la lâcheté du roi. Et pourtant Dieu n’est pas absent : la mort de Jean s’inscrit dans le dessein arrêté qui mène le Roi à la croix. Les disciples de Jean ensevelirent son corps puis allèrent l’annoncer à Jésus (14.12); et c’est précisément à cette nouvelle que Jésus se retira à l’écart (14.13), pour manifester aussitôt, dans la multiplication des pains, sa compassion et sa puissance de pourvoyeur. En chaire, MacArthur précise que Jésus ne craignait pas Hérode, mais refusait de s’exposer inutilement à un danger imminent, et qu’il consacre dès lors l’essentiel de son temps à préparer les Douze. La fidélité jusqu’au sang n’est pas vaine; elle s’accomplit dans le plan rédempteur du Dieu qui règne sur les rois.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de la loi mosaïque que dénonçait Jean aux récits parallèles des Évangiles, jusqu’au verset charnière qui relie le martyre du précurseur au retrait du Roi.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Lévitique 18.16; 20.21</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La loi mosaïque que dénonçait Jean : prendre la femme de son frère est une impureté. MacArthur note que le mariage incestueux d’Hérode avec Hérodias violait Lévitique 18.16, d’où la dénonciation prophétique de Jean.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Malachie 4.5-6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La promesse de l’Élie qui devait venir avant le grand jour; Jean en est l’accomplissement (11.14; 17.12-13), ce qui charge son martyre d’un poids prophétique et eschatologique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Rois 19.1-2; 21.20-25</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Élie face à Achab et à Jézabel, reine qui pousse au meurtre des prophètes : préfiguration vétérotestamentaire d’Hérode dominé par Hérodias, l’Élie nouveau dénonçant le couple royal impie.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 6.14-29</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le récit parallèle, plus détaillé, du même martyre; MacArthur y renvoie pour l’ensemble des circonstances, notamment Marc 6.20 qui montre Hérode protégeant un temps Jean tout en restant non converti.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 9.7-9</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La même conscience troublée d’Hérode entendant parler de Jésus et perplexe au sujet de Jean; complète le portrait du tétrarque hanté par sa victime.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 17.12-13</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Jésus déclare qu’Élie est déjà venu et qu’on l’a traité comme on a voulu; il relie explicitement le sort de Jean au sien : le Fils de l’homme devra souffrir pareillement. Clé du fil conducteur de la série.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 23.31-37</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Jésus dénonce Jérusalem qui tue les prophètes; le martyre de Jean s’inscrit dans cette lignée de rejet de la parole de Dieu qui culminera dans la mise à mort du Messie lui-même.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 14.13</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le verset charnière : à la nouvelle de la mort de Jean, Jésus se retire à l’écart, ouvrant la multiplication des pains. Le rejet du précurseur déclenche le retrait du Roi et la manifestation de sa puissance de pourvoyeur.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu’il demande à l’assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le coût de la fidélité prophétique</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jean meurt pour avoir dit la vérité à un roi : «&nbsp;Il ne t’est pas permis de l’avoir pour femme&nbsp;» (14.4). Sa dénonciation publique et persistante du péché d’Hérode lui vaut la prison puis la décapitation.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La fidélité à la parole de Dieu n’est jamais sans prix. Le serviteur du Roi est appelé à confronter le péché même chez les puissants, et à préférer l’obéissance à Dieu à la sécurité et à la faveur des hommes. L’assemblée doit mesurer que la sainteté véritable peut conduire à la souffrance, et que le silence devant le mal n’est pas une vertu chrétienne.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le rejet du précurseur préfigure le rejet du Roi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le martyre de Jean, l’Élie qui devait venir (11.14; 17.12-13), annonce le sort réservé au Messie : on a traité Jean comme on a voulu, et le Fils de l’homme souffrira pareillement.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L’hostilité envers le héraut révèle l’hostilité du cœur humain envers le Roi lui-même. Le rejet du Christ n’est pas un accident de l’histoire, mais l’expression de l’incrédulité d’Israël que tout l’Évangile de Matthieu met en lumière. Le disciple n’est pas au-dessus de son maître : annoncer le Roi, c’est s’exposer au même rejet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La crainte des hommes contre la crainte de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Hérode craignait la foule (14.5), fut attristé mais céda à cause de ses serments et des convives (14.9); il sacrifia un juste pour ne pas perdre la face. Jean, lui, ne craignait que Dieu.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La peur de l’opinion humaine asservit et conduit au péché; la crainte de Dieu libère et conduit à la justice. Le contraste entre le roi captif de sa vanité et le prophète libre devant la mort interpelle chaque croyant sur ce qui gouverne réellement ses décisions : le regard des hommes ou celui de Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La conscience coupable sans repentance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Entendant parler de Jésus, Hérode s’écrie : C’est Jean-Baptiste, il est ressuscité des morts (14.1-2). Sa conscience le tourmente, mais ne le convertit pas; il écoutait Jean volontiers (Marc 6.20) sans jamais se repentir.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L’intérêt religieux, l’émotion devant la prédication, même la frayeur de la conscience, ne sont pas la foi salvatrice. On peut être presque persuadé et pourtant s’endurcir jusqu’au meurtre. Contre tout easy-believism, le texte montre qu’une conviction sans repentance ni soumission au Roi laisse l’homme dans sa perdition.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La souveraineté de Dieu sur le mal des rois</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le crime entier d’Hérode, d’Hérodias et de Salomé n’échappe pas au dessein de Dieu : la mort de Jean (14.12) déclenche le retrait du Roi (14.13) qui manifeste aussitôt sa puissance de pourvoyeur dans la multiplication des pains.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Dieu règne sur l’histoire même quand les rois impies croient décider seuls. La responsabilité morale des coupables demeure entière, et pourtant rien n’arrête l’avancée du Royaume (11.12). Le croyant éprouvé puise ici l’assurance que la fidélité jusqu’au sang n’est jamais vaine : elle s’inscrit dans le plan rédempteur du Dieu souverain.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Hérode écoutait Jean volontiers et le tenait pour un homme juste et saint (Marc 6.20), mais l’a finalement fait tuer. Quelles convictions religieuses sincères abritons-nous sans qu’elles produisent jamais le repentir et la soumission au Roi?</li>
+      <li>Jean a dénoncé le péché d’un roi tout-puissant en sachant le risque. Où sommes-nous appelés à dire la vérité de Dieu là où elle coûte cher, et où la crainte des hommes nous fait-elle taire?</li>
+      <li>Le texte oppose un prophète sans pouvoir mais libre, et un roi tout-puissant mais captif de sa peur et de sa vanité. Qu’est-ce qui gouverne réellement mes décisions : le regard des autres ou celui de Dieu?</li>
+      <li>Hérode s’est cru lié par un serment impie prononcé devant ses convives. Comment garder notre parole sans jamais en faire un prétexte pour persévérer dans le mal?</li>
+      <li>Jésus, à la nouvelle de la mort de Jean, se retire à l’écart puis nourrit la foule. Que nous apprend cette réaction sur la manière dont le Roi traverse le deuil et le rejet sans cesser de pourvoir aux siens?</li>
+      <li>Le sort du précurseur préfigure celui du Roi qu’il annonçait. En quoi le rejet subi par les serviteurs fidèles aujourd’hui prolonge-t-il le rejet du Christ, et comment cela transforme-t-il notre regard sur la souffrance pour l’Évangile?</li>
+      <li>Le crime d’Hérode demeure pleinement coupable, et pourtant Dieu accomplit son dessein à travers lui. Comment tenir ensemble la pleine responsabilité humaine et la souveraineté de Dieu lorsque le mal semble triompher?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Matthieu 14.1-12 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Matthieu : le Roi-Messie d’Israël&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d’ensemble de l’Évangile</a>
+    <a href="Recherche-MacArthur-Matthieu-14-1-12.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

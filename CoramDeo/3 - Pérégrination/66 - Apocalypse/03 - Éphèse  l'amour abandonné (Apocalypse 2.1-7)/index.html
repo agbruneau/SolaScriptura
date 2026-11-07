@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apocalypse 2.1-7 · Éphèse : l'amour abandonné · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique d'Apocalypse 2.1-7 : la lettre à Éphèse, l'amour abandonné ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Apocalypse 2.1-7</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Apocalypse 2.1-7</p>
+    <h1 class="hero__title">Éphèse : l'amour abandonné</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Mais ce que j'ai contre toi, c'est que tu as abandonné ton premier amour.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Apocalypse 2.4 · NEG</p>
+    <p class="hero__series">Série : <b>Apocalypse : la révélation de Jésus-Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Apocalypse 2.1-7</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Ecris à l'ange de l'Eglise d'Ephèse: Voici ce que dit celui qui tient les sept étoiles dans sa main droite, celui qui marche au milieu des sept chandeliers d'or:</p>
+        <cite class="verse__ref">Apocalypse 2.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Mais ce que j'ai contre toi, c'est que tu as abandonné ton premier amour.</p>
+        <cite class="verse__ref">Apocalypse 2.4 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Apocalypse 2.1-7 inaugure les sept lettres aux Églises et livre l'idée maîtresse de toute la série : une orthodoxie sans faille ne remplace jamais l'amour pour Christ. Éphèse, Église irréprochable, s'entend reprocher d'avoir abandonné son premier amour.</p>
+    <div class="body">
+      <p>Apocalypse 2.1-7 ouvre la deuxième grande division du livre. Selon le plan que Christ lui-même dicte en 1.19, l'Apocalypse se compose de trois volets : «&nbsp;ce que tu as vu&nbsp;» (le Christ glorifié du chapitre 1), «&nbsp;ce qui est&nbsp;» (les sept lettres aux Églises, chapitres 2 et 3) et «&nbsp;ce qui doit arriver ensuite&nbsp;» (la révélation de l'avenir, chapitres 4 à 22). La lettre à Éphèse inaugure donc la section «&nbsp;ce qui est&nbsp;». Elle n'est pas une parabole codée de l'histoire de l'Église ni une allégorie spiritualisée : c'est une missive réelle, adressée à une assemblée historique précise d'Asie Mineure, que Jean connaissait intimement pour y avoir exercé son ministère avant son exil à Patmos. MacArthur souligne pourtant que ces sept Églises, tout en étant des assemblées effectivement établies, représentent aussi des types d'Églises que l'on retrouve à toutes les époques de l'ère présente; le message de Christ leur est donc pertinent en tout temps. La grille de lecture demeure futuriste, grammatico-historique et littérale : rien ici n'autorise à transformer ces lettres en panorama prophétique d'âges successifs.</p>
+      <p>Les sept lettres suivent toutes le même moule, et Éphèse en fournit le modèle inaugural. Christ se présente d'abord par un titre tiré de la vision du chapitre 1, ici «&nbsp;celui qui tient les sept étoiles dans sa main droite, celui qui marche au milieu des sept chandeliers d'or&nbsp;» (2.1). Vient ensuite le diagnostic souverain qui s'ouvre invariablement par «&nbsp;Je connais tes œuvres&nbsp;», l'éloge de ce qui est fidèle (2.2-3, 6), le reproche du défaut central (2.4), l'appel à la repentance assorti d'un avertissement de jugement (2.5), puis la double clausule finale : l'exhortation «&nbsp;que celui qui a des oreilles entende ce que l'Esprit dit aux Églises&nbsp;» et la promesse au vainqueur (2.7). Ce schéma révèle l'autorité du Seigneur ressuscité qui inspecte ses assemblées, les loue et les corrige.</p>
+      <p>Le cœur de la lettre est un contraste douloureux. Éphèse est une Église irréprochable sur le plan doctrinal et moral : elle travaille, persévère, ne supporte pas les méchants, démasque les faux apôtres, ne s'est jamais lassée, hait les œuvres des Nicolaïtes. Et pourtant le Seigneur a «&nbsp;contre elle&nbsp;» un grief décisif : «&nbsp;tu as abandonné ton premier amour&nbsp;» (2.4). C'est là l'idée maîtresse de la péricope et de toute la série : une orthodoxie sans faille ne remplace jamais l'amour pour Christ. La menace est extrême, l'enlèvement du chandelier, c'est-à-dire la fin même de l'Église comme témoin lumineux. La péricope inaugure ainsi l'appel à la repentance que Christ adresse aux Églises de tous les temps, et elle se referme sur l'espérance du vainqueur qui mangera de l'arbre de vie dans le paradis de Dieu.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Apocalypse 2.2 · 2.6</p>
+    </header>
+    <p class="lead">Éphèse, métropole de l'Asie et centre du culte d'Artémis, abritait une Église à l'héritage spirituel exceptionnel, fidèle depuis plus de quarante ans, mais durcie dans une vigilance défensive au prix de l'ardeur du premier amour.</p>
+    <div class="body">
+      <p>Éphèse était la métropole de l'Asie proconsulaire, surnommée la «&nbsp;porte d'entrée de l'Asie&nbsp;». Située à environ cinq kilomètres de la mer, elle restait accessible par l'embouchure du fleuve Caystre et constituait le plus grand port de la région; placée au carrefour de quatre grandes voies commerciales, elle brassait richesses, idées et populations. Elle était surtout le centre du culte d'Artémis (la Diane des Romains), dont le temple comptait parmi les sept merveilles du monde antique. Cette idolâtrie spectaculaire, doublée de magie et de prostitution sacrée, explique l'âpreté du combat spirituel qui s'y livrait. Paul y exerça son ministère pendant près de trois ans (Ac 20.31), au point que selon Actes 19 toute l'Asie entendit la Parole et que les magiciens convertis brûlèrent publiquement leurs livres. Timothée, Tychique, puis l'apôtre Jean lui-même y servirent ensuite. C'est à Éphèse que Jean fut arrêté sous Domitien, avant d'être déporté à Patmos, à quelque quatre-vingts kilomètres de là.</p>
+      <p>L'Église d'Éphèse jouissait donc d'un héritage spirituel exceptionnel. Fondée par Paul, instruite par les épîtres pauliniennes et les avertissements solennels des anciens (Ac 20.28-31, où Paul prédit l'arrivée de loups cruels), pastorée par Timothée et finalement par Jean, elle avait reçu un enseignement de premier ordre. MacArthur note qu'au moment où Jean écrit, vers 94 à 96 apr. J.-C. sous Domitien, cette Église était fidèle depuis plus de quarante ans. Cette ancienneté éclaire le déclin : la deuxième, voire la troisième génération de croyants avait hérité d'une doctrine pure mais avait laissé refroidir la ferveur des commencements. Le contexte de persécution montante, la pression du culte impérial et la nécessité d'un discernement constant face aux imposteurs avaient durci l'Église dans une vigilance défensive irréprochable, au prix de l'ardeur du premier amour.</p>
+    </div>
+    <p>Deux menaces concrètes encadrent la lettre.</p>
+    <ul class="points">
+      <li><b>Les faux apôtres.</b> Des hommes se réclamaient d'une autorité apostolique qu'ils n'avaient pas, et l'Église les avait éprouvés et démasqués comme menteurs (2.2). Éphèse appliquait ainsi le test apostolique du discernement, conformément à l'exhortation paulinienne d'éprouver toutes choses (cf. 1 Th 5.20-21). Ce discernement loué par Christ était l'héritage direct des avertissements solennels que Paul avait adressés aux anciens d'Éphèse (Ac 20.28-31).</li>
+      <li><b>Les Nicolaïtes.</b> Secte hérétique (2.6) dont le nom signifie «&nbsp;vainqueur des peuples&nbsp;». MacArthur rapporte la tradition d'Irénée selon laquelle Nicolas, l'un des sept choisis en Actes 6, aurait sombré dans l'apostasie et égaré des croyants; à la manière de Balaam, les Nicolaïtes poussaient à l'immoralité et aux festins idolâtres, pervertissant la grâce en licence. Clément d'Alexandrie écrivit qu'ils s'adonnaient aux plaisirs sans retenue.</li>
+      <li><b>La datation tardive.</b> Le développement même de cette secte, absente des épîtres pauliniennes adressées aux mêmes Églises, confirme une rédaction tardive de l'Apocalypse, à la fin du règne de Domitien, et non sous Néron. Cette donnée historique conforte la lecture futuriste du livre entier.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : du chandelier (<i>luchnia</i>) qui élève la lumière de Christ, aux œuvres (<i>erga</i>) qui attestent la vie, jusqu'à l'amour abandonné (<i>aphiemi</i>), au premier amour (<i>protos</i>) et à la victoire du vainqueur (<i>nikao</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">chandeliers</span><span class="mot-gr">luchnia</span></th>
+            <td class="col-sens">porte-lampe, support sur lequel on pose la lampe à huile pour qu'elle éclaire</td>
+            <td>Le mot ne désigne pas la lampe elle-même mais le support qui l'élève et la rend visible. Christ marche «&nbsp;au milieu des sept chandeliers d'or&nbsp;» (2.1), et 1.20 en donne la clé : les sept chandeliers sont les sept Églises. MacArthur explique que ces chandeliers portatifs en or, munis de petites lampes à huile, représentent chaque assemblée comme porteuse de la lumière de la vie; le chiffre sept symbolise la plénitude, la totalité des Églises. L'Église n'est pas la source de la lumière, elle en est le support : sa raison d'être est de faire briller Christ. Ôter le chandelier (2.5), c'est retirer ce témoignage lumineux, donc faire cesser l'Église.</td>
+            <td><span class="trad"><span><b>S21</b> chandeliers</span><span><b>NEG79</b> chandeliers</span><span><b>Darby</b> lampes</span><span><b>LSG</b> chandeliers</span><span><b>KJF</b> chandeliers</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">œuvres</span><span class="mot-gr">erga</span></th>
+            <td class="col-sens">actes, ouvrages, ce qui est effectivement accompli et produit par la vie</td>
+            <td>Pluriel d'<i>ergon</i>. Christ ouvre son diagnostic par «&nbsp;Je connais tes œuvres&nbsp;» (2.2), formule récurrente des sept lettres, et appelle Éphèse à «&nbsp;pratiquer ses premières œuvres&nbsp;» (2.5). Les œuvres ne sont jamais le prix du salut mais la preuve visible de la foi authentique : ici elles attestent une activité réelle (travail, persévérance, discernement). Or des œuvres correctes peuvent subsister alors que l'amour s'est éteint; c'est le drame d'Éphèse. Le Seigneur connaît les œuvres parce qu'il connaît les cœurs (cf. 2.23), et il jugera les Églises selon ce regard infaillible. Les œuvres comptent, mais elles ne remplacent pas le cœur qui les motive.</td>
+            <td><span class="trad"><span><b>S21</b> œuvres</span><span><b>NEG79</b> œuvres</span><span><b>Darby</b> œuvres</span><span><b>LSG</b> œuvres</span><span><b>KJF</b> œuvres</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">abandonné</span><span class="mot-gr">aphiemi</span></th>
+            <td class="col-sens">laisser aller, lâcher, délaisser, abandonner volontairement ce que l'on tenait</td>
+            <td>Verbe employé en 2.4 : «&nbsp;tu as abandonné ton premier amour&nbsp;». Le terme n'évoque pas une perte accidentelle mais un relâchement, un délaissement : on a laissé filer ce qu'on possédait. MacArthur précise que la ferveur et la passion des Éphésiens pour Christ s'étaient muées en une orthodoxie froide et mécanique; leur pureté morale et doctrinale, leur zèle pour la vérité et leur service discipliné ne pouvaient remplacer l'amour pour Christ qu'ils avaient perdu. Le verbe, à l'aoriste, constate un abandon effectif : ils ont délaissé ce premier amour, et il leur faut y revenir. D'où l'appel à se souvenir, à se repentir et à refaire les premières œuvres (2.5).</td>
+            <td><span class="trad"><span><b>S21</b> abandonné</span><span><b>NEG79</b> abandonné</span><span><b>Darby</b> abandonné</span><span><b>LSG</b> abandonné</span><span><b>KJF</b> abandonné</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">premier</span><span class="mot-gr">protos</span></th>
+            <td class="col-sens">premier, du commencement, originel, de tout premier rang</td>
+            <td>Adjectif qualifiant l'amour (2.4) et, sous une autre forme, les «&nbsp;premières œuvres&nbsp;» (2.5). Il renvoie à l'amour des origines, l'ardeur fraîche et entière des nouveaux convertis pour leur Sauveur. MacArthur rappelle qu'être chrétien, c'est aimer le Seigneur Jésus-Christ (Jn 14.21, 23; 1 Co 16.22) : cet amour n'est pas un sentiment accessoire mais la marque même de la foi véritable. Le «&nbsp;premier amour&nbsp;» n'est donc pas un degré supérieur réservé à une élite spirituelle, mais le climat normal de toute conversion authentique. Le perdre, c'est dériver vers une religion de devoir sans dévotion. Le remède n'est pas un nouvel amour, mais le retour au premier.</td>
+            <td><span class="trad"><span><b>S21</b> premier</span><span><b>NEG79</b> premier</span><span><b>Darby</b> premier</span><span><b>LSG</b> premier</span><span><b>KJF</b> premier</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">vaincra</span><span class="mot-gr">nikao</span></th>
+            <td class="col-sens">vaincre, l'emporter, remporter la victoire, être vainqueur</td>
+            <td>Verbe de la victoire, employé dans la promesse finale de chacune des sept lettres (2.7, 11, 17, 26; 3.5, 12, 21). «&nbsp;À celui qui vaincra je donnerai à manger de l'arbre de vie.&nbsp;» MacArthur, suivant la définition johannique de 1 Jean 5.4-5, soutient que le vainqueur n'est pas un chrétien d'élite mais tout chrétien véritable : la foi qui s'empare de Christ est elle-même la victoire qui triomphe du monde. La promesse n'est donc pas un prix gagné par la performance, mais la part assurée de quiconque appartient réellement à Christ. Le vocabulaire de la victoire répond ironiquement au nom des Nicolaïtes («&nbsp;vainqueurs des peuples&nbsp;») : le vrai vainqueur n'est pas celui qui asservit, mais celui qui persévère dans la foi jusqu'à hériter la vie.</td>
+            <td><span class="trad"><span><b>S21</b> vaincra</span><span><b>NEG79</b> vaincra</span><span><b>Darby</b> vaincra</span><span><b>LSG</b> vaincra</span><span><b>KJF</b> vaincra</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Apocalypse 2.1-7</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Apocalypse 2.1-7 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ap 2.1-3.22, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">66-6</span></th>
+            <td><a href="https://www.gty.org/sermons/66-6" target="_blank" rel="noopener">Ephesus: When Love Grows Cold</a></td>
+            <td>Apocalypse 2.1-7</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-292</span></th>
+            <td><a href="https://www.gty.org/sermons/80-292" target="_blank" rel="noopener">Rekindling Your Love for Christ</a></td>
+            <td>Apocalypse 2.1-7</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-472</span></th>
+            <td><a href="https://www.gty.org/sermons/90-472" target="_blank" rel="noopener">The Lord’s Word to His Church: Ephesus</a></td>
+            <td>Apocalypse 2.1-7</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit Apocalypse 2.1-7 comme la première démonstration de l'autorité souveraine du Christ glorifié sur son Église : un Seigneur qui tient ses dirigeants dans sa main, qui marche au milieu de ses assemblées et qui les inspecte de près.</p>
+    <div class="body">
+      <p>Le titre d'ouverture est tout sauf décoratif : «&nbsp;celui qui tient les sept étoiles dans sa main droite, celui qui marche au milieu des sept chandeliers d'or&nbsp;». Les sept étoiles, selon 1.16 et 1.20, sont les messagers qui représentent les sept Églises, et le fait que Christ les tienne dans sa main signifie qu'il contrôle l'Église et ses dirigeants. Le verbe «&nbsp;marche&nbsp;» présente un Seigneur qui n'est pas absent ni distant mais qui circule au milieu de ses assemblées, les inspectant de près. Sur l'identité de «&nbsp;l'ange&nbsp;» de chaque Église (2.1), MacArthur tranche : le mot signifie littéralement «&nbsp;messager&nbsp;», et puisque les anges célestes ne sont jamais responsables d'Églises, il s'agit ici de l'ancien dirigeant ou du pasteur qui représente l'assemblée et reçoit la lettre. Le Seigneur qui contrôle ainsi son Église et ses dirigeants est celui-là même qui lui parle dans cette lettre.</p>
+      <p>Le diagnostic est d'une lucidité redoutable parce qu'il vient de celui qui connaît tout. «&nbsp;Je connais tes œuvres&nbsp;» : Christ commence par un éloge sincère et détaillé. Éphèse travaille dur, persévère, refuse de tolérer les méchants, a éprouvé les prétendus apôtres et les a démasqués comme menteurs, a souffert pour le nom de Christ sans se lasser pendant plus de quarante ans. MacArthur insiste sur la qualité de ce discernement : cette Église savait évaluer doctrine et conduite, conformément au devoir d'éprouver toutes choses (cf. 1 Th 5.20-21). Elle haïssait même les œuvres des Nicolaïtes, que Christ hait aussi, cette secte antinomienne qui, à la manière de Balaam, transformait la grâce en licence et poussait à l'immoralité et à l'idolâtrie. Sur le plan de l'orthodoxie et de la moralité, Éphèse était un modèle. C'est précisément ce qui rend le reproche si pénétrant.</p>
+      <p>Car «&nbsp;j'ai contre toi que tu as abandonné ton premier amour&nbsp;» (2.4). MacArthur expose ici le cœur du texte : la ferveur et la passion des Éphésiens pour Christ étaient devenues une orthodoxie froide et mécanique. Leur pureté doctrinale, leur zèle pour la vérité et leur service discipliné ne pouvaient pas remplacer l'amour pour Christ qu'ils avaient perdu. Être chrétien, c'est aimer le Seigneur Jésus-Christ (Jn 14.21, 23; 1 Co 16.22); laisser décroître cet amour est un péché dont même le vrai croyant doit se repentir, et, chez d'autres, l'abandon peut trahir une profession sans réalité. Le remède est précis et tient en trois impératifs (2.5) : se souvenir d'où l'on est tombé (mesurer la chute par comparaison avec la hauteur d'origine), se repentir (changer radicalement de disposition), et pratiquer les premières œuvres (reprendre les actes que produisait l'amour des débuts). L'avertissement est terrible : «&nbsp;sinon je viendrai à toi et j'ôterai ton chandelier de sa place.&nbsp;» MacArthur y voit la menace du jugement de Dieu amenant la fin même de l'Église d'Éphèse comme témoin. Une assemblée orthodoxe mais sans amour finit par perdre son droit d'exister.</p>
+      <p>La lettre se referme sur la double clausule. «&nbsp;Que celui qui a des oreilles entende ce que l'Esprit dit aux Églises&nbsp;» : la voix de Christ et celle de l'Esprit ne font qu'un, et le message vaut pour toutes les Églises de tous les temps, non pour Éphèse seule. Puis la promesse : «&nbsp;à celui qui vaincra je donnerai à manger de l'arbre de vie, qui est dans le paradis de Dieu.&nbsp;» MacArthur, à la lumière de 1 Jean 5.4-5, identifie le vainqueur à tout vrai croyant : vaincre n'est pas un exploit héroïque réservé à quelques-uns, c'est la marque normale de la foi authentique qui persévère. L'arbre de vie, perdu en Éden (Gn 2.9; 3.22-24) et retrouvé dans la nouvelle Jérusalem (Ap 22.2), symbolise la vie éternelle et les bénédictions éternelles promises aux vrais croyants. L'appel à la repentance est donc réel et adressé à une Église, et la promesse appartient à celui qui vainc parce qu'il appartient réellement à Christ. On peut remarquer que la promesse répond ironiquement au nom des Nicolaïtes : le seul véritable «&nbsp;vainqueur des peuples&nbsp;» est le croyant qui hérite la vie.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de la vision inaugurale du chapitre 1 aux avertissements pauliniens aux anciens d'Éphèse, jusqu'à l'arbre de vie d'Éden retrouvé dans la nouvelle Jérusalem.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 1.12-20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Source directe des titres de 2.1 : les sept chandeliers sont les Églises, les sept étoiles leurs messagers, et Christ qui les tient et marche parmi eux contrôle souverainement son Église.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 20.28-31</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul avertit les anciens d'Éphèse de l'arrivée de loups cruels et les exhorte à veiller; le discernement loué en 2.2-3 est l'héritage direct de cet avertissement pastoral.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 14.21-23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Définition johannique : aimer Christ et garder sa parole sont inséparables; éclaire pourquoi l'abandon du premier amour (2.4) est un défaut mortel, non un détail affectif.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 5.4-5</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Définit le vainqueur (<i>nikao</i>) comme tout croyant né de Dieu dont la foi triomphe du monde; clé de lecture de la promesse au vainqueur en 2.7.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 2.9; 3.22-24</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'arbre de vie en Éden, dont l'accès fut barré après la chute; la promesse de 2.7 annonce son retour comme restauration de la vie éternelle perdue.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 25.1-3; 31.16</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La ruse de Balaam entraînant Israël dans l'immoralité et l'idolâtrie; modèle vétérotestamentaire de l'hérésie nicolaïte haïe en 2.6.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 5.20-21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le devoir d'éprouver toutes choses et de retenir ce qui est bon; fondement du discernement par lequel Éphèse démasque les faux apôtres (2.2).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 22.1-2, 14</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'arbre de vie dans la nouvelle Jérusalem, accessible à ceux qui ont part au paradis de Dieu; accomplissement final de la promesse au vainqueur de 2.7.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La seigneurie inspectrice du Christ glorifié sur son Église</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Christ «&nbsp;tient les sept étoiles dans sa main droite&nbsp;» et «&nbsp;marche au milieu des sept chandeliers d'or&nbsp;» (2.1), puis ouvre par «&nbsp;Je connais tes œuvres&nbsp;» (2.2) : il contrôle dirigeants et assemblées et les inspecte de près.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'Apocalypse est la révélation de Jésus-Christ glorifié, souverain absolu sur l'histoire et sur ses Églises. Aucune assemblée n'échappe à son regard ni à son autorité. Pour votre assemblée : Christ connaît réellement nos œuvres et nos cœurs, et il nous évalue à sa mesure et non à la nôtre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'orthodoxie ne remplace jamais l'amour pour Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Église irréprochable en doctrine et en mœurs (2.2-3, 6), Éphèse s'entend pourtant reprocher l'essentiel : «&nbsp;tu as abandonné ton premier amour&nbsp;» (2.4); la ferveur s'est muée en orthodoxie froide.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Une foi authentique aime son objet (Jn 14.21; 1 Co 16.22); laisser refroidir cet amour est un péché dont le croyant doit se repentir. Pour votre assemblée : la justesse doctrinale et l'activité religieuse, bien que nécessaires, peuvent coexister avec un cœur refroidi; le danger n'est pas l'hérésie mais la tiédeur sous couvert de rigueur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'appel réel à la repentance et le jugement du chandelier ôté</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Trois impératifs, «&nbsp;souviens-toi, repens-toi, pratique tes premières œuvres&nbsp;», assortis de la menace «&nbsp;j'ôterai ton chandelier de sa place&nbsp;» (2.5) : le jugement de Dieu pouvant amener la fin de l'Église.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p><i>Lordship</i> : les appels à la repentance adressés aux sept Églises sont authentiques et urgents, non rhétoriques. Pour votre assemblée : une Église qui ne se repent pas de sa tiédeur peut perdre son témoignage et son existence même; la repentance n'est pas réservée aux incroyants, elle est la respiration du croyant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Les œuvres preuve de la foi, jamais son prix</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je connais tes œuvres&nbsp;» et «&nbsp;pratique tes premières œuvres&nbsp;» (2.2, 5) : les œuvres attestent une vie réelle, et le vainqueur de 2.7 est le vrai croyant dont la foi persévère.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Les œuvres démontrent le salut sans jamais le procurer (cf. Ja 2.14-26; Ap 2.23). Pour votre assemblée : l'examen de soi porte sur le fruit, mais la racine est la foi qui aime; refaire les premières œuvres, c'est laisser l'amour retrouvé reproduire ses actes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La promesse au vainqueur : l'arbre de vie dans le paradis de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;À celui qui vaincra je donnerai à manger de l'arbre de vie, qui est dans le paradis de Dieu&nbsp;» (2.7) : promesse de vie éternelle, l'arbre perdu en Éden et retrouvé dans la nouvelle Jérusalem.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le vainqueur est tout vrai croyant (1 Jn 5.4-5); la promesse est sa part assurée, gage de la sécurité éternelle des saints. Pour votre assemblée : l'espérance du croyant n'est pas un retour nostalgique mais la vie éternelle consommée dans le paradis de Dieu, ce qui rallume aujourd'hui l'amour qui persévère jusqu'au bout.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Christ se présente comme celui qui marche au milieu des chandeliers et qui dit «&nbsp;Je connais tes œuvres&nbsp;». En quoi la conscience que le Seigneur inspecte réellement notre assemblée change-t-elle notre manière de servir cette semaine?</li>
+      <li>Éphèse était irréprochable en doctrine et en mœurs, et pourtant reprise par Christ. Comment discerner, dans ma propre vie, si ma rigueur doctrinale est encore portée par l'amour ou si elle est devenue une orthodoxie froide et mécanique?</li>
+      <li>Le «&nbsp;premier amour&nbsp;» est l'ardeur des commencements pour Christ. Quels signes concrets marquaient cet amour à ma conversion, et lesquels se sont-ils estompés sans que je m'en rende compte?</li>
+      <li>Le remède tient en trois verbes : se souvenir, se repentir, pratiquer les premières œuvres. Lequel des trois est-ce que je néglige le plus, et que serait, concrètement, le «&nbsp;refaire mes premières œuvres&nbsp;»?</li>
+      <li>L'avertissement «&nbsp;j'ôterai ton chandelier&nbsp;» menace l'existence même d'une Église tiède. Que dit cet avertissement aux Églises orthodoxes mais refroidies d'aujourd'hui, et à la nôtre en particulier?</li>
+      <li>Éphèse haïssait à juste titre les œuvres des Nicolaïtes. Comment tenir ensemble la haine du faux enseignement et l'amour fervent pour Christ, sans que le combat pour la vérité n'éteigne la dévotion?</li>
+      <li>La promesse de manger de l'arbre de vie au vainqueur est offerte à tout vrai croyant. En quoi cette espérance de la vie éternelle dans le paradis de Dieu peut-elle, dès aujourd'hui, raviver un amour que la routine a refroidi?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Apocalypse 2.1-7 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Apocalypse : la révélation de Jésus-Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble du livre</a>
+    <a href="Recherche-MacArthur-Apocalypse-2-1-7.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

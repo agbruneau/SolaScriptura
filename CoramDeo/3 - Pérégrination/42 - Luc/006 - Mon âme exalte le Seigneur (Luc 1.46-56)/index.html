@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luc 1.46-56 · Mon âme exalte le Seigneur · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Luc 1.46-56, le Magnificat : le cantique de Marie, manifeste de la grâce souveraine ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc 1.46-56</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Luc 1.46-56</p>
+    <h1 class="hero__title">Mon âme exalte le Seigneur</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Mon âme exalte le Seigneur, et mon esprit se réjouit en Dieu, mon Sauveur.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 1.46-47 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Luc 1.46-56</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mon âme exalte le Seigneur, et mon esprit se réjouit en Dieu, mon Sauveur, parce qu'il a jeté les yeux sur la bassesse de sa servante.</p>
+        <cite class="verse__ref">Luc 1.46-48 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il a secouru Israël, son serviteur, et il s'est souvenu de sa miséricorde, comme il l'avait dit à nos pères, envers Abraham et sa postérité pour toujours.</p>
+        <cite class="verse__ref">Luc 1.54-55 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le Magnificat n'est pas un ornement pieux placé en marge de la nativité : c'est la grille doctrinale de tout l'Évangile de Luc, le cantique d'une pécheresse qui chante son Sauveur avant même qu'il ne soit né.</p>
+    <div class="body">
+      <p>Le cantique de Marie, que la tradition latine nomme le Magnificat d'après son premier mot, occupe le cœur du récit de la nativité chez Luc. Il jaillit immédiatement après la salutation d'Élisabeth (1.39-45), comme la réponse jubilante de Marie au double signe que Dieu vient de lui donner : la conception miraculeuse annoncée par Gabriel (1.31-35) et la confirmation par sa parente, elle-même remplie de l'Esprit, que l'enfant qu'elle porte est «&nbsp;le Seigneur&nbsp;» (1.43-44). MacArthur souligne que ce cantique, deuxième des cinq hymnes de louange qui entourent la venue du Messie (après celui d'Élisabeth, et avant le Benedictus de Zacharie en 1.68-79, le chant des anges en 2.14 et le Nunc dimittis de Siméon en 2.29-32), jaillit spontanément, sans qu'elle ait à chercher ses textes, d'une jeune femme dont «&nbsp;le cœur et l'esprit étaient imprégnés de la Parole de Dieu&nbsp;». Le cantique regorge de citations et d'allusions à l'Ancien Testament, au point que presque chaque ligne se laisse rattacher à un texte de la loi, des psaumes ou des prophètes.</p>
+      <p>La fonction littéraire de ce cantique est décisive : il interprète théologiquement ce que les chapitres 1 et 2 racontent en récit. Là où le narrateur expose des faits, Marie en dévoile le sens, le Dieu de l'alliance agit pour les humbles et tient ses promesses. Cette clé de lecture, posée avant même la naissance du précurseur (1.57-80), gouverne tout l'Évangile : Luc montrera sans relâche un Sauveur tendu vers les méprisés, les pécheurs et les exclus (5.31-32; 15.4-7; 19.10), exactement comme le chante ici Marie. Le Magnificat n'est donc pas un ornement pieux placé en marge de la nativité, c'est la grille doctrinale de tout le livre.</p>
+      <p>Les bornes de la péricope sont nettes. Le cantique proprement dit court de 1.46 à 1.55, encadré par l'introduction narrative «&nbsp;Et Marie dit&nbsp;» (1.46) et la note de clôture qui renvoie Marie chez elle après environ trois mois de séjour (1.56). MacArthur observe que Marie, arrivée chez Élisabeth alors que celle-ci était dans son sixième mois (1.26), repartit apparemment au neuvième mois, juste avant la naissance de Jean-Baptiste. Le cantique se déploie en deux mouvements : d'abord la louange personnelle de Marie pour ce que Dieu a fait en elle (1.46-49), puis l'élargissement à l'action constante de Dieu envers tous ceux qui le craignent, l'humble exalté et le puissant renversé (1.50-53), avant le sceau final sur la fidélité de Dieu à l'alliance faite à Abraham (1.54-55).</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde de l'Ancien Testament</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Luc 1.46-55 · 1 Samuel 2.1-10</p>
+    </header>
+    <p class="lead">Le Magnificat fait plus d'une fois écho à la prière d'Anne, mère de Samuel (1 Samuel 2.1-10) : une fille obscure de Nazareth avait l'Écriture si intériorisée que sa louange jaillit dans le langage même des saints de l'ancienne alliance.</p>
+    <div class="body">
+      <p>Le Magnificat regorge de renvois à l'Ancien Testament, et MacArthur y entend plus d'une fois «&nbsp;l'écho des prières d'Anne&nbsp;», mère de Samuel (1 Samuel 1.11; 2.1-10), à côté de passages de la loi, des psaumes et des prophètes. Le parallèle aurait sauté aux yeux d'un auditoire juif : comme Anne, femme méprisée pour sa stérilité que Dieu visita et combla, Marie, jeune fille obscure de Nazareth, chante un Dieu qui se réjouit dans le salut, qui renverse l'arrogant et relève le pauvre. Anne avait chanté «&nbsp;mon cœur se réjouit en l'Éternel... il fait tomber et il relève... il retire le pauvre de la poussière&nbsp;» (1 Samuel 2.1-8); Marie reprend le même renversement social et spirituel. Ce procédé d'allusion dense n'a rien d'un emprunt servile, il manifeste qu'une fille du peuple, sans instruction formelle de scribe, avait l'Écriture si intériorisée que sa louange s'exprimait spontanément dans le langage des saints de l'ancienne alliance.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Le renversement n'est pas une révolution sociale.</b> Le langage du «&nbsp;renversement&nbsp;» (1.51-53) ne décrit pas un programme de révolution sociale, contrairement aux lectures politiques modernes. Dans l'horizon de l'Ancien Testament que Marie habite, l'opposition entre les «&nbsp;orgueilleux&nbsp;», les «&nbsp;puissants&nbsp;» et les «&nbsp;riches&nbsp;» d'un côté, les «&nbsp;humbles&nbsp;» et les «&nbsp;affamés&nbsp;» de l'autre, recouvre un clivage spirituel autant que matériel : les premiers sont ceux qui se confient en eux-mêmes et rejettent Dieu, les seconds sont les <i>anawim</i>, les pauvres de l'Éternel qui n'ont d'espérance qu'en lui. C'est la logique des Béatitudes que Luc rapportera plus tard (6.20-26). Marie elle-même est le type de cet humble : MacArthur note que «&nbsp;la qualité qui transparaît le plus chez Marie, c'est son sens profond de l'humilité&nbsp;». Elle se range parmi les petits que Dieu élève, non parmi les grands qu'il abaisse.</li>
+      <li><b>Le sceau abrahamique.</b> Le sceau final (1.54-55) ancre tout le cantique dans l'alliance abrahamique. En évoquant le secours d'Israël et le souvenir de la miséricorde promise «&nbsp;à Abraham et à sa postérité pour toujours&nbsp;», Marie identifie la grossesse qu'elle porte comme l'accomplissement de la promesse faite en Genèse 12.1-3 et 15. MacArthur insiste, à propos du Benedictus parallèle, que cette «&nbsp;sainte alliance&nbsp;» est l'alliance abrahamique «&nbsp;qui contenait la promesse du salut par grâce&nbsp;». Marie ne célèbre donc pas une faveur isolée, mais le déploiement, dans son sein, d'un dessein de rédemption vieux de deux millénaires.</li>
+      <li><b>Le salut sort d'Israël.</b> La dimension juive du salut est ici irréductible : c'est «&nbsp;Israël, son serviteur&nbsp;» que Dieu secourt, conformément à des promesses littérales qui ne sont pas spiritualisées mais accomplies en Christ, le rejeton de la postérité d'Abraham. Le Magnificat maintient ainsi, dès le seuil de l'Évangile, le sens littéral des promesses faites au peuple de l'alliance.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique du cantique : du verbe qui le nomme (<i>megaluno</i>) au titre qui en livre la pointe sotériologique (<i>soter</i>), de la bassesse choisie par grâce (<i>tapeinosis</i>) à la miséricorde d'alliance (<i>eleos</i>) dont Dieu «&nbsp;se souvient&nbsp;» (<i>mimneskomai</i>) pour l'accomplir.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">exalte</span><span class="mot-gr">megaluno</span></th>
+            <td class="col-sens">rendre grand, magnifier, agrandir; déclarer et proclamer la grandeur de quelqu'un</td>
+            <td>Le verbe ne signifie pas ajouter à la grandeur de Dieu, que rien ne peut accroître, mais la reconnaître et la proclamer, faire grand le Seigneur dans la louange et l'estime du cœur. C'est le mot qui donne son nom latin au cantique (<i>magnificat</i> = «&nbsp;elle magnifie&nbsp;»). Marie ne se place pas au centre : tout le mouvement de l'âme se porte vers Dieu, à qui revient la grandeur. Le parallélisme du v. 47 («&nbsp;mon esprit se réjouit&nbsp;») confirme qu'il s'agit d'une adoration totale de l'être, âme et esprit, devant un Dieu dont la grandeur est l'objet exclusif de la joie.</td>
+            <td><span class="trad"><span><b>S21</b> exalte</span><span><b>NEG79</b> exalte</span><span><b>Darby</b> magnifie</span><span><b>LSG</b> exalte</span><span><b>KJF</b> magnifie</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Sauveur</span><span class="mot-gr">soter</span></th>
+            <td class="col-sens">celui qui sauve, délivre, préserve du danger, de la mort ou de la perdition</td>
+            <td>En appelant Dieu «&nbsp;mon Sauveur&nbsp;» (v. 47), Marie pose le mot-clé de tout l'Évangile (cf. 2.11; 19.10). MacArthur en tire une conséquence doctrinale capitale : ce titre montre que Marie «&nbsp;reconnaissait son besoin d'être sauvée&nbsp;» et qu'elle voyait «&nbsp;sa seule espérance de salut dans la grâce divine&nbsp;». Rien ici, ni ailleurs dans l'Écriture, ne suggère qu'elle se serait crue «&nbsp;immaculée&nbsp;», exempte du péché originel; c'est le contraire qui est vrai. La pécheresse qui chante a besoin d'un Sauveur tout comme celui qu'elle porte est le Sauveur. Le terme inscrit le Magnificat dans la sotériologie de la grâce souveraine, non dans une quelconque mariologie.</td>
+            <td><span class="trad"><span><b>S21</b> Sauveur</span><span><b>NEG79</b> Sauveur</span><span><b>Darby</b> Sauveur</span><span><b>LSG</b> Sauveur</span><span><b>KJF</b> Sauveur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">bassesse</span><span class="mot-gr">tapeinosis</span></th>
+            <td class="col-sens">état d'abaissement, condition humble, basse, sans gloire; humiliation</td>
+            <td>Le substantif désigne la condition socialement insignifiante de Marie, jeune fille d'un village méprisé, et non une humilité comme vertu cultivée, bien que la vertu de l'humilité (le verbe apparenté <i>tapeinoo</i> en grec) traverse aussi le cantique au v. 52 («&nbsp;il a élevé les humbles&nbsp;»). MacArthur relève que «&nbsp;dans tout ce passage, la qualité qui transparaît le plus chez Marie, c'est son sens profond de l'humilité&nbsp;». Dieu «&nbsp;a jeté les yeux&nbsp;» sur cette bassesse : pour MacArthur, Marie s'y reconnaît socialement insignifiante, mais plus encore pécheresse et indigne, bouleversée que le Dieu saint se penche sur une servante de rien. Le salut commence par un regard de grâce posé sur le néant de la créature.</td>
+            <td><span class="trad"><span><b>S21</b> bassesse</span><span><b>NEG79</b> bassesse</span><span><b>Darby</b> bassesse</span><span><b>LSG</b> bassesse</span><span><b>KJF</b> abaissement</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">miséricorde</span><span class="mot-gr">eleos</span></th>
+            <td class="col-sens">pitié active, compassion, bonté secourable envers le misérable; bienveillance de l'alliance</td>
+            <td>Le mot revient deux fois (vv. 50, 54) et porte le poids théologique du cantique. Il traduit dans la Septante l'hébreu <i>hesed</i>, l'amour fidèle de Dieu envers son alliance. La miséricorde qui «&nbsp;s'étend d'âge en âge sur ceux qui le craignent&nbsp;» (v. 50) n'est pas un sentiment vague mais l'engagement de grâce d'un Dieu fidèle, dont la portée s'étend à toutes les générations de croyants. Au v. 54, Dieu «&nbsp;s'est souvenu de sa miséricorde&nbsp;» en secourant Israël : se souvenir, dans le langage biblique de l'alliance, c'est agir pour tenir une promesse jurée. La miséricorde relie ainsi le salut personnel de Marie au dessein collectif envers Israël et à la fidélité abrahamique du v. 55.</td>
+            <td><span class="trad"><span><b>S21</b> bonté</span><span><b>NEG79</b> miséricorde</span><span><b>Darby</b> miséricorde</span><span><b>LSG</b> miséricorde</span><span><b>KJF</b> miséricorde</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">souvenu</span><span class="mot-gr">mimneskomai</span></th>
+            <td class="col-sens">se souvenir, faire mémoire; dans l'usage de l'alliance, agir en vertu d'une promesse pour l'accomplir</td>
+            <td>Au v. 54, «&nbsp;il s'est souvenu de sa miséricorde&nbsp;» ne suppose pas que Dieu ait oublié, mais qu'il passe à l'acte au temps fixé. Quand l'Écriture dit que Dieu «&nbsp;se souvient&nbsp;» de son alliance (Genèse 9.15; Exode 2.24; Luc 1.72), elle annonce une intervention salvatrice : le temps de l'accomplissement est venu. La conception virginale est ce souvenir actif, le moment où Dieu honore concrètement, dans le sein de Marie, la parole jurée à Abraham et à sa postérité (v. 55). Le verbe scelle ainsi le passage du récit à la théologie : l'enfant à naître est la preuve que Dieu n'oublie jamais ses promesses d'alliance et les tient à la lettre.</td>
+            <td><span class="trad"><span><b>S21</b> se souvenir</span><span><b>NEG79</b> s'est souvenu</span><span><b>Darby</b> se souvenir</span><span><b>LSG</b> s'est souvenu</span><span><b>KJF</b> s'est souvenu</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Luc 1.46-56</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Luc 1.46-56 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Lc 1.46-55, 1.47, 1.48, 1.56.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1286</span></th>
+            <td><a href="https://www.gty.org/sermons/1286" target="_blank" rel="noopener">The Spirit of Christmas</a></td>
+            <td>Luc 1.46-55</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-14</span></th>
+            <td><a href="https://www.gty.org/sermons/42-14" target="_blank" rel="noopener">Mary's Praise</a></td>
+            <td>Luc 1.46-55</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-152</span></th>
+            <td><a href="https://www.gty.org/sermons/80-152" target="_blank" rel="noopener">The True Christmas Spirit</a></td>
+            <td>Luc 1.46-55</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-15</span></th>
+            <td><a href="https://www.gty.org/sermons/42-15" target="_blank" rel="noopener">The Miraculous Birth of John the Baptist</a></td>
+            <td>Luc 1.56-66</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit d'abord le Magnificat comme le témoignage d'un cœur et d'un esprit imprégnés de la Parole de Dieu : une adolescente de Nazareth, élevée dans l'amour des Écritures, loue Dieu spontanément dans le langage d'Anne, des psaumes et des prophètes.</p>
+    <div class="body">
+      <p>MacArthur lit d'abord le Magnificat comme le chant d'une jeune fille nourrie de l'Écriture. Le cantique «&nbsp;regorge de renvois à l'A.T., sous forme de citations directes ou d'allusions&nbsp;», et «&nbsp;témoigne du fait que le cœur et l'esprit de Marie étaient imprégnés de la Parole de Dieu&nbsp;». Une adolescente de Nazareth, élevée par ses parents dans l'amour de la Parole, loue Dieu spontanément, sans chercher ses textes, dans le langage d'Anne (1 Samuel 2.1-10), des psaumes et des prophètes. Pour MacArthur, c'est un exemple classique d'adoration pure, peut-être le meilleur du Nouveau Testament : une louange intérieure, intense, habituelle et humble, que rien d'extérieur n'a induite et qui déborde d'un cœur rempli de la Parole. Le cantique «&nbsp;reprend, point par point, les promesses de l'alliance de Dieu&nbsp;» : la jeune fille qui chante ne connaît pas seulement l'Écriture, elle connaît la théologie de l'alliance abrahamique.</p>
+      <p>Le cœur doctrinal du passage est sotériologique, et MacArthur le défend contre la mariologie romaine. Au v. 47, Marie appelle Dieu «&nbsp;mon Sauveur&nbsp;», ce qui prouve «&nbsp;à la fois qu'elle reconnaissait son besoin d'être sauvée et qu'elle connaissait le vrai Dieu comme étant celui qui lui accordait le salut&nbsp;». Il en tire une réfutation directe du dogme de l'immaculée conception : «&nbsp;rien dans ce passage, ni nulle part ailleurs dans l'Écriture, ne suggère que Marie se considérait comme immaculée; c'est plutôt le contraire qui est vrai, puisqu'elle employa le langage caractéristique d'une personne qui voit sa seule espérance de salut dans la grâce divine&nbsp;». De même, «&nbsp;il n'y a dans ce passage rien qui présenterait Marie comme digne de recevoir l'adoration&nbsp;». La pécheresse sauvée par grâce chante le Sauveur qu'elle porte : telle est la pointe du texte, et elle interdit toute exaltation de la créature aux dépens du Créateur.</p>
+      <p>Le deuxième mouvement (vv. 50-53) chante le grand renversement de l'alliance. Dieu disperse les orgueilleux, renverse les puissants de leurs trônes et renvoie les riches à vide, tandis qu'il élève les humbles et rassasie les affamés. MacArthur y entend Marie relire l'histoire d'Israël : par ces verbes au passé, elle rappelle que Dieu a renversé l'ordre social ordinaire, abattant l'orgueil de Pharaon ou de Nebucadnetsar et détrônant les rois de Canaan, pour faire miséricorde aux humbles, aux affamés, à un peuple d'esclaves errants. Le principe demeure : quiconque se confie dans ses richesses, son trône ou ses réussites, Dieu l'abattra; celui dont le cœur a faim et qui reconnaît sa bassesse, Dieu le relèvera. Les «&nbsp;orgueilleux&nbsp;» sont ceux qui, suffisants, n'ont pas besoin de Dieu; les «&nbsp;humbles&nbsp;», ceux qui le cherchent. C'est exactement la ligne des Béatitudes lucaniennes (6.20-26) et de toute l'œuvre du Sauveur des perdus : Dieu résiste aux orgueilleux et donne sa grâce aux humbles.</p>
+      <p>Le sceau final (vv. 54-55) verrouille le cantique dans l'alliance abrahamique. Le secours d'«&nbsp;Israël, son serviteur&nbsp;», et le souvenir de la miséricorde promise «&nbsp;à Abraham et à sa postérité pour toujours&nbsp;» identifient la grossesse de Marie comme l'accomplissement littéral des promesses de Genèse. MacArthur voit Marie en théologienne, qui lit toute l'histoire de la rédemption comme l'accomplissement de l'alliance abrahamique, promesse éternelle de salut faite à Abraham et, par sa postérité, au monde (Genèse 12.1-3). Il tient cette alliance pour irrévocable : Israël n'a pas été mis de côté, et le salut vient des Juifs, par qui sont venus les alliances, les promesses et le Messie (cf. Jean 4.22; Romains 9.4-5). La «&nbsp;sainte alliance&nbsp;» de l'enfance, dit-il à propos de Zacharie, est l'alliance abrahamique «&nbsp;qui contenait la promesse du salut par grâce&nbsp;». Marie, en chantant, proclame donc que le Dieu fidèle, qui n'oublie jamais ses promesses, vient enfin de passer à l'acte : le Messie promis est conçu, et le grand renversement a commencé.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du modèle vétérotestamentaire direct du cantique d'Anne à l'alliance abrahamique scellée au v. 55, jusqu'aux parallèles lucaniens qui déploient le renversement chanté par Marie.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Samuel 2.1-10</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le cantique d'Anne est le modèle vétérotestamentaire direct du Magnificat : même joie dans le Dieu Sauveur, même renversement des puissants et des humbles, même Dieu qui «&nbsp;fait tomber et relève&nbsp;». MacArthur entend ici «&nbsp;l'écho des prières d'Anne&nbsp;».</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 12.1-3; 15.5-6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'alliance abrahamique et la promesse d'une postérité par laquelle toutes les nations seraient bénies; la base jurée que Dieu «&nbsp;se souvient&nbsp;» d'accomplir au v. 55 («&nbsp;à Abraham et à sa postérité pour toujours&nbsp;»).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 103.17</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;La bonté de l'Éternel dure d'éternité en éternité sur ceux qui le craignent&nbsp;» : source quasi littérale du v. 50 sur la miséricorde qui s'étend d'âge en âge sur ceux qui craignent Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 1.68-79</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le Benedictus de Zacharie, second psaume de la nativité, prolonge le Magnificat : même fidélité à la «&nbsp;sainte alliance&nbsp;» abrahamique (1.72-73) et même salut par grâce, vu cette fois du côté du précurseur.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 6.20-26</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les Béatitudes et malédictions lucaniennes déploient en enseignement le renversement déjà chanté par Marie : bienheureux les pauvres et les affamés, malheur aux riches et aux rassasiés.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 19.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La thèse de l'Évangile, «&nbsp;le Fils de l'homme est venu chercher et sauver ce qui était perdu&nbsp;», accomplit en mission ce que Marie pose en principe : Dieu se tourne vers l'humble et le perdu, non vers le puissant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jacques 4.6</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Dieu résiste aux orgueilleux, mais il fait grâce aux humbles&nbsp;» (citant Proverbes 3.34) : l'axiome qui résume le renversement des vv. 51-52 et confirme qu'il s'agit d'un clivage spirituel, non politique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 9.4-5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les privilèges d'Israël, à qui appartiennent les alliances et les promesses et de qui sort le Christ; arrière-plan paulinien du «&nbsp;secours d'Israël, son serviteur&nbsp;» (v. 54) et de la distinction Israël / Église maintenue.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le salut par grâce et la pécheresse qui chante</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Marie appelle Dieu «&nbsp;mon Sauveur&nbsp;» (v. 47) et célèbre le regard que Dieu a jeté sur «&nbsp;la bassesse de sa servante&nbsp;» (v. 48), langage de quelqu'un qui voit sa seule espérance dans la grâce divine.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le Magnificat est un manifeste de la grâce souveraine : Marie a besoin d'un Sauveur comme tout pécheur. Cela réfute frontalement l'immaculée conception et toute adoration de Marie. Pour l'assemblée, c'est l'antidote à la fois à la mariologie et à l'orgueil religieux : nul ne magnifie vraiment le Seigneur tant qu'il ne se sait pas lui-même sauvé par pure grâce.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le Dieu qui renverse les puissants et relève les humbles</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il a renversé les puissants de leurs trônes, et il a élevé les humbles; il a rassasié de biens les affamés, et il a renvoyé les riches à vide&nbsp;» (vv. 51-53).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Ce renversement n'est pas un programme politique mais le principe constant du gouvernement de Dieu, spirituel avant d'être social. Dieu résiste aux orgueilleux autosuffisants et donne sa grâce aux <i>anawim</i> qui n'espèrent qu'en lui. L'assemblée est appelée à se ranger parmi les humbles dépendants, non parmi les forts qui se passent de Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La fidélité de Dieu à l'alliance abrahamique</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il a secouru Israël, son serviteur, et il s'est souvenu de sa miséricorde, comme il l'avait dit à nos pères, envers Abraham et sa postérité pour toujours&nbsp;» (vv. 54-55).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La conception du Messie est l'accomplissement littéral d'une promesse vieille de deux millénaires. Dieu ne spiritualise pas ses promesses à Israël, il les tient : la distinction Israël / Église est maintenue et le salut vient des Juifs. Pour l'assemblée, c'est le roc de l'assurance : un Dieu qui n'oublie jamais une promesse d'alliance ne manquera pas non plus de tenir celles faites en Christ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'Écriture intériorisée comme moteur de l'adoration</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le cantique tout entier est tissé d'allusions à 1 Samuel 2, aux psaumes et aux prophètes, signe que «&nbsp;le cœur et l'esprit de Marie étaient imprégnés de la Parole de Dieu&nbsp;».</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'adoration véritable n'est pas une émotion brute mais le débordement d'un cœur saturé d'Écriture. La louange de Marie réfute par l'exemple toute spiritualité affranchie de la Parole. L'assemblée apprend que la profondeur de sa louange dépend de la profondeur de sa connaissance des Écritures, et que la Parole prime sur l'expérience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La vraie humanité et la réelle divinité du Sauveur conçu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Marie, simple servante (v. 48), porte en son sein celui qu'Élisabeth nomme «&nbsp;le Seigneur&nbsp;» (1.43) et que le cantique présente comme l'accomplissement du salut promis : le Dieu-homme conçu par l'Esprit (1.35).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le Magnificat suppose la conception virginale réelle et l'incarnation du Fils éternel dans une vraie humanité. Le Sauveur n'est pas une figure mythique née d'une cohabitation du divin et de l'humain, mais le fruit d'un acte créateur de l'Esprit. L'assemblée adore un Sauveur qui est pleinement Dieu et pleinement homme, seul capable de racheter les humbles qu'il vient relever.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Marie chante Dieu «&nbsp;mon Sauveur&nbsp;» avant que le Sauveur ne soit né : comment le fait qu'elle se sache elle-même pécheresse ayant besoin de grâce démolit-il l'idée d'une Marie sans péché et digne d'adoration?</li>
+      <li>Le cantique est tissé de l'Écriture qu'une jeune fille avait intériorisée. Que révèle votre louange spontanée sur la place réelle de la Parole dans votre cœur, et comment nourrir une adoration qui déborde d'Écriture plutôt que de simple émotion?</li>
+      <li>Le renversement des vv. 51-53 est spirituel avant d'être social. En quoi vous comptez-vous parmi les «&nbsp;orgueilleux&nbsp;» autosuffisants ou parmi les «&nbsp;humbles&nbsp;» qui n'espèrent qu'en Dieu, et qu'est-ce que cela change à votre prière?</li>
+      <li>Dieu «&nbsp;s'est souvenu de sa miséricorde&nbsp;» en accomplissant une promesse vieille de deux mille ans. Comment la fidélité de Dieu à l'alliance abrahamique fonde-t-elle votre assurance que toutes ses promesses en Christ s'accompliront?</li>
+      <li>Marie se range parmi les petits que Dieu élève, non parmi les grands qu'il abaisse. Où votre vie cherche-t-elle encore le trône, la richesse ou la reconnaissance que le cantique déclare destinés à être renversés et renvoyés à vide?</li>
+      <li>Le Magnificat interprète à l'avance tout l'Évangile de Luc, le Dieu qui cherche les perdus (19.10). Comment ce cantique vous prépare-t-il à reconnaître le même Sauveur tendu vers les méprisés, les pécheurs et les exclus tout au long du livre?</li>
+      <li>Comment annoncer ce passage de manière à exalter le Seigneur, et non Marie, tout en honorant la foi et l'humilité exemplaires de la servante que Dieu a choisie pour porter son Fils?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Luc 1.46-56 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Luc : venu sauver les perdus&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Luc-1-46-56.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

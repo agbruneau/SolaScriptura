@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jean 12.27-50 · La lumière encore un peu de temps · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jean 12.27-50 : la lumière encore un peu de temps ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jean 12.27-50</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Jean 12.27-50</p>
+    <h1 class="hero__title">La lumière encore un peu de temps</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;La lumière est encore pour un peu de temps au milieu de vous. Marchez, pendant que vous avez la lumière, afin que les ténèbres ne vous surprennent point&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jean 12.35 · NEG</p>
+    <p class="hero__series">Série : <b>Jean : le Verbe fait chair</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Jean 12.27-50</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Maintenant mon âme est troublée. Et que dirais-je?… Père, délivre-moi de cette heure?… Mais c'est pour cela que je suis venu jusqu'à cette heure.</p>
+        <cite class="verse__ref">Jean 12.27 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Je suis venu comme une lumière dans le monde, afin que quiconque croit en moi ne demeure pas dans les ténèbres.</p>
+        <cite class="verse__ref">Jean 12.46 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Jean 12.27-50 forme la pointe finale du ministère public de Jésus : l'agonie anticipée devant la coupe de la colère, la croix comme jugement du monde, l'ultime appel à marcher dans la lumière encore présente, puis le verdict sur l'incrédulité d'Israël prédite par Ésaïe.</p>
+    <div class="body">
+      <p>Notre péricope clôt le grand bloc du ministère public de Jésus, que Jean a déployé des chapitres 1 à 12 et que la tradition appelle le «&nbsp;livre des signes&nbsp;». La venue des Grecs au verset 20, qui voulaient «&nbsp;voir Jésus&nbsp;», a déclenché la déclaration solennelle du verset 23 : «&nbsp;L'heure est venue où le Fils de l'homme doit être glorifié.&nbsp;» L'heure, ce mot que Jean a tenu en suspens depuis Cana (2.4) et que l'on disait sans cesse «&nbsp;pas encore venue&nbsp;» (7.30; 8.20), éclate enfin. Jean 12.27-50 forme la pointe finale de ce ministère public : d'abord l'agonie anticipée du Sauveur devant la coupe de la colère (27-30), puis la signification cosmique de la croix comme jugement du monde et défaite du prince de ce monde (31-33), puis l'ultime appel à marcher dans la lumière encore présente (34-36), enfin le verdict de Jean sur l'incrédulité d'Israël, prédite par Ésaïe, et le sommaire que Jean rassemble des paroles de Jésus (37-50). Après le verset 36, «&nbsp;Jésus s'en alla et se cacha loin d'eux&nbsp;» : c'est la fin de la prédication publique.</p>
+      <p>MacArthur souligne que les versets 37 à 40 fournissent l'explication scripturaire d'une incrédulité aussi énorme que catastrophique de la part de la nation juive : cette incrédulité n'était pas seulement prévue dans les Écritures, mais exigée par elles. Jean cite Ésaïe 53.1 au verset 38 et Ésaïe 6.10 au verset 40, deux textes qui soulignent ensemble que Dieu, dans son plan souverain, a endurci les cœurs en Israël en guise de jugement, exactement comme Paul l'argumente en Romains 9 à 11. Et pourtant, note MacArthur, un tel jugement, bien qu'il corresponde à une décision de Dieu, n'était pas sans rapport avec la responsabilité et la culpabilité de l'homme (8.24). La péricope tient donc serrées les deux vérités : la souveraineté absolue de Dieu qui endurcit, et la pleine culpabilité de ceux qui refusent de croire.</p>
+      <p>Le passage est aussi une charnière narrative décisive. Les chapitres 1 à 12 traitent du rejet de Jésus par la nation juive (1.11); les chapitres 13 à 17 se concentrent sur ceux qui l'ont accueilli (1.12). Dès le verset 44, Jésus ne s'adresse plus à des interlocuteurs présents, mais Jean rapporte un sommaire solennel de tout l'enjeu de la foi : croire en Jésus, c'est croire au Père qui l'a envoyé; le voir, c'est voir le Père; le rejeter, c'est s'attirer le jugement de sa parole au dernier jour. La fin du ministère public résume l'enjeu de croire, et la chambre haute commence l'instruction privée des siens (13.1). Le titre de la semaine, «&nbsp;la lumière encore un peu de temps&nbsp;», saisit l'urgence du verset 35 : la lumière du monde est là pour un temps compté, et l'invitation à marcher en elle ne restera pas ouverte indéfiniment.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Jean 12.28 · 12.32 · 12.34 · 12.41</p>
+    </header>
+    <p class="lead">L'arrière-plan immédiat est la Pâque à Jérusalem, quelques jours avant la crucifixion : une ville gonflée de pèlerins, des «&nbsp;Grecs&nbsp;» venus adorer, une voix venue du ciel, et tout l'horizon prophétique du Serviteur souffrant d'Ésaïe.</p>
+    <div class="body">
+      <p>L'arrière-plan immédiat est la fête de la Pâque à Jérusalem, quelques jours avant la crucifixion. La ville est gonflée de pèlerins, et la foule mêle Galiléens, Judéens et des «&nbsp;Grecs&nbsp;» venus adorer, c'est-à-dire des prosélytes ou des craignant-Dieu d'origine païenne attirés par le monothéisme juif. Leur demande de «&nbsp;voir Jésus&nbsp;» est le signal eschatologique qui pousse le Seigneur à annoncer son heure : la croix ouvrira le salut bien au-delà des frontières d'Israël, et le verset 32, «&nbsp;j'attirerai tous les hommes à moi&nbsp;», vise précisément ce rassemblement de toute catégorie d'hommes, Juifs comme païens, et non un universalisme du salut de chaque individu sans exception.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La voix venue du ciel et le bath qol.</b> La voix venue du ciel au verset 28 doit se comprendre dans la tradition juive du <i>bath qol</i>, la «&nbsp;fille de la voix&nbsp;», ce témoignage céleste audible. MacArthur rappelle que cette voix audible du Père ne retentit que trois fois durant le ministère de Jésus : au baptême (Matthieu 3.17), à la transfiguration (Matthieu 17.5), et ici. La réaction de la foule, qui parle d'un coup de tonnerre ou d'un ange, illustre l'aveuglement spirituel que la suite du passage va expliquer théologiquement : même un témoignage divin direct ne perce pas un cœur que Dieu n'a pas ouvert.</li>
+      <li><b>Le Messie «&nbsp;élevé&nbsp;» et le serpent d'airain.</b> Le verset 34 montre la conception messianique populaire : «&nbsp;Nous avons appris par la loi que le Christ demeure éternellement.&nbsp;» Le terme «&nbsp;loi&nbsp;» désigne ici, au sens large, non seulement le Pentateuque mais l'Ancien Testament tout entier; la foule a sans doute à l'esprit des textes comme Ésaïe 9.6 ou Ézéchiel 37.25, qui promettaient un règne messianique éternel, et elle bute sur l'idée d'un Messie «&nbsp;élevé&nbsp;», c'est-à-dire crucifié. Le verbe «&nbsp;élevé&nbsp;» des versets 32 et 34 joue sur un double registre que l'auditoire ne saisit pas : il désigne à la fois l'élévation infamante sur le bois et l'exaltation glorieuse du Serviteur que Dieu «&nbsp;élève&nbsp;» selon Ésaïe 52.13. L'allusion sous-jacente du verset 32, déjà annoncée en 3.14, renvoie au serpent d'airain de Nombres 21 : comme ceux qui regardaient le serpent élevé par Moïse étaient guéris, ceux qui regardent à Christ élevé sur la croix vivent éternellement.</li>
+      <li><b>La gloire vue par Ésaïe au temple.</b> La citation d'Ésaïe au cœur du passage suppose tout l'horizon prophétique du chant du Serviteur souffrant (Ésaïe 52.13 à 53.12) et de la vision inaugurale d'Ésaïe au temple (Ésaïe 6). Le verset 41, «&nbsp;Ésaïe dit ces choses lorsqu'il vit sa gloire et qu'il parla de lui&nbsp;», identifie sans ambiguïté la gloire contemplée par Ésaïe dans le temple (Ésaïe 6.1) à la gloire de Jésus lui-même : Jean assimile donc explicitement Jésus à l'Éternel, à Yahvé de l'Ancien Testament.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : l'âme troublée (<i>tarasso</i>), la gloire du Père (<i>doxazo</i>), le Fils élevé (<i>hupsoo</i>), la lumière présente (<i>phos</i>) et l'aveuglement judiciaire (<i>tuphloo</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">troublée</span><span class="mot-gr">tarasso</span></th>
+            <td class="col-sens">agiter, secouer violemment, jeter dans le trouble, bouleverser</td>
+            <td>Le verbe décrit une agitation profonde de l'âme. MacArthur note que le terme employé au verset 27 est très fort et signifie l'horreur, l'anxiété, l'agitation. La perspective de prendre sur lui la colère de Dieu contre les péchés du monde révulsait le Sauveur sans péché (2 Corinthiens 5.21). Ce n'est pas une faiblesse, mais l'effroi sacré de l'Agneau devant la coupe de la colère divine, dans une humanité réelle et entière. Le même verbe reparaît en 13.21 (Jésus troublé en son esprit) et en 14.1 («&nbsp;que votre cœur ne se trouble point&nbsp;»), où Jésus offre aux siens le réconfort qu'il refuse pour lui-même.</td>
+            <td><span class="trad"><span><b>S21</b> troublée</span><span><b>NEG79</b> troublée</span><span><b>Darby</b> troublée</span><span><b>LSG</b> troublée</span><span><b>KJF</b> troublée</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">glorifie</span><span class="mot-gr">doxazo</span></th>
+            <td class="col-sens">rendre gloire, honorer, manifester l'éclat et le poids de quelqu'un</td>
+            <td>Mot maître du passage et de tout l'Évangile. La requête «&nbsp;glorifie ton nom&nbsp;» du verset 28 incarne, selon MacArthur, le principe qui animait la vie de Jésus autant que sa mort (7.18; 8.29, 50). Glorifier le Père, ce n'est pas lui ajouter un éclat qui lui manquerait, mais manifester sa sainteté, sa justice et son amour rédempteur. Paradoxe johannique : l'heure de la glorification du Fils est l'heure de la croix. La réponse du Père, «&nbsp;je l'ai glorifié et je le glorifierai encore&nbsp;», embrasse le ministère déjà accompli et l'œuvre de la passion et de la résurrection à venir.</td>
+            <td><span class="trad"><span><b>S21</b> révèle la gloire de</span><span><b>NEG79</b> glorifie</span><span><b>Darby</b> glorifie</span><span><b>LSG</b> glorifie</span><span><b>KJF</b> glorifie</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">élevé</span><span class="mot-gr">hupsoo</span></th>
+            <td class="col-sens">lever en haut, hausser, exalter</td>
+            <td>Le verbe porte un double sens voulu par Jean. Au sens premier, il désigne l'élévation physique sur la croix : MacArthur précise que «&nbsp;élevé de la terre&nbsp;» renvoie à la crucifixion (versets 33 et 18.32), reprenant l'image de 3.14 et du serpent d'airain de Nombres 21. Au sens second, il connote l'exaltation et la glorification du Serviteur, selon Ésaïe 52.13. La croix, infamie aux yeux des hommes, est le trône d'où le Fils attire à lui des hommes de toute provenance. La foule du verset 34 perçoit l'étrangeté du mot pour un Messie qu'elle croit éternel.</td>
+            <td><span class="trad"><span><b>S21</b> élevé</span><span><b>NEG79</b> élevé</span><span><b>Darby</b> élevé</span><span><b>LSG</b> élevé</span><span><b>KJF</b> élevé</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">lumière</span><span class="mot-gr">phos</span></th>
+            <td class="col-sens">lumière, clarté, ce qui rend visible et révèle</td>
+            <td>Métaphore centrale de l'Évangile, enracinée dans l'Ancien Testament (Exode 13.21; Psaume 27.1; 119.105; Ésaïe 60.19-22). Aux versets 35-36 et 46, Jésus est la lumière présente «&nbsp;encore pour un peu de temps&nbsp;», et croire en lui fait passer des enfants des ténèbres aux «&nbsp;enfants de lumière&nbsp;». MacArthur rattache cette dernière invitation au thème johannique de la foi au Fils de Dieu et Messie (20.30-31) : marcher dans la lumière, c'est croire, et croire fait sortir des ténèbres. La lumière révèle, mais elle juge aussi ceux qui lui préfèrent l'obscurité.</td>
+            <td><span class="trad"><span><b>S21</b> lumière</span><span><b>NEG79</b> lumière</span><span><b>Darby</b> lumière</span><span><b>LSG</b> lumière</span><span><b>KJF</b> lumière</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">aveuglé</span><span class="mot-gr">tuphloo</span></th>
+            <td class="col-sens">rendre aveugle, priver de la vue, frapper de cécité</td>
+            <td>Employé au verset 40 dans la citation d'Ésaïe 6.10 : «&nbsp;Il a aveuglé leurs yeux et endurci leur cœur.&nbsp;» MacArthur enseigne que ce verset attribue à Dieu un endurcissement judiciaire d'Israël en guise de jugement, et que, puisque le verset 41 rapporte la gloire contemplée à Jésus, c'est Jésus lui-même qui est l'auteur de cet endurcissement, ce qui convient à son rôle de juge (5.22-23, 27, 30; 9.39). L'aveuglement n'est pas arbitraire : il s'abat sur une nation qui a refusé la lumière malgré tant de signes. Souveraineté de Dieu et culpabilité de l'homme tiennent ensemble.</td>
+            <td><span class="trad"><span><b>S21</b> aveuglé</span><span><b>NEG79</b> aveuglé</span><span><b>Darby</b> aveuglé</span><span><b>LSG</b> aveuglé</span><span><b>KJF</b> aveuglé</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Jean 12.27-50</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Jean 12.27-50 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Jn 11.1-12.50, 12.1-50, 12.27, 12.28, 12.31, 12.32, 12.34, 12.35-36, 12.37-40, 12.41, 12.42-43.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1277</span></th>
+            <td><a href="https://www.gty.org/sermons/1277" target="_blank" rel="noopener">The Necessary Death of the King</a></td>
+            <td>Jean 12.12-33</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-139</span></th>
+            <td><a href="https://www.gty.org/sermons/80-139" target="_blank" rel="noopener">The Coronation of the King</a></td>
+            <td>Jean 12.12-33</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-64</span></th>
+            <td><a href="https://www.gty.org/sermons/43-64" target="_blank" rel="noopener">The Perplexities of the Cross</a></td>
+            <td>Jean 12.27-34</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-65</span></th>
+            <td><a href="https://www.gty.org/sermons/43-65" target="_blank" rel="noopener">When God’s Patience Runs Out, Part 1</a></td>
+            <td>Jean 12.35-43</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-66</span></th>
+            <td><a href="https://www.gty.org/sermons/43-66" target="_blank" rel="noopener">When God’s Patience Runs Out, Part 2</a></td>
+            <td>Jean 12.37-50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Du trouble de l'âme de Jésus, aperçu de l'agonie de Gethsémané, à la théologie de la croix sortie de sa propre bouche, puis au verdict sur une nation qui ne voulait pas croire et, dès lors, ne pouvait plus croire : MacArthur tient ensemble la véritable humanité du Fils, sa pleine déité, la volonté obstinée de l'homme et la volonté souveraine de Dieu.</p>
+    <div class="body">
+      <p>MacArthur lit le verset 27 comme un aperçu de l'agonie de Gethsémané : ce trouble ne trahit ni faiblesse ni péché, et il manifeste moins une humanité qui l'emporterait sur la déité que la sainteté du Fils de Dieu, qui s'épouvante de porter le péché. L'âme de Jésus est troublée, saisie d'horreur et d'angoisse, parce qu'il contemple la coupe de la colère divine qu'il devra boire à la place des pécheurs. MacArthur insiste : ce qui révulse le Sauveur sans péché, ce n'est pas la douleur physique de la croix prise isolément, mais la perspective de devenir péché pour nous (2 Corinthiens 5.21) et de subir l'abandon judiciaire du Père. Et pourtant Jésus ne demande pas d'être délivré de cette heure; il dit au contraire : «&nbsp;c'est pour cela que je suis venu jusqu'à cette heure.&nbsp;» Sa prière n'est pas «&nbsp;Père, sauve-moi&nbsp;», mais «&nbsp;Père, glorifie ton nom&nbsp;». Voilà, pour MacArthur, le cœur d'une vie tout entière ordonnée à la gloire du Père, jusque dans la mort.</p>
+      <p>Les versets 31 à 33 livrent la théologie johannique de la croix. MacArthur souligne le paradoxe : alors que la croix pouvait passer pour le signe le plus éclatant de la victoire de Satan sur Dieu, elle marquait en réalité sa défaite définitive. «&nbsp;Le prince de ce monde sera jeté dehors&nbsp;» : Satan, ce dieu de ce siècle (2 Corinthiens 4.4; Éphésiens 2.2), perd son emprise au moment même où il croit triompher (Romains 16.20; Hébreux 2.14). Le verset 32, «&nbsp;quand j'aurai été élevé de la terre, j'attirerai tous les hommes à moi&nbsp;», n'enseigne pas un salut universel; MacArthur le lit comme l'attraction exercée par le Christ crucifié sur des hommes de toute sorte, Juifs et païens, de toute langue, tribu et nation : «&nbsp;tous&nbsp;», ce sont les Juifs comme les païens, les hommes de toute langue, tribu et nation, et à la croix Christ accomplit l'œuvre par laquelle tous peuvent être sauvés (43-64). La croix devient l'aimant qui attire à lui les pécheurs pour le pardon et la vie.</p>
+      <p>Aux versets 37 à 41, MacArthur relève les deux composantes fatales de l'incrédulité : la volonté obstinée de l'homme et la volonté souveraine de Dieu. Malgré tant de signes accomplis sous leurs yeux, ils ne croyaient pas, et Jean explique cette incrédulité par deux citations d'Ésaïe. Le verset 39 est décisif : «&nbsp;Aussi ne pouvaient-ils croire.&nbsp;» Il ne s'agit pas seulement d'un refus, mais d'une incapacité, conséquence de l'endurcissement judiciaire de Dieu. MacArthur rapproche cette logique de Romains 9 à 11 : Dieu, dans son plan souverain, a endurci des cœurs en Israël comme acte de jugement. Mais il refuse fermement d'en tirer une excuse pour l'homme : l'endurcissement de Dieu s'exerce sur des pécheurs déjà responsables et coupables, qui ont volontairement rejeté la lumière (8.24). Le verset 41 verrouille la christologie haute de Jean : Ésaïe vit la gloire de Jésus dans le temple (Ésaïe 6.1), et Jean assimile donc sans ambiguïté Jésus à l'Éternel, à Yahvé de l'Ancien Testament, conformément au «&nbsp;JE SUIS&nbsp;» absolu de 8.58.</p>
+      <p>Les versets 42 à 50 scellent l'enjeu. MacArthur signale que les chefs qui «&nbsp;crurent&nbsp;» mais refusèrent de l'avouer par crainte d'être exclus de la synagogue offrent l'image d'une foi inadéquate, irrésolue et même suspecte, comparable à la pseudo-foi de 2.23-25 : une foi si faible qu'elle préfère la gloire des hommes à celle de Dieu n'est pas la foi qui sauve. MacArthur y voit l'incrédulité saisie à son sommet, chez l'élite religieuse : croire les faits au sujet de Jésus ne suffit pas; la foi qui sauve confesse Jésus comme Seigneur, se soumet à lui, reconnaît sa propre faillite spirituelle et recherche l'approbation de Dieu plutôt que celle des hommes. Les versets 44 à 50, que Jean rassemble en sommaire puisque Jésus s'est déjà caché (v. 36), ramassent tout : croire en Jésus, c'est croire au Père; le voir, c'est voir le Père; le rejeter, c'est s'exposer au jugement de sa parole au dernier jour. Jésus n'est pas venu pour juger mais pour sauver (3.17; 12.47), et pourtant sa parole rejetée devient elle-même le juge. Le commandement du Père est la vie éternelle : tout le passage reconduit donc à l'unique alternative johannique, croire et vivre, ou rejeter la lumière et demeurer dans les ténèbres.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope : l'arrière-plan vétérotestamentaire du Serviteur souffrant et du serpent d'airain, les parallèles johanniques directs sur l'élévation et le «&nbsp;JE SUIS&nbsp;», et les liens pauliniens sur l'endurcissement souverain et la substitution.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 53.1</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Citée au verset 38 («&nbsp;qui a cru à notre prédication?&nbsp;»). MacArthur y voit la prophétie de l'incrédulité d'Israël devant le Serviteur souffrant : le rejet du Messie était annoncé d'avance dans le chant du Serviteur.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 6.10</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Citée au verset 40 («&nbsp;il a aveuglé leurs yeux&nbsp;»). Fonde l'endurcissement judiciaire de Dieu sur Israël; le verset 41, renvoyant à Ésaïe 6.1, identifie la gloire vue par le prophète à celle de Jésus, l'Éternel.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 21.4-9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le serpent d'airain élevé par Moïse, arrière-plan du verbe «&nbsp;élevé&nbsp;» (verset 32; cf. 3.14) : regarder à Christ crucifié donne la vie, comme regarder le serpent guérissait.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 3.14-16</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Première occurrence du Fils de l'homme «&nbsp;élevé&nbsp;»; éclaire le verset 32 et l'attraction salvatrice de la croix dans le dessein du Père.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 6.44</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Nul ne peut venir à moi si le Père ne l'attire&nbsp;» : clé monergiste pour lire «&nbsp;j'attirerai tous les hommes à moi&nbsp;» (verset 32) comme attraction efficace et sélective, non comme universalisme.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 8.58</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le «&nbsp;JE SUIS&nbsp;» absolu où Jésus se présente comme Yahvé; appuie l'identification du verset 41 entre la gloire vue par Ésaïe et la gloire de Jésus, soit sa pleine déité.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 9-11</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'argumentation de Paul sur l'endurcissement souverain d'Israël et la responsabilité humaine éclaire le verset 39 («&nbsp;ils ne pouvaient croire&nbsp;») selon la lecture même de MacArthur.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 5.21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Celui qui n'a point connu le péché, il l'a fait devenir péché pour nous&nbsp;» : explique l'horreur du Sauveur sans péché au verset 27 devant la coupe de la colère divine.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La croix comme glorification et jugement cosmique</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Versets 23-33 : l'heure de la glorification du Fils est l'heure de la croix, qui est aussi le jugement de ce monde et l'expulsion du prince de ce monde.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'assemblée apprend à voir la croix non comme une défaite mais comme le sommet de la gloire de Dieu et la défaite définitive de Satan. La souffrance des siens, à son tour, peut devenir un lieu de glorification du Père.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Vraie humanité et pleine déité du Fils</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'âme troublée du verset 27 manifeste une humanité réelle; le verset 41, identifiant Jésus à la gloire vue par Ésaïe, manifeste sa déité éternelle de Yahvé.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Adorer le Christ, c'est adorer le Dieu-homme : assez homme pour porter notre péché et trembler devant la coupe, assez Dieu pour la boire jusqu'à la lie et nous sauver. Toute christologie qui amoindrit l'un des deux pôles trahit l'Évangile.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Incrédulité prédite et endurcissement souverain</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Versets 37-40 : malgré tant de signes, ils ne croyaient pas, et ne pouvaient croire, parce que Dieu, selon Ésaïe, a aveuglé leurs yeux et endurci leur cœur en jugement.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le rejet de l'Évangile ne prend pas Dieu au dépourvu et ne déjoue pas son plan. L'assemblée est gardée du désespoir devant l'incrédulité, sans jamais en faire une excuse : le pécheur qui refuse la lumière demeure pleinement responsable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'attraction efficace du Christ élevé</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Verset 32 : «&nbsp;quand j'aurai été élevé de la terre, j'attirerai tous les hommes à moi&nbsp;», lu à la lumière de 6.44.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le salut est l'œuvre souveraine de Dieu qui attire des hommes de toute nation au Christ crucifié. La mission de l'Église repose sur cette assurance : le Père donnera au Fils ceux qu'il a élus, et nul d'entre eux ne se perdra.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La fausse foi et l'urgence de croire dans la lumière</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Versets 35-36 (marcher dans la lumière encore présente) et 42-43 (les chefs qui croient mais n'avouent pas, aimant la gloire des hommes).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Une foi qui refuse de confesser le Christ par crainte des hommes n'est pas la foi qui sauve. L'assemblée est appelée à une foi qui demeure et confesse, et avertie que le temps de l'invitation est compté : la lumière n'est là que pour un peu de temps.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Au verset 27, Jésus refuse de prier «&nbsp;délivre-moi de cette heure&nbsp;» et choisit «&nbsp;glorifie ton nom&nbsp;». En quoi sa manière d'affronter l'angoisse redéfinit-elle ce que nous demandons à Dieu dans nos propres heures de détresse?</li>
+      <li>Comment la croix peut-elle être à la fois le jugement de ce monde, la défaite de Satan et la glorification du Fils? Que change cette lecture pour notre regard sur la souffrance et l'apparente victoire du mal?</li>
+      <li>Le verset 32 promet que le Christ élevé attirera «&nbsp;tous les hommes&nbsp;». À la lumière de 6.44, comment expliquer cette attraction sans tomber dans l'universalisme du salut de chaque individu?</li>
+      <li>Jean affirme que les contemporains de Jésus «&nbsp;ne pouvaient croire&nbsp;» parce que Dieu avait endurci leurs cœurs (versets 39-40). Comment tenir ensemble la souveraineté de Dieu dans le jugement et la pleine responsabilité de l'incrédule?</li>
+      <li>Le verset 41 identifie la gloire vue par Ésaïe au temple à la gloire de Jésus. Quelles conséquences cette identification a-t-elle pour notre confession de la déité du Christ face à ceux qui la nient?</li>
+      <li>Les chefs des versets 42-43 «&nbsp;crurent&nbsp;» mais refusèrent de l'avouer, aimant la gloire des hommes plus que celle de Dieu. Quelles formes prend aujourd'hui cette foi cachée qui n'ose confesser le Christ, et en quoi diffère-t-elle de la foi qui sauve?</li>
+      <li>«&nbsp;La lumière est encore pour un peu de temps au milieu de vous&nbsp;» (verset 35). Comment communiquer à notre génération l'urgence de croire maintenant, sans présumer que l'invitation restera indéfiniment ouverte?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Jean 12.27-50 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Jean : le Verbe fait chair&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Jean-12-27-50.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Éphésiens 2 · De la mort à la vie par grâce et d&#x27;étrangers à concitoyens dans le saint temple · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Éphésiens 2 dans la perspective de John MacArthur : De la mort à la vie par grâce et d&#x27;étrangers à concitoyens dans le saint temple.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Éphésiens 2</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Éphésiens 2</span></p>
+    <h1 class="hero__title">De la mort à la vie par grâce et d'étrangers à concitoyens dans le saint temple</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car c’est par la grâce que vous êtes sauvés, par le moyen de la foi. Et cela ne vient pas de vous, c’est le don de Dieu. Ce n’est point par les œuvres, afin que personne ne se glorifie.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Éphésiens 2.8-⁠9 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 3 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Éphésiens 2</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Après avoir prié en 1.19-⁠20 que les croyants saisissent l'infinie grandeur de la puissance que Dieu a déployée en ressuscitant Christ d'entre les morts, Paul démontre au chapitre 2 comment cette même puissance de résurrection s'est exercée envers les croyants eux-mêmes (1908). Le chapitre se déploie en deux tableaux symétriques structurés tous deux par le contraste « autrefois... mais maintenant » (<i>pote... nyni de</i>) : 1) la réconciliation verticale du pécheur avec Dieu, de la mort spirituelle à la vie nouvelle par grâce au moyen de la foi (2.1-⁠10); 2) la réconciliation horizontale des païens et des Juifs, de l'aliénation à l'unité d'un seul homme nouveau et d'un saint temple dans le Seigneur (2.11-⁠22).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Vous étiez morts par vos offenses et par vos péchés,</p><cite class="verse__ref">Éphésiens 2.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">dans lesquels vous marchiez autrefois, selon le train de ce monde, selon le prince de la puissance de l’air, de l’esprit qui agit maintenant dans les fils de la rébellion.</p><cite class="verse__ref">Éphésiens 2.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous tous aussi, nous étions de leur nombre, et nous vivions autrefois selon les convoitises de notre chair, accomplissant les volontés de la chair et de nos pensées, et nous étions par nature des enfants de colère, comme les autres…</p><cite class="verse__ref">Éphésiens 2.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais Dieu, qui est riche en miséricorde, à cause du grand amour dont il nous a aimés,</p><cite class="verse__ref">Éphésiens 2.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">nous qui étions morts par nos offenses, nous a rendus vivants avec Christ (c’est par grâce que vous êtes sauvés);</p><cite class="verse__ref">Éphésiens 2.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">il nous a ressuscités ensemble, et nous a fait asseoir ensemble dans les lieux célestes, en Jésus-Christ,</p><cite class="verse__ref">Éphésiens 2.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">afin de montrer dans les siècles à venir l’infinie richesse de sa grâce par sa bonté envers nous en Jésus-Christ.</p><cite class="verse__ref">Éphésiens 2.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car c’est par la grâce que vous êtes sauvés, par le moyen de la foi. Et cela ne vient pas de vous, c’est le don de Dieu.</p><cite class="verse__ref">Éphésiens 2.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ce n’est point par les œuvres, afin que personne ne se glorifie.</p><cite class="verse__ref">Éphésiens 2.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car nous sommes son ouvrage, ayant été créés en Jésus-Christ pour de bonnes œuvres, que Dieu a préparées d’avance, afin que nous les pratiquions.</p><cite class="verse__ref">Éphésiens 2.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pourquoi, vous autrefois païens dans la chair, appelés incirconcis par ceux qu’on appelle circoncis et qui le sont en la chair par la main de l’homme,</p><cite class="verse__ref">Éphésiens 2.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">souvenez-vous que vous étiez en ce temps-là sans Christ, privés du droit de cité en Israël, étrangers aux alliances de la promesse, sans espérance et sans Dieu dans le monde.</p><cite class="verse__ref">Éphésiens 2.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais maintenant, en Jésus-Christ, vous qui étiez jadis éloignés, vous avez été rapprochés par le sang de Christ.</p><cite class="verse__ref">Éphésiens 2.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car il est notre paix, lui qui des deux n’en a fait qu’un, et qui a renversé le mur de séparation, l’inimitié,</p><cite class="verse__ref">Éphésiens 2.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">ayant anéanti par sa chair la loi des ordonnances dans ses prescriptions; il a voulu créer en lui-même avec les deux un seul homme nouveau, en établissant la paix,</p><cite class="verse__ref">Éphésiens 2.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">et les réconcilier avec Dieu l’un et l’autre en un seul corps, par la croix, en détruisant par elle l’inimitié.</p><cite class="verse__ref">Éphésiens 2.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Il est venu annoncer la paix à vous qui étiez loin, et la paix à ceux qui étaient près;</p><cite class="verse__ref">Éphésiens 2.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">car par lui les uns et les autres nous avons accès auprès du Père, dans un même Esprit.</p><cite class="verse__ref">Éphésiens 2.18 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ainsi donc, vous n’êtes plus des étrangers, ni des gens du dehors; mais vous êtes concitoyens des saints, gens de la maison de Dieu.</p><cite class="verse__ref">Éphésiens 2.19 · NEG</cite></figure><figure class="verse"><p class="verse__text">Vous avez été édifiés sur le fondement des apôtres et des prophètes, Jésus-Christ lui-même étant la pierre angulaire.</p><cite class="verse__ref">Éphésiens 2.20 · NEG</cite></figure><figure class="verse"><p class="verse__text">En lui tout l’édifice, bien coordonné, s’élève pour être un temple saint dans le Seigneur.</p><cite class="verse__ref">Éphésiens 2.21 · NEG</cite></figure><figure class="verse"><p class="verse__text">En lui vous êtes aussi édifiés pour être une habitation de Dieu en Esprit.</p><cite class="verse__ref">Éphésiens 2.22 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire de ce chapitre unit la confession sotériologique (dont 2.8-⁠10 est la synthèse la plus célèbre de tout le corpus paulinien) et l'exposition ecclésiologique qui prépare directement l'explication du mystère au chapitre 3 (3.1-⁠13).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Éphésiens 2</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Dans l'Antiquité du premier siècle, aucun fossé social ou religieux n'était plus infranchissable que celui qui séparait le Juif et le païen (<i>ethnē</i>, 2.11) : les Juifs appelaient les Gentils par mépris « les incirconcis », refusaient d'entrer sous leur toit, et dans le temple de Jérusalem une barrière de pierre (le <i>soreg</i>, 2.14) menaçait de mort immédiate tout incirconcis qui s'approchait du sanctuaire intérieur (1909, 1910). En annonçant aux croyants d'origine païenne d'Éphèse que Christ a détruit ce mur de séparation et a fait des deux un seul homme nouveau (2.15), Paul révèle une unité surnaturelle que le monde gréco-romain n'avait jamais vue.</p></div><aside class="grille__marge"><p class="marge__titre">Deux détails échappent au lecteur moderne.</p><ul class="points"><li><b>Les trois ennemis de l'homme non régénéré (2.1-⁠3).</b> En Éphésiens 2.2-⁠3, MacArthur (1908) relève que le mort spirituel marche pourtant activement sous une triple tyrannie : 1) l'ennemi extérieur, « le train de ce monde » (<i>ton aiōna tou kosmou toutou</i>, le système idéologique séculier); 2) l'ennemi surnaturel, « le prince de la puissance de l'air » (Satan, qui inspire l'esprit de rébellion dans les fils de la rébellion); 3) l'ennemi intérieur, « les convoitises de notre chair » (<i>tais epithymiais tēs sarkos</i>, les désirs de la pensée et de la nature déchue).</li><li><b>Le chef-d'œuvre de Dieu (poiēma, 2.10) et la pierre angulaire (akrogōniaios, 2.20).</b> En 2.10, les rachetés sont l'ouvrage de Dieu (<i>autou gar esmen poiēma</i>, d'où vient le français « poème » : le chef-d'œuvre d'artisanat spirituel façonné par la nouvelle création en Christ). En 2.20, l'Église est bâtie sur le fondement des apôtres et des prophètes du Nouveau Testament (cf. 3.5), Jésus-Christ lui-même étant l'<i>akrogōniaios</i>, la pierre angulaire maîtresse qui détermine l'alignement, la cohésion et la stabilité de tout l'édifice (1908, 1911).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Éphésiens 2</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Éphésiens 2.1</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>tois paraptōmasin kai tais hamartiais hymōn</i> (« par vos offenses et par vos péchés », א, A, B, D, F, G, P, SBLGNT, NA28, Westcott et Hort), ou omission du pronom <i>hymōn</i> dans K, L, Ψ, texte byzantin, Textus Receptus.</dd></div><div><dt class="mot__label">NEG79</dt><dd>« par vos offenses et par vos péchés » : la NEG79 et toutes nos versions françaises retiennent le possessif.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Nuance stylistique minime, le pronom étant de toute façon exprimé dès le début du verset (<i>Kai hymas</i>).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Éphésiens 2.21</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>pasa oikodomē</i> sans article (א*, B, D, F, G, K, L, P, SBLGNT, NA28, Westcott et Hort, texte byzantin), ou <i>pasa hē oikodomē</i> avec l'article (א2, A, C, Église orthodoxe grecque 1904, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« tout l'édifice, bien coordonné, s'élève pour être un temple saint dans le Seigneur ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Dans la koinè du Nouveau Testament, <i>pasa oikodomē</i> déterminé par <i>synarmologoumenē</i> désigne bien la totalité unique de l'édifice de l'Église (1911).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique (lus pour Ép 2.1-⁠22)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Textus Receptus (Bible Hub)</li><li>Septante et hébreu massorétique pour Ésaïe 57.19</li><li>28.16</li><li>versions françaises : NEG79, LSG, S21, Darby, NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucune différence de numérotation des versets 1 à 22.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Éphésiens 2</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Éphésiens</span> <span>2.1</span> <span>–</span> <span>2.3</span></p><div class="plan__corps"><p class="plan__titre">La condition désespérée du pécheur sans Christ : mort par ses offenses, asservi au monde, à Satan et à la chair, et enfant de colère par nature.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Accusatif initial <i>Kai hymas ontas nekrous</i> conclu par <i>ēmetha tekna physei orgēs</i> (2.1-⁠3).</p></div></li><li><p class="plan__ref"><span>Éphésiens</span> <span>2.4</span> <span>–</span> <span>2.10</span></p><div class="plan__corps"><p class="plan__titre">Le miracle de la grâce souveraine : Dieu, riche en miséricorde, nous vivifie, nous ressuscite et nous fait asseoir avec Christ, nous sauvant par grâce au moyen de la foi pour les bonnes œuvres préparées d'avance.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Intervention divine <i>Ho de Theos</i> (2.4) et synthèse doctrinale <i>Tē gar chariti este sesōsmenoi</i> (2.8-⁠10).</p></div></li><li><p class="plan__ref"><span>Éphésiens</span> <span>2.11</span> <span>–</span> <span>2.18</span></p><div class="plan__corps"><p class="plan__titre">La paix par la croix : autrefois éloignés, les païens sont rapprochés par le sang de Christ, qui a détruit le mur de séparation pour créer un seul homme nouveau et donner aux deux accès auprès du Père dans un même Esprit.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Unique impératif des chapitres 1-⁠3 : <i>Dio mnēmoneuete</i> (2.11) suivi du pivot <i>Nyni de en Christō Iēsou</i> (2.13).</p></div></li><li><p class="plan__ref"><span>Éphésiens</span> <span>2.19</span> <span>–</span> <span>2.22</span></p><div class="plan__corps"><p class="plan__titre">La nouvelle identité du peuple de Dieu : concitoyens des saints, membres de la famille de Dieu et pierres vivantes édifiées sur le fondement des apôtres et des prophètes avec Jésus-Christ pour pierre angulaire.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Conclusion <i>Ara oun ouketi este xenoi...</i> et trois métaphores ecclésiales (cité, famille, temple, 2.19-⁠22).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Éphésiens 2.5-⁠6</dt><dd>Les trois aoristes actifs composés avec <i>syn-</i> - <i><b>synezōopoiēsen</b> tō Christō</i> (il nous a rendus à la vie avec Christ), <i>kai <b>synēgeiren</b></i> (et il nous a ressuscités ensemble), <i>kai <b>synekathisen</b> en tois epouraniois</i> (et il nous a fait asseoir ensemble dans les lieux célestes) - prouvent que l'union du croyant avec la mort, la résurrection et l'intronisation de Christ est un fait spirituel déjà accompli aux yeux de Dieu.</dd></div><div><dt>Éphésiens 2.11</dt><dd>L'impératif présent <i>Dio <b>mnēmoneuete</b> hoti pote hymeis ta ethnē en sarki</i> (« C'est pourquoi, souvenez-vous qu'autrefois vous, les païens dans la chair... ») est le seul impératif de toute la première moitié d'Éphésiens (chapitres 1 à 3) : avant d'exhorter le croyant à marcher (ch. 4-⁠6), Dieu lui commande simplement de se souvenir de l'abîme d'où la grâce l'a tiré.</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Trois mots-clés</p></header>
+<p class="lead">Trois mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">grâce</a><a href="#mot-2">ouvrage</a><a href="#mot-3">pierre angulaire</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">grâce</h3><p class="mot__translit">charis</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>faveur imméritée, bonté gratuite et souveraine qui s'exerce envers celui qui a mérité le jugement</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>charis</i> (apparenté à <i>chairō</i>, se réjouir; 155 occurrences dans le NT dont 12 dans Éphésiens) désigne dans le vocabulaire sotériologique de Paul la libre bienveillance de Dieu qui sauve le pécheur sans aucun mérite humain.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Éphésiens 2.5, 7, 8, MacArthur (1908) souligne que Paul répète « c’est par la grâce que vous êtes sauvés » pour montrer que de la régénération initiale jusqu'aux siècles à venir où Dieu montrera « l'infinie richesse de sa grâce », tout dans notre salut est un don gratuit de Dieu.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> c’est par la grâce que vous êtes sauvés, par le moyen de la foi (2.8)</li><li><b>NEG79</b> c’est par la grâce que vous êtes sauvés, par le moyen de la foi (2.8)</li><li class="ecart"><b>Darby</b> vous êtes sauvés par la grâce, par la foi (2.8)</li><li><b>LSG</b> c’est par la grâce que vous êtes sauvés, par le moyen de la foi (2.8)</li><li class="ecart"><b>NBS</b> c’est par la grâce, en effet, que vous êtes sauvés au moyen de la foi (2.8)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">ouvrage</h3><p class="mot__translit">poiēma</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>ouvrage façonné, création artistique, chef-d'œuvre d'un artisan</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie précisée par Thayer, <i>poiēma</i> (dérivé du verbe <i>poieō</i>, faire, créer, produire; 2 occurrences dans le NT : Rm 1.20 pour les œuvres de la création physique, et Ép 2.10 pour la nouvelle création spirituelle) désigne le produit achevé du travail d'un maître-artisan.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Éphésiens 2.10, « Car nous sommes son ouvrage (<i>poiēma</i>), ayant été créés en Jésus-Christ pour de bonnes œuvres, que Dieu a préparées d'avance » : les bonnes œuvres ne sont jamais la cause du salut, mais elles en sont le fruit infaillible préparé par Dieu (MacArthur, 1908).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> c’est lui qui nous a faits; nous avons été créés en Jésus-Christ (2.10)</li><li><b>NEG79</b> nous sommes son ouvrage, ayant été créés en Jésus-Christ (2.10)</li><li class="ecart"><b>Darby</b> nous sommes son ouvrage, ayant été créés dans le Christ Jésus (2.10)</li><li><b>LSG</b> nous sommes son ouvrage, ayant été créés en Jésus-Christ (2.10)</li><li class="ecart"><b>NBS</b> nous sommes son ouvrage, nous avons été créés en Jésus-Christ (2.10)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">pierre angulaire</h3><p class="mot__translit">akrogōniaios</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>situé à l'angle extrême; pierre angulaire de fondation sur laquelle reposent et s'alignent deux murs</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>akrogōniaios</i> (composé de <i>akros</i>, extrême, sommet, et de <i>gōnia</i>, angle, coin; 2 occurrences dans le NT : Ép 2.20; 1 P 2.6, issu de la Septante d'Ésaïe 28.16) désigne la pierre maîtresse posée à l'angle du fondement qui soutient et relie toute la maçonnerie du temple.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Éphésiens 2.20, l'Église est édifiée sur l'enseignement apostolique et prophétique, « Jésus-Christ lui-même étant la pierre angulaire » qui unit Juifs et païens en un seul sanctuaire (MacArthur, 1911).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> Jésus-Christ lui-même étant la pierre angulaire (2.20)</li><li><b>NEG79</b> Jésus-Christ lui-même étant la pierre angulaire (2.20)</li><li class="ecart"><b>Darby</b> Jésus Christ lui-même étant la maîtresse pierre du coin (2.20)</li><li><b>LSG</b> Jésus-Christ lui-même étant la pierre angulaire (2.20)</li><li class="ecart"><b>NBS</b> Jésus-Christ lui-même étant la pierre de l’angle (2.20)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Éphésiens 2</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans ses quatre prédications sur Éphésiens 2 (<i>1908</i> à <i>1911</i>), John MacArthur expose la double réconciliation opérée par Dieu : celle du pécheur avec Dieu (2.1-⁠10) et celle des Juifs et des païens entre eux au sein du corps de Christ (2.11-⁠22).</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : quatre sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur Éphésiens 2 (1908 à 1911, 4 prédications) et notes de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">1908</span></th><td><a href="https://www.gty.org/sermons/1908" target="_blank" rel="noopener">Coming Alive in Christ</a></td><td>Ép 2.1-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">1909</span></th><td><a href="https://www.gty.org/sermons/1909" target="_blank" rel="noopener">The Unity of the Body, Part 1</a></td><td>Ép 2.11-⁠12</td></tr><tr><th scope="row"><span class="mot-fr">1910</span></th><td><a href="https://www.gty.org/sermons/1910" target="_blank" rel="noopener">The Unity of the Body, Part 2</a></td><td>Ép 2.13-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">1911</span></th><td><a href="https://www.gty.org/sermons/1911" target="_blank" rel="noopener">The Unity of the Body, Part 3</a></td><td>Ép 2.16-⁠22</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p>Aux versets 1 à 10 (<i>1908</i>), Paul dresse d'abord le constat clinique de la dépravation humaine : l'homme inconverti n'est pas un malade spirituel ni un naufragé qui tendrait le bras pour saisir une bouée, il est un cadavre spirituel (« vous étiez morts par vos offenses et par vos péchés », v. 1), esclave du monde, du diable et des convoitises de la chair, et « par nature des enfants de colère » (v. 2-⁠3). Un mort ne pouvant rien faire pour se ressusciter lui-même, tout repose sur les deux mots décisifs du verset 4 : « Mais Dieu » (<i>Ho de Theos</i>). Par son grand amour et sa riche miséricorde, Dieu nous a vivifiés, ressuscités et fait asseoir avec Christ (v. 4-⁠6). Aux versets 8 à 10, MacArthur souligne que la foi elle-même est « un don de Dieu », qui ne vient pas de nous (1908) : le salut tout entier, par la grâce au moyen de la foi, vient de Dieu. Que le démonstratif neutre « et cela » (<i>kai touto</i>) englobe grammaticalement tout l'énoncé est une décision d'interprétation de la recherche. Rien ne vient de nous, afin que personne ne se glorifie, et notre vie nouvelle se manifeste désormais par les bonnes œuvres que Dieu a préparées d'avance.</p><p>Aux versets 11 à 22 (<i>1909</i> à <i>1911</i>), Paul applique cette grâce à l'unité de l'Église : autrefois étrangers aux alliances de la promesse, sans espérance et sans Dieu (v. 11-⁠12), les païens rachetés ont été rapprochés par le sang de Christ (v. 13). Christ est lui-même notre paix : en abolissant dans sa chair la loi des ordonnances cérémonielles qui séparait Israël des nations, il a créé en lui-même avec les deux « un seul homme nouveau » (<i>hena kainon anthrōpon</i>, v. 15) et a ouvert aux Juifs et aux Gentils un libre accès auprès du Père dans un même Esprit (v. 18). L'Église est ainsi décrite par trois images ascendantes (v. 19-⁠22) : un royaume de concitoyens, une famille d'enfants aimés et un temple saint bâti sur le fondement des apôtres et des prophètes du Nouveau Testament, avec Christ pour pierre angulaire.</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Éphésiens 2.1-⁠4.</b> En grec, les versets 1 à 3 constituent une longue protase participiale sans verbe principal pour dépeindre l'abîme de la mort spirituelle, jusqu'à ce qu'éclate au verset 4 le sujet divin et le verbe principal au verset 5 : <i>Ho de Theos, plousios ōn en eleei... synezōopoiēsen tō Christō</i> (« Mais Dieu, qui est riche en miséricorde... nous a rendus à la vie avec Christ »).</li><li><b>Éphésiens 2.8-⁠10.</b> La préposition change délibérément trois fois en 2.8-⁠10 pour définir la place exacte des œuvres dans le salut : nous sommes sauvés <i>tē chariti</i> (datif de cause, par la grâce), <i>dia pisteōs</i> (génitif de moyen, au moyen de la foi), <i>ouk ex ergōn</i> (négation de la source, non par les œuvres, v. 9), mais créés en Jésus-Christ <i>epi ergois agathois</i> (datif de but, pour de bonnes œuvres, v. 10).</li><li><b>Éphésiens 2.12-⁠13, 19.</b> Les cinq privations des païens sans Christ en 2.12 (sans Christ, exclus de la cité d'Israël, étrangers aux alliances, sans espérance et sans Dieu dans le monde) sont renversées point par point en 2.13-⁠22 : rapprochés par le sang de Christ, réconciliés, ayant accès auprès du Père, concitoyens des saints et gens de la maison de Dieu.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Cinq passages</p></header>
+<p class="lead">Cinq passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Colossiens 2.13-⁠14; Romains 5.6-⁠10</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Colossiens 2.13 (« Vous qui étiez morts par vos offenses... il vous a rendus à la vie ensemble avec lui ») et Romains 5.6-⁠10 expriment le même miracle de la régénération souveraine que déploie Éphésiens 2.1-⁠5.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Tite 3.3-⁠7; Romains 3.24, 27-⁠28</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Tite 3.5 (« il nous a sauvés, non à cause des œuvres de justice que nous aurions faites, mais selon sa miséricorde ») et Romains 3.27-⁠28 forment avec Éphésiens 2.8-⁠9 le rempart néotestamentaire du salut par la grâce seule, au moyen de la foi seule.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 57.19; Zacharie 6.12-⁠13</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">En Éphésiens 2.17, Paul cite librement la Septante grecque et l'hébreu massorétique d'Ésaïe 57.19 (« Paix, paix à celui qui est loin et à celui qui est près ! dit l'Éternel ») pour proclamer l'Évangile de paix annoncé aux païens éloignés et aux Juifs proches.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 28.16; Psaume 118.22; 1 Pierre 2.4-⁠8</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">En Éphésiens 2.20-⁠22, l'image de Jésus-Christ comme pierre angulaire (<i>akrogōniaios</i>) sur laquelle s'élève le temple spirituel reprend la Septante grecque et le texte massorétique d'Ésaïe 28.16 et Psaume 118.22, parallèlement à 1 Pierre 2.4-⁠8.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Galates 3.28; Colossiens 3.11</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">La création d'un « seul homme nouveau » en Christ où disparaît l'inimitié entre Juif et Grec (Ép 2.14-⁠16) correspond à l'affirmation de Galates 3.28 et Colossiens 3.11.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Trois axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La mort spirituelle du pécheur et la régénération monergiste</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Éphésiens 2.1-⁠6, les hommes sans Christ sont morts par leurs offenses et par nature enfants de colère; mais Dieu, riche en miséricorde, à cause du grand amour dont il nous a aimés, nous a rendus à la vie ensemble avec Christ alors même que nous étions morts.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Dépravation totale (incapacité spirituelle radicale de l'homme déchu) et régénération souveraine (grâce efficace qui vivifie le mort spirituel).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Répondant à la vision des ossements desséchés d'Ézéchiel 37.1-⁠14 et à Jean 5.25 (« les morts entendront la voix du Fils de Dieu, et ceux qui l'auront entendue vivront »), Éphésiens 2.1-⁠5 établit que la nouvelle naissance est une résurrection spirituelle opérée par Dieu seul.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Puisque nous étions spirituellement morts lorsque Dieu nous a vivifiés, toute la gloire de notre conversion revient exclusivement à sa grâce souveraine.</p></div></div></section><section class="theme"><h3 class="theme__title">Le salut par la grâce seule, au moyen de la foi seule, pour les bonnes œuvres</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Éphésiens 2.8-⁠10, c'est par la grâce que les croyants sont sauvés, par le moyen de la foi; cela ne vient pas d'eux, c'est le don de Dieu, et non point par les œuvres afin que personne ne se glorifie; car ils sont son ouvrage, créés en Jésus-Christ pour de bonnes œuvres préparées d'avance.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Justification et salut <i>sola gratia</i> et <i>sola fide</i>, suivis nécessairement de la sanctification pratique (les bonnes œuvres comme résultat et jamais comme cause du salut).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Synthétisant toute la polémique de Galates et de Romains contre le légalisme tout en prévenant l'antinomisme (comme Jacques 2.14-⁠26), Éphésiens 2.8-⁠10 définit l'ordre immuable de l'Évangile.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Toute religion humaine renverse Éphésiens 2.8-⁠10 en faisant des œuvres la condition du salut; le chrétien rejette toute confiance dans ses mérites tout en marchant avec zèle dans les bonnes œuvres que Dieu a préparées pour lui.</p></div></div></section><section class="theme"><h3 class="theme__title">L'unité du corps de Christ et le fondement apostolique de l'Église</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Éphésiens 2.11-⁠22, Christ a aboli par la croix le mur de séparation entre Juifs et païens pour créer en lui-même un seul homme nouveau, donnant aux deux accès auprès du Père dans un même Esprit et les édifiant sur le fondement des apôtres et des prophètes avec Jésus-Christ pour pierre angulaire.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Unité spirituelle de l'Église (un seul peuple de Dieu du Nouveau Testament), cessation du ministère fondateur unique des apôtres et des prophètes du premier siècle (le fondement ne se pose qu'une seule fois) et habitation trinitaire dans l'Église.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Alors que la gloire de l'Éternel habitait autrefois le tabernacle (Ex 40.34) puis le temple de Salomon (1 R 8.10-⁠11), Dieu habite aujourd'hui par son Esprit dans le temple vivant qu'est l'Église universelle et locale.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Puisque le fondement des apôtres et des prophètes a été posé une fois pour toutes dans le Nouveau Testament, l'Église ne cherche pas de nouvelles révélations fondatrices, mais s'édifie sur l'Écriture avec Christ pour pierre angulaire.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Pourquoi est-il indispensable d'obéir au commandement de 2.11 (« Souvenez-vous... ») et de nous rappeler l'état de mort et de perdition dans lequel nous étions avant que Dieu nous fasse grâce (2.1-⁠3, 12) ?</li><li>Comment Éphésiens 2.8-⁠10 nous garde-t-il à la fois du légalisme (vouloir gagner le salut par les œuvres) et du laxisme (négliger les bonnes œuvres préparées d'avance) ?</li><li>Si Christ a versé son sang pour abattre le mur d'inimitié le plus profond de l'Antiquité (2.14-⁠16), comment devons-nous traiter toute barrière sociale, ethnique ou culturelle au sein de l'Église locale ?</li><li>Mesurons-nous le privilège prodigieux résumé en 2.18 : avoir, par Christ, accès auprès du Père dans un même Esprit ?</li><li>En quoi le fait que nous avons été « édifiés sur le fondement des apôtres et des prophètes, Jésus-Christ lui-même étant la pierre angulaire » (2.20) détermine-t-il l'autorité suprême de l'Écriture dans notre assemblée ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Éphésiens 2 · 3 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Ephesiens-2.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

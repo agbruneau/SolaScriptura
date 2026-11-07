@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'épître à Philémon · L'Évangile qui réconcilie</title>
+<meta name="description" content="Présentation de l'épître à Philémon pour une étude biblique : introduction, les quatre mouvements de la lettre et la leçon centrale. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Philémon</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#salutation">La maison</a>
+    <a href="#caractere">Un homme de pardon</a>
+    <a href="#intercession">Mets-le sur mon compte</a>
+    <a href="#motivations">Un cœur réconcilié</a>
+    <a href="#centrale">Leçon centrale</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#predication">La série</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Vue d'ensemble · Philémon 1.1-25</p>
+    <h1 class="hero__title">Philémon</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Et s'il t'a fait quelque tort, ou s'il te doit quelque chose, mets-le sur mon compte.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Philémon 1.18 · NEG</p>
+    <p class="hero__series">Série : <b>Philémon : l'Évangile qui réconcilie</b></p>
+    <p class="hero__meta">Quand la grâce reçue devient grâce donnée · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Introduction</p>
+      <h2 class="sec-title">Une lettre où le pardon prend visage</h2>
+      <p class="ref">Épître à Philémon</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je te prie pour mon enfant, que j'ai engendré étant dans les chaînes, Onésime.</p>
+        <cite class="verse__ref">Philémon 1.10 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Non plus comme un esclave, mais comme supérieur à un esclave, comme un frère bien-aimé.</p>
+        <cite class="verse__ref">Philémon 1.16 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'épître à Philémon ; la plus brève et la plus personnelle des lettres de Paul, vingt-cinq versets d'un seul chapitre, où l'Évangile cesse d'être théorie pour devenir une transaction concrète de grâce : un maître lésé est appelé à recevoir son esclave fugitif comme un frère bien-aimé.</p>
+    <ul class="points">
+      <li><b>Une affaire privée portée devant l'Église.</b> Paul n'écrit pas à une assemblée mais à un homme : «&nbsp;à Philémon, notre bienaimé et notre compagnon d'œuvre&nbsp;» (verset 1). Pourtant la lettre s'adresse aussi à Apphia, à Archippe et à «&nbsp;l'Eglise qui est dans ta maison&nbsp;» (verset 2). Membre aisé de l'Église de Colosses, Philémon avait une demeure assez grande pour y accueillir l'assemblée, et Paul veut que l'affaire d'Onésime se règle devant les croyants rassemblés, afin que toute la communauté reçoive une leçon vivante de pardon.</li>
+      <li><b>L'auteur : Paul, prisonnier de Jésus-Christ.</b> Les premiers mots donnent le ton de toute la lettre : non «&nbsp;Paul, apôtre&nbsp;», mais «&nbsp;Paul, prisonnier de Jésus-Christ&nbsp;» (verset 1). L'apôtre plaide en ami éprouvé et non en supérieur; c'est de sa cellule, dans les chaînes, que part cette arithmétique de la grâce.</li>
+      <li><b>L'occasion : un esclave fugitif converti.</b> Onésime, esclave de Philémon, avait volé son maître (verset 18) et fui à Rome pour se perdre dans l'anonymat de la capitale. Là, dans des circonstances que l'Écriture ne rapporte pas, le fugitif rencontra Paul en prison et fut conduit à la foi : Paul l'a «&nbsp;engendré&nbsp;» dans les chaînes (verset 10). L'apôtre le renvoie maintenant à Colosses, porteur de cette lettre, accompagné de Tychique pour la sécurité du voyage.</li>
+      <li><b>Une épître de la captivité, jumelle de Colossiens.</b> Écrite vers 60 à 62 après Jésus-Christ, Philémon partage avec Colossiens son contexte, sa date et plusieurs noms (Épaphras, Marc, Aristarque, Démas, Luc). Tychique portait les deux lettres au même moment, accompagné d'Onésime «&nbsp;le fidèle et bien-aimé frère, qui est des vôtres&nbsp;» (Colossiens 4.9). Cette proximité convainquit très tôt les Pères de l'Église de sa paternité paulinienne.</li>
+      <li><b>Le pardon, sans que le mot soit prononcé.</b> Le thème unique qui domine la lettre, selon MacArthur, est le pardon, bien que le terme n'apparaisse jamais. Paul ne disserte pas sur le pardon : il en met une définition vivante sous les yeux de Philémon et de l'Église. L'Évangile transforme ainsi la relation la plus inégale de l'Antiquité, celle du maître et de l'esclave.</li>
+      <li><b>Quatre mouvements d'une grande netteté.</b> La structure interne offre un découpage naturel en quatre unités de sens qui se suivent sans rupture. La <span class="surligne">salutation (versets 1-3)</span> ancre tout dans la grâce et la paix de Dieu. Le <span class="surligne">portrait de l'homme de pardon (versets 4-7)</span> décrit le caractère que la grâce a déjà façonné. L'<span class="surligne">intercession (versets 8-18)</span> porte le cœur de la lettre : «&nbsp;mets-le sur mon compte&nbsp;». Les <span class="surligne">motivations (versets 19-25)</span> scellent l'appel par la dette infinie de la conversion.</li>
+      <li><b>Le verset qui commande tout le livre.</b> <span class="surligne">Philémon 1.18 gouverne l'ensemble de l'épître : «&nbsp;mets-le sur mon compte&nbsp;» donne à voir l'imputation et la substitution.</span> Paul, innocent, s'offre à payer la dette du coupable pour le réconcilier avec celui qu'il a lésé, à l'image de Christ qui réconcilie les pécheurs avec Dieu. Cette page suit ce fil d'un bout à l'autre : celui qui a été gratuitement pardonné ne peut refuser le pardon à son frère.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ SALUTATION (versets 1-3) ============ -->
+  <article class="section reveal" id="salutation">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Premier mouvement · Versets 1-3</p>
+      <h2 class="sec-title">La grâce et la paix dans la maison</h2>
+      <p class="ref">Philémon 1.1-3</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">À la sœur Apphia, à Archippe, notre compagnon de combat, et à l'Eglise qui est dans ta maison.</p>
+        <cite class="verse__ref">Philémon 1.2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Que la grâce et la paix vous soient données de la part de Dieu notre Père et du Seigneur Jésus-Christ !</p>
+        <cite class="verse__ref">Philémon 1.3 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avant tout appel au pardon, Paul ancre la communauté dans la grâce et la paix qui viennent du Père et du Seigneur Jésus-Christ, et il place l'affaire privée d'Onésime sous le regard de l'Église rassemblée. La salutation plante le décor : un prisonnier qui plaide en ami, une maison devenue Église, et la grâce comme source de tout pardon à venir.</p>
+    <ul class="points">
+      <li><b>Un prisonnier qui plaide en ami.</b> Paul se présente «&nbsp;prisonnier de Jésus-Christ&nbsp;» (verset 1), aux côtés de Timothée. Il pourrait commander en vertu de son autorité apostolique, mais il choisit d'avancer comme un compagnon d'œuvre auprès de Philémon, «&nbsp;notre bienaimé&nbsp;». Le ton de la grâce est posé avant même la requête.</li>
+      <li><b>Une maison devenue Église.</b> La lettre nomme Apphia, Archippe et «&nbsp;l'Eglise qui est dans ta maison&nbsp;» (verset 2). Ce qui se réglera entre Philémon et Onésime concerne le corps tout entier : l'affaire n'est pas réglée en secret, mais devant la communauté, qui en recevra un enseignement vivant.</li>
+      <li><b>La grâce, source de tout pardon.</b> «&nbsp;Que la grâce et la paix vous soient données de la part de Dieu notre Père et du Seigneur Jésus-Christ&nbsp;» (verset 3). Loin d'être une formule, ce vœu fixe le fondement de toute la lettre : c'est la grâce reçue de Dieu qui rendra possible la grâce donnée à un frère.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LE CARACTÈRE (versets 4-7) ============ -->
+  <article class="section reveal" id="caractere">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Deuxième mouvement · Versets 4-7</p>
+      <h2 class="sec-title">Le caractère d'un homme de pardon</h2>
+      <p class="ref">Philémon 1.4-7</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Parce que je suis informé de la foi que tu as au Seigneur Jésus et de ton amour pour tous les saints.</p>
+        <cite class="verse__ref">Philémon 1.5 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car par toi, frère, le cœur des saints a été tranquillisé.</p>
+        <cite class="verse__ref">Philémon 1.7 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avant de demander, Paul rend grâces : il décrit le terreau de foi et d'amour d'où le pardon pourra naître. La foi authentique de Philémon, prouvée par son amour pour tous les saints, fait de lui un homme déjà capable du pardon que l'apôtre s'apprête à lui demander. Le caractère gracié précède l'acte de grâce.</p>
+    <ul class="points">
+      <li><b>Une action de grâces sincère.</b> «&nbsp;Je rends continuellement grâces à mon Dieu, faisant mention de toi dans mes prières&nbsp;» (verset 4). Paul ne flatte pas : il loue ce que la grâce a déjà produit chez Philémon avant de lui adresser sa requête, préparant le cœur de son destinataire.</li>
+      <li><b>La foi prouvée par l'amour.</b> L'amour de Philémon «&nbsp;pour tous les saints&nbsp;» prouve l'authenticité de sa foi «&nbsp;au Seigneur Jésus&nbsp;» (verset 5). MacArthur y lit la logique de la foi authentique : une foi réelle se manifeste par l'amour agissant. Le caractère que la grâce a façonné est le terreau d'où le pardon pourra naître.</li>
+      <li><b>Une participation appelée à se prouver.</b> Paul demande que «&nbsp;ta participation à la foi soit efficace pour la cause de Christ&nbsp;» (verset 6). La koinōnia, cette mise en commun rendue possible par la vie commune des croyants en Christ, ne reste pas un sentiment : elle doit devenir puissante, en faisant reconnaître tout bien pour la cause de l'Évangile.</li>
+      <li><b>Un cœur qui en tranquillise d'autres.</b> «&nbsp;Le cœur des saints a été tranquillisé&nbsp;» par Philémon (verset 7). Le mot splanchna, les entrailles, dit la profondeur affective de cette consolation. Celui qui a déjà tranquillisé le cœur des saints va devoir tranquilliser celui d'un esclave revenu.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ L'INTERCESSION (versets 8-18) ============ -->
+  <article class="section reveal" id="intercession">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Troisième mouvement · Versets 8-18</p>
+      <h2 class="sec-title">Mets-le sur mon compte</h2>
+      <p class="ref">Philémon 1.8-18</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Qui autrefois t'a été inutile, mais qui maintenant est utile, et à toi et à moi.</p>
+        <cite class="verse__ref">Philémon 1.11 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Si donc tu me tiens pour ton ami, reçois-le comme moi-même.</p>
+        <cite class="verse__ref">Philémon 1.17 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le sommet de la lettre et de la série : l'esclave inutile devenu frère bien-aimé, la requête au nom de l'amour plutôt que de l'autorité, et l'imputation de la dette au compte de l'innocent. Paul intercède pour Onésime transformé par la grâce et offre de payer sa dette, donnant en raccourci l'image vive de Christ qui prend sur lui la dette du pécheur pour le réconcilier avec Dieu.</p>
+    <ul class="points">
+      <li><b>L'amour plutôt que l'autorité.</b> Paul a «&nbsp;toute liberté&nbsp;» de prescrire ce qui convient (verset 8), mais il choisit de prier «&nbsp;au nom de l'amour&nbsp;» (verset 9), en se présentant comme «&nbsp;un vieillard, et de plus maintenant prisonnier de Jésus-Christ&nbsp;». Le terme presbytēs renvoie moins à ses soixante ans qu'aux traces des persécutions, des prisons et du souci des Églises. C'est un vieil ami éprouvé, non un supérieur, qui adresse sa prière.</li>
+      <li><b>D'inutile à utile.</b> Onésime, dont le nom signifie «&nbsp;utile&nbsp;», fut «&nbsp;inutile&nbsp;» par sa fuite et son vol; il est maintenant «&nbsp;utile, et à toi et à moi&nbsp;» (verset 11). MacArthur y voit l'emblème d'une transformation radicale par la grâce : ce qui était sans valeur devient profitable. Paul l'a «&nbsp;engendré&nbsp;» dans les chaînes (verset 10) ; c'est une nouvelle naissance, non une amélioration morale.</li>
+      <li><b>La providence dans la fuite.</b> «&nbsp;Peut-être a-t-il été séparé de toi pour un temps, afin que tu le retrouves pour l'éternité&nbsp;» (verset 15). Paul lit le dessein souverain de Dieu à l'œuvre dans la fuite même de l'esclave, un renversement qui rappelle Genèse 50.20 et Romains 8.28 : le mal de la fuite a finalement servi un bien éternel.</li>
+      <li><b>Non plus un esclave, mais un frère.</b> Paul demande que Philémon reçoive Onésime «&nbsp;non plus comme un esclave, mais comme supérieur à un esclave, comme un frère bien-aimé&nbsp;» (verset 16). L'Évangile ne décrète pas l'abolition de l'esclavage, ce qui eût provoqué une insurrection et discrédité le message; il en ruine le principe de l'intérieur, en posant l'égalité spirituelle du maître et de l'esclave devant Dieu.</li>
+      <li><b>Reçois-le comme moi-même.</b> «&nbsp;Si donc tu me tiens pour ton ami, reçois-le comme moi-même&nbsp;» (verset 17). La position de Paul, ami de Philémon, est offerte au débiteur, comme la justice de Christ nous est imputée pour que le Père nous reçoive comme il reçoit son Fils.</li>
+      <li><b>Mets-le sur mon compte.</b> «&nbsp;S'il t'a fait quelque tort, ou s'il te doit quelque chose, mets-le sur mon compte&nbsp;» (verset 18). Le verbe elloga relève de la comptabilité : inscrire une dette au débit d'un autre. Paul offre de payer la dette d'Onésime pour le réconcilier avec Philémon, à l'image de Jésus qui réconcilie les pécheurs avec Dieu. La dette du coupable est portée au compte de l'innocent qui acquitte ce qu'il ne doit pas : c'est la substitution et la double imputation en raccourci.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LES MOTIVATIONS (versets 19-25) ============ -->
+  <article class="section reveal" id="motivations">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Quatrième mouvement · Versets 19-25</p>
+      <h2 class="sec-title">Les motivations d'un cœur réconcilié</h2>
+      <p class="ref">Philémon 1.19-25</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je l'écris de ma propre main, je paierai, pour ne pas te dire que tu te dois toi-même à moi.</p>
+        <cite class="verse__ref">Philémon 1.19 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">C'est en comptant sur ton obéissance que je t'écris, sachant que tu feras même au-delà de ce que je dis.</p>
+        <cite class="verse__ref">Philémon 1.21 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La boucle se referme : la dette infinie de la conversion relativise toute autre dette, et l'attente d'une obéissance débordante scelle la série. Parce qu'il se doit lui-même à la grâce reçue, Philémon est appelé à une obéissance qui dépasse même la requête, pardonnant et accueillant Onésime pour la joie de l'apôtre et l'unité de l'Église.</p>
+    <ul class="points">
+      <li><b>La dette infinie de la conversion.</b> Paul écrit «&nbsp;de sa propre main&nbsp;» qu'il paiera, pour ne pas dire que Philémon «&nbsp;se doit lui-même&nbsp;» à lui (verset 19). Philémon doit à Paul, instrument de sa conversion, une dette bien plus grande que les quelques pièces volées par Onésime, une dette qu'aucune somme ne rembourse. La dette matérielle s'efface devant la dette spirituelle.</li>
+      <li><b>Tranquillise mon cœur en Christ.</b> «&nbsp;Que j'obtienne de toi cet avantage, dans le Seigneur; tranquillise mon cœur en Christ&nbsp;» (verset 20). Paul reprend le mot splanchna : il engage ses propres entrailles pour le fugitif converti, et attend de Philémon qu'il rende à l'apôtre la consolation que Philémon donnait déjà aux saints.</li>
+      <li><b>Une obéissance qui déborde la requête.</b> «&nbsp;C'est en comptant sur ton obéissance que je t'écris, sachant que tu feras même au-delà de ce que je dis&nbsp;» (verset 21). Le pardon attendu n'est pas une option sentimentale mais l'obéissance normale d'un croyant dont la foi est réelle. MacArthur y reconnaît la logique du salut tenu pour seigneurie : la foi qui sauve se soumet à Christ et se prouve par l'amour agissant.</li>
+      <li><b>Des salutations qui prêchent.</b> Paul demande un logement (verset 22) et transmet les salutations d'Épaphras, Marc, Aristarque, Démas et Luc (versets 23-24). Loin d'être un appendice à survoler, ces lignes rappellent que l'apôtre, lui-même réconcilié avec Marc, a vécu ce qu'il demande. La lettre s'achève comme elle s'ouvre, dans la grâce : «&nbsp;Que la grâce de notre Seigneur Jésus-Christ soit avec votre esprit&nbsp;» (verset 25).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LEÇON CENTRALE ============ -->
+  <article class="section reveal" id="centrale">
+    <header class="sec-head">
+      <div class="sec-num">◆</div>
+      <p class="kicker">La leçon centrale</p>
+      <h2 class="sec-title">L'Évangile qui réconcilie</h2>
+      <p class="ref">Philémon 1.17-18 · La grâce reçue devient grâce donnée</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Reçois-le comme moi-même. Et s'il t'a fait quelque tort, ou s'il te doit quelque chose, mets-le sur mon compte.</p>
+        <cite class="verse__ref">Philémon 1.17-18 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Tu te dois toi-même à moi.</p>
+        <cite class="verse__ref">Philémon 1.19 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La question qui commande tout Philémon n'est pas accessoire : comment celui qui a été gratuitement pardonné par Dieu traitera-t-il celui qui l'a lésé ? La réponse, et c'est là que MacArthur situe le cœur de l'épître, est que la grâce reçue produit nécessairement la grâce donnée.</p>
+    <ul class="points">
+      <li><b>Un miroir vivant de l'imputation.</b> «&nbsp;Mets-le sur mon compte&nbsp;» (verset 18) et «&nbsp;reçois-le comme moi-même&nbsp;» (verset 17) dessinent une double imputation : la dette du coupable passe au compte de l'innocent, et la position de l'ami est offerte au débiteur. Nos péchés furent portés au compte de Christ, et sa justice portée au nôtre, pour que le Père nous reçoive comme il reçoit son Fils.</li>
+      <li><b>La grâce qui transforme : d'inutile à utile.</b> Onésime, dont le nom signifie «&nbsp;utile&nbsp;», fut «&nbsp;inutile&nbsp;» par sa fuite, et devient «&nbsp;utile&nbsp;» à tous (verset 11). Sa transformation n'est pas cosmétique mais le fruit d'une conversion véritable, attestée par le retour volontaire du fugitif vers la justice et vers son maître. Aucun pécheur n'est trop loin pour la grâce souveraine.</li>
+      <li><b>Le pardon, obéissance de la foi.</b> L'amour de Philémon «&nbsp;pour tous les saints&nbsp;» prouve déjà l'authenticité de sa foi (verset 5). Paul, pouvant ordonner (verset 8), préfère prier (verset 9), tout en comptant «&nbsp;sur l'obéissance&nbsp;» de Philémon (verset 21). Selon la lentille MacArthur, le pardon attendu est l'obéissance normale du croyant, non un geste facultatif : un chrétien qui retiendrait le pardon trahirait la grâce qu'il prétend avoir reçue.</li>
+      <li><b>L'Évangile redéfinit les relations sans révolution.</b> Paul ne réclame ni l'abolition de l'esclavage ni même la libération d'Onésime (versets 16, 21), mais qu'il soit reçu «&nbsp;comme un frère bien-aimé&nbsp;» (verset 16). L'égalité spirituelle du maître et de l'esclave devant Dieu (Galates 3.28; Éphésiens 6.9) ruine de l'intérieur tout abus : l'Évangile avance par la transformation des cœurs, qui finit par renouveler les structures.</li>
+      <li><b>La dette qui change tout.</b> Celui qui mesure ce qu'il a reçu en Christ, la vie éternelle gratuite, ne peut s'arc-bouter sur les torts qu'on lui doit. Philémon «&nbsp;se doit lui-même&nbsp;» à la grâce (verset 19); la mémoire reconnaissante de son propre salut devient le moteur de sa générosité. Celui qui a été gratuitement pardonné par Dieu ne peut refuser le pardon à son frère.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CONCLUSION ============ -->
+  <article class="section section--conclusion reveal" id="conclusion">
+    <header class="sec-head">
+      <p class="kicker">Conclusion</p>
+      <h2 class="sec-title">De la grâce reçue à la grâce rendue</h2>
+      <p class="ref">Philémon 1.1 à 1.25</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Peut-être a-t-il été séparé de toi pour un temps, afin que tu le retrouves pour l'éternité.</p>
+        <cite class="verse__ref">Philémon 1.15 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Que la grâce de notre Seigneur Jésus-Christ soit avec votre esprit !</p>
+        <cite class="verse__ref">Philémon 1.25 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">D'un bout à l'autre, Philémon pose une seule question, et c'est aussi la nôtre : la grâce que vous avez reçue de Dieu façonne-t-elle la manière dont vous traitez ceux qui vous ont lésés ? La lettre fait de l'Évangile une transaction concrète et ramène tout à la croix de l'intercession.</p>
+    <ul class="points">
+      <li><b>Le chemin parcouru.</b> La série épouse le mouvement même de la lettre. Elle part de la grâce et de la paix de Dieu dans la maison devenue Église (semaine 1), dresse le portrait de l'homme que la grâce a déjà façonné (semaine 2), culmine à l'intercession et au «&nbsp;mets-le sur mon compte&nbsp;» (semaine 3), puis dévoile les ressorts profonds de l'obéissance attendue (semaine 4).</li>
+      <li><b>De la grâce reçue à la grâce rendue.</b> L'arc va de la grâce reçue, aux semaines 1 et 2, à la grâce mise en scène à la croix de l'intercession, en semaine 3, puis à la grâce rendue dans l'obéissance joyeuse, en semaine 4. L'auditeur passe du don gratuit qu'il a reçu au pardon réel qu'il doit donner.</li>
+      <li><b>Une conversion réelle et radicale.</b> Onésime n'a pas seulement progressé moralement : il est né de nouveau, «&nbsp;engendré&nbsp;» dans les chaînes (verset 10). Présentez la conversion comme une transformation radicale, dont le fruit visible, ici le retour volontaire au devoir et à la réconciliation, atteste la racine.</li>
+      <li><b>La providence souveraine.</b> Paul lit le dessein de Dieu jusque dans la fuite de l'esclave (verset 15; cf. Genèse 50.20; Romains 8.28). La pleine responsabilité du péché d'Onésime et le dessein souverain de Dieu qui en tire un bien éternel tiennent ensemble : le mal commis a finalement servi une réconciliation pour l'éternité.</li>
+      <li><b>La leçon centrale.</b> La culmination est le pardon comme fruit obligé de la grâce. Paul ne plaide pas froidement : il engage ses entrailles pour le fugitif converti et offre de payer ce qu'il ne doit pas. L'appel n'est donc pas de redoubler d'effort moral, mais de revenir à la mémoire de sa propre dette envers la grâce, et de pardonner comme on a été pardonné.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ LA SÉRIE ============ -->
+  <article class="section reveal" id="predication">
+    <header class="sec-head">
+      <p class="kicker">La série</p>
+      <h2 class="sec-title">Les 4 recherches de la série</h2>
+      <p class="ref">Philémon 1.1 à 1.25 · 4 semaines</p>
+    </header>
+    <p class="lead">La série «&nbsp;Philémon : l'Évangile qui réconcilie&nbsp;» se déploie sur quatre semaines d'exposition suivie, sans lacune ni chevauchement, de la salutation (1.1-3) à la bénédiction finale (1.19-25). Chaque passage dispose d'une recherche exégétique complète : choisissez une semaine pour ouvrir sa recherche et préparer la prédication.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20La%20gr%C3%A2ce%20et%20la%20paix%20dans%20la%20maison%20%28Phil%C3%A9mon%201.1-3%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">La grâce et la paix dans la maison</span>
+        <span class="semaine__ref">Philémon 1.1-3<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20Le%20caract%C3%A8re%20d%27un%20homme%20de%20pardon%20%28Phil%C3%A9mon%201.4-7%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Le caractère d'un homme de pardon</span>
+        <span class="semaine__ref">Philémon 1.4-7<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20Mets-le%20sur%20mon%20compte%20%28Phil%C3%A9mon%201.8-18%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Mets-le sur mon compte</span>
+        <span class="semaine__ref">Philémon 1.8-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20Les%20motivations%20d%27un%20coeur%20r%C3%A9concili%C3%A9%20%28Phil%C3%A9mon%201.19-25%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">Les motivations d'un cœur réconcilié</span>
+        <span class="semaine__ref">Philémon 1.19-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;Philémon : l'Évangile qui réconcilie&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacques 2.14-26 · La foi qui agit · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jacques 2.14-26 : la foi sans les œuvres est morte ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jacques 2.14-26</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Jacques 2.14-26</p>
+    <h1 class="hero__title">La foi qui agit</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Comme le corps sans âme est mort, de même la foi sans les œuvres est morte.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jacques 2.26 · NEG</p>
+    <p class="hero__series">Série : <b>La foi qui agit</b></p>
+    <p class="hero__meta">Recherche exégétique · 6 juin 2026 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Jacques 2.14-26</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Que sert-il, mes frères, à quelqu'un de dire qu'il a la foi, s'il n'a pas les œuvres? Cette foi peut-elle le sauver?</p>
+        <cite class="verse__ref">Jacques 2.14 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Comme le corps sans âme est mort, de même la foi sans les œuvres est morte.</p>
+        <cite class="verse__ref">Jacques 2.26 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Jacques 2.14-26 est le sommet doctrinal de l'épître et son cœur battant : la foi qui n'agit pas est morte, et c'est ici que Jacques livre son verdict sur la nature de la foi authentique.</p>
+    <div class="body">
+      <p>L'épître de Jacques est l'œuvre de Jacques le Juste, frère du Seigneur selon la chair (Matthieu 13.55; Galates 1.19), incrédule durant le ministère terrestre de Jésus (Jean 7.5), puis converti par une apparition du Ressuscité (1 Corinthiens 15.7) et devenu colonne de l'Église de Jérusalem (Actes 15.13; Galates 2.9). MacArthur la situe parmi les tout premiers écrits du Nouveau Testament, vers 44 à 49 ap. J.-C., adressée aux douze tribus dispersées (1.1), c'est-à-dire à des Juifs chrétiens éparpillés par la persécution. Le genre est celui de la littérature de sagesse appliquée à l'ère apostolique : une parénèse mordante, héritière des Proverbes et du Sermon sur la montagne, qui martèle la conduite plutôt que de bâtir un argument systématique à la manière paulinienne. Jacques n'écrit pas une dissertation sur la justification; il écrit pour démasquer une profession de foi creuse.</p>
+      <p>Notre péricope est le sommet doctrinal de l'épître et le cœur battant de toute la lettre. Tout ce qui précède y converge : l'épreuve qui éprouve la foi (1.2-12), l'auditeur qui n'est pas praticien (1.22-25), la religion pure qui visite l'orphelin et la veuve (1.27), et l'interdiction de la partialité qui ouvrait justement le chapitre 2 (2.1-13). La transition est serrée : 2.13 vient de déclarer que «&nbsp;la miséricorde triomphe du jugement&nbsp;», et 2.14 enchaîne aussitôt sur l'inutilité d'une foi qui ne montre aucune miséricorde concrète envers le frère nu et affamé. La question rhétorique «&nbsp;cela peut-il le sauver?&nbsp;» (2.14) commande tout le développement.</p>
+      <p>Les bornes sont nettes. La péricope s'ouvre en 2.14 par la double interrogation programmatique («&nbsp;à quoi bon?... cela peut-il le sauver?&nbsp;») et se referme en 2.26 par l'aphorisme qui scelle l'argument : «&nbsp;comme le corps sans âme est mort, de même la foi sans les œuvres est morte.&nbsp;» Entre ces deux bornes, Jacques construit une démonstration en trois mouvements : l'illustration du frère démuni (2.14-17), l'objection du «&nbsp;quelqu'un dira&nbsp;» et la foi des démons (2.18-20), puis les deux preuves vétérotestamentaires d'Abraham et de Rahab (2.21-25). L'unité thématique est absolue : la foi qui n'agit pas est morte. Pour MacArthur, c'est le test composite de l'épître, celui qui réunit tous les autres.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Jacques 2.18 · 2.21-23 · 2.25</p>
+    </header>
+    <p class="lead">Le passage emprunte la forme de la diatribe gréco-romaine, où l'orateur convoque un interlocuteur pour porter l'objection : le «&nbsp;quelqu'un dira&nbsp;» de 2.18 met en scène celui qui prétend séparer la foi et les œuvres.</p>
+    <div class="body">
+      <p>L'identité du «&nbsp;quelqu'un dira&nbsp;» de 2.18 (grec : <i>erei tis</i>) est difficile à établir, reconnaît MacArthur, puisque le grec ne portait aucune ponctuation; il y voit néanmoins, selon toute probabilité, Jacques lui-même, qui parle humblement à la troisième personne pour interpeller celui qui prétend avoir la foi sans les œuvres. Dans tous les cas, souligne-t-il, l'idée principale reste la même : la seule preuve d'une foi véritable, ce sont les œuvres. Le lecteur moderne, habitué à la prose linéaire, manque souvent ce changement de voix et lit 2.18 trop vite; en réalité Jacques concède pour un moment l'hypothèse à celui qui sépare la foi et les œuvres («&nbsp;toi, tu as la foi; et moi, j'ai les œuvres&nbsp;»), pour le mettre au défi de montrer sa foi sans les œuvres : la foi invisible ne se prouve que par les œuvres visibles. La forme de la diatribe explique aussi le ton abrupt, l'apostrophe («&nbsp;homme vain&nbsp;», 2.20) et les questions en rafale.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La foi d'Abraham et l'Aqedah.</b> L'arrière-plan juif de la foi d'Abraham est décisif et largement perdu pour le lecteur contemporain. Dans le judaïsme du Second Temple, Abraham offrant Isaac (l'Aqedah, la «&nbsp;ligature&nbsp;» d'Isaac, Genèse 22) était devenu l'exemple suprême de la fidélité éprouvée, célébré dans 1 Maccabées 2.52 précisément comme l'épisode où Abraham «&nbsp;fut trouvé fidèle dans l'épreuve, et cela lui fut compté à justice&nbsp;». Jacques reprend ce lieu commun, mais il opère un raccord théologique que ses lecteurs juifs saisissaient : l'offrande d'Isaac (Genèse 22, des décennies plus tard) ne remplace pas la foi créditée en Genèse 15.6, elle l'accomplit et la manifeste. MacArthur souligne que Jacques cite Genèse 15.6 («&nbsp;Abraham crut Dieu, et cela lui fut imputé à justice&nbsp;», 2.23), le même texte que Paul, et conclut qu'Abraham fut «&nbsp;appelé ami de Dieu&nbsp;», titre d'intimité et d'honneur que lui valut son obéissance (2 Chroniques 20.7; Ésaïe 41.8).</li>
+      <li><b>Rahab la prostituée cananéenne.</b> L'accueil de Rahab (2.25) est le second détail qu'un lecteur moderne sous-estime. Rahab était une prostituée cananéenne, doublement méprisée : par son métier et par son ethnie. Que Jacques la place côte à côte avec le grand patriarche Abraham comme preuve jumelle de la foi-qui-agit aurait choqué et instruit ses lecteurs : la foi authentique se prouve par les œuvres chez le patriarche fondateur comme chez la païenne convertie de la dernière heure. Son accueil des espions et leur renvoi par un autre chemin (Josué 2) furent l'acte risqué qui démontra que sa confession «&nbsp;l'Éternel, votre Dieu, est Dieu en haut dans les cieux et en bas sur la terre&nbsp;» (Josué 2.11) était une foi vivante et non une simple opinion.</li>
+      <li><b>Le frère nu et affamé.</b> L'exemple du frère «&nbsp;nu et manquant de la nourriture de chaque jour&nbsp;» (2.15) renvoie à une pauvreté réelle et endémique dans les communautés de la dispersion, non à une hypothèse d'école : la charité concrète était la pierre de touche. Dans un monde sans filet social, congédier le frère démuni d'une bénédiction pieuse mais les mains vides n'était pas une abstraction théologique, mais une trahison visible de la foi professée.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope. Les tenir ensemble, c'est désamorcer la prétendue contradiction avec Paul : de la foi (<i>pistis</i>) qui se prouve par les œuvres (<i>erga</i>) ou demeure morte (<i>nekra</i>), au verbe «&nbsp;justifier&nbsp;» (<i>dikaioo</i>) et à la question décisive du salut (<i>sozo</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">justifié</span><span class="mot-gr">dikaioo</span></th>
+            <td class="col-sens">déclarer juste, prononcer un verdict d'acquittement; terme judiciaire et forensique</td>
+            <td>Verbe à double emploi attesté dans le NT. Chez Paul (Romains 3.28; 4.2; Galates 2.16) il désigne l'acte forensique par lequel Dieu déclare juste le pécheur, reçu par la foi seule, sans les œuvres. Chez Jacques (2.21, 24, 25) il garde le sens de «&nbsp;démontrer juste, vindiquer, prouver la réalité&nbsp;» d'une foi déjà présente, devant les hommes et au jugement. Sens secondaire attesté en Luc 7.35 («&nbsp;la sagesse a été justifiée&nbsp;», c'est-à-dire reconnue juste par ses œuvres) et Matthieu 11.19.</td>
+            <td><span class="trad"><span><b>S21</b> considéré comme juste</span><span><b>NEG79</b> justifié</span><span><b>Darby</b> justifié</span><span><b>LSG</b> justifié</span><span><b>KJF</b> justifié</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">foi</span><span class="mot-gr">pistis</span></th>
+            <td class="col-sens">confiance, conviction ferme, adhésion qui se livre à son objet</td>
+            <td>Mot central du NT pour l'appropriation du salut. Jacques distingue deux réalités sous le même mot : la foi salvatrice qui se traduit en œuvres (2.22) et la pseudo-foi purement intellectuelle, simple assentiment notionnel (2.14, 19), que possèdent aussi les démons. La <i>pistis</i> qui sauve englobe la connaissance (<i>notitia</i>), l'assentiment (<i>assensus</i>) et surtout la confiance qui se remet à Christ comme Seigneur (<i>fiducia</i>). Pour MacArthur, la question de 2.14 porte sur «&nbsp;cette sorte de foi&nbsp;» : elle vise précisément la profession sans substance.</td>
+            <td><span class="trad"><span><b>S21</b> foi</span><span><b>NEG79</b> foi</span><span><b>Darby</b> foi</span><span><b>LSG</b> foi</span><span><b>KJF</b> foi</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">œuvres</span><span class="mot-gr">erga</span></th>
+            <td class="col-sens">actes, ouvrages, ce qui est effectivement accompli</td>
+            <td>Pluriel d'<i>ergon</i>. Chez Paul, les «&nbsp;œuvres de la loi&nbsp;» (<i>erga nomou</i>, Galates 2.16) sont les performances religieuses par lesquelles l'homme prétend mériter le salut, et elles sont exclues de la justification. Chez Jacques, les <i>erga</i> ne sont pas des mérites mais le fruit nécessaire et la preuve visible de la foi régénérante : nourrir le frère (2.15-16), offrir Isaac (2.21), accueillir les espions (2.25). Ce sont deux usages différents d'un même mot, sans contradiction, l'un visant la racine, l'autre le fruit.</td>
+            <td><span class="trad"><span><b>S21</b> œuvres</span><span><b>NEG79</b> œuvres</span><span><b>Darby</b> œuvres</span><span><b>LSG</b> œuvres</span><span><b>KJF</b> œuvres</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">morte</span><span class="mot-gr">nekra</span></th>
+            <td class="col-sens">morte, cadavérique, sans vie, inopérante</td>
+            <td>Adjectif (<i>nekros</i>) employé deux fois pour qualifier la foi (2.17, 2.26) et une fois implicitement comme stérile (2.20, où plusieurs manuscrits portent <i>argè</i>, «&nbsp;oisive, inutile&nbsp;»). Le terme ne décrit pas une foi qui aurait perdu sa vie, mais une foi qui n'en a jamais eu : un cadavre n'a jamais été vivant en tant que cadavre. MacArthur compare cette <i>pistis nekra</i> au corps sans esprit (2.26) : l'absence d'œuvres révèle l'absence de vie, donc l'absence de salut. Ce n'est pas une foi affaiblie, c'est une non-foi.</td>
+            <td><span class="trad"><span><b>S21</b> morte</span><span><b>NEG79</b> morte</span><span><b>Darby</b> morte</span><span><b>LSG</b> morte</span><span><b>KJF</b> morte</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">sauver</span><span class="mot-gr">sozo</span></th>
+            <td class="col-sens">délivrer, préserver, sauver d'un péril mortel ou de la perdition</td>
+            <td>Verbe de la délivrance, employé en 2.14 dans la question décisive : «&nbsp;cette foi peut-elle le sauver?&nbsp;» La construction grecque (<i>me dynatai</i>) attend la réponse négative : non, elle ne le peut pas. Le salut visé est le salut eschatologique de l'âme, non une simple préservation temporelle. Jacques pose ainsi que la foi sans œuvres est impuissante à sauver, car elle n'est pas la foi qui régénère. Pour MacArthur, ce verset ferme la porte à un salut qui n'exigerait rien : une profession qui ne transforme pas la vie ne sauve personne.</td>
+            <td><span class="trad"><span><b>S21</b> sauver</span><span><b>NEG79</b> sauver</span><span><b>Darby</b> sauver</span><span><b>LSG</b> sauver</span><span><b>KJF</b> sauver</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Jacques 2.14-26</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Jacques 2.14-26 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Jc 2.14-26, 2.14, 2.15-16, 2.17, 2.18, 2.19, 2.20, 2.21-26, 2.21, 2.22, 2.23, 2.24, 2.25.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-15</span></th>
+            <td><a href="https://www.gty.org/sermons/59-15" target="_blank" rel="noopener">Dead Faith</a></td>
+            <td>Jacques 2.14-20</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-16</span></th>
+            <td><a href="https://www.gty.org/sermons/59-16" target="_blank" rel="noopener">Living Faith</a></td>
+            <td>Jacques 2.21-26</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question interprétative principale est aussi ancienne que célèbre : Jacques contredit-il Paul? Paul affirme que l'homme est justifié par la foi sans les œuvres de la loi (Romains 3.28); Jacques affirme que l'homme est justifié par les œuvres et non par la foi seulement (2.24). La formulation paraît frontale.</p>
+    <div class="body">
+      <p>MacArthur répond qu'il n'y a aucune contradiction réelle, et que la clé se trouve dans les deux sens du verbe «&nbsp;justifier&nbsp;» (<i>dikaioo</i>) et dans les deux acceptions du mot «&nbsp;foi&nbsp;». Paul et Jacques combattent deux erreurs opposées : Paul réfute le légalisme juif qui voudrait gagner le salut par les œuvres de la loi; Jacques réfute l'antinomisme qui voudrait posséder le salut par une profession verbale sans transformation. Les deux apôtres se tiennent dos à dos contre deux ennemis, et ils défendent la même citadelle : la foi authentique.</p>
+      <p>L'atterrissage de MacArthur, qu'il faut recevoir comme le sens même du texte, tient dans le mot de Calvin qu'il cite : la foi seule justifie, mais la foi qui justifie n'est jamais seule. Le verbe <i>dikaioo</i> chez Paul est forensique : Dieu déclare juste le pécheur impie en lui imputant la justice parfaite de Christ, acte instantané reçu par la foi seule, sans aucun apport méritoire des œuvres (Romains 4.5; 2 Corinthiens 5.21). Chez Jacques, <i>dikaioo</i> est démonstratif et vindicatif : les œuvres prouvent, attestent, vindiquent devant les hommes et au jugement la réalité d'une foi déjà présente et déjà créditée. Paul parle de la racine de la justification; Jacques parle du fruit qui en démontre la présence. Lorsque Jacques dit qu'Abraham fut justifié par les œuvres en offrant Isaac (2.21), il vise l'Aqedah de Genèse 22, survenue des décennies après que Genèse 15.6 eut déclaré Abraham justifié par la foi. L'offrande d'Isaac n'a pas justifié Abraham devant Dieu une seconde fois; elle a accompli et manifesté la foi qui l'avait déjà justifié, de sorte que «&nbsp;l'Écriture fut accomplie&nbsp;» (2.23). MacArthur lit donc en 2.22 Paul et Jacques réunis : «&nbsp;la foi agissait avec ses œuvres, et par les œuvres la foi fut rendue parfaite&nbsp;», c'est-à-dire portée à sa pleine expression, conduite à son but.</p>
+      <p>Le cœur pastoral du texte est la distinction entre la foi vivante et la foi morte. Jacques aligne trois portraits de la fausse foi. D'abord, la foi verbale qui congédie le frère nu et affamé avec une bénédiction pieuse mais les mains vides (2.15-16) : cette charité de paroles est l'image même d'une foi de paroles. Ensuite, la foi des démons (2.19) : «&nbsp;tu crois qu'il y a un seul Dieu, tu fais bien; les démons le croient aussi, et ils tremblent.&nbsp;» MacArthur en tire un coup de massue contre la foi purement intellectuelle : les démons ont une théologie monothéiste orthodoxe et impeccable, ils croient et même frissonnent (le verbe <i>phrissousin</i> évoque le hérissement de terreur), si bien que leur foi dépasse celle de l'homme qui se contente d'approuver; et pourtant ils ne sont pas sauvés, car ils n'aiment ni la vérité, ni la justice, ni Dieu. Une foi qui ne dépasse pas celle des démons ne sauve pas. Enfin, l'analogie finale du corps sans esprit (2.26) : comme un cadavre dont l'âme s'est retirée, la foi sans œuvres est inanimée, inopérante, incapable de sauver. La <i>pistis nekra</i> n'est pas une foi affaiblie qu'il faudrait fortifier par les œuvres; c'est une non-foi que l'absence d'œuvres dénonce comme telle.</p>
+      <p>C'est pourquoi le texte exclut fermement deux dévoiements opposés. D'un côté, la justification par les œuvres : c'est le légalisme du judaïsme devenu système de justice par les œuvres, que Paul combat, et qui faisait des œuvres le moyen d'être justifié devant Dieu; Jacques ne dit jamais cela, car ses œuvres sont la preuve et non le prix, le fruit et non la racine, le symptôme de la vie et non sa source. De l'autre côté, l'antinomisme de ceux qui, sortis du légalisme, sont passés à l'excès inverse : prétendre posséder une foi salvatrice sans aucune œuvre, réduire la conversion à l'acceptation des faits de l'Évangile ou au jour où l'on s'est avancé et a signé une carte, sans repentance ni soumission à Christ, c'est exactement la foi morte que Jacques condamne. Pour MacArthur, c'est précisément l'enseignement de Jacques 2 : la foi qui justifie est inséparable de la repentance et de la soumission à Christ comme Seigneur, elle persévère et porte du fruit, et l'assurance du croyant ne repose jamais sur une profession passée mais sur une vie transformée. Les exemples d'Abraham (le patriarche) et de Rahab (la prostituée païenne) verrouillent l'argument : aux deux extrémités du spectre social et moral, la foi authentique s'est prouvée par des actes coûteux et risqués. Le verdict de l'épître, scellé en 2.26, est donc une question adressée à chaque professant : votre foi est-elle vivante ou morte?</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle dominical direct au pôle forensique paulinien que Jacques complète, jusqu'à l'arrière-plan vétérotestamentaire d'Abraham et de Rahab.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 3.28</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul pose la justification par la foi sans les œuvres de la loi; le pôle forensique que Jacques ne contredit pas mais complète sur le versant de la preuve.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 4.1-5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul démontre par Abraham que la justification est créditée par la foi à l'impie qui ne travaille pas; même patriarche, même citation (Genèse 15.6), angle de la racine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 2.16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Triple négation des œuvres de la loi comme moyen de justification; verrouille le fait que les <i>erga</i> de Jacques ne peuvent être des œuvres méritoires.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.8-10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La synthèse paulinienne : sauvés par la grâce au moyen de la foi, non par les œuvres (v. 8-9), mais créés pour les bonnes œuvres (v. 10); la racine et le fruit dans un seul texte.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 15.6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Texte fondateur cité par Jacques (2.23) comme par Paul : Abraham crut, et cela lui fut imputé à justice; le crédit forensique antérieur à l'offrande d'Isaac.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 22.1-18</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'offrande d'Isaac (l'Aqedah), l'œuvre par laquelle Abraham fut justifié au sens de Jacques (2.21) : la foi de Genèse 15.6 accomplie et manifestée des décennies plus tard.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Josué 2.1-21</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'accueil des espions par Rahab, l'œuvre risquée qui prouva sa foi confessante (Josué 2.11); second exemple de Jacques (2.25), à l'autre bout du spectre social.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 7.16-21</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le Seigneur enseigne qu'on reconnaît l'arbre à ses fruits et que seul celui qui fait la volonté du Père entre dans le Royaume; le principe dominical sous-jacent à toute l'argumentation de Jacques.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La justification par la foi seule, jamais seule</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jacques affirme qu'Abraham fut justifié par les œuvres (2.21, 24) tout en citant Genèse 15.6 sur la foi imputée (2.23); les deux sens de <i>dikaioo</i>, racine forensique chez Paul, fruit démonstratif chez Jacques.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la sotériologie de <i>Biblical Doctrine</i>, la justification est un acte forensique unique reçu par la foi seule au moyen de la justice imputée de Christ. Les œuvres n'ajoutent rien au mérite et ne justifient pas devant Dieu; elles prouvent que la foi est réelle. Pour l'assemblée : votre acceptation par Dieu repose entièrement sur Christ, jamais sur votre performance, mais une foi vraie produira inévitablement du fruit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi morte et l'easy-believism</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La foi qui renvoie le frère affamé les mains vides (2.15-16), la foi des démons qui croient et tremblent sans être sauvés (2.19), la foi comparée au corps sans esprit (2.26).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Ce thème touche la doctrine de la foi salvatrice (<i>Lordship Salvation</i>). Une profession purement intellectuelle, une décision verbale sans repentance ni soumission à Christ comme Seigneur, ne sauve pas davantage que la croyance des démons. Pour l'assemblée : réciter une prière ou cocher une case doctrinale n'est pas la conversion; la foi qui sauve transforme.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La persévérance et le fruit nécessaire</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La foi agit avec les œuvres et est rendue parfaite par elles (2.22); l'arbre se reconnaît à son fruit, écho du Sermon sur la montagne.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Doctrine de la persévérance des saints : la vraie foi n'est pas stérile, elle persévère et porte du fruit jusqu'à la fin. Éviter ici tout moralisme : le fruit n'est pas un effort autonome ajouté à la foi, mais le débordement naturel de la vie nouvelle reçue dans l'union à Christ par l'œuvre régénérante de l'Esprit. Pour l'assemblée : la sanctification n'est pas optionnelle, mais elle est don avant d'être devoir.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'assurance fondée sur une vie transformée</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La question d'ouverture («&nbsp;cela peut-il le sauver?&nbsp;», 2.14) et le verdict de clôture («&nbsp;la foi sans les œuvres est morte&nbsp;», 2.26) somment chacun d'examiner la réalité de sa propre foi.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon <i>Biblical Doctrine</i>, l'assurance du salut ne se fonde pas sur le souvenir d'une décision passée mais sur les marques présentes de la régénération (1 Jean). Pour l'assemblée : l'examen de soi (2 Corinthiens 13.5) n'est pas un appel au doute morbide, mais l'invitation à vérifier que la foi professée s'accompagne du fruit de l'Esprit, seule assurance solide.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce qui se prouve par la miséricorde concrète</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'illustration du frère nu et privé de pain (2.15-16) en lien direct avec 2.13 («&nbsp;la miséricorde triomphe du jugement&nbsp;») et 1.27 (la religion pure visite l'orphelin et la veuve).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La foi régénérante produit l'amour effectif du prochain, non de simples bénédictions verbales. Pour l'assemblée : la charité concrète envers le frère démuni n'est pas un supplément facultatif à la foi mais l'une de ses preuves les plus sûres; une orthodoxie sans miséricorde trahit une foi morte.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Votre assemblée distingue-t-elle entre croire des vérités sur Dieu et se confier en Dieu? Comment montrer que la foi des démons (2.19), parfaitement orthodoxe sur le plan doctrinal, ne sauve pas?</li>
+      <li>Quel professant, parmi ceux qui s'estiment chrétiens parce qu'ils ont récité une prière ou marché vers l'avant un jour, ce texte vise-t-il directement? Êtes-vous prêt à laisser 2.14 poser sa question dérangeante?</li>
+      <li>Comment tenir ensemble Romains 3.28 et Jacques 2.24 sans édulcorer ni l'un ni l'autre, en exposant clairement les deux sens du verbe justifier plutôt qu'en harmonisant à la hâte?</li>
+      <li>Où votre application risque-t-elle de glisser dans le moralisme, en réclamant des œuvres comme effort autonome plutôt qu'en les présentant comme fruit de l'union à Christ par l'Esprit?</li>
+      <li>Le choix jumelé d'Abraham le patriarche et de Rahab la prostituée païenne dit-il quelque chose à votre assemblée sur l'étendue de la grâce et sur l'universalité de la preuve par les œuvres?</li>
+      <li>Comment prêcher l'assurance à partir de ce texte sans précipiter les vrais croyants dans le doute morbide ni rassurer les faux professants dans leur foi morte?</li>
+      <li>Si votre assemblée sort de cette prédication uniquement soulagée d'apprendre que les œuvres ne justifient pas, avez-vous prêché tout le texte, ou avez-vous tu le verdict de 2.26?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Jacques 2.14-26 · 6 juin 2026 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La foi qui agit&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Jacques-2-14-26.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

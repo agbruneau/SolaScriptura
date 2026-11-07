@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galates 5.22-26 · Le fruit de l'Esprit · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Galates 5.22-26 : le fruit de l'Esprit ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Galates 5.22-26</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Galates 5.22-26</p>
+    <h1 class="hero__title">Le fruit de l'Esprit</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Mais le fruit de l'Esprit, c'est l'amour, la joie, la paix, la patience, la bonté, la bienveillance, la foi, la douceur, la maîtrise de soi.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Galates 5.22-23 · NEG</p>
+    <p class="hero__series">Série : <b>Galates : l'Évangile de la grâce</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Galates 5.22-26</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mais le fruit de l'Esprit, c'est l'amour, la joie, la paix, la patience, la bonté, la bienveillance, la foi, la douceur, la maîtrise de soi;</p>
+        <cite class="verse__ref">Galates 5.22 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Ceux qui sont à Jésus-Christ ont crucifié la chair avec ses passions et ses désirs.</p>
+        <cite class="verse__ref">Galates 5.24 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Galates 5.22-26 est le versant lumineux du grand contraste de l'épître : après le catalogue des œuvres de la chair, Paul énumère le fruit unique que l'Esprit fait croître dans le croyant uni à Christ.</p>
+    <div class="body">
+      <p>Notre péricope clôt la section 5.13-26 de la troisième partie de l'épître, la partie pratique (5.1 à 6.18), où Paul tire les conséquences vécues de la justification par la foi qu'il a défendue dans les chapitres doctrinaux. Christ nous a affranchis pour la liberté (5.1), mais cette liberté n'est ni un retour au joug du légalisme (5.2-12) ni un prétexte pour vivre selon la chair (5.13). Dans la section «&nbsp;Liberté dans l'Esprit&nbsp;» (5.13-26), Paul oppose deux régimes inconciliables&nbsp;: la marche selon l'Esprit, qui n'accomplit pas les désirs de la chair (5.16), et l'asservissement à la chair, dont les œuvres sont évidentes et excluent du royaume (5.19-21). Notre passage est le versant lumineux de ce contraste&nbsp;: après le catalogue des œuvres de la chair, Paul énumère le fruit de l'Esprit. La conjonction «&nbsp;mais&nbsp;» de 5.22 marque la rupture nette entre ce que la nature déchue produit et ce que l'Esprit fait croître.</p>
+      <p>L'unité thématique est resserrée et délibérée. MacArthur note le contraste que Paul ménage entre les «&nbsp;œuvres&nbsp;» de la chair (5.19), au pluriel, et le «&nbsp;fruit&nbsp;» de l'Esprit (5.22), au singulier&nbsp;: les premières forment une liste où le pécheur choisit ses péchés, le second vient d'un seul tenant, produit par la vie de Dieu dans le croyant comme un arbre porte son fruit. Le singulier «&nbsp;le fruit&nbsp;» est lui aussi voulu&nbsp;: il ne s'agit pas de neuf vertus à cueillir séparément, mais d'un seul fruit aux neuf facettes inextricablement liées, qui caractérise globalement quiconque appartient à Dieu par la foi en Christ et possède son Esprit. La péricope se referme sur trois affirmations qui scellent l'argument&nbsp;: ce fruit ne tombe sous le coup d'aucune loi (5.23), ceux qui sont à Christ ont déjà crucifié la chair (5.24), et la marche par l'Esprit doit donc se traduire dans la vie communautaire concrète (5.25-26).</p>
+      <p>Les bornes du texte sont fermes. Le passage s'ouvre en 5.22 sur l'antithèse «&nbsp;mais le fruit de l'Esprit&nbsp;» qui répond terme à terme aux œuvres de la chair, et il se referme en 5.26 sur un avertissement communautaire contre la vaine gloire, les provocations et l'envie. Entre ces deux bornes, Paul articule trois mouvements&nbsp;: l'énumération du fruit unique et de ses neuf facettes (5.22-23), le fondement christologique de la sanctification, à savoir la crucifixion de la chair par ceux qui sont à Christ (5.24), et l'exhortation à faire correspondre la marche à la vie reçue (5.25-26). C'est ici que l'épître montre, selon MacArthur, que la sanctification, comme le salut, est par la foi seule, sans règles ni rites extérieurs, et que la sainteté n'est pas l'exploit de la chair, dont les meilleurs efforts ne produisent que le péché, mais le fruit que l'Esprit seul produit.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Galates 5.22-26 · l'image agricole du fruit</p>
+    </header>
+    <p class="lead">Adressé aux Églises de Galatie en proie aux judaïsants, le passage répond à l'objection antinomienne par une image paysanne&nbsp;: le fruit ne se fabrique pas à force d'effort, il croît de l'intérieur par la sève de l'Esprit.</p>
+    <div class="body">
+      <p>Les destinataires sont les Églises du sud de la province romaine de Galatie, fondées par Paul lors de son premier voyage missionnaire à Antioche de Pisidie, Iconium, Lystre et Derbe (Actes 13.14 à 14.23). MacArthur situe la rédaction peu après le concile de Jérusalem de 49 ap. J.-C., ce qui fait de Galates l'un des plus anciens écrits pauliniens. La crise qui a provoqué la lettre est l'intrusion de faux docteurs judaïsants qui, ignorant le décret du concile (Actes 15.23-29), exigeaient des païens convertis qu'ils se fassent circoncire et observent la loi mosaïque pour être pleinement sauvés. En réfutant ce légalisme, Paul devait écarter la conclusion inverse, l'antinomisme&nbsp;: si la justification est par la foi seule, sans les œuvres de la loi, qu'est-ce qui retiendra le croyant de vivre dans le désordre? La section 5.13-26 répond précisément à cette objection&nbsp;: la liberté chrétienne ne libère pas pour la chair mais pour la marche par l'Esprit, qui produit une sainteté que la loi visait sans jamais pouvoir la produire.</p>
+    </div>
+    <p>Trois réalités du monde du texte éclairent l'image.</p>
+    <ul class="points">
+      <li><b>Le vocabulaire agricole du fruit.</b> L'image du «&nbsp;fruit&nbsp;» résonnait fortement dans un monde méditerranéen rural où la vigne, l'olivier et le figuier rythmaient la vie. Elle dit l'essentiel&nbsp;: le fruit n'est pas fabriqué par l'arbre à force d'effort, il croît de l'intérieur par la sève qui circule. Paul transpose cette évidence paysanne dans le domaine spirituel&nbsp;: le croyant uni à Christ par la foi reçoit l'Esprit qui demeure en lui (cf. Romains 8.9; 1 Corinthiens 6.19-20), et cet Esprit fait naturellement mûrir en lui les attitudes saintes que la chair est incapable de produire.</li>
+      <li><b>Le contraste structurel «&nbsp;œuvres&nbsp;» / «&nbsp;fruit&nbsp;».</b> L'opposition avec les «&nbsp;œuvres&nbsp;» de la chair est délibérée&nbsp;: là où la chair s'agite et fabrique frénétiquement ses péchés évidents, l'Esprit fait croître un fruit unifié. Cette opposition recoupe celle de toute la lettre entre la justice obtenue par l'effort de la loi et la justice reçue par la foi.</li>
+      <li><b>Le vocabulaire moral retourné.</b> Les neuf facettes que Paul énumère n'étaient pas étrangères à la pensée gréco-romaine, qui célébrait certaines de ces vertus dans ses traités de morale. Mais Paul opère un déplacement décisif&nbsp;: ces qualités ne sont pas le sommet d'un effort moral autonome ni le produit d'une discipline stoïcienne, elles sont le fruit que l'Esprit de Dieu produit. La maîtrise de soi (<i>enkrateia</i>), terme cher aux moralistes grecs et aux athlètes en entraînement, est présentée non comme une conquête de la volonté humaine mais comme la dernière facette d'un fruit divin. De même l'amour placé en tête n'est pas l'<i>eros</i> grec ni la simple affection familiale, mais l'<i>agape</i>, l'amour de choix qui se sacrifie pour le bien d'autrui.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope&nbsp;: du fruit (<i>karpos</i>) que l'Esprit fait croître, à l'amour (<i>agape</i>) qui vient en tête et à la maîtrise de soi (<i>enkrateia</i>) qui le scelle, jusqu'à la chair déjà crucifiée (<i>estaurosan</i>) et à la marche en cadence (<i>stoicheo</i>) du croyant.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">fruit</span><span class="mot-gr">karpos</span></th>
+            <td class="col-sens">fruit, produit naturel d'un arbre ou d'une plante; au figuré, le résultat qui découle d'une source vivante</td>
+            <td>Paul emploie le singulier «&nbsp;le fruit&nbsp;», et non le pluriel, par contraste délibéré avec les «&nbsp;œuvres&nbsp;» de la chair (5.19). Pour MacArthur, le <i>karpos</i> est l'attitude sainte qui caractérise tous ceux qui appartiennent à Dieu par la foi en Christ et possèdent l'Esprit; l'Esprit produit un fruit unique qui consiste en neuf facettes inextricablement liées, que les croyants ont pourtant l'ordre de pratiquer, et non une liste où l'on choisirait une vertu après l'autre. Le mot dit que la sainteté croît de l'intérieur par la vie de l'Esprit, comme un arbre porte son fruit, et non par la production fébrile de la volonté charnelle.</td>
+            <td><span class="trad"><span><b>S21</b> le fruit</span><span><b>NEG79</b> le fruit</span><span><b>Darby</b> le fruit</span><span><b>LSG</b> le fruit</span><span><b>KJF</b> le fruit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">l'amour</span><span class="mot-gr">agape</span></th>
+            <td class="col-sens">amour de choix et de volonté, attachement délibéré qui cherche le bien de l'autre</td>
+            <td>Parmi les divers termes grecs pour l'amour, Paul choisit <i>agape</i>, l'amour du choix. MacArthur précise qu'il ne désigne pas une simple affection émotionnelle, ni une attirance physique, ni un lien familial, mais un respect, un attachement et une affection propres à conduire au service volontaire et au sacrifice de soi (Jean 15.13; Romains 5.8; 1 Jean 3.16-17). Placé en tête du fruit parce qu'il est le plus grand (1 Corinthiens 13.13), l'<i>agape</i> est l'amour même de Dieu répandu par l'Esprit, qui accomplit toute la loi (5.14) et se prouve dans le service mutuel de la communauté.</td>
+            <td><span class="trad"><span><b>S21</b> l'amour</span><span><b>NEG79</b> l'amour</span><span><b>Darby</b> l'amour</span><span><b>LSG</b> l'amour</span><span><b>KJF</b> l'amour</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">la maîtrise de soi</span><span class="mot-gr">enkrateia</span></th>
+            <td class="col-sens">pouvoir sur soi-même, fait de se tenir en main, de réfréner ses passions et ses appétits</td>
+            <td>Dernière facette du fruit, l'<i>enkrateia</i> est, selon MacArthur, la capacité de réfréner les passions et les appétits charnels (1 Corinthiens 9.25; 2 Pierre 1.5-6). Le terme appartenait au vocabulaire des athlètes et des moralistes grecs, qui en faisaient une conquête de la volonté humaine. Paul en renverse le sens&nbsp;: dans la liste du fruit, la maîtrise de soi n'est pas le couronnement d'un effort autonome mais le produit de l'Esprit. C'est pourquoi elle figure non parmi les œuvres mais parmi les facettes d'un seul fruit divin, qui tient en bride la chair que le croyant a déjà crucifiée (5.24).</td>
+            <td><span class="trad"><span><b>S21</b> la maîtrise de soi</span><span><b>NEG79</b> la maîtrise de soi</span><span><b>Darby</b> la tempérance</span><span><b>LSG</b> la tempérance</span><span><b>KJF</b> la tempérance</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ont crucifié</span><span class="mot-gr">estaurosan</span></th>
+            <td class="col-sens">ont mis en croix, ont exécuté par crucifixion; ici, ont fait passer par la mort</td>
+            <td>L'aoriste <i>estaurosan</i> désigne un acte accompli&nbsp;: ceux qui sont à Christ ont déjà crucifié la chair avec ses passions et ses désirs (5.24). MacArthur range cet emploi parmi les quatre usages de «&nbsp;crucifié&nbsp;» qui ne renvoient pas à la crucifixion de Christ (cf. 2.20; 6.14; Romains 6.6). Paul déclare que la chair a été exécutée, mais sans nier que la bataille spirituelle fait toujours rage dans le croyant (cf. Romains 7.14-25)&nbsp;: le mot rappelle la croix de Christ, où s'est réellement accomplie la mort de la chair et la fin de son pouvoir dominateur (Romains 6.1-11). La sainteté repose donc sur un fait déjà posé en Christ, non sur un effort qui resterait à accomplir.</td>
+            <td><span class="trad"><span><b>S21</b> ont crucifié</span><span><b>NEG79</b> ont crucifié</span><span><b>Darby</b> ont crucifié</span><span><b>LSG</b> ont crucifié</span><span><b>KJF</b> ont crucifié</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">marchons</span><span class="mot-gr">stoicheo</span></th>
+            <td class="col-sens">marcher en rang, avancer pas à pas en ligne, suivre une règle ou une ligne directrice</td>
+            <td>Au verset 25, Paul change de verbe par rapport à 5.16 (<i>peripateo</i>, «&nbsp;marcher&nbsp;») et emploie <i>stoicheo</i>, marcher en rang, avancer en cadence derrière celui qui mène. MacArthur, qui renvoie ici à sa note sur 5.16, relève que la marche selon l'Esprit décrit une action continuelle, un style de vie habituel, et une progression&nbsp;: à mesure que le croyant se soumet au contrôle de l'Esprit, en obéissant aux commandements simples de l'Écriture, il progresse dans sa vie spirituelle (voir 5.16; Romains 8.13; Éphésiens 5.18; Colossiens 3.16). Le présent «&nbsp;marchons&nbsp;» de 5.25 fait correspondre la conduite à la vie déjà reçue&nbsp;: puisque nous vivons par l'Esprit, mettons notre pas dans le sien.</td>
+            <td><span class="trad"><span><b>S21</b> marchons</span><span><b>NEG79</b> marchons</span><span><b>Darby</b> marchons</span><span><b>LSG</b> marchons</span><span><b>KJF</b> marchons</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Galates 5.22-26</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Galates 5.22-26 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ga 5.22, 5.23, 5.24, 5.25.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-32</span></th>
+            <td><a href="https://www.gty.org/sermons/48-32" target="_blank" rel="noopener">The Perfect Model of a Spirit-Empowered Life</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-33</span></th>
+            <td><a href="https://www.gty.org/sermons/48-33" target="_blank" rel="noopener">The Believer’s Lifelong Battle for Holiness</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-34</span></th>
+            <td><a href="https://www.gty.org/sermons/48-34" target="_blank" rel="noopener">Spiritual Power for Holy Living</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-35</span></th>
+            <td><a href="https://www.gty.org/sermons/48-35" target="_blank" rel="noopener">Thinking Rightly About the Work of the Spirit</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-36</span></th>
+            <td><a href="https://www.gty.org/sermons/48-36" target="_blank" rel="noopener">The Fruit of the Spirit, Part 1</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-37</span></th>
+            <td><a href="https://www.gty.org/sermons/48-37" target="_blank" rel="noopener">The Fruit of the Spirit, Part 2</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-38</span></th>
+            <td><a href="https://www.gty.org/sermons/48-38" target="_blank" rel="noopener">The Fruit of the Spirit, Part 3</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-39</span></th>
+            <td><a href="https://www.gty.org/sermons/48-39" target="_blank" rel="noopener">The Fruit of the Spirit, Part 4</a></td>
+            <td>Galates 5.16-26</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-332</span></th>
+            <td><a href="https://www.gty.org/sermons/90-332" target="_blank" rel="noopener">The Essential Ministry of the Holy Spirit, Part 3</a></td>
+            <td>Galates 5.16-25</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-34</span></th>
+            <td><a href="https://www.gty.org/sermons/90-34" target="_blank" rel="noopener">Walking by the Spirit</a></td>
+            <td>Galates 5.16-25</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">1291</span></th>
+            <td><a href="https://www.gty.org/sermons/1291" target="_blank" rel="noopener">Restoring a Sinning Brother</a></td>
+            <td>Galates 5.26-6.6</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">1671</span></th>
+            <td><a href="https://www.gty.org/sermons/1671" target="_blank" rel="noopener">Restoring the Sinning Brother</a></td>
+            <td>Galates 5.26-6.6</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">48-40</span></th>
+            <td><a href="https://www.gty.org/sermons/48-40" target="_blank" rel="noopener">Restoring the Sinning Brother</a></td>
+            <td>Galates 5.26-6.6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question interprétative décisive est la nature même de la sanctification&nbsp;: le fruit de l'Esprit est-il une production de la volonté humaine, une liste de vertus à conquérir par l'effort moral, ou bien l'œuvre de l'Esprit dans le croyant?</p>
+    <div class="body">
+      <p>MacArthur tranche fermement, et il faut recevoir son atterrissage comme le sens du texte&nbsp;: Paul écrit «&nbsp;le fruit de l'Esprit&nbsp;», au singulier, en face des «&nbsp;œuvres de la chair&nbsp;» (5.19), au pluriel. Le contraste est délibéré. Les œuvres de la chair forment une liste où le pécheur choisit ses péchés; le fruit de l'Esprit vient d'un bloc, comme un bouquet dont toutes les fleurs paraissent ensemble. Les meilleurs efforts de la chair ne produisent que le péché; l'Esprit seul produit le fruit de la justice, comme la vie de l'arbre produit son fruit. Le croyant ne sécrète pas la sainteté par ses propres forces&nbsp;: il la porte parce que l'Esprit qui l'habite la fait mûrir. La sanctification est donc présentée comme un fruit, non comme un exploit; MacArthur rappelle pourtant que ces neuf qualités sont toutes commandées au croyant&nbsp;: Dieu ordonne ce que seul l'Esprit peut produire en lui.</p>
+      <p>MacArthur insiste sur l'unité de ce fruit. Les neuf facettes ne forment pas une liste où l'on choisirait la vertu du jour, mais les caractéristiques inextricablement liées de l'attitude sainte qui marque quiconque appartient à Dieu par la foi en Christ et possède son Esprit. L'amour vient en tête, parce qu'il est le plus grand (1 Corinthiens 13.13), l'<i>agape</i> qui se sacrifie pour autrui; pour le reste, MacArthur juge peu fructueux de chercher un plan à la liste. La joie est un bonheur fondé sur les promesses divines inaltérables, ressenti même dans les pires circonstances, et non le produit de conditions favorables. La paix est le calme intérieur né de la confiance dans la relation salvatrice avec Christ. La patience endure les blessures infligées par autrui; la bonté est une excellence morale agissante; la bienveillance est l'intérêt tendre pour les autres; la foi est la fidélité et la loyauté; la douceur est une humilité pleine de gentillesse, soumise à la volonté de Dieu, patiente devant les offenses et sans désir de vengeance; la maîtrise de soi réfrène les passions charnelles. Et MacArthur ajoute la pointe paulinienne de 5.23&nbsp;: contre un tel fruit il n'y a pas de loi. Quand le croyant marche par l'Esprit et porte ce fruit, aucune loi extérieure n'est requise pour produire ce qui plaît à Dieu (cf. Romains 8.4), car l'Esprit accomplit de l'intérieur ce que la loi commandait du dehors sans pouvoir le donner.</p>
+      <p>Le fondement de cette sanctification est posé au verset 24, et MacArthur le lit avec précision pour éviter deux dérives. «&nbsp;Ceux qui sont à Jésus-Christ ont crucifié la chair avec ses passions et ses désirs.&nbsp;» L'aoriste dit un fait accompli, non un programme&nbsp;: la chair a été exécutée. Cet emploi est l'un des quatre où «&nbsp;crucifié&nbsp;» ne renvoie pas à la croix de Christ (cf. 2.20; 6.14; Romains 6.6); il rappelle néanmoins cette croix, où s'est réellement accomplie la mort de la chair et la fin de son pouvoir dominateur sur le croyant (Romains 6.1-11). Mais MacArthur refuse ici le perfectionnisme&nbsp;: la chair a été détrônée, non encore éradiquée. La bataille spirituelle fait toujours rage dans le croyant (Romains 7.14-25), et il faudra attendre la glorification pour être enfin débarrassé de la nature humaine non rachetée (Romains 8.23). Entre-temps, en marchant par l'Esprit, le croyant a réellement la capacité de plaire à Dieu dès ici-bas. La sanctification n'est donc ni une défaite à laquelle se résigner, ni une perfection déjà atteinte, mais une marche progressive ancrée dans une mort déjà subie en Christ. MacArthur ne reçoit pas l'excuse «&nbsp;c'est ce que je suis&nbsp;»&nbsp;: pour le croyant, c'est ce qu'il était, non ce qu'il est.</p>
+      <p>Les versets 25 et 26 tirent la conséquence pratique. Pour MacArthur, le verset 25 conclut la section ouverte en 5.16 par le même ordre de marcher par l'Esprit&nbsp;: Dieu a fait sa part en crucifiant la chair, au croyant maintenant de faire la sienne. «&nbsp;Si nous vivons par l'Esprit, marchons aussi selon l'Esprit&nbsp;»&nbsp;: la vie reçue (l'indicatif) commande la marche exigée (l'impératif). On ne se sanctifie pas pour obtenir la vie de l'Esprit, on marche par l'Esprit parce qu'on la possède déjà. Et cette marche se prouve dans les relations&nbsp;: le verset 26 interdit la vaine gloire, les provocations et l'envie mutuelle, ces poisons précisément contraires à l'amour, à la bonté et à la douceur du fruit. MacArthur y lit le risque d'une fracture dans l'Église&nbsp;: les «&nbsp;spirituels&nbsp;» sont tentés de se croire dignes d'honneur et de toiser les plus faibles, et ceux-ci de les envier; le verset ouvre ainsi la consigne de restaurer le frère tombé (6.1). Il relie ce diagnostic à 5.15, où les Galates risquaient de se mordre et de se dévorer les uns les autres. Le fruit de l'Esprit n'est donc pas une piété privée mesurée au for intérieur&nbsp;: il se vérifie dans la vie de l'assemblée, là où l'amour qui sert remplace la rivalité qui détruit. Pour MacArthur, le fruit de l'Esprit est la preuve du vrai christianisme&nbsp;: l'évidence du salut n'est pas un événement passé, mais une vie transformée que l'on voit.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du versant sombre du même contraste au fondement christologique de la crucifixion de la chair, jusqu'à la promesse vétérotestamentaire du fruit que l'Esprit fait croître.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 5.16-21</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le versant sombre du même contraste&nbsp;: les œuvres évidentes de la chair que l'Esprit remplace par son fruit; ceux qui les pratiquent constamment n'héritent pas du royaume.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 5.13-14</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La liberté qui n'est pas un prétexte pour la chair mais un service mutuel par amour; l'<i>agape</i> en tête du fruit accomplit toute la loi.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 2.20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le croyant crucifié avec Christ qui ne vit plus pour lui-même; même emploi de «&nbsp;crucifié&nbsp;» appliqué à la chair en 5.24, fondement christologique de la sanctification.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 8.4-13</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Marcher selon l'Esprit accomplit la juste exigence de la loi et fait mourir les œuvres du corps; parallèle direct de la marche par l'Esprit de Galates 5.16, 25.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 6.1-11</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le vieil homme crucifié avec Christ pour que le corps du péché soit détruit; le fait accompli qui sous-tend «&nbsp;ont crucifié la chair&nbsp;» de 5.24.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 15.1-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le sarment qui ne porte du fruit qu'en demeurant dans le cep; sans Christ on ne peut rien faire, image dominicale de la sanctification reçue, non produite.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 5.18-21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le croyant rempli de l'Esprit, dont la plénitude produit chant, action de grâces et soumission mutuelle; parallèle de la marche par l'Esprit qui se prouve en communauté.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 32.15-17</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'Esprit répandu d'en haut fait du désert un verger et produit la justice, le droit et la paix; promesse vétérotestamentaire du fruit que l'Esprit fait croître.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La sanctification est un fruit de l'Esprit, non une production de la chair</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul écrit «&nbsp;le fruit de l'Esprit&nbsp;» (5.22), au singulier, par contraste avec les «&nbsp;œuvres de la chair&nbsp;» (5.19)&nbsp;: l'Esprit fait croître ce que la volonté charnelle est incapable de fabriquer.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La sainteté n'est pas un exploit moral arraché par l'effort, mais l'œuvre de l'Esprit dans le croyant régénéré. Prêcher ce passage, c'est appeler l'assemblée non à se discipliner par ses propres forces mais à marcher par l'Esprit dans l'union avec Christ; toute application qui renvoie l'auditeur à sa seule volonté trahit le texte et ramène, sous une autre forme, le légalisme que Paul combat.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La sanctification est inséparable de la justification : la même grâce qui justifie sanctifie</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La partie pratique (5.1 à 6.18) prolonge sans la contredire la doctrine de la justification par la foi&nbsp;: la foi qui sauve est agissante par l'amour (5.6) et porte le fruit de l'Esprit (5.22-23).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Contre le légalisme, le fruit n'est jamais le prix du salut mais sa preuve; contre l'antinomisme et l'<i>easy-believism</i>, une foi qui ne porte aucun fruit n'est pas la foi qui justifie. MacArthur le dit sans détour&nbsp;: le fruit de l'Esprit est la preuve du vrai christianisme; pour savoir si quelqu'un est croyant, il ne faut pas regarder le passé, mais voir si l'amour et la joie dominent sa vie maintenant, et le croyant qui voit ces vertus en lui affermit sa vocation et son élection (2 Pierre 1.10).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La crucifixion de la chair : un fait accompli en Christ, non un perfectionnisme atteint</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Ceux qui sont à Jésus-Christ ont crucifié la chair avec ses passions et ses désirs&nbsp;» (5.24)&nbsp;: l'aoriste dit une exécution déjà subie, qui rappelle la croix de Christ (cf. 2.20; Romains 6.6).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La chair a été détrônée, non encore éradiquée&nbsp;: la bataille spirituelle continue (Romains 7.14-25) jusqu'à la glorification (Romains 8.23). Cela écarte le perfectionnisme, qui prétend que le péché serait déjà extirpé, autant que le défaitisme, qui nie toute victoire possible. Le croyant lutte depuis une position de victoire déjà acquise, capable de plaire à Dieu dès ici-bas en marchant par l'Esprit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le fruit de l'Esprit se vérifie dans la vie concrète de la communauté</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La marche par l'Esprit (5.25) se traduit aussitôt en relations&nbsp;: refus de la vaine gloire, des provocations et de l'envie mutuelle (5.26), poisons contraires à l'amour et à la douceur du fruit.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La sanctification n'est pas une piété privée mesurée au for intérieur mais une réalité communautaire observable. Là où l'Esprit produit son fruit, l'amour qui sert remplace la rivalité qui mord et dévore (5.15). L'assemblée est le lieu où se vérifie si une profession de foi porte du fruit; le sacerdoce de tous les croyants se déploie dans cet amour mutuel que l'Esprit fait croître.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'Esprit accomplit de l'intérieur ce que la loi commandait du dehors</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;La loi n'est pas contre ces choses&nbsp;» (5.23)&nbsp;: quand le croyant porte le fruit de l'Esprit, aucune loi extérieure n'est requise pour produire ce qui plaît à Dieu (cf. Romains 8.4).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le cessationnisme et la suffisance de l'Écriture s'éclairent ici par contraste&nbsp;: l'Esprit n'agit pas en distribuant des révélations nouvelles ou des expériences extatiques, mais en faisant mûrir le caractère de Christ par le moyen ordinaire de l'obéissance aux commandements simples de l'Écriture. La sanctification est l'œuvre silencieuse et progressive de l'Esprit qui grave la loi de Dieu dans le cœur, accomplissant la promesse de la nouvelle alliance.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le texte dit «&nbsp;le fruit de l'Esprit&nbsp;» au singulier, en contraste avec les «&nbsp;œuvres de la chair&nbsp;» au pluriel. Quand vous exposez ces neuf facettes, votre application appelle-t-elle l'assemblée à se discipliner par ses propres forces, ou à marcher par l'Esprit dans l'union avec Christ? Où risquez-vous de transformer un fruit en programme d'effort moral?</li>
+      <li>MacArthur insiste sur l'unité du fruit&nbsp;: les neuf qualités ne forment pas une liste où l'on choisit, mais un seul fruit, un bouquet dont toutes les fleurs viennent ensemble. Comment prêcher cette unité sans découper le texte en neuf petits sermons de vertus juxtaposées qui perdraient la racine commune, l'Esprit qui les produit toutes?</li>
+      <li>Le verset 24 dit que ceux qui sont à Christ «&nbsp;ont crucifié la chair&nbsp;» (fait accompli), alors que Romains 7 décrit une bataille qui fait toujours rage. Comment tenir ensemble ces deux vérités sans tomber d'un côté dans le perfectionnisme qui nie le combat, ni de l'autre dans le défaitisme qui nie la victoire déjà acquise en Christ?</li>
+      <li>«&nbsp;Si nous vivons par l'Esprit, marchons aussi selon l'Esprit&nbsp;» (5.25)&nbsp;: l'indicatif fonde l'impératif. Votre prédication présente-t-elle clairement le fruit comme la conséquence d'une vie déjà reçue, ou risque-t-elle de le présenter comme la condition à remplir pour obtenir cette vie, glissant ainsi vers un nouveau légalisme?</li>
+      <li>Paul referme la péricope sur la vaine gloire, les provocations et l'envie (5.26), reliant le fruit à la vie de l'assemblée. En quoi la santé relationnelle de votre communauté est-elle le test concret de la marche par l'Esprit que ce passage décrit? Où votre Église risque-t-elle de se mordre et de se dévorer (5.15) au lieu de se servir par amour?</li>
+      <li>Comment ce passage articule-t-il la sanctification avec la justification par la foi seule défendue aux chapitres 3 et 4, de sorte que le fruit demeure la preuve du salut et jamais son prix? Comment éviter à la fois le légalisme qui ajoute le fruit à la foi et l'<i>easy-believism</i> qui prétend posséder la foi sans aucun fruit?</li>
+      <li>«&nbsp;La loi n'est pas contre ces choses&nbsp;» (5.23)&nbsp;: l'Esprit produit de l'intérieur ce que la loi commandait du dehors. Comment cette vérité oriente-t-elle votre compréhension de l'œuvre de l'Esprit aujourd'hui, vers la croissance progressive du caractère de Christ par l'Écriture, plutôt que vers la recherche d'expériences extraordinaires ou de révélations nouvelles?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Galates 5.22-26 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Galates : l'Évangile de la grâce&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Galates-5-22-26.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

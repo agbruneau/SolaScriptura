@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Éphésiens 6.5-9 · Serviteurs et maîtres · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique d'Éphésiens 6.5-9 : serviteurs et maîtres ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Éphésiens 6.5-9</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Éphésiens 6.5-9</p>
+    <h1 class="hero__title">Serviteurs et maîtres</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Leur maître et le vôtre est dans les cieux, et devant lui il n'y a point de favoritisme.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Éphésiens 6.9 · NEG</p>
+    <p class="hero__series">Série : <b>Éphésiens : De la mort à la gloire, par la seule grâce de Dieu</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Éphésiens 6.5-9</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Serviteurs, obéissez à vos maîtres selon la chair, avec crainte et tremblement, dans la simplicité de votre cœur, comme à Christ.</p>
+        <cite class="verse__ref">Éphésiens 6.5 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et vous, maîtres, agissez de même à leur égard, et abstenez-vous de menaces, sachant que leur maître et le vôtre est dans les cieux, et que devant lui il n'y a point de favoritisme.</p>
+        <cite class="verse__ref">Éphésiens 6.9 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Éphésiens 6.5-9 est la troisième et dernière paire de la grande section sur l'autorité et la soumission&nbsp;: après les époux et les enfants, Paul descend dans la relation la plus exposée aux abus de son temps, celle des maîtres et des serviteurs, et la transfigure par une seule vérité, le Maître commun siège dans les cieux.</p>
+    <div class="body">
+      <p>La péricope s'enracine dans la grande section consacrée aux principes divins d'autorité et de soumission dans l'Église (5.22 à 6.9). Après les époux (5.22-33) et les parents avec leurs enfants (6.1-4), Paul descend dans la sphère la plus large et la plus exposée aux abus de son temps&nbsp;: celle des maîtres et de leurs serviteurs. Le passage prolonge l'impératif maître de toute cette section, «&nbsp;soyez remplis de l'Esprit&nbsp;» (5.18)&nbsp;: l'obéissance des serviteurs et la retenue des maîtres sont autant de fruits visibles d'une vie sous le contrôle du Saint-Esprit. Ce que l'apôtre vient d'exposer en doctrine dans les chapitres 1 à 3, l'élection, la rédemption, le mystère de l'Église où Juifs et païens forment un seul corps, il l'applique ici jusque dans la relation de travail la plus humble.</p>
+      <p>L'unité se compose de deux mouvements parallèles et symétriques. Aux versets 5-8, l'exhortation s'adresse aux serviteurs&nbsp;: ils doivent obéir à leurs maîtres selon la chair «&nbsp;avec crainte et tremblement, dans la simplicité de leur cœur, comme à Christ&nbsp;», non pour plaire aux hommes sous leurs yeux, mais comme des serviteurs de Christ faisant de bon cœur la volonté de Dieu, dans l'attente d'une récompense reçue du Seigneur. Au verset 9, l'exhortation se retourne vers les maîtres&nbsp;: «&nbsp;agissez de même à leur égard&nbsp;», en s'abstenant de menaces, parce que leur Maître commun siège dans les cieux et qu'il ne fait point de favoritisme. Le pivot doctrinal qui tient les deux versants ensemble est la seigneurie unique du Christ&nbsp;: serviteur et maître relèvent du même Seigneur céleste, devant lequel toute distinction sociale terrestre s'efface.</p>
+      <p>Les bornes du passage sont nettes. Le verset 5 ouvre une nouvelle adresse («&nbsp;Serviteurs, obéissez à vos maîtres&nbsp;») qui rompt avec l'instruction aux pères du verset 4, et le verset 9 referme la séquence par la dernière des trois paires, juste avant que le verset 10 («&nbsp;Au reste, fortifiez-vous dans le Seigneur&nbsp;») n'amorce un mouvement tout différent, celui du combat spirituel et de l'armure de Dieu (6.10-17). L'idée maîtresse traverse l'unité d'un bout à l'autre&nbsp;: le travail accompli comme pour Christ, et l'autorité exercée sous le regard d'un Maître impartial, transfigurent la relation la plus marquée par l'inégalité sociale de l'Antiquité.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Éphésiens 6.5 · 6.8 · 6.9</p>
+    </header>
+    <p class="lead">Dans les sociétés grecque et romaine, l'esclave n'avait aucun droit légal et était traité comme un bien matériel&nbsp;: pour mesurer le poids de ces versets, il faut saisir que Paul ne réclame pas la révolte, mais introduit un principe qui mine l'institution de l'intérieur.</p>
+    <div class="body">
+      <p>Pour saisir le poids de ces versets, il faut mesurer ce qu'était l'esclavage dans les sociétés grecque et romaine du premier siècle. Les esclaves n'y possédaient aucun droit légal et étaient traités comme des biens matériels, de simples objets dont le maître pouvait disposer à sa guise. Ils étaient donc rarement bien traités, et l'on abusait même souvent d'eux. On estime qu'une part considérable de la population de l'Empire vivait dans cette condition, et les premières assemblées chrétiennes comptaient sans doute en leur sein de nombreux serviteurs comme des maîtres convertis, assis désormais à la même table du Seigneur.</p>
+    </div>
+    <p>Trois traits échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La Bible condamne les abus, non l'institution en soi.</b> Il faut noter avec soin que l'Écriture ne conteste pas l'esclavage en lui-même, mais les abus dont il était l'occasion. L'Ancien Testament encadrait déjà cette institution pour en limiter la cruauté&nbsp;: interdiction de réduire un homme en esclavage par enlèvement, protection de l'esclave maltraité, refus de livrer le fugitif à son maître (De 23.15-16). Plutôt que d'appeler à une révolte sociale, Paul introduit dans la relation un principe qui la mine de l'intérieur&nbsp;: serviteur et maître ont un seul et même Maître dans les cieux, devant lequel ils sont égaux.</li>
+      <li><b>Une parole pour tous les âges du travail.</b> La recommandation de Paul dépasse de loin le seul contexte de l'esclavage antique&nbsp;: elle vaut tout autant pour les employés et les employeurs de toute époque. L'impératif «&nbsp;obéissez&nbsp;» implique une soumission permanente et ininterrompue au maître ou à l'employeur terrestre, avec une seule exception, le cas où un ordre constituerait une violation manifeste de la Parole de Dieu, comme lorsque les apôtres répondirent qu'il faut obéir à Dieu plutôt qu'aux hommes (Ac 4.19-20).</li>
+      <li><b>Un enseignement vif dans les premières Églises.</b> Les épîtres pastorales reprennent et précisent ce même enseignement (1 Ti 6.1-2; Tit 2.9-10), signe qu'il s'agissait d'une question vive et récurrente dans la vie des premières assemblées, où croyants asservis et maîtres convertis devaient apprendre à vivre ensemble une égalité nouvelle devant un seul Seigneur, sans que disparaisse encore l'inégalité sociale qui les séparait.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: du <i>doulos</i> juridiquement asservi à l'<i>hupakouō</i> qui se range sous l'autorité, jusqu'à la <i>prosōpolēmpsia</i> que le Maître céleste exclut absolument.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">Serviteurs</span><span class="mot-gr">douloi</span></th>
+            <td class="col-sens">esclaves, serviteurs entièrement assujettis; personnes liées à un maître et lui appartenant</td>
+            <td>Le mot désigne au sens propre l'esclave, celui qui appartient à un maître et n'a aucun droit légal propre. Dans la société du premier siècle, le <i>doulos</i> était traité comme un bien matériel. Paul ne s'adresse donc pas d'abord à des employés salariés, mais à des hommes et des femmes juridiquement asservis, dont beaucoup avaient trouvé en Christ une liberté intérieure que leur condition sociale leur refusait. Le même terme sert ailleurs à décrire le croyant comme serviteur de Christ (v. 6), de sorte que le <i>doulos</i> terrestre est invité à voir dans son service rendu à un maître humain le reflet de son service rendu au Seigneur.</td>
+            <td><span class="trad"><span><b>S21</b> Esclaves</span><span><b>NEG79</b> Serviteurs</span><span><b>Darby</b> Esclaves</span><span><b>LSG</b> Serviteurs</span><span><b>KJF</b> Serviteurs</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">obéissez</span><span class="mot-gr">hupakouō</span></th>
+            <td class="col-sens">écouter et se soumettre, prêter une oreille obéissante, se ranger sous une autorité</td>
+            <td>Le verbe combine l'idée d'écoute attentive et de soumission effective. L'impératif employé par Paul implique une obéissance permanente et ininterrompue, non un acte ponctuel. Le même verbe a servi à exhorter les enfants à obéir à leurs parents (6.1), ce qui rattache le serviteur à la chaîne d'autorités voulues par Dieu. Cette obéissance connaît une seule limite&nbsp;: l'ordre qui exigerait une violation manifeste de la Parole de Dieu, car alors il faut obéir à Dieu plutôt qu'aux hommes (Ac 4.19-20). Hors ce cas, la soumission demeure due, même à un maître qui ne la mérite pas.</td>
+            <td><span class="trad"><span><b>S21</b> obéissez</span><span><b>NEG79</b> obéissez</span><span><b>Darby</b> obéissez</span><span><b>LSG</b> obéissez</span><span><b>KJF</b> obéissez</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">crainte et tremblement</span><span class="mot-gr">phobos kai tromos</span></th>
+            <td class="col-sens">frayeur et frémissement; respect profond et scrupule devant une autorité</td>
+            <td>L'expression ne désigne pas une peur servile ni la terreur d'un châtiment, mais un respect sincère et scrupuleux de l'autorité. Le serviteur croyant doit ce respect à son maître même lorsque ce dernier ne le mérite pas, et il le lui accorde avec une authentique sincérité, comme s'il était au service de Christ lui-même. La formule revient ailleurs chez Paul pour décrire l'attitude du croyant qui opère son salut, signe qu'il s'agit d'une gravité révérencieuse plutôt que d'un effroi. Bien servir son employeur, c'est en réalité servir Christ.</td>
+            <td><span class="trad"><span><b>S21</b> crainte et profond respect</span><span><b>NEG79</b> crainte et tremblement</span><span><b>Darby</b> crainte et tremblement</span><span><b>LSG</b> crainte et tremblement</span><span><b>KJF</b> crainte et tremblement</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ceux qui plaisent aux hommes</span><span class="mot-gr">anthrōpareskos</span></th>
+            <td class="col-sens">qui cherche à plaire aux hommes; flatteur servant pour l'apparence et le regard d'autrui</td>
+            <td>Le terme décrit celui qui travaille uniquement quand on l'observe, dans le seul but d'assurer son propre bien-être et de gagner la faveur des hommes, plutôt que d'honorer son maître et le Seigneur. Paul l'oppose au service rendu «&nbsp;de bon cœur&nbsp;», c'est-à-dire de l'âme entière, accompli même lorsque le patron n'est pas là pour surveiller. Le travail doit donc être bien fait à l'abri des regards comme sous les yeux, car le véritable Maître, lui, voit tout. Ce contraste révèle le mobile profond&nbsp;: ou bien plaire aux hommes, ou bien faire la volonté de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> pour plaire aux hommes</span><span><b>NEG79</b> pour plaire aux hommes</span><span><b>Darby</b> comme cherchant à plaire aux hommes</span><span><b>LSG</b> pour plaire aux hommes</span><span><b>KJF</b> comme voulant plaire aux hommes</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">favoritisme</span><span class="mot-gr">prosōpolēmpsia</span></th>
+            <td class="col-sens">acception de personnes; fait de juger selon l'apparence ou le rang, de faire acception du visage</td>
+            <td>Le mot dit littéralement le fait de «&nbsp;recevoir le visage&nbsp;», c'est-à-dire de juger d'après l'extérieur, la condition sociale ou le rang plutôt que selon la vérité. Paul affirme qu'il n'y a point de favoritisme devant le Maître céleste&nbsp;: aux yeux de Dieu, le maître et le serviteur sont absolument égaux. Cette impartialité divine est un attribut constant de Dieu dans l'Écriture&nbsp;: il ne fait point acception de personnes. Le maître croyant doit donc se souvenir qu'il se trouve lui-même sous l'autorité d'un Maître impartial, ce qui interdit tout abus de pouvoir, toute menace et tout mépris envers ses subordonnés.</td>
+            <td><span class="trad"><span><b>S21</b> favoritisme</span><span><b>NEG79</b> favoritisme</span><span><b>Darby</b> acception de personnes</span><span><b>LSG</b> acception de personnes</span><span><b>KJF</b> respect des personnes</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Éphésiens 6.5-9</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Éphésiens 6.5-9 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ep 6.5, 6.6, 6.7-8, 6.9.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1951</span></th>
+            <td><a href="https://www.gty.org/sermons/1951" target="_blank" rel="noopener">Spirit-Filled Labor Relations</a></td>
+            <td>Éphésiens 6.5-9</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">49-38</span></th>
+            <td><a href="https://www.gty.org/sermons/49-38" target="_blank" rel="noopener">Divine Design for the Workplace </a></td>
+            <td>Éphésiens 6.5-9</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-171</span></th>
+            <td><a href="https://www.gty.org/sermons/80-171" target="_blank" rel="noopener">God's Perspective on Work</a></td>
+            <td>Éphésiens 6.5-9</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question qui commande la péricope n'est pas accessoire&nbsp;: comment l'Évangile transforme-t-il la relation la plus inégale de l'Antiquité, sans révolte mais sans complaisance? MacArthur la résout par une formule lapidaire, bien servir son employeur, c'est aussi bien servir Christ.</p>
+    <div class="body">
+      <p>MacArthur situe d'emblée ce passage dans son arrière-plan social, sans lequel sa portée se perd. Dans les sociétés grecque et romaine, les esclaves n'avaient aucun droit légal et on les traitait comme des biens matériels; ils étaient donc rarement bien traités, et on abusait même souvent d'eux. Il observe que la Bible ne conteste pas l'esclavage en soi, mais les abus dans ce domaine, et il renvoie aux protections que la loi de Moïse accordait déjà au serviteur. La recommandation de Paul, précise-t-il, vaut aussi pour les employés de toute époque, de sorte que le texte parle directement à la relation de travail contemporaine. L'impératif «&nbsp;obéissez&nbsp;» implique pour lui une soumission permanente et ininterrompue au maître ou à l'employeur terrestre, avec pour seule exception le cas où un ordre constituerait une violation évidente de la Parole de Dieu, comme en Actes 4.19-20.</p>
+      <p>Sur l'expression «&nbsp;selon la chair&nbsp;», MacArthur la rend simplement par «&nbsp;les maîtres humains&nbsp;»&nbsp;: la relation est humaine et temporelle, et l'autorité du maître ne s'étend pas au domaine spirituel. Quant à la formule «&nbsp;avec crainte et tremblement&nbsp;», il n'y lit pas la terreur devant le patron, mais le respect et la révérence dus à une autorité que Dieu a établie, une crainte d'offenser qui regarde, derrière le maître, vers Dieu lui-même. Et il pousse l'exigence jusqu'au bout, car même s'il s'avère qu'un employeur ne mérite pas le respect qui lui est dû, il convient malgré tout de continuer à le lui accorder avec une authentique sincérité, comme si l'on était au service de Christ lui-même. De là cette formule lapidaire qui résume tout le passage&nbsp;: bien servir son employeur, c'est aussi bien servir Christ.</p>
+      <p>Le verset 6 met au jour le mobile du cœur. L'auteur note que «&nbsp;sous leurs yeux&nbsp;» vise le travail qui n'est bien fait que lorsque le patron surveille; or le travail doit être bien fait même lorsque le patron n'est pas là. Travailler «&nbsp;comme pour plaire aux hommes&nbsp;», explique MacArthur, c'est le faire seulement pour assurer son propre bien-être, plutôt que d'honorer son employeur et le Seigneur, alors que c'est de lui que le croyant est en réalité le serviteur. Tout bascule donc du regard de l'homme au regard de Dieu&nbsp;: le serviteur chrétien n'a plus de spectateur supérieur que le Christ, et c'est devant lui qu'il accomplit sa tâche, de l'âme entière.</p>
+      <p>Sur les versets 7 et 8, MacArthur rapproche le texte de Colossiens 3.23 et fait porter l'accent sur la rétribution divine&nbsp;: les récompenses et l'honneur que Dieu accordera seront fonction de notre attitude au travail et de nos actes, et rien de ce que nous faisons pour sa gloire ne restera sans récompense. Le serviteur le plus humble, privé de toute reconnaissance terrestre, reçoit ici une promesse souveraine&nbsp;: le Seigneur lui-même tient le compte de son ouvrage et le récompensera, qu'il soit esclave ou libre. Cette espérance déplace le centre de gravité du travail, de la rémunération présente vers la récompense à venir, et confère à la tâche la plus obscure une dignité éternelle.</p>
+      <p>Le verset 9 retourne l'exhortation vers les maîtres, et MacArthur en tire que maîtres et employés chrétiens doivent s'honorer et se respecter mutuellement, du fait de leur allégeance commune au Seigneur. Le «&nbsp;agissez de même à leur égard&nbsp;» signifie que le maître doit traiter ses serviteurs dans le même esprit de service rendu à Christ. Quant à l'ordre de s'abstenir de menaces, MacArthur l'explique par la plénitude de l'Esprit&nbsp;: un patron rempli du Saint-Esprit exerce son autorité et son pouvoir avec justice et grâce; il s'abstient de menacer ses employés, d'abuser de son pouvoir ou de leur manquer de respect, parce qu'il comprend que lui-même se trouve sous l'autorité d'un Maître céleste impartial. Cette impartialité de Dieu, qui ne fait point acception de personnes, motive le maître comme le serviteur&nbsp;: devant le Seigneur, toutes les distinctions terrestres sont nivelées, et derrière la fonction, Dieu n'évalue que la manière dont chacun l'a servi.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle immédiat de Colossiens à l'attribut divin de l'impartialité, jusqu'à l'encadrement vétérotestamentaire des abus de l'esclavage.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 3.22 à 4.1</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le passage parallèle le plus proche, que MacArthur cite expressément&nbsp;: même double exhortation aux serviteurs puis aux maîtres, mêmes motifs du service «&nbsp;comme pour le Seigneur&nbsp;» et de la récompense reçue de lui, avec le même rappel que les maîtres ont eux aussi un Maître dans le ciel.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Timothée 6.1-2</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Instruction aux serviteurs sous le joug d'estimer leurs maîtres dignes de tout respect, afin que le nom de Dieu et la doctrine ne soient pas blasphémés; MacArthur y renvoie pour préciser que la soumission est due même à un maître non croyant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 2.9-10</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les serviteurs doivent être soumis à leurs maîtres, leur complaire en toutes choses et ne rien détourner, afin de faire honneur en tout à la doctrine de Dieu; même éthique du travail comme témoignage rendu à l'Évangile.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 2.18-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Appel aux serviteurs à se soumettre même aux maîtres difficiles et injustes; MacArthur l'invoque pour soutenir que le respect reste dû à l'employeur qui ne le mérite pas, et que souffrir en faisant le bien trouve grâce devant Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 5.18</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'ordre d'être remplis de l'Esprit commande toute la section&nbsp;: c'est le patron rempli du Saint-Esprit qui exerce son autorité avec justice et grâce et s'abstient de menaces (6.9); l'éthique du travail est un fruit de la plénitude de l'Esprit.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 4.19-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La seule limite à l'obéissance due au maître&nbsp;: lorsqu'un ordre exige une violation manifeste de la Parole, il faut obéir à Dieu plutôt qu'aux hommes; borne expressément posée par MacArthur sur l'impératif «&nbsp;obéissez&nbsp;».</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 2.11</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Devant Dieu il n'y a point d'acception de personnes&nbsp;»&nbsp;: l'attribut divin d'impartialité qui fonde le verset 9; le Maître céleste juge le maître terrestre et le serviteur sans égard au rang social.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 23.15-16</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La loi de Moïse interdisait de livrer à son maître l'esclave fugitif réfugié chez Israël&nbsp;: exemple de l'encadrement vétérotestamentaire des abus de l'esclavage que MacArthur rappelle pour montrer que la Bible condamne les abus, non l'institution en soi.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le travail comme service rendu à Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le serviteur doit obéir «&nbsp;comme à Christ&nbsp;» (v. 5) et faire «&nbsp;de bon cœur la volonté de Dieu&nbsp;» (v. 6), «&nbsp;comme servant le Seigneur et non des hommes&nbsp;» (v. 7)&nbsp;: le maître humain n'est que l'occasion d'un service dont le vrai destinataire est le Christ.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Cette vérité transfigure la tâche la plus obscure&nbsp;: le chrétien n'a plus de spectateur supérieur que son Seigneur, qui voit le travail accompli loin des regards comme sous les yeux. Bien servir son employeur, c'est servir Christ. Cela arrache le travail à la seule logique du salaire et de la reconnaissance humaine pour en faire un acte de culte, accompli de l'âme entière, qu'on soit applaudi ou ignoré des hommes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La récompense souveraine du Seigneur</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Chacun, soit esclave, soit libre, recevra du Seigneur selon ce qu'il aura fait de bien&nbsp;» (v. 8)&nbsp;: le Seigneur lui-même tient le compte de l'ouvrage et le rétribue, indépendamment du rang social.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la rétribution des œuvres du croyant, rien de ce que nous faisons pour la gloire de Dieu ne restera sans récompense. Le serviteur privé de toute reconnaissance terrestre reçoit une promesse certaine&nbsp;: ces récompenses ne sont pas le salaire du salut, qui est par grâce seule (2.8-9), mais le fruit gracieusement honoré d'une vie déjà sauvée. Cette espérance soutient le croyant maltraité ou oublié, car son vrai Maître ne perd rien de vue.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'autorité exercée sans menace, sous le contrôle de l'Esprit</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Vous, maîtres, agissez de même à leur égard, et abstenez-vous de menaces&nbsp;» (v. 9)&nbsp;: le maître croyant doit traiter ses serviteurs dans le même esprit de service rendu à Christ et renoncer à l'abus de pouvoir.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon Éphésiens 5.18, c'est le maître rempli du Saint-Esprit qui exerce son autorité avec justice et grâce. Toute autorité légitime, au travail comme ailleurs, est un service et non une domination&nbsp;: le chrétien en position de pouvoir s'abstient de menacer, d'abuser et de mépriser, parce qu'il se sait lui-même soumis à un Maître plus grand. L'Évangile ne supprime pas la hiérarchie, mais en désarme la tyrannie de l'intérieur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'impartialité du Maître céleste</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Leur maître et le vôtre est dans les cieux, et devant lui il n'y a point de favoritisme&nbsp;» (v. 9)&nbsp;: un seul Seigneur commun au maître et au serviteur, qui juge sans égard au rang.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'attribut divin de l'impartialité (Ro 2.11), Dieu ne fait point acception de personnes. Cette égalité radicale devant un seul Seigneur désarme à la fois la révolte du subordonné et l'orgueil du supérieur&nbsp;: au pied de la croix, le directeur et l'employé sont également pécheurs sauvés par grâce. Cette vérité, vécue dans l'Église où Juifs et païens, esclaves et hommes libres forment un seul corps (2.14-16), mine de l'intérieur toute injustice sociale.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Comment prêcher «&nbsp;comme à Christ&nbsp;» (v. 5) à une assemblée qui vit son travail comme une simple nécessité économique, sans tomber dans un vernis pieux qui laisserait intacte la médiocrité de l'ouvrage?</li>
+      <li>Paul ordonne d'obéir même à un maître qui ne mérite pas le respect (1 Pi 2.18). Où passe, pour vos auditeurs, la frontière entre la soumission due et l'obéissance qui exigerait une violation de la Parole de Dieu (Ac 4.19-20)?</li>
+      <li>Le verset 6 oppose le service «&nbsp;sous leurs yeux&nbsp;» au travail bien fait en l'absence du patron. Quel diagnostic du cœur cette distinction permet-elle de poser sur notre éthique de travail quotidienne?</li>
+      <li>Comment présenter la récompense du verset 8 sans confondre cette rétribution gracieuse des œuvres du croyant avec un salut gagné par les œuvres, que l'épître a déjà exclu (2.8-9)?</li>
+      <li>Le verset 9 commande au maître de s'abstenir de menaces. Quelles formes subtiles de menace, d'abus de pouvoir ou de mépris guettent le chrétien en position d'autorité dans votre assemblée, au travail comme dans la famille?</li>
+      <li>Si le maître et le serviteur ont un seul Maître impartial dans les cieux (v. 9), comment cette vérité devrait-elle transformer concrètement les relations professionnelles entre membres d'une même Église?</li>
+      <li>Paul ne réclame pas l'abolition immédiate de l'esclavage mais en mine le fondement de l'intérieur. Que nous apprend cette stratégie sur la manière dont l'Évangile transforme les structures injustes, et sur les attentes que nous devrions ou non placer dans le changement social?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Éphésiens 6.5-9 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Éphésiens : De la mort à la gloire, par la seule grâce de Dieu&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-%C3%89ph%C3%A9siens-6-5-9.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

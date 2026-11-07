@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philippiens 1.12-18 · L'Évangile par-delà les chaînes · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Philippiens 1.12-18 : l'Évangile par-delà les chaînes ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Philippiens 1.12-18</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Philippiens 1.12-18</p>
+    <h1 class="hero__title">L'Évangile par-delà les chaînes</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Ce qui m'est arrivé a plutôt contribué aux progrès de l'Évangile.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Philippiens 1.12 · NEG</p>
+    <p class="hero__series">Série : <b>Philippiens : la joie en Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Philippiens 1.12-18</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je veux que vous sachiez, frères, que ce qui m'est arrivé a plutôt contribué aux progrès de l'Évangile.</p>
+        <cite class="verse__ref">Philippiens 1.12 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Qu'importe? De toute manière, que ce soit pour l'apparence, que ce soit sincèrement, Christ n'est pas moins annoncé: je m'en réjouis, et je m'en réjouirai encore.</p>
+        <cite class="verse__ref">Philippiens 1.18 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'emprisonnement de Paul n'a pas freiné l'Évangile, il l'a propagé&nbsp;: ce qui paraissait une défaite s'est révélé une avancée, et l'apôtre enchaîné écrit non une lettre de plainte mais un rapport de victoire.</p>
+    <div class="body">
+      <p>Après l'action de grâces et l'intercession des versets 3 à 11, Paul aborde sa propre situation (1.12-26), première grande division du corps de la lettre selon le plan que MacArthur reçoit de la Bible d'étude. Les Philippiens, qui avaient délégué Épaphrodite porteur d'un don (4.18), s'inquiétaient pour l'apôtre emprisonné à Rome; ils craignaient que sa détention n'ait étouffé la cause qu'ils soutenaient. Paul écrit pour renverser cette crainte. Sa première parole est un démenti joyeux&nbsp;: «&nbsp;Je veux que vous sachiez, frères, que ce qui m'est arrivé a plutôt contribué aux progrès de l'Évangile&nbsp;» (1.12). Les circonstances qui semblaient une défaite se sont révélées une avancée.</p>
+      <p>La péricope se laisse découper en deux mouvements. D'abord, l'effet de l'emprisonnement sur ceux du dehors et sur ceux du dedans (1.12-14)&nbsp;: tout le prétoire sait désormais que Paul est enchaîné pour Christ, et la plupart des frères, encouragés par sa fidélité dans les liens, annoncent la parole avec une assurance nouvelle. Ensuite, la question des motifs de ceux qui prêchent (1.15-18)&nbsp;: certains proclament Christ par amour, d'autres par envie et par esprit de dispute, cherchant à aggraver l'affliction de l'apôtre. Le verset 18 referme l'unité par une conclusion qui en est aussi le sommet&nbsp;: «&nbsp;Qu'importe? De toute manière, que ce soit pour l'apparence, que ce soit sincèrement, Christ n'est pas moins annoncé: je m'en réjouis, et je m'en réjouirai encore.&nbsp;»</p>
+      <p>L'idée maîtresse traverse les deux mouvements&nbsp;: l'emprisonnement de Paul n'a pas freiné l'Évangile, il l'a propagé. Le verset 19 amorce un mouvement nouveau, tourné vers l'issue de la détention et vers l'alternative entre la vie et la mort (1.19-26); il sort donc de notre péricope, dont la borne est posée au verset 18 par la double affirmation de la joie. Ces sept versets sont ainsi une méditation sur la souveraineté de Dieu qui fait servir l'adversité même à l'avancée de la bonne nouvelle.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Philippiens 1.12 · 1.13 · 1.16</p>
+    </header>
+    <p class="lead">La chaîne romaine n'a pas réduit Paul au silence&nbsp;: elle l'a introduit au cœur de la garde impériale et jusque dans la maison de César, là où nul prédicateur libre n'aurait pu pénétrer.</p>
+    <div class="body">
+      <p>Selon la tradition que MacArthur retient contre les hypothèses de Césarée et d'Éphèse, Paul rédige cette lettre durant son premier emprisonnement à Rome, vers la fin de ses deux années de détention. Les allusions au «&nbsp;prétoire&nbsp;» (1.13) et aux «&nbsp;saints de la maison de César&nbsp;» (4.22) supposent un séjour dans la capitale, où résidait l'empereur. Le livre des Actes confirme le décor&nbsp;: Paul était gardé par des soldats (Ac 28.16), logé dans une maison privée louée à ses frais (Ac 28.30), libre de recevoir des visiteurs et de prêcher le royaume de Dieu sans empêchement (Ac 28.30-31). Ce n'était pas le cachot, mais une garde à vue où un soldat de la garde impériale était enchaîné au prisonnier, se relayant jour et nuit.</p>
+    </div>
+    <p>Trois traits du décor éclairent l'idée maîtresse.</p>
+    <ul class="points">
+      <li><b>Le prétoire, auditoire captif.</b> Le mot «&nbsp;prétoire&nbsp;» (1.13) pouvait désigner un bâtiment, comme le quartier général d'un commandant ou le palais impérial, mais aussi un corps d'hommes, la garde prétorienne. Puisque Paul vivait dans une demeure privée, il vise probablement les membres de cette garde d'élite qui le surveillaient à tour de rôle. Chaque soldat ainsi enchaîné devenait un auditoire captif de l'Évangile, et l'apôtre disposait d'un public renouvelé au cœur même de l'appareil militaire de Rome. La rumeur s'étendait «&nbsp;partout ailleurs&nbsp;», jusqu'à toutes les autres personnes qui le rencontraient dans la capitale (cf. Ac 28.23-24).</li>
+      <li><b>Le vocabulaire militaire.</b> Deux mots de combat colorent le passage. Le terme rendu par «&nbsp;progrès&nbsp;» (1.12) évoque le mouvement de troupes en marche qui se fraient un chemin en dépit des obstacles, des dangers et des distractions; le mot traduit par «&nbsp;établi&nbsp;» (1.16) désignait un soldat en service commandé, posté à un point stratégique. Paul se voit ainsi comme une sentinelle placée par Dieu à un poste avancé, et son emprisonnement comme une position de combat choisie par le Souverain pour la proclamation de la bonne nouvelle.</li>
+      <li><b>Les détracteurs jaloux.</b> Quant aux opposants des versets 15 à 17, ils profitaient de la détention pour faire leur propre promotion, présentant ces liens comme le châtiment divin des péchés de l'apôtre et cherchant ainsi à miner son autorité, ses succès et l'abondance de ses dons. Leur prédication restait pourtant celle du vrai Christ&nbsp;: leur faute logeait dans le motif, non dans le message.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: de la <i>prokopē</i> qui taille la route de l'Évangile à la <i>chairō</i> qui se réjouit quoi qu'il arrive, en passant par les <i>desmos</i> qui enhardissent et l'<i>eritheia</i> qui corrompt le motif.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">progrès</span><span class="mot-gr">prokopē</span></th>
+            <td class="col-sens">avancée, progression vers l'avant; le fait de tailler une route en abattant les obstacles devant une armée en marche</td>
+            <td>Selon MacArthur, ce terme contient l'idée d'un mouvement vers l'avant, souvent celui de troupes armées, en dépit des obstacles, des dangers et des distractions. Paul affirme que son emprisonnement n'a en rien gêné la propagation du message du salut (cf. Ac 28.30-31); bien plus, il lui a ouvert de nouvelles occasions de ministère. Le même mot reparaît au verset 25 et au verset 12 sous l'image d'une piste tracée pour favoriser la progression d'une armée. La détention, qui paraissait un recul, fut en réalité une percée de l'Évangile au cœur de Rome.</td>
+            <td><span class="trad"><span><b>S21</b> progrès</span><span><b>NEG79</b> progrès</span><span><b>Darby</b> avancement</span><span><b>LSG</b> progrès</span><span><b>KJF</b> avancement</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">liens</span><span class="mot-gr">desmos</span></th>
+            <td class="col-sens">lien, chaîne, entrave; ce qui attache et retient le prisonnier</td>
+            <td>Le mot désigne concrètement les chaînes de la garde à vue romaine, par lesquelles Paul était attaché à un soldat de la garde impériale. MacArthur souligne que ceux qui côtoyaient l'apôtre reconnaissaient qu'il n'était pas un criminel, mais qu'il était enchaîné pour avoir prêché Jésus-Christ et son Évangile (cf. Ép 6.20). Ces mêmes liens, loin de décourager les frères, les ont au contraire encouragés (v. 14)&nbsp;: l'exemple de Paul, témoignage puissant rendu dans les chaînes, prouvait la fidélité de Dieu envers ses enfants persécutés et que la prison n'arrêterait pas la bonne nouvelle.</td>
+            <td><span class="trad"><span><b>S21</b> chaînes</span><span><b>NEG79</b> liens</span><span><b>Darby</b> liens</span><span><b>LSG</b> liens</span><span><b>KJF</b> liens</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">assurance</span><span class="mot-gr">tolmaō</span></th>
+            <td class="col-sens">oser, avoir l'audace de; agir avec hardiesse et sans crainte</td>
+            <td>Le verbe dit le courage qui pousse à parler sans reculer. MacArthur explique que la plupart des frères, encouragés par les liens de Paul, ont gagné plus d'assurance pour annoncer la parole sans crainte. Le témoignage de l'apôtre, fidèle alors même qu'il était dans les chaînes, démontrait la fidélité de Dieu envers ses enfants persécutés et apportait la preuve que leur propre emprisonnement éventuel n'arrêterait pas la propagation de la bonne nouvelle. Ces pensées poussaient d'autres chrétiens à tenir bon, sans redouter la prison. La hardiesse naît donc de l'exemple souffrant, non de l'aisance des circonstances.</td>
+            <td><span class="trad"><span><b>S21</b> ont l'audace</span><span><b>NEG79</b> ont plus d'assurance</span><span><b>Darby</b> osent</span><span><b>LSG</b> ont plus d'assurance</span><span><b>KJF</b> sont plus hardis</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">esprit de dispute</span><span class="mot-gr">eritheia</span></th>
+            <td class="col-sens">rivalité, esprit de faction; recherche égoïste de la première place, intrigue pour son propre intérêt</td>
+            <td>Selon MacArthur, ce mot désigne les personnes intéressées uniquement par leur avancement personnel, qui cherchent impitoyablement la première place quel qu'en soit le coût. Les détracteurs de Paul profitaient de sa détention pour se mettre en avant&nbsp;: dans leurs accusations, ils présentaient l'emprisonnement comme le signe d'un châtiment de Dieu à cause des péchés de l'apôtre. Le terme reparaîtra en 2.3, où Paul oppose cet «&nbsp;esprit de parti&nbsp;» à l'humilité qui regarde les autres comme au-dessus de soi. Ces hommes prêchaient pourtant le vrai Christ; leur faute n'était pas dans le contenu, mais dans le motif jaloux et querelleur.</td>
+            <td><span class="trad"><span><b>S21</b> esprit de rivalité</span><span><b>NEG79</b> esprit de dispute</span><span><b>Darby</b> esprit de parti</span><span><b>LSG</b> esprit de dispute</span><span><b>KJF</b> querelle</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">je m'en réjouis</span><span class="mot-gr">chairō</span></th>
+            <td class="col-sens">se réjouir, éprouver de la joie; être dans l'allégresse</td>
+            <td>Verbe de la joie qui parcourt toute l'épître malgré le contexte de détention (1.4, 18, 25; 2.2, 17-18, 28; 3.1; 4.4, 10). MacArthur note que la joie de Paul n'était affectée ni par les circonstances ni par ses détracteurs (cf. Ps 4.8-9; Ro 12.12; 2 Co 6.10). Il était heureux de voir l'Évangile proclamé avec autorité, peu lui importait qui en recevait le crédit. Il supportait les calomnies sans amertume envers ses accusateurs, se réjouissant plutôt de ce qu'ils prêchaient Christ, même si leur sainteté n'était que de façade. La forme «&nbsp;je m'en réjouirai encore&nbsp;» ajoute une joie résolue, tournée vers l'avenir, ancrée non dans la situation mais dans la cause qui avance.</td>
+            <td><span class="trad"><span><b>S21</b> je m'en réjouis</span><span><b>NEG79</b> je m'en réjouis</span><span><b>Darby</b> je m'en réjouis</span><span><b>LSG</b> je m'en réjouis</span><span><b>KJF</b> je m'en réjouis</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Philippiens 1.12-18</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Philippiens 1.12-18 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ph 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">50-7</span></th>
+            <td><a href="https://www.gty.org/sermons/50-7" target="_blank" rel="noopener">Joy in Spite of Trouble</a></td>
+            <td>Philippiens 1.12-14</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">50-8</span></th>
+            <td><a href="https://www.gty.org/sermons/50-8" target="_blank" rel="noopener">Joy in Spite of Detractors</a></td>
+            <td>Philippiens 1.15-18</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La thèse que Paul énonce d'emblée commande toute la péricope&nbsp;: ses chaînes n'ont pas étouffé l'Évangile, elles l'ont fait avancer. MacArthur en suit le fruit sur deux fronts, puis pèse les motifs des prédicateurs.</p>
+    <div class="body">
+      <p>Le cœur de la péricope est une thèse que Paul énonce d'emblée et que MacArthur résume sans détour&nbsp;: l'emprisonnement de l'apôtre n'a pas étouffé l'Évangile, il l'a propagé. «&nbsp;Ce qui m'est arrivé a plutôt contribué aux progrès de l'Évangile&nbsp;» (1.12). Le mot «&nbsp;progrès&nbsp;» évoque une armée qui taille sa route à travers les obstacles; ce qui paraissait un cul-de-sac fut en réalité une percée. Les Philippiens s'attendaient peut-être à recevoir une lettre de plainte; ils reçoivent un rapport de victoire. Voilà le premier enseignement&nbsp;: la providence de Dieu se sert des circonstances les plus contraires pour faire avancer sa cause, et le croyant lit son adversité à la lumière de ce dessein souverain plutôt qu'à celle de ses craintes.</p>
+      <p>MacArthur relève deux fronts sur lesquels la chaîne a porté du fruit. Du côté du dehors, «&nbsp;dans tout le prétoire et partout ailleurs, nul n'ignore que c'est pour Christ que je suis dans les liens&nbsp;» (1.13). Le prétoire désigne ici, selon MacArthur, les membres de la garde impériale qui surveillaient Paul jour et nuit. Chaque soldat enchaîné à l'apôtre devenait un auditeur contraint de l'Évangile; ce que la liberté n'aurait jamais permis, la captivité l'a accompli, en introduisant le message du salut au cœur de l'armée romaine et jusque dans la maison de César. Tous reconnaissaient que Paul n'était pas un criminel, mais un prisonnier de Christ. Du côté du dedans, «&nbsp;la plupart des frères dans le Seigneur, encouragés par mes liens, ont plus d'assurance pour annoncer sans crainte la parole&nbsp;» (1.14). Le témoignage fidèle d'un homme enchaîné prouvait la fidélité de Dieu envers ses enfants persécutés et démontrait que la prison n'arrêterait pas la bonne nouvelle. La hardiesse des frères ne venait donc pas du confort, mais de l'exemple souffrant de l'apôtre.</p>
+      <p>Vient alors la question des motifs, que MacArthur examine de près (1.15-17). Certains prêchaient Christ «&nbsp;par envie et par esprit de dispute&nbsp;», d'autres «&nbsp;avec des dispositions bienveillantes&nbsp;». Les premiers étaient jaloux de l'autorité de Paul, de ses succès et de la multitude de ses dons; ils profitaient de sa détention pour se faire valoir, présentant ses liens comme un châtiment divin pour ses péchés, et cherchant à lui susciter quelque affliction. Les seconds, ses amis, agissaient par amour, sachant qu'il était établi pour la défense de l'Évangile, le mot «&nbsp;établi&nbsp;» désignant un soldat en service commandé, posté par Dieu à une position stratégique. Il faut bien mesurer la distinction que MacArthur maintient&nbsp;: ces adversaires prêchaient le vrai Christ, non un faux évangile. Leur faute n'était pas dans le contenu de leur message, qui était orthodoxe, mais dans la corruption de leur motif. Ce ne sont donc ni des prédicateurs d'un autre évangile (Ga 1.6), ni les judaïsants que Paul appellera «&nbsp;chiens&nbsp;» et «&nbsp;faux circoncis&nbsp;» au chapitre 3 (3.2), mais des prédicateurs authentiques au cœur jaloux.</p>
+      <p>La conclusion du verset 18 est le sommet de la péricope&nbsp;: «&nbsp;Qu'importe? De toute manière, que ce soit pour l'apparence, que ce soit sincèrement, Christ n'est pas moins annoncé: je m'en réjouis, et je m'en réjouirai encore.&nbsp;» MacArthur y voit l'expression d'une joie totalement libérée des circonstances et des personnes. Paul ne se réjouit pas du péché de ses rivaux, mais du fait que Christ est proclamé malgré tout. Il supporte la calomnie sans amertume, se souciant non de sa réputation mais de la diffusion du nom de son Seigneur. Cette joie est le fruit d'une vie dont le centre n'est plus le moi mais Christ, ce que le verset 21 dira en toutes lettres&nbsp;: «&nbsp;Christ est ma vie.&nbsp;» Quiconque a placé sa vie en Christ peut se réjouir partout où Christ avance, même quand son propre nom est sali. Telle est la liberté souveraine que produit l'Évangile dans le cœur de celui qui l'a vraiment reçu.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de la captivité romaine qui en est le décor à la joie indépendante des circonstances, jusqu'à l'arrière-plan vétérotestamentaire de la providence qui retourne le mal en bien.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 28.30-31</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le récit de la captivité romaine de Paul, gardé dans une maison louée, prêchant le royaume de Dieu et enseignant le Seigneur Jésus-Christ avec une pleine liberté et sans empêchement; toile de fond historique directe des «&nbsp;progrès de l'Évangile&nbsp;» de 1.12.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 6.19-20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul demande qu'on prie pour qu'il annonce l'Évangile «&nbsp;avec hardiesse&nbsp;» alors qu'il est «&nbsp;ambassadeur dans les chaînes&nbsp;»; même conscience que les liens sont au service de la proclamation, écho du «&nbsp;pour Christ que je suis dans les liens&nbsp;» (1.13).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 5.41</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les apôtres se réjouissent d'avoir été jugés dignes de subir des outrages pour le nom de Jésus; même joie que celle de Paul face à la souffrance pour Christ (1.18), dissociée des circonstances.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 2.3</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'«&nbsp;esprit de parti&nbsp;» et la «&nbsp;vaine gloire&nbsp;» que Paul exhorte à fuir reprennent l'<i>eritheia</i> des prédicateurs jaloux de 1.15-17; le même motif égoïste y est nommé et opposé à l'humilité.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 8.28</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Toutes choses concourent au bien de ceux qui aiment Dieu; principe de providence souveraine qui fonde la lecture par Paul de son emprisonnement comme avancée de l'Évangile (1.12).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 6.10</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul se décrit «&nbsp;attristé, et toujours joyeux&nbsp;»; même joie indépendante des circonstances qui anime le «&nbsp;je m'en réjouis, et je m'en réjouirai encore&nbsp;» de 1.18.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 50.20</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Vous aviez médité de me faire du mal, Dieu l'a changé en bien&nbsp;»&nbsp;: l'arrière-plan vétérotestamentaire de la providence qui retourne le dessein hostile en avancée du salut, paradigme de Philippiens 1.12.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 76.11</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;La fureur de l'homme tourne à ta louange&nbsp;»&nbsp;: la souveraineté de Dieu qui fait servir l'hostilité même à sa gloire, principe sous-jacent aux motifs mauvais qui aboutissent malgré tout à la proclamation de Christ (1.18).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La providence souveraine qui fait avancer l'Évangile</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Ce qui m'est arrivé a plutôt contribué aux progrès de l'Évangile&nbsp;» (1.12)&nbsp;: Paul lit son emprisonnement non comme un revers mais comme une percée voulue par Dieu, le mot «&nbsp;progrès&nbsp;» évoquant une armée qui taille sa route à travers les obstacles.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la providence, Dieu gouverne toutes choses, y compris l'adversité, pour l'accomplissement de son dessein et l'avancée de sa cause. Pour votre assemblée, cela apprend à lire les épreuves à la lumière du plan souverain de Dieu plutôt que de la peur&nbsp;: ce qui ferme une porte en ouvre une autre que nul effort humain n'aurait pu forcer, comme la garde impériale devenue auditoire de l'Évangile.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le témoignage fidèle dans la souffrance enhardit l'Église</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;La plupart des frères, encouragés par mes liens, ont plus d'assurance pour annoncer sans crainte la parole&nbsp;» (1.14)&nbsp;: la fidélité de Paul dans les chaînes communique aux autres croyants une hardiesse nouvelle.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La persévérance du croyant éprouvé démontre la fidélité de Dieu et fortifie la foi de ses frères. Pour votre assemblée, l'exemple de ceux qui souffrent sans renier Christ est un moyen que Dieu emploie pour affermir le courage de toute la communauté&nbsp;: la hardiesse de l'Église ne naît pas de l'aisance, mais de la fidélité visible dans l'épreuve.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La proclamation de Christ au-dessus des motifs des prédicateurs</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Que ce soit pour l'apparence, que ce soit sincèrement, Christ n'est pas moins annoncé&nbsp;» (1.18)&nbsp;: Paul distingue le motif jaloux de certains prédicateurs du contenu de leur message, qui demeure le vrai Christ.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Il faut distinguer le faux évangile, qui appelle l'anathème (Ga 1.8-9), du vrai message annoncé avec un mauvais cœur. Pour votre assemblée, cela appelle au discernement&nbsp;: on se réjouit que Christ soit proclamé partout où il l'est selon la vérité, sans pour autant excuser l'ambition ni la jalousie de ceux qui le prêchent, car le motif sera jugé même quand le message est orthodoxe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La joie ancrée en Christ et non dans les circonstances</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je m'en réjouis, et je m'en réjouirai encore&nbsp;» (1.18)&nbsp;: la joie de Paul, enchaîné et calomnié, demeure ferme parce qu'elle ne dépend ni de sa situation ni de ses détracteurs.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La vraie joie chrétienne se fonde sur une relation inaltérable avec le Seigneur souverain, non sur les conditions favorables de la vie. Pour votre assemblée, cela libère le croyant de la tyrannie des circonstances et des opinions d'autrui&nbsp;: celui dont la vie est Christ (1.21) peut se réjouir partout où Christ avance, même quand son propre nom est sali.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul présente son emprisonnement comme un «&nbsp;progrès de l'Évangile&nbsp;» (1.12). Comment aider votre assemblée à relire ses propres épreuves à la lumière de la providence souveraine de Dieu, sans glisser vers un optimisme naïf qui nierait la réalité de la souffrance?</li>
+      <li>La garde impériale, public que nul prédicateur libre n'aurait pu atteindre, est devenue un auditoire captif de l'Évangile (1.13). Quelles portes fermées dans votre ministère pourraient être, en réalité, des accès que Dieu ouvre par un autre chemin?</li>
+      <li>La hardiesse des frères naît de l'exemple souffrant de Paul, non de circonstances faciles (1.14). Comment la fidélité visible des croyants éprouvés au sein de votre Église pourrait-elle enhardir le témoignage de toute la communauté?</li>
+      <li>Paul distingue le motif jaloux des prédicateurs du contenu orthodoxe de leur message (1.15-18). Comment prêcher cette distinction sans donner à entendre que les motifs sont indifférents, alors que le verset 17 montre que Dieu les juge?</li>
+      <li>Comment exposer la différence entre ces prédicateurs au cœur jaloux mais au message vrai (ch. 1) et les judaïsants au faux évangile que Paul traitera de «&nbsp;chiens&nbsp;» (ch. 3), pour une assemblée tentée de tout relativiser au nom de la tolérance?</li>
+      <li>Le «&nbsp;je m'en réjouis, et je m'en réjouirai encore&nbsp;» (1.18) montre une joie indépendante de la réputation de Paul. Qu'est-ce qui, dans votre cœur de prédicateur, doit mourir pour que vous puissiez vous réjouir lorsque Christ est honoré par d'autres que vous?</li>
+      <li>Cette joie au milieu des chaînes annonce le «&nbsp;Christ est ma vie&nbsp;» de 1.21. Comment conduire vos auditeurs à voir que la liberté souveraine devant les circonstances découle d'un centre de gravité déplacé du moi vers Christ?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Philippiens 1.12-18 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Philippiens : la joie en Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Philippiens-1-12-18.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

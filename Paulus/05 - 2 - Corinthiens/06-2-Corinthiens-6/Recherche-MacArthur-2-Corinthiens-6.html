@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Corinthiens 6 · Le jour du salut, le paradoxe de l&#x27;intégrité pastorale et l&#x27;appel à la séparation sainte · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Corinthiens 6 dans la perspective de John MacArthur : Le jour du salut, le paradoxe de l&#x27;intégrité pastorale et l&#x27;appel à la séparation sainte.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">2 Corinthiens 6</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">2 Corinthiens 6</span></p>
+    <h1 class="hero__title">Le jour du salut, le paradoxe de l'intégrité pastorale et l'appel à la séparation sainte</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Car il dit: Au temps favorable je t’ai exaucé, Au jour du salut je t’ai secouru. Voici maintenant le temps favorable, voici maintenant le jour du salut.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">2 Corinthiens 6.2 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 2 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">2 Corinthiens 6</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Prolongeant immédiatement la supplication des ambassadeurs de 5.20 (« Puisque nous travaillons avec Dieu, nous vous exhortons... », 6.1), le chapitre 6 s'articule en trois mouvements majeurs : 1) Paul presse les Corinthiens exposés aux faux apôtres de ne pas recevoir l'Évangile de la grâce en vain, car « voici maintenant le jour du salut » (6.1-⁠2); 2) dans son catalogue péristatique le plus développé (27 traits répartis en 6.3-⁠10), il démontre l'authenticité de son ministère par son endurance irréprochable dans les tribulations, la pureté de ses armes spirituelles et les neuf paradoxes de sa vie chrétienne; 3) ouvrant tout grand son cœur paternel (6.11-⁠13), il leur ordonne de rompre tout « joug mal assorti » (<i>heterozygountes</i>) avec les incrédules et l'idolâtrie parce que l'Église est le temple du Dieu vivant (6.14-⁠18, unité qui culmine au verset 7.1 avant de reprendre l'appel d'affection en 7.2-⁠4).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Puisque nous travaillons avec Dieu, nous vous exhortons à ne pas recevoir la grâce de Dieu en vain. Car il dit: Au temps favorable je t’ai exaucé, Au jour du salut je t’ai secouru. Voici maintenant le temps favorable, voici maintenant le jour du salut.</p><cite class="verse__ref">2 Corinthiens 6.1-⁠2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous ne voulons scandaliser personne en quoi que ce soit, afin que le ministère ne soit pas un objet de blâme. Mais nous nous rendons recommandables à tous égards, comme serviteurs de Dieu, par beaucoup de patience dans les tribulations, dans les calamités, dans les détresses, sous les coups, dans les prisons, dans les séditions, dans les travaux, dans les veilles, dans les jeûnes; par la pureté, par la connaissance, par la longanimité, par la bonté, par l’Esprit saint, par un amour sincère,</p><cite class="verse__ref">2 Corinthiens 6.3-⁠6 · NEG</cite></figure><figure class="verse"><p class="verse__text">au milieu de la gloire et de l’ignominie, au milieu de la mauvaise et de la bonne réputation; étant regardés comme imposteurs, quoique véridiques; comme inconnus, quoique bien connus; comme mourants, et voici nous vivons; comme châtiés, quoique non mis à mort; comme attristés, et nous sommes toujours joyeux; comme pauvres, et nous en enrichissons plusieurs; comme n’ayant rien, et nous possédons toutes choses.</p><cite class="verse__ref">2 Corinthiens 6.8-⁠10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Notre bouche s’est ouverte pour vous, Corinthiens, notre cœur s’est élargi; vous n’y êtes point à l’étroit, mais c’est votre cœur qui s’est rétréci pour nous. Rendez-nous la pareille – je vous parle comme à mes enfants – élargissez aussi votre cœur!</p><cite class="verse__ref">2 Corinthiens 6.11-⁠13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ne vous mettez pas avec les infidèles sous un joug étranger. Car quel rapport y a-t-il entre la justice et l’iniquité? ou qu’y a-t-il de commun entre la lumière et les ténèbres? Quel accord y a-t-il entre Christ et Bélial? ou quelle part a le fidèle avec l’infidèle? Quel rapport y a-t-il entre le temple de Dieu et les idoles? Car nous sommes le temple du Dieu vivant, comme Dieu l’a dit: J’habiterai et je marcherai au milieu d’eux; je serai leur Dieu, et ils seront mon peuple. C’est pourquoi, Sortez du milieu d’eux, Et séparez-vous, dit le Seigneur; Ne touchez pas à ce qui est impur, Et je vous accueillerai. Je serai pour vous un Père, Et vous serez pour moi des fils et des filles, Dit le Seigneur tout-puissant.</p><cite class="verse__ref">2 Corinthiens 6.14-⁠18 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire de ce chapitre unit l'exhortation évangélique urgente (6.1-⁠2), le catalogue péristatique et antithétique d'apologie ministérielle (6.3-⁠10), le plaidoyer d'affection pastorale (6.11-⁠13) et la parénèse de sainteté fondée sur une chaîne (<i>catena</i>) de citations de l'Ancien Testament (6.14-⁠18).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">2 Corinthiens 6</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">En 6.4-⁠5, Paul dresse la liste concrète des souffrances qu'il avait déjà endurées avant même la rédaction de la fin des Actes : « dans les coups (<i>en plēgais</i>), dans les prisons (<i>en phylakais</i>, comme à Philippes en Ac 16.23-⁠24), dans les troubles (<i>en akatastasiais</i>, les émeutes populaires comme à Antioche de Pisidie, Iconium, Lystre, Thessalonique, Corinthe et Éphèse) ». Cette liste réfute les critères mondains des sophistes corinthiens qui jugeaient la faveur divine à l'aune du confort et de l'acclamation sociale.</p><div class="body"><p>En 6.14-⁠16, l'interdiction de « se mettre avec les infidèles sous un joug étranger » (<i>Mē ginesthe heterozygountes apistois</i>) puise son image dans la loi mosaïque de Deutéronome 22.10 (Lévitique 19.19 LXX : <i>heterozygō</i>), qui défendait de labourer avec un bœuf (animal pur et puissant) et un âne (animal impur et d'un pas différent) attelés sous le même joug. À Corinthe, cet avertissement visait au premier chef la compromission spirituelle avec les faux apôtres non régénérés et la participation aux banquets et confréries des temples païens (« Quel rapport y a-t-il entre le temple de Dieu et les idoles ? », v. 16).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Ne pas recevoir la grâce de Dieu en vain : l'urgence du jour du salut (6.1-⁠2).</b> Dans son sermon 47-⁠40, John MacArthur explique que « recevoir la grâce de Dieu en vain » (6.1) vise deux cas : ceux qui, ayant entendu l'Évangile sans avoir la foi qui sauve, se laissent séduire par un faux évangile du salut par les œuvres, et les croyants entravés par un enseignement légaliste; dans les deux cas, la grâce de Dieu serait reçue en vain (comme certains membres de l'assemblée de Corinthe qui prêtaient l'oreille aux faux docteurs, cf. 13.5; He 4.1-⁠2). En citant Ésaïe 49.8 au verset 2 (« Voici maintenant le temps favorable, voici maintenant le jour du salut »), Paul rappelle que l'ère messianique de la grâce est ouverte aujourd'hui et que nul ne doit remettre à demain sa réconciliation avec Dieu.</li><li><b>Les 27 marques d'intégrité et les 9 paradoxes du serviteur de Dieu (6.3-⁠10).</b> Dans ses sermons 47-⁠40 à 47-⁠42, MacArthur analyse la structure magistrale de 6.3-⁠10. Soucieux de ne placer aucun obstacle (<i>proskopē</i>) sur le chemin de l'Évangile (v. 3), Paul se recommande comme serviteur de Dieu : 1) par sa patience inébranlable à travers neuf épreuves extérieures et privations volontaires (afflictions, calamités, détresses, coups, prisons, émeutes, travaux, veilles, jeûnes, v. 4-⁠5); 2) par neuf vertus et ressources spirituelles (pureté, connaissance, longanimité, bonté, Esprit Saint, amour sans hypocrisie, parole de vérité, puissance de Dieu, armes offensives et défensives de la justice tenues de la main droite et de la main gauche, v. 6-⁠7); 3) par neuf paradoxes qui opposent le mépris du monde à la réalité céleste (dans la gloire et l'ignominie, dans la mauvaise et la bonne réputation, regardés comme imposteurs quoique véridiques, inconnus quoique bien connus, mourants et voici nous vivons, châtiés mais non mis à mort, attristés mais toujours joyeux, pauvres mais enrichissant plusieurs, n'ayant rien et possédant toutes choses, v. 8-⁠10).</li><li><b>Le joug mal assorti et la sainteté du temple du Dieu vivant (6.11-⁠18).</b> Dans ses sermons 47-⁠43 à 47-⁠47, MacArthur montre comment l'amour paternel de Paul - dont le cœur est grand ouvert alors que les Corinthiens sont à l'étroit dans leurs propres entrailles (v. 11-⁠13) - le conduit à leur ordonner une séparation radicale d'avec l'incrédulité et le mensonge (v. 14-⁠18). Par cinq questions rhétoriques opposant la justice et l'iniquité, la lumière et les ténèbres, Christ et Bélial (Satan, le « sans valeur »), le fidèle et l'infidèle, le temple de Dieu et les idoles (v. 14-⁠16a), Paul interdit toute alliance spirituelle commune (association spirituelle ou ministère commun avec des incrédules et de faux docteurs). MacArthur précise que le mariage n'est pas la question de ce passage, même si le croyant ne doit se marier que « dans le Seigneur » (1 Co 7.39; 47-⁠44). Il scelle cet appel par une mosaïque de six textes de l'Ancien Testament (Lv 26.11-⁠12; Éz 37.27; És 52.11; Éz 20.34; 2 S 7.14; És 43.6) : parce que Dieu habite au milieu de son peuple et en est le Père tout-puissant, les croyants doivent sortir du milieu de l'impureté.</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">2 Corinthiens 6</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">2 Corinthiens 6.15</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>tis de symphōnēsis Christou pros Beliar</i> (« quel accord y a-t-il entre Christ et Béliar », orthographe grecque avec <i>-r</i> attestée par א, B, C, L, P, Ψ, SBLGNT, Westcott et Hort, Nestle 1904, texte byzantin, Textus Receptus), ou <i>... Belial</i> (textes latins et syriaques reflétant l'hébreu <i>Beliyya'al</i>) / <i>Belian</i> (𝔓46, D, F, G).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Quel accord y a-t-il entre Christ et Bélial ? » : les cinq versions françaises transcrivent la forme hébraïque habituelle « Bélial ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Simple variante phonétique de transcription du nom hébreu <i>Beliyya'al</i> (« vaurien, destructeur »), devenu dans le judaïsme du Second Temple un nom propre désignant Satan.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">2 Corinthiens 6.16</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hēmeis gar naos Theou esmen zōntos</i> (« car nous sommes le temple du Dieu vivant », 1re personne du pluriel attestée par 𝔓46, א*, B, C, D*, F, G, P, SBLGNT, Westcott et Hort, Nestle 1904), ou <i>hymeis gar naos Theou este zōntos</i> (« car vous êtes le temple du Dieu vivant », 2e personne du pluriel attestée par א2, D2, K, L, Ψ, texte byzantin, Textus Receptus, par rapprochement avec 1 Co 3.16).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Car nous sommes le temple du Dieu vivant » : les cinq versions françaises suivent toutes <i>hēmeis... esmen</i> (« nous sommes »).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Aucune incidence doctrinale : l'Église entière (Paul et les Corinthiens réunis) constitue le sanctuaire spirituel où habite le Dieu vivant.</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique (lus aux 18 versets du chapitre)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Église orthodoxe grecque 1904, Textus Receptus (Bible Hub)</li><li>versions françaises : NEG79, LSG, S21, Darby, NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Aucun écart de numérotation des 18 versets entre la NEG79, le grec et le texte anglais de MacArthur.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">2 Corinthiens 6</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>2 Corinthiens</span> <span>6.1-⁠2</span></p><div class="plan__corps"><p class="plan__titre">L'exhortation pressante des coopérateurs de Dieu : ne pas recevoir la grâce de Dieu en vain au jour favorable du salut annoncé par Ésaïe.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Appel initial <i>Synergountes de kai parakaloumen...</i> (v. 1) et citation scripturaire <i>legei gar· Kairō dektō epēkousa sou</i> (v. 2).</p></div></li><li><p class="plan__ref"><span>2 Corinthiens</span> <span>6.3-⁠10</span></p><div class="plan__corps"><p class="plan__titre">Les lettres de noblesse du serviteur de Dieu : endurance dans les tribulations, pureté et armes de la justice, et paradoxes victorieux de la vie apostolique.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Participes coordonnés <i>Mēdemian en mēdeni didontes proskopēn... all' en panti synistantes heautous hōs Theou diakonoi</i> (v. 3-⁠10).</p></div></li><li><p class="plan__ref"><span>2 Corinthiens</span> <span>6.11-⁠13</span></p><div class="plan__corps"><p class="plan__titre">Le plaidoyer du cœur paternel : l'affection grand ouverte de Paul appelant ses enfants spirituels à lui rendre la pareille.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Interpellation directe <i>To stoma hēmōn aneōgen pros hymas, Korinthioi</i> (v. 11-⁠13).</p></div></li><li><p class="plan__ref"><span>2 Corinthiens</span> <span>6.14-⁠18</span></p><div class="plan__corps"><p class="plan__titre">L'ordre de séparation sainte : refus de tout joug mal assorti avec les infidèles et promesses d'alliance faites au temple du Dieu vivant.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Impératif prohibitif <i>Mē ginesthe heterozygountes apistois</i> (v. 14-⁠16a) et chaîne de citations <i>kathōs eipen ho Theos hoti...</i> (v. 16b-18, concluant en 7.1).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>2 Corinthiens 6.1</dt><dd>L'infinitif aoriste <i>mē eis kenon tēn charin tou Theou dexasthai hymas</i> (« que vous ne receviez pas la grâce de Dieu en vain / pour le vide ») place la locution adverbiale <i>eis kenon</i> en position emphatique avant l'objet direct pour avertir contre une réception purement extérieure et sans fruit du message de la grâce.</dd></div><div><dt>2 Corinthiens 6.3-⁠4</dt><dd>Les deux participes présents actifs au nominatif pluriel <i>didontes</i> (« ne donnant aucun obstacle en rien ») et <i>synistantes</i> (« mais en tout nous recommandant nous-mêmes ») se rattachent grammaticalement au verbe principal <i>parakaloumen</i> du verset 1 : la vie irréprochable du messager est indissociable de son message de réconciliation.</dd></div><div><dt>2 Corinthiens 6.14</dt><dd>La construction périphrastique à l'impératif présent avec participe présent - <i>Mē ginesthe heterozygountes apistois</i> (« Ne devenez pas / Cessez de vous mettre sous un joug disparate avec les incrédules ») - ordonne aux Corinthiens de mettre fin aux compromissions déjà engagées avec les faux docteurs et les milieux idolâtres.</dd></div><div><dt>2 Corinthiens 6.17</dt><dd>Les trois impératifs tirés d'Ésaïe 52.11 (deux aoristes et un présent) - <i>exelthate ek mesou autōn kai aphoristhēte... kai akathartou mē haptesthe</i> (« sortez du milieu d'eux, séparez-vous et ne touchez pas à ce qui est impur », où le présent <i>mē haptesthe</i> interdit tout contact continu avec la souillure) - exigent une rupture décisive avec l'apostasie et l'idolâtrie.</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Quatre mots-clés</p></header>
+<p class="lead">Quatre mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">scandaliser</a><a href="#mot-2">à l'étroit</a><a href="#mot-3">joug étranger</a><a href="#mot-4">rapport</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">scandaliser</h3><p class="mot__translit">proskopē</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>action de heurter du pied; occasion de chute, pierre d'achoppement, scandale</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>proskopē</i> (dérivé de <i>proskoptō</i>, heurter contre un obstacle, trébucher; hapax du Nouveau Testament sous cette forme nominale en 2 Co 6.3, apparenté à <i>proskomma</i> en Rm 14.13; 1 Co 8.9) désigne tout comportement qui fait trébucher autrui.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 2 Corinthiens 6.3 (« Nous ne donnons aucun sujet de scandale en quoi que ce soit [<i>mēdemian en mēdeni didontes proskopēn</i>], afin que le ministère ne soit pas un objet de blâme »), la double négation grecque souligne la vigilance absolue du pasteur pour qu'aucun défaut moral ne discrédite l'Évangile (MacArthur, 47-⁠40).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Nous ne donnons aucun sujet de scandale en quoi que ce soit, afin que le ministère ne soit pas un objet de blâme. (6.3)</li><li><b>NEG79</b> Nous ne voulons scandaliser personne en quoi que ce soit, afin que le ministère ne soit pas un objet de blâme. (6.3)</li><li class="ecart"><b>Darby</b> ne donnant aucun sujet de scandale en rien, afin que le service ne soit pas blâmé (6.3)</li><li class="ecart"><b>LSG</b> Nous ne donnons aucun sujet de scandale en quoi que ce soit, afin que le ministère ne soit pas un objet de blâme. (6.3)</li><li class="ecart"><b>NBS</b> Nous ne donnons aucune occasion de chute en quoi que ce soit, afin que le ministère ne soit pas un objet de blâme. (6.3)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">à l'étroit</h3><p class="mot__translit">stenochōreō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>resserrer dans un espace étroit, comprimer, être à l'étroit, manquer de place</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie précisée par Thayer, <i>stenochōreō</i> (de <i>stenos</i>, étroit, et <i>chōra</i>, espace, lieu; 3 occurrences dans le NT, toutes dans 2 Corinthiens : 4.8; 6.12 [2x], accompagné du nom <i>stenochōria</i> en Rm 2.9; 8.35; 2 Co 6.4; 12.10) décrit le fait d'être coincé à l'étroit, au sens propre ou dans ses affections.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 2 Corinthiens 6.12 (« Vous n'êtes point à l'étroit [<i>ou stenochōreisthe</i>] au-dedans de nous; mais vos entrailles se sont rétrécies [<i>stenochōreisthe de en tois splanchnois hymōn</i>] »), ce n'est pas le cœur de Paul qui manque de place pour aimer les Corinthiens, mais ce sont leurs propres affections qui se sont recroquevillées sous l'influence des calomniateurs (MacArthur, 47-⁠43).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Vous n'êtes pas à l'étroit au-dedans de nous, mais vos cœurs se sont rétrécis. (6.12)</li><li><b>NEG79</b> vous n’y êtes point à l’étroit, mais c’est votre cœur qui s’est rétréci pour nous. (6.12)</li><li class="ecart"><b>Darby</b> Vous n’êtes pas à l’étroit en nous, mais vous êtes à l’étroit dans vos entrailles (6.12)</li><li class="ecart"><b>LSG</b> Vous n’êtes point à l’étroit au dedans de nous; mais vos entrailles se sont rétrécies. (6.12)</li><li class="ecart"><b>NBS</b> Vous n'êtes pas à l'étroit chez nous ; c'est votre cœur qui s'est rétréci. (6.12)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">joug étranger</h3><p class="mot__translit">heterozygeō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>être attelé sous un joug disparate avec un animal d'une autre espèce; s'associer de façon mal assortie</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>heterozygeō</i> (composé de <i>heteros</i>, d'une nature différente, et <i>zygos</i>, joug; hapax du Nouveau Testament en 2 Co 6.14, forgé sur l'adjectif <i>heterozygos</i> de Lévitique 19.19 LXX et le précepte de Deutéronome 22.10 interdisant d'atteler ensemble un bœuf et un âne) désigne toute union contre nature entre deux êtres que tout oppose.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 2 Corinthiens 6.14 (« Ne vous mettez pas avec les infidèles sous un joug étranger »), Paul interdit aux croyants de lier leur vie spirituelle ou le ministère de l'Église dans un attelage commun avec des incrédules ou de faux docteurs qui tirent dans la direction opposée à Christ (MacArthur, 47-⁠44).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Ne formez pas un attelage disparate avec des incroyants. (6.14)</li><li><b>NEG79</b> Ne vous mettez pas avec les infidèles sous un joug étranger. (6.14)</li><li class="ecart"><b>Darby</b> Ne vous mettez pas sous un joug mal assorti avec les incrédules (6.14)</li><li><b>LSG</b> Ne vous mettez pas avec les infidèles sous un joug étranger. (6.14)</li><li class="ecart"><b>NBS</b> Ne formez pas avec les non-croyants un attelage disparate. (6.14)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">rapport</h3><p class="mot__translit">synkatathesis</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>action de déposer son vote ensemble; accord commun, pacte, compromis, alliance</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie relevée par Thayer, <i>synkatathesis</i> (de <i>syn</i>, avec, <i>kata</i>, vers le bas, et <i>tithēmi</i>, déposer son bulletin ou son caillou de vote dans l'urne; hapax du Nouveau Testament en 2 Co 6.16, cf. le verbe <i>synkatatithemai</i> en Lc 23.51) désigne un vote conjoint ou une entente mutuelle.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 2 Corinthiens 6.16 (« Quel rapport [<i>synkatathesis</i>] y a-t-il entre le temple de Dieu et les idoles ? »), l'Église, sanctuaire intérieur du Dieu vivant (<i>naos</i>), ne peut voter aucune alliance ni aucun compromis syncrétiste avec l'idolâtrie et les fausses religions (MacArthur, 47-⁠45).</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Quel rapport peut-il y avoir entre le temple de Dieu et les idoles ? (6.16)</li><li><b>NEG79</b> Quel rapport y a-t-il entre le temple de Dieu et les idoles? (6.16)</li><li class="ecart"><b>Darby</b> Et quelle convenance y a-t-il entre le temple de Dieu et les idoles ? (6.16)</li><li class="ecart"><b>LSG</b> Quel rapport y a-t-il entre le temple de Dieu et les idoles ? (6.16)</li><li class="ecart"><b>NBS</b> Quel accord entre le sanctuaire de Dieu et les idoles ? (6.16)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">2 Corinthiens 6</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans les huit prédications qu'il consacre au chapitre 6 (<i>47-⁠40</i> à <i>47-⁠47</i>), John MacArthur relie l'appel au salut, l'intégrité pastorale et la sainteté séparée du peuple de Dieu. Dans les sermons <i>47-⁠40</i> à <i>47-⁠42</i> (sur 6.1-⁠10, « Honor and Dishonor - The Paradox of Ministry »), Paul commence par exhorter les Corinthiens, en tant que coopérateur de Dieu, à ne pas recevoir la grâce de Dieu en vain : ceux qui ont entendu l'Évangile de la réconciliation (5.18-⁠21) sans se repentir véritablement risquent de laisser passer « le temps favorable » et « le jour du salut » annoncé en Ésaïe 49.8 (v. 1-⁠2). Puis, pour défendre son ministère contre tout blâme (v. 3), Paul déploie en 27 traits les preuves de sa fidélité : neuf épreuves extérieures endurées avec patience (afflictions, calamités, détresses, coups, prisons, séditions, travaux, veilles, jeûnes, v. 4-⁠5), neuf ressources de caractère et de puissance spirituelle (pureté, connaissance, longanimité, bonté, Esprit Saint, amour sincère, parole de vérité, puissance de Dieu, armes de la justice à droite et à gauche, v. 6-⁠7), et neuf paradoxes glorieux qui montrent que le regard de Dieu l'emporte sur les calomnies du monde - traités d'imposteurs quoique véridiques, mourants et voici nous vivons, attristés mais toujours joyeux, pauvres mais enrichissant plusieurs, n'ayant rien et possédant toutes choses en Christ (v. 8-⁠10).</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : huit sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur 2 Corinthiens 6.1 à 6.18 (47-⁠40 à 47-⁠47, série « 2 Corinthians », juillet 1995 à février 1996)</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">47-40</span></th><td><a href="https://www.gty.org/sermons/47-40" target="_blank" rel="noopener">Honor and Dishonor - The Paradox of Ministry, Part 1</a></td><td>2 Co 6.1-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">47-41</span></th><td><a href="https://www.gty.org/sermons/47-41" target="_blank" rel="noopener">Honor and Dishonor - The Paradox of Ministry, Part 2</a></td><td>2 Co 6.1-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">47-42</span></th><td><a href="https://www.gty.org/sermons/47-42" target="_blank" rel="noopener">Honor and Dishonor - The Paradox of Ministry, Part 3</a></td><td>2 Co 6.1-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">47-43</span></th><td><a href="https://www.gty.org/sermons/47-43" target="_blank" rel="noopener">Accents of Love</a></td><td>2 Co 6.11-⁠13; 7.2-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">47-44</span></th><td><a href="https://www.gty.org/sermons/47-44" target="_blank" rel="noopener">Separating from Unbelievers, Part 1</a></td><td>2 Co 6.14</td></tr><tr><th scope="row"><span class="mot-fr">47-45</span></th><td><a href="https://www.gty.org/sermons/47-45" target="_blank" rel="noopener">Separating from Unbelievers, Part 2</a></td><td>2 Co 6.14-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">47-46</span></th><td><a href="https://www.gty.org/sermons/47-46" target="_blank" rel="noopener">Separating from Unbelievers, Part 3</a></td><td>2 Co 6.17-⁠18</td></tr><tr><th scope="row"><span class="mot-fr">47-47</span></th><td><a href="https://www.gty.org/sermons/47-47" target="_blank" rel="noopener">Separating from Unbelievers, Part 4</a></td><td>2 Co 7.1</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p>Dans le sermon <i>47-⁠43</i> (sur 6.11-⁠13 et 7.2-⁠4, « Accents of Love »), MacArthur met en lumière la vulnérabilité bouleversante d'un vrai pasteur : Paul appelle les Corinthiens par leur nom, leur montre son cœur grand ouvert et les supplie d'élargir leurs propres entrailles rétrécies par la méfiance (v. 11-⁠13).</p><p>Enfin, dans les quatre sermons <i>47-⁠44</i> à <i>47-⁠47</i> (qui couvrent la charnière de 6.14 à 7.1, « Separating from Unbelievers »), MacArthur expose la doctrine biblique de la séparation spirituelle. L'étroitesse de cœur des Corinthiens envers Paul provenait de leur attelage illégitime avec les faux apôtres et le paganisme ambiant. Paul leur ordonne : « Ne vous mettez pas avec les infidèles sous un joug étranger » (v. 14). Cinq questions rhétoriques démontrent l'incompatibilité absolue entre la justice et l'iniquité, la lumière et les ténèbres, Christ et Bélial, le croyant et l'incrédule, le temple de Dieu et les idoles (v. 14-⁠16a). Parce que nous sommes le sanctuaire (<i>naos</i>) du Dieu vivant, Dieu lui-même nous ordonne à travers une chaîne de promesses de l'Ancien Testament (Lv 26.12; És 52.11; 2 S 7.14) de sortir du milieu de l'impureté pour jouir de sa communion paternelle intime (v. 16b-18).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>2 Corinthiens 6.2.</b> Le redoublement de l'adverbe emphatique <i>idou <b>nyn</b>... idou <b>nyn</b></i> (« voici <b>maintenant</b>... voici <b>maintenant</b> ») et l'intensification lexicale faisant passer le <i>kairō dektō</i> (« temps favorable » d'Ésaïe 49.8 LXX) au composé renforcé <i>kairos <b>euprosdektos</b></i> (« temps éminemment favorable et bienvenu ») soulignent l'urgence eschatologique de l'appel évangélique.</li><li><b>2 Corinthiens 6.4-⁠10.</b> L'architecture rythmique des 27 compléments dépend d'un seul participe initial (<i>synistantes heautous hōs Theou diakonoi</i>, v. 4) et progresse, après le chapeau <i>en hypomonē pollē</i>, en trois vagues grammaticales : 17 locutions prépositionnelles en <i>en + datif</i> (v. 4b-7a), 3 locutions en <i>dia + génitif</i> (v. 7b-8a), puis 7 antithèses introduites par <i>hōs... kai...</i> (v. 8b-10).</li><li><b>2 Corinthiens 6.11-⁠13.</b> Le contraste spatial et affectif entre la bouche ouverte et le cœur élargi de Paul (<i>to stoma hēmōn aneōgen... hē kardia hēmōn peplatyntai</i>, deux parfaits d'état durable) et l'étroitesse intérieure des Corinthiens (<i>stenochōreisthe en tois splanchnois hymōn</i>) culmine dans l'impératif pressant <i>platynthēte kai hymeis</i> (« élargissez-vous aussi ! »).</li><li><b>2 Corinthiens 6.14-⁠16.</b> L'accumulation de cinq termes grecs distincts pour exprimer l'association dans les cinq questions rhétoriques - <i>metochē</i> (partenariat), <i>koinōnia</i> (communion), <i>symphōnēsis</i> (harmonie musicale), <i>meris</i> (part d'héritage) et <i>synkatathesis</i> (accord mutuel) - ferme toutes les portes à une quelconque alliance spirituelle entre la vérité et le mensonge.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Cinq passages</p></header>
+<p class="lead">Cinq passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 49.8; Hébreux 3.7-⁠15; 4.1-⁠2</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Citation explicite en 2 Corinthiens 6.2 reproduisant mot pour mot la Septante grecque d'Ésaïe 49.8 (<i>Kairō dektō epēkousa sou kai en hēmera sōtērias eboēthēsa soi</i>), qui traduit le texte hébreu massorétique du deuxième chant du Serviteur de l'Éternel et fonde l'urgence de répondre aujourd'hui à l'Évangile.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 22.10; Lévitique 19.19</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Arrière-plan mosaïque direct du verbe <i>heterozygeō</i> (« se mettre sous un joug étranger ») en 2 Corinthiens 6.14 : la loi interdisait d'accoupler des animaux d'espèces différentes (Lévitique 19.19 LXX : <i>heterozygō</i>) ou de labourer avec un bœuf et un âne sous le même joug (Dt 22.10).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Lévitique 26.11-⁠12; Ézéchiel 37.27; 1 Corinthiens 3.16-⁠17</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Première citation de la chaîne de 2 Corinthiens 6.16 (« J'habiterai et je marcherai au milieu d'eux; je serai leur Dieu, et ils seront mon peuple »), combinant le texte hébreu massorétique et la Septante grecque de Lévitique 26.11-⁠12 et d'Ézéchiel 37.27 appliqués à l'Église, temple du Dieu vivant.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 52.11; Ézéchiel 20.34, 41</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Deuxième citation de la chaîne en 2 Corinthiens 6.17 (« Sortez du milieu d'eux, et séparez-vous, dit le Seigneur; ne touchez pas à ce qui est impur, et je vous accueillerai »), reprenant les impératifs de la Septante grecque et du texte hébreu massorétique d'Ésaïe 52.11 suivis de la promesse d'Ézéchiel 20.34 LXX (<i>eisdexomai hymas</i>).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">2 Samuel 7.14; Ésaïe 43.6; Apocalypse 21.3, 7</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Troisième citation de la chaîne en 2 Corinthiens 6.18 (« Je serai pour vous un père, et vous serez pour moi des fils et des filles, dit le Seigneur tout-puissant »), élargissant l'oracle davidique de 2 Samuel 7.14 (texte hébreu massorétique et Septante grecque, avec le titre divin <i>Kyrios Pantokratōr</i> de 2 S 7.8 LXX) aux fils et aux filles d'Ésaïe 43.6.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Trois axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">L'urgence eschatologique de l'appel évangélique</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Nous vous exhortons à ne pas recevoir la grâce de Dieu en vain, car il dit : Au temps favorable je t'ai exaucé, au jour du salut je t'ai secouru; voici maintenant le temps favorable, voici maintenant le jour du salut (6.1-⁠2).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Sotériologie (appel général et responsabilité humaine) : la proclamation de la grâce de Dieu exige une réponse immédiate de repentance et de foi; côtoyer l'Évangile sans se donner à Christ expose au jugement.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>La promesse messianique adressée au Serviteur en Ésaïe 49.8 s'accomplit dans toute l'ère de la nouvelle alliance inaugurée par la croix et la résurrection : chaque jour où l'Évangile est prêché est « maintenant le jour du salut ».</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Ne présumons jamais du lendemain et veillons à ce que notre adhésion à l'Évangile ne soit pas une profession creuse mais une réception vivante de la grâce de Dieu.</p></div></div></section><section class="theme"><h3 class="theme__title">La vie cruciforme et paradoxale du serviteur de Dieu</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Sans donner aucun sujet de scandale, Paul se recommande en tout comme serviteur de Dieu par une grande patience dans les afflictions, par la pureté, la parole de vérité et les armes de la justice, vivant dans le paradoxe d'être attristé mais toujours joyeux, pauvre mais enrichissant plusieurs, n'ayant rien et possédant toutes choses (6.3-⁠10).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Éthique pastorale et théologie de l'épreuve : l'authenticité d'un ministre de Christ se vérifie à son intégrité morale, à son endurance dans la souffrance et à la joie surnaturelle qui cohabite en lui avec la douleur.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>À l'image du Seigneur Jésus « homme de douleur » mais oint d'une huile de joie (És 53.3; He 1.9), les apôtres et les fidèles traversent le monde incompris des hommes mais connus et approuvés de Dieu.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Prenons garde à ne placer aucune pierre d'achoppement devant l'Évangile par notre conduite, et apprenons à tenir fermement les armes de la justice dans la bonne comme dans la mauvaise réputation.</p></div></div></section><section class="theme"><h3 class="theme__title">La sainteté séparée de l'Église, temple du Dieu vivant</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Ne vous mettez pas avec les infidèles sous un joug étranger, car nous sommes le temple du Dieu vivant; sortez du milieu d'eux, séparez-vous et ne touchez pas à ce qui est impur, et je serai pour vous un père et vous serez pour moi des fils et des filles, dit le Seigneur tout-puissant (6.14-⁠18).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Ecclésiologie et doctrine de la sanctification : tout en vivant dans le monde pour y témoigner (1 Co 5.9-⁠10), le croyant et l'Église doivent refuser tout partenariat spirituel ou doctrinal avec l'incrédulité et l'apostasie.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>De la présence de la Shékinah dans le tabernacle (Lv 26.11-⁠12) et de l'appel à sortir de Babylone en purifiant les vases du Seigneur (És 52.11) jusqu'à l'Église néotestamentaire habitée par l'Esprit (2 Co 6.16) et à la Nouvelle Jérusalem (Ap 21.3, 7).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Rompons tout joug mal assorti qui compromet notre fidélité à Christ et la pureté de son Église, afin de goûter pleinement la communion paternelle du Dieu tout-puissant.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>En quoi consiste le danger de « recevoir la grâce de Dieu en vain » (6.1) au sein d'une assemblée locale, et pourquoi Paul insiste-t-il deux fois sur le mot « maintenant » au verset 2 ?</li><li>Parmi les 27 traits du ministère de Paul en 6.3-⁠10, lesquels contrastent le plus fortement avec les critères de succès que la culture contemporaine applique aux dirigeants spirituels ?</li><li>Comment un chrétien peut-il expérimenter simultanément le fait d'être « attristé, et nous sommes toujours joyeux; comme pauvres, et nous en enrichissons plusieurs; comme n'ayant rien, et nous possédons toutes choses » (6.10) ?</li><li>Quelles sont les applications légitimes du commandement « Ne vous mettez pas avec les infidèles sous un joug étranger » (6.14) concernant la coopération spirituelle ou ecclésiale avec des incrédules ou de faux docteurs, sachant que MacArthur n'y voit pas d'abord la question du mariage ?</li><li>Comment les promesses divines des versets 16 à 18 (« J'habiterai au milieu d'eux... Je serai pour vous un père ») transforment-elles le commandement de séparation d'avec le péché en un privilège d'intimité avec Dieu ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 2 Corinthiens 6 · 2 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-2-Corinthiens-6.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

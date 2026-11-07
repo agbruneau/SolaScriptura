@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacques 5.1-6 · Le cri des moissonneurs · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jacques 5.1-6 : oracle de jugement contre les riches faux professants, salaire retenu et cri des moissonneurs, lu selon la théologie de John MacArthur. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jacques 5.1-6</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Jacques 5.1-6</p>
+    <h1 class="hero__title">Le cri des moissonneurs</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Voici, le salaire des ouvriers qui ont moissonné vos champs, et dont vous les avez frustrés, crie; et les cris des moissonneurs sont parvenus jusqu'aux oreilles du Seigneur des armées.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jacques 5.4 · NEG</p>
+    <p class="hero__series">Série : <b>La foi qui agit</b></p>
+    <p class="hero__meta">Recherche exégétique · 6 juin 2026 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Jacques 5.1-6</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">À vous maintenant, riches! Pleurez et gémissez, à cause des malheurs qui viendront sur vous.</p>
+        <cite class="verse__ref">Jacques 5.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Voici, le salaire des ouvriers qui ont moissonné vos champs, et dont vous les avez frustrés, crie; et les cris des moissonneurs sont parvenus jusqu'aux oreilles du Seigneur des armées.</p>
+        <cite class="verse__ref">Jacques 5.4 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Jacques 5.1-6 quitte le registre de la sagesse pour celui de l'oracle prophétique de jugement : un avertissement eschatologique réel adressé aux riches faux professants qui n'adorent que l'argent.</p>
+    <div class="body">
+      <p>L'auteur est Jacques, demi-frère du Seigneur Jésus (Marc 6.3; Galates 1.19), surnommé «&nbsp;le Juste&nbsp;» dans la tradition de l'Église primitive, devenu après la résurrection (1 Corinthiens 15.7) le pilier reconnu de l'Église de Jérusalem (Actes 15.13; Galates 2.9). Selon la lecture de MacArthur, son épître est l'un des plus anciens écrits du Nouveau Testament, rédigée autour de l'an 44-49, adressée «&nbsp;aux douze tribus qui sont dans la dispersion&nbsp;» (Jacques 1.1), c'est-à-dire à des chrétiens d'origine juive dispersés hors de la Palestine. Le genre dominant n'est pas la dissertation théologique paulinienne mais la littérature de sagesse pratique, dans la lignée des Proverbes et du Sermon sur la montagne; la thèse maîtresse de toute l'épître est que la foi authentique se prouve par les œuvres (Jacques 2.14-26). Dans cette section précise, Jacques quitte le registre de la sagesse pour adopter celui de l'oracle prophétique de jugement.</p>
+      <p>Jacques 5.1-6 forme une unité serrée, un oracle de malheur calqué sur les dénonciations des prophètes de l'Ancien Testament contre les riches oppresseurs (Amos 5-6; Ésaïe 5.8-10; Michée 2.1-5). Les bornes sont nettes : l'apostrophe «&nbsp;À vous maintenant, riches&nbsp;» (5.1) ouvre brusquement la péricope, et l'unité se referme au verset 6 avec l'accusation de meurtre du juste. Le verset 7, «&nbsp;Soyez donc patients, frères&nbsp;», inaugure une nouvelle adresse, à un autre auditoire (les «&nbsp;frères&nbsp;») et sur un autre ton (l'exhortation à l'endurance). Ce contraste est délibéré et structurant.</p>
+      <p>La place dans l'argument est cruciale. La semaine précédente (Jacques 4.13-17) dénonçait la présomption du marchand qui planifie son avenir «&nbsp;sans Dieu&nbsp;», disant «&nbsp;nous irons, nous trafiquerons, nous gagnerons&nbsp;». Jacques 5.1-6 en est l'envers sombre : voici l'aboutissement de cette vie tournée vers le monde, le riche qui a vécu pour amasser et qui se tient désormais au seuil du jugement. Selon la note de MacArthur (5.1), ces riches sont des riches méchants qui se prétendent chrétiens et s'associent à l'Église alors qu'ils n'adorent que l'argent, par contraste avec les vrais croyants riches de l'assemblée dont Timothée avait la responsabilité (1 Timothée 6.17-19). Le ton du passage est donc un avertissement aux riches faux professants associés à l'Église, et cet avertissement n'en demeure pas moins un oracle de jugement : MacArthur insiste sur la réalité de ce jugement; il s'agit d'un avertissement eschatologique réel, annonçant un jour de jugement littéral et à venir. Ce noir tableau rend d'autant plus lumineuse la patience à laquelle Jacques appelle ses «&nbsp;frères&nbsp;» au verset 7 : l'opprimé n'a pas à se venger, car le Seigneur des armées a déjà entendu son cri.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Jacques 5.2-5 · Deutéronome 24.14-15</p>
+    </header>
+    <p class="lead">Le lecteur moderne lit «&nbsp;riches&nbsp;» comme une catégorie économique neutre, mais le premier auditoire entendait une réalité sociale précise et violente.</p>
+    <div class="body">
+      <p>Dans la Palestine et la Syrie du premier siècle, la terre se concentrait de plus en plus entre les mains de grands propriétaires, les <i>latifundia</i>, tandis que les petits paysans, écrasés par la dette et la fiscalité (impôts romains, taxes du Temple, dîmes), perdaient leurs parcelles et devenaient journaliers. Ces ouvriers agricoles, les <i>misthioi</i>, étaient embauchés à la journée et vivaient littéralement au jour le jour : le salaire du soir achetait le pain du lendemain. Retenir ce salaire, même une nuit, n'était pas une simple irrégularité comptable; c'était condamner une famille à la faim.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur d'aujourd'hui.</p>
+    <ul class="points">
+      <li><b>Le salaire dû avant le coucher du soleil.</b> La Loi de Moïse exigeait explicitement que le salaire du journalier soit payé le jour même : «&nbsp;Tu lui donneras le salaire de sa journée avant le coucher du soleil; car il est pauvre, et il lui tarde de le recevoir; sans cela, il crierait à l'Éternel contre toi, et tu te chargerais d'un péché&nbsp;» (Deutéronome 24.14-15; cf. Lévitique 19.13). Quand Jacques écrit que «&nbsp;le salaire des ouvriers... crie&nbsp;» et que ce cri «&nbsp;est parvenu aux oreilles du Seigneur des armées&nbsp;» (5.4), il ne forge pas une métaphore poétique : il active une catégorie juridique et morale connue de tout Juif. Le propriétaire qui retient le salaire viole frontalement la Torah et déclenche le mécanisme même que Deutéronome décrit, le cri qui monte vers Dieu.</li>
+      <li><b>Les trois formes de la richesse ancienne.</b> La fortune s'accumulait sous trois formes : les denrées (grain, huile), les vêtements de luxe (tissus précieux thésaurisés et transmis en héritage) et les métaux précieux (or, argent). Les trois verbes de jugement de Jacques (richesses pourries, vêtements rongés des mites, or et argent rouillés, 5.2-3) frappent successivement ces trois formes : la fortune entière est dépeinte comme déjà en décomposition.</li>
+      <li><b>Engraissés pour le jour du carnage.</b> L'expression «&nbsp;comme au jour du carnage&nbsp;» (ou «&nbsp;de tuerie&nbsp;», 5.5) évoque l'image de bêtes que l'on engraisse sans le savoir pour le jour de l'abattage : les riches, repus de luxe, se sont engraissés eux-mêmes pour le jour du jugement. Ce que MacArthur souligne, c'est que «&nbsp;vous avez amassé pour les derniers jours&nbsp;» (5.3) désigne, selon sa note, la période située entre la première venue de Christ et son retour : Jacques reprend les riches parce qu'ils vivent comme si Jésus n'allait jamais revenir. La folie qu'il dénonce est d'amasser nourriture, vêtements, or et argent, alors que tout cela est voué à la corruption et à la destruction, et que le jugement futur du dernier jour demeure pleinement réel.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq termes portent le poids de l'oracle : le hurlement des condamnés (<i>ololuzō</i>), la fortune en décomposition (<i>sēpō</i>, <i>katioō</i>), le salaire frauduleusement retenu (<i>misthos</i>) et le Dieu qui l'entend, le Seigneur des armées (<i>Sabaōth</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">pleurez en poussant des cris</span><span class="mot-gr">ololuzō</span></th>
+            <td class="col-sens">hurler, pousser un cri perçant de détresse</td>
+            <td>Verbe onomatopéique qui ne décrit pas le pleur pénitent du Psaume 51, mais le hurlement de terreur des condamnés (5.1). C'est le mot des oracles d'Ésaïe et d'Amos contre ce qui est voué au jugement. Jacques l'emploie pour annoncer un verdict, non un appel à la repentance : ces riches sont sommés de se lamenter à l'avance sur les malheurs qui viennent.</td>
+            <td><span class="trad"><span><b>S21</b> pleurez tout haut</span><span><b>NEG79</b> pleurez en poussant des cris</span><span><b>Darby</b> pleurez en poussant des cris</span><span><b>LSG</b> pleurez en poussant des cris</span><span><b>KJF</b> pleurez et hurlez</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">pourries / rongés des mites</span><span class="mot-gr">sēpō / sētobrōtos</span></th>
+            <td class="col-sens">se putréfier, pourrir; (vêtements) mangés des mites</td>
+            <td>La richesse en denrées et en étoffes est dépeinte comme déjà décomposée (5.2). Ce qu'on a accumulé égoïstement, au lieu d'en faire profiter ceux qui en ont besoin, pourrit : l'image dit la vanité et la corruption de biens thésaurisés contre toute utilité. Écho direct de l'avertissement de Jésus sur les trésors que «&nbsp;la teigne et la rouille détruisent&nbsp;» (Matthieu 6.19-20).</td>
+            <td><span class="trad"><span><b>S21</b> pourries / rongés par les mites</span><span><b>NEG79</b> pourries / rongés des vers</span><span><b>Darby</b> pourries / rongés des vers</span><span><b>LSG</b> pourries / rongés des vers</span><span><b>KJF</b> corrompues / mangés des mites</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">rouillés / rouille</span><span class="mot-gr">katioō / ios</span></th>
+            <td class="col-sens">se couvrir de rouille; la rouille, le venin, la corrosion</td>
+            <td>L'or et l'argent ne rouillent pas littéralement : l'hyperbole dit que même le métal le plus stable est voué à la corruption (5.3). Cette rouille devient «&nbsp;un témoin contre&nbsp;» les riches et «&nbsp;dévorera leur chair comme un feu&nbsp;» : ce sur quoi ils comptaient pour leur sécurité se retourne en acte d'accusation au jugement. Le même mot <i>ios</i> désigne ailleurs le venin (Jacques 3.8; Romains 3.13).</td>
+            <td><span class="trad"><span><b>S21</b> rouillés / rouille</span><span><b>NEG79</b> rouillés / rouille</span><span><b>Darby</b> rouillés / rouille</span><span><b>LSG</b> rouillés / rouille</span><span><b>KJF</b> rouillés / rouille</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">le salaire des ouvriers</span><span class="mot-gr">misthos tōn ergatōn</span></th>
+            <td class="col-sens">le gage, la rémunération due aux journaliers</td>
+            <td>Le salaire frauduleusement retenu «&nbsp;crie&nbsp;» (5.4). Le terme renvoie au droit du journalier que la Torah protège : payer avant le coucher du soleil (Deutéronome 24.14-15; Lévitique 19.13). Retenir ce gage n'est pas une irrégularité comptable mais une oppression meurtrière qui déclenche le cri vers Dieu. La fraude qui prive l'ouvrier de son dû est l'un des chefs d'accusation de l'oracle.</td>
+            <td><span class="trad"><span><b>S21</b> le salaire des ouvriers</span><span><b>NEG79</b> le salaire des ouvriers</span><span><b>Darby</b> le salaire des ouvriers</span><span><b>LSG</b> le salaire des ouvriers</span><span><b>KJF</b> le salaire des ouvriers</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">du Seigneur des armées</span><span class="mot-gr">Kyrios Sabaōth</span></th>
+            <td class="col-sens">l'Éternel des armées, le Seigneur Sabaoth (titre de souveraineté guerrière)</td>
+            <td>Transcription de l'hébreu <i>YHWH Tsebaôth</i>, le Seigneur qui commande les armées du ciel (5.4). Ce titre rare dans le NT (cf. Romains 9.29) dit la souveraineté et la puissance redoutable du Dieu qui entend le cri de l'opprimé. C'est le fondement de la patience demandée au verset 7 : le croyant maltraité n'a pas à se venger, car le Roi des armées a déjà enregistré sa plainte.</td>
+            <td><span class="trad"><span><b>S21</b> du Seigneur de l'univers</span><span><b>NEG79</b> du Seigneur des armées</span><span><b>Darby</b> du *Seigneur Sabaoth</span><span><b>LSG</b> du Seigneur des armées</span><span><b>KJF</b> du SEIGNEUR sabaoth</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Perspective MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Jacques 5.1-6</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Jacques 5.1-6 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Jc 5.1, 5.2-3, 5.3, 5.4, 5.5, 5.6.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-29</span></th>
+            <td><a href="https://www.gty.org/sermons/59-29" target="_blank" rel="noopener">Judgment on the Wicked Rich, Part 1</a></td>
+            <td>Jacques 5.1-3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-30</span></th>
+            <td><a href="https://www.gty.org/sermons/59-30" target="_blank" rel="noopener">Judgment on the Wicked Rich, Part 2</a></td>
+            <td>Jacques 5.4-6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question interprétative centrale du passage est celle de l'identité des «&nbsp;riches&nbsp;» apostrophés au verset 1. La note de MacArthur (5.1) tranche nettement : il ne s'agit pas de croyants riches authentiques, ni d'incrédules purement extérieurs à toute communauté, mais de riches méchants qui se prétendent chrétiens et s'associent à l'Église alors qu'ils n'adorent que l'argent.</p>
+    <div class="body">
+      <p>MacArthur les oppose explicitement aux vrais croyants riches de l'assemblée dont Timothée avait la responsabilité (1 Timothée 6.17-19) : ce sont des faux professants qui gravitent autour de l'assemblée. Le ton du passage est donc un avertissement adressé à ces riches faux professants, avertissement qui n'en demeure pas moins un oracle de jugement.</p>
+      <p>Le motif du châtiment est précisé par MacArthur avec insistance : si Jacques condamne ces riches, ce n'est pas pour leur richesse, mais pour le mauvais emploi qu'ils en font. Leur grief central est d'avoir prostitué la bonté et la générosité de Dieu (5.5); ils ne peuvent donc s'attendre qu'au châtiment divin. La possession de richesses n'est pas le péché : Abraham, Job et Joseph d'Arimathée furent riches et justes. Le texte déploie cet abus en séquence : l'accumulation égoïste qui laisse pourrir des biens dont d'autres ont besoin (5.2-3), la fraude qui retient le salaire dû (5.4), le luxe dissolu qui vit pour la jouissance présente (5.5), et finalement l'oppression meurtrière du juste sans défense (5.6). Tous ces actes manifestent une même racine : avoir détourné et prostitué pour soi la bonté et la générosité que Dieu confie.</p>
+      <p>Plusieurs indices confirment la gravité de ces hommes. Contrairement aux croyants, Jacques ne les nomme jamais «&nbsp;frères&nbsp;»; ils sont simplement «&nbsp;riches&nbsp;». L'absence totale d'appel à la repentance est frappante : Jacques annonce seulement les «&nbsp;malheurs qui vont... arriver&nbsp;» (5.1), un verdict. Le «&nbsp;pleurez en poussant des cris&nbsp;» n'est pas le cri pénitent du Psaume 51, mais le hurlement de terreur des condamnés des oracles d'Ésaïe et d'Amos. Le sommet de l'accusation, «&nbsp;vous avez condamné, vous avez tué le juste&nbsp;» (5.6), décrit le comportement caractéristique des ennemis de Dieu. MacArthur lit «&nbsp;le juste&nbsp;» au verset 6 comme l'opprimé innocent que les riches, prêts à tout pour satisfaire leurs convoitises, font condamner et mettre à mort par les tribunaux.</p>
+      <p>L'horizon de l'avertissement est eschatologique : l'expression «&nbsp;les derniers jours&nbsp;» (5.3) désigne, dans la note de MacArthur, la période située entre la première venue de Christ et son retour. Jacques reprend ces riches parce qu'ils vivent comme si Jésus n'allait jamais revenir. Le cœur de l'avertissement, et MacArthur en souligne la pleine réalité, est que cette fortune amassée par l'injustice ne sauvera personne au jour du jugement. Au contraire, elle se dressera comme témoin à charge et «&nbsp;dévorera leur chair comme un feu&nbsp;». La sécurité que ces hommes croyaient acheter est exactement ce qui les condamne.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent l'oracle, de l'arrière-plan vétérotestamentaire qui fonde l'accusation jusqu'aux paroles de Jésus et de Paul sur la richesse et le jugement.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 24.14-15</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La Loi exige de payer le salaire du journalier avant le coucher du soleil, «&nbsp;sans cela, il crierait à l'Éternel contre toi&nbsp;» : la catégorie juridique exacte que Jacques active quand le salaire retenu «&nbsp;crie&nbsp;» (5.4).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Lévitique 19.13</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Le salaire du journalier ne restera pas chez toi jusqu'au lendemain&nbsp;» : redoublement de l'interdit mosaïque de retenir le gage de l'ouvrier, fondement de l'accusation de fraude.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Amos 5.11-12; 8.4-6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Oracle prophétique contre les puissants qui foulent le pauvre et faussent la balance : le modèle même de l'oracle de malheur de jugement que Jacques reprend contre les riches oppresseurs.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 5.8-10</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Malheur sur ceux qui ajoutent maison à maison et champ à champ : dénonciation de l'accaparement des terres qui éclaire le contexte des <i>latifundia</i> derrière Jacques 5.1-6.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 6.19-20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Ne vous amassez pas des trésors sur la terre, où la teigne et la rouille détruisent&nbsp;» : parole de Jésus directement reprise par l'image des richesses pourries et de l'or rouillé (5.2-3).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 12.16-21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La parabole du riche insensé qui amasse pour de longues années et meurt cette nuit-là : même folie d'accumuler en vivant comme si le jugement n'allait jamais venir.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 6.24-25</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Malheur à vous, riches, car vous avez votre consolation!&nbsp;» : la béatitude renversée du Sermon, parallèle le plus proche de l'apostrophe et du «&nbsp;malheur&nbsp;» de Jacques 5.1.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Timothée 6.9-10, 17-19</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'amour de l'argent comme racine de tous les maux, et l'ordre aux riches authentiques de faire le bien : le contraste exact que MacArthur établit avec les faux professants riches de Jacques 5.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent l'oracle. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le jugement eschatologique réel</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les richesses «&nbsp;pourries&nbsp;», l'or «&nbsp;rouillé&nbsp;» qui «&nbsp;dévorera leur chair comme un feu&nbsp;» et l'amassement «&nbsp;pour les derniers jours&nbsp;» (5.2-3), période située entre la première venue de Christ et son retour, projettent toute la scène vers un jour de jugement littéral et futur.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine biblique de l'eschatologie (Biblical Doctrine), le jugement final n'est pas une image morale mais un événement futur certain où chacun rendra compte. L'assemblée doit entendre que rien de ce qu'on amasse ici ne tiendra ce jour-là; cela appelle non au moralisme anti-richesse, mais à vivre dès maintenant dans la perspective du tribunal de Dieu, et non comme si le Christ n'allait jamais revenir.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La justice de Dieu qui entend l'opprimé</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le salaire frauduleusement retenu «&nbsp;crie&nbsp;», et ce cri «&nbsp;est parvenu aux oreilles du Seigneur des armées&nbsp;» (5.4) : Dieu n'est ni sourd ni absent devant l'injustice.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La souveraineté et la justice de Dieu (théologie propre) garantissent que l'oppression ne reste jamais sans témoin. Pour le croyant maltraité, c'est le fondement de la patience du verset 7 : il n'a pas à se faire justice, car le Roi des armées a déjà enregistré sa plainte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La fausse sécurité de la richesse</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'or et l'argent thésaurisés deviennent un «&nbsp;témoin contre&nbsp;» leurs propriétaires (5.3) : ce sur quoi ils comptaient pour leur sécurité devient l'acte d'accusation, parce qu'ils ont prostitué la bonté et la générosité de Dieu.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La justification se reçoit par la foi seule, jamais par les biens ni par le mérite (sotériologie). L'illusion du faux professant riche est de croire que l'accumulation est une assurance; le texte démasque cette fausse sécurité et renvoie à la seule justice qui tienne au jugement, celle imputée par le Christ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi qui agit, révélée par l'usage des biens</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le luxe dissolu (5.5) et la fraude meurtrière (5.4, 6) révèlent un cœur tourné vers ce monde et un emploi des biens qui prostitue la générosité divine, l'exact opposé de la foi qui agit, thèse de toute l'épître.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Dans le cadre de la Lordship Salvation, la foi qui sauve produit nécessairement des fruits; l'usage de l'argent est l'un des révélateurs les plus implacables de la réalité du cœur, surtout chez ceux qui se prétendent chrétiens. L'assemblée est invitée non à culpabiliser sur ses biens, mais à examiner si sa foi gouverne réellement son portefeuille.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La non-résistance du juste</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Vous avez condamné, vous avez tué le juste, qui ne vous résiste pas&nbsp;» (5.6) : l'opprimé innocent ne se défend pas, préfigurant la posture chrétienne face à l'injustice.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La persévérance des saints s'exprime ici par le refus de la vengeance et la remise de sa cause à Dieu (anthropologie et sanctification). Cette non-résistance n'est pas faiblesse mais confiance, ancrée dans l'union au Christ qui lui-même «&nbsp;ne résistait pas&nbsp;» et remettait sa cause à celui qui juge justement.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Votre assemblée lit «&nbsp;riches&nbsp;» comme une catégorie qui désigne toujours quelqu'un d'autre. Comment ferez-vous entendre que la dénonciation vise un cœur tourné vers ce monde et le mauvais emploi des biens, et non un seuil de revenu particulier?</li>
+      <li>Abraham et Job furent riches, et MacArthur précise que Jacques ne condamne pas la richesse en soi, mais le fait d'avoir prostitué la bonté et la générosité de Dieu. Où traceriez-vous, pour votre auditoire, la ligne entre l'épargne légitime et l'abus que Jacques dénonce?</li>
+      <li>Selon MacArthur, ces riches sont des faux professants qui se prétendent chrétiens et s'associent à l'Église; Jacques prononce un verdict, non un appel à la repentance. Comment prêcher ce texte à une assemblée majoritairement croyante de manière qu'elle s'examine elle-même, sans le transformer en simple leçon de morale sur l'argent?</li>
+      <li>«&nbsp;Le cri est parvenu aux oreilles du Seigneur des armées&nbsp;» (5.4). Qu'est-ce que cela change pour le membre de votre Église qui subit une injustice au travail et est tenté de se venger?</li>
+      <li>Les «&nbsp;derniers jours&nbsp;» (5.3) désignent la période entre la première venue de Christ et son retour, et ces hommes vivent comme si Jésus n'allait jamais revenir. Résisterez-vous à la tentation de spiritualiser le jugement, et comment relierez-vous cet avertissement sombre à la patience eschatologique du verset 7 que vous prêcherez la semaine suivante?</li>
+      <li>Si votre assemblée ressort de ce sermon simplement soulagée de n'être pas «&nbsp;riche&nbsp;», aurez-vous prêché le texte tout entier, ou aurez-vous laissé l'auditoire éviter l'examen de son propre rapport à l'argent et au prochain?</li>
+      <li>En quoi la fausse sécurité du riche faux professant (compter sur l'or accumulé) éclaire-t-elle, par contraste, la seule sécurité qui tient au jour du jugement, la justice du Christ reçue par la foi seule?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Jacques 5.1-6 · 6 juin 2026 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La foi qui agit&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Jacques-5-1-6.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

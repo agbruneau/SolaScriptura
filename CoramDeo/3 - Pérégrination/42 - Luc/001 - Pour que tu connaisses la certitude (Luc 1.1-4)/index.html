@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luc 1.1-4 · Pour que tu connaisses la certitude · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Luc 1.1-4 : le prologue de l'historien inspiré, méthode, sources et but de l'Évangile ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Luc 1.1-4</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Luc 1.1-4</p>
+    <h1 class="hero__title">Pour que tu connaisses la certitude</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Afin que tu reconnaisses la certitude des enseignements que tu as reçus.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Luc 1.4 · NEG</p>
+    <p class="hero__series">Série : <b>Luc : venu sauver les perdus</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-14 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Luc 1.1-4</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Il m'a aussi semblé bon, après avoir fait des recherches exactes sur toutes ces choses depuis leur origine, de te les exposer par écrit d'une manière suivie, excellent Théophile.</p>
+        <cite class="verse__ref">Luc 1.3 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Afin que tu reconnaisses la certitude des enseignements que tu as reçus.</p>
+        <cite class="verse__ref">Luc 1.4 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le préambule de Luc (1.1-4) ouvre toute l'exposition suivie de l'Évangile et en pose le fondement : une seule phrase soignée qui livre la méthode, la source et le but de tout le livre, et fonde la certitude du salut révélé en Christ sur des faits, non sur des fables.</p>
+    <div class="body">
+      <p>Le préambule de Luc (1.1-4) ouvre toute l'exposition suivie de l'Évangile et en pose le fondement. Ces quatre versets forment, dans le grec, une seule phrase de facture soignée, écrite dans le style relevé d'un auteur classique. MacArthur observe que les grands travaux historiques grecs commençaient habituellement par un prologue de ce genre, après quoi Luc passe à un style narratif plus simple, sans doute inspiré de celui, plus populaire, de la Septante. D'emblée, Luc se présente non comme un visionnaire ni comme un mythographe, mais comme un historien méthodique qui a réuni, vérifié et ordonné les faits accomplis en Jésus-Christ. Le prologue n'est donc pas un simple ornement littéraire : il livre la méthode, la source et le but de tout le livre, et il prépare directement la première scène, l'annonce surnaturelle faite à Zacharie dans le temple (1.5-25).</p>
+      <p>Luc reconnaît ouvertement que «&nbsp;plusieurs&nbsp;» l'ont précédé en composant des récits des événements de la vie de Christ, à partir de ce que les témoins oculaires avaient transmis (1.1-2). Loin de nier l'inspiration de son propre texte, cette mention l'éclaire : selon MacArthur, le processus d'inspiration ne court-circuite ni n'efface la personnalité, le vocabulaire et le style des auteurs humains de l'Écriture. Les recherches exactes de Luc ont été orchestrées par la providence divine, et lui-même a été poussé par l'Esprit de Dieu dans la phase de rédaction (2 Pierre 1.21), en sorte que son récit demeure vrai et infaillible. Le passage articule ainsi, dans la même phrase, l'enquête rigoureuse d'un médecin instruit et l'autorité de la Parole inspirée : la diligence humaine n'est pas l'adversaire de l'inspiration, mais l'instrument que Dieu emploie souverainement.</p>
+      <p>Le préambule annonce enfin le but pastoral qui commande toute la série : «&nbsp;afin que tu reconnaisses la certitude des enseignements que tu as reçus&nbsp;» (1.4). Théophile, déjà instruit dans la tradition apostolique, reçoit ici la Parole sous forme écrite comme un sceau qui confirme la certitude de ce qu'il avait entendu. L'Évangile ne vise pas à éveiller une foi vague mais à donner une assurance fondée, ancrée dans des faits attestés. Ce qui suit immédiatement, l'irruption de l'ange Gabriel au sanctuaire, montre que cette histoire vérifiée est aussi une histoire surnaturelle : le Dieu qui agit dans l'enquête de Luc est le Dieu qui agit dans le temple. Le fondement est posé : la certitude du salut révélé en Christ repose sur des faits, non sur des fables.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Luc 1.1-4 · Colossiens 4.14</p>
+    </header>
+    <p class="lead">Le prologue de Luc appartient à un genre littéraire précis : le proème des historiens et des traités scientifiques gréco-romains, qui nommait le destinataire, justifiait l'entreprise et exposait la méthode. Le style relevé signale au lecteur cultivé une œuvre d'histoire sérieuse et documentée, non une compilation pieuse et naïve.</p>
+    <div class="body">
+      <p>Le prologue de Luc appartient à un genre littéraire précis et reconnaissable. Dans le monde gréco-romain du premier siècle, les historiens de métier, à la suite de Thucydide, de Polybe ou de Hérodote, et les traités scientifiques et médicaux, ouvraient leur ouvrage par une période soignée qui nommait le destinataire, justifiait l'entreprise et exposait la méthode. MacArthur souligne que Luc 1.1-4 forme une seule longue phrase d'un grec littéraire classique, par laquelle Luc revendique pour l'Évangile une place parmi les classiques : une œuvre sérieuse, d'une réelle valeur historique, digne de l'attention du lecteur grec le plus instruit. Luc, ce médecin instruit (Colossiens 4.14), écrit en homme bien documenté, avec la précision d'un historien méticuleux qui datera plus loin ses récits par des repères vérifiables (1.5; 2.1-2; 3.1-2). Le contraste de registre entre ce prologue formel et la suite narrative, plus proche du grec de la Septante, n'est pas une maladresse mais un choix d'auteur conscient.</p>
+    </div>
+    <p>Trois réalités confirment que l'enquête revendiquée par Luc n'est pas une formule de modestie.</p>
+    <ul class="points">
+      <li><b>Le profil de l'enquêteur.</b> Compagnon de Paul dans plusieurs de ses voyages, comme l'attestent les sections en «&nbsp;nous&nbsp;» des Actes (16.10-17; 20.5 à 21.18; 27.1 à 28.16), Luc disposa d'occasions exceptionnelles d'interroger les témoins. MacArthur rappelle qu'il passa plus de deux ans à Césarée durant la détention de Paul (Actes 24.27), période où il put rencontrer et questionner plusieurs apôtres et d'autres témoins oculaires du ministère de Jésus.</li>
+      <li><b>Les informateurs identifiables.</b> On sait que Luc côtoya Philippe (Actes 21.8), source probable; il put entrer en contact avec l'apôtre Jean; et Jeanne, femme de l'intendant d'Hérode, mentionnée uniquement dans son Évangile (8.3; 24.10), figurait sans doute parmi ses informateurs, ce qui expliquerait des détails sur les échanges entre Hérode et Christ absents des autres Évangiles. L'enquête de Luc est le travail réel d'un homme placé au cœur du cercle apostolique.</li>
+      <li><b>Le destinataire et la portée.</b> Le nom Théophile signifie littéralement «&nbsp;ami de Dieu&nbsp;», et le titre «&nbsp;excellent&nbsp;» (1.3) est, selon MacArthur, celui que Luc donne ailleurs aux gouverneurs Félix et Festus (cf. Actes 23.26; 24.3; 26.25) et désigne un personnage de haut rang; Théophile était vraisemblablement un Romain bien placé, peut-être un converti. Mais ces dédicaces formelles ouvraient une œuvre destinée à circuler : le souci de Luc d'expliquer les lieux de Palestine, de préférer la terminologie grecque aux hébraïsmes et de citer l'Ancien Testament selon la Septante confirme qu'il écrit d'abord pour un lectorat majoritairement non juif, en quête d'une assise solide pour la foi reçue.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du prologue. Ils articulent ensemble la méthode de l'historien inspiré : du récit ordonné (<i>diēgēsis</i>) fondé sur les témoins oculaires (<i>autoptai</i>), conduit par des recherches exactes (<i>parakoloutheō akribōs</i>) et exposé d'une manière suivie (<i>kathexēs</i>), jusqu'au but final, la certitude (<i>asphaleia</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">récit</span><span class="mot-gr">diēgēsis</span></th>
+            <td class="col-sens">exposé suivi, narration ordonnée, récit développé d'événements</td>
+            <td>Le terme désigne un récit narratif construit, et non quelques notes éparses. MacArthur note que Luc se propose de présenter le récit du ministère de Christ avec autorité, d'une manière factuelle et logique, sans nécessairement suivre l'ordre chronologique exact (cf. v. 3). Le mot situe d'emblée l'œuvre dans le registre de l'histoire composée, comme les grands travaux historiques grecs, et non dans celui de la légende ou de la spéculation : un exposé cohérent de faits réels.</td>
+            <td><span class="trad"><span><b>S21</b> récit</span><span><b>NEG79</b> récit</span><span><b>Darby</b> récit</span><span><b>LSG</b> récit</span><span><b>KJF</b> récit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">témoins oculaires</span><span class="mot-gr">autoptai</span></th>
+            <td class="col-sens">ceux qui ont vu de leurs propres yeux, témoins directs et visuels</td>
+            <td>Mot rare, d'origine médicale et juridique, qui désigne celui qui constate par lui-même. MacArthur identifie ces témoins oculaires devenus «&nbsp;ministres de la parole&nbsp;» aux apôtres et à leurs compagnons, sources premières de Luc, qui transmirent oralement ou par écrit les faits concernant la vie et l'enseignement de Jésus. L'emploi de ce terme révèle que Luc ne fonde pas son récit sur des ouï-dire lointains, mais sur le constat direct de ceux qui furent présents «&nbsp;dès le commencement&nbsp;» : l'Évangile repose sur le témoignage vérifiable, non sur le mythe.</td>
+            <td><span class="trad"><span><b>S21</b> témoins oculaires</span><span><b>NEG79</b> témoins oculaires</span><span><b>Darby</b> témoins oculaires</span><span><b>LSG</b> témoins oculaires</span><span><b>KJF</b> témoins oculaires</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">fait des recherches exactes</span><span class="mot-gr">parakoloutheō akribōs</span></th>
+            <td class="col-sens">suivre de près, accompagner pas à pas, enquêter avec exactitude et minutie</td>
+            <td>Le verbe évoque celui qui a suivi les événements de tout près, et l'adverbe <i>akribōs</i> ajoute la rigueur et la précision de l'enquête. MacArthur résume : l'Évangile de Luc est le résultat d'une investigation minutieuse. Reconnaître cet effort de recherche ne contredit nullement l'inspiration; au contraire, Luc doit sa compréhension parfaite des événements à l'inspiration divine reçue du Saint-Esprit (2 Timothée 3.16-17; 2 Pierre 1.19-21). La diligence de l'historien et la conduite de l'Esprit s'unissent dans un seul et même texte infaillible.</td>
+            <td><span class="trad"><span><b>S21</b> après m'être informé exactement</span><span><b>NEG79</b> après avoir fait des recherches exactes</span><span><b>Darby</b> ayant suivi exactement toutes choses</span><span><b>LSG</b> après avoir fait des recherches exactes</span><span><b>KJF</b> ayant eu une parfaite compréhension</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">d'une manière suivie</span><span class="mot-gr">kathexēs</span></th>
+            <td class="col-sens">à la suite, dans l'ordre, de façon ordonnée et consécutive</td>
+            <td>L'adverbe dit l'agencement ordonné du récit. MacArthur précise que le récit de Luc est doté d'une structure chronologique qui n'est cependant pas contraignante : Luc rapporte les faits dans un ordre cohérent et logique, sans s'imposer une chronologie stricte et constante. Le terme garantit que l'Évangile n'est ni un assemblage décousu ni une succession arbitraire, mais un exposé maîtrisé où la disposition même sert la clarté et, par elle, la certitude visée au v. 4.</td>
+            <td><span class="trad"><span><b>S21</b> de manière ordonnée</span><span><b>NEG79</b> d'une manière suivie</span><span><b>Darby</b> par ordre</span><span><b>LSG</b> d'une manière suivie</span><span><b>KJF</b> par ordre</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">la certitude</span><span class="mot-gr">asphaleia</span></th>
+            <td class="col-sens">fermeté, solidité, stabilité; ce qui ne chancelle pas, ce sur quoi on peut s'appuyer sans glisser</td>
+            <td>Terme placé en grec à la position emphatique, à la toute fin de la phrase, comme le but vers lequel tout converge. Le mot évoque littéralement ce qui ne trébuche pas, un appui ferme. MacArthur souligne qu'il sous-entend que le texte est empreint d'autorité : Luc considérait son Évangile comme plus fiable que des écrits non inspirés et réclamait pour lui une autorité supérieure. La Parole écrite a pour Théophile la valeur d'un sceau qui confirme la certitude de ce qu'il avait reçu. L'objectif de l'Évangile n'est pas l'émotion ni l'opinion, mais une assurance inébranlable, fondée sur des faits attestés et inspirés.</td>
+            <td><span class="trad"><span><b>S21</b> certitude</span><span><b>NEG79</b> certitude</span><span><b>Darby</b> certitude</span><span><b>LSG</b> certitude</span><span><b>KJF</b> certitude</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Luc 1.1-4</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Luc 1.1-4 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Lc 1.1-4, 1.1, 1.2, 1.3, 1.4.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-1</span></th>
+            <td><a href="https://www.gty.org/sermons/42-1" target="_blank" rel="noopener">Luke: Physician and Historian</a></td>
+            <td>Luc 1.1-4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">42-2</span></th>
+            <td><a href="https://www.gty.org/sermons/42-2" target="_blank" rel="noopener">Luke: Theologian and Pastor</a></td>
+            <td>Luc 1.1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur voit dans le prologue un véritable historien, que sa recherche n'empêche pas d'être inspiré : reconnaître que Luc a compilé des matériaux existants ne revient nullement à nier l'inspiration divine, car le processus d'inspiration assume et conduit le travail, le style et la personnalité de l'auteur humain.</p>
+    <div class="body">
+      <p>MacArthur voit dans le prologue un véritable historien, que sa recherche n'empêche pas d'être inspiré. Luc reconnaît sans gêne que «&nbsp;plusieurs&nbsp;» avaient déjà entrepris de composer un récit des événements accomplis en Christ, à partir de ce que les témoins oculaires avaient transmis (1.1-2). Toutes ces sources sont aujourd'hui perdues, hormis les Évangiles inspirés; comme Matthieu et Marc lui sont très probablement antérieurs, Luc a pu s'appuyer sur l'un ou l'autre, ou sur les deux, ainsi que sur des récits oraux et sur ses entretiens personnels avec les témoins. Pour MacArthur, cette transparence sur les sources ne fragilise en rien la doctrine de l'Écriture : reconnaître qu'il a compilé des matériaux existants ne revient nullement à nier l'inspiration divine. Le processus d'inspiration ne supprime pas le travail, le style ni la personnalité de l'auteur humain; il les assume et les conduit. Les recherches de Luc furent elles-mêmes orchestrées par la providence, et c'est l'Esprit de Dieu qui le poussa lors de la rédaction (2 Pierre 1.21), de sorte que le résultat est vrai et infaillible.</p>
+      <p>La mention que Luc fait de ses sources n'autorise pas pour autant la théorie d'un document «&nbsp;Q&nbsp;» : l'introduction à Marc de <i>La Bible d'étude MacArthur</i>, à laquelle renvoie la note sur 1.1, rappelle qu'aucune preuve historique ni manuscrite n'atteste l'existence d'un tel document, fabrication du scepticisme contemporain qui ouvre la porte à la négation de l'inspiration verbale des Évangiles. MacArthur maintient que Luc est un auteur réel, médecin instruit et compagnon de Paul, qui nomme sa méthode, situe ses informateurs et revendique l'autorité de son texte. Près de soixante pour cent du matériel de Marc se retrouve dans Luc, qui semble en suivre étroitement l'ordre; en chaire, MacArthur rattache cette parenté aux liens personnels entre les évangélistes : Matthieu et Marc figuraient vraisemblablement parmi les sources que Luc a examinées, Marc et Luc ont voyagé ensemble avec Paul, et Luc a sans doute rencontré Matthieu pendant les deux ans de détention de Paul à Césarée. L'inspiration verbale et plénière n'est pas menacée par la recherche historique : elle s'en sert.</p>
+      <p>Le v. 3 révèle la conscience que Luc a de l'autorité de son œuvre. L'expression «&nbsp;depuis leur origine&nbsp;», MacArthur la comprend en chaire au sens de «&nbsp;dès le commencement&nbsp;» : par une recherche minutieuse, Luc est parvenu à une compréhension parfaite de tout depuis le début; et ce que ses sources ne lui apprenaient pas, l'Esprit le lui a donné, en le gardant de toute erreur. Le titre «&nbsp;excellent&nbsp;» donné à Théophile, que Luc emploie ailleurs pour les gouverneurs Félix et Festus (Actes 23.26; 24.3; 26.25), désigne un homme de haut rang. Luc écrit «&nbsp;d'une manière suivie&nbsp;» : un récit ordonné et logique, doté d'une structure chronologique réelle mais non contraignante. La certitude n'est pas affaire d'impression subjective; elle découle d'un exposé maîtrisé de faits vérifiés.</p>
+      <p>Tout converge vers le v. 4, le but de l'Évangile : «&nbsp;afin que tu reconnaisses la certitude des enseignements que tu as reçus&nbsp;». MacArthur montre que ce terme de certitude porte l'idée d'autorité : Luc tenait son Évangile pour plus fiable que tout écrit non inspiré et réclamait pour lui une autorité supérieure. Théophile avait déjà été enseigné dans la tradition apostolique, peut-être par Paul en personne; mais la Parole sous forme écrite vient comme un sceau qui confirme et stabilise ce qu'il avait entendu. La portée pastorale est immense pour toute la série : l'Évangile ne propose pas une mythologie édifiante ni un sentiment religieux, mais une histoire attestée et inspirée, propre à fonder une pleine assurance. Et cette histoire est aussitôt surnaturelle : la phrase à peine close, Luc plonge le lecteur dans le sanctuaire où Gabriel paraît (1.11-19), preuve que le Dieu de l'enquête est le Dieu de l'intervention. La certitude du salut révélé en Christ repose donc sur du roc, non sur des fables.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le prologue, du diptyque lucanien des Actes au but parallèle de Jean, en passant par le socle paulinien et pétrinien de l'inspiration, jusqu'à l'arrière-plan vétérotestamentaire de la vision consignée par écrit.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 1.1-3</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le «&nbsp;premier livre&nbsp;» que Luc rappelle en ouvrant les Actes, c'est cet Évangile : même auteur, même destinataire «&nbsp;Théophile&nbsp;», même méthode d'historien qui rassemble «&nbsp;plusieurs preuves&nbsp;» de la résurrection. Le préambule de Luc commande ainsi un ouvrage en deux volumes, de la naissance de Christ à l'expansion de l'Église.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 20.30-31</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'autre évangéliste à expliciter son but : «&nbsp;ces choses ont été écrites afin que vous croyiez&nbsp;». Comme Luc vise la certitude (1.4), Jean vise la foi et la vie; les deux fondent le salut sur des faits consignés par écrit, non sur des mythes.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Timothée 3.16-17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'affirmation paulinienne de l'inspiration plénière éclaire le statut de l'enquête de Luc : c'est précisément parce que «&nbsp;toute Écriture est inspirée de Dieu&nbsp;» que le récit issu de ses recherches exactes est vrai et infaillible, et non malgré ses sources humaines.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Pierre 1.16-21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Pierre oppose les «&nbsp;fables habilement conçues&nbsp;» au témoignage oculaire et à la prophétie portée par l'Esprit; même couple que chez Luc : témoins oculaires (1.2) et hommes poussés par l'Esprit. Texte clé pour réfuter l'idée d'un Évangile mythique et pour fonder l'inspiration.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 1.5-25</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La péricope qui suit immédiatement le préambule : l'annonce de Gabriel à Zacharie dans le temple. Elle prouve que l'histoire vérifiée de Luc est aussi surnaturelle, et prépare la première scène de la série; le Dieu de l'enquête est le Dieu qui intervient au sanctuaire.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 15.3-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul énumère les témoins oculaires du Ressuscité comme garantie de l'Évangile «&nbsp;selon les Écritures&nbsp;». Même logique probatoire que Luc 1.2 : la foi chrétienne s'appuie sur des témoins vérifiables, ce qui assoit la certitude que Luc veut transmettre.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 3.21-28</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le cœur de la doctrine paulinienne, la justification par la foi, est en parfaite harmonie avec l'Évangile que Luc s'apprête à raconter. La «&nbsp;certitude des enseignements reçus&nbsp;» par Théophile inclut ce salut par grâce que Luc illustrera en récits (18.9-14; 19.1-10).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Habacuc 2.2-3</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Dieu ordonne d'écrire la vision clairement pour qu'elle serve de témoignage assuré au temps fixé. L'Ancien Testament fonde déjà la certitude de la foi sur la Parole consignée par écrit, principe que Luc accomplit en mettant l'Évangile par écrit pour Théophile.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Quatre axes</p>
+    </header>
+    <p class="lead">Quatre axes dogmatiques traversent le prologue. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'inspiration verbale et plénière au moyen de la recherche humaine</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Luc reconnaît l'œuvre de «&nbsp;plusieurs&nbsp;» devanciers et de témoins oculaires (1.1-2) et revendique des «&nbsp;recherches exactes&nbsp;» (1.3), tout en écrivant un texte qu'il tient pour faisant autorité (1.4).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la bibliologie de MacArthur, l'inspiration n'efface ni la personnalité, ni le style, ni le travail de l'auteur humain; elle les conduit par la providence et par l'Esprit (2 Pierre 1.21), en sorte que le résultat est vrai et infaillible. Pour l'assemblée : la diligence historique et l'inspiration divine ne s'opposent pas. La Bible n'est pas tombée du ciel sans auteurs, et elle n'est pas pour autant un simple produit humain; elle est la Parole de Dieu donnée par des hommes que Dieu a souverainement employés. Cela ruine d'avance toute reconstruction critique qui dissoudrait l'Évangile dans des traditions anonymes ou dans un document «&nbsp;Q&nbsp;» conjectural.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La certitude objective comme fondement du salut</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le but déclaré de l'Évangile : «&nbsp;afin que tu reconnaisses la certitude (<i>asphaleia</i>) des enseignements que tu as reçus&nbsp;» (1.4), mot placé en grec à la position emphatique finale.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur souligne que ce terme implique l'autorité du texte et que la Parole écrite scelle la certitude de ce qui a été entendu. Pour l'assemblée : l'assurance chrétienne ne repose pas sur une expérience subjective, une émotion ou une décision passée, mais sur des faits attestés et sur la Parole inspirée. On ne bâtit pas la foi sur l'impression que l'on croit, mais sur la solidité de ce que Dieu a révélé et fait consigner. C'est l'antidote au doute et le contraire du fidéisme.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'Évangile comme histoire vérifiée, non comme mythe</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Témoins oculaires dès le commencement&nbsp;» (1.2) et «&nbsp;recherches exactes sur toutes ces choses&nbsp;» (1.3) : Luc fonde son récit sur le constat direct et l'enquête, dans le style des historiens grecs.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur présente Luc comme un historien méticuleux dont les sources premières furent les apôtres et leurs compagnons, témoins oculaires. Pour l'assemblée : le christianisme est une foi historique, ancrée dans des événements réels et datables, et non une mythologie religieuse parmi d'autres. Les promesses messianiques de l'Ancien Testament se sont véritablement accomplies dans l'histoire (cf. 1.1). Le croyant peut donc rendre raison de son espérance devant un monde sceptique : la résurrection et l'incarnation ne sont pas des symboles, mais des faits attestés par des témoins.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La providence souveraine de Dieu dans la préparation de l'Écriture</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il m'a aussi semblé bon, après avoir fait des recherches exactes... de te les exposer par écrit&nbsp;» (1.3) : le projet humain de Luc, sa décision, son travail, et pourtant un texte que le ciel a guidé.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur note que les investigations de Luc furent orchestrées par la providence divine et que l'Esprit a guidé le choix de ses matériaux, en y ajoutant ce que ses sources ne contenaient pas. Pour l'assemblée : le même Dieu qui a souverainement disposé les rencontres, les voyages et les entretiens de Luc gouverne aussi les circonstances de nos vies. Rien dans la préparation de l'Écriture ne fut laissé au hasard; la grâce souveraine qui sauve les perdus est la même qui a veillé sur chaque ligne de l'Évangile. La confiance dans la Bible se fonde sur la confiance en son Auteur souverain.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Votre assemblée fonde-t-elle sa certitude sur une expérience, une émotion ou une prière récitée, ou sur les faits attestés et la Parole inspirée que Luc met par écrit? Comment prêcher l'<i>asphaleia</i> (1.4) comme antidote au doute sans glisser vers le fidéisme ni vers le rationalisme?</li>
+      <li>Comment exposer que la mention par Luc de ses sources et de ses recherches (1.1-3) renforce l'inspiration au lieu de la menacer, en sorte que vos auditeurs voient la diligence humaine et l'œuvre de l'Esprit comme alliées et non rivales?</li>
+      <li>Que répondre à l'objection moderne, héritée de la critique des sources, selon laquelle les Évangiles seraient des traditions anonymes ou des mythes tardifs? En quoi les «&nbsp;témoins oculaires&nbsp;» (1.2) et l'identité réelle de Luc, médecin et compagnon de Paul, désarment-ils cette thèse?</li>
+      <li>Le passage présente l'Évangile comme une histoire vérifiable. Votre prédication aide-t-elle l'assemblée à rendre raison de son espérance devant un monde sceptique, en distinguant la foi chrétienne de toute mythologie religieuse?</li>
+      <li>Théophile était déjà instruit (1.4), et pourtant Luc lui écrit pour confirmer sa certitude. Quels croyants de votre assemblée, sincères mais mal assurés, ont besoin d'entendre que la Parole écrite vient sceller et affermir ce qu'ils ont reçu?</li>
+      <li>Comment ce préambule, qui présente la providence souveraine de Dieu dans la préparation même de l'Écriture, prépare-t-il l'assemblée à recevoir toute la série de Luc comme l'histoire fiable du Sauveur venu chercher et sauver les perdus (19.10)?</li>
+      <li>La phrase de Luc à peine close, Gabriel paraît dans le temple (1.5-25). Comment articulez-vous, dans la même prédication, la rigueur de l'historien et la réalité du surnaturel, pour que l'assemblée tienne ensemble le vérifiable et le miraculeux sans opposer l'un à l'autre?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Luc 1.1-4 · 2026-06-14 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Luc : venu sauver les perdus&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Luc-1-1-4.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

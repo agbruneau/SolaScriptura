@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colossiens 1 · Christ au-dessus de tout : la vérité de l&#x27;Évangile, la prééminence du Fils et le ministère apostolique · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Colossiens 1 dans la perspective de John MacArthur : Christ au-dessus de tout : la vérité de l&#x27;Évangile, la prééminence du Fils et le ministère apostolique.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Colossiens 1</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Colossiens 1</span></p>
+    <h1 class="hero__title">Christ au-dessus de tout : la vérité de l'Évangile, la prééminence du Fils et le ministère apostolique</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Il est la tête du corps de l’Eglise; il est le commencement, le premier-né d’entre les morts, afin d’être en tout le premier.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Colossiens 1.18 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 5 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Colossiens 1</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le premier chapitre de l'épître aux Colossiens pose le fondement christologique et apostolique sur lequel reposera toute la réfutation de l'hérésie colossienne au chapitre 2 (2130, 2135). Avant même de mentionner explicitement les faux docteurs qui infiltraient la vallée du Lycos avec leur syncrétisme philosophique, angélique, légaliste et ascétique, Paul éblouit les croyants par la vérité positive de l'Évangile qu'ils ont déjà reçu par le ministère d'Épaphras (1.5-⁠7) et par la majesté insurpassable de la personne et de l'œuvre du Fils de Dieu (1.15-⁠23).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">Paul, apôtre de Jésus-Christ par la volonté de Dieu, et le frère Timothée,</p><cite class="verse__ref">Colossiens 1.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">aux saints et fidèles frères en Christ qui sont à Colosses: Que la grâce et la paix vous soient données de la part de Dieu notre Père!</p><cite class="verse__ref">Colossiens 1.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Nous rendons grâces à Dieu, le Père de notre Seigneur Jésus-Christ, et nous ne cessons de prier pour vous,</p><cite class="verse__ref">Colossiens 1.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">ayant été informés de votre foi en Jésus-Christ et de votre amour pour tous les saints,</p><cite class="verse__ref">Colossiens 1.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">à cause de l’espérance qui vous est réservée dans les cieux, et que la parole de la vérité, la parole de l’Evangile vous a précédemment fait connaître.</p><cite class="verse__ref">Colossiens 1.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">Il est au milieu de vous, et dans le monde entier; il porte des fruits, et il s’accroît, comme c’est aussi le cas parmi vous, depuis le jour où vous avez entendu et connu la grâce de Dieu conformément à la vérité,</p><cite class="verse__ref">Colossiens 1.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">d’après les instructions que vous avez reçues d’Epaphras, notre bien-aimé compagnon de service; il est pour vous un fidèle ministre de Christ,</p><cite class="verse__ref">Colossiens 1.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">et il nous a appris de quel amour l’Esprit vous anime.</p><cite class="verse__ref">Colossiens 1.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est pour cela que nous aussi, depuis le jour où nous en avons été informés, nous ne cessons de prier Dieu pour vous; nous demandons que vous soyez remplis de la connaissance de sa volonté, en toute sagesse et intelligence spirituelle,</p><cite class="verse__ref">Colossiens 1.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">pour marcher d’une manière digne du Seigneur et lui être entièrement agréables, portant des fruits en toutes sortes de bonnes œuvres et croissant par la connaissance de Dieu,</p><cite class="verse__ref">Colossiens 1.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">fortifiés à tous égards par sa puissance glorieuse, en sorte que vous soyez toujours et avec joie persévérants et patients.</p><cite class="verse__ref">Colossiens 1.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Rendez grâces au Père, qui vous a rendus capables d’avoir part à l’héritage des saints dans la lumière;</p><cite class="verse__ref">Colossiens 1.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">il nous a délivrés de la puissance des ténèbres et nous a transportés dans le royaume de son Fils bien-aimé,</p><cite class="verse__ref">Colossiens 1.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">en qui nous avons la rédemption, le pardon des péchés.</p><cite class="verse__ref">Colossiens 1.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Le Fils est l’image du Dieu invisible, le premier-né de toute la création.</p><cite class="verse__ref">Colossiens 1.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car en lui ont été créées toutes les choses qui sont dans les cieux et sur la terre, les visibles et les invisibles, trônes, dignités, dominations, autorités. Tout a été créé par lui et pour lui.</p><cite class="verse__ref">Colossiens 1.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Il est avant toutes choses, et toutes choses subsistent en lui.</p><cite class="verse__ref">Colossiens 1.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">Il est la tête du corps de l’Eglise; il est le commencement, le premier-né d’entre les morts, afin d’être en tout le premier.</p><cite class="verse__ref">Colossiens 1.18 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car Dieu a voulu faire habiter toute plénitude en lui;</p><cite class="verse__ref">Colossiens 1.19 · NEG</cite></figure><figure class="verse"><p class="verse__text">il a voulu par lui tout réconcilier avec lui-même, tant ce qui est sur la terre que ce qui est dans les cieux, en faisant la paix par lui, par le sang de sa croix.</p><cite class="verse__ref">Colossiens 1.20 · NEG</cite></figure><figure class="verse"><p class="verse__text">Et vous, qui étiez autrefois étrangers et ennemis par vos pensées et par vos mauvaises œuvres, il vous a maintenant réconciliés par sa mort dans le corps de sa chair,</p><cite class="verse__ref">Colossiens 1.21 · NEG</cite></figure><figure class="verse"><p class="verse__text">pour vous faire paraître devant lui saints, sans défaut et sans reproche,</p><cite class="verse__ref">Colossiens 1.22 · NEG</cite></figure><figure class="verse"><p class="verse__text">si du moins vous demeurez fondés et inébranlables dans la foi, sans vous détourner de l’espérance de l’Evangile que vous avez entendu, qui a été prêché à toute créature sous le ciel, et dont moi Paul, j’ai été fait ministre.</p><cite class="verse__ref">Colossiens 1.23 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je me réjouis maintenant dans mes souffrances pour vous; et ce qui manque aux souffrances de Christ, je l’achève en ma chair, pour son corps, qui est l’Eglise.</p><cite class="verse__ref">Colossiens 1.24 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est d’elle que j’ai été fait ministre, selon la charge que Dieu m’a donnée auprès de vous, afin que j’annonce pleinement la parole de Dieu,</p><cite class="verse__ref">Colossiens 1.25 · NEG</cite></figure><figure class="verse"><p class="verse__text">le mystère caché de tout temps et dans tous les âges, mais révélé maintenant à ses saints.</p><cite class="verse__ref">Colossiens 1.26 · NEG</cite></figure><figure class="verse"><p class="verse__text">Dieu a voulu leur faire connaître la glorieuse richesse de ce mystère parmi les païens, savoir: Christ en vous, l’espérance de la gloire.</p><cite class="verse__ref">Colossiens 1.27 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est lui que nous annonçons, exhortant tout homme, et instruisant tout homme en toute sagesse, afin de présenter à Dieu tout homme, devenu parfait en Christ.</p><cite class="verse__ref">Colossiens 1.28 · NEG</cite></figure><figure class="verse"><p class="verse__text">C’est à quoi je travaille, en combattant avec sa force qui agit puissamment en moi.</p><cite class="verse__ref">Colossiens 1.29 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le genre littéraire du chapitre 1 combine l'adresse épistolaire (1.1-⁠2), l'action de grâces et l'intercession pastorale (1.3-⁠14), l'hymne christologique solennel (1.15-⁠20) suivi de son application rédemptrice directe aux croyants (1.21-⁠23), et l'apologie du ministère apostolique (1.24-⁠29). Ce dernier bloc (1.24-⁠29) forme une charnière structurelle avec le début du chapitre 2 (2.1-⁠7) : la <i>MacArthur Study Bible</i> réunit en effet 1.24-⁠2.7 sous l'intitulé « About Paul's Ministry », le participe agōnizomenos (« en combattant », 1.29) annonçant immédiatement le nom agōna (« combien est grand le combat que je soutiens pour vous », 2.1).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Colossiens 1</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Écrivant depuis sa première captivité romaine (vers 60-⁠62 apr. J.-C., cf. 1.24; 4.3, 18), Paul s'adresse à une assemblée qu'il n'a jamais visitée en personne (2.1), mais qui est née indirectement de son ministère de près de trois ans à Éphèse (Actes 19.10; 20.31) par le témoignage fidèle d'Épaphras, citoyen de Colosses devenu le pasteur fondateur des Églises de la vallée du Lycos : Colosses, Laodicée et Hiérapolis (1.7; 4.12-⁠13; 2130, 2131).</p><div class="body"><p>Venus voir Paul à Rome, Épaphras lui avait rapporté à la fois l'amour spirituel authentique des Colossiens (1.8) et le danger imminent des hérétiques proto-gnostiques qui enseignaient qu'un Dieu pur ne pouvait toucher la matière, que Jésus n'était qu'une émanation angélique parmi d'autres et que la vraie connaissance (<i>gnōsis</i>) et la plénitude (<i>plērōma</i>) exigeaient des initiations secrètes. Dès ce premier chapitre, chaque terme choisi par Paul sous l'inspiration de l'Esprit - la pleine connaissance (<i>epignōsis</i>, 1.9-⁠10), la délivrance du domaine des ténèbres (1.13), la création de tous les ordres angéliques par et pour le Fils (1.16), l'habitation de tout le <i>plērōma</i> en lui (1.19), la réconciliation par sa mort dans « le corps de sa chair » (1.22) et le mystère révélé à tous les saints pour présenter « tout homme parfait en Christ » (1.26-⁠28) - démystifie par avance l'imposture gnostique (2132, 2135-⁠2138).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Épaphras, pasteur fondateur de Colosses et « bien-aimé compagnon de service » (1.7-⁠8).</b> Contrairement à la plupart des destinataires des lettres pauliniennes, l'Église de Colosses n'a pas été fondée directement par Paul, mais par Épaphras (forme abrégée d'Épaphrodite, distinct de celui de Philippes), converti sous la prédication de Paul à Éphèse (Actes 19.10). En l'appelant « notre bien-aimé compagnon d'esclavage » (<i>syndoulos</i>) et « un fidèle ministre de Christ » (1.7), Paul scelle devant toute l'assemblée l'orthodoxie irréprochable de l'Évangile qu'Épaphras leur a enseigné dès le premier jour (1.6-⁠7; 2131).</li><li><b>La déportation antique et le transfert de royaume (metestēsen, 1.13).</b> En Colossiens 1.13 (« il nous a délivrés de la puissance des ténèbres et nous a transportés dans le royaume de son Fils bien-aimé »), le verbe grec <i>methistēmi</i> (<i>metestēsen</i>) était le terme technique employé par les historiens antiques (comme Josèphe décrivant le transfert de deux mille familles juives en Phrygie par Antiochus III) pour désigner le déplacement d'une population entière d'un empire vaincu vers une patrie nouvelle : au salut, Dieu arrache les captifs à la tyrannie de Satan pour les établir citoyens du royaume du Fils de son amour (2134).</li><li><b>L'hymne de l'Église primitive et le vocabulaire des religions à mystères (1.15-⁠20, 26-⁠28).</b> Plusieurs commentateurs estiment que Colossiens 1.15-⁠20 devint l'un des premiers hymnes christologiques chantés par l'Église primitive (cf. 3.16; 2135, 2148). En 1.26-⁠28, Paul reprend les termes techniques des cultes à mystères phrygiens - <i>mystērion</i> (« mystère ») et <i>teleios</i> (« parfait / initié parvenu à la maturité ») - pour proclamer que le secret de Dieu n'est pas réservé à une élite ésotérique, mais ouvertement annoncé à « tout homme » (triple répétition de <i>panta anthrōpon</i> en 1.28) en Jésus-Christ (2138).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Colossiens 1</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Colossiens 1.2</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Formule courte <i>apo Theou Patros hēmōn</i> (« de la part de Dieu notre Père », B, K, 1739, SBLGNT, NA28, Westcott et Hort), ou formule longue ajoutant <i>kai Kyriou Iēsou Christou</i> (« et du Seigneur Jésus-Christ », א, A, C, F, G, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Que la grâce et la paix vous soient données de la part de Dieu notre Père! » : la NEG79, la LSG, la NBS et la NASB suivent la leçon courte, tandis que la S21 et la Darby traduisent la leçon longue.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">L'addition dans une partie de la tradition manuscrite provient d'une assimilation liturgique à la salutation paulinienne habituelle (Rm 1.7; Ép 1.2); la divinité du Seigneur Jésus-Christ est immédiatement affirmée au verset 3 (« Dieu, le Père de notre Seigneur Jésus-Christ », 2130).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Colossiens 1.7 et 1.12</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 1.7, <i>pistos hyper hēmōn diakonos</i> (« un fidèle ministre en notre faveur [représentant Paul] », 𝔓46, א*, A, B, SBLGNT, NA28) contre <i>hyper hymōn</i> (« pour vous », א2, C, D, texte byzantin, Textus Receptus) ; en 1.12, <i>tō hikanōsanti hymas</i> (« qui vous a rendus capables », 𝔓46, א, A, C*, SBLGNT, NA28) contre <i>hēmas</i> (« nous », texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 1.7, la NEG79, la LSG, la S21, la Darby et la NBS lisent « pour vous » ; en 1.12, la NEG79, la LSG et la NBS lisent « vous a rendus capables » tandis que la S21 et la Darby lisent « nous a rendus capables ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Ces oscillations entre la première et la deuxième personne du pluriel résultent de l'homophonie (itacisme) entre <i>hēm-</i> et <i>hym-</i> en grec koinè et n'affectent nullement le sens théologique (2131, 2134).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Colossiens 1.14</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>en hō echomen tēn apolytrōsin, tēn aphesin tōn hamartiōn</i> (« en qui nous avons la rédemption, le pardon des péchés », 𝔓46, א, A, B, C, D, F, G, 1739, SBLGNT, NA28, texte byzantin), ou addition de <i>dia tou haimatos autou</i> (« par son sang », quelques minuscules tardifs et Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« en qui nous avons la rédemption, le pardon des péchés » : toutes nos versions françaises de référence (NEG79, LSG, S21, Darby, NBS) et la NASB retiennent le texte sans l'incise.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">L'addition du Textus Receptus est importée d'Éphésiens 1.7 ; le sang de Christ comme prix de notre réconciliation est explicitement proclamé six versets plus loin en Colossiens 1.20 (« en faisant la paix par lui, par le sang de sa croix », 2134, 2136).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin 2005, Textus Receptus (Bible Hub)</li><li>Septante et hébreu massorétique pour Psaume 89.28</li><li>versions françaises : NEG79, LSG, S21, Darby, NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>La numérotation des versets 1.1 à 1.29 est identique dans toutes les éditions grecques et françaises consultées.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Colossiens 1</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Colossiens</span> <span>1.1</span> <span>–</span> <span>1.8</span></p><div class="plan__corps"><p class="plan__titre">La salutation apostolique et l'action de grâces pour la vérité de l'Évangile : l'autorité de Paul apôtre par la volonté de Dieu (1.1-⁠2) et la reconnaissance pour la foi, l'amour et l'espérance céleste produits chez les Colossiens par la parole de la vérité prêchée par Épaphras (1.3-⁠8).</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Adresse <i>Paulos apostolos Christou Iēsou</i> (1.1-⁠2) et action de grâces <i>Eucharistoumen tō Theō... pantote peri hymōn proseuchomenoi</i> (1.3-⁠8).</p></div></li><li><p class="plan__ref"><span>Colossiens</span> <span>1.9</span> <span>–</span> <span>1.14</span></p><div class="plan__corps"><p class="plan__titre">La prière apostolique pour la plénitude de la connaissance et les quatre marques d'une marche digne : être remplis de l'epignōsis de la volonté de Dieu (1.9) afin de marcher dignement du Seigneur par les bonnes œuvres, la croissance dans la connaissance, la patience joyeuse et l'action de grâces envers le Père rédempteur (1.10-⁠14).</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Transition d'intercession <i>Dia touto kai hēmeis... ou pauometha</i> (1.9), infinitif de but <i>peripatēsai axiōs tou Kyriou</i> (1.10) et quatre participes présents (1.10-⁠12).</p></div></li><li><p class="plan__ref"><span>Colossiens</span> <span>1.15</span> <span>–</span> <span>1.23</span></p><div class="plan__corps"><p class="plan__titre">La prééminence absolue de Christ et son œuvre de réconciliation : le Fils image du Dieu invisible, Souverain, Créateur, But et Soutien de l'univers, Tête de l'Église et habitation de toute la plénitude (1.15-⁠19), qui a réconcilié toutes choses par le sang de sa croix et présente les croyants persévérants saints et sans reproche devant Dieu (1.20-⁠23).</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Hymne relatif <i>Hos estin eikōn tou Theou tou aoratou</i> (1.15-⁠20) et application directe aux destinataires <i>Kai hymas pote ontas apēllotriōmenous... nyni de apokatēllaxen</i> (1.21-⁠23).</p></div></li><li><p class="plan__ref"><span>Colossiens</span> <span>1.24</span> <span>–</span> <span>1.29</span></p><div class="plan__corps"><p class="plan__titre">Le ministère souffrant et le combat apostolique de Paul pour l'Église : la joie dans les afflictions endurées pour le corps de Christ afin d'annoncer pleinement la Parole de Dieu et le mystère révélé (« Christ en vous, l'espérance de la gloire »), en travaillant avec la puissance divine pour présenter tout homme parfait en Christ (1.24-⁠29).</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Charnière personnelle <i>Nyn chairō en tois pathēmasin</i> (1.24) et déclaration d'objectif <i>hon hēmeis katangellomen... hina parastēsōmen panta anthrōpon teleion en Christō</i> (1.28-⁠29, se prolongeant en 2.1-⁠7).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Colossiens 1.9-⁠12</dt><dd>En grec, les versets 1.9 à 1.20 forment une seule période syntaxique continue : le subjonctif aoriste passif <i>hina <b>plērōthēte</b> tēn epignōsin tou thelēmatos autou</i> (« que vous soyez remplis [par Dieu] de la connaissance de sa volonté », v. 9) gouverne l'infinitif aoriste de but ou de résultat <i><b>peripatēsai</b> axiōs tou Kyriou</i> (« pour marcher d'une manière digne du Seigneur », v. 10), lequel est développé par quatre participes présents coordonnés au nominatif masculin pluriel : <i><b>karpophorountes</b></i> (portant des fruits, v. 10), <i><b>auxanomenoi</b></i> (croissant, v. 10), <i><b>dynamoumenoi</b></i> (étant fortifiés par sa puissance glorieuse, v. 11) et <i><b>eucharistountes</b> tō Patri</i> (rendant grâces au Père, v. 12).</dd></div><div><dt>Colossiens 1.12-⁠13</dt><dd>L'action de grâces adressée au Père repose sur trois verbes à l'aoriste actif et moyen qui récapitulent l'acte historique et irrévocable du salut : le participe aoriste actif <i>tō <b>hikanōsanti</b> hymas</i> (« qui vous a qualifiés / rendus capables d'avoir part à l'héritage des saints dans la lumière », v. 12), l'indicatif aoriste moyen <i>hos <b>errysato</b> hēmas ek tēs exousias tou skotous</i> (« qui nous a arrachés pour lui-même à la puissance des ténèbres », v. 13a) et l'indicatif aoriste actif <i>kai <b>metestēsen</b> eis tēn basileian tou Huiou tēs agapēs autou</i> (« et nous a transférés dans le royaume du Fils de son amour », v. 13b, génitif hébraïque d'affection suprême).</dd></div><div><dt>Colossiens 1.16-⁠17</dt><dd>Pour exclure toute idée platonicienne ou gnostique d'une matière préexistante ou de démiurges angéliques, Paul combine trois prépositions et trois temps verbaux d'une précision remarquable : 1) <i><b>en</b> autō <b>ektisthē</b> ta panta</i> (aoriste passif : « en lui » comme sphère souveraine et architecte divin, l'acte créateur a eu lieu dans le passé); 2) <i>ta panta <b>di'</b> autou kai <b>eis</b> auton <b>ektistai</b></i> (parfait passif : tout a été créé « par lui » comme agent immédiat et « pour lui » comme fin ultime, et demeure aujourd'hui sa propriété créée); 3) <i>kai ta panta en autō <b>synestēken</b></i> (parfait actif à valeur d'état présent : « et toutes choses tiennent ensemble et subsistent en lui »).</dd></div><div><dt>Colossiens 1.21-⁠23</dt><dd>Après le participe parfait passif périphrastique <i>ontas <b>apēllotriōmenous</b></i> (« vous qui étiez autrefois dans un état permanent d'aliénation et ennemis par vos pensées », v. 21) et l'indicatif aoriste <i>nyni de <b>apokatēllaxen</b></i> (« il vous a maintenant pleinement réconciliés... pour vous faire paraître devant lui saints, sans défaut et sans reproche », v. 21-⁠22), Paul introduit la protase conditionnelle de première classe <i><b>ei ge epimenete</b> tē pistei</i> (« si du moins vous demeurez fondés et inébranlables dans la foi », v. 23, avec l'indicatif présent <i>epimenete</i>) : loin d'enseigner que le salut pourrait se perdre, cette condition de réalité présente la persévérance dans la foi comme la preuve infaillible qu'une personne a véritablement été réconciliée.</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">connaissance</a><a href="#mot-2">image</a><a href="#mot-3">premier-né</a><a href="#mot-4">réconcilier</a><a href="#mot-5">parfait</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">connaissance</h3><p class="mot__translit">epignōsis</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>connaissance pleine, exacte, approfondie et personnelle de la vérité divine</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, <i>epignōsis</i> (composé de la préposition intensive et directive <i>epi</i> et de <i>gnōsis</i>, dérivé de <i>epiginōskō</i>; 20 occurrences dans le NT dont 4 dans Colossiens : 1.9, 10; 2.2; 3.10) désigne une connaissance précise, approfondie et complète qui saisit pleinement son objet et transforme la conduite morale.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Colossiens 1.9-⁠10, MacArthur (2132, 2133) explique que face aux hérétiques qui se vantaient d'une <i>gnōsis</i> supérieure et secrète, Paul demande que tous les croyants soient remplis de l'<i>epignōsis</i> (« super-connaissance » spirituelle révélée dans la Parole) afin de marcher d'une manière digne du Seigneur.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> remplis de la connaissance de sa volonté (1.9)</li><li><b>NEG79</b> remplis de la connaissance de sa volonté (1.9)</li><li><b>Darby</b> remplis de la connaissance de sa volonté (1.9)</li><li><b>LSG</b> remplis de la connaissance de sa volonté (1.9)</li><li><b>NBS</b> remplis de la connaissance de sa volonté (1.9)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">image</h3><p class="mot__translit">eikōn</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>effigie exacte, reproduction vivante et manifestation visible qui révèle pleinement son archétype</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'analyse de Thayer, <i>eikōn</i> (rattaché à <i>eoika</i>, être semblable; 23 occurrences dans le NT dont Colossiens 1.15 et 3.10) ne désigne pas dans le grec biblique une ombre affaiblie, mais la représentation exacte (comme l'effigie de César sur un denier, Mt 22.20) et la manifestation visible et substantielle de la réalité qu'elle représente.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Colossiens 1.15, MacArthur (2135) souligne que Christ est « l'image du Dieu invisible » sous un double rapport : il est la ressemblance exacte de l'essence du Père (He 1.3 : <i>charaktēr</i>) et la manifestation visible parfaite par laquelle le Dieu invisible s'est fait connaître aux hommes (Jn 1.18; 14.9).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> Le Fils est l’image du Dieu invisible (1.15)</li><li><b>NEG79</b> Le Fils est l’image du Dieu invisible (1.15)</li><li class="ecart"><b>Darby</b> qui est l’image du Dieu invisible (1.15)</li><li class="ecart"><b>LSG</b> Il est l’image du Dieu invisible (1.15)</li><li class="ecart"><b>NBS</b> Il est l’image du Dieu invisible (1.15)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">premier-né</h3><p class="mot__translit">prōtotokos</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>premier-né ; détenteur du rang suprême, de la souveraineté et du droit d'héritage sur toute la maison</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>prōtotokos</i> (de <i>prōtos</i>, premier, et <i>tiktō</i>, enfanter; 8 occurrences dans le NT dont Colossiens 1.15, 18) exprime dans la culture biblique le rang de prééminence souveraine et d'héritier suprême (Ps 89.28 : « Je ferai de lui le premier-né, le plus élevé des rois de la terre »), distinct de <i>prōtoktistos</i> (« premier créé »).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Colossiens 1.15 et 1.18, MacArthur (2135) démontre que « premier-né de toute la création » et « premier-né d'entre les morts » ne signifient jamais que Christ aurait été créé (puisque le v. 16 affirme qu'il a lui-même créé toutes choses), mais qu'il possède la prééminence et le droit de souveraineté absolue tant sur l'univers que sur l'Église ressuscitée.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> l’image du Dieu invisible, le premier-né de toute la création (1.15)</li><li><b>NEG79</b> l’image du Dieu invisible, le premier-né de toute la création (1.15)</li><li><b>Darby</b> l’image du Dieu invisible, le premier-né de toute la création (1.15)</li><li><b>LSG</b> l’image du Dieu invisible, le premier-né de toute la création (1.15)</li><li><b>NBS</b> l’image du Dieu invisible, le premier-né de toute la création (1.15)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">réconcilier</h3><p class="mot__translit">apokatallassō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>réconcilier intégralement et définitivement en rétablissant une harmonie complète</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie précisée par Thayer, <i>apokatallassō</i> (double composé de <i>apo</i>, entièrement / retour à l'état initial, et de <i>katallassō</i>, réconcilier, de <i>allos</i>; 3 occurrences dans le NT : Ép 2.16; Col 1.20, 22) est un verbe intensif forgé par Paul pour désigner une réconciliation si complète qu'elle élimine toute trace d'inimitié.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Colossiens 1.20-⁠22, MacArthur (2136) souligne que Paul ajoute le préfixe intensif <i>apo-</i> au verbe habituel de la réconciliation pour réfuter les faux docteurs : par le sang de sa croix, Christ a accompli une réconciliation totale et parfaite qui rend superflue toute médiation angélique ou ascétique.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> Il a voulu par Christ tout réconcilier avec lui-même (1.20)</li><li><b>NEG79</b> il a voulu par lui tout réconcilier avec lui-même (1.20)</li><li class="ecart"><b>Darby</b> et, par lui, à réconcilier toutes choses avec elle-même (1.20)</li><li class="ecart"><b>LSG</b> il a voulu par lui réconcilier tout avec lui-même (1.20)</li><li class="ecart"><b>NBS</b> et, par lui, de tout réconcilier avec lui-même (1.20)</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">parfait</h3><p class="mot__translit">teleios</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>parvenu à son but (telos), complet, adulte, spirituellement mûr et accompli</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, <i>teleios</i> (dérivé de <i>telos</i>, fin, but accompli, maturité; 19 occurrences dans le NT dont Colossiens 1.28 et 4.12) désigne ce qui a atteint sa pleine croissance et ne manque de rien pour accomplir sa vocation, par opposition à l'enfant spirituel (<i>nēpios</i>, 1 Co 2.6; Ép 4.13-⁠14).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En Colossiens 1.28 (et 4.12), MacArthur (2138, 2152) montre que la maturité spirituelle (<i>teleios</i>) ne s'acquiert pas dans les cercles d'initiés gnostiques, mais par la proclamation de Christ (<i>hon hēmeis katangellomen</i>), l'avertissement (<i>nouthetountes</i>) et l'enseignement de la Parole à tout croyant.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> afin de présenter à Dieu toute personne devenue adulte en [Jésus-]Christ (1.28)</li><li><b>NEG79</b> afin de présenter à Dieu tout homme, devenu parfait en Christ (1.28)</li><li class="ecart"><b>Darby</b> afin que nous présentions tout homme parfait en Christ (1.28)</li><li><b>LSG</b> afin de présenter à Dieu tout homme, devenu parfait en Christ (1.28)</li><li class="ecart"><b>NBS</b> afin de porter tout être humain à son accomplissement dans le Christ (1.28)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Colossiens 1</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans ses neuf prédications sur Colossiens 1 (<i>2130</i> à <i>2138</i>), John MacArthur montre comment Paul pose les fondations inébranlables de la vérité avant d'affronter directement l'hérésie colossienne au chapitre 2. Dès la salutation (1.1-⁠2, <i>2130</i>), Paul rappelle que son apostolat ne procède d'aucune ambition humaine mais de « la volonté de Dieu », et que les croyants de Colosses, bien qu'habitant une modeste cité de Phrygie, sont en même temps « à Colosses » (leur lieu géographique terrestre) et « en Christ » (leur sphère spirituelle éternelle), saints (mis à part) et fidèles frères recevant la grâce et la paix de Dieu notre Père.</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : neuf sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur Colossiens 1.1 à 1.29 (2130 à 2138, série « Colossians, Vol. 01 », février à mai 1976, 9 prédications) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">2130</span></th><td><a href="https://www.gty.org/sermons/2130" target="_blank" rel="noopener">Introduction to Colossians</a></td><td>Col 1.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">2131</span></th><td><a href="https://www.gty.org/sermons/2131" target="_blank" rel="noopener">The Gospel Truth</a></td><td>Col 1.3-⁠8</td></tr><tr><th scope="row"><span class="mot-fr">2132</span></th><td><a href="https://www.gty.org/sermons/2132" target="_blank" rel="noopener">Being Filled with the Knowledge of God's Will</a></td><td>Col 1.9</td></tr><tr><th scope="row"><span class="mot-fr">2133</span></th><td><a href="https://www.gty.org/sermons/2133" target="_blank" rel="noopener">The Fruit of Knowledge</a></td><td>Col 1.9-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">2134</span></th><td><a href="https://www.gty.org/sermons/2134" target="_blank" rel="noopener">What Makes Christians Most Thankful?</a></td><td>Col 1.12-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">2135</span></th><td><a href="https://www.gty.org/sermons/2135" target="_blank" rel="noopener">Christ Above All</a></td><td>Col 1.15-⁠19</td></tr><tr><th scope="row"><span class="mot-fr">2136</span></th><td><a href="https://www.gty.org/sermons/2136" target="_blank" rel="noopener">Reconciled to God</a></td><td>Col 1.20-⁠23</td></tr><tr><th scope="row"><span class="mot-fr">2137</span></th><td><a href="https://www.gty.org/sermons/2137" target="_blank" rel="noopener">Paul's Ministry: Fulfilling the Word of God</a></td><td>Col 1.24-⁠25</td></tr><tr><th scope="row"><span class="mot-fr">2138</span></th><td><a href="https://www.gty.org/sermons/2138" target="_blank" rel="noopener">Paul's Ministry: The Mystery of Christ in You</a></td><td>Col 1.26-⁠29</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p>Dans son action de grâces pour la vérité de l'Évangile (1.3-⁠8, <i>2131</i>), Paul célèbre l'œuvre authentique de la grâce chez les Colossiens à travers la triade chrétienne fondamentale : leur <b>foi</b> en Jésus-Christ (qui regarde à l'œuvre accomplie par le Sauveur), leur <b>amour</b> pour tous les saints animé par l'Esprit (manifestation visible et impartiale de la vie nouvelle, v. 4, 8) et leur <b>espérance</b> mise en réserve en sécurité absolue dans les cieux (qui motive toute leur endurance présente, v. 5). Cette vie nouvelle est née de « la parole de la vérité, la parole de l'Évangile », qui n'est pas une secte locale mais une puissance vivante qui porte du fruit et s'accroît dans le monde entier depuis le jour où ils ont entendu et connu la grâce de Dieu conformément à la vérité par le ministère fidèle d'Épaphras (v. 6-⁠7).</p><p>Sur la base de cette naissance spirituelle, Paul élève sa prière incessante (1.9-⁠14, <i>2132</i> à <i>2134</i>). En 1.9 (<i>2132</i>), il demande qu'ils soient remplis par Dieu de l'<i>epignōsis</i> (la connaissance pleine, profonde et exacte, par contraste avec la fausse <i>gnōsis</i> gnostique) de sa volonté révélée dans sa Parole, en toute sagesse (<i>sophia</i>, la capacité de saisir les grands principes divins) et intelligence spirituelle (<i>synesis pneumatikē</i>, le discernement pratique qui applique ces principes aux situations concrètes de la vie). En 1.10-⁠11 (<i>2133</i>), Paul précise que le but de cette connaissance n'est jamais la spéculation intellectuelle, mais « de marcher d'une manière digne du Seigneur et lui être entièrement agréables ». Cette marche digne se déploie en quatre fruits : 1) porter du fruit en toute bonne œuvre ; 2) croître continuellement par la connaissance de Dieu ; 3) être fortifiés à tous égards par la puissance de sa gloire pour manifester avec joie la persévérance (<i>hypomonē</i>, rester ferme sous le poids des circonstances difficiles) et la patience (<i>makrothymia</i>, la longanimité envers les personnes difficiles) ; et 4) rendre grâces au Père (1.12-⁠14, <i>2134</i>) pour les quatre merveilles irrévocables de notre salut : il nous a qualifiés pour avoir part à l'héritage des saints dans la lumière (v. 12), il nous a arrachés à la juridiction tyrannique des ténèbres (v. 13a), il nous a transférés comme des citoyens affranchis dans le royaume du Fils de son amour (v. 13b), et il nous a accordé en lui la rédemption et le pardon complet de nos péchés (v. 14).</p><p>C'est alors que jaillit l'hymne christologique de 1.15-⁠19 (<i>2135</i>, « Christ Above All »), l'un des sommets de toute l'Écriture. Contre les hérétiques qui faisaient de Jésus un être créé et un éon intermédiaire inférieur à Dieu, Paul proclame sept vérités absolues sur le Fils : 1) dans sa relation avec Dieu, il est l'image (<i>eikōn</i>) exacte et la révélation visible du Dieu invisible (v. 15a) ; 2) dans sa relation avec l'univers, il est le <i>prōtotokos</i> (« premier-né », titre messianique de rang suprême et d'héritier souverain, Ps 89.28, et non « premier créé » <i>prōtoktistos</i>, v. 15b) ; 3) il est l'Architecte, l'Agent et la Finalité de toute la création visible et invisible, y compris des quatre ordres les plus élevés de la hiérarchie angélique (« trônes, dignités, dominations, autorités ») que les faux docteurs vénéraient (v. 16) ; 4) il préexiste éternellement avant toutes choses (« Il est », <i>autos estin</i>) et maintient la cohésion physique et morale de tout l'univers (<i>synestēken</i>, v. 17) ; 5) dans sa relation avec l'Église, il est la Tête organique et souveraine de son corps (v. 18a) ; 6) il est le commencement (<i>archē</i>, la source et la puissance génératrice) et le souverain (« premier-né ») d'entre les morts par sa résurrection, « afin d'être en tout le premier » (v. 18b) ; et 7) Dieu a voulu faire habiter en lui de façon permanente toute la plénitude divine (<i>pan to plērōma</i>, v. 19).</p><p>En 1.20-⁠23 (<i>2136</i>), Paul passe de la personne du Fils à son œuvre de réconciliation. Par le sang de sa croix, Dieu a réconcilié toutes choses avec lui-même - pacifiant l'univers destiné au renouvellement eschatologique (Rm 8.19-⁠22) et rachetant personnellement les croyants autrefois étrangers et ennemis par leurs pensées et leurs mauvaises œuvres (v. 20-⁠21). Comment l'a-t-il fait ? « Par sa mort dans le corps de sa chair » (v. 22a), formule qui écrase le docétisme niant la réalité physique de l'incarnation, dans le but de nous faire paraître devant lui saints, sans défaut (<i>amōmous</i>, comme un agneau sacrificiel sans tache) et sans reproche (<i>anenklētous</i>, sans qu'aucune accusation puisse jamais être portée contre nous, v. 22b). La condition du verset 23 (« si du moins vous demeurez fondés et inébranlables dans la foi ») ne met pas en doute la sécurité éternelle du salut, mais rappelle la doctrine biblique de la persévérance des saints : ceux qui ont été véritablement réconciliés demeurent dans la foi de l'Évangile (Jn 8.31; 1 Jn 2.19).</p><p>Enfin, en 1.24-⁠29 (<i>2137</i> et <i>2138</i>, qui ouvrent la section sur le ministère de Paul se poursuivant jusqu'en 2.7), l'apôtre explique pourquoi il souffre avec joie dans sa prison romaine : s'il achève en sa chair « ce qui manque aux souffrances de Christ » pour son corps qui est l'Église (v. 24), il ne manque absolument rien à l'expiation parfaite de la croix ; il s'agit des persécutions que ses ennemis, ne pouvant plus frapper Christ glorifié au ciel, continuent d'infliger à ses ambassadeurs sur la terre (Ac 9.4; 2 Co 1.5). Intendant établi par Dieu (<i>kata tēn oikonomian</i>) pour accomplir pleinement la prédication de la Parole (v. 25), Paul dévoile à tous les saints la glorieuse richesse du mystère longtemps caché dans l'Ancien Testament mais aujourd'hui manifesté parmi les païens : « Christ en vous, l'espérance de la gloire » (v. 26-⁠27). Tel est le cœur du ministère pastoral (v. 28-⁠29) : proclamer Christ lui-même, en avertissant (<i>nouthetountes</i>, corriger le cœur et la conduite) et en instruisant (<i>didaskontes</i>, éclairer l'intelligence par la saine doctrine) tout homme en toute sagesse, afin de présenter tout homme spirituellement mûr (<i>teleion</i>) en Christ, en luttant jusqu'à l'épuisement (<i>kopiō agōnizomenos</i>) non par ses propres forces, mais par l'énergie toute-puissante de Christ qui agit en lui.</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Colossiens 1.4-⁠5.</b> Paul réunit dès l'ouverture sa triade théologale signature : la foi en Jésus-Christ (<i>tēn pistin hymōn</i>, v. 4), l'amour pour tous les saints (<i>tēn agapēn</i>, v. 4, 8) et l'espérance réservée dans les cieux (<i>tēn elpida</i>, v. 5; cf. 1 Th 1.3; 1 Co 13.13).</li><li><b>Colossiens 1.6, 10-⁠11.</b> Le double couple verbal <i>karpophoroumenon kai auxanomenon</i> (« il porte des fruits et il s'accroît », appliqué à l'Évangile dans le monde en 1.6) est repris mot pour mot au pluriel masculin <i>karpophorountes kai auxanomenoi</i> en 1.10 pour décrire la vie des croyants remplis de la connaissance de Dieu.</li><li><b>Colossiens 1.15-⁠20.</b> L'hymne christologique est construit sur deux strophes symétriques introduites par <i>hos estin</i> : la suprématie cosmique du Fils dans la création (1.15-⁠17 : <i>hos estin eikōn... prōtotokos pasēs ktiseōs... en autō... di' autou kai eis auton</i>) et sa suprématie rédemptrice dans la nouvelle création, l'Église (1.18-⁠20 : <i>hos estin archē, prōtotokos ek tōn nekrōn... en autō... di' autou... eis auton</i>).</li><li><b>Colossiens 1.28.</b> Pour anéantir l'élitisme ésotérique des faux docteurs qui réservaient la « perfection » à quelques initiés, Paul martèle trois fois l'expression <i>panta anthrōpon</i> (« tout homme ») dans une seule phrase : exhortant tout homme, instruisant tout homme en toute sagesse, afin de présenter tout homme parfait (<i>teleion</i>) en Christ.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Cinq passages</p></header>
+<p class="lead">Cinq passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Jean 1.1-⁠3, 14, 18; Hébreux 1.1-⁠3</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Le prologue johannique et l'exorde d'Hébreux constituent les deux grands parallèles canoniques de Colossiens 1.15-⁠19 : le Fils éternel fait connaître le Dieu invisible dont il est l'empreinte exacte (<i>charaktēr</i>), il a créé l'univers, il soutient toutes choses par sa parole puissante et il a accompli la purification des péchés.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 89.28; Exode 4.22</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">En Psaume 89.28 (LXX 88.28), Dieu déclare au sujet du Roi messianique fils de David : « Et moi, je ferai de lui le premier-né (<i>prōtotokon</i>), le plus élevé des rois de la terre », donnant la clé vétérotestamentaire exacte du titre de souveraineté <i>prōtotokos</i> en Colossiens 1.15, 18.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 26.18; Éphésiens 1.7, 15-⁠23; 5.8</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Les quatre motifs d'action de grâces de Colossiens 1.12-⁠14 reprennent terme à terme le mandat confié à Paul par le Christ ressuscité sur le chemin de Damas en Actes 26.18 (passer des ténèbres à la lumière et de la puissance de Satan à Dieu, pour recevoir par la foi en Christ le pardon des péchés et l'héritage avec les sanctifiés) ainsi qu'Éphésiens 1.7.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.12-⁠16; Romains 5.1, 10; 8.19-⁠22</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Tout comme Colossiens 1.20-⁠22, Éphésiens 2.13-⁠16 et Romains 5.10 montrent que la réconciliation d'anciens ennemis aliénés s'opère exclusivement par le sang de la croix et la mort corporelle du Fils, tandis que Romains 8.19-⁠22 éclaire la portée cosmique de la pacification des cieux et de la terre (Col 1.20).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Éphésiens 3.1-⁠9; 4.11-⁠15; 1 Corinthiens 15.10</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">L'économie (<i>oikonomia</i>) du mystère révélé aux saints en Colossiens 1.25-⁠27 correspond directement à Éphésiens 3.2-⁠6, le but de présenter tout homme parfait (<i>teleion</i>) en Christ (Col 1.28) répond à Éphésiens 4.13, et le travail acharné de Paul par l'énergie divine (Col 1.29) fait écho à 1 Corinthiens 15.10.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Quatre axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La prééminence absolue du Fils incréé sur la création et sur l'Église</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Colossiens 1.15-⁠19, le Fils est l'image du Dieu invisible et le premier-né de toute la création ; toutes les réalités célestes et terrestres, visibles et invisibles (trônes, dignités, dominations, autorités), ont été créées en lui, par lui et pour lui ; il est avant toutes choses, tout subsiste en lui, il est la Tête du corps de l'Église et le premier-né d'entre les morts afin d'être en tout le premier, car Dieu a voulu faire habiter toute plénitude en lui.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Déité éternelle du Fils, création trinitaire médiatisée par le Verbe, gouvernement providentiel continu du cosmos et seigneurie exclusive de Christ comme Tête de l'Église.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Celui par qui Dieu créa les cieux et la terre au commencement (Gn 1.1; Jn 1.1-⁠3) est aussi Celui qui inaugure la nouvelle création par sa résurrection corporelle d'entre les morts (Col 1.18; Ap 1.5).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Puisque Christ a créé tous les anges, soutient chaque atome de l'univers et gouverne l'Église, aucune créature ni aucune épreuve ne peut échapper à sa souveraineté ; il mérite sans partage la première place dans nos vies.</p></div></div></section><section class="theme"><h3 class="theme__title">La délivrance du royaume des ténèbres et la réconciliation par le sang de la croix</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Colossiens 1.12-⁠14 et 1.20-⁠23, le Père nous a qualifiés pour l'héritage des saints dans la lumière, nous a délivrés de la puissance des ténèbres et transportés dans le royaume de son Fils bien-aimé en qui nous avons la rédemption, le pardon des péchés ; par le sang de sa croix et par sa mort dans le corps de sa chair, Christ a réconcilié d'anciens ennemis pour les présenter devant Dieu saints, sans défaut et sans reproche, pourvu qu'ils demeurent fondés dans la foi.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Dépravation et hostilité naturelle de l'homme déchu, régénération et transfert de royaume par grâce souveraine, expiation substitutive par l'incarnation et la mort physique de Christ, justification et persévérance des saints.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>L'Exode d'Israël hors de l'esclavage égyptien vers la terre promise préfigurait ce grand exode spirituel hors de l'empire des ténèbres sataniques vers le royaume lumineux du Fils bien-aimé.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le croyant n'a plus à craindre ni les puissances occultes ni l'accusation devant le tribunal divin : réconcilié par le sang de la croix, il exprime sa gratitude par une persévérance inébranlable dans l'Évangile.</p></div></div></section><section class="theme"><h3 class="theme__title">La vraie connaissance spirituelle (epignōsis) et ses fruits dans une marche digne</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Colossiens 1.3-⁠11, la parole de la vérité de l'Évangile produit la foi, l'amour et l'espérance ; Paul prie que les croyants soient remplis de la connaissance (<i>epignōsis</i>) de la volonté de Dieu en toute sagesse et intelligence spirituelle, afin de marcher d'une manière digne du Seigneur en portant du fruit en toute bonne œuvre, en croissant dans la connaissance de Dieu et en étant fortifiés par sa puissance glorieuse pour endurer toutes choses avec joie.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Illumination par l'Esprit et la Parole, unité indissoluble de la saine doctrine et de la vie sainte, et sanctification progressive.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Contrairement à l'arbre de la connaissance usurpée en Genèse 3 et à la fausse gnose élitaire des sectes antiques, la connaissance biblique procède de la révélation de l'Évangile et porte immédiatement le fruit de l'obéissance aimante.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Nous ne devons jamais dissocier l'étude théologique de la transformation morale : la vraie connaissance de la volonté de Dieu se reconnaît aux bonnes œuvres, à la patience joyeuse dans l'épreuve et à la reconnaissance.</p></div></div></section><section class="theme"><h3 class="theme__title">Le ministère de la Parole : annoncer Christ en vous pour la maturité de tout croyant</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En Colossiens 1.24-⁠29, Paul se réjouit dans ses souffrances pour le corps de Christ, ayant reçu la charge d'annoncer pleinement la Parole de Dieu et le mystère révélé aux saints (« Christ en vous, l'espérance de la gloire ») ; il annonce Christ en avertissant et en instruisant tout homme en toute sagesse afin de présenter tout homme devenu parfait (<i>teleios</i>) en Christ, en combattant avec la force divine qui agit puissamment en lui.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Vocation souffrante et centrée sur la Parole du ministère pastoral, universalité de la grâce parmi les païens (inhabitation de Christ comme gage de la gloire future) et synergie de l'effort apostolique et de l'énergie souveraine de Dieu.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Le mystère de l'habitation personnelle du Messie au cœur même des croyants gentils, caché sous l'ancienne alliance, est désormais pleinement dévoilé et constitue le gage infaillible de notre glorification future.</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>L'objectif de tout ministère fidèle n'est pas de divertir la foule ni de créer une caste d'initiés, mais de proclamer toute la Parole de Dieu avec labeur et dépendance de sa force jusqu'à ce que chaque croyant parvienne à la maturité en Christ.</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Cinq questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Les trois marques d'une conversion authentique saluées par Paul en Colossiens 1.4-⁠5 (la foi en Jésus-Christ, l'amour concret pour tous les saints et l'espérance céleste produite par l'Évangile) sont-elles manifestes et croissantes dans votre vie ?</li><li>Quand vous priez pour vous-même ou pour votre Église locale, vos requêtes ressemblent-elles à la prière de Colossiens 1.9-⁠12 : être rempli de la connaissance de la volonté de Dieu afin de marcher d'une manière digne du Seigneur en portant du fruit et en endurant les épreuves avec joie ?</li><li>Comment chacune des sept affirmations de l'hymne de Colossiens 1.15-⁠19 sur la suprématie de Jésus-Christ (image du Dieu invisible, Souverain de la création, Créateur des anges, Soutien de l'univers, Tête de l'Église, Premier-né d'entre les morts et plénitude divine) répond-elle aux doutes ou aux craintes que vous traversez ?</li><li>Prenez-vous le temps de rendre grâces au Père pour les quatre actes rédempteurs de Colossiens 1.12-⁠14 et 1.20-⁠22 (qualifiés pour l'héritage, délivrés des ténèbres, transférés dans le royaume du Fils et réconciliés par le sang de sa croix pour paraître saints et sans reproche devant lui) ?</li><li>À l'exemple de Paul en Colossiens 1.24-⁠29, êtes-vous prêt à souffrir avec joie pour le corps de Christ et à travailler jusqu'à l'épuisement, par sa force qui agit puissamment en vous, pour la maturité spirituelle de vos frères et sœurs ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Colossiens 1 · 5 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Colossiens-1.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

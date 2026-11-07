@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Romains 9.25-33 · Un reste selon la promesse · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Romains 9.25-33 : un reste selon la promesse ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Romains 9.25-33</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Romains 9.25-33</p>
+    <h1 class="hero__title">Un reste selon la promesse</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Quand le nombre des fils d'Israël serait comme le sable de la mer, un reste seulement sera sauvé.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Romains 9.27 · NEG</p>
+    <p class="hero__series">Série : <b>La justice de Dieu</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-16 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Romains 9.25-33</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Quand le nombre des fils d'Israël serait comme le sable de la mer, un reste seulement sera sauvé.</p>
+        <cite class="verse__ref">Romains 9.27 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Voici, je mets en Sion une pierre d'achoppement et un rocher de scandale, et celui qui croit en lui ne sera point confus.</p>
+        <cite class="verse__ref">Romains 9.33 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Romains 9.25-33 referme le grand développement du chapitre 9 sur la souveraineté de Dieu dans le salut : l'incrédulité d'Israël ne met pas en faillite la parole de Dieu, car les prophètes l'avaient annoncée et elle s'explique par le refus de la condition de foi posée par Dieu.</p>
+    <div class="body">
+      <p>Notre péricope referme le grand développement de Romains 9 sur la souveraineté de Dieu dans le salut. Depuis 9.1, Paul porte le deuil de l'incrédulité d'Israël : une douleur si vive qu'il souhaiterait être anathème pour ses frères selon la chair (9.3). Le problème théologique est aigu : si la nation à qui appartiennent l'adoption, l'alliance, la loi et les promesses (9.4-5) rejette son Messie, la parole de Dieu a-t-elle failli? Paul a répondu d'avance par la négative (9.6) : tous ceux qui descendent d'Israël ne sont pas Israël. Il a ensuite démontré, par Isaac et Ismaël (9.7-9), puis par Jacob et Ésaü (9.10-13), que l'élection repose sur le dessein souverain de Dieu et non sur la descendance charnelle ni sur les œuvres. Aux objections d'injustice, il a opposé la liberté absolue du potier sur l'argile (9.14-24). Selon MacArthur, les versets 25 à 33 forment la conclusion de cet argument : l'incrédulité d'Israël ne contredit pas le plan rédempteur de Dieu, car les prophètes l'avaient annoncée, et elle s'explique par le refus de la condition de foi posée par Dieu.</p>
+      <p>Le passage se divise nettement en deux mouvements que MacArthur distingue. Le premier (9.25-29) prouve par l'Ancien Testament que l'incrédulité d'Israël reflète exactement ce que Dieu avait annoncé : Osée annonçait qu'Israël, devenu Pas-mon-peuple, serait un jour rappelé à être son peuple, ce qui suppose sa chute présente (9.25-26), et Ésaïe que seul un reste d'Israël serait sauvé (9.27-29). Le second mouvement (9.30-33) tire la leçon : les païens qui ne cherchaient pas la justice l'ont obtenue par la foi, tandis qu'Israël, qui poursuivait une loi de justice, n'y est pas parvenu, parce qu'il la cherchait non par la foi mais comme provenant des œuvres. La nation a buté contre la pierre d'achoppement, le Messie lui-même, annoncé en Sion par Ésaïe (9.33).</p>
+      <p>L'unité du passage est commandée par une opposition que toute l'épître a préparée : la justice qui vient de la foi contre la justice cherchée par les œuvres. Cette antithèse n'est pas neuve sous la plume de Paul; elle récapitule la thèse de 1.16-17 (la justice de Dieu révélée par la foi et pour la foi) et la démonstration de 3.21 à 4.25 (justification gratuite, imputée, reçue par la foi seule). Ce qui est neuf ici, c'est son application au mystère d'Israël : la chute de la nation n'est pas un échec de Dieu mais la conséquence de son propre refus de se soumettre à la justice qui vient de Dieu (thème que Paul prolongera aussitôt en 10.1-4). La péricope sert ainsi de charnière entre la souveraineté divine du chapitre 9 et la responsabilité humaine du chapitre 10, sans la moindre contradiction entre les deux.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Romains 9.25 · 9.27-29 · 9.33</p>
+    </header>
+    <p class="lead">La crise qui sous-tend Romains 9 n'est pas spéculative : elle est le drame vécu de l'Église apostolique, où l'Évangile rencontrait massivement le refus de la synagogue et l'accueil croissant des païens. Paul écrit pour montrer que ce renversement, loin de démentir les Écritures, les accomplit.</p>
+    <div class="body">
+      <p>La crise qui sous-tend Romains 9 n'est pas spéculative; elle est le drame vécu de l'Église apostolique. À Rome comme partout, l'Évangile, annoncé d'abord au Juif puis au Grec (1.16), rencontrait massivement le refus de la synagogue et l'accueil croissant des païens. Pour un esprit juif formé dans l'attente messianique, ce renversement était un scandale insupportable : comment le peuple de l'alliance pouvait-il se trouver hors du salut, tandis que les nations idolâtres y entraient? Paul écrit précisément pour montrer que ce renversement, loin de démentir les Écritures, les accomplit. Les citations qu'il enchaîne (Osée, Ésaïe à deux reprises, puis Ésaïe encore au verset 33) ne sont pas des ornements : ce sont les pièces d'un dossier prophétique qui établit que Dieu avait tout annoncé d'avance, l'incrédulité d'Israël comme sa réduction à un reste.</p>
+    </div>
+    <p>Trois réalités prophétiques structurent le dossier de Paul.</p>
+    <ul class="points">
+      <li><b>L'oracle d'Osée et le retournement de Lo-Ammi.</b> Le verset 25 cite Osée (Os 1.9 à 2.1 et 2.25). Dans son contexte d'origine, l'oracle visait le royaume du nord apostat : Dieu avait nommé un enfant d'Osée Lo-Ammi, c'est-à-dire Pas-mon-peuple, pour signifier le rejet d'Israël, puis avait promis de le restaurer et de l'appeler de nouveau mon peuple. MacArthur observe qu'Osée parlait de la restauration définitive d'Israël devant Dieu, mais que ce rétablissement futur implique nécessairement un éloignement présent : l'incrédulité actuelle de la nation est donc parfaitement compatible avec la révélation de l'Ancien Testament. Paul applique l'oracle à l'Israël de son temps : l'Esprit y annonçait déjà l'incrédulité des Juifs à l'époque du Christ, et Pierre n'en étend le principe à l'Église que de façon indirecte (1 Pi 2.10), car Juifs et païens incrédules sont également sans relation avec Dieu.</li>
+      <li><b>La doctrine du reste et l'enseignement d'Ésaïe.</b> Les versets 27 à 29 convoquent Ésaïe (És 10.22-23 puis És 1.9). Le terme reste, en hébreu <i>shear</i>, désignait dans la prophétie classique la fraction du peuple qui survivrait au jugement, en particulier à l'invasion assyrienne puis à la déportation babylonienne. Ésaïe avait nommé son fils <i>Shear-Yashoub</i>, un reste reviendra (És 7.3), incarnant cette doctrine dans son propre foyer. MacArthur note qu'Ésaïe prophétisait le rejet temporaire de Juda, envahi et dispersé à cause de son incrédulité, et que Paul y discerne l'annonce du rejet par Israël de son Messie et de la dispersion qui s'ensuivrait. Le reste n'est jamais sauvé par mérite national ni par le nombre, fût-il comme le sable de la mer, mais uniquement par la miséricorde de Dieu : sans la postérité que le Seigneur des armées a laissée, Israël serait devenu comme Sodome et Gomorrhe, totalement anéanti.</li>
+      <li><b>La pierre d'achoppement annoncée en Sion.</b> La pierre d'achoppement du verset 33 (Sion, És 8.14 et 28.16) achève le dossier : bien avant la venue du Messie, les prophètes avaient prédit qu'Israël le rejetterait, illustrant une dernière fois que l'incrédulité de la nation s'accorde parfaitement avec l'Écriture. La même pierre, posée souverainement par Dieu, devait sauver les croyants et faire trébucher ceux qui refuseraient la foi : le rejet du Messie n'était donc pas un imprévu mais l'accomplissement d'une prophétie ancienne.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : du reste (<i>hypoleimma</i>) préservé par grâce à la justice (<i>dikaiosyne</i>) imputée par la foi, jusqu'à Israël qui se heurte (<i>proskopto</i>) à la pierre d'achoppement (<i>lithos proskommatos</i>) tandis que celui qui croit (<i>ho pisteuon</i>) ne sera point confus.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">reste</span><span class="mot-gr">hypoleimma / kataleimma</span></th>
+            <td class="col-sens">ce qui demeure, la portion laissée, le résidu après que le gros a été retranché</td>
+            <td>Le grec rend l'hébreu <i>shear</i> (És 10.22), notion prophétique majeure désignant la fraction d'Israël épargnée du jugement. Le mot ne dit pas une survivance accidentelle mais une préservation voulue : c'est Dieu qui laisse un reste. Pour MacArthur, ce reste n'est jamais constitué par la quantité (le nombre serait-il comme le sable de la mer) ni par le privilège national, mais par la pure miséricorde et le choix souverain de Dieu. La même notion reparaît en 11.5 (un reste selon l'élection de la grâce) pour prouver que Dieu n'a pas rejeté son peuple. Le reste est la preuve vivante que l'incrédulité d'Israël n'est ni totale ni définitive.</td>
+            <td><span class="trad"><span><b>S21</b> un reste seulement sera sauvé</span><span><b>NEG79</b> un reste seulement sera sauvé</span><span><b>Darby</b> le résidu seul sera sauvé</span><span><b>LSG</b> un reste seulement sera sauvé</span><span><b>KJF</b> un reste seul sera sauvé</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">justice</span><span class="mot-gr">dikaiosyne</span></th>
+            <td class="col-sens">conformité parfaite à la loi et au caractère de Dieu; état de celui qui est déclaré juste</td>
+            <td>Terme cardinal de Romains, apparaissant plus de trente fois sous diverses formes. MacArthur souligne qu'il faut entendre ici justice venue de Dieu : non une qualité que l'homme produirait, mais la justice parfaite que Dieu impute au pécheur impie sur la base de la foi seule (1.17; 3.21-22; 4.5; 2 Co 5.21). Aux versets 30-31 le mot s'oppose à lui-même selon sa source : la justice obtenue par la foi (que les païens ont reçue) contre la loi de justice qu'Israël poursuivait par les œuvres. La tragédie d'Israël est d'avoir ignoré la justice de Dieu pour établir sa propre justice (10.3) : un effort légaliste radicalement impuissant à sauver.</td>
+            <td><span class="trad"><span><b>S21</b> la justice</span><span><b>NEG79</b> la justice</span><span><b>Darby</b> la justice</span><span><b>LSG</b> la justice</span><span><b>KJF</b> la justice</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">se sont heurtés</span><span class="mot-gr">proskopto</span></th>
+            <td class="col-sens">buter contre, heurter du pied, trébucher sur un obstacle</td>
+            <td>Verbe du choc et de la chute : on bute contre ce qu'on n'a pas voulu voir. Paul l'emploie pour décrire l'attitude d'Israël face au Messie : au lieu de s'appuyer sur la pierre que Dieu posait en Sion, la nation l'a heurtée et est tombée. Le verbe est apparenté au substantif <i>proskomma</i> (achoppement) du verset 33. Pour MacArthur, cet heurt n'est pas une fatalité aveugle mais le fruit d'un choix coupable : Israël a cherché la justice non par la foi mais comme provenant des œuvres, et c'est ce légalisme qui a transformé le Sauveur en pierre où l'on trébuche. Le scandale de la croix devient occasion de chute pour qui refuse de croire.</td>
+            <td><span class="trad"><span><b>S21</b> ils se sont heurtés</span><span><b>NEG79</b> ils se sont heurtés</span><span><b>Darby</b> ils ont heurté</span><span><b>LSG</b> ils se sont heurtés</span><span><b>KJF</b> ils ont trébuché</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">pierre d'achoppement</span><span class="mot-gr">lithos proskommatos</span></th>
+            <td class="col-sens">pierre qui fait trébucher; obstacle contre lequel on se heurte le pied</td>
+            <td>Image tirée d'Ésaïe (8.14 et 28.16), où le Seigneur lui-même devient soit un sanctuaire, soit une pierre d'achoppement et un rocher de scandale (<i>petra skandalou</i>). MacArthur identifie cette pierre au Messie : Christ posé en Sion est la pierre angulaire précieuse pour qui croit, mais la pierre où butent ceux qui refusent la foi. La même pierre sauve et condamne selon qu'on s'y appuie ou qu'on s'y heurte (cf. 1 Pi 2.6-8). Le rocher de scandale, en grec <i>skandalon</i>, désigne au sens propre le bâtonnet du piège qui se déclenche; appliqué à Christ, il dénonce l'orgueil qui se brise sur la croix. Mais la promesse demeure : celui qui croit en lui ne sera point confus.</td>
+            <td><span class="trad"><span><b>S21</b> la pierre qui fait obstacle</span><span><b>NEG79</b> une pierre d'achoppement</span><span><b>Darby</b> une pierre d'achoppement</span><span><b>LSG</b> une pierre d'achoppement</span><span><b>KJF</b> une pierre d'achoppement</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">celui qui croit</span><span class="mot-gr">ho pisteuon</span></th>
+            <td class="col-sens">celui qui se confie, s'appuie sur, se remet entièrement à</td>
+            <td>Participe présent du verbe <i>pisteuo</i> : la foi n'est pas un acte ponctuel du passé mais un état permanent de confiance. MacArthur rappelle que la foi salvatrice est surnaturelle, un don de la grâce que Dieu produit dans le cœur, et le seul moyen par lequel l'homme s'approprie la justice imputée. Elle comporte trois éléments : l'intelligence de l'Évangile, l'adhésion à sa vérité, et la soumission de la volonté à Christ, seul espoir de salut. C'est précisément ce que refusait Israël : non l'effort religieux, qu'il multipliait avec zèle, mais la remise confiante de soi à la justice de Dieu. La promesse finale du verset 33 verrouille tout le passage : à celui qui croit, point de confusion.</td>
+            <td><span class="trad"><span><b>S21</b> celui qui croit en lui</span><span><b>NEG79</b> celui qui croit en lui</span><span><b>Darby</b> celui qui croit en lui</span><span><b>LSG</b> celui qui croit en lui</span><span><b>KJF</b> quiconque croit en lui</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Romains 9.25-33</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Romains 9.25-33 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Rm 9.25-33, 9.25-26, 9.27-28, 9.29, 9.30-32, 9.30, 9.31, 9.32, 9.33.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">45-74</span></th>
+            <td><a href="https://www.gty.org/sermons/45-74" target="_blank" rel="noopener">Is Israel's Unbelief Inconsistent with God's Plan?  Part 4</a></td>
+            <td>Romains 9.25-33</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit le passage comme la fin d'une défense de l'Évangile menée dans tout le chapitre : l'incrédulité d'Israël ne viole ni le plan de Dieu ni la condition qu'il pose au salut, la foi. Loin de prouver un dérapage du plan divin, elle en confirme la précision.</p>
+    <div class="body">
+      <p>MacArthur lit le passage comme la fin d'une défense de l'Évangile menée dans tout le chapitre : l'incrédulité d'Israël ne viole ni le plan de Dieu ni la condition qu'il pose au salut, la foi. Si la nation élue rejette son Messie, n'est-ce pas que les promesses ont échoué? Paul répond par un dossier prophétique : ce que l'on observe sous ses yeux, l'incrédulité d'Israël et sa réduction à un reste, est exactement ce que Dieu avait annoncé par Osée et Ésaïe des siècles plus tôt. L'incrédulité présente d'Israël est donc, selon MacArthur, parfaitement compatible avec la révélation de l'Ancien Testament. Loin de prouver un dérapage du plan divin, elle en confirme la précision. Dieu n'a pas perdu le contrôle de l'histoire de la rédemption; il l'a écrite d'avance.</p>
+      <p>Le premier mouvement aboutit à la doctrine du reste. MacArthur insiste sur le fait que le salut d'un reste n'est jamais une question de nombre ni de mérite national : le nombre des fils d'Israël serait-il comme le sable de la mer, seul un reste sera sauvé, et cela uniquement en raison de la miséricorde de Dieu. Sans la postérité que le Seigneur des armées a souverainement laissée, Israël aurait connu le sort total de Sodome et Gomorrhe, l'anéantissement sans survivant. Cette lecture ne dissout pas Israël dans l'Église : pour MacArthur, Osée parle bien d'Israël, et qui voit s'accomplir l'incrédulité annoncée de la nation doit aussi en attendre la restauration annoncée. Le reste actuel de Juifs croyants (dont Paul lui-même, 11.1) est le gage que Dieu n'a pas rejeté son peuple et qu'un endurcissement seulement partiel précède le salut futur de tout Israël (11.25-26). Le reste est à la fois un jugement sur l'incrédulité de la masse et une promesse de fidélité divine.</p>
+      <p>Le second mouvement (9.30-33) déplace l'éclairage de la souveraineté de Dieu vers la responsabilité d'Israël, sans contradiction réelle entre les deux, même si notre esprit borné ne peut les harmoniser. MacArthur souligne que ceux qui subissent le jugement de Dieu ne le subissent pas par la faute de Dieu, mais à cause de leur propre refus de croire à l'Évangile. Le paradoxe est saisissant : les païens qui ne cherchaient même pas la justice l'ont obtenue, et Israël qui la poursuivait avec zèle l'a manquée. Pourquoi? Parce qu'Israël la cherchait non par la foi mais comme provenant des œuvres, en multipliant l'effort d'obéissance à la loi pour établir sa propre justice. Or espérer une justice fondée sur l'obéissance exige une conformité parfaite à chaque détail de la loi, ce qui est totalement impossible à l'homme pécheur. Le légalisme n'est pas un raccourci imparfait vers Dieu; c'est une impasse absolue. La justice ne se gagne pas, elle se reçoit; elle n'est pas un salaire, elle est un don imputé par la foi seule.</p>
+      <p>La pierre d'achoppement du verset 33 cristallise tout le drame. MacArthur identifie cette pierre, posée en Sion selon Ésaïe (8.14; 28.16), au Messie lui-même. La même pierre est précieuse pour qui croit et fatale pour qui bute contre elle : elle sauve et elle condamne selon la réponse de la foi. Israël s'est heurté à Christ parce que le salut gratuit annoncé par la croix réduisait à néant toute la justice qu'il croyait mériter. La croix est le scandale qui brise l'orgueil religieux. Mais la citation s'achève sur une promesse que MacArthur souligne : celui qui croit en lui ne sera point confus, ce qu'il rend, d'après Ésaïe 28.16, par : n'aura rien à craindre, aucun jugement à redouter. La conclusion pastorale est tranchante : ni le privilège ethnique, ni le zèle, ni l'effort moral ne sauvent quiconque; seule la foi qui se remet à Christ, pierre angulaire choisie par Dieu, met le pécheur à l'abri de la honte du jugement.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope : du dossier prophétique d'Osée et d'Ésaïe que Paul convoque, au prolongement immédiat des chapitres 10 et 11, jusqu'au fondement forensique de la justice par la foi posé dès Romains 3.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Osée 1.9 à 2.1; 2.25</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Source directe des versets 25-26 : Dieu appelle mon peuple celui qui n'était pas son peuple. MacArthur y voit la restauration future d'Israël qui suppose son éloignement présent, et Paul l'applique à l'incrédulité des Juifs de son temps.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 10.22-23</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Source des versets 27-28 : le nombre serait comme le sable de la mer, un reste seulement sera sauvé. La dispersion de Juda annonce le rejet du Messie par Israël et la doctrine du reste préservé.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 1.9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Source du verset 29 : sans la postérité laissée par le Seigneur des armées, Israël serait devenu comme Sodome et Gomorrhe. Le reste subsiste uniquement par la miséricorde souveraine de Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 8.14; 28.16</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Double source du verset 33 : la pierre d'achoppement et le rocher de scandale en Sion, mais celui qui croit ne sera point confus. Les prophètes annonçaient d'avance le rejet du Messie par la nation.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 10.1-4</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Prolongement immédiat : Israël a du zèle pour Dieu sans intelligence, ignorant la justice de Dieu et cherchant à établir sa propre justice; Christ est la fin de la loi pour la justice de tous ceux qui croient.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 11.5-7</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Reprise explicite du reste : dans le temps présent, il y a un reste selon l'élection de la grâce. L'endurcissement n'est que partiel, ce que les élus cherchaient ils l'ont obtenu, les autres ont été endurcis.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 2.6-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Même typologie de la pierre : angulaire et précieuse pour qui croit, pierre d'achoppement et rocher de scandale pour les désobéissants. Confirme l'identification de la pierre au Messie posé en Sion.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 3.21-22</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Fondement doctrinal de l'antithèse des versets 30-32 : la justice de Dieu est manifestée sans la loi, par la foi en Jésus-Christ, pour tous ceux qui croient, sans distinction du Juif et du païen.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La souveraineté de Dieu dans le salut du reste</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Seul un reste sera sauvé (9.27), préservé par la seule miséricorde du Seigneur des armées qui a laissé une postérité (9.29), sans quoi Israël aurait été anéanti comme Sodome.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le salut est monergique de bout en bout : Dieu seul préserve, choisit, appelle. La doctrine du reste est l'application historique de l'élection inconditionnelle développée en 9.6-24. Pour votre assemblée, cela fonde une humilité radicale : nul n'est sauvé par sa lignée, son nombre ou son mérite, mais par la pure grâce souveraine. Et cela fonde l'assurance : le Dieu qui a toujours su préserver un reste préservera infailliblement les siens jusqu'à la fin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Israël et l'Église distincts, les promesses non spiritualisées</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'incrédulité d'Israël est temporaire et partielle : un reste subsiste (9.27-29), annonce du salut futur de la nation que Paul exposera en 11.25-26. Les païens entrent sans pour autant remplacer Israël.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur refuse de séparer les prophéties sur Israël : qui voit la nation entrer dans l'incrédulité annoncée doit aussi attendre sa restauration annoncée; la mise à l'écart n'est pas permanente, et tout Israël sera sauvé (11.26). Pour votre assemblée, cela interdit de retenir l'incrédulité prophétisée d'Israël en lui refusant la restauration prophétisée, et nourrit la fidélité : le Dieu qui tient ses promesses anciennes envers Israël tiendra ses promesses envers chacun des siens. L'appel des païens est grâce, jamais usurpation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La justice imputée par la foi contre la justice par les œuvres</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les païens ont obtenu la justice qui vient de la foi, tandis qu'Israël, cherchant la justice non par la foi mais comme provenant des œuvres, ne l'a pas atteinte (9.30-32).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>C'est le cœur de l'Évangile selon Romains : la justice est un don imputé, reçu par la foi seule, jamais un salaire mérité par l'obéissance à la loi (1.17; 3.21-24; 4.5). Pour votre assemblée, ce thème réfute frontalement tout légalisme et toute Nouvelle Perspective qui referait des œuvres une condition de la justification. Le zèle religieux le plus sincère, s'il cherche à établir sa propre justice, manque le salut. La grâce n'est grâce que si elle est entièrement gratuite.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Christ, pierre angulaire et pierre d'achoppement</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu pose en Sion une pierre d'achoppement et un rocher de scandale; Israël s'y est heurté, mais celui qui croit en lui ne sera point confus (9.32-33).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le Messie crucifié est le critère qui partage l'humanité : même pierre, salut pour la foi, chute pour l'incrédulité. Pour votre assemblée, cela rappelle que la croix est un scandale pour l'orgueil et une folie pour la sagesse humaine, mais la puissance de Dieu pour qui croit. La promesse celui qui croit ne sera point confus offre une assurance solide : la confiance placée en Christ ne sera jamais déçue au jour du jugement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La responsabilité humaine dans l'incrédulité</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Pourquoi Israël n'est-il pas parvenu à la justice? Parce qu'il l'a cherchée non par la foi mais comme provenant des œuvres (9.32); la chute vient du refus de croire.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Souveraineté divine et responsabilité humaine coexistent sans contradiction : Dieu endurcit qui il veut (9.18) et pourtant les perdus le sont à cause de leur propre refus de croire. Pour votre assemblée, ce thème interdit deux dérives : rejeter sur Dieu la responsabilité de l'incrédulité, ou présumer du salut par le privilège ou l'effort. L'appel demeure : se soumettre à la justice de Dieu par la foi, au lieu de buter, par orgueil, contre la pierre que Dieu a posée.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Comment l'enchaînement des citations prophétiques (Osée, Ésaïe) démontre-t-il que l'incrédulité d'Israël confirme la parole de Dieu au lieu de la démentir, et comment prêcher cette vérité pour fortifier la confiance de l'assemblée dans la fidélité de Dieu?</li>
+      <li>La doctrine du reste enseigne que le salut ne dépend ni du nombre ni du privilège national, mais de la seule miséricorde souveraine. En quoi cette vérité humilie-t-elle l'orgueil et fonde-t-elle l'assurance, et comment l'exposer sans glisser vers le fatalisme ni vers le mérite?</li>
+      <li>Paul oppose la justice reçue par la foi à la justice cherchée par les œuvres. Comment montrer à l'assemblée que le légalisme le plus zélé est une impasse absolue, et que la justice est entièrement un don imputé, jamais un salaire?</li>
+      <li>Christ est présenté comme la même pierre qui sauve et qui fait chuter, selon la réponse de la foi. Comment prêcher le scandale de la croix de telle sorte qu'il devienne fondement d'assurance (celui qui croit ne sera point confus) et non occasion de chute?</li>
+      <li>Comment tenir ensemble, sans contradiction, la souveraineté de Dieu qui endurcit (9.18) et la responsabilité d'Israël qui refuse de croire (9.32), pour prêcher à la fois la grâce absolue et l'appel réel à la foi?</li>
+      <li>MacArthur refuse de retenir l'incrédulité annoncée d'Israël sans sa restauration annoncée. En quoi le salut futur de tout Israël annoncé par le reste présent nourrit-il l'espérance de l'assemblée et sa confiance dans un Dieu qui tient parole?</li>
+      <li>L'entrée des païens qui ne cherchaient pas la justice est pure grâce surprenante. Comment cette gratuité inattendue doit-elle façonner l'évangélisation et la gratitude de croyants issus des nations, sans la moindre supériorité envers Israël?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Romains 9.25-33 · 2026-06-16 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La justice de Dieu&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Romains-9-25-33.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

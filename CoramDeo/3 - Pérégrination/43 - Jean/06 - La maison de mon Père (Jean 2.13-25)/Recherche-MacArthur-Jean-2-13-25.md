@@ -1,0 +1,158 @@
+# Recherche exégétique (perspective MacArthur) : Jean 2.13-25
+
+**2026-06-19** · **AGB** · **EBC**
+
+---
+
+## Contexte du passage
+
+La purification du temple ouvre la grande section du ministère de Jésus en Judée (Jean 2.13 à 3.36) et, loin d'une simple réforme religieuse, livre une triple démonstration de la déité du Fils : sa puissance, sa connaissance de l'avenir et sa connaissance souveraine du cœur de l'homme.
+
+La purification du temple ouvre la grande section du ministère de Jésus en Judée (Jean 2.13 à 3.36) et marque un tournant dans la stratégie narrative de Jean. Après le signe inaugural et privé de Cana, accompli devant les seuls serviteurs et disciples (2.1-11), l'apôtre porte maintenant la révélation du Fils au cœur même du sanctuaire national, lors de la première des trois Pâques qu'il rapporte (2.13; 6.4; 11.55).
+
+Selon MacArthur, Jean orchestre ce récit pour renforcer le thème dominant de tout l'Évangile, énoncé en 20.31 : Jésus est bien le Messie, le Fils de Dieu. La péricope rapporte trois confrontations, avec la foule du temple (vv. 13-17), avec les chefs juifs (vv. 18-22) et avec ceux qui disaient croire (vv. 23-25), et chacune expose la déité du Fils : d'abord sa puissance, qui vide le temple sans rencontrer de résistance, puis son omniscience, qui connaît l'avenir, sa mort et sa résurrection, et lit le secret des cœurs. Dieu seul peut faire et savoir cela.
+
+## Arrière-plan historique et culturel
+
+Jean situe cette purification au commencement du ministère, distincte de celle des synoptiques ; le commerce du temple exploitait la piété des pèlerins, et l'édifice d'Hérode, inachevé depuis quarante-six ans, éclaire l'incompréhension des autorités.
+
+Il faut distinguer cette purification de celle que rapportent les synoptiques. Jean la situe au commencement du ministère, lors de la première Pâque; Matthieu, Marc et Luc placent un épisode semblable durant la semaine de la Passion, juste avant la crucifixion (Mt 21.12-17; Mc 11.15-18; Lu 19.45-46). MacArthur juge les circonstances historiques et les contextes littéraires trop différents pour être harmonisés en un seul événement. Deux purifications distinctes sont d'ailleurs cohérentes avec l'ensemble du récit évangélique : la nation, dans son ensemble, n'a jamais reconnu l'autorité messianique de Jésus (Mt 23.37-39), et elle rejeta son message autant que sa personne, ce qui rend un second grand ménage vraisemblable et même nécessaire.
+
+Trois réalités du premier siècle éclairent la scène.
+
+Le négoce des parvis. Le commerce du temple exploitait la piété populaire. Aux Pâques, Jérusalem débordait de pèlerins venus de tout l'Empire romain et d'Israël. Comme la plupart venaient de loin, transporter les bêtes à sacrifier était malaisé; des marchands opportunistes installèrent donc dans les parvis extérieurs un négoce de bœufs, de brebis et de pigeons, source de gains considérables. La religion, observe MacArthur, était devenue une affaire sordide et purement matérielle, une caverne de voleurs (Mt 21.13).
+
+Les changeurs et l'impôt du demi-sicle. Les changeurs étaient requis par l'impôt annuel d'un demi-sicle exigé de tout Juif de vingt ans et plus (Ex 30.13-14; Mt 17.24-27), payable en monnaie juive ou tyrienne à cause de sa haute teneur en argent; les étrangers devaient convertir leurs pièces, et les changeurs se servaient largement au passage.
+
+Le temple d'Hérode et les quarante-six ans. L'édifice lui-même éclaire l'incompréhension des autorités au verset 20. Le temple de Salomon avait été détruit lors de la conquête babylonienne en 586 av. J.-C.; reconstruit par Zorobabel et Josué après l'exil et achevé en 516 av. J.-C. (Esd 1 à 6), il fut entrepris à nouveau et grandement agrandi par Hérode le Grand à partir de 20 ou 19 av. J.-C. Le gros œuvre fut terminé en une dizaine d'années, mais les travaux se poursuivaient encore au temps de Jésus, d'où les quarante-six ans évoqués par ses interlocuteurs. L'ouvrage n'était toujours pas achevé lorsque les Romains rasèrent Jérusalem en 70 apr. J.-C. Au geste de Jésus, MacArthur reconnaît le premier accomplissement d'une prophétie de purification du culte par le Messie (Mal 3.1-3; Za 14.20-21), qui renvoie en dernier ressort à son œuvre du millénium.
+
+## Étude des mots-clés
+
+| Français | Translit. | Sens littéral | Champ sémantique | Traductions comparées |
+|---|---|---|---|---|
+| **zèle** | _zêlos_ | ardeur brûlante, chaleur jalouse | Le terme dit l'ardeur consumante du Fils pour l'honneur de son Père. Le verset 17 cite Ps 69.10 : « Le zèle de ta maison me dévore. » MacArthur souligne que Jésus ne saurait tolérer aucune marque d'irrespect envers Dieu. Quand la sainteté et l'adoration de Dieu sont en jeu, le Fils agit sans tarder et sans ménagement, mais sans cruauté envers les personnes : qu'un seul homme, armé d'un fouet de cordes, vide le parvis sans émeute, sans que la police du temple ni la garnison romaine de la forteresse Antonia interviennent, relève pour MacArthur d'une puissance miraculeuse. Le psaume ayant été écrit par David persécuté pour son zèle, et repris par Paul en Ro 15.3, l'Église primitive y voyait clairement un texte messianique. | _S21_ Le zèle de ta maison me dévore · _NEG79_ Le zèle de ta maison me dévore · _Darby_ Le zèle de ta maison me dévore · _LSG_ Le zèle de ta maison me dévore · _KJF_ Le zèle de ta maison m'a dévoré |
+| **temple** | _hieron / naos_ | enceinte sacrée (hieron); sanctuaire, demeure de Dieu (naos) | Jean emploie deux mots distincts. Le commerce se tient dans le hieron, l'ensemble des parvis (vv. 14-15). Mais au verset 19, « détruisez ce temple » traduit naos, le sanctuaire proprement dit, la demeure du Très-Haut. Le verset 21 lève l'énigme : « il parlait du temple de son corps. » MacArthur explique que Jésus s'exprimait à dessein de façon obscure, à la manière des paraboles, pour ne révéler la vérité qu'aux siens et laisser dans l'ignorance ceux qui contestaient sa légitimité (Mt 13.10-11). Par sa mort et sa résurrection, le culte du temple de pierre serait aboli (cf. 4.21) et réinstitué dans le cœur des croyants, édifiés en temple spirituel, l'Église (Ep 2.19-22). | _S21_ Détruisez ce temple et en trois jours je le relèverai · _NEG79_ Détruisez ce temple, et en trois jours je le relèverai · _Darby_ Détruisez ce temple, et en trois jours je le relèverai · _LSG_ Détruisez ce temple, et en trois jours je le relèverai · _KJF_ Détruisez ce temple, et en trois jours je le relèverai |
+| **miracle** | _sêmeion_ | signe, indice révélateur | Là où la NEG rend par miracle (vv. 18, 23), le grec porte sêmeion, signe. MacArthur explique que ce mot désigne des démonstrations de puissance qui attirent l'attention au-delà d'elles-mêmes, vers des réalités divines plus profondes que l'on ne perçoit qu'avec les yeux de la foi (cf. 2.11). Quand les autorités réclament un signe pour justifier son autorité (v. 18), elles trahissent leur incrédulité : le geste de purification était déjà en soi un signe suffisamment éloquent. Exiger un prodige sur commande, comme un numéro de cirque, révèle un cœur qui ne croit pas. Ce sens commande aussi 2.23 : la foi fondée sur le seul spectacle des signes n'est pas la foi qui sauve. | _S21_ Quel signe nous montres-tu · _NEG79_ Quel miracle nous montres-tu · _Darby_ Quel miracle nous montres-tu · _LSG_ Quel miracle nous montres-tu · _KJF_ Quel signe nous montres-tu |
+| **crurent** | _episteusan_ | ils placèrent leur confiance, ils se fièrent | Le verset 23 dit que plusieurs « crurent en son nom », et le verset 24 que « Jésus ne se fiait point à eux » : Jean emploie deux fois le même verbe pisteuô pour creuser un contraste décisif. MacArthur y lit la vraie nature de la foi biblique. Beaucoup adhérèrent à cause des signes vus, mais le Fils ne se confia jamais à eux car il connaissait leur cœur; il cherchait une conversion véritable, non un enthousiasme superficiel. Croire en son nom signifie donc bien plus qu'un assentiment intellectuel : c'est un engagement total, enthousiaste et durable à vivre en disciple (cf. 8.31-32; Mt 10.37; 16.24-26). MacArthur rappelle que la distinction entre la foi qui sauve et la foi superficielle, qui ne sauve pas, est depuis des décennies une insistance majeure de sa prédication et de ses écrits. | _S21_ beaucoup crurent en son nom · _NEG79_ plusieurs crurent en son nom · _Darby_ plusieurs crurent en son nom · _LSG_ plusieurs crurent en son nom · _KJF_ beaucoup crurent en son nom |
+| **homme** | _anthrôpos_ | l'être humain, l'homme en général | Au verset 25, « il savait luimême ce qui était dans l'homme » porte anthrôpos avec article, désignant l'humanité en son ensemble, non un individu. La formule affirme l'omniscience du Fils sur le cœur de tout homme : il n'a besoin d'aucun témoignage extérieur. MacArthur en fait la troisième preuve de la divinité dans cette section, car Dieu seul peut vraiment connaître le cœur de l'homme (cf. 1 Co 4.5; 1 Jn 3.20). Cette connaissance souveraine prépare directement l'épisode de Nicodème : ce docteur d'Israël vient de nuit, et Jésus lit aussitôt dans son cœur l'absence de la nouvelle naissance (3.1-10). | _S21_ il savait lui-même ce qui est dans l'homme · _NEG79_ il savait lui-même ce qui était dans l'homme · _Darby_ il connaissait lui-même ce qui était dans l'homme · _LSG_ il savait lui-même ce qui était dans l'homme · _KJF_ il savait ce qui était dans l'homme |
+
+## Apports des commentateurs
+
+**Niveau de source**
+
+Niveau 1, sermons Grace to You sur Jean 2.13-25 (tableau ci-dessous) ; notes de La Bible d'étude MacArthur sur Jn 2.13-25, 2.13-17, 2.13, 2.14, 2.15, 2.16, 2.17, 2.18-22, 2.18, 2.19, 2.20, 2.23-25, 2.23-24.
+
+**Sermons Grace to You**
+
+| Code | Sermon | Passage |
+|---|---|---|
+| 43-9 | [Zeal for My Father’s House](https://www.gty.org/sermons/43-9) | Jean 2.12-17 |
+| 43-10 | [Deity on Display](https://www.gty.org/sermons/43-10) | Jean 2.18-22 |
+
+MacArthur lit la péricope comme trois confrontations où la déité du Fils est exposée : sa puissance devant la foule du temple, puis son omniscience, qui connaît l'avenir et lit les cœurs.
+
+MacArthur lit la péricope comme trois confrontations, avec la foule, avec les chefs et avec ceux qui disaient croire, où la déité du Fils est chaque fois exposée ; la note de sa Bible d'étude range ces preuves sous la révérence, la résurrection et la perception des cœurs. Premièrement, devant la foule du temple (vv. 13-17), la puissance : un homme encore inconnu, armé d'un fouet de cordes, chasse des dizaines de milliers de personnes et leurs bêtes, et MacArthur y voit un miracle, non de compassion mais de sainte colère contre l'irrévérence, aperçu du jugement à venir. La note y souligne la révérence : Dieu seul a le droit de régler les formes de son adoration. L'impératif « ne faites pas » du verset 16 rendrait mieux la force du grec par « arrêtez de faire » : la sainteté de Dieu exige un culte saint. En nommant le sanctuaire « la maison de mon Père », Jésus livre, selon Jean, un indice subtil de sa filiation divine et de son statut messianique (cf. 5.17-18).
+
+Deuxièmement, devant les chefs (vv. 18-22), la connaissance de l'avenir. Aux autorités qui réclament un signe, Jésus oppose une parole énigmatique : « Détruisez ce temple, et en trois jours je le relèverai. » MacArthur y lit l'annonce de ce que ses adversaires ignorent encore, qu'ils le mettront à mort et qu'il ressuscitera le troisième jour ; or annoncer l'avenir est le propre de Dieu (És 41.21-23; 46.9-10). Il note aussi que Jésus dit se relever lui-même, œuvre commune de la Trinité, et la note de sa Bible d'étude fait de cette puissance sur la mort un droit réservé à Dieu seul. Les Juifs comprennent à la lettre, et l'accusation reparaîtra au procès (Mc 14.58); ce n'est qu'après la résurrection que les disciples saisirent le sens réel de la parole et « crurent à l'Écriture et à la parole que Jésus avait dite » (v. 22). Le temple de pierre, encore inachevé quand il sera détruit en 70, cède la place au corps ressuscité du Seigneur, vrai sanctuaire et fondement de l'Église.
+
+Troisièmement, devant ceux qui disaient croire (vv. 23-25), la connaissance des cœurs. MacArthur relève le jeu de mots des versets 23 et 24, où Jean emploie deux fois le même verbe : une foule croit à la vue des signes, mais Jésus ne se fie pas à elle, « parce qu'il les connaissait tous » ; il n'avait pas foi en leur foi. Cette foi attirée par le spectacle n'est pas la foi qui sauve; elle est superficielle, sans engagement durable. Le commentateur y voit l'illustration même de la fausse profession que dénoncera plus loin l'Évangile (8.30-31) : croire vraiment, c'est demeurer dans la parole. La connaissance que Jésus a du cœur de l'homme n'est pas déduction d'observateur, mais omniscience divine, qui sonde et juge sans jamais se tromper.
+
+Ces trois preuves convergent vers l'idée maîtresse de la série : le zèle du Fils pour la sainteté de Dieu annonce le temple véritable, son corps livré et ressuscité. La purification n'est pas une parenthèse morale mais une révélation christologique. Le Fils qui purifie le sanctuaire est le même qui le remplacera par son propre corps, et le même qui connaît jusqu'au fond les cœurs de ceux qui s'en approchent. Pour MacArthur, les signes sont des preuves de la déité du Fils, donnés pour fortifier la foi de ceux qui croyaient ; une génération méchante et adultère, qui ne se contente pas de l'Écriture, réclame des signes, et les prétendus ministères de signes n'apportent aucun message qui sauve, car la foi vient de ce qu'on entend la parole de Christ.
+
+## Renvois et passages parallèles
+
+**Psaume 69.10** · _Arrière-plan AT_
+
+Texte cité au verset 17 (« Le zèle de ta maison me dévore »). MacArthur y voit un psaume messianique en ce sens que Jésus y agit comme David, avec le même zèle pour la gloire de Dieu et l'honneur de sa maison ; Paul en cite la seconde moitié en Ro 15.3.
+
+**Malachie 3.1-3** · _Arrière-plan AT_
+
+Prophétie de la venue soudaine du Seigneur dans son temple pour purifier les fils de Lévi. La purification opérée par Jésus en est, selon MacArthur, le premier accomplissement, renvoyant en dernier lieu au millénium.
+
+**Zacharie 14.20-21** · _Arrière-plan AT_
+
+Annonce qu'au jour du Seigneur il n'y aura plus de marchand dans la maison de l'Éternel. Arrière-plan prophétique direct du geste de Jésus chassant le négoce du temple.
+
+**Jean 5.17-18** · _Parallèle direct_
+
+En se disant Fils de Dieu et en appelant le temple « la maison de mon Père », Jésus s'égale à Dieu; les Juifs le comprennent et cherchent à le tuer. Confirme la portée divine de l'expression de 2.16.
+
+**Éphésiens 2.19-22** · _Lien thématique_
+
+L'Église est édifiée en temple spirituel, demeure de Dieu par l'Esprit, sur le fondement des apôtres et de Christ pierre angulaire. Réalisation de la substitution annoncée en 2.19-21.
+
+**Jean 8.30-31** · _Parallèle direct_
+
+Beaucoup crurent, mais Jésus pose la condition de la foi authentique : demeurer dans sa parole. Parallèle au contraste de 2.23-24 entre la foi des signes et la vraie conversion.
+
+**1 Samuel 16.7** · _Arrière-plan AT_
+
+L'Éternel regarde au cœur, non aux apparences. Fondement vétérotestamentaire de l'omniscience que 2.24-25 attribue à Jésus, donc de sa déité.
+
+**Jean 3.1-10** · _Lien thématique_
+
+Nicodème, docteur d'Israël, vient de nuit; Jésus lit dans son cœur et lui révèle la nécessité de la nouvelle naissance souveraine. 2.23-25 sert d'introduction directe à cet épisode.
+
+## Thèmes théologiques
+
+### La déité du Fils attestée par le signe
+
+**Dans le texte**
+
+Toute la péricope, structurée par MacArthur en trois preuves (puissance, connaissance de l'avenir, connaissance des cœurs), démontre que Jésus fait et sait ce que Dieu seul peut faire et savoir, conformément au but de l'Évangile en 20.31.
+
+**Pour votre assemblée**
+
+Adorer Christ pleinement comme Dieu. Les signes ne fondent pas un modèle d'expérience à reproduire mais authentifient l'identité unique du Messie; l'assemblée est appelée à croire sur la foi du témoignage apostolique, non à courir après les prodiges.
+
+### La sainteté de Dieu et la pureté du culte
+
+**Dans le texte**
+
+Le zèle qui dévore le Fils (v. 17) et l'ordre « arrêtez de faire de la maison de mon Père une maison de trafic » (v. 16) affirment que Dieu seul règle les formes de son adoration et qu'elle doit être sainte.
+
+**Pour votre assemblée**
+
+Garder l'adoration de l'assemblée pure de tout mercantilisme et de toute irrévérence. La maison de Dieu n'est pas un lieu de commerce religieux mais le théâtre de sa gloire; le cœur du croyant, devenu temple, réclame la même sainteté.
+
+### Le temple véritable : le corps livré et ressuscité
+
+**Dans le texte**
+
+« Détruisez ce temple, et en trois jours je le relèverai... il parlait du temple de son corps » (vv. 19-21). Le sanctuaire de pierre est remplacé par le corps mort et ressuscité du Seigneur, puis par l'Église (Ep 2.19-22).
+
+**Pour votre assemblée**
+
+Centrer la foi sur la mort et la résurrection de Christ, seul accès à Dieu. Le culte ne dépend plus d'un lieu mais d'une Personne; l'assurance du croyant repose sur le Ressuscité, non sur des rites.
+
+### La foi authentique contre la fausse foi
+
+**Dans le texte**
+
+Plusieurs « crurent en son nom » (v. 23), mais Jésus « ne se fiait point à eux » (v. 24) : même verbe, deux réalités. La foi des seuls signes n'est pas la foi qui sauve.
+
+**Pour votre assemblée**
+
+Appeler chacun à une foi qui demeure et se soumet à la seigneurie de Christ, non à un enthousiasme passager. Une profession sans conversion réelle ne sauve personne; le Seigneur connaît qui est vraiment à lui.
+
+### L'omniscience souveraine du Fils sur le cœur
+
+**Dans le texte**
+
+« Il les connaissait tous... il savait luimême ce qui était dans l'homme » (vv. 24-25). Jésus n'a besoin d'aucun témoignage extérieur : il sonde les cœurs comme Dieu seul le fait.
+
+**Pour votre assemblée**
+
+Vivre dans la transparence devant Celui qui connaît tout. Nulle religiosité de façade ne le trompe; cette omniscience console le vrai croyant et avertit le faux, et prépare la doctrine de la nouvelle naissance révélée à Nicodème.
+
+## Pistes de réflexion
+
+1. MacArthur structure le passage en trois preuves de la déité du Fils (puissance, connaissance de l'avenir, connaissance des cœurs). Comment cette clé de lecture transforme-t-elle une simple scène de réforme religieuse en révélation christologique pour l'assemblée?
+2. « La maison de mon Père » (v. 16) renvoie à la filiation divine de Jésus (cf. 5.17-18). En quoi le zèle du Fils pour la sainteté du Père éclaire-t-il ce que devrait être notre propre révérence dans le culte?
+3. Jésus parle « du temple de son corps » (v. 21). Comment prêcher le passage du temple de pierre au corps ressuscité, puis à l'Église temple spirituel (Ep 2.19-22), sans glisser vers une religion de lieux ou de rites?
+4. Le même verbe croire qualifie la foule (v. 23) et la défiance de Jésus (v. 24). Comment distinguer pastoralement la foi des signes de la foi qui sauve et qui demeure (cf. 8.30-31), sans tomber dans l'easy-believism ni dans le doute morbide?
+5. MacArthur souligne que Jésus recherchait une conversion véritable, non un enthousiasme superficiel pour ses miracles. Quels signes contemporains d'une foi de spectacle reconnaissez-vous, et comment y répondre à la lumière de la distinction qu'il fait entre la foi qui sauve et la foi superficielle?
+6. « Il savait luimême ce qui était dans l'homme » (v. 25) : cette omniscience prouve la déité du Fils. Comment cette vérité console-t-elle le vrai croyant et avertit-elle celui qui se contente d'une profession extérieure?
+7. La péricope prépare directement Nicodème, docteur d'Israël venu de nuit (3.1-10). En quoi l'incapacité d'un homme religieux à percevoir la nouvelle naissance confirme-t-elle que seul Dieu, par l'Esprit, donne de croire (cf. 1.12-13; 6.44)?
+
+<!-- source_hash: af10a388637910d2 -->

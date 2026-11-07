@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tite 1.1-4 · Serviteur des élus de Dieu · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Tite 1.1-4 : serviteur des élus de Dieu ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Tite 1.1-4</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Tite 1.1-4</p>
+    <h1 class="hero__title">Serviteur des élus de Dieu</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Paul, serviteur de Dieu, et apôtre de Jésus-Christ pour la foi des élus de Dieu et la connaissance de la vérité qui est selon la piété.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Tite 1.1 · NEG</p>
+    <p class="hero__series">Série : <b>Tite : l'Évangile qui transforme</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Tite 1.1-4</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Paul, serviteur de Dieu, et apôtre de Jésus-Christ pour la foi des élus de Dieu et la connaissance de la vérité qui est selon la piété.</p>
+        <cite class="verse__ref">Tite 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">À Tite, mon enfant légitime en notre commune foi : Que la grâce et la paix te soient données de la part de Dieu le Père et de Jésus-Christ notre Sauveur!</p>
+        <cite class="verse__ref">Tite 1.4 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Tite 1.1-4 est la salutation de l'épître, mais une salutation hors norme&nbsp;: là où Paul ouvre d'ordinaire ses lettres par une formule brève, il déploie ici une longue suscription théologique qui résume tout son ministère apostolique avant même de nommer son destinataire.</p>
+    <div class="body">
+      <p>Selon l'introduction de <i>La Bible d'étude MacArthur</i>, l'épître à Tite appartient au corpus des épîtres pastorales, aux côtés de 1 et 2 Timothée, et fut écrite entre 62 et 64 apr. J.-C., alors que Paul œuvrait auprès des Églises de Macédoine entre son premier et son second emprisonnement à Rome. Tite, un païen converti par le ministère de Paul (1.4; Ga 2.3), avait été laissé en Crète pour y poursuivre l'œuvre, mettre en ordre ce qui restait à régler et établir des anciens dans chaque ville (1.5).</p>
+      <p>L'objet principal de la lettre n'est pas la défense de la doctrine, comme c'est le cas pour Romains ou Galates, mais la formation des Églises de Crète pour une évangélisation efficace. Pourtant, MacArthur fait observer que ces premiers versets, très condensés, renferment la somme de tout le ministère de Paul. Les notes de la Bible d'étude dégagent trois mouvements dans cette suscription, qui sont les trois axes du ministère que Paul proclamait&nbsp;: premièrement, le salut, car Dieu s'est fixé pour but de sauver les élus au moyen de l'Évangile; deuxièmement, la sanctification, car Dieu désire construire l'être intérieur de ceux qui sont sauvés par sa Parole; troisièmement, la glorification, car selon le plan divin, les croyants seront amenés à connaître la gloire éternelle. La salutation déploie donc l'arc complet du dessein de Dieu, de l'élection avant tous les siècles jusqu'à l'espérance de la vie éternelle.</p>
+      <p>Les bornes de la péricope sont nettes. Elle s'ouvre au verset 1 par la formule d'expéditeur («&nbsp;Paul, serviteur de Dieu, et apôtre de Jésus-Christ&nbsp;») et se referme au verset 4 par la bénédiction adressée à Tite («&nbsp;Que la grâce et la paix te soient données&nbsp;»). Les versets 2 et 3, encadrés de tirets dans la NEG, forment une parenthèse dense où Paul fait remonter l'espérance du salut jusqu'au décret éternel de Dieu et jusqu'à la manifestation de sa Parole par la prédication apostolique. Le verset 5 amorce aussitôt un mouvement nouveau, l'instruction pratique sur la désignation des anciens. La suscription n'est donc pas un simple protocole épistolaire&nbsp;: elle est le portail théologique de toute l'épître, et elle ancre l'autorité de Tite dans l'autorité de Paul, elle-même reçue de Dieu.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Tite 1.1 · 1.2 · 1.3</p>
+    </header>
+    <p class="lead">La Crète, où Tite exerçait son ministère, avait mauvaise réputation dans l'Antiquité&nbsp;: le verbe grec <i>krêtizein</i>, «&nbsp;agir en Crétois&nbsp;», signifiait mentir. C'est dans ce milieu réputé corrompu que de jeunes assemblées chrétiennes devaient apprendre à témoigner.</p>
+    <div class="body">
+      <p>La Crète est l'une des plus grandes îles de la mer Méditerranée, avec ses 220 kilomètres de long. Située au sud de la mer Égée, elle avait mauvaise réputation&nbsp;: Paul citera plus loin le poète crétois Épiménide qui traitait son propre peuple de «&nbsp;menteurs, méchantes bêtes, ventres paresseux&nbsp;» (1.12). MacArthur souligne que, pour gagner un tel peuple à l'Évangile, les croyants devaient d'abord afficher le témoignage irréfutable de vies justes et pieuses, en totale opposition avec la débauche des faux docteurs.</p>
+    </div>
+    <p>Trois traits éclairent la suscription.</p>
+    <ul class="points">
+      <li><b>Le double titre, serviteur et apôtre.</b> La salutation paulinienne s'inscrit dans la forme épistolaire ancienne, qui suivait un schéma fixe&nbsp;: expéditeur, destinataire, salut. Mais Paul charge chaque case de contenu théologique. À la place d'une simple identification, il déploie au verset 1 un titre double et délibéré, «&nbsp;serviteur de Dieu&nbsp;» et «&nbsp;apôtre de Jésus-Christ&nbsp;». MacArthur fait remarquer que c'est la seule fois où Paul se décrit comme «&nbsp;serviteur de Dieu&nbsp;», se rangeant ainsi dans la lignée des hommes de Dieu de l'Ancien Testament (cf. Ap 15.3).</li>
+      <li><b>L'esclave entièrement assujetti.</b> Le mot grec <i>doulos</i> désignait l'esclave de l'époque du Nouveau Testament, le plus humble des serviteurs, ce qui exprime la totale et volontaire mise à disposition de Paul au service du Seigneur, lui qui, comme tous les croyants, avait été racheté à un grand prix (1 Co 6.20). Le titre ne revendique aucun prestige&nbsp;: <i>doulos</i> est le mot le plus servile de la langue grecque, et Paul n'en voit pas moins dans cet esclavage un privilège qu'il embrasse avec joie.</li>
+      <li><b>Le décret éternel.</b> L'arrière-plan le plus important demeure théologique. La parenthèse des versets 2 et 3 fait remonter l'espérance de la vie éternelle «&nbsp;avant tous les siècles&nbsp;», c'est-à-dire avant la création de l'homme. MacArthur explique que le plan de salut fut déterminé et décrété de toute éternité, comme une promesse faite à Dieu le Fils. Cette espérance repose sur le caractère de «&nbsp;Dieu qui ne ment point&nbsp;»&nbsp;: puisque Dieu est lui-même vérité et source de la vérité, il lui est impossible de mentir. Et cette promesse s'est manifestée «&nbsp;en son temps&nbsp;» par la prédication confiée à Paul, car la Parole de Dieu est la seule ressource de toute prédication fidèle.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la suscription&nbsp;: du <i>doulos</i> qui dit l'humble appartenance de Paul, à l'<i>eklektos</i> de l'élection souveraine, jusqu'au <i>sôtêr</i> attribué au Père comme au Fils.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">serviteur</span><span class="mot-gr">doulos</span></th>
+            <td class="col-sens">esclave, serviteur entièrement assujetti; celui qui appartient à un maître et lui doit une obéissance totale</td>
+            <td>Le mot <i>doulos</i> désigne le plus humble des esclaves de l'époque du Nouveau Testament, propriété de son maître et entièrement à sa disposition. En se nommant «&nbsp;serviteur de Dieu&nbsp;», Paul exprime, selon MacArthur, sa totale et volontaire mise à disposition du Seigneur, à qui tous les croyants ont été «&nbsp;rachetés à un grand prix&nbsp;» (1 Co 6.20; cf. 1 Pi 1.18-19). MacArthur note que c'est la seule fois où Paul se décrit comme «&nbsp;serviteur de Dieu&nbsp;» (cf. Ro 1.1; Ga 1.10; Ph 1.1), se rangeant ainsi dans la lignée des hommes de Dieu de l'Ancien Testament (cf. Ap 15.3). Le titre ne revendique aucun prestige&nbsp;: <i>doulos</i> est le mot le plus servile de la langue grecque, et Paul n'en voit pas moins dans cet esclavage un privilège qu'il embrasse avec joie.</td>
+            <td><span class="trad"><span><b>S21</b> serviteur</span><span><b>NEG79</b> serviteur</span><span><b>Darby</b> esclave</span><span><b>LSG</b> serviteur</span><span><b>KJF</b> serviteur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">apôtre</span><span class="mot-gr">apostolos</span></th>
+            <td class="col-sens">envoyé, messager muni d'un mandat; celui qui est dépêché avec l'autorité de celui qui l'envoie</td>
+            <td>Le sens de base d'<i>apostolos</i> est «&nbsp;messager&nbsp;» ou littéralement «&nbsp;envoyé&nbsp;». Le terme s'employait pour les émissaires royaux, investis de l'autorité de leur souverain pendant leur mission. MacArthur précise que, pour Paul, le statut d'apôtre était une extension de son statut de serviteur&nbsp;: il impliquait de grandes responsabilités, une grande autorité, mais aussi de grands sacrifices (cf. Ro 1.1; 1 Co 1.1; 2 Co 1.1; Ep 1.1). L'office apostolique fondateur, choisi et formé par Christ pour poser le fondement de l'Église (Ep 2.20), est une catégorie close et non transmissible&nbsp;: il authentifie l'autorité divine du message que Paul confie à Tite.</td>
+            <td><span class="trad"><span><b>S21</b> apôtre</span><span><b>NEG79</b> apôtre</span><span><b>Darby</b> apôtre</span><span><b>LSG</b> apôtre</span><span><b>KJF</b> apôtre</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">élus</span><span class="mot-gr">eklektos</span></th>
+            <td class="col-sens">choisi, mis à part; objet d'un choix souverain et gratuit en vue du salut</td>
+            <td>Les <i>eklektoi</i> sont ceux que Dieu a choisis par grâce pour le salut «&nbsp;avant la fondation du monde&nbsp;» (Ep 1.4). MacArthur insiste sur le fait que ces élus doivent néanmoins exercer leur foi personnellement, encouragés par le Saint-Esprit et rendus par lui capables de le faire. L'élection des croyants par Dieu précède toujours leur choix en sa faveur, et c'est elle qui les rend capables de l'assumer (cf. Jn 15.16; Ac 13.46; Ro 9.15-21; 2 Th 2.13; 2 Ti 1.8-9; 1 Pi 1.1-2). Le terme dit que le choix revient à Dieu seul&nbsp;: ce n'est pas l'homme qui s'élit lui-même, c'est Dieu qui choisit les siens (Jn 15.16), et c'est cette élection qui rend la foi possible.</td>
+            <td><span class="trad"><span><b>S21</b> élus</span><span><b>NEG79</b> élus</span><span><b>Darby</b> élus</span><span><b>LSG</b> élus</span><span><b>KJF</b> élus</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">piété</span><span class="mot-gr">eusebeia</span></th>
+            <td class="col-sens">piété, respect révérenciel de Dieu qui se traduit en conduite sainte; dévotion pratique tournée vers Dieu</td>
+            <td>L'<i>eusebeia</i> est la piété pratique, le respect de Dieu qui façonne toute la vie. Dans la suscription, «&nbsp;la connaissance de la vérité qui est selon la piété&nbsp;» relie inséparablement la doctrine et la conduite&nbsp;: MacArthur explique que la vérité de l'Évangile, le message salvateur de la mort et de la résurrection de Jésus-Christ (1 Ti 2.3-4; 2 Ti 2.25), est précisément celle qui conduit à la piété, c'est-à-dire à la sanctification (voir 2.11-12). La vraie connaissance de la vérité n'est jamais purement intellectuelle&nbsp;: elle produit nécessairement une vie pieuse. Ce lien fonde le deuxième axe du ministère de Paul, la sanctification&nbsp;: Dieu construit l'être intérieur des sauvés par sa Parole.</td>
+            <td><span class="trad"><span><b>S21</b> piété</span><span><b>NEG79</b> piété</span><span><b>Darby</b> piété</span><span><b>LSG</b> piété</span><span><b>KJF</b> piété</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Sauveur</span><span class="mot-gr">sôtêr</span></th>
+            <td class="col-sens">celui qui sauve, qui délivre et préserve; libérateur d'un péril mortel</td>
+            <td>Le titre <i>sôtêr</i> revient avec insistance dans l'épître à Tite, appliqué tour à tour à Dieu le Père («&nbsp;Dieu notre Sauveur&nbsp;», 1.3) et à Christ («&nbsp;Jésus-Christ notre Sauveur&nbsp;», 1.4; cf. 2.13; 3.6). MacArthur souligne que le plan du salut trouve de toute éternité son origine en Dieu, et relève que l'épître donne trois fois ce titre à Dieu (1.3; 2.10; 3.4) et trois fois à Jésus-Christ (1.4; 2.13; 3.6). L'attribution du même titre au Père et au Fils dans une seule salutation manifeste discrètement la pleine divinité de Christ, thème que Paul rendra explicite en 2.13 («&nbsp;notre grand Dieu et Sauveur Jésus-Christ&nbsp;»). Le mot ancre l'Évangile&nbsp;: le salut n'est pas une œuvre de l'homme mais l'acte de Dieu Sauveur, du décret éternel jusqu'à sa réalisation.</td>
+            <td><span class="trad"><span><b>S21</b> Sauveur</span><span><b>NEG79</b> Sauveur</span><span><b>Darby</b> Sauveur</span><span><b>LSG</b> Sauveur</span><span><b>KJF</b> Sauveur</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Tite 1.1-4</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Tite 1.1-4 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Tt 1.1-3, 1.1, 1.2, 1.3, 1.4.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-1</span></th>
+            <td><a href="https://www.gty.org/sermons/56-1" target="_blank" rel="noopener">Commitments of a Powerful Leader, Part 1</a></td>
+            <td>Tite 1.1</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-2</span></th>
+            <td><a href="https://www.gty.org/sermons/56-2" target="_blank" rel="noopener">Commitments of a Powerful Leader, Part 2</a></td>
+            <td>Tite 1.1-3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-3</span></th>
+            <td><a href="https://www.gty.org/sermons/56-3" target="_blank" rel="noopener">Commitments of a Powerful Leader, Part 3</a></td>
+            <td>Tite 1.3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-4</span></th>
+            <td><a href="https://www.gty.org/sermons/56-4" target="_blank" rel="noopener">Commitments of a Powerful Leader, Part 4</a></td>
+            <td>Tite 1.4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit les versets 1 à 3 comme une déclaration condensée de tout le ministère apostolique de Paul, structurée autour de trois proclamations qui sont aussi les trois grands moments du salut&nbsp;: le salut, la sanctification, la glorification.</p>
+    <div class="body">
+      <p>Premièrement, le salut&nbsp;: Dieu s'est fixé pour but de sauver les élus au moyen de l'Évangile. Deuxièmement, la sanctification&nbsp;: Dieu désire construire l'être intérieur de ceux qui sont sauvés par sa Parole. Troisièmement, la glorification&nbsp;: selon le plan divin, les croyants seront amenés à connaître la gloire éternelle. Cette tripartition n'est pas une lecture imposée au texte; elle suit l'ordre même des expressions de Paul, de «&nbsp;la foi des élus&nbsp;» (le salut) à «&nbsp;la connaissance de la vérité qui est selon la piété&nbsp;» (la sanctification), puis à «&nbsp;l'espérance de la vie éternelle&nbsp;» (la glorification). La suscription renferme donc la somme de tout son ministère.</p>
+      <p>Le double titre du verset 1 mérite une attention particulière. Paul se dit d'abord «&nbsp;serviteur de Dieu&nbsp;», puis «&nbsp;apôtre de Jésus-Christ&nbsp;». MacArthur fait observer que c'est la seule fois où Paul emploie pour lui-même l'expression «&nbsp;serviteur de Dieu&nbsp;», se plaçant ainsi dans la lignée des grands serviteurs de l'Ancien Testament. Le mot grec <i>doulos</i> est le terme du plus humble des esclaves&nbsp;: il démontre la totale et volontaire mise à disposition de Paul au Seigneur, qui l'a racheté à un grand prix. Le titre d'apôtre, lui, n'annule pas celui de serviteur mais le prolonge&nbsp;: l'apostolat est une extension de la servitude, qui ajoute à l'humilité de l'esclave la responsabilité, l'autorité et les sacrifices du messager mandaté par le Christ ressuscité. L'humilité et l'autorité ne s'opposent donc pas chez Paul&nbsp;: c'est parce qu'il n'est rien que serviteur qu'il peut porter sans orgueil l'autorité de son envoi.</p>
+      <p>La mention des «&nbsp;élus de Dieu&nbsp;» introduit le cœur sotériologique du passage. MacArthur renvoie aux notes sur Éphésiens 1.4-5&nbsp;: ceux qui sont choisis par grâce pour le salut «&nbsp;avant la fondation du monde&nbsp;» doivent néanmoins exercer leur foi personnellement, encouragés par le Saint-Esprit et rendus par lui capables de le faire. Il pose alors le principe décisif&nbsp;: l'élection des croyants par Dieu précède toujours leur choix en sa faveur, et c'est ce qui les rend capables de l'assumer. La foi n'est donc pas la cause de l'élection mais son fruit; l'apostolat de Paul est «&nbsp;pour la foi des élus&nbsp;», c'est-à-dire au service de la foi que Dieu suscite chez ceux qu'il a choisis. MacArthur l'appuie notamment sur Jean 15.16 («&nbsp;Ce n'est pas vous qui m'avez choisi; mais moi, je vous ai choisis&nbsp;») et sur Romains 9.16&nbsp;: cela ne dépend pas de celui qui veut, mais de Dieu qui fait miséricorde; le choix appartient à Dieu. La «&nbsp;vérité qui est selon la piété&nbsp;» complète aussitôt ce salut par la sanctification&nbsp;: la vérité de l'Évangile, le message de la mort et de la résurrection de Christ, est précisément celle qui conduit à une vie pieuse. On ne connaît pas vraiment la vérité si elle ne produit pas la piété.</p>
+      <p>La parenthèse des versets 2 et 3 fait remonter toute cette espérance jusqu'au décret éternel. L'espérance de la vie éternelle a été «&nbsp;promise avant tous les siècles par le Dieu qui ne ment point&nbsp;». MacArthur explique que le plan de salut de Dieu fut déterminé et décrété avant même la création de l'homme, comme une promesse faite à Dieu le Fils, et que cette espérance, garantie par Dieu, fournit au croyant l'endurance et la patience nécessaires. Son fondement est le caractère de Dieu&nbsp;: puisque Dieu est lui-même vérité et source de la vérité, il lui est impossible de mentir (cf. 1 S 15.29; No 23.19; Hé 6.18). L'assurance du salut ne repose donc pas sur la stabilité du croyant mais sur la véracité immuable de Dieu. Cette promesse éternelle s'est ensuite «&nbsp;manifestée en son temps&nbsp;» par la prédication confiée à Paul d'après l'ordre de Dieu&nbsp;: le décret caché de toute éternité est devenu Évangile annoncé, car la Parole de Dieu est la seule ressource de toute prédication fidèle (cf. 1 Co 1.18-21; Ga 1.15-16; Col 1.25).</p>
+      <p>La salutation proprement dite ne vient qu'au verset 4, adressée à «&nbsp;Tite, mon enfant légitime en notre commune foi&nbsp;». MacArthur précise que Tite était un fils spirituel et un authentique croyant, comme l'était Timothée (1 Ti 1.2). L'expression «&nbsp;commune foi&nbsp;» peut renvoyer soit à la foi qui sauve, soit au contenu de la foi chrétienne, «&nbsp;la foi qui a été transmise aux saints une fois pour toutes&nbsp;» (Jud 3). Paul appelle enfin sur Tite «&nbsp;la grâce et la paix de la part de Dieu le Père et de Jésus-Christ notre Sauveur&nbsp;». MacArthur relève que l'épître donne trois fois le titre de Sauveur à Dieu (1.3; 2.10; 3.4) et trois fois à Jésus-Christ (1.4; 2.13; 3.6)&nbsp;: «&nbsp;Dieu notre Sauveur&nbsp;» clôt le verset 3 et «&nbsp;Jésus-Christ notre Sauveur&nbsp;» le verset 4, et cette attribution conjointe affirme la divinité de Jésus, de même essence que le Père, que Paul énoncera explicitement en 2.13. Ainsi, en quatre versets, Paul a parcouru tout l'arc du salut, de l'élection avant les siècles à la vie éternelle promise, et il a fondé l'autorité de Tite sur la sienne, elle-même reçue de Dieu.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la suscription, du ministère apostolique au service des élus jusqu'au décret éternel de la grâce, en passant par l'arrière-plan vétérotestamentaire de la véracité immuable de Dieu.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Timothée 2.10</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Je supporte tout à cause des élus, afin qu'eux aussi obtiennent le salut qui est en Jésus-Christ&nbsp;»&nbsp;: Paul y exprime, comme en Tite 1.1, que son ministère apostolique est tout entier au service de la foi et du salut des élus de Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 1.4-5</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'élection «&nbsp;avant la fondation du monde&nbsp;» et la prédestination selon le bon plaisir de la volonté de Dieu&nbsp;: un renvoi des notes de MacArthur pour «&nbsp;les élus de Dieu&nbsp;» (1.1) comme pour l'espérance promise «&nbsp;avant tous les siècles&nbsp;» (1.2).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Timothée 1.9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Dieu «&nbsp;nous a sauvés... non à cause de nos œuvres, mais selon son propre dessein, et selon la grâce qui nous a été donnée en Jésus-Christ avant les temps éternels&nbsp;»&nbsp;: éclaire le décret éternel et la grâce promise «&nbsp;avant tous les siècles&nbsp;» (1.2).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 1.1</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Paul, serviteur de Jésus-Christ, appelé à être apôtre&nbsp;»&nbsp;: le même couple serviteur-apôtre qui ouvre Tite 1.1, où Paul se dit toutefois ici, de façon unique, «&nbsp;serviteur de Dieu&nbsp;».</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Hébreux 6.18</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Il est impossible que Dieu mente&nbsp;»&nbsp;: fonde l'expression «&nbsp;le Dieu qui ne ment point&nbsp;» (1.2) et la certitude de l'espérance qui repose sur la véracité immuable de Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jude 3</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;La foi qui a été transmise aux saints une fois pour toutes&nbsp;»&nbsp;: éclaire la «&nbsp;commune foi&nbsp;» de Tite 1.4, entendue comme le contenu objectif de la foi chrétienne reçue.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 23.19</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Dieu n'est point un homme pour mentir&nbsp;»&nbsp;: l'arrière-plan vétérotestamentaire du «&nbsp;Dieu qui ne ment point&nbsp;» (1.2), garant de toute promesse divine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Samuel 15.29</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Celui qui est la force d'Israël ne ment point&nbsp;»&nbsp;: confirme, dans l'Ancien Testament, l'immuable véracité de Dieu sur laquelle s'appuie l'espérance promise en Tite 1.2.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la suscription. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'élection souveraine et gratuite</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul est apôtre «&nbsp;pour la foi des élus de Dieu&nbsp;» (1.1)&nbsp;: son ministère sert la foi de ceux que Dieu a choisis, et cette espérance fut «&nbsp;promise avant tous les siècles&nbsp;» (1.2), c'est-à-dire avant la création de l'homme.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la sotériologie monergique, Dieu a choisi les siens par grâce avant la fondation du monde (Ep 1.4), et l'élection précède toujours la foi, qu'elle rend possible. Pour votre assemblée, cela coupe le nerf de tout orgueil spirituel&nbsp;: nul ne se sauve lui-même; la foi est un don, et l'assurance repose sur le choix souverain de Dieu, non sur la force du croyant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La vérité qui produit la piété</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;La connaissance de la vérité qui est selon la piété&nbsp;» (1.1)&nbsp;: la vérité de l'Évangile n'est pas une donnée purement intellectuelle, elle est ordonnée à une vie pieuse, à la sanctification.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la sanctification, Dieu construit l'être intérieur des sauvés par sa Parole. Pour votre assemblée, cela interdit de dissocier doctrine et conduite&nbsp;: une orthodoxie qui ne produit pas la piété trahit qu'on n'a pas vraiment connu la vérité. La saine doctrine vise toujours une vie transformée.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'espérance ancrée dans la véracité de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'espérance de la vie éternelle a été «&nbsp;promise avant tous les siècles par le Dieu qui ne ment point&nbsp;» (1.2)&nbsp;: son fondement n'est pas le croyant mais le caractère immuable de Dieu.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la persévérance des saints, l'assurance du salut repose sur la fidélité de Dieu, qui ne peut mentir (Hé 6.18), et non sur la constance de l'homme. Pour votre assemblée, cela offre un roc dans l'épreuve&nbsp;: la vie éternelle est garantie par celui qui l'a décrétée de toute éternité, et nulle défaillance humaine ne peut annuler une promesse que Dieu s'est faite à lui-même.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La Parole manifestée par la prédication</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu «&nbsp;a manifesté sa parole en son temps par la prédication qui m'a été confiée d'après l'ordre de Dieu&nbsp;» (1.3)&nbsp;: le décret éternel devient Évangile annoncé par le moyen choisi par Dieu, la prédication apostolique.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la bibliologie réformée, la Parole de Dieu est la seule ressource de toute prédication et de tout enseignement fidèles. Pour votre assemblée, cela élève la prédication fidèle de l'Écriture au rang de moyen ordonné par Dieu pour appeler les élus&nbsp;: on ne prêche pas ses idées, mais la Parole confiée, selon l'ordre de Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Dieu et Christ, un seul Sauveur</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul nomme «&nbsp;Dieu notre Sauveur&nbsp;» (1.3) puis «&nbsp;Jésus-Christ notre Sauveur&nbsp;» (1.4)&nbsp;: le même titre de Sauveur est attribué au Père et au Fils dans une seule salutation.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la christologie orthodoxe, l'attribution conjointe du titre de Sauveur manifeste la pleine divinité de Christ, que Paul rendra explicite en 2.13 («&nbsp;notre grand Dieu et Sauveur&nbsp;»). Pour votre assemblée, cela ancre l'adoration de Jésus comme vrai Dieu&nbsp;: le salut est l'œuvre d'un seul Dieu Sauveur, du décret du Père à l'accomplissement par le Fils.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul résume tout son ministère en trois mouvements, le salut, la sanctification et la glorification (1.1-3). Comment structurer la prédication pour que l'assemblée perçoive cet arc complet du dessein de Dieu, plutôt que de réduire l'Évangile au seul pardon initial?</li>
+      <li>Paul se dit d'abord «&nbsp;serviteur de Dieu&nbsp;» avant de se dire «&nbsp;apôtre&nbsp;» (1.1). Que dit cet ordre sur la juste articulation entre l'humilité et l'autorité dans le ministère, et comment l'incarner devant une assemblée?</li>
+      <li>Le texte affirme que l'apostolat de Paul est «&nbsp;pour la foi des élus&nbsp;» (1.1) et que l'élection précède la foi. Comment prêcher l'élection souveraine sans décourager l'appel à croire, mais au contraire en y trouvant l'assurance du salut?</li>
+      <li>«&nbsp;La connaissance de la vérité qui est selon la piété&nbsp;» (1.1) lie indissolublement doctrine et conduite. Où, dans votre assemblée, voit-on une orthodoxie qui ne produit pas la piété, et comment la prédication peut-elle rejoindre ces deux pôles?</li>
+      <li>L'espérance repose sur «&nbsp;le Dieu qui ne ment point&nbsp;» (1.2). Comment cette vérité console-t-elle concrètement le croyant éprouvé qui doute de son salut, en déplaçant le fondement de l'assurance de l'homme vers Dieu?</li>
+      <li>Dieu a «&nbsp;manifesté sa parole par la prédication&nbsp;» (1.3). Que dit ce verset sur la dignité et la responsabilité de la prédication, et comment garde-t-il le prédicateur de substituer ses propres idées à la Parole confiée?</li>
+      <li>Le même titre de Sauveur est donné au Père (1.3) et à Christ (1.4). Comment exposer cette divinité de Jésus, discrète ici mais explicite en 2.13, pour fortifier l'adoration de l'assemblée et réfuter toute christologie qui abaisserait le Fils?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Tite 1.1-4 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Tite : l'Évangile qui transforme&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Tite-1-1-4.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

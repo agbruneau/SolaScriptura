@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacques 4.1-10 · L'amitié du monde · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jacques 4.1-10 : l'amitié du monde comme adultère spirituel, la convoitise racine du conflit, la grâce souveraine accordée aux humbles et l'appel à la vraie conversion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jacques 4.1-10</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Jacques 4.1-10</p>
+    <h1 class="hero__title">L'amitié du monde</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Dieu résiste aux orgueilleux, mais il fait grâce aux humbles.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jacques 4.6 · NEG</p>
+    <p class="hero__series">Série : <b>La foi qui agit</b></p>
+    <p class="hero__meta">Recherche exégétique · 6 juin 2026 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Jacques 4.1-10</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">D'où viennent les luttes, et d'où viennent les querelles parmi vous? N'est-ce pas de vos passions qui combattent dans vos membres?</p>
+        <cite class="verse__ref">Jacques 4.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Humiliez-vous devant le Seigneur, et il vous élèvera.</p>
+        <cite class="verse__ref">Jacques 4.10 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Jacques 4.1-10 cesse de décrire les symptômes et nomme la maladie : selon la lecture de MacArthur, Jacques brosse le tableau du cœur non régénéré, dominé par ses désirs et tout entier tourné vers le monde, avant de convoquer cet homme à la vraie conversion.</p>
+    <div class="body">
+      <p>L'épître est l'œuvre de Jacques le Juste, demi-frère du Seigneur (Marc 6.3; Galates 1.19), conducteur de l'assemblée de Jérusalem (Actes 15.13) et martyr vers 62 apr. J.-C. selon Josèphe. Incrédule durant le ministère terrestre de Jésus (Jean 7.5), il fut transformé par une apparition du Ressuscité (1 Corinthiens 15.7), ce qui éclaire la radicalité avec laquelle il oppose ici l'amitié du monde et l'amitié de Dieu : il a lui-même connu le retournement. Écrite tôt, à des Juifs croyants dispersés (Jacques 1.1, «&nbsp;les douze tribus qui sont dans la dispersion&nbsp;»), l'épître appartient au genre de la paraclèse, une exhortation pastorale dense saturée d'impératifs et bâtie sur la sagesse vétérotestamentaire et le Sermon sur la montagne. Selon la lecture de MacArthur, Jacques ne fonde pas le salut sur les œuvres mais teste la réalité d'une foi qui se prétend salvatrice : la foi authentique se prouve par les œuvres (Jacques 2.14-26), thèse directrice de la série «&nbsp;La foi qui agit&nbsp;».</p>
+      <p>Jacques 4.1-10 forme une unité serrée, bornée nettement. Elle se détache de 3.13-18, où Jacques a opposé la sagesse d'en haut, pure et pacifique, à la sagesse d'en bas, terrestre, charnelle, démoniaque, source de désordre. La question qui ouvre 4.1, «&nbsp;D'où viennent les luttes, et d'où viennent les querelles parmi vous&nbsp;?&nbsp;», n'est pas un nouveau sujet mais le diagnostic de la racine : les conflits déjà entrevus (3.14-16) procèdent d'un cœur dominé par les convoitises. L'unité se referme en 4.10 sur la promesse «&nbsp;il vous élèvera&nbsp;», sommet de l'appel à l'humiliation; 4.11 ouvre un nouveau paragraphe («&nbsp;Ne médisez pas les uns des autres&nbsp;»). Entre les deux, le mouvement est unique : du diagnostic (4.1-5) à l'annonce de la grâce souveraine (4.6), puis à la salve de dix impératifs (4.7-10).</p>
+      <p>C'est, dans l'arc de la série, le point bas. Selon la lecture de MacArthur, Jacques nous brosse en 4.1-6 le tableau des non-croyants, des faux professants dont le cœur reste dominé par ses désirs et tout entier tourné vers le monde. Les querelles, les convoitises et les prières frustrées ne dépeignent pas la congrégation des rachetés mais l'homme non régénéré, qui n'est pas disposé à demander à Dieu, qui refuse de se soumettre à lui ou de reconnaître sa dépendance. L'appel qui suit (4.7-10) n'est donc pas un perfectionnement moral mais une convocation à la vraie conversion : «&nbsp;Soyez dans la douleur, dans le deuil et dans les larmes&nbsp;» (4.9). L'auto-examen de l'assemblée demeure une application légitime, mais le sujet du diagnostic chez MacArthur est l'incroyant; et c'est précisément du fond de cette humiliation que remonte le relèvement promis. La structure du texte prêche : on ne s'élève qu'en s'abaissant, et la grâce ne se déverse que sur celui qui se reconnaît orgueilleux et se courbe.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Jacques 4.4 · 4.6</p>
+    </header>
+    <p class="lead">Le mot <i>kosmos</i>, «&nbsp;monde&nbsp;», ne désigne pas ici la planète ni l'humanité comme objet de l'amour de Dieu (Jean 3.16), mais l'ordre invisible organisé en hostilité contre Dieu, dont Satan est le prince (Jean 12.31; 1 Jean 5.19).</p>
+    <div class="body">
+      <p>C'est l'arrière-plan que MacArthur souligne sans relâche : le «&nbsp;monde&nbsp;» est un système de valeurs, d'appétits et de loyautés qui exclut Dieu et exalte l'homme. Aimer ce système, ce n'est pas posséder des biens ou vivre dans la société, c'est épouser sa logique. Le lecteur moderne, qui entend «&nbsp;mondain&nbsp;» au sens de frivole, manque la portée cosmique du terme : Jacques parle d'une allégeance spirituelle, non d'un style de vie superficiel.</p>
+    </div>
+    <p>Trois détails que le lecteur moderne franchit sans les voir.</p>
+    <ul class="points">
+      <li><b>L'adultère comme rupture d'alliance.</b> L'apostrophe «&nbsp;Adultères&nbsp;!&nbsp;» (4.4) puise dans l'imagerie prophétique de l'Ancien Testament, où l'alliance entre l'Éternel et Israël est un mariage, et l'idolâtrie un adultère (Osée 1-3; Jérémie 3; Ézéchiel 16; Ésaïe 54.5). Le féminin grec (<i>moichalides</i>, «&nbsp;femmes adultères&nbsp;») n'est pas une insulte adressée aux femmes mais l'évocation du peuple infidèle qui court après d'autres amants. Selon MacArthur, l'enjeu n'est pas le cœur tiède de croyants à recadrer mais le cœur des faux professants : l'attirance persistante pour le monde prouve, de ce fait même, qu'on n'a pas été racheté (1 Jean 2.15-17). L'adultère spirituel n'est pas une métaphore vague mais une accusation juridique précise tirée du droit de l'alliance.</li>
+      <li><b>L'humilité comme scandale culturel.</b> La culture méditerranéenne du premier siècle fonctionnait sur l'axe honneur-honte : la valeur d'un homme se mesurait au rang qu'il revendiquait et que les autres lui reconnaissaient. L'orgueil (<i>hyperēphanos</i>, littéralement «&nbsp;se montrer au-dessus&nbsp;») était une vertu sociale; l'humiliation volontaire, une absurdité. La citation de Proverbes 3.34 en 4.6, «&nbsp;Dieu résiste aux orgueilleux, mais il fait grâce aux humbles&nbsp;», renverse donc tout le système d'honneur du monde antique.</li>
+      <li><b>Dieu range ses troupes.</b> Le verbe <i>antitassō</i> est un terme militaire : Dieu se range activement en bataille contre celui que la société applaudit, et comble celui qu'elle méprise. Trois réalités échappent ainsi au lecteur moderne : <i>kosmos</i> comme système satanique et non comme planète; l'adultère comme rupture d'alliance et non comme inconduite générique; et l'humilité comme scandale culturel et non comme simple modestie de tempérament.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Six termes grecs</p>
+    </header>
+    <p class="lead">Six mots portent le poids théologique de la péricope. Les isoler, c'est tenir le fil de l'argument de Jacques : des passions qui font campagne dans l'homme (<i>hēdonai</i>) à l'amitié du <i>kosmos</i> érigée en adultère (<i>philia</i>, <i>moichalides</i>), jusqu'au couple de l'orgueilleux et de l'humble (<i>hyperēphanois</i>, <i>tapeinois</i>) que la grâce sépare.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">voluptés / passions</span><span class="mot-gr">hēdonai</span></th>
+            <td class="col-sens">plaisirs des sens, désirs de jouissance (racine du français «&nbsp;hédonisme&nbsp;»)</td>
+            <td>Cinq emplois dans le NT, toujours en mauvaise part : convoitises qui asservissent (Tite 3.3; Luc 8.14; 2 Pierre 2.13). En 4.1 et 4.3, ces plaisirs «&nbsp;combattent dans les membres&nbsp;» (<i>strateuomai</i>, faire campagne militaire) : ce sont des troupes en guerre logées dans l'homme lui-même. La lecture de MacArthur : ce portrait est celui de l'homme non régénéré, dont les désirs dominent le cœur; l'incroyant n'est pas disposé à demander à Dieu et refuse de reconnaître sa dépendance.</td>
+            <td><span class="trad"><span><b>S21</b> désirs</span><span><b>NEG79</b> passions</span><span><b>Darby</b> voluptés</span><span><b>LSG</b> passions</span><span><b>KJF</b> convoitises</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">monde</span><span class="mot-gr">kosmos</span></th>
+            <td class="col-sens">ordre, arrangement; par extension, le système du monde organisé contre Dieu</td>
+            <td>Jean l'emploie au sens du système hostile dominé par le malin (Jean 15.18-19; 1 Jean 2.15-17; 5.19). En Jacques 4.4, <i>philia tou kosmou</i> («&nbsp;amitié du monde&nbsp;») désigne une affection partagée, une connivence avec ce système. MacArthur : ce n'est ni la terre ni le monde physique qui est ici visé, mais le système centré sur l'homme et dirigé par Satan, hostile à Dieu; en garder l'attrait, c'est prouver qu'on n'a pas été racheté et se poser en ennemi de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> monde</span><span><b>NEG79</b> monde</span><span><b>Darby</b> monde</span><span><b>LSG</b> monde</span><span><b>KJF</b> monde</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">amitié</span><span class="mot-gr">philia</span></th>
+            <td class="col-sens">affection, lien d'amour réciproque, attachement intime</td>
+            <td>Hapax dans le NT (Jacques 4.4). Le terme dit plus qu'une fréquentation : une alliance d'affection, un partage de valeurs et de buts. Le terme apparenté <i>philos</i> («&nbsp;ami&nbsp;») qualifie Abraham «&nbsp;ami de Dieu&nbsp;» (Jacques 2.23). MacArthur souligne l'antithèse exclusive : on ne peut être à la fois ami du monde et ami de Dieu; choisir le monde, c'est se constituer (<i>kathistatai</i>, «&nbsp;se rend, se pose&nbsp;») ennemi de Dieu, ce qui démasque le faux professant.</td>
+            <td><span class="trad"><span><b>S21</b> amour</span><span><b>NEG79</b> amour</span><span><b>Darby</b> amitié</span><span><b>LSG</b> amour</span><span><b>KJF</b> amitié</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Adultères</span><span class="mot-gr">moichalides</span></th>
+            <td class="col-sens">femmes adultères, épouses infidèles</td>
+            <td>Le NA28 retient le féminin seul (<i>moichalides</i>), forme la plus difficile et donc retenue. Jésus parle d'une «&nbsp;génération adultère&nbsp;» (Matthieu 12.39; 16.4). Le féminin renvoie au peuple infidèle qui court après d'autres amants, selon Osée et Ézéchiel. MacArthur lit ici une accusation d'infidélité spirituelle adressée à des faux professants : leur attirance persistante pour le monde révèle qu'ils n'ont pas été rachetés (1 Jean 2.15-17), non à des croyants au cœur simplement partagé.</td>
+            <td><span class="trad"><span><b>S21</b> Femmes adultères</span><span><b>NEG79</b> Adultères</span><span><b>Darby</b> Adultères</span><span><b>LSG</b> Adultères</span><span><b>KJF</b> Adultères</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">esprit</span><span class="mot-gr">pneuma</span></th>
+            <td class="col-sens">souffle, esprit; ici l'esprit humain placé en l'homme par la création</td>
+            <td>Terme central de la crux de 4.5. Il peut désigner le Saint-Esprit ou l'esprit humain. MacArthur retient, sans en faire un dogme, l'esprit humain de l'incroyant : «&nbsp;l'esprit que Dieu a fait habiter en nous&nbsp;» est cet esprit déchu qui «&nbsp;ne pense qu'à faire le mal&nbsp;» (Genèse 6.5; 8.21; Jérémie 17.9; Marc 7.21-23), à connotation péjorative. La NEG met Dieu pour sujet («&nbsp;avec jalousie il chérit l'esprit&nbsp;»), mais la glose de MacArthur développe la convoitise de l'esprit humain, non une jalousie de Dieu pour son Esprit.</td>
+            <td><span class="trad"><span><b>S21</b> esprit</span><span><b>NEG79</b> esprit</span><span><b>Darby</b> Esprit</span><span><b>LSG</b> esprit</span><span><b>KJF</b> esprit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">orgueilleux / humbles</span><span class="mot-gr">hyperēphanois / tapeinois</span></th>
+            <td class="col-sens"><i>hyperēphanos</i> : qui se montre au-dessus, hautain; <i>tapeinos</i> : bas, abaissé, sans prétention</td>
+            <td>Couple antithétique de Proverbes 3.34 (LXX), repris ici et en 1 Pierre 5.5. <i>hyperēphanos</i> figure parmi les vices qui appellent le jugement (Romains 1.30; Luc 1.51). <i>tapeinos</i> qualifie la disposition que Dieu exalte (Matthieu 23.12; Luc 14.11). MacArthur : Dieu se range activement en bataille (<i>antitassō</i>) contre l'orgueilleux et déverse sa grâce (<i>didōsin charin</i>) sur l'humble; l'humilité n'est pas une vertu de tempérament mais celle qui est inhérente à la foi qui sauve.</td>
+            <td><span class="trad"><span><b>S21</b> orgueilleux / humbles</span><span><b>NEG79</b> orgueilleux / humbles</span><span><b>Darby</b> orgueilleux / humbles</span><span><b>LSG</b> orgueilleux / humbles</span><span><b>KJF</b> orgueilleux / humbles</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Jacques 4.5-10</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Jacques 4.1-10 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Jc 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7-10, 4.7, 4.8, 4.9, 4.10.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-22</span></th>
+            <td><a href="https://www.gty.org/sermons/59-22" target="_blank" rel="noopener">The Danger in Being a Friend of the World, Part 1</a></td>
+            <td>Jacques 4.1-2</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-23</span></th>
+            <td><a href="https://www.gty.org/sermons/59-23" target="_blank" rel="noopener">The Danger in Being a Friend of the World, Part 2</a></td>
+            <td>Jacques 4.2-6</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-24</span></th>
+            <td><a href="https://www.gty.org/sermons/59-24" target="_blank" rel="noopener">Drawing Near to God, Part 1</a></td>
+            <td>Jacques 4.6-7</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">59-25</span></th>
+            <td><a href="https://www.gty.org/sermons/59-25" target="_blank" rel="noopener">Drawing Near to God, Part 2</a></td>
+            <td>Jacques 4.8-10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question interprétative la plus délicate du passage est le verset 5 : «&nbsp;Croyez-vous que l'Écriture parle en vain&nbsp;? C'est avec jalousie que Dieu chérit l'esprit qu'il a fait habiter en nous&nbsp;» (NEG79). Trois difficultés se superposent.</p>
+    <div class="body">
+      <p>D'abord, aucun texte de l'Ancien Testament ne cite littéralement cette phrase : Jacques résume l'enseignement constant de l'Écriture plutôt qu'il n'en allègue un verset isolé. Ensuite, le mot <i>pneuma</i> («&nbsp;esprit&nbsp;») peut être sujet ou objet, et désigner soit le Saint-Esprit soit l'esprit humain. Enfin, le verbe <i>epipothei</i> («&nbsp;désire ardemment&nbsp;») et le complément <i>pros phthonon</i> («&nbsp;jusqu'à la jalousie&nbsp;», «&nbsp;jusqu'à l'envie&nbsp;») doivent être rattachés au bon sens.</p>
+      <p>MacArthur privilégie la lecture qui fait du <i>pneuma</i> l'esprit humain de l'incroyant. «&nbsp;L'esprit que Dieu a fait habiter en nous&nbsp;» n'est pas le Saint-Esprit que Dieu réclamerait jalousement, mais l'esprit déchu de l'homme, qui «&nbsp;ne pense qu'à faire le mal&nbsp;» (Genèse 6.5; 8.21; Jérémie 17.9; Marc 7.21-23). Le terme <i>phthonos</i> («&nbsp;envie&nbsp;», «&nbsp;jalousie&nbsp;») garde alors sa connotation péjorative habituelle : l'Écriture atteste que l'esprit de l'homme non régénéré aspire avec envie, qu'il convoite. Ainsi lu, le verset 5 ne rompt pas le fil mais fournit la preuve scripturaire du portrait des versets 1 à 4 : les querelles, les convoitises et l'amitié du monde révèlent un cœur dominé par les désirs, celui de l'homme qui n'a pas été racheté. La NEG, comme d'autres versions, place Dieu en sujet («&nbsp;avec jalousie il chérit l'esprit&nbsp;»); mais la glose de MacArthur développe l'esprit humain envieux, non une «&nbsp;jalousie sainte&nbsp;» de l'Époux pour l'Esprit placé dans le croyant.</p>
+      <p>Le verset 6 enchaîne avec «&nbsp;Il accorde, au contraire, une grâce plus grande&nbsp;» (<i>meizona charin</i>) : devant cette dépravation démasquée, Dieu ne répond pas seulement par le jugement mais par une grâce surabondante, à condition qu'on s'abaisse. Jacques cite alors Proverbes 3.34 selon la Septante, le même texte que cite Pierre (1 Pierre 5.5), ce qui ancre l'appel dans l'enseignement apostolique commun : Dieu résiste aux orgueilleux et fait grâce aux humbles. Suivent, aux versets 7 à 10, dix impératifs aoristes : soumettez-vous à Dieu, résistez au diable, approchez-vous de Dieu, purifiez vos mains, nettoyez vos cœurs (vous, hommes au cœur partagé, <i>dipsychoi</i>, «&nbsp;à double âme&nbsp;», cf. 1.8), reconnaissez votre misère, soyez dans le deuil, pleurez, que votre rire se change en deuil, abaissez-vous. Selon MacArthur, ces impératifs ne sont pas un programme d'auto-amélioration moralisante mais décrivent l'humilité inhérente à la foi qui sauve, en parallèle avec les béatitudes; le terme «&nbsp;pécheurs&nbsp;» (4.8) est celui que l'Écriture utilise uniquement pour désigner les non-croyants. Le passage est donc un appel à la vraie conversion : transférer sa loyauté de Satan à Dieu, se soumettre à Dieu et résister au diable. La promesse du verset 10, «&nbsp;il vous élèvera&nbsp;» (<i>hypsōsei</i>), n'est pas une récompense méritée mais l'œuvre de la grâce souveraine qui relève celui qu'elle a d'abord conduit à se courber. En chaire, MacArthur y entend à la fois un appel à la foi qui sauve et un appel à la repentance : la repentance n'est pas l'opposé de la foi mais son envers indissociable, et nul ne vient au salut sans se soumettre à la seigneurie de Christ.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du parallèle apostolique direct jusqu'à l'arrière-plan vétérotestamentaire qui nourrit l'image de l'adultère spirituel et l'antithèse de l'orgueilleux et de l'humble.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Proverbes 3.34</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Source vétérotestamentaire directement citée en 4.6 (selon la LXX) : «&nbsp;Dieu résiste aux orgueilleux, mais il fait grâce aux humbles.&nbsp;»</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 5.5-9</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Pierre cite le même Proverbes 3.34 et enchaîne la même séquence : s'humilier sous la main de Dieu, résister au diable, attendre l'élévation; parallèle apostolique frappant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 2.15-17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Définit l'amour du monde comme incompatible avec l'amour du Père et décompose le <i>kosmos</i> en convoitise de la chair, des yeux et orgueil de la vie; selon MacArthur, garder l'attrait du monde (4.4) prouve qu'on n'a pas été racheté.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 6.5; 8.21; Jérémie 17.9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'esprit humain «&nbsp;ne pense qu'à faire le mal&nbsp;» et le cœur est «&nbsp;tortueux par-dessus tout&nbsp;» : fonde la lecture de 4.5, l'esprit déchu de l'incroyant qui aspire avec envie, et non le Saint-Esprit que Dieu réclamerait.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Osée 1-3; Ézéchiel 16</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Arrière-plan prophétique de l'image de l'adultère spirituel : le peuple infidèle qui court après d'autres amants, métaphore de la loyauté tournée vers le monde plutôt que vers Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 6.24</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Nul ne peut servir deux maîtres&nbsp;» : la même antithèse exclusive entre Dieu et Mammon que Jacques pose entre l'amitié de Dieu et l'amitié du monde.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jacques 1.8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'«&nbsp;homme partagé&nbsp;» (<i>dipsychos</i>) instable dans toutes ses voies; même terme rare réemployé en 4.8 pour les «&nbsp;hommes au cœur partagé&nbsp;», reliant l'unité au cœur de l'épître.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 18.9-14</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La parabole du pharisien et du publicain illustre 4.6 et 4.10 : l'orgueilleux qui s'exalte est rejeté, l'humble qui se frappe la poitrine est justifié et sera élevé.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La dépravation de la convoitise comme racine du conflit</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les luttes et querelles ne viennent pas des circonstances mais des «&nbsp;passions qui combattent dans vos membres&nbsp;» (4.1) et de la convoitise frustrée qui pousse jusqu'au meurtre (4.2).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'anthropologie de <i>Biblical Doctrine</i>, le cœur déchu est la fabrique du conflit. MacArthur lit ce tableau (4.1-3) comme celui de l'homme non régénéré, dominé par ses désirs et incapable de se soumettre à Dieu. L'assemblée cherchera des causes extérieures à ses divisions; le texte renvoie au cœur dominé par la convoitise, et invite chacun à éprouver si son propre cœur a réellement été transformé.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'amitié du monde comme adultère spirituel</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;L'amour du monde est inimitié contre Dieu&nbsp;», et celui qui veut être ami du monde «&nbsp;se rend ennemi de Dieu&nbsp;» (4.4); l'apostrophe «&nbsp;Adultères&nbsp;!&nbsp;» qualifie ce choix.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Il n'existe pas de neutralité : on appartient à Dieu ou on le trahit. Selon MacArthur, ceux qui gardent l'attrait du monde prouvent, de ce fait même, qu'ils n'ont pas été rachetés (1 Jean 2.15-17). L'apostrophe «&nbsp;Adultères&nbsp;!&nbsp;» vise donc les faux professants dont la loyauté persistante au monde révèle la non-régénération. Pour une assemblée tentée par la respectabilité culturelle, le texte refuse toute coexistence pacifique entre les valeurs du monde et la fidélité à Christ, et appelle à éprouver la réalité de sa foi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce souveraine et surabondante</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il accorde une grâce plus grande&nbsp;» (4.6), citant Proverbes 3.34 : Dieu fait grâce aux humbles. La grâce déborde l'infidélité dénoncée.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Au point le plus bas de l'épître, la note dominante n'est pas la condamnation mais la grâce «&nbsp;plus grande&nbsp;». Conformément aux doctrines de la grâce, c'est Dieu qui donne (<i>didōsin</i>) et qui élève (<i>hypsōsei</i>); l'humilité elle-même est le terrain que sa grâce prépare. Celui qui se reconnaît pécheur et se courbe entend que la grâce dépasse toujours la faute confessée.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Humilité contre orgueil : Dieu range ses troupes</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Dieu résiste aux orgueilleux&nbsp;» (<i>antitassō</i>, terme militaire) «&nbsp;mais fait grâce aux humbles&nbsp;» (4.6); les dix impératifs culminent en «&nbsp;abaissez-vous&nbsp;» et «&nbsp;il vous élèvera&nbsp;» (4.7-10).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'orgueil n'est pas un défaut mineur mais ce contre quoi Dieu lui-même se met en ordre de bataille. Dans une culture qui récompense l'autopromotion, l'Église est appelée au mouvement inverse : on ne monte qu'en descendant. L'élévation promise est l'œuvre de Dieu, jamais le salaire de l'effort propre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La conversion : l'humilité inhérente à la foi qui sauve</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les dix impératifs de 4.7-10 (soumettez-vous, résistez, approchez-vous, purifiez, nettoyez, soyez dans la douleur, le deuil, les larmes, abaissez-vous) décrivent l'humilité de celui qui se tourne vers Dieu.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, ces impératifs décrivent l'humilité inhérente à la foi qui sauve, en parallèle avec les béatitudes, et «&nbsp;pécheurs&nbsp;» (4.8) ne désigne que les non-croyants. C'est donc un appel à la vraie conversion : transférer sa loyauté de Satan à Dieu, se soumettre à Dieu et résister au diable. Contre l'idée qu'on viendrait au salut sans se soumettre à la seigneurie de Christ, la foi qui sauve s'accompagne d'une repentance qui pleure le péché; et la grâce ne dispense pas de se purifier, car elle ne rend personne saint malgré lui. Repentance et foi sont indissociables.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Lorsque des conflits éclatent dans l'assemblée, cherchons-nous instinctivement la cause à l'extérieur, alors que Jacques 4.1 la situe dans la convoitise non mortifiée du cœur, marque, selon MacArthur, de l'homme non régénéré&nbsp;?</li>
+      <li>Comment prêcher «&nbsp;l'amitié du monde&nbsp;» sans la réduire à une liste de comportements interdits, mais en la présentant comme une allégeance du cœur au système anti-Dieu (<i>kosmos</i>) qui démasque le faux professant&nbsp;?</li>
+      <li>Le verset 5 est difficile : suis-je prêt à le présenter, avec MacArthur, comme la description de l'esprit humain déchu de l'incroyant qui aspire avec envie (Genèse 6.5; Jérémie 17.9), plutôt que comme une jalousie sainte de Dieu pour son Esprit&nbsp;?</li>
+      <li>L'apostrophe «&nbsp;Adultères&nbsp;!&nbsp;» vise des faux professants dont l'attrait persistant pour le monde prouve qu'ils n'ont pas été rachetés (1 Jean 2.15-17) : comment annoncer cet avertissement sans le diluer, tout en l'encadrant par la «&nbsp;grâce plus grande&nbsp;» du verset 6&nbsp;?</li>
+      <li>Les dix impératifs de 4.7-10 décrivent, selon MacArthur, l'humilité inhérente à la foi qui sauve : comment les prêcher comme un appel à la vraie conversion (transférer sa loyauté de Satan à Dieu) plutôt que comme un programme d'auto-amélioration&nbsp;?</li>
+      <li>Si l'assemblée ressort de ce sermon réconfortée sans avoir été conduite au deuil de son péché (4.9), ai-je vraiment prêché le point bas que ce texte impose avant le relèvement&nbsp;?</li>
+      <li>La promesse «&nbsp;il vous élèvera&nbsp;» (4.10) est-elle présentée comme l'œuvre de la grâce souveraine, ou comme la récompense méritée de notre humiliation, ce qui trahirait l'évangile de la grâce&nbsp;?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Jacques 4.1-10 · 6 juin 2026 · AGB</p>
+  <p class="footer__line">Série «&nbsp;La foi qui agit&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Jacques-4-1-10.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

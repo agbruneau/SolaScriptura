@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Timothée 1.8-12 · N'aie pas honte · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Timothée 1.8-12 : n'aie pas honte de l'Évangile ; grâce souveraine avant les temps éternels, mort vaincue, sécurité du croyant. Contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">2 Timothée 1.8-12</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 2 Timothée 1.8-12</p>
+    <h1 class="hero__title">N'aie pas honte</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Je sais en qui j'ai cru, et je suis persuadé qu'il a la puissance de garder mon dépôt jusqu'à ce jour-là.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">2 Timothée 1.12 · NEG</p>
+    <p class="hero__series">Série : <b>2 Timothée : Garde le dépôt</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">2 Timothée 1.8-12</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">N'aie donc point honte du témoignage à rendre à notre Seigneur, ni de moi son prisonnier. Mais souffre avec moi pour l'Évangile, par la puissance de Dieu.</p>
+        <cite class="verse__ref">2 Timothée 1.8 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il nous a sauvés, et nous a adressé une sainte vocation, non à cause de nos œuvres, mais selon son propre dessein, et selon la grâce qui nous a été donnée en Jésus-Christ avant les temps éternels.</p>
+        <cite class="verse__ref">2 Timothée 1.9 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et c'est à cause de cela que je souffre ces choses; mais je n'en ai point honte, car je sais en qui j'ai cru.</p>
+        <cite class="verse__ref">2 Timothée 1.12 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Notre péricope (1.8-12) appartient à la section «&nbsp;La persévérance de l'homme de Dieu&nbsp;» (1.6-18)&nbsp;: la grâce souveraine qui sauve (vv. 9-10) fonde le refus de la honte (v. 8) et rend la souffrance supportable (v. 12).</p>
+    <div class="body">
+      <p>Notre péricope (1.8-12) appartient à la grande section que la Bible d'étude MacArthur intitule «&nbsp;La persévérance de l'homme de Dieu&nbsp;» (1.6-18), et plus précisément à l'invitation à persévérer (1.6-11) qui débouche aussitôt sur le premier exemple de persévérance, celui de Paul lui-même (1.12-14). L'apôtre vient de rappeler à Timothée que Dieu ne lui a pas donné un esprit de timidité, mais un Esprit de force, d'amour et de sagesse (1.7). Le «&nbsp;N'aie donc point honte&nbsp;» du verset 8 tire la conséquence directe de ce rappel&nbsp;: puisque la crainte poltronne ne vient pas de Dieu, la honte de l'Évangile n'a plus de raison d'être. La péricope s'ouvre ainsi sur un impératif et se referme au verset 12 sur l'exemple vivant de Paul, «&nbsp;je n'en ai point honte&nbsp;», qui répond mot pour mot à l'ordre adressé à Timothée.</p>
+      <p>Les bornes du passage sont nettes. Au verset 8, Paul lance trois ordres reliés&nbsp;: ne pas avoir honte du témoignage, ne pas avoir honte de lui le prisonnier, mais souffrir avec lui pour l'Évangile. Les versets 9 et 10 fondent ces ordres sur l'Évangile lui-même, déployé en une seule phrase doctrinale qui remonte de notre salut présent jusqu'à la grâce accordée avant les temps éternels, puis redescend jusqu'à la manifestation de cette grâce par la venue du Sauveur. Le verset 11 ramène le propos sur Paul, établi prédicateur, apôtre et docteur de cet Évangile. Le verset 12 boucle l'unité&nbsp;: c'est à cause de ce ministère qu'il souffre, mais sans honte, parce qu'il sait en qui il a cru. La logique est donc serrée&nbsp;: la grâce souveraine qui sauve (vv. 9-10) fonde le refus de la honte (v. 8) et rend la souffrance supportable (v. 12).</p>
+      <p>Le motif qui commande l'ensemble est la crainte d'un affaiblissement spirituel de Timothée. Paul, sachant sa mort imminente, confie à son fils dans la foi le pan non apostolique de son ministère, et l'exhorte à ne pas céder sous la double pression de la persécution romaine grandissante sous Néron et de l'hostilité interne à l'Église d'Éphèse. Le passage allie donc une exhortation pressante (vv. 8, 11) et une consolation doctrinale (vv. 9-10, 12)&nbsp;: l'antidote à la honte n'est pas un sursaut de volonté, mais la contemplation de la grâce souveraine qui a tout décidé avant les temps éternels et tout accompli par la croix.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">2 Timothée 1.8 · 1.9 · 1.10</p>
+    </header>
+    <p class="lead">L'arrière-plan immédiat est la seconde détention romaine de Paul, vers 66-67 apr. J.-C.&nbsp;: un cachot froid, des chaînes, l'abandon de presque tous, et l'attente de l'exécution. La honte n'est pas ici une émotion, mais un danger social et physique très concret.</p>
+    <div class="body">
+      <p>L'arrière-plan immédiat est la seconde détention romaine de Paul, vers 66-67 apr. J.-C. Relâché de son premier emprisonnement, l'apôtre avait pu exercer brièvement son ministère et rédiger 1 Timothée et Tite; mais il fut de nouveau arrêté, cette fois dans le cadre de la persécution déclenchée par Néron contre les chrétiens après l'incendie de Rome en 64. La situation n'a plus rien de commun avec la première captivité. Lors de celle-ci (env. 60-62), il était assigné à résidence dans une maison louée, recevait de nombreux visiteurs et s'attendait à être libéré. Désormais, il croupit dans un cachot froid, enchaîné comme un malfaiteur (2.9), abandonné par presque tous, et n'attend plus que l'exécution (4.6). C'est de cette prison que sort le «&nbsp;moi son prisonnier&nbsp;» du verset 8.</p>
+    </div>
+    <p>Trois traits échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La honte comme danger social.</b> Dans le monde gréco-romain, être associé à un homme emprisonné pour crime contre l'Empire, et condamné à mort, exposait directement ses proches à la suspicion, à la perte de réputation et au danger physique. Le simple fait d'être connu comme un compagnon de Paul pouvait mettre en péril la liberté et la vie de Timothée. La tentation n'était donc pas abstraite&nbsp;: il s'agissait de ne pas renier publiquement un mentor déshonoré et un message scandaleux aux yeux de la société.</li>
+      <li><b>L'abandon généralisé.</b> La pression était d'autant plus forte que l'apôtre venait d'être largement déserté&nbsp;: «&nbsp;tous ceux qui sont en Asie m'ont abandonné&nbsp;» (1.15), précisément parce qu'ils craignaient cette persécution. Phygelle et Hermogène, qui semblaient pourtant proches de Paul, n'avaient pas résisté à la pression et avaient déserté. Ne pas avoir honte, c'était nager à contre-courant d'une vague de défections.</li>
+      <li><b>Un Évangile à contre-culture.</b> L'Évangile résumé aux versets 9 et 10 portait un poids culturel particulier. Aux oreilles juives formées dans la justice par les œuvres, l'affirmation d'un salut «&nbsp;non à cause de nos œuvres, mais selon son propre dessein&nbsp;» heurtait tout le système du mérite. Aux oreilles grecques, l'idée que la mort avait été «&nbsp;réduite à l'impuissance&nbsp;» contredisait une sagesse pour qui la mort demeurait la frontière infranchissable. Les croyants de l'Ancien Testament eux-mêmes n'avaient qu'une compréhension partielle de la vie et de l'immortalité, pleinement mise en évidence seulement par l'incarnation et la proclamation de l'Évangile.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique du passage&nbsp;: de l'<i>epaischunomai</i> que Paul refuse à la <i>parathēkē</i> que Dieu garde, en passant par la <i>klēsis hagia</i>, le <i>prothesis</i> souverain et le <i>katargeō</i> qui désarme la mort.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">honte</span><span class="mot-gr">epaischunomai</span></th>
+            <td class="col-sens">avoir honte, rougir de quelqu'un ou de quelque chose, refuser de s'associer publiquement par crainte du déshonneur</td>
+            <td>Le verbe décrit moins un sentiment intérieur qu'un comportement public&nbsp;: se désolidariser, se taire, prendre ses distances pour ne pas partager le déshonneur d'un autre. Paul l'emploie en écho inversé tout au long du chapitre&nbsp;: il ne veut pas que Timothée ait honte du nom de Christ par crainte des persécutions (v. 8), lui-même n'en a point honte (v. 12), et Onésiphore n'a pas eu honte de ses chaînes (v. 16). L'objet de la honte refusée est double&nbsp;: le témoignage à rendre au Seigneur, c'est-à-dire le message de l'Évangile, et la personne de Paul, prisonnier pour cet Évangile. La honte serait ici une forme de la timidité poltronne dénoncée au verset 7.</td>
+            <td><span class="trad"><span><b>S21</b> honte</span><span><b>NEG79</b> honte</span><span><b>Darby</b> honte</span><span><b>LSG</b> honte</span><span><b>KJF</b> honte</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">sainte vocation</span><span class="mot-gr">klēsis hagia</span></th>
+            <td class="col-sens">appel saint; convocation efficace par laquelle Dieu appelle à lui ceux qu'il a choisis</td>
+            <td>Comme toujours dans les épîtres du Nouveau Testament, il ne s'agit pas de l'invitation générale adressée à tous les pécheurs pour qu'ils croient (comme en Matthieu 22.14), mais de l'appel efficace que Dieu adresse aux élus et qui atteint infailliblement son but. Cet appel est «&nbsp;saint&nbsp;» parce que son fruit est la sainteté&nbsp;: la sainteté imputée de la justification, la sainteté progressive de la sanctification, et la sainteté achevée de la glorification. La vocation n'est donc pas une simple offre que l'homme accepterait par ses propres forces; elle est l'acte souverain par lequel Dieu sépare pour lui-même ceux qu'il avait destinés de toute éternité.</td>
+            <td><span class="trad"><span><b>S21</b> appel saint</span><span><b>NEG79</b> sainte vocation</span><span><b>Darby</b> saint appel</span><span><b>LSG</b> vocation sainte</span><span><b>KJF</b> sainte vocation</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">dessein</span><span class="mot-gr">prothesis</span></th>
+            <td class="col-sens">ce qui est placé devant, projet arrêté d'avance, résolution préalable; plan posé en intention</td>
+            <td>Le mot désigne le plan souverain d'élection de Dieu, ce qu'il a résolu en lui-même avant toute considération de l'homme. Paul oppose frontalement ce «&nbsp;propre dessein&nbsp;» à «&nbsp;nos œuvres&nbsp;»&nbsp;: ce n'est pas notre conduite qui a déclenché le salut, mais une décision divine antérieure et indépendante. La même racine sert ailleurs à décrire le décret d'élection (cf. Romains 8.28-29; 9.11; Éphésiens 1.11; 3.11). Couplé à «&nbsp;selon la grâce&nbsp;», le terme exclut tout mérite&nbsp;: l'initiative, le motif et l'exécution du salut remontent entièrement à la volonté libre de Dieu, fixée avant les temps éternels.</td>
+            <td><span class="trad"><span><b>S21</b> propre projet</span><span><b>NEG79</b> propre dessein</span><span><b>Darby</b> propre dessein</span><span><b>LSG</b> propre dessein</span><span><b>KJF</b> propre dessein</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">réduit à l'impuissance</span><span class="mot-gr">katargeō</span></th>
+            <td class="col-sens">rendre inopérant, mettre hors d'usage, priver de force et d'effet; annuler le pouvoir de quelque chose</td>
+            <td>Le verbe ne signifie pas faire disparaître, mais rendre inefficace, désarmer. La mort physique n'a pas été abolie&nbsp;: les croyants meurent encore. Mais pour eux elle a cessé d'être une menace et une ennemie, parce que Christ lui a ôté son aiguillon et son pouvoir de condamnation. En contrepartie, le même Évangile a «&nbsp;mis en évidence&nbsp;» la vie et l'immortalité, c'est-à-dire les a portées à la pleine lumière. Dieu a choisi d'attendre l'incarnation et la proclamation de l'Évangile pour révéler pleinement cette vérité, dont les croyants de l'Ancien Testament n'avaient qu'une compréhension partielle. La mort vaincue n'est donc pas une espérance vague mais un fait acquis dans la résurrection du Sauveur.</td>
+            <td><span class="trad"><span><b>S21</b> réduit à l'impuissance</span><span><b>NEG79</b> réduit à l'impuissance</span><span><b>Darby</b> annulé la mort</span><span><b>LSG</b> réduit à l'impuissance</span><span><b>KJF</b> aboli la mort</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">dépôt</span><span class="mot-gr">parathēkē</span></th>
+            <td class="col-sens">ce qui est confié en garde, bien remis à la fidélité d'un autre, trésor déposé pour être gardé</td>
+            <td>Le terme appartient au vocabulaire de la confiance&nbsp;: un bien précieux remis à quelqu'un qui s'engage à le préserver intact. Au verset 12, le dépôt que Dieu «&nbsp;a la puissance de garder&nbsp;» désigne la vie même de Paul, sur la terre comme dans l'éternité, remise entre les mains du Seigneur. Paul vit dans une hardiesse inébranlable parce qu'il a eu révélation de la puissance et de la fidélité de Dieu et qu'il entretient avec lui une relation indéfectible. Le même mot revient aux versets 13-14 pour désigner «&nbsp;le bon dépôt&nbsp;», le trésor de la saine doctrine que Timothée doit à son tour garder par le Saint-Esprit&nbsp;: le croyant confie sa vie à Dieu, et Dieu lui confie sa Parole.</td>
+            <td><span class="trad"><span><b>S21</b> mon dépôt</span><span><b>NEG79</b> mon dépôt</span><span><b>Darby</b> ce que je lui ai confié</span><span><b>LSG</b> mon dépôt</span><span><b>KJF</b> ce que je lui ai confié</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">2 Timothée 1.8-12</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 2 Timothée 1.8-12 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 2 Tm 1.8, 1.9, 1.10, 1.11, 1.12.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-3</span></th>
+            <td><a href="https://www.gty.org/sermons/55-3" target="_blank" rel="noopener">Not Being Ashamed of Christ, Part 2</a></td>
+            <td>2 Timothée 1.7-10</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">55-4</span></th>
+            <td><a href="https://www.gty.org/sermons/55-4" target="_blank" rel="noopener">Not Being Ashamed of Christ, Part 3</a></td>
+            <td>2 Timothée 1.11-18</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">L'antidote à la honte n'est pas un sursaut de bravoure, mais la contemplation d'une grâce décidée avant les temps éternels et accomplie par la croix&nbsp;: voilà ce qui rend la honte de l'Évangile impossible et la souffrance supportable.</p>
+    <div class="body">
+      <p>Le passage s'ouvre sur un ordre que tout le reste vient fonder&nbsp;: «&nbsp;N'aie donc point honte du témoignage à rendre à notre Seigneur, ni de moi son prisonnier.&nbsp;» Le «&nbsp;témoignage à rendre à notre Seigneur&nbsp;» est le message de l'Évangile lui-même, le contenu de la prédication concernant Jésus-Christ. Paul ne voulait pas que Timothée, par crainte de possibles persécutions, ait honte du nom de Christ. À cela s'ajoute un second objet, plus personnel et presque aussi dangereux&nbsp;: «&nbsp;moi son prisonnier&nbsp;». Le simple fait d'être associé à Paul, un homme emprisonné pour cause de prédication de l'Évangile, pouvait mettre la liberté et la vie de Timothée en péril. L'ordre n'est donc pas théorique&nbsp;: ne pas avoir honte, ici, c'est accepter de partager publiquement le sort d'un condamné, et «&nbsp;souffrir avec&nbsp;» lui pour l'Évangile, par la puissance de Dieu et non par la sienne propre.</p>
+      <p>Les versets 9 et 10 fournissent le remède à la honte en déployant l'Évangile tout entier. «&nbsp;Il nous a sauvés, et nous a adressé une sainte vocation&nbsp;»&nbsp;: la vocation dont il s'agit n'est jamais, dans les épîtres, l'invitation générale adressée à tous les pécheurs, mais l'appel efficace que Dieu réserve aux élus et qui produit infailliblement la sainteté. Puis vient le cœur de la doctrine&nbsp;: «&nbsp;non à cause de nos œuvres, mais selon son propre dessein, et selon la grâce&nbsp;». C'est la vérité centrale de l'Évangile, le salut par grâce, au moyen de la foi, indépendamment des œuvres. Le «&nbsp;propre dessein&nbsp;» est le plan souverain d'élection de Dieu, et la «&nbsp;grâce&nbsp;» en est le moyen gratuit. MacArthur tient ce «&nbsp;non à cause de nos œuvres&nbsp;» pour la clé du passage&nbsp;: le Dieu qui nous a sauvés et rendus saints sans notre aide peut aussi nous garder sans notre aide, si bien que le serviteur n'a pas à manœuvrer pour se protéger et peut s'exposer sans crainte.</p>
+      <p>La précision temporelle scelle l'argument&nbsp;: cette grâce nous a été donnée en Jésus-Christ «&nbsp;avant les temps éternels&nbsp;». Le destin des élus de Dieu a été déterminé et scellé de toute éternité. Le salut n'est pas une réaction de Dieu à la foi de l'homme, mais l'exécution dans le temps d'une décision prise avant le temps. C'est pourquoi le sacrifice de Christ est mentionné aussitôt&nbsp;: par lui, et par lui seul, le plan de salut est devenu possible, car Christ a été la victime expiatoire pour les péchés du peuple de Dieu. La grâce décidée dans l'éternité a été manifestée dans l'histoire «&nbsp;par la venue de notre Sauveur Jésus-Christ&nbsp;». Le terme grec rendu par «&nbsp;venue&nbsp;», dont dérive le mot épiphanie, désigne le plus souvent la seconde venue, mais MacArthur y voit ici l'apparition de Christ dans sa résurrection&nbsp;: c'est en sortant du tombeau que le Sauveur a aboli la mort, et le plan arrêté dans l'éternité s'est ainsi accompli dans l'histoire.</p>
+      <p>Cette manifestation a deux effets que le verset 10 articule avec force&nbsp;: Christ «&nbsp;a réduit la mort à l'impuissance et a mis en évidence la vie et l'immortalité par l'Évangile&nbsp;». Réduire à l'impuissance signifie rendre inopérant. La mort physique n'a pas disparu, mais pour les chrétiens elle ne représente plus ni une menace ni une ennemie. En regard, l'immortalité, dont les croyants de l'Ancien Testament n'avaient qu'une connaissance partielle, est désormais pleinement mise en lumière. Voilà l'argument décisif contre la honte&nbsp;: tout cela récite la puissance de Dieu, et devant le Dieu qui a vaincu la mort, les hommes ne sont pas à craindre. C'est de cet Évangile, précise le verset 11, que Paul a été établi prédicateur, apôtre et chargé d'instruire les païens. MacArthur y lit le sens du devoir&nbsp;: prédicateur dit la fonction, apôtre l'autorité, docteur le contenu, et c'est pour avoir rempli cette charge reçue de Dieu que Paul souffre.</p>
+      <p>Le verset 12 referme le passage en offrant à Timothée, en Paul lui-même, l'exemple vivant de l'ordre du verset 8&nbsp;: «&nbsp;c'est à cause de cela que je souffre ces choses; mais je n'en ai point honte, car je sais en qui j'ai cru.&nbsp;» Le verbe «&nbsp;savoir&nbsp;» exprime la certitude que donnait à Paul l'assurance de son salut, dont l'objet n'est pas une doctrine abstraite mais Dieu lui-même. La forme du verbe «&nbsp;j'ai cru&nbsp;» renvoie à un acte passé dont les effets demeurent&nbsp;: Paul a cru, et il croit toujours. De là découle sa confiance ultime&nbsp;: Dieu «&nbsp;a la puissance de garder mon dépôt jusqu'à ce jour-là&nbsp;». Le dépôt, c'est sa vie entière, terrestre et éternelle, remise au Seigneur dont il connaît la puissance et la fidélité. «&nbsp;Ce jour-là&nbsp;» désigne le jour de Christ, où les croyants se tiendront devant le tribunal pour recevoir leur récompense. Ainsi Paul, prêchant l'Évangile en milieu hostile, n'a aucune crainte face à la persécution et à la mort, parce qu'il sait que Dieu a scellé pour lui un avenir de gloire. La honte de l'Évangile devient impossible non par un effort de bravoure, mais par la connaissance certaine du Dieu souverain et fidèle qui garde les siens jusqu'à ce jour-là.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le refus de la honte&nbsp;: du parallèle paulinien de Romains 1.16 au décret d'élection avant la fondation du monde, jusqu'à la mort engloutie dans la victoire et la promesse vétérotestamentaire de la mort vaincue.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 1.16</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Je n'ai point honte de l'Évangile&nbsp;: c'est une puissance de Dieu pour le salut de quiconque croit.&nbsp;» Parallèle paulinien direct du refus de la honte (vv. 8, 12), où la même assurance se fonde sur la puissance salvatrice de l'Évangile.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Timothée 1.16</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Onésiphore «&nbsp;n'a pas eu honte de mes chaînes&nbsp;»&nbsp;: à l'intérieur du même chapitre, l'exemple positif qui illustre concrètement l'ordre «&nbsp;n'aie donc point honte... de moi son prisonnier&nbsp;» (v. 8).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.8-9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;C'est par la grâce que vous êtes sauvés, par le moyen de la foi... non par les œuvres.&nbsp;» Développe la formule «&nbsp;non à cause de nos œuvres, mais... selon la grâce&nbsp;» (v. 9), cœur de la justification monergique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 1.4-5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'élection «&nbsp;avant la fondation du monde&nbsp;» et la prédestination selon le bon plaisir de la volonté de Dieu éclairent «&nbsp;son propre dessein... avant les temps éternels&nbsp;» (v. 9), le décret d'élection souverain.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 1.2</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;La vie éternelle... que Dieu a promise avant les temps éternels.&nbsp;» Même expression grecque que 1.9, confirmant que la grâce et le salut sont fixés dans l'éternité avant la création.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 15.54-55</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;La mort a été engloutie dans la victoire... Ô mort, où est ta victoire&nbsp;?&nbsp;» Explicite le «&nbsp;a réduit la mort à l'impuissance&nbsp;» (v. 10)&nbsp;: la mort désarmée, privée de son aiguillon par la résurrection de Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 8.38-39</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Rien ne peut nous séparer de l'amour de Dieu&nbsp;: fondement de l'assurance «&nbsp;je sais en qui j'ai cru, et... il a la puissance de garder mon dépôt&nbsp;» (v. 12), la sécurité indéfectible du croyant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 25.8</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Il anéantit la mort pour toujours.&nbsp;» Promesse vétérotestamentaire de la mort vaincue, arrière-plan prophétique du «&nbsp;a réduit la mort à l'impuissance et a mis en évidence la vie&nbsp;» (v. 10).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent le passage. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La grâce souveraine décidée avant les temps éternels</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Non à cause de nos œuvres, mais selon son propre dessein, et selon la grâce qui nous a été donnée en Jésus-Christ avant les temps éternels&nbsp;» (1.9)&nbsp;: le salut procède d'un plan d'élection arrêté par Dieu dans l'éternité, indépendamment de toute œuvre humaine.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'assurance ne repose jamais sur la quantité de bien accompli, mais sur un décret divin que rien ne peut défaire. Le croyant éprouvé n'a pas à mendier un salut incertain&nbsp;: il a été choisi avant le monde, sauvé par grâce pure, et c'est précisément ce qui coupe le nerf de la honte et de l'angoisse dans l'épreuve.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'appel efficace, et non l'invitation générale</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il nous a sauvés, et nous a adressé une sainte vocation&nbsp;» (1.9)&nbsp;: la vocation visée n'est pas l'offre générale faite à tous, mais l'appel par lequel Dieu attire infailliblement les élus et les rend saints.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Distinguer l'appel général de l'appel efficace garde de deux erreurs&nbsp;: croire que la décision de l'homme commande son salut, ou désespérer comme si l'on devait se rendre digne d'être appelé. L'appel qui sauve est l'œuvre de Dieu, et il produit toujours son fruit de sainteté; il invite donc à examiner si cette sainteté se manifeste réellement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La mort vaincue et l'immortalité mise en lumière</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Notre Sauveur Jésus-Christ, qui a réduit la mort à l'impuissance et a mis en évidence la vie et l'immortalité par l'Évangile&nbsp;» (1.10)&nbsp;: la mort est rendue inopérante, et la vie éternelle portée au grand jour par la venue de Christ.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La mort demeure un passage mais cesse d'être une ennemie; elle a perdu son pouvoir de condamnation. Cette victoire acquise libère le croyant de la peur qui rend honteux et timide. On ne rougit pas d'un Évangile qui a désarmé la mort&nbsp;: la certitude de l'immortalité doit nourrir une audace tranquille dans le témoignage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La sécurité du croyant gardé par la puissance de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Je sais en qui j'ai cru, et je suis persuadé qu'il a la puissance de garder mon dépôt jusqu'à ce jour-là&nbsp;» (1.12)&nbsp;: Paul confie sa vie entière à un Dieu dont la puissance et la fidélité garantissent l'issue.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'assurance du salut n'est pas présomption mais confiance dans la fidélité de Dieu, non dans la force du croyant. Ce que Dieu a commencé, il l'achèvera jusqu'au jour de Christ. Cette persévérance garantie d'en haut est ce qui rend la souffrance supportable et le témoignage possible, même sous la menace de la mort.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Souffrir sans honte pour l'Évangile</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Souffre avec moi pour l'Évangile, par la puissance de Dieu&nbsp;» (1.8); «&nbsp;c'est à cause de cela que je souffre ces choses; mais je n'en ai point honte&nbsp;» (1.12)&nbsp;: la souffrance pour Christ est assumée, non par bravoure, mais par la puissance de Dieu et la certitude de l'Évangile.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La fidélité a un coût social et parfois physique&nbsp;: s'associer à un Christ rejeté et à ses serviteurs déshonorés expose au mépris. Mais la souffrance n'est jamais portée seule ni par ses propres ressources; elle l'est «&nbsp;par la puissance de Dieu&nbsp;». Le croyant n'est pas appelé à éviter l'opprobre, mais à le porter sans honte, parce que le message vaut infiniment plus que la réputation perdue.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul lie directement le «&nbsp;N'aie donc point honte&nbsp;» (1.8) au rappel que Dieu donne un Esprit de force et non de timidité (1.7). Comment prêcher la honte de l'Évangile non comme une faiblesse de caractère à corriger par l'effort, mais comme le symptôme d'un regard détourné de la grâce souveraine&nbsp;?</li>
+      <li>Les versets 9 et 10 font de la doctrine de l'élection l'antidote concret à la honte. Comment montrer à votre assemblée qu'un salut décidé «&nbsp;avant les temps éternels&nbsp;» et «&nbsp;non à cause de nos œuvres&nbsp;» produit une audace que jamais l'effort moral ne pourra fabriquer&nbsp;?</li>
+      <li>Le «&nbsp;témoignage à rendre à notre Seigneur&nbsp;» et «&nbsp;moi son prisonnier&nbsp;» (1.8) unissent le message et le messager déshonoré. Vos auditeurs sont-ils prêts à s'associer publiquement non seulement à une vérité, mais à des serviteurs de Christ méprisés ou persécutés&nbsp;?</li>
+      <li>«&nbsp;Il a réduit la mort à l'impuissance&nbsp;» (1.10)&nbsp;: la mort n'est pas abolie mais désarmée. Comment tenir cette nuance pour consoler un croyant qui meurt encore, sans tomber dans une fausse promesse d'immunité, ni minimiser la victoire réelle de la croix&nbsp;?</li>
+      <li>«&nbsp;Je sais en qui j'ai cru&nbsp;» (1.12) fonde l'assurance de Paul sur la connaissance de Dieu lui-même, non sur la mesure de sa propre foi. Comment aider votre assemblée à distinguer une assurance ancrée dans la fidélité de Dieu d'une présomption ancrée dans la performance religieuse&nbsp;?</li>
+      <li>Le «&nbsp;dépôt&nbsp;» que Dieu garde (1.12) est la vie même de Paul remise au Seigneur. Que signifie concrètement, pour vos auditeurs, confier à Dieu la garde de tout ce qu'ils sont, jusqu'à «&nbsp;ce jour-là&nbsp;» du tribunal de Christ&nbsp;?</li>
+      <li>L'exemple négatif de l'Asie qui a abandonné Paul (1.15) et l'exemple positif d'Onésiphore qui n'a pas eu honte de ses chaînes (1.16) encadrent ce passage. Comment présenter ces deux figures pour que l'assemblée mesure le prix réel, et la beauté, du refus de la honte&nbsp;?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 2 Timothée 1.8-12 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;2 Timothée : Garde le dépôt&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-2%20Timoth%C3%A9e-1-8-12.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

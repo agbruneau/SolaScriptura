@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tite 1.5-9 · Des anciens irréprochables · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Tite 1.5-9 : des anciens irréprochables ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Tite 1.5-9</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Tite 1.5-9</p>
+    <h1 class="hero__title">Des anciens irréprochables</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Attaché à la vraie parole telle qu'elle a été enseignée, afin d'être capable d'exhorter selon la saine doctrine et de réfuter les contradicteurs.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Tite 1.9 · NEG</p>
+    <p class="hero__series">Série : <b>Tite : l'ordre de l'Évangile</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Tite 1.5-9</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Je t'ai laissé en Crète, afin que tu mettes en ordre ce qui reste à régler, et que, selon mes instructions, tu établisses des anciens dans chaque ville.</p>
+        <cite class="verse__ref">Tite 1.5 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Attaché à la vraie parole telle qu'elle a été enseignée, afin d'être capable d'exhorter selon la saine doctrine et de réfuter les contradicteurs.</p>
+        <cite class="verse__ref">Tite 1.9 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Tite 1.5-9 ouvre le corps de l'épître par la première des composantes d'une évangélisation efficace&nbsp;: la désignation d'anciens irréprochables. La qualification des bons bergers (1.5-9) et la mise au silence des mauvais docteurs (1.10-16) forment un seul mouvement.</p>
+    <div class="body">
+      <p>La péricope ouvre le corps de l'épître après la salutation des versets 1 à 4. Selon le plan de <i>La Bible d'étude MacArthur</i>, ces versets forment la première unité de la grande section intitulée «&nbsp;les composantes d'une évangélisation efficace&nbsp;» (1.5 à 3.11), et plus précisément le premier des éléments essentiels parmi les responsables (1.5-16). Le plan lui-même retient pour titre «&nbsp;la désignation d'anciens&nbsp;». Elle est immédiatement suivie de son envers polémique, «&nbsp;la réfutation des faux docteurs&nbsp;» (1.10-16), de sorte que la qualification des bons bergers et la mise au silence des mauvais forment un seul mouvement. Paul commence par rappeler à Tite la mission qu'il lui a confiée en le laissant en Crète&nbsp;: «&nbsp;que tu mettes en ordre ce qui reste à régler, et que tu établisses des anciens dans chaque ville&nbsp;» (1.5). Tite devait achever de redresser ce qui ne l'était pas encore dans les Églises de Crète, ce que Paul n'avait pas eu le temps de terminer, qu'il s'agisse de corriger des erreurs ou de bâtir ce qui manquait; c'est la seule fois où ce ministère de mise en ordre est mentionné.</p>
+      <p>Les bornes de la péricope sont nettes. Elle s'ouvre au verset 5 par l'ordre de Paul, «&nbsp;que tu établisses des anciens dans chaque ville&nbsp;», et se referme au verset 9 par la qualification décisive, «&nbsp;attaché à la vraie parole telle qu'elle a été enseignée, afin d'être capable d'exhorter selon la saine doctrine et de réfuter les contradicteurs&nbsp;». Le verset 10 amorce aussitôt un mouvement nouveau en justifiant l'urgence de la désignation&nbsp;: «&nbsp;il y a, en effet, surtout parmi les circoncis, beaucoup de gens rebelles&nbsp;». La logique est limpide&nbsp;: à cause du grand nombre de faux docteurs, le travail de Tite était particulièrement difficile, et il était d'autant plus important de nommer des anciens qui possèdent toutes les qualités requises. La liste des qualifications n'est donc pas un idéal abstrait; elle est l'arme défensive de l'Église contre l'erreur, parce que seul un homme irréprochable et attaché à la vraie parole peut à la fois exhorter et réfuter.</p>
+      <p>Deux thèses doctrinales commandent toute la péricope. D'abord, MacArthur souligne que les normes que Dieu impose aux responsables sont très élevées&nbsp;: leurs qualifications ne sont pas liées à leurs capacités naturelles, à leur intelligence ou à leur éducation, mais à leurs qualités morales et spirituelles ainsi qu'à leur aptitude à enseigner. C'est le Saint-Esprit qui les a équipés pour cela. Ensuite, les termes «&nbsp;anciens&nbsp;» (v. 5) et «&nbsp;évêque&nbsp;» (v. 7) désignent une seule et même fonction, vue sous deux angles&nbsp;: le terme similaire en 1 Timothée 3.1-7 confirme cette équivalence. L'idée maîtresse tient en cela&nbsp;: la santé d'une Église dépend de responsables qualifiés par leur caractère et leur attachement à la vraie parole, non par leurs talents.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Tite 1.5 · 1.6 · 1.7</p>
+    </header>
+    <p class="lead">Dans la Crète difficile, où le mensonge et la paresse étaient proverbiaux, des anciens devaient être établis «&nbsp;dans chaque ville&nbsp;»&nbsp;: trois mots, ancien, évêque, pasteur, désignent une seule charge confiée à une pluralité de bergers mûrs.</p>
+    <div class="body">
+      <p>L'épître est adressée à Tite, un converti d'origine païenne (Ga 2.3), conduit à Christ par Paul (1.4) et devenu un collaborateur éprouvé de l'Évangile (2 Co 8.23). Paul l'a laissé sur l'île de Crète pour continuer l'œuvre et fortifier les chrétiens (1.5), tout comme il avait laissé Timothée à Éphèse. La lettre fut vraisemblablement écrite entre 62 et 64 apr. J.-C., alors que Paul œuvrait auprès des Églises de Macédoine, entre son premier et son second emprisonnement à Rome, et fut sans doute portée par Zénas et Apollos (3.13). La Crète est l'une des plus grandes îles de la Méditerranée, environ 220 kilomètres de long; sa population était réputée pour le mensonge et la paresse, au point qu'un de ses propres poètes, Épiménide, l'avait citée comme «&nbsp;menteurs, méchantes bêtes, ventres paresseux&nbsp;» (1.12). C'est dans ce terrain difficile que devaient être établis des responsables irréprochables.</p>
+    </div>
+    <p>Trois traits échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La pluralité des anciens.</b> Le mot «&nbsp;ancien&nbsp;» (<i>presbuteros</i>) plonge ses racines dans la synagogue et dans l'organisation d'Israël, où les anciens étaient les hommes mûrs qui gouvernaient la communauté. L'Église primitive a repris cette structure&nbsp;: la désignation de responsables «&nbsp;dans chaque ville&nbsp;» est typique de Paul, qui établissait des anciens dans les assemblées qu'il fondait (cf. Ac 14.23). Le pluriel du verset 5 va dans le même sens&nbsp;: la conduite d'une assemblée locale n'était pas confiée à un seul homme, mais à plusieurs bergers mûrs et coresponsables.</li>
+      <li><b>Ancien, évêque, pasteur&nbsp;: une seule charge.</b> Le verset 7, en passant au terme «&nbsp;évêque&nbsp;» (<i>episkopos</i>, surveillant), ne désigne pas un office hiérarchique supérieur&nbsp;: c'est le même homme, considéré sous l'angle de sa fonction de gardien. Ancien dit sa maturité, évêque dit sa surveillance, et pasteur (litt. berger, Ep 4.11) dit son soin du troupeau. Les trois mots décrivent une seule charge.</li>
+      <li><b>Fidélité conjugale et intendance.</b> L'expression «&nbsp;mari d'une seule femme&nbsp;» (litt. «&nbsp;homme d'une seule femme&nbsp;») se lit dans un monde gréco-romain où la polygamie de fait, le concubinage et l'infidélité étaient courants; elle vise non le statut matrimonial mais la fidélité conjugale exclusive, en pensées comme en actes. Le terme «&nbsp;économe&nbsp;» (<i>oikonomos</i>) désignait l'intendant chargé de gérer les ressources d'autrui pour le bien des êtres aimés de son maître&nbsp;: l'ancien qui gère des vérités spirituelles vit pour Dieu et lui rend des comptes, car l'Église appartient à Dieu (Ac 20.28; 1 Pi 5.2-4; Hé 13.17).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la liste&nbsp;: de l'<i>presbuteros</i> mûr et pluriel à l'<i>anenklētos</i> sans reproche, de l'<i>oikonomos</i> redevable de l'Église de Dieu jusqu'au <i>pistos logos</i> auquel l'ancien doit être attaché.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">anciens</span><span class="mot-gr">presbuteros</span></th>
+            <td class="col-sens">homme plus âgé, ancien; membre mûr et responsable de la communauté investi de l'autorité de gouverner</td>
+            <td>Pour MacArthur, <i>presbuteros</i> désigne les responsables spirituels mûrs de l'Église, appelés aussi évêques (v. 7) et pasteurs (litt. bergers, Ep 4.11). Le terme insiste sur la maturité spirituelle, non sur l'âge biologique seul. Le texte, par son pluriel, confie la conduite de l'assemblée locale à plusieurs bergers coresponsables plutôt qu'à un homme isolé; MacArthur, lui, retient surtout de «&nbsp;des anciens dans chaque ville&nbsp;» (1.5) que l'Église s'était déjà répandue dans toute l'île. Ce ministère de désignation est typique de Paul (Ac 14.23; cf. Ac 20.17, 28; 1 Pi 5.1-2). Les qualifications sont parallèles à celles de 1 Timothée 3.1-7.</td>
+            <td><span class="trad"><span><b>S21</b> des anciens</span><span><b>NEG79</b> des anciens</span><span><b>Darby</b> des anciens</span><span><b>LSG</b> des anciens</span><span><b>KJF</b> des anciens</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">irréprochable</span><span class="mot-gr">anenklētos</span></th>
+            <td class="col-sens">contre qui aucune accusation ne peut être retenue; sans reproche, à l'abri de toute mise en cause</td>
+            <td>MacArthur précise que le terme ne renvoie pas à une perfection dépourvue de tout péché, mais à une vie personnelle qui ne laisse aucune prise au scandale ou aux accusations. C'est l'exigence essentielle et générale pour tout responsable spirituel&nbsp;: elle est posée au verset 6, répétée au verset 7 («&nbsp;car il faut que l'évêque soit irréprochable&nbsp;») et déployée par les vertus des versets 6 à 9. La réputation de l'ancien doit être au-dessus de tout soupçon, à l'extérieur comme à l'intérieur (cf. 1 Ti 3.2, 10). Le caractère, et non le talent, est ici le critère décisif.</td>
+            <td><span class="trad"><span><b>S21</b> irréprochable</span><span><b>NEG79</b> irréprochable</span><span><b>Darby</b> irréprochable</span><span><b>LSG</b> irréprochable</span><span><b>KJF</b> irréprochable</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">mari d'une seule femme</span><span class="mot-gr">mias gunaikos anēr</span></th>
+            <td class="col-sens">litt. «homme d'une seule femme»; mari fidèle et dévoué à son épouse, en pensées comme en actes</td>
+            <td>MacArthur lit d'abord cette expression comme l'exigence de pureté intérieure et extérieure dans le domaine sexuel&nbsp;: un mari fidèle et dévoué à sa femme, aussi bien en pensées qu'en actes (cf. 1 Ti 3.2; Pr 6.32-33); il ne s'agit ni de polygamie ni d'exclure le veuf remarié. En chaire, il y voit aussi une incidence sur le divorce&nbsp;: il juge raisonnable d'en conclure que l'ancien était choisi parmi des hommes qui n'avaient jamais divorcé, même avant leur conversion. Un célibataire, incapable par définition de faire la preuve de ces qualités conjugales, n'est pas pour autant disqualifié. C'est cette exigence de pureté qui poussait Paul à la maîtrise de soi, de peur d'être disqualifié (1 Co 9.27). La qualification suppose que la charge d'ancien est réservée à des hommes, dans la ligne du dessein créationnel que MacArthur tient pour normatif.</td>
+            <td><span class="trad"><span><b>S21</b> mari d'une seule femme</span><span><b>NEG79</b> mari d'une seule femme</span><span><b>Darby</b> mari d'une seule femme</span><span><b>LSG</b> mari d'une seule femme</span><span><b>KJF</b> mari d'une seule femme</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">économe</span><span class="mot-gr">oikonomos</span></th>
+            <td class="col-sens">intendant, gérant de maison; celui à qui est confiée la gestion des biens d'autrui</td>
+            <td>L'<i>oikonomos</i> désignait la personne chargée de gérer les ressources d'autrui pour le plus grand bien des êtres aimés de son maître. MacArthur applique l'image à l'ancien&nbsp;: celui qui gère des vérités spirituelles vit pour Dieu et est en permanence responsable devant lui. L'Église n'appartient pas à ses responsables mais à Dieu (Ac 20.28; 1 Ti 3.15; 1 Pi 5.2-4); les anciens devront donc lui rendre des comptes quant à leur façon de la diriger (Hé 13.17). Cette image fonde aussi l'interdiction du «&nbsp;gain honteux&nbsp;»&nbsp;: l'intendant fidèle ne détourne pas à son profit ce qui appartient à son Maître.</td>
+            <td><span class="trad"><span><b>S21</b> intendant</span><span><b>NEG79</b> économe</span><span><b>Darby</b> administrateur</span><span><b>LSG</b> économe</span><span><b>KJF</b> intendant</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">vraie parole</span><span class="mot-gr">pistos logos</span></th>
+            <td class="col-sens">litt. «la parole fidèle / digne de foi»; le message sûr conforme à l'enseignement reçu</td>
+            <td>MacArthur voit dans cette dernière qualification la seule qui porte sur une aptitude, et la tâche première du pasteur&nbsp;: l'ancien doit être «&nbsp;attaché à la vraie parole telle qu'elle a été enseignée&nbsp;» (1.9). On doit non seulement enseigner la saine doctrine biblique, mais aussi y adhérer soi-même avec une entière conviction (cf. 1 Ti 4.6; 2 Ti 2.15; 3.16-17). Cet attachement le rend capable d'un double office&nbsp;: «&nbsp;exhorter selon la saine doctrine&nbsp;» (édifier les croyants) et «&nbsp;réfuter les contradicteurs&nbsp;» (défendre la vérité contre l'erreur). C'est l'enseignement et la défense fidèles de l'Écriture, à même d'encourager la sainteté et d'amener au jour le péché et l'erreur de ceux qui contredisent la Parole (cf. Ac 20.29-30).</td>
+            <td><span class="trad"><span><b>S21</b> la parole digne de confiance</span><span><b>NEG79</b> la vraie parole</span><span><b>Darby</b> la fidèle parole</span><span><b>LSG</b> la vraie parole</span><span><b>KJF</b> la parole fidèle</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Tite 1.5-9</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Tite 1.5-9 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Tt 1.5-9, 1.5, 1.6, 1.7, 1.8, 1.9.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-5</span></th>
+            <td><a href="https://www.gty.org/sermons/56-5" target="_blank" rel="noopener">The Moral Character of a Pastor</a></td>
+            <td>Tite 1.5-6</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-6</span></th>
+            <td><a href="https://www.gty.org/sermons/56-6" target="_blank" rel="noopener">The Required Character for a Pastor: Family Leadership</a></td>
+            <td>Tite 1.6</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-7</span></th>
+            <td><a href="https://www.gty.org/sermons/56-7" target="_blank" rel="noopener">The Qualifications for a Pastor, Part 1: Noble Character, Part 1</a></td>
+            <td>Tite 1.7</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-8</span></th>
+            <td><a href="https://www.gty.org/sermons/56-8" target="_blank" rel="noopener">The Qualifications for a Pastor, Part 2: Noble Character, Part 2</a></td>
+            <td>Tite 1.7-8</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">56-9</span></th>
+            <td><a href="https://www.gty.org/sermons/56-9" target="_blank" rel="noopener">The Qualifications for a Pastor, Part 3: Teaching Skill</a></td>
+            <td>Tite 1.9</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Les normes que Dieu impose aux responsables sont très élevées, et elles tiennent au caractère, non au talent&nbsp;: la qualification d'un ancien se mesure à sa sainteté et à son attachement à la Parole, dont le Saint-Esprit l'a équipé.</p>
+    <div class="body">
+      <p>MacArthur ouvre la péricope par une affirmation qui en commande toute la lecture&nbsp;: les normes que Dieu impose aux croyants sont très élevées, et il exige que les responsables des Églises donnent l'exemple de ces normes. Leurs qualifications ne sont pas liées à leurs capacités naturelles, à leur intelligence ou à leur éducation, mais à leurs qualités morales et spirituelles ainsi qu'à leur aptitude à enseigner. C'est le Saint-Esprit qui les a équipés pour cela. Ce premier coup de pinceau dissocie d'emblée la qualification du don naturel&nbsp;: on ne devient pas ancien parce qu'on est habile, instruit ou charismatique, mais parce que le caractère est irréprochable et que l'attachement à la Parole est entier. Tel est le cœur de l'idée maîtresse&nbsp;: la santé d'une Église dépend de responsables qualifiés par leur caractère et leur attachement à la vraie parole, non par leurs talents.</p>
+      <p>La mission de Tite encadre la liste. Paul l'a laissé en Crète «&nbsp;afin que tu mettes en ordre ce qui reste à régler, et que tu établisses des anciens dans chaque ville&nbsp;» (1.5). MacArthur note que le verbe évoque un redressement complet, comme on remet en place un membre tordu&nbsp;: Tite devait achever ce que Paul n'avait pas eu le temps de terminer, qu'il s'agisse de corriger ou de construire; la note ajoute que c'est la seule mention de ce ministère. Il retient de la formule «&nbsp;dans chaque ville&nbsp;» que l'Église s'était déjà répandue dans toute l'île; le pluriel «&nbsp;des anciens&nbsp;» suggère en outre, à lui seul, une conduite partagée entre plusieurs bergers. MacArthur identifie sans ambiguïté ces «&nbsp;anciens&nbsp;» (v. 5) aux «&nbsp;évêques&nbsp;» (v. 7)&nbsp;: ce sont les responsables spirituels mûrs de l'Église, appelés aussi gardiens ou surveillants, et pasteurs (litt. bergers, Ep 4.11), qui devaient veiller sur la congrégation de chaque ville (cf. Ac 20.17, 28; 1 Pi 5.1-2). L'«&nbsp;évêque&nbsp;» n'est donc pas un titre hiérarchique placé au-dessus de l'ancien; le mot signifie simplement «&nbsp;surveillant&nbsp;» (Ac 20.28; Hé 13.17; 1 Pi 5.2).</p>
+      <p>La liste elle-même se déploie selon quatre catégories que MacArthur distingue&nbsp;: la moralité sexuelle et la conduite de la famille (v. 6), le caractère en général (vv. 7-8, cinq défauts à fuir puis six qualités à posséder) et l'aptitude à enseigner (v. 9). Au foyer, l'ancien doit être «&nbsp;irréprochable, mari d'une seule femme, ayant des enfants fidèles&nbsp;». MacArthur précise qu'«&nbsp;irréprochable&nbsp;» ne désigne pas une perfection sans péché mais une vie qui ne laisse aucune prise au scandale; que «&nbsp;mari d'une seule femme&nbsp;» signifie litt. «&nbsp;homme d'une seule femme&nbsp;», c'est-à-dire un mari fidèle et dévoué en pensées comme en actes, ce qui n'exclut pas le célibataire, mais d'où il juge raisonnable de conclure, en chaire, que l'ancien n'avait jamais divorcé; et que l'expression «&nbsp;enfants fidèles&nbsp;» mérite une attention particulière. «&nbsp;Fidèle&nbsp;» est un terme toujours utilisé à propos des croyants dans le N.T., jamais des incroyants&nbsp;: il ne peut donc que désigner des enfants qui croient en Christ et le démontrent par leur conduite. Le terme «&nbsp;débauche&nbsp;» suggère des enfants déjà grands, et «&nbsp;rebelles&nbsp;» implique la révolte contre l'Évangile. L'ancien montre ainsi sa capacité de conduire les membres de sa propre famille au salut et à la sanctification, capacité essentielle pour la conduite de l'Église (cf. 1 Ti 3.4-5).</p>
+      <p>Le verset 7 dresse la liste des vices disqualifiants, fondée sur l'image de l'«&nbsp;économe&nbsp;». Celui qui gère des vérités spirituelles vit pour Dieu et lui rend des comptes, car l'Église appartient à Dieu (Ac 20.28; 1 Ti 3.15). L'ancien ne doit donc être «&nbsp;ni arrogant, ni colérique, ni adonné au vin, ni violent, ni porté à un gain honteux&nbsp;». MacArthur note que le «&nbsp;vin&nbsp;» englobe toute boisson alcoolisée qui embrume l'esprit ou lève les inhibitions, et par extension toute substance modifiant l'état de conscience (cf. Pr 23.29-35; 31.4-7). Quant au «&nbsp;gain honteux&nbsp;», il rappelle que même au sein de l'Église primitive il s'est trouvé des hommes désireux de devenir pasteurs pour gagner de l'argent (cf. v. 11; 1 Pi 5.2; 2 Pi 2.1-3)&nbsp;: l'appât du gain est précisément ce qui marque les faux docteurs des versets 10 à 16, ce qui révèle, en creux, que les vrais anciens en sont l'exact contraire.</p>
+      <p>Le verset 8 énumère ensuite les qualités positives, et le verset 9 ajoute la seule qualification qui relève d'une aptitude. L'ancien doit être «&nbsp;hospitalier&nbsp;» (litt. ami des étrangers), «&nbsp;ami des gens de bien, modéré&nbsp;» (sérieux, raisonnable, aux justes priorités), «&nbsp;juste, saint, tempérant&nbsp;». Puis vient la tâche première du pasteur&nbsp;: «&nbsp;attaché à la vraie parole telle qu'elle a été enseignée, afin d'être capable d'exhorter selon la saine doctrine et de réfuter les contradicteurs&nbsp;» (1.9). MacArthur en fait le fondement nécessaire de tout enseignement&nbsp;: on doit non seulement enseigner la saine doctrine biblique mais y adhérer soi-même avec une entière conviction (cf. 1 Ti 4.6; 5.17; 2 Ti 2.15; 3.16-17; 4.2-4). De cet attachement découle un double office, l'un constructif et l'autre défensif&nbsp;: «&nbsp;exhorter&nbsp;» pour encourager la sainteté, et «&nbsp;réfuter&nbsp;» pour amener à la lumière le péché et l'erreur de ceux qui contredisent la Parole (voir vv. 10-16; Ac 20.29-30). Le bon berger n'est donc pas seulement un homme de bonne réputation; il est un homme de la Parole, capable de nourrir le troupeau et de le garder du loup. Voilà pourquoi la qualité des responsables conditionne, pour MacArthur, la santé même de l'Église.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la désignation des anciens, de la liste parallèle de 1 Timothée à la reddition de comptes d'Hébreux 13, jusqu'à l'arrière-plan vétérotestamentaire de la pureté conjugale.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Timothée 3.1-7</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Liste parallèle des qualifications de l'évêque, adressée à Timothée à Éphèse. MacArthur la signale comme très proche de Tite 1.6-9 et l'utilise pour confirmer l'identité ancien-évêque et le critère du caractère plutôt que du talent.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 14.23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul et Barnabas «&nbsp;firent nommer des anciens dans chaque Église&nbsp;»&nbsp;: le ministère de désignation d'une pluralité d'anciens, typique de Paul, qui éclaire l'ordre donné à Tite d'établir «&nbsp;des anciens dans chaque ville&nbsp;» (1.5).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 20.17, 28</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul convoque «&nbsp;les anciens&nbsp;» d'Éphèse et les appelle «&nbsp;évêques&nbsp;» (surveillants) établis par l'Esprit pour «&nbsp;paître l'Église de Dieu&nbsp;»&nbsp;: même équivalence des termes et même image du troupeau qui appartient à Dieu, fondement de la responsabilité de l'économe (1.7).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 5.1-4</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Pierre exhorte les anciens à paître le troupeau «&nbsp;non pour un gain honteux&nbsp;», en surveillants, soumis au «&nbsp;souverain pasteur&nbsp;»&nbsp;: reprend les mots mêmes de Tite 1.7 et confirme que l'Église appartient à Christ, devant qui les anciens rendront compte.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Timothée 2.15; 3.16-17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'ouvrier «&nbsp;qui dispense droitement la parole de la vérité&nbsp;» et l'Écriture «&nbsp;utile pour enseigner, convaincre, corriger&nbsp;»&nbsp;: arrière-plan de l'attachement à la vraie parole et du double office d'exhorter et de réfuter (1.9).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 1.10-16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Section immédiatement suivante&nbsp;: l'urgence des faux docteurs «&nbsp;qu'il faut faire taire&nbsp;» justifie la nécessité de nommer des anciens qualifiés (1.5) et donne sa cible concrète à la capacité de «&nbsp;réfuter les contradicteurs&nbsp;» (1.9).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Hébreux 13.17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Ils veillent sur vos âmes comme devant en rendre compte&nbsp;»&nbsp;: explicite la responsabilité de l'économe (1.7) et la reddition de comptes des anciens devant Dieu pour la conduite de l'Église.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Proverbes 6.32-33</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'adultère «&nbsp;perd son âme&nbsp;» et s'attire opprobre indélébile&nbsp;: arrière-plan vétérotestamentaire de la pureté sexuelle exigée par «&nbsp;mari d'une seule femme&nbsp;» (1.6), que MacArthur invoque en chaire pour montrer que cet opprobre ne s'efface pas et ferme l'accès au pastorat.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la désignation des anciens. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La pluralité des anciens, gouvernement de l'Église locale</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Paul ordonne d'établir «&nbsp;des anciens dans chaque ville&nbsp;» (1.5), au pluriel, et identifie l'«&nbsp;ancien&nbsp;» (v. 5) à l'«&nbsp;évêque&nbsp;» (v. 7). Une seule charge, vue comme maturité (ancien) et comme surveillance (évêque, surveillant), confiée à plusieurs hommes coresponsables dans chaque assemblée.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'ecclésiologie que MacArthur défend, l'Église locale n'est pas dirigée par une hiérarchie de prélats au-dessus des anciens, qu'il tient pour une invention humaine&nbsp;: ancien, évêque et pasteur nomment la même fonction. Pour votre assemblée, cela appelle un conseil d'anciens pluriel, redevable les uns aux autres, qui protège des dérives du pouvoir solitaire et incarne la coresponsabilité du soin pastoral.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le caractère avant le talent, critère de la qualification</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les qualifications listées (vv. 6-9) sont presque toutes morales et spirituelles&nbsp;: irréprochable, fidèle dans le mariage, maître de soi, hospitalier, juste, saint. MacArthur note qu'elles ne dépendent pas des capacités naturelles, de l'intelligence ou de l'éducation, mais des qualités de caractère et de l'aptitude à enseigner, dont le Saint-Esprit équipe.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine du ministère, Dieu choisit ses bergers sur ce qu'ils sont, non sur ce qu'ils savent faire. Pour votre assemblée, cela renverse les critères du monde&nbsp;: on ne nomme pas un homme parce qu'il est éloquent, prospère ou populaire, mais parce que sa vie est sans reproche. La santé de l'Église dépend de cette priorité; un talent sans sainteté est une menace, non une qualification.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'attachement à la vraie parole, clef de voûte du ministère</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le sommet de la liste&nbsp;: l'ancien doit être «&nbsp;attaché à la vraie parole telle qu'elle a été enseignée, afin d'être capable d'exhorter selon la saine doctrine et de réfuter les contradicteurs&nbsp;» (1.9). Il faut non seulement enseigner la doctrine, mais y adhérer soi-même avec une entière conviction.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la bibliologie réformée, l'autorité du berger n'est jamais en lui-même mais dans la Parole inspirée et suffisante qu'il garde. Pour votre assemblée, un ancien se reconnaît à son double ministère&nbsp;: il édifie en exhortant selon la saine doctrine et il protège en réfutant l'erreur. Choisir un responsable qui ne tient pas fermement l'Écriture, c'est livrer le troupeau aux loups (Ac 20.29-30).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'économe redevable, l'Église appartient à Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'évêque est «&nbsp;économe de Dieu&nbsp;» (1.7), intendant qui gère les ressources de son Maître pour le bien des siens. De là découlent les vices à fuir&nbsp;: ni arrogant, ni colérique, ni adonné au vin, ni violent, ni porté à un gain honteux.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de l'Église comme propriété de Dieu, acquise par le sang de Christ (Ac 20.28), les anciens ne possèdent pas le troupeau, ils en répondent devant Dieu (Hé 13.17). Pour votre assemblée, cela exclut tout ministère exercé pour le pouvoir, l'argent ou la domination&nbsp;: l'ancien fidèle se sait serviteur comptable, et l'appât du gain qui marque le faux docteur (1.11) est le signe inverse du vrai berger.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Les enfants fidèles, le foyer comme épreuve du ministère</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>L'ancien doit avoir «&nbsp;des enfants fidèles, qui ne soient ni accusés de débauche ni rebelles&nbsp;» (1.6). MacArthur souligne que «&nbsp;fidèle&nbsp;» désigne toujours, dans le N.T., des croyants&nbsp;: l'ancien démontre, dans sa propre maison, sa capacité de conduire au salut et à la sanctification.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon le principe que la conduite de la famille préfigure celle de l'Église (1 Ti 3.4-5), le foyer du candidat est un laboratoire visible de son ministère. Pour votre assemblée, cela invite à regarder non l'image publique d'un homme mais la réalité de sa maison&nbsp;: un père dont les enfants se sont détournés de l'Évangile montre, en ce domaine, une qualification encore à éprouver, et le discernement de l'assemblée doit en tenir compte avec sagesse et compassion.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul ordonne d'établir «&nbsp;des anciens&nbsp;» au pluriel «&nbsp;dans chaque ville&nbsp;» (1.5). En quoi la pluralité des anciens protège-t-elle votre assemblée des dangers du leadership solitaire, et comment l'incarner concrètement sans diluer la responsabilité?</li>
+      <li>MacArthur insiste&nbsp;: les qualifications ne tiennent pas aux capacités naturelles ni à l'éducation, mais au caractère (1.6-9). Quels critères, dans la pratique réelle de nos Églises, glissent subtilement vers le talent ou la popularité plutôt que vers la sainteté?</li>
+      <li>«&nbsp;Irréprochable&nbsp;» ne signifie pas «&nbsp;sans péché&nbsp;» mais «&nbsp;sans prise au scandale&nbsp;» (1.6-7). Comment prêcher cette nuance sans abaisser la barre ni écraser les consciences par un idéal de perfection impossible?</li>
+      <li>L'expression «&nbsp;enfants fidèles&nbsp;» (1.6) désigne, selon MacArthur, des enfants croyants. Comment exposer cette qualification avec à la fois fermeté doctrinale et compassion pastorale envers les pères dont les enfants se sont détournés?</li>
+      <li>Le verset 9 fait de l'attachement à la vraie parole la clef de voûte&nbsp;: exhorter et réfuter. Votre assemblée valorise-t-elle autant la défense de la vérité (réfuter) que son enseignement édifiant (exhorter), ou l'un éclipse-t-il l'autre?</li>
+      <li>L'ancien est «&nbsp;économe de Dieu&nbsp;» (1.7), redevable devant le Maître. Comment cette image de l'intendance transforme-t-elle la manière dont un responsable se perçoit lui-même, face à l'argent, au pouvoir et à la reconnaissance?</li>
+      <li>Le portrait de l'ancien irréprochable (1.5-9) est immédiatement suivi du portrait du faux docteur (1.10-16). Que révèle ce contraste voulu sur le lien entre la qualité des responsables et la survie doctrinale de l'Église?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Tite 1.5-9 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Tite : l'ordre de l'Évangile&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Tite-1-5-9.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

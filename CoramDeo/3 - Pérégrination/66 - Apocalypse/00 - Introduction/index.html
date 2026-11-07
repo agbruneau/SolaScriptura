@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apocalypse : la révélation de Jésus-Christ · Église Baptiste de Charlesbourg</title>
+<meta name="description" content="Présentation de l'Apocalypse pour une étude biblique : la révélation de Jésus-Christ glorifié, souverain de l'histoire, qui revient régner. Vingt-huit semaines d'exposition suivie en six mouvements, lues au sens littéral et futuriste (prémillénarisme). Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+</style>
+
+<style>
+  /* ---- Carte de semaine : idee maitresse (ajout page de livre) ---- */
+  .semaine__idee{
+    font-size:.96rem;line-height:1.5;color:var(--encre-doux);
+    margin:.1rem 0 .2rem;text-wrap:pretty;
+  }
+  .mouvement .sec-head{margin-bottom:1.6rem;}
+  .mouvement .lead{margin-bottom:.4rem;}
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Apocalypse</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#mvt1">I. Le Christ glorifié</a>
+    <a href="#mvt2">II. Le trône et l'Agneau</a>
+    <a href="#mvt3">III. Les trompettes</a>
+    <a href="#mvt4">IV. Le grand conflit</a>
+    <a href="#mvt5">V. Coupes et Babylone</a>
+    <a href="#mvt6">VI. Le retour du Roi</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Apocalypse · Exposition suivie</p>
+    <h1 class="hero__title">Apocalypse : la révélation de Jésus-Christ</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Voici, il vient avec les nuées. Et tout œil le verra, même ceux qui l’ont percé; et toutes les tribus de la terre se lamenteront à cause de lui. Oui. Amen!&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Apocalypse 1.7 · NEG</p>
+    <p class="hero__series">Série : <b>Apocalypse : la révélation de Jésus-Christ</b></p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- PRESENTATION DU LIVRE -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Présentation du livre</p>
+      <h2 class="sec-title">Une traversée de l'Apocalypse</h2>
+      <p class="ref">Du Christ glorifié parmi les Églises au retour du Roi et à la nouvelle création</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Révélation de Jésus-Christ, que Dieu lui a donnée pour montrer à ses serviteurs les choses qui doivent arriver bientôt.</p>
+        <cite class="verse__ref">Apocalypse 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Celui qui atteste ces choses dit: Oui, je viens bientôt. Amen! Viens, Seigneur Jésus!</p>
+        <cite class="verse__ref">Apocalypse 22.20 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'Apocalypse, dernier livre du canon, n'est pas d'abord un casse-tête de symboles mais la <span class="surligne">révélation de Jésus-Christ</span> glorifié : le Roi des rois, souverain absolu de l'histoire, qui revient juger et régner. Lue au sens littéral et selon l'herméneutique grammatico-historique, elle dévoile l'avenir réel du monde : la grande tribulation, le retour corporel de Christ, le règne millénaire terrestre et la nouvelle création. Sa clé, 1.7, en donne le cri : Voici, il vient avec les nuées, et tout œil le verra.</p>
+    <ul class="points">
+      <li><b>La clé : 1.7.</b> <span class="surligne">Voici, il vient avec les nuées, et tout œil le verra</span> : le livre tout entier court vers le retour visible, littéral et glorieux du Christ.</li>
+      <li><b>Le Christ glorifié parmi les Églises (chapitres 1 à 3).</b> Jean contemple le Fils de l'homme glorifié, qui adresse à sept Églises réelles des appels à la repentance et de glorieuses promesses au vainqueur.</li>
+      <li><b>Le trône, l'Agneau et les sceaux (chapitres 4 à 7).</b> Au ciel, Dieu trône en souverain absolu et l'Agneau immolé, seul digne, ouvre les sceaux qui inaugurent la tribulation; cent quarante-quatre mille d'Israël sont scellés.</li>
+      <li><b>Les trompettes du jugement (chapitres 8 à 11).</b> Les jugements s'intensifient sur la terre; les deux témoins prophétisent et la septième trompette proclame que le royaume du monde appartient désormais à notre Seigneur.</li>
+      <li><b>Le grand conflit (chapitres 12 à 14).</b> Le dragon, la bête de la mer et le faux prophète font la guerre aux saints, mais l'Agneau et les rachetés tiennent ferme jusqu'à la moisson du jugement.</li>
+      <li><b>Les coupes et la chute de Babylone (chapitres 15 à 18).</b> Les sept coupes versent la pleine colère de Dieu, et Babylone la grande, figure du système mondain idolâtre, s'effondre en une seule heure.</li>
+      <li><b>Le retour du Roi et la nouvelle création (chapitres 19 à 22).</b> Christ revient en gloire, règne mille ans sur la terre, juge les morts au grand trône blanc, puis Dieu fait toutes choses nouvelles : « Oui, je viens bientôt. »</li>
+      <li><b>Six mouvements, vingt-huit semaines.</b> La série épouse l'architecture de l'Apocalypse, de 1.1 à 22.21, sans lacune ni chevauchement. Choisissez un mouvement, puis une semaine, pour ouvrir sa recherche exégétique complète.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt1">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Mouvement I · Apocalypse 1.1-3.22</p>
+      <h2 class="sec-title mouvement-titre">Le Christ glorifié parmi les Églises</h2>
+      <p class="ref">Semaines 1 à 9</p>
+    </header>
+    <p class="lead">Jean contemple le Fils de l'homme glorifié, souverain de l'histoire, qui adresse à sept Églises réelles des appels pressants à la repentance et de glorieuses promesses au vainqueur.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20La%20r%C3%A9v%C3%A9lation%20de%20J%C3%A9sus-Christ%20%28Apocalypse%201.1-8%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">La révélation de Jésus-Christ</span>
+        <span class="semaine__idee">Ce livre dévoile Jésus-Christ dans sa gloire et promet son retour imminent et béni à ceux qui lisent et gardent ses paroles.</span>
+        <span class="semaine__ref">Apocalypse 1.1-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20Le%20Fils%20de%20l%27homme%20glorifi%C3%A9%20%28Apocalypse%201.9-20%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Le Fils de l'homme glorifié</span>
+        <span class="semaine__idee">Le Christ ressuscité se tient au milieu de son Église, souverain, saint et juge, tenant la mort et le séjour des morts dans sa main.</span>
+        <span class="semaine__ref">Apocalypse 1.9-20<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20%C3%89ph%C3%A8se%20%20l%27amour%20abandonn%C3%A9%20%28Apocalypse%202.1-7%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Éphèse : l'amour abandonné</span>
+        <span class="semaine__idee">Une orthodoxie irréprochable ne remplace jamais l'amour pour Christ, et celui qui vaincra mangera de l'arbre de vie.</span>
+        <span class="semaine__ref">Apocalypse 2.1-7<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20Smyrne%20%20fid%C3%A8le%20jusqu%27%C3%A0%20la%20mort%20%28Apocalypse%202.8-11%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">Smyrne : fidèle jusqu'à la mort</span>
+        <span class="semaine__idee">Le premier et le dernier, qui était mort et qui vit, appelle l'Église persécutée à la fidélité, promettant la couronne de vie et la délivrance de la seconde mort.</span>
+        <span class="semaine__ref">Apocalypse 2.8-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../05%20-%20Pergame%20%20la%20v%C3%A9rit%C3%A9%20compromise%20%28Apocalypse%202.12-17%29/index.html">
+        <span class="semaine__num">Semaine 5</span>
+        <span class="semaine__titre">Pergame : la vérité compromise</span>
+        <span class="semaine__idee">Au trône même de Satan, l'Église doit refuser la doctrine de Balaam et des Nicolaïtes, car le Christ juge par l'épée de sa bouche.</span>
+        <span class="semaine__ref">Apocalypse 2.12-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../06%20-%20Thyatire%20%20la%20tol%C3%A9rance%20du%20mal%20%28Apocalypse%202.18-29%29/index.html">
+        <span class="semaine__num">Semaine 6</span>
+        <span class="semaine__titre">Thyatire : la tolérance du mal</span>
+        <span class="semaine__idee">Celui dont les yeux sont une flamme de feu juge selon les œuvres et ne tolère pas la séduction de Jézabel dans son Église.</span>
+        <span class="semaine__ref">Apocalypse 2.18-29<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../07%20-%20Sardes%20%20une%20r%C3%A9putation%20sans%20vie%20%28Apocalypse%203.1-6%29/index.html">
+        <span class="semaine__num">Semaine 7</span>
+        <span class="semaine__titre">Sardes : une réputation sans vie</span>
+        <span class="semaine__idee">Une Église peut avoir le renom d'être vivante tout en étant morte ; le Christ appelle au réveil, à la repentance et à la vigilance.</span>
+        <span class="semaine__ref">Apocalypse 3.1-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../08%20-%20Philadelphie%20%20la%20porte%20ouverte%20%28Apocalypse%203.7-13%29/index.html">
+        <span class="semaine__num">Semaine 8</span>
+        <span class="semaine__titre">Philadelphie : la porte ouverte</span>
+        <span class="semaine__idee">Au croyant qui a peu de force mais garde la parole de Christ, le Saint et le Véritable ouvre une porte que nul ne peut fermer et promet de le garder de l'heure de l'épreuve.</span>
+        <span class="semaine__ref">Apocalypse 3.7-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../09%20-%20Laodic%C3%A9e%20%20ni%20froid%20ni%20bouillant%20%28Apocalypse%203.14-22%29/index.html">
+        <span class="semaine__num">Semaine 9</span>
+        <span class="semaine__titre">Laodicée : ni froid ni bouillant</span>
+        <span class="semaine__idee">Le Christ se tient à la porte d'une Église tiède et autosuffisante, et frappe : la vraie richesse se reçoit de lui seul, dans la repentance.</span>
+        <span class="semaine__ref">Apocalypse 3.14-22<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt2">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Mouvement II · Apocalypse 4.1-7.17</p>
+      <h2 class="sec-title mouvement-titre">Le trône, l'Agneau et les sceaux</h2>
+      <p class="ref">Semaines 10 à 13</p>
+    </header>
+    <p class="lead">Au ciel, Dieu trône en souverain absolu et l'Agneau immolé, seul digne, ouvre les sceaux qui inaugurent la tribulation; cent quarante-quatre mille d'Israël sont scellés.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../10%20-%20Le%20tr%C3%B4ne%20du%20ciel%20%28Apocalypse%204.1-11%29/index.html">
+        <span class="semaine__num">Semaine 10</span>
+        <span class="semaine__titre">Le trône du ciel</span>
+        <span class="semaine__idee">Au centre de tout l'avenir se trouve le trône de Dieu, le Tout-Puissant, créateur, saint, digne de recevoir gloire, honneur et puissance.</span>
+        <span class="semaine__ref">Apocalypse 4.1-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../11%20-%20L%27Agneau%20digne%20d%27ouvrir%20le%20livre%20%28Apocalypse%205.1-14%29/index.html">
+        <span class="semaine__num">Semaine 11</span>
+        <span class="semaine__titre">L'Agneau digne d'ouvrir le livre</span>
+        <span class="semaine__idee">Seul l'Agneau immolé, le lion de la tribu de Juda, est digne d'ouvrir le titre de propriété de la terre et de recevoir l'adoration de toute la création.</span>
+        <span class="semaine__ref">Apocalypse 5.1-14<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../12%20-%20Les%20six%20premiers%20sceaux%20%28Apocalypse%206.1-17%29/index.html">
+        <span class="semaine__num">Semaine 12</span>
+        <span class="semaine__titre">Les six premiers sceaux</span>
+        <span class="semaine__idee">L'Agneau ouvre les six premiers sceaux et déchaîne le début de la grande tribulation, jusqu'à ce que les hommes fuient devant la colère de l'Agneau.</span>
+        <span class="semaine__ref">Apocalypse 6.1-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../13%20-%20Scell%C3%A9s%20et%20sauv%C3%A9s%20de%20la%20grande%20tribulation%20%28Apocalypse%207.1-17%29/index.html">
+        <span class="semaine__num">Semaine 13</span>
+        <span class="semaine__titre">Scellés et sauvés de la grande tribulation</span>
+        <span class="semaine__idee">Dieu scelle 144 000 d'Israël et rassemble une foule innombrable des nations, montrant qu'il sauve au cœur même de sa colère.</span>
+        <span class="semaine__ref">Apocalypse 7.1-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt3">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Mouvement III · Apocalypse 8.1-11.19</p>
+      <h2 class="sec-title mouvement-titre">Les trompettes du jugement</h2>
+      <p class="ref">Semaines 14 à 17</p>
+    </header>
+    <p class="lead">Les jugements de Dieu s'intensifient sur la terre; les deux témoins prophétisent et la septième trompette proclame que le royaume du monde appartient désormais à notre Seigneur et à son Christ.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../14%20-%20Le%20septi%C3%A8me%20sceau%20et%20les%20quatre%20trompettes%20%28Apocalypse%208.1-13%29/index.html">
+        <span class="semaine__num">Semaine 14</span>
+        <span class="semaine__titre">Le septième sceau et les quatre trompettes</span>
+        <span class="semaine__idee">Le silence du septième sceau ouvre les sept trompettes : la prière des saints monte à Dieu et la création est frappée dans une intensité croissante.</span>
+        <span class="semaine__ref">Apocalypse 8.1-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../15%20-%20Les%20cinqui%C3%A8me%20et%20sixi%C3%A8me%20trompettes%20%28Apocalypse%209.1-21%29/index.html">
+        <span class="semaine__num">Semaine 15</span>
+        <span class="semaine__titre">Les cinquième et sixième trompettes</span>
+        <span class="semaine__idee">Les jugements démoniaques de l'abîme et l'armée meurtrière de l'Euphrate frappent une humanité qui, malgré tout, refuse de se repentir.</span>
+        <span class="semaine__ref">Apocalypse 9.1-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../16%20-%20Le%20petit%20livre%20et%20la%20proph%C3%A9tie%20%C3%A0%20reprendre%20%28Apocalypse%2010.1-11%29/index.html">
+        <span class="semaine__num">Semaine 16</span>
+        <span class="semaine__titre">Le petit livre et la prophétie à reprendre</span>
+        <span class="semaine__idee">Avant la septième trompette, Jean reçoit l'ordre de prophétiser encore : la parole de Dieu est douce et amère, et le mystère de Dieu s'accomplira.</span>
+        <span class="semaine__ref">Apocalypse 10.1-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../17%20-%20Les%20deux%20t%C3%A9moins%20et%20la%20septi%C3%A8me%20trompette%20%28Apocalypse%2011.1-19%29/index.html">
+        <span class="semaine__num">Semaine 17</span>
+        <span class="semaine__titre">Les deux témoins et la septième trompette</span>
+        <span class="semaine__idee">Les deux témoins prophétisent, meurent et ressuscitent, puis la septième trompette proclame que le royaume du monde est devenu celui de notre Seigneur et de son Christ.</span>
+        <span class="semaine__ref">Apocalypse 11.1-19<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt4">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Mouvement IV · Apocalypse 12.1-14.20</p>
+      <h2 class="sec-title mouvement-titre">Le grand conflit : le dragon et les bêtes</h2>
+      <p class="ref">Semaines 18 à 20</p>
+    </header>
+    <p class="lead">Le dragon, la bête de la mer et le faux prophète font la guerre aux saints; mais l'Agneau et les rachetés tiennent ferme, et vient l'heure de la moisson du jugement.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../18%20-%20La%20femme%2C%20le%20dragon%20et%20l%27enfant%20%28Apocalypse%2012.1-18%29/index.html">
+        <span class="semaine__num">Semaine 18</span>
+        <span class="semaine__titre">La femme, le dragon et l'enfant</span>
+        <span class="semaine__idee">Derrière l'histoire se joue un combat cosmique : le dragon, Satan vaincu, fait la guerre à la femme, Israël, et au reste de sa postérité.</span>
+        <span class="semaine__ref">Apocalypse 12.1-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../19%20-%20Les%20deux%20b%C3%AAtes%20%28Apocalypse%2013.1-18%29/index.html">
+        <span class="semaine__num">Semaine 19</span>
+        <span class="semaine__titre">Les deux bêtes</span>
+        <span class="semaine__idee">Le dragon suscite l'Antichrist de la mer et le faux prophète de la terre, qui imposent l'adoration et la marque, contrefaçon démoniaque de la Trinité.</span>
+        <span class="semaine__ref">Apocalypse 13.1-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../20%20-%20L%27Agneau%2C%20les%20rachet%C3%A9s%20et%20la%20moisson%20%28Apocalypse%2014.1-20%29/index.html">
+        <span class="semaine__num">Semaine 20</span>
+        <span class="semaine__titre">L'Agneau, les rachetés et la moisson</span>
+        <span class="semaine__idee">Face à la bête, l'Agneau se tient avec ses rachetés sur la montagne de Sion, les anges proclament l'Évangile éternel et le jugement, et la moisson de la terre est mûre.</span>
+        <span class="semaine__ref">Apocalypse 14.1-20<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt5">
+    <header class="sec-head">
+      <div class="sec-num">V</div>
+      <p class="kicker">Mouvement V · Apocalypse 15.1-18.24</p>
+      <h2 class="sec-title mouvement-titre">Les coupes et la chute de Babylone</h2>
+      <p class="ref">Semaines 21 à 23</p>
+    </header>
+    <p class="lead">Les sept coupes versent la pleine colère de Dieu, et Babylone la grande, figure du système mondain idolâtre, s'effondre définitivement en une seule heure.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../21%20-%20Les%20sept%20coupes%20de%20la%20col%C3%A8re%20de%20Dieu%20%28Apocalypse%2015.1-16.21%29/index.html">
+        <span class="semaine__num">Semaine 21</span>
+        <span class="semaine__titre">Les sept coupes de la colère de Dieu</span>
+        <span class="semaine__idee">Les sept anges versent les sept coupes, dernier déversement de la colère de Dieu, et les hommes blasphèment plutôt que de se repentir jusqu'à Harmaguédon.</span>
+        <span class="semaine__ref">Apocalypse 15.1-16.21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../22%20-%20La%20grande%20prostitu%C3%A9e%20%20Babylone%20d%C3%A9masqu%C3%A9e%20%28Apocalypse%2017.1-18%29/index.html">
+        <span class="semaine__num">Semaine 22</span>
+        <span class="semaine__titre">La grande prostituée : Babylone démasquée</span>
+        <span class="semaine__idee">Le système religieux et politique de Babylone, ivre du sang des saints, chevauche la bête qui finira par la détruire, car l'Agneau est le Seigneur des seigneurs.</span>
+        <span class="semaine__ref">Apocalypse 17.1-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../23%20-%20La%20chute%20de%20Babylone%20%28Apocalypse%2018.1-24%29/index.html">
+        <span class="semaine__num">Semaine 23</span>
+        <span class="semaine__titre">La chute de Babylone</span>
+        <span class="semaine__idee">Babylone la grande tombe en une heure, et le ciel se réjouit du jugement juste de Dieu sur le système qui a séduit les nations.</span>
+        <span class="semaine__ref">Apocalypse 18.1-24<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt6">
+    <header class="sec-head">
+      <div class="sec-num">VI</div>
+      <p class="kicker">Mouvement VI · Apocalypse 19.1-22.21</p>
+      <h2 class="sec-title mouvement-titre">Le retour du Roi, le règne et la nouvelle création</h2>
+      <p class="ref">Semaines 24 à 28</p>
+    </header>
+    <p class="lead">Christ revient en gloire comme Roi des rois, règne mille ans sur la terre, juge les morts au grand trône blanc; puis Dieu fait toutes choses nouvelles. « Oui, je viens bientôt. »</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../24%20-%20Les%20noces%20de%20l%27Agneau%20et%20le%20Roi%20qui%20revient%20%28Apocalypse%2019.1-21%29/index.html">
+        <span class="semaine__num">Semaine 24</span>
+        <span class="semaine__titre">Les noces de l'Agneau et le Roi qui revient</span>
+        <span class="semaine__idee">Le ciel célèbre les noces de l'Agneau, puis le Roi des rois revient sur son cheval blanc, en gloire et en jugement, pour vaincre la bête et ses armées.</span>
+        <span class="semaine__ref">Apocalypse 19.1-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../25%20-%20Le%20r%C3%A8gne%20de%20mille%20ans%20et%20le%20jugement%20dernier%20%28Apocalypse%2020.1-15%29/index.html">
+        <span class="semaine__num">Semaine 25</span>
+        <span class="semaine__titre">Le règne de mille ans et le jugement dernier</span>
+        <span class="semaine__idee">Satan est lié, Christ règne mille ans sur la terre, puis, après l'ultime révolte vaincue, les morts sont jugés devant le grand trône blanc selon leurs œuvres.</span>
+        <span class="semaine__ref">Apocalypse 20.1-15<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../26%20-%20Un%20ciel%20nouveau%20et%20une%20terre%20nouvelle%20%28Apocalypse%2021.1-8%29/index.html">
+        <span class="semaine__num">Semaine 26</span>
+        <span class="semaine__titre">Un ciel nouveau et une terre nouvelle</span>
+        <span class="semaine__idee">Dieu fait toutes choses nouvelles : il habite avec les siens, essuie toute larme et abolit la mort, tandis que les incrédules ont leur part dans l'étang de feu.</span>
+        <span class="semaine__ref">Apocalypse 21.1-8<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../27%20-%20La%20nouvelle%20J%C3%A9rusalem%20%28Apocalypse%2021.9-22.5%29/index.html">
+        <span class="semaine__num">Semaine 27</span>
+        <span class="semaine__titre">La nouvelle Jérusalem</span>
+        <span class="semaine__idee">L'épouse de l'Agneau, la cité éternelle éclairée par la gloire de Dieu et de l'Agneau, accueille pour toujours les rachetés dans une communion sans malédiction.</span>
+        <span class="semaine__ref">Apocalypse 21.9-22.5<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../28%20-%20Je%20viens%20bient%C3%B4t%20%28Apocalypse%2022.6-21%29/index.html">
+        <span class="semaine__num">Semaine 28</span>
+        <span class="semaine__titre">Je viens bientôt</span>
+        <span class="semaine__idee">Le Christ scelle son livre par la promesse répétée de son retour imminent, appelant à garder ces paroles, et l'Esprit et l'épouse répondent : Viens, Seigneur Jésus.</span>
+        <span class="semaine__ref">Apocalypse 22.6-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;Apocalypse : la révélation de Jésus-Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

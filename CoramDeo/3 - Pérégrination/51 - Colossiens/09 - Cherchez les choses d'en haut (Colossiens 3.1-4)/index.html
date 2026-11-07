@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colossiens 3.1-4 · Cherchez les choses d'en haut · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Colossiens 3.1-4 : cherchez les choses d'en haut ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Colossiens 3.1-4</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Colossiens 3.1-4</p>
+    <h1 class="hero__title">Cherchez les choses d'en haut</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Si donc vous êtes ressuscités avec Christ, cherchez les choses d'en haut, où Christ est assis à la droite de Dieu.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Colossiens 3.1 · NEG</p>
+    <p class="hero__series">Série : <b>Colossiens : la suprématie et la suffisance de Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Colossiens 3.1-4</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Si donc vous êtes ressuscités avec Christ, cherchez les choses d'en haut, où Christ est assis à la droite de Dieu.</p>
+        <cite class="verse__ref">Colossiens 3.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car vous êtes morts, et votre vie est cachée avec Christ en Dieu.</p>
+        <cite class="verse__ref">Colossiens 3.3 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Colossiens 3.1-4 ouvre la grande division pratique de l'épître&nbsp;: c'est ici que la doctrine devient devoir, que l'indicatif de ce que Christ a accompli engendre l'impératif de ce que le croyant doit chercher. Avant le moindre commandement moral concret, Paul rappelle ce que les croyants sont déjà devenus en Christ&nbsp;: ressuscités, morts au péché, cachés en Dieu, destinés à la gloire.</p>
+    <div class="body">
+      <p>Notre péricope ouvre la grande division pratique de l'épître (3.1 à 4.18) et constitue la charnière de toute la lettre. Le plan de la Bible d'étude MacArthur fait passer Paul de l'enseignement doctrinal (1.15 à 2.23) aux exhortations pratiques (3.1 à 4.18)&nbsp;; en chaire, MacArthur voit dans l'appel de nos versets le premier commandement général que Paul tire du privilège de l'Évangile. Avant le moindre impératif moral concret, l'apôtre rappelle ce que les croyants sont déjà devenus en Christ&nbsp;: ressuscités avec lui, morts au péché, cachés en Dieu, destinés à paraître dans la gloire. La sanctification qu'il va commander aux versets 5 et suivants n'est donc pas un moralisme suspendu dans le vide, mais le déploiement d'une union déjà accomplie avec le Christ exalté.</p>
+      <p>La péricope est étroitement soudée à l'argument antérieur. En 2.20, Paul avait écrit&nbsp;: «&nbsp;Si vous êtes morts avec Christ aux principes élémentaires du monde, pourquoi vous impose-t-on ces préceptes?&nbsp;» Ici, au verset 1, il enchaîne par le versant positif de la même union&nbsp;: «&nbsp;Si donc vous êtes ressuscités avec Christ, cherchez les choses d'en haut.&nbsp;» Le «&nbsp;Si&nbsp;» du verset 1 se traduit mieux par «&nbsp;puisque&nbsp;», note MacArthur&nbsp;: il ne s'agit pas d'une hypothèse douteuse mais d'un fait établi sur lequel repose tout l'appel. Le verbe «&nbsp;ressuscités&nbsp;» signifie en réalité coressuscités&nbsp;: par leur union avec Christ, les croyants participent spirituellement à sa mort et à sa résurrection dès le jour de leur conversion (cf. Ro 6.3-4; Ga 2.20). C'est cette réalité accomplie qui commande les deux impératifs jumeaux du passage&nbsp;: cherchez (v. 1) et attachez-vous (v. 2).</p>
+      <p>Les bornes de l'unité sont nettes. Elle s'ouvre au verset 1 par le «&nbsp;donc&nbsp;» qui tire la conséquence de toute la section doctrinale, et elle se referme au verset 4 par la promesse eschatologique&nbsp;: «&nbsp;alors vous paraîtrez aussi avec lui dans la gloire.&nbsp;» Le verset 5 amorce un mouvement nouveau et concret, «&nbsp;Faites donc mourir ce qui, dans vos membres, est terrestre&nbsp;», qui détaille négativement ce que la recherche des choses d'en haut implique. Nos quatre versets forment ainsi l'énoncé du principe, la cause profonde dont les vices à mortifier et les vertus à revêtir seront les applications. L'idée maîtresse y est limpide&nbsp;: ressuscités avec Christ, les croyants cherchent les choses d'en haut, car leur vie est cachée avec lui en Dieu, et elle sera manifestée dans la gloire lors de sa seconde venue.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Colossiens 3.1 · 3.4</p>
+    </header>
+    <p class="lead">L'hérésie colossienne offrait une spiritualité fondée sur des ombres terrestres, règles, fêtes, ascétisme, mépris du corps. En commandant de chercher les choses d'en haut, Paul oppose frontalement la véritable spiritualité, ancrée dans le Christ exalté, à la fausse, qui prétend s'élever par des moyens humains et périssables.</p>
+    <div class="body">
+      <p>L'épître aux Colossiens fut écrite par Paul vers 60 à 62 apr. J.-C., depuis sa captivité à Rome, et compte parmi les épîtres dites de la captivité, avec Éphésiens, Philippiens et Philémon. Colosses était une ville de Phrygie, dans la province romaine d'Asie, à environ 160 kilomètres à l'est d'Éphèse, dans la vallée du fleuve Lycus. L'Église n'avait pas été fondée par Paul, qui n'avait jamais mis les pieds dans la ville (2.1), mais par Épaphras (1.5-7), converti durant le ministère de trois ans de l'apôtre à Éphèse. Plusieurs années après sa naissance, l'Église fut menacée par une hérésie unique mêlant un proto-gnosticisme, un légalisme judaïsant, un ascétisme rigide, un culte des anges et un mysticisme fondé sur de prétendues visions.</p>
+    </div>
+    <p>Trois traits chargent la péricope et échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>L'opposition à la fausse spiritualité.</b> Les faux docteurs offraient une spiritualité fondée sur des ombres terrestres&nbsp;: règles alimentaires, fêtes, sabbats (2.16), préceptes du genre «&nbsp;ne prends pas, ne goûte pas, ne touche pas&nbsp;» (2.21), mépris du corps et négligence systématique de soi (2.23). Tout cela demeurait, selon le diagnostic de Paul, attaché aux principes élémentaires du monde et sans valeur réelle contre le péché. En commandant aux Colossiens de chercher les choses d'en haut et non celles qui sont sur la terre, Paul oppose frontalement la véritable spiritualité, ancrée dans le Christ exalté, à la fausse spiritualité de l'ascétisme et du ritualisme, qui prétend atteindre la sainteté par des moyens humains et périssables.</li>
+      <li><b>Christ assis à la droite de Dieu.</b> L'image du verset 1, où Christ est assis à la droite de Dieu, puisait dans le Psaume 110.1, le texte de l'Ancien Testament le plus cité dans le Nouveau. Pour un auditoire familier de l'Écriture, être assis à la droite du souverain évoquait la position d'honneur, de majesté et d'autorité suprêmes. Paul affirme ainsi que le Christ vers qui les croyants doivent diriger leurs pensées n'est pas une émanation inférieure, comme le soutenaient les hérétiques colossiens, mais le Seigneur exalté qui partage le trône même de Dieu.</li>
+      <li><b>La perspective du retour glorieux.</b> Le verset 4, en annonçant que «&nbsp;Christ, votre vie, paraîtra&nbsp;», projette toute la péricope vers la seconde venue, suivant l'eschatologie de l'attente du retour glorieux et corporel du Sauveur. La vraie élévation de l'âme ne vient pas de règles terrestres mais de l'union avec le Ressuscité, et son terme est la manifestation publique de ce qui demeure aujourd'hui caché.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: du <i>synēgerthēte</i> qui dit la résurrection déjà accomplie, aux impératifs <i>zēteite</i> et <i>phroneite</i> qui orientent toute la vie, jusqu'au <i>kekryptai</i> de la vie cachée et au <i>phanerōthē</i> de la gloire manifestée.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">ressuscités</span><span class="mot-gr">synēgerthēte</span></th>
+            <td class="col-sens">avoir été relevé ensemble, ressuscité conjointement avec un autre; coressuscité</td>
+            <td>Le verbe signifie en réalité coressuscités, précise MacArthur, et renvoie à l'union du croyant avec Christ dans sa résurrection (le préfixe <i>syn</i> signifie avec). Grâce à cette union, les croyants participent spirituellement à la mort et à la résurrection de Christ dès le jour de leur conversion (cf. Ro 6.3-4; Ga 2.20). Ce n'est pas une promesse future mais un fait accompli au passé&nbsp;: ils sont déjà devenus vivants et demeurent ainsi en lui, ce qui les rend capables de comprendre les vérités, réalités et bénédictions spirituelles de Dieu. Le temps verbal indique un événement passé et définitif, non un processus en cours. C'est cette résurrection spirituelle déjà advenue, et non un effort ascétique, qui fonde l'impératif chercher les choses d'en haut.</td>
+            <td><span class="trad"><span><b>S21</b> ressuscités</span><span><b>NEG79</b> ressuscités</span><span><b>Darby</b> ressuscités</span><span><b>LSG</b> ressuscités</span><span><b>KJF</b> ressuscités</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">cherchez</span><span class="mot-gr">zēteite</span></th>
+            <td class="col-sens">chercher, rechercher avec effort; s'efforcer d'obtenir, viser, poursuivre comme un but</td>
+            <td>Le verbe est un impératif présent qui appelle une recherche continue et soutenue, non un geste ponctuel. Il dénote l'orientation décidée de toute la vie vers un objet. Les choses d'en haut que le croyant doit chercher sont, selon MacArthur, ces glorieuses bénédictions (cf. Ép 1.3), les privilèges et les richesses disponibles pour tous les croyants dans le royaume céleste&nbsp;; pour en saisir le contenu, il renvoie à 2.3, où toutes les richesses de la vérité se trouvent en Christ. En chaire, il y voit les valeurs spirituelles logées dans le cœur du Christ glorifié, et surtout l'amour. Chercher les choses d'en haut, ce n'est pas mépriser les responsabilités terrestres légitimes, mais subordonner toute la vie à la réalité du Christ exalté. L'impératif suppose l'indicatif qui précède&nbsp;: c'est parce qu'ils sont ressuscités avec lui que les croyants sont rendus capables de cette recherche.</td>
+            <td><span class="trad"><span><b>S21</b> recherchez</span><span><b>NEG79</b> cherchez</span><span><b>Darby</b> cherchez</span><span><b>LSG</b> cherchez</span><span><b>KJF</b> cherchez</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">attachez-vous</span><span class="mot-gr">phroneite</span></th>
+            <td class="col-sens">penser, avoir telle disposition d'esprit; régler ses pensées, fixer son intérêt et son affection sur</td>
+            <td>Le verbe peut aussi se traduire par «&nbsp;pensez à&nbsp;» ou «&nbsp;ayez une disposition intérieure pour&nbsp;», note MacArthur. Il ne désigne pas une activité intellectuelle isolée mais l'orientation profonde de l'esprit, des affections et de la volonté. De même qu'une boussole indique le nord, les pensées des chrétiens doivent se tourner vers les choses d'en haut. Cette disposition céleste ne peut provenir que de la compréhension des réalités célestes par la lecture des Écritures (cf. Ro 8.5; 12.2; Ph 4.8). Le verset 2 complète le verset 1&nbsp;: non seulement chercher les choses d'en haut, mais y attacher l'ensemble de sa mentalité, et non à celles qui sont sur la terre. Le contraste vise précisément les ombres terrestres que les faux docteurs colossiens prônaient.</td>
+            <td><span class="trad"><span><b>S21</b> pensez</span><span><b>NEG79</b> attachez-vous</span><span><b>Darby</b> pensez</span><span><b>LSG</b> affectionnez-vous</span><span><b>KJF</b> attachez vos affections</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">cachée</span><span class="mot-gr">kekryptai</span></th>
+            <td class="col-sens">avoir été caché, dissimulé, mis en lieu sûr; tenu à couvert, dérobé aux regards et protégé</td>
+            <td>L'expression «&nbsp;votre vie est cachée avec Christ en Dieu&nbsp;» porte, selon MacArthur, trois sens à la fois. Premièrement, les croyants partagent la vie spirituelle du Père et du Fils (1 Co 6.17; 2 Pi 1.4). Deuxièmement, le monde ne peut comprendre tout ce que signifie la nouvelle vie du croyant (1 Co 2.14; 1 Jn 3.2)&nbsp;: cette vie lui demeure dérobée. Troisièmement, les croyants jouissent d'une sécurité éternelle, protégés de tout ennemi spirituel, et ils ont accès à toutes les bénédictions divines (Jn 10.28; Ro 8.31-39; 1 Pi 1.4). Le temps verbal indique un état permanent résultant d'un acte passé&nbsp;: la vie du croyant est mise à l'abri une fois pour toutes. C'est le fondement de la persévérance des saints, car ce que Dieu garde, nul ne peut le ravir.</td>
+            <td><span class="trad"><span><b>S21</b> cachée</span><span><b>NEG79</b> cachée</span><span><b>Darby</b> cachée</span><span><b>LSG</b> cachée</span><span><b>KJF</b> cachée</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">paraîtra</span><span class="mot-gr">phanerōthē</span></th>
+            <td class="col-sens">être manifesté, rendu visible, dévoilé au grand jour; apparaître ouvertement ce que l'on est déjà en secret</td>
+            <td>Le verbe ne désigne pas la venue à l'existence d'une chose nouvelle mais la manifestation ouverte d'une réalité déjà présente mais cachée. «&nbsp;Quand Christ, votre vie, paraîtra&nbsp;» renvoie, selon MacArthur, à la seconde venue de Christ (cf. Ap 19.11-13, 15-16). Ce qui est aujourd'hui caché avec lui en Dieu sera alors dévoilé&nbsp;: la vie du croyant, dissimulée au monde, éclatera publiquement dans la gloire. Le passage est ainsi résolument tourné vers l'avenir, conformément à l'eschatologie de l'attente du retour corporel et glorieux du Seigneur. Paul appelle Christ «&nbsp;votre vie&nbsp;»&nbsp;: la résurrection spirituelle présente débouchera sur la glorification future, lorsque les croyants paraîtront aussi avec lui dans la gloire. La certitude de cette manifestation soutient la recherche présente des choses d'en haut.</td>
+            <td><span class="trad"><span><b>S21</b> apparaîtra</span><span><b>NEG79</b> paraîtra</span><span><b>Darby</b> sera manifesté</span><span><b>LSG</b> paraîtra</span><span><b>KJF</b> apparaîtra</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Colossiens 3.1-4</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Colossiens 3.1-4 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Col 3.1, 3.2, 3.3, 3.4.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">2145</span></th>
+            <td><a href="https://www.gty.org/sermons/2145" target="_blank" rel="noopener">Living the Risen Life</a></td>
+            <td>Colossiens 3.1-4</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-50</span></th>
+            <td><a href="https://www.gty.org/sermons/81-50" target="_blank" rel="noopener">Leaving the World to Reach the World</a></td>
+            <td>Colossiens 3.1-4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Pour MacArthur, Colossiens 3.1-4 ouvre la partie pratique de l'épître&nbsp;: la section doctrinale achevée, Paul en tire les implications, car la doctrine a toujours des implications pratiques, et l'indicatif du verset 1 fonde les impératifs qui suivent. Chaque commandement du passage, précise-t-il, repose sur ce fait&nbsp;: le croyant est une nouvelle créature.</p>
+    <div class="body">
+      <p>Le «&nbsp;Si donc&nbsp;» du verset 1 se traduit mieux par «&nbsp;puisque&nbsp;»&nbsp;: Paul ne formule pas une hypothèse incertaine, mais tire la conséquence d'un fait établi dans les chapitres précédents. Le verbe «&nbsp;ressuscités&nbsp;» signifie en réalité coressuscités. Par leur union avec Christ, les croyants participent spirituellement à sa mort et à sa résurrection dès le jour de leur conversion. Ils sont devenus vivants et demeurent ainsi en lui, ce qui les rend capables de comprendre les vérités, les réalités et les bénédictions spirituelles de Dieu, de même que sa volonté. La vie chrétienne consiste donc, dit MacArthur, à devenir ce que l'on est&nbsp;: le croyant doit vivre à la hauteur de sa position en Christ. On ne devient pas chrétien en cherchant les choses d'en haut&nbsp;; on cherche les choses d'en haut parce qu'on est déjà ressuscité avec Christ.</p>
+      <p>Les deux impératifs du passage, «&nbsp;cherchez&nbsp;» (v. 1) et «&nbsp;attachez-vous&nbsp;» (v. 2), sont complémentaires. Le premier vise l'orientation active de la vie, sa poursuite décidée&nbsp;; le second vise la disposition profonde de l'esprit et des affections. MacArthur explique que «&nbsp;attachez-vous&nbsp;» peut se traduire par «&nbsp;pensez à&nbsp;» ou «&nbsp;ayez une disposition intérieure pour&nbsp;»&nbsp;: de même qu'une boussole indique invariablement le nord, les pensées du chrétien doivent se tourner vers les choses d'en haut. Or de telles pensées célestes ne peuvent provenir que de la compréhension des réalités célestes acquise par la lecture des Écritures. Voilà qui distingue radicalement la spiritualité de Paul de celle des faux docteurs colossiens. Eux fondaient leur prétendue élévation sur des visions, un mysticisme irrationnel et un ascétisme du mépris du corps&nbsp;; Paul, lui, ancre la pensée céleste dans la Parole écrite et dans la personne du Christ exalté. Les choses d'en haut ne sont pas une expérience mystique secrète réservée à une élite, mais la connaissance du Seigneur assis à la droite de Dieu, accessible à tout croyant par les Écritures.</p>
+      <p>La précision «&nbsp;et non à celles qui sont sur la terre&nbsp;» n'est pas un appel à fuir le monde ou à négliger les devoirs ordinaires de la vie. MacArthur écarte cette lecture ascétique, déjà combattue en 2.20-23. Le code domestique qui suit, en 3.18 à 4.1, montre au contraire que la pensée céleste se vérifie dans les relations les plus terrestres&nbsp;: le mariage, l'éducation des enfants, le travail. Ce que Paul condamne, c'est de faire des réalités terrestres l'objet ultime de sa recherche et de sa pensée. Le croyant vit sur la terre, mais sa citoyenneté et son trésor sont au ciel&nbsp;; il agit dans le monde, mais à partir d'une vie qui n'est pas de ce monde. L'orientation céleste de l'esprit transforme la manière de vivre toutes les réalités terrestres, sans les déserter.</p>
+      <p>Le verset 3 fournit le fondement des deux impératifs&nbsp;: «&nbsp;Car vous êtes morts, et votre vie est cachée avec Christ en Dieu.&nbsp;» MacArthur note que le temps du verbe indique que cette mort est un événement passé&nbsp;: il s'agit de la mort de Jésus-Christ, dans laquelle les croyants ont été unis à lui et par laquelle le châtiment de leur péché a été payé. Ils sont ressuscités avec lui pour entrer dans une nouvelle vie. Quant à l'expression «&nbsp;cachée avec Christ en Dieu&nbsp;», elle est riche de trois sens&nbsp;: les croyants partagent la vie spirituelle du Père et du Fils&nbsp;; le monde ne peut comprendre cette vie nouvelle qui lui demeure voilée&nbsp;; et les croyants jouissent d'une sécurité éternelle, protégés de tout ennemi spirituel et ayant accès à toutes les bénédictions divines. En chaire, MacArthur tient le deuxième pour peut-être le point principal du texte&nbsp;: la vie nouvelle du croyant est voilée au monde, qui ne le comprend pas. Du troisième, il conclut que cette vie est en sûreté pour toujours, hors d'atteinte de tout ennemi spirituel. La sécurité du chrétien ne repose pas sur sa propre fermeté mais sur le lieu où sa vie est déposée, en Dieu, avec Christ.</p>
+      <p>Enfin, le verset 4 ouvre la perspective eschatologique qui couronne le tout&nbsp;: «&nbsp;Quand Christ, votre vie, paraîtra, alors vous paraîtrez aussi avec lui dans la gloire.&nbsp;» MacArthur rapporte ce «&nbsp;paraîtra&nbsp;» à la seconde venue de Christ. Ce qui est aujourd'hui caché sera alors manifesté. Paul ose appeler Christ «&nbsp;votre vie&nbsp;», reprenant un thème cher à toute l'épître, où Christ est tout et en tous (3.11) et où la plénitude de la divinité habite corporellement en lui (2.9). La vie du croyant n'est pas seulement donnée par Christ&nbsp;: elle est Christ lui-même, habitant en lui (1.27, «&nbsp;Christ en vous, l'espérance de la gloire&nbsp;»). Aussi la glorification future est-elle aussi certaine que la résurrection passée, car les deux reposent sur la même union. Le passage relie ainsi les trois temps du salut&nbsp;: le croyant a été ressuscité (passé), il cherche les choses d'en haut (présent), il paraîtra dans la gloire (futur). La même union avec le Christ exalté commande les trois. C'est pourquoi, pour MacArthur, la véritable spiritualité consiste à fixer ses pensées sur les choses d'en haut, et non à s'élever par l'ascétisme ou le mysticisme&nbsp;: dès son salut, le croyant est déjà placé dans les lieux célestes, où sa vie demeure en sûreté avec Christ jusqu'au jour où elle sera manifestée.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de l'union avec Christ dans sa mort et sa résurrection à l'arrière-plan vétérotestamentaire du Christ assis à la droite de Dieu, jusqu'à la dialectique du caché et du manifesté qui structure les versets 3 et 4.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 6.3-11</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le texte fondateur de l'union avec Christ dans sa mort et sa résurrection, que Paul présuppose ici&nbsp;: morts au péché, vivants pour Dieu en Jésus-Christ. MacArthur y renvoie pour expliquer le coressuscités du verset 1 et le «&nbsp;vous êtes morts&nbsp;» du verset 3.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Galates 2.20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Je suis crucifié avec Christ, et ce n'est plus moi qui vis, c'est Christ qui vit en moi&nbsp;»&nbsp;: exprime en clé personnelle la même participation à la mort et à la vie de Christ qui fonde la recherche des choses d'en haut (3.1).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 2.3</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les choses d'en haut que le croyant doit chercher (3.1) sont les trésors de la sagesse et de la connaissance cachés en Christ&nbsp;; MacArthur renvoie explicitement à ce verset pour définir leur contenu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 1.27</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Christ en vous, l'espérance de la gloire&nbsp;» éclaire le «&nbsp;Christ, votre vie&nbsp;» du verset 4 et la promesse de paraître avec lui dans la gloire&nbsp;: l'habitation de Christ dans le croyant garantit sa glorification future.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 3.20-21</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Notre cité est dans les cieux, d'où nous attendons le Sauveur qui transformera notre corps&nbsp;»&nbsp;: même orientation céleste de la pensée et même espérance de la manifestation glorieuse à la seconde venue (3.2, 3.4).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 10.28-29</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Nul ne les ravira de ma main&nbsp;»&nbsp;: confirme la sécurité éternelle impliquée par la vie cachée avec Christ en Dieu (3.3), troisième sens que MacArthur reconnaît à l'expression.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 110.1</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;L'Éternel a dit à mon Seigneur&nbsp;: Assieds-toi à ma droite.&nbsp;» Arrière-plan vétérotestamentaire de la position d'honneur et d'autorité où Christ est assis à la droite de Dieu (3.1).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 3.2</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Nous sommes maintenant enfants de Dieu, et ce que nous serons n'a pas encore été manifesté&nbsp;»&nbsp;: reprend la dialectique du caché et du manifesté qui structure les versets 3 et 4.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'union avec Christ, fondement de toute sanctification</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Si donc vous êtes ressuscités avec Christ&nbsp;» (3.1) et «&nbsp;Car vous êtes morts&nbsp;» (3.3)&nbsp;: le croyant a été uni à Christ dans sa mort et sa résurrection, fait accompli au passé dont découlent les impératifs présents. Le verbe coressuscités dit cette participation à la vie du Ressuscité dès la conversion.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la sanctification ancrée dans l'union avec Christ, la vie chrétienne n'est jamais un effort moral autonome mais le déploiement d'une vie nouvelle déjà reçue. Pour votre assemblée, cela coupe le nerf de tout moralisme&nbsp;: on ne cherche pas les choses d'en haut pour devenir chrétien, on les cherche parce qu'on est déjà ressuscité avec Christ. L'indicatif de la grâce précède toujours l'impératif du devoir, et lui seul le rend possible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La pensée céleste contre la fausse spiritualité</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Cherchez les choses d'en haut&nbsp;» (3.1) et «&nbsp;Attachez-vous aux choses d'en haut, et non à celles qui sont sur la terre&nbsp;» (3.2)&nbsp;: deux impératifs qui orientent la recherche active et la disposition profonde de l'esprit vers le Christ exalté, par la compréhension des Écritures.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'herméneutique qui ancre la spiritualité dans la Parole écrite, la pensée céleste ne vient ni de visions, ni de mysticisme, ni d'ascétisme, mais de la connaissance du Christ assis à la droite de Dieu. Pour votre assemblée, c'est l'antidote à toute spiritualité de l'expérience subjective&nbsp;: on ne s'élève pas par des règles ni des extases, mais en réglant ses pensées sur le Seigneur révélé dans l'Écriture. La vraie élévation est doctrinale avant d'être affective.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La sécurité éternelle de la vie cachée en Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Votre vie est cachée avec Christ en Dieu&nbsp;» (3.3)&nbsp;: l'expression dit que les croyants partagent la vie du Père et du Fils, que le monde ne la comprend pas, et qu'ils jouissent d'une sécurité éternelle, protégés de tout ennemi spirituel.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la persévérance des saints, ce que Dieu garde, nul ne peut le ravir (Jn 10.28; Ro 8.31-39). Pour votre assemblée, l'assurance du salut ne repose jamais sur la fermeté propre du croyant, toujours vacillante, mais sur le lieu où sa vie est déposée, en Dieu, avec Christ. Le chrétien éprouvé peut donc tenir bon, non parce qu'il se tient lui-même, mais parce qu'il est tenu, à l'abri de tout adversaire spirituel.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Christ, notre vie et notre gloire à venir</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Quand Christ, votre vie, paraîtra, alors vous paraîtrez aussi avec lui dans la gloire&nbsp;» (3.4)&nbsp;: Paul appelle Christ la vie même du croyant, et rattache la glorification future à sa manifestation lors de la seconde venue.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'eschatologie de l'attente du retour glorieux, ce qui est aujourd'hui caché au monde sera dévoilé à la seconde venue de Christ (Ap 19.11-13). Pour votre assemblée, l'espérance n'est pas un vague optimisme mais une certitude fondée sur l'union déjà acquise&nbsp;: aussi sûr que le croyant a été ressuscité avec Christ, aussi sûrement il paraîtra avec lui dans la gloire. Cette espérance soutient la recherche présente des choses d'en haut et console au sein de l'épreuve.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La suprématie du Christ exalté assis à la droite de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Où Christ est assis à la droite de Dieu&nbsp;» (3.1)&nbsp;: la position d'honneur, de majesté et d'autorité suprêmes, écho du Psaume 110.1, à laquelle le Fils exalté a été élevé.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la christologie de toute l'épître, le Christ vers qui le croyant dirige ses pensées n'est pas une émanation inférieure, comme le prétendaient les hérétiques colossiens, mais le Seigneur qui partage le trône même de Dieu (cf. 1.15-20; 2.9). Pour votre assemblée, chercher les choses d'en haut, c'est se tourner vers un Christ pleinement divin, exalté et régnant. La suprématie du Sauveur fonde l'autorité de l'appel&nbsp;: il n'y a pas d'objet plus élevé vers qui orienter sa vie.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le «&nbsp;Si&nbsp;» du verset 1 se traduit mieux par «&nbsp;puisque&nbsp;»&nbsp;: tout l'appel à chercher les choses d'en haut repose sur un fait accompli, la résurrection spirituelle du croyant. Comment prêcher la sanctification de manière à ce qu'elle découle toujours de l'indicatif de la grâce, et jamais d'un moralisme qui inverserait l'ordre?</li>
+      <li>Paul commande deux fois d'orienter la vie vers les choses d'en haut (cherchez, attachez-vous). Concrètement, qu'est-ce qui révèle, dans la vie d'un auditeur, que ses pensées sont attachées aux choses d'en haut ou à celles qui sont sur la terre? Comment nommer cela sans tomber dans un ascétisme que Paul a déjà combattu en 2.20-23?</li>
+      <li>MacArthur enracine la pensée céleste dans la lecture des Écritures, et non dans une expérience mystique. Comment exposer ce contraste à une assemblée tentée par une spiritualité de l'émotion et de l'expérience subjective, en montrant que la vraie élévation est doctrinale avant d'être affective?</li>
+      <li>Le «&nbsp;et non à celles qui sont sur la terre&nbsp;» n'est pas un appel à déserter le monde&nbsp;: le code domestique de 3.18 à 4.1 le prouve. Comment tenir ensemble la pensée céleste et l'engagement fidèle dans le mariage, le travail et l'éducation des enfants, sans fuir le monde ni s'y dissoudre?</li>
+      <li>«&nbsp;Votre vie est cachée avec Christ en Dieu&nbsp;» fonde la sécurité éternelle du croyant. Comment cette vérité console-t-elle l'assemblée éprouvée, et comment la distinguer d'une fausse assurance qui ne reposerait pas sur l'union réelle avec Christ mais sur une simple décision passée?</li>
+      <li>Paul ose appeler Christ «&nbsp;votre vie&nbsp;» (3.4). Que change, pour la prédication et pour la marche quotidienne, le passage de «&nbsp;Christ donne la vie&nbsp;» à «&nbsp;Christ est la vie&nbsp;»? Comment cette identification commande-t-elle la recherche des choses d'en haut?</li>
+      <li>Le passage relie le passé (ressuscités), le présent (cherchez) et le futur (vous paraîtrez dans la gloire) par la même union avec Christ. Comment faire sentir à l'auditeur que son espérance de gloire est aussi certaine que sa résurrection déjà accomplie, et que cette certitude soutient l'obéissance présente?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Colossiens 3.1-4 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Colossiens : la suprématie et la suffisance de Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Colossiens-3-1-4.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

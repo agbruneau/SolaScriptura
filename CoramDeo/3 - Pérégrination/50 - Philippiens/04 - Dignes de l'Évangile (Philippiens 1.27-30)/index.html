@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philippiens 1.27-30 · Dignes de l'Évangile · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Philippiens 1.27-30 : dignes de l'Évangile ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Philippiens 1.27-30</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Philippiens 1.27-30</p>
+    <h1 class="hero__title">Dignes de l'Évangile</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Il vous a été fait la grâce, par rapport à Christ, non seulement de croire en lui, mais encore de souffrir pour lui.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Philippiens 1.29 · NEG</p>
+    <p class="hero__series">Série : <b>Philippiens : la joie en Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Philippiens 1.27-30</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Seulement, conduisez-vous d'une manière digne de l'Évangile de Christ, afin que vous demeurez fermes dans un même esprit, combattant d'une même âme pour la foi de l'Évangile.</p>
+        <cite class="verse__ref">Philippiens 1.27 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Et cela vient de Dieu, car il vous a été fait la grâce, par rapport à Christ, non seulement de croire en lui, mais encore de souffrir pour lui.</p>
+        <cite class="verse__ref">Philippiens 1.29 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avec l'adverbe «&nbsp;Seulement&nbsp;», Paul quitte le récit de sa détention (1.12-26) pour la première grande exhortation de l'épître&nbsp;: le centre de gravité se déplace de l'apôtre vers les Philippiens, dont la conduite, la fermeté et le courage sont désormais en cause.</p>
+    <div class="body">
+      <p>Après avoir longuement exposé sa propre situation de prisonnier à Rome (1.12-26), Paul opère un tournant décisif au verset 27 avec l'adverbe «&nbsp;Seulement&nbsp;». L'apôtre quitte le récit personnel pour la première grande exhortation de l'épître, qui s'étend de 1.27 à 2.18. Selon le plan que MacArthur reçoit de la Bible d'étude, cette section regroupe les exhortations de Paul, et notre péricope en forme l'ouverture sous le titre «&nbsp;Appel à tenir ferme dans la persécution&nbsp;» (1.27-30). Le centre de gravité se déplace de Paul vers les Philippiens&nbsp;: désormais c'est leur conduite, leur fermeté et leur courage qui sont en cause.</p>
+      <p>La péricope tient ensemble par un seul commandement dominant, «&nbsp;conduisez-vous d'une manière digne de l'Évangile de Christ&nbsp;», que les versets suivants déploient en trois exigences&nbsp;: demeurer fermes dans un même esprit, combattre d'une même âme pour la foi de l'Évangile, et ne se laisser aucunement effrayer par les adversaires. Paul écrit en prisonnier, et il sait que l'Église de Philippes affronte la même opposition que celle qu'il endure lui-même. Il les prépare donc à la souffrance, non comme à un accident, mais comme à une grâce confiée par Dieu.</p>
+      <p>Les bornes de l'unité sont nettes. Elle s'ouvre au verset 27 par le commandement maître, et elle se referme au verset 30 par le rappel du «&nbsp;même combat&nbsp;» que les Philippiens avaient vu Paul soutenir lors de son emprisonnement à Philippes (Ac 16.19-40) et qu'ils savent qu'il soutient encore à Rome. Le verset 27 introduit déjà («&nbsp;dans un même esprit… d'une même âme&nbsp;») un thème qui culminera en 2.1-4, celui de l'unité, présenté ici comme la condition de la victoire dans le combat spirituel. La péricope unit donc trois fils&nbsp;: l'intégrité d'une vie digne de l'Évangile, l'unité ferme de l'assemblée, et la souffrance reçue comme don de la grâce.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Philippiens 1.27 · 1.29 · 1.30</p>
+    </header>
+    <p class="lead">Philippes était une fière colonie romaine, jalouse de sa citoyenneté&nbsp;: à des gens si attachés à leur statut romain, Paul rappelle qu'ils doivent d'abord vivre en citoyens dignes de l'Évangile, eux qui avaient été les témoins directs du «&nbsp;même combat&nbsp;» qu'il endure encore.</p>
+    <div class="body">
+      <p>Philippes était une fière colonie romaine, dotée depuis la bataille de 42 av. J.-C. d'une autonomie relative et des droits accordés aux villes d'Italie&nbsp;: recours à la loi romaine, exemption de certaines taxes et citoyenneté romaine pour ses habitants (cf. Ac 16.21). Les Philippiens tiraient un grand orgueil de ce statut; le latin y était langue officielle et leurs institutions imitaient le modèle des cités italiennes. Ce contexte civique éclaire le verbe que Paul emploie au verset 27&nbsp;: le terme grec traduit par «&nbsp;conduisez-vous&nbsp;» dérive du mot désignant la cité et évoque le comportement d'un citoyen. À des gens si fiers de leur citoyenneté terrestre, Paul rappelle qu'ils doivent d'abord vivre en citoyens dignes de l'Évangile, thème qu'il reprendra explicitement en 3.20 («&nbsp;nous sommes citoyens des cieux&nbsp;»).</p>
+    </div>
+    <p>Trois traits éclairent la portée de l'exhortation.</p>
+    <ul class="points">
+      <li><b>Une Église née dans l'opposition.</b> L'Église de Philippes, la première implantée par Paul en Europe, avait pris racine pendant son deuxième voyage missionnaire (Ac 16.12-40). Dès le début, l'opposition satanique s'était manifestée&nbsp;: l'esclave démoniaque qui prédisait l'avenir, puis la colère de ses maîtres, et enfin les coups et l'emprisonnement de Paul et de Silas, conduits devant les magistrats sous l'accusation de menacer les coutumes romaines (Ac 16.16-24).</li>
+      <li><b>Des témoins directs du combat.</b> Les Philippiens avaient été les témoins directs de ce «&nbsp;même combat&nbsp;» dont parle le verset 30. Ils savaient par expérience ce que coûtait la fidélité à Christ dans une ville jalouse de son identité romaine&nbsp;: l'appel de Paul ne leur arrivait pas comme une abstraction, mais comme le rappel d'une épreuve qu'ils avaient vue de leurs yeux.</li>
+      <li><b>Un apôtre solidaire de l'épreuve.</b> Au moment où Paul écrit, vers la fin de ses deux années de détention à Rome (env. 61 apr. J.-C.), il est gardé par les soldats du prétoire (1.13) et attend le verdict de son procès. Les croyants de Philippes subissent une pression analogue de la part de leurs concitoyens païens. Paul ne les exhorte donc pas du haut d'une position confortable&nbsp;: il combat encore le même combat qu'eux, et c'est cette solidarité dans la souffrance qui donne tout son poids à son appel à tenir ferme sans crainte.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: du <i>politeuomai</i> qui appelle à se conduire en citoyen du royaume, jusqu'au <i>charizomai</i> qui fait de la souffrance, comme de la foi, un don gratuit de Dieu.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">conduisez-vous</span><span class="mot-gr">politeuomai</span></th>
+            <td class="col-sens">se comporter en citoyen, exercer ses droits et devoirs de membre d'une cité; vivre selon les lois d'une communauté</td>
+            <td>Le verbe dérive du mot grec qui désigne la cité et son gouvernement; il ne signifie pas simplement «&nbsp;vivre&nbsp;» mais «&nbsp;se conduire en citoyen&nbsp;». Pour des Philippiens si fiers de leur citoyenneté romaine, le choix de ce terme est volontaire. MacArthur souligne que les croyants doivent faire preuve d'intégrité, c'est-à-dire vivre en conformité avec ce qu'ils croient, enseignent et prêchent (cf. Ep 4.1; Col 1.10; 1 Th 2.11-12). L'appartenance au royaume de Dieu commande une manière de vivre publique et cohérente, digne de l'Évangile.</td>
+            <td><span class="trad"><span><b>S21</b> conduisez-vous</span><span><b>NEG79</b> conduisez-vous</span><span><b>Darby</b> conduisez-vous</span><span><b>LSG</b> conduisez-vous</span><span><b>KJF</b> que votre conduite soit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">demeurez fermes</span><span class="mot-gr">stēkō</span></th>
+            <td class="col-sens">se tenir debout sans reculer, tenir sa position; rester ferme et inébranlable comme un soldat à son poste</td>
+            <td>Le verbe évoque la posture du soldat qui tient fermement le poste qu'on lui a assigné, sans céder de terrain devant l'ennemi. MacArthur note que Paul emploie ici la métaphore militaire, qu'il prolonge aussitôt par celle d'une équipe sportive luttant pour la victoire («&nbsp;combattant d'une même âme&nbsp;»). La fermeté visée n'est pas individuelle mais collective&nbsp;: c'est en demeurant unis «&nbsp;dans un même esprit&nbsp;» que les croyants tiennent bon. La même exigence revient en 4.1 («&nbsp;demeurez ainsi fermes dans le Seigneur&nbsp;»).</td>
+            <td><span class="trad"><span><b>S21</b> tenez ferme</span><span><b>NEG79</b> demeurez fermes</span><span><b>Darby</b> vous tenez fermes</span><span><b>LSG</b> demeurez fermes</span><span><b>KJF</b> vous tenez fermes</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">combattant</span><span class="mot-gr">sunathleō</span></th>
+            <td class="col-sens">lutter ensemble aux côtés de quelqu'un, combattre en équipe pour une cause commune; rivaliser de concert dans une épreuve athlétique</td>
+            <td>Litt. «&nbsp;lutter aux côtés de quelqu'un&nbsp;». MacArthur observe que Paul passe ici de la métaphore du soldat tenant son poste à celle d'une équipe sportive qui lutte d'un seul effort pour vaincre un adversaire commun. Le combat n'est pas la querelle interne mais la lutte solidaire «&nbsp;pour la foi de l'Évangile&nbsp;», c'est-à-dire pour la foi chrétienne révélée par Dieu et consignée dans les Écritures (cf. Jud 3). L'unité de cœur et d'âme est ici présentée comme la condition même de la victoire spirituelle.</td>
+            <td><span class="trad"><span><b>S21</b> combattant</span><span><b>NEG79</b> combattant</span><span><b>Darby</b> combattant</span><span><b>LSG</b> combattant</span><span><b>KJF</b> luttant ensemble</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">preuve</span><span class="mot-gr">endeixis</span></th>
+            <td class="col-sens">signe manifeste, démonstration probante, indice évident qui rend une chose visible et certaine</td>
+            <td>Le mot désigne une preuve qui se donne à voir, une démonstration éclatante. Selon MacArthur, le fait que des croyants acceptent volontairement de souffrir sans se laisser effrayer constitue le signe que les ennemis de Dieu seront détruits et perdus pour l'éternité, tandis que les croyants seront sauvés (cf. 2 Th 1.4-8). La même réalité porte donc deux significations opposées&nbsp;: pour les adversaires elle annonce la perdition, pour les fidèles elle atteste le salut accordé par Dieu. Le courage paisible du persécuté devient ainsi un témoignage rendu au jugement à venir.</td>
+            <td><span class="trad"><span><b>S21</b> preuve</span><span><b>NEG79</b> preuve</span><span><b>Darby</b> démonstration</span><span><b>LSG</b> preuve</span><span><b>KJF</b> preuve évidente</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il a été fait la grâce</span><span class="mot-gr">charizomai</span></th>
+            <td class="col-sens">accorder gratuitement par faveur, faire don de quelque chose par pure bienveillance; gratifier sans contrepartie</td>
+            <td>Le verbe est de la même racine que <i>charis</i>, la grâce&nbsp;: il dit le don gratuit et immérité. Paul affirme que c'est de Dieu que vient ce double privilège, non seulement de croire en Christ mais aussi de souffrir pour lui. MacArthur insiste&nbsp;: la souffrance du croyant est un don de grâce qui apporte puissance (cf. 2 Co 7.9-10; 1 Pi 5.10) et récompense éternelle (cf. 1 Pi 4.13). La persécution endurée pour Christ n'est donc ni un malheur ni un châtiment, mais une faveur confiée par Dieu, au même titre que la foi elle-même.</td>
+            <td><span class="trad"><span><b>S21</b> il vous a été fait la grâce</span><span><b>NEG79</b> il vous a été fait la grâce</span><span><b>Darby</b> il vous a été gratuitement donné</span><span><b>LSG</b> il vous a été fait la grâce</span><span><b>KJF</b> il vous est donné</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Philippiens 1.27-30</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Philippiens 1.27-30 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ph 1.27, 1.28, 1.29, 1.30.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">SC20-2</span></th>
+            <td><a href="https://www.gty.org/sermons/SC20-2" target="_blank" rel="noopener">Unity That Produces Joy</a></td>
+            <td>Philippiens 1.21-2.9</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">50-11</span></th>
+            <td><a href="https://www.gty.org/sermons/50-11" target="_blank" rel="noopener">Conduct Worthy of the Church</a></td>
+            <td>Philippiens 1.27-30</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-57</span></th>
+            <td><a href="https://www.gty.org/sermons/81-57" target="_blank" rel="noopener">A Life That Matches Your Faith, Part 1</a></td>
+            <td>Philippiens 1.27-30</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-58</span></th>
+            <td><a href="https://www.gty.org/sermons/81-58" target="_blank" rel="noopener">A Life That Matches Your Faith, Part 2</a></td>
+            <td>Philippiens 1.27-30</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Un seul commandement gouverne la péricope, «&nbsp;conduisez-vous d'une manière digne de l'Évangile&nbsp;»&nbsp;: MacArthur y lit un appel à l'intégrité, qu'il déploie en quatre traits&nbsp;: tenir ferme, être unis, lutter ensemble sans crainte et souffrir pour Christ, souffrance qu'il tient pour une grâce au même titre que la foi.</p>
+    <div class="body">
+      <p>L'exhortation s'ouvre sur un commandement maître qui gouverne toute la péricope&nbsp;: «&nbsp;conduisez-vous d'une manière digne de l'Évangile de Christ&nbsp;» (v. 27). MacArthur lit ici un appel à l'intégrité&nbsp;: les croyants doivent vivre en conformité avec ce qu'ils croient, enseignent et prêchent (cf. Ep 4.1; Col 1.10; 1 Th 2.11-12; Tit 2.10; 2 Pi 3.11, 14). Le verbe grec, dérivé du mot désignant la cité, n'est pas anodin pour des Philippiens si fiers de leur citoyenneté romaine&nbsp;: Paul leur rappelle qu'ils sont d'abord citoyens du royaume de Dieu, et que cette appartenance commande une manière de vivre publique et cohérente. La dignité dont il parle n'est pas une qualité morale abstraite, mais l'ajustement de la conduite à l'Évangile reçu.</p>
+      <p>Le premier déploiement de ce commandement est l'unité&nbsp;: «&nbsp;que vous demeurez fermes dans un même esprit, combattant d'une même âme pour la foi de l'Évangile&nbsp;». MacArthur souligne que cet appel à l'unité authentique de cœur et d'esprit introduit un thème qui se poursuit jusqu'en 2.4, et il en repère le fondement quadruple&nbsp;: la nécessité de l'unité pour gagner la bataille spirituelle en faveur de la foi (vv. 28-30); l'amour des autres dans la communion fraternelle (2.1-2); un esprit authentique d'humilité et de sacrifice de soi (2.3-4); enfin l'exemple de Christ, qui a démontré que le sacrifice de soi produit une gloire éternelle (2.5-11). Paul mêle ici deux images. «&nbsp;Demeurez fermes&nbsp;» évoque le soldat qui tient son poste sans reculer; «&nbsp;combattant d'une même âme&nbsp;», littéralement «&nbsp;luttant aux côtés de quelqu'un&nbsp;», évoque une équipe sportive qui lutte d'un seul effort contre un adversaire commun. L'objet du combat est précis&nbsp;: «&nbsp;la foi de l'Évangile&nbsp;», c'est-à-dire la foi chrétienne telle qu'elle est révélée par Dieu et rapportée dans les Écritures (cf. Jud 3; Ro 1.1; Ga 1.7).</p>
+      <p>Le deuxième déploiement est le courage&nbsp;: «&nbsp;sans vous laisser aucunement effrayer par les adversaires&nbsp;» (v. 28). MacArthur y voit une démonstration au double tranchant. Le fait que des croyants acceptent volontairement de souffrir sans céder à la peur est le signe que les ennemis de Dieu seront détruits et perdus pour l'éternité, mais aussi que les croyants, eux, seront sauvés (cf. 2 Th 1.4-8). La même fermeté paisible porte donc deux verdicts opposés&nbsp;: elle annonce la perdition des persécuteurs et atteste le salut des persécutés. Le calme du croyant face à l'opposition n'est pas seulement une vertu personnelle; il est un témoignage rendu publiquement au jugement à venir.</p>
+      <p>Vient enfin la souffrance, au verset 29&nbsp;: «&nbsp;cela vient de Dieu, car il vous a été fait la grâce, par rapport à Christ, non seulement de croire en lui, mais encore de souffrir pour lui&nbsp;». MacArthur relève la portée de ce verset&nbsp;: la souffrance du croyant est un don de grâce, au même titre que la foi. Le verbe employé est de la racine même du mot grâce&nbsp;: tout, et la foi et la souffrance, est accordé gratuitement par Dieu. Cette grâce de souffrir apporte puissance (cf. 2 Co 7.9-10; 1 Pi 5.10) et récompense éternelle (cf. 1 Pi 4.13; cf. Mt 5.10-12; Ac 5.41). Loin d'être un signe de châtiment divin, comme le prétendaient les détracteurs de Paul à son sujet, la persécution endurée pour Christ est une faveur confiée. Ce verset coupe à la racine toute théologie qui ferait de la souffrance du fidèle la preuve de la défaveur de Dieu.</p>
+      <p>La péricope se clôt sur la solidarité de Paul avec ses lecteurs&nbsp;: ils soutiennent «&nbsp;le même combat&nbsp;» qu'ils l'ont vu soutenir et qu'il soutient encore (v. 30). MacArthur précise qu'il s'agit des mêmes sortes de souffrances que celles endurées par Paul (cf. vv. 12-14; Ac 16.22-24), et que «&nbsp;vous m'avez vu&nbsp;» renvoie aux événements dont les Philippiens furent les témoins, lors de l'emprisonnement de Paul et de Silas à Philippes (Ac 16.19-40). L'apôtre n'exhorte donc pas du dehors&nbsp;: prisonnier à Rome au moment où il écrit, il endure ce qu'il demande aux Philippiens d'endurer. L'appel à tenir ferme sans crainte n'est pas un ordre lancé de loin, mais l'invitation d'un compagnon de combat qui, le premier, a reçu de Dieu la grâce de souffrir pour Christ.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent l'exhortation, de la citoyenneté céleste qui fonde la conduite digne, jusqu'à la grâce de souffrir pour Christ et à l'appel vétérotestamentaire à la fermeté sans crainte.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 3.20</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Nous sommes citoyens des cieux&nbsp;»&nbsp;: explicite le verbe du verset 27 («&nbsp;conduisez-vous&nbsp;»), dérivé du mot désignant la cité. La conduite digne de l'Évangile découle de cette citoyenneté céleste, opposée à la fierté philippienne de la citoyenneté romaine.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 4.1</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Marcher d'une manière digne de la vocation qui vous a été adressée&nbsp;»&nbsp;: le même appel à l'intégrité, vivre en conformité avec l'Évangile reçu, que MacArthur rapproche directement du verset 27.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Thessaloniciens 1.4-8</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La fermeté des croyants persécutés est «&nbsp;une preuve du juste jugement de Dieu&nbsp;»&nbsp;: passage auquel MacArthur renvoie au verset 28, où la fermeté des croyants annonce la perdition des adversaires.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 16.19-40</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">L'emprisonnement de Paul et de Silas à Philippes, dont les croyants furent les témoins directs&nbsp;: l'arrière-plan concret du «&nbsp;même combat&nbsp;» et du «&nbsp;vous m'avez vu&nbsp;» du verset 30.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 4.13</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Réjouissez-vous de ce que vous avez part aux souffrances de Christ&nbsp;»&nbsp;: confirme que la souffrance accordée par grâce (v. 29) ouvre sur la récompense éternelle, selon la lecture de MacArthur.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 5.10-12</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Heureux ceux qui sont persécutés pour la justice&nbsp;»&nbsp;: la béatitude qui fonde la grâce de souffrir pour Christ (v. 29) et la joie qui l'accompagne.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jude 3</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Combattre pour la foi qui a été transmise aux saints une fois pour toutes&nbsp;»&nbsp;: éclaire l'expression «&nbsp;la foi de l'Évangile&nbsp;» (v. 27), objet du combat solidaire des croyants.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 31.6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Fortifiez-vous et ayez du courage! Ne craignez point&nbsp;»&nbsp;: l'appel vétérotestamentaire à la fermeté sans crainte devant l'ennemi, arrière-plan de l'exhortation à ne se laisser aucunement effrayer (v. 28).</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent l'exhortation. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Une vie digne de l'Évangile : l'intégrité du croyant</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Conduisez-vous d'une manière digne de l'Évangile de Christ&nbsp;» (v. 27)&nbsp;: le verbe, dérivé du mot désignant la cité, commande une conduite publique cohérente avec la foi professée.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, l'intégrité consiste à vivre en conformité avec ce qu'on croit, enseigne et prêche (Ep 4.1; Col 1.10). Pour votre assemblée, l'Évangile n'est pas seulement une doctrine à confesser mais une citoyenneté à honorer&nbsp;: la cohérence entre la confession et la conduite est le premier témoignage rendu au monde, et son absence dément l'Évangile que l'on prétend croire.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'unité ferme, condition de la victoire spirituelle</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Vous demeurez fermes dans un même esprit, combattant d'une même âme pour la foi de l'Évangile&nbsp;» (v. 27)&nbsp;: la fermeté est collective, image du soldat à son poste et de l'équipe luttant ensemble.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur fonde sur ce verset l'appel à l'unité qui court jusqu'en 2.4, nécessaire pour gagner la bataille spirituelle. Pour votre assemblée, la division n'est pas un simple inconfort relationnel mais une brèche dans la ligne de combat&nbsp;: c'est unie, d'un même esprit et d'une même âme, que l'Église tient bon pour la foi, jamais en ordre dispersé.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le courage des persécutés, preuve du double verdict</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Sans vous laisser aucunement effrayer par les adversaires, ce qui est pour eux une preuve de perdition, mais pour vous de salut&nbsp;» (v. 28).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, le courage paisible du croyant atteste à la fois la perdition à venir des ennemis de Dieu et le salut des fidèles (2 Th 1.4-8). Pour votre assemblée, la fermeté sans crainte devant l'hostilité n'est pas du stoïcisme&nbsp;: elle proclame publiquement la réalité du jugement et la certitude du salut accordé par Dieu, et devient ainsi un témoignage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La souffrance reçue comme un don de la grâce</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il vous a été fait la grâce, par rapport à Christ, non seulement de croire en lui, mais encore de souffrir pour lui&nbsp;» (v. 29).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur enseigne que la souffrance du croyant est un don de grâce qui apporte puissance (2 Co 7.9-10; 1 Pi 5.10) et récompense éternelle (1 Pi 4.13). Pour votre assemblée, la persécution endurée pour Christ n'est jamais le signe de la défaveur de Dieu, comme on le murmurait au sujet de Paul, mais une faveur confiée&nbsp;: la foi et la souffrance sont l'une et l'autre accordées gratuitement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La solidarité du serviteur souffrant dans le même combat</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;En soutenant le même combat que vous m'avez vu soutenir, et que vous apprenez maintenant que je soutiens encore&nbsp;» (v. 30).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>MacArthur rappelle que ce sont les mêmes souffrances que celles de Paul (Ac 16.22-24), dont les Philippiens furent les témoins. Pour votre assemblée, l'exhortation à tenir ferme n'est crédible que portée par ceux qui combattent eux-mêmes&nbsp;: le pasteur et l'assemblée ne s'invitent pas l'un l'autre à une épreuve dont ils seraient exemptés, mais soutiennent ensemble un seul et même combat pour Christ.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Le verbe du verset 27, dérivé du mot désignant la cité, appelle les Philippiens à se conduire en citoyens du royaume avant de se réclamer de Rome. À quelle citoyenneté votre assemblée se rattache-t-elle d'abord en pratique, et où se révèle l'écart entre ce qu'elle confesse et ce qu'elle vit?</li>
+      <li>Paul lie indissolublement l'unité de l'Église et la victoire dans le combat spirituel (v. 27-28). Comment prêcher l'unité non comme un confort relationnel mais comme une nécessité de la bataille, sans réduire l'Évangile à un projet de cohésion sociale?</li>
+      <li>Le courage paisible des persécutés est «&nbsp;une preuve de perdition&nbsp;» pour les adversaires et «&nbsp;de salut&nbsp;» pour les fidèles (v. 28). Comment exposer cette double signification sans tomber dans la menace gratuite envers les incroyants ni dans l'assurance présomptueuse?</li>
+      <li>Le verset 29 fait de la souffrance pour Christ un don de grâce, au même titre que la foi. Qu'est-ce que cette vérité dérange dans la manière dont votre assemblée comprend spontanément la bénédiction de Dieu et la prospérité du croyant?</li>
+      <li>Si la persécution n'est pas le signe de la défaveur de Dieu mais une faveur confiée, comment accompagner un croyant qui traverse l'épreuve sans minimiser sa douleur ni la spiritualiser à bon compte?</li>
+      <li>Paul exhorte en prisonnier, soutenant le même combat qu'il demande aux Philippiens de soutenir (v. 30). Que perd un appel à la fermeté lancé par celui qui ne partage pas l'épreuve de ceux qu'il exhorte?</li>
+      <li>La péricope tient ensemble une vie digne, une unité ferme, un courage sans crainte et une souffrance reçue comme grâce. Comment ordonner ces quatre traits dans une prédication de sorte que la grâce de Dieu, et non l'effort du croyant, demeure le fondement de l'ensemble?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Philippiens 1.27-30 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Philippiens : la joie en Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Philippiens-1-27-30.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

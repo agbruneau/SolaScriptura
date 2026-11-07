@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jean : le Verbe fait chair · Église Baptiste de Charlesbourg</title>
+<meta name="description" content="Présentation de l'Évangile selon Jean pour une étude biblique : le Verbe éternel fait chair (1.14), Fils unique de Dieu, dont les signes et les « Je suis » appellent à croire pour avoir la vie. Cinquante-trois semaines d'exposition suivie en six mouvements. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+</style>
+
+<style>
+  /* ---- Carte de semaine : idee maitresse (ajout page de livre) ---- */
+  .semaine__idee{
+    font-size:.96rem;line-height:1.5;color:var(--encre-doux);
+    margin:.1rem 0 .2rem;text-wrap:pretty;
+  }
+  .mouvement .sec-head{margin-bottom:1.6rem;}
+  .mouvement .lead{margin-bottom:.4rem;}
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jean</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#mvt1">I. Le Verbe fait chair</a>
+    <a href="#mvt2">II. Signes et autorité</a>
+    <a href="#mvt3">III. Les « Je suis »</a>
+    <a href="#mvt4">IV. La gloire et la mort</a>
+    <a href="#mvt5">V. Le discours d'adieu</a>
+    <a href="#mvt6">VI. Croix et résurrection</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Évangile selon Jean · Exposition suivie</p>
+    <h1 class="hero__title">Jean : le Verbe fait chair</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Et la Parole a été faite chair, et elle a habité parmi nous, pleine de grâce et de vérité; et nous avons contemplé sa gloire, une gloire comme la gloire du Fils unique venu du Père.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jean 1.14 · NEG</p>
+    <p class="hero__series">Série : <b>Jean : le Verbe fait chair</b></p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- PRESENTATION DU LIVRE -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Présentation du livre</p>
+      <h2 class="sec-title">Une traversée de l'Évangile selon Jean</h2>
+      <p class="ref">Du Verbe éternel fait chair à la foi qui donne la vie en son nom</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Au commencement était la Parole, et la Parole était avec Dieu, et la Parole était Dieu.</p>
+        <cite class="verse__ref">Jean 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Mais ces choses ont été écrites afin que vous croyiez que Jésus est le Christ, le Fils de Dieu, et qu’en croyant vous ayez la vie en son nom.</p>
+        <cite class="verse__ref">Jean 20.31 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'Évangile selon Jean, le plus théologique des quatre, contemple Jésus comme le <span class="surligne">Verbe éternel fait chair</span> : pleinement Dieu et vraiment homme, le Fils unique venu révéler le Père. Écrit par l'apôtre bien-aimé pour que ses lecteurs croient, le livre tisse des signes et des déclarations « Je suis » qui dévoilent la gloire du Fils, puis conduit à la croix, au tombeau vide et à la confession de Thomas. Sa clé, 20.31, en donne le but : ces choses sont écrites afin que vous croyiez et qu'en croyant vous ayez la vie en son nom.</p>
+    <ul class="points">
+      <li><b>La clé : 20.31.</b> <span class="surligne">Ces choses ont été écrites afin que vous croyiez que Jésus est le Christ, le Fils de Dieu, et qu'en croyant vous ayez la vie en son nom</span> : tout l'Évangile vise la foi qui sauve.</li>
+      <li><b>Le Verbe fait chair (1.1-51).</b> Le prologue pose la déité éternelle du Verbe, le Fils unique qui révèle le Père; les premiers témoins le confessent Agneau de Dieu, Messie et Fils de Dieu.</li>
+      <li><b>Les signes et l'autorité du Fils (chapitres 2 à 5).</b> Cana, le temple, la nouvelle naissance, la Samaritaine et Béthesda manifestent la gloire du Fils, qui revendique l'égalité avec le Père.</li>
+      <li><b>« Je suis » : pain, lumière, berger (chapitres 6 à 10).</b> Le pain de vie, la lumière du monde, la porte et le bon berger révèlent l'identité divine de Jésus, jusqu'au « moi et le Père nous sommes un ».</li>
+      <li><b>La gloire et la mort qui donnent la vie (chapitres 11 et 12).</b> La résurrection de Lazare et l'entrée triomphale ouvrent l'heure de la croix, où le grain de blé tombe en terre pour porter beaucoup de fruit.</li>
+      <li><b>Le discours d'adieu (chapitres 13 à 17).</b> Au cénacle, le Fils lave les pieds des siens, promet le Consolateur, s'offre comme le vrai cep et intercède dans la prière sacerdotale pour son Église.</li>
+      <li><b>La croix, la résurrection et l'envoi (chapitres 18 à 21).</b> Livré, crucifié et ressuscité, le Fils reçoit la confession de Thomas, « Mon Seigneur et mon Dieu », et envoie les siens, rétablissant Pierre.</li>
+      <li><b>Six mouvements, cinquante-trois semaines.</b> La série épouse l'architecture de Jean, de 1.1 à 21.25, sans lacune ni chevauchement. Choisissez un mouvement, puis une semaine, pour ouvrir sa recherche exégétique complète.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt1">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Mouvement I · Jean 1.1-51</p>
+      <h2 class="sec-title mouvement-titre">Le Verbe fait chair : prologue et premiers témoins</h2>
+      <p class="ref">Semaines 1 à 4</p>
+    </header>
+    <p class="lead">Le prologue contemple le Verbe éternel, Dieu fait chair pour révéler le Père; Jean-Baptiste et les premiers disciples le confessent Agneau de Dieu, Messie et Fils de Dieu.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20La%20Parole%20faite%20chair%20%28Jean%201.1-18%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">La Parole faite chair</span>
+        <span class="semaine__idee">Le Verbe éternel, qui est Dieu, s'est fait chair pour révéler le Père et donner le pouvoir de devenir enfants de Dieu à ceux qui croient.</span>
+        <span class="semaine__ref">Jean 1.1-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20Le%20t%C3%A9moin%20de%20la%20lumi%C3%A8re%20%28Jean%201.19-28%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Le témoin de la lumière</span>
+        <span class="semaine__idee">Jean-Baptiste s'efface devant le Christ : il n'est que la voix qui prépare le chemin du Seigneur.</span>
+        <span class="semaine__ref">Jean 1.19-28<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20Voici%20l%27Agneau%20de%20Dieu%20%28Jean%201.29-34%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Voici l'Agneau de Dieu</span>
+        <span class="semaine__idee">Jésus est l'Agneau de Dieu qui ôte le péché du monde, attesté par l'Esprit et par le Père.</span>
+        <span class="semaine__ref">Jean 1.29-34<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20Venez%20et%20voyez%20%28Jean%201.35-51%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">Venez et voyez</span>
+        <span class="semaine__idee">La foi naît quand on suit Jésus, qu'on le confesse comme le Messie et qu'on en témoigne à d'autres.</span>
+        <span class="semaine__ref">Jean 1.35-51<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt2">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Mouvement II · Jean 2.1-5.47</p>
+      <h2 class="sec-title mouvement-titre">Les signes et l'autorité du Fils</h2>
+      <p class="ref">Semaines 5 à 14</p>
+    </header>
+    <p class="lead">De Cana à Béthesda, les premiers signes manifestent la gloire de Jésus; la nouvelle naissance, l'eau vive et l'égalité du Fils avec le Père révèlent qui il est.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../05%20-%20Le%20premier%20signe%20%C3%A0%20Cana%20%28Jean%202.1-12%29/index.html">
+        <span class="semaine__num">Semaine 5</span>
+        <span class="semaine__titre">Le premier signe à Cana</span>
+        <span class="semaine__idee">En changeant l'eau en vin, Jésus manifeste sa gloire et suscite la foi de ses disciples.</span>
+        <span class="semaine__ref">Jean 2.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../06%20-%20La%20maison%20de%20mon%20P%C3%A8re%20%28Jean%202.13-25%29/index.html">
+        <span class="semaine__num">Semaine 6</span>
+        <span class="semaine__titre">La maison de mon Père</span>
+        <span class="semaine__idee">Le zèle du Fils pour la sainteté de Dieu annonce le temple véritable, son corps livré et ressuscité.</span>
+        <span class="semaine__ref">Jean 2.13-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../07%20-%20Il%20faut%20na%C3%AEtre%20de%20nouveau%20%28Jean%203.1-21%29/index.html">
+        <span class="semaine__num">Semaine 7</span>
+        <span class="semaine__titre">Il faut naître de nouveau</span>
+        <span class="semaine__idee">Nul ne peut voir le royaume de Dieu s'il ne naît de l'Esprit : la nouvelle naissance est l'œuvre souveraine de Dieu reçue par la foi.</span>
+        <span class="semaine__ref">Jean 3.1-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../08%20-%20Il%20faut%20qu%27il%20croisse%20%28Jean%203.22-36%29/index.html">
+        <span class="semaine__num">Semaine 8</span>
+        <span class="semaine__titre">Il faut qu'il croisse</span>
+        <span class="semaine__idee">Jean se réjouit de diminuer pour que Christ grandisse, car celui qui croit au Fils a la vie éternelle.</span>
+        <span class="semaine__ref">Jean 3.22-36<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../09%20-%20L%27eau%20vive%20de%20la%20Samaritaine%20%28Jean%204.1-26%29/index.html">
+        <span class="semaine__num">Semaine 9</span>
+        <span class="semaine__titre">L'eau vive de la Samaritaine</span>
+        <span class="semaine__idee">Jésus offre l'eau vive qui étanche pour l'éternité et révèle qu'il est le Messie aux exclus de la grâce.</span>
+        <span class="semaine__ref">Jean 4.1-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../10%20-%20Le%20champ%20blanc%20pour%20la%20moisson%20%28Jean%204.27-42%29/index.html">
+        <span class="semaine__num">Semaine 10</span>
+        <span class="semaine__titre">Le champ blanc pour la moisson</span>
+        <span class="semaine__idee">La nourriture du Christ est de faire la volonté du Père, et beaucoup de Samaritains le reconnaissent comme le Sauveur du monde.</span>
+        <span class="semaine__ref">Jean 4.27-42<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../11%20-%20Le%20deuxi%C3%A8me%20signe%20en%20Galil%C3%A9e%20%28Jean%204.43-54%29/index.html">
+        <span class="semaine__num">Semaine 11</span>
+        <span class="semaine__titre">Le deuxième signe en Galilée</span>
+        <span class="semaine__idee">La foi qui prend Jésus au mot, même de loin, voit la puissance de sa parole guérir et sauver toute une maison.</span>
+        <span class="semaine__ref">Jean 4.43-54<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../12%20-%20Le%20troisi%C3%A8me%20signe%20%C3%A0%20B%C3%A9thesda%20%28Jean%205.1-18%29/index.html">
+        <span class="semaine__num">Semaine 12</span>
+        <span class="semaine__titre">Le troisième signe à Béthesda</span>
+        <span class="semaine__idee">Jésus guérit souverainement un paralytique le jour du sabbat et se déclare égal à Dieu, ce qui déchaîne l'hostilité des Juifs.</span>
+        <span class="semaine__ref">Jean 5.1-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../13%20-%20Le%20Fils%20ne%20fait%20rien%20de%20lui-m%C3%AAme%20%28Jean%205.19-30%29/index.html">
+        <span class="semaine__num">Semaine 13</span>
+        <span class="semaine__titre">Le Fils ne fait rien de lui-même</span>
+        <span class="semaine__idee">Le Fils, parfaitement uni au Père, partage son autorité de donner la vie et de juger; passer de la mort à la vie dépend de la foi en lui.</span>
+        <span class="semaine__ref">Jean 5.19-30<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../14%20-%20Les%20t%C3%A9moins%20du%20Fils%20%28Jean%205.31-47%29/index.html">
+        <span class="semaine__num">Semaine 14</span>
+        <span class="semaine__titre">Les témoins du Fils</span>
+        <span class="semaine__idee">Jean-Baptiste, les œuvres, le Père et les Écritures rendent tous témoignage à Jésus, mais l'incrédulité refuse d'aller à lui pour avoir la vie.</span>
+        <span class="semaine__ref">Jean 5.31-47<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt3">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Mouvement III · Jean 6.1-10.42</p>
+      <h2 class="sec-title mouvement-titre">« Je suis » : le pain, la lumière, le berger</h2>
+      <p class="ref">Semaines 15 à 29</p>
+    </header>
+    <p class="lead">Les grandes déclarations « Je suis » (le pain de vie, la lumière du monde, la porte, le bon berger) dévoilent la déité de Jésus, jusqu'au « moi et le Père nous sommes un ».</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../15%20-%20Le%20pain%20pour%20les%20cinq%20mille%20%28Jean%206.1-15%29/index.html">
+        <span class="semaine__num">Semaine 15</span>
+        <span class="semaine__titre">Le pain pour les cinq mille</span>
+        <span class="semaine__idee">Le quatrième signe révèle Jésus comme le Berger qui nourrit son peuple avec surabondance, mais la foule cherche un roi terrestre.</span>
+        <span class="semaine__ref">Jean 6.1-15<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../16%20-%20Le%20cinqui%C3%A8me%20signe%20%20la%20marche%20sur%20l%27eau%20%28Jean%206.16-21%29/index.html">
+        <span class="semaine__num">Semaine 16</span>
+        <span class="semaine__titre">Le cinquième signe : la marche sur l'eau</span>
+        <span class="semaine__idee">En marchant sur la mer, Jésus se révèle à ses disciples par le « C'est moi » qui rappelle le nom divin.</span>
+        <span class="semaine__ref">Jean 6.16-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../17%20-%20Je%20suis%20le%20pain%20de%20vie%20%28Jean%206.22-40%29/index.html">
+        <span class="semaine__num">Semaine 17</span>
+        <span class="semaine__titre">Je suis le pain de vie</span>
+        <span class="semaine__idee">Jésus est le pain de vie : venir à lui, c'est croire, et tous ceux que le Père lui donne viendront et ne seront jamais rejetés.</span>
+        <span class="semaine__ref">Jean 6.22-40<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../18%20-%20Le%20pain%20descendu%20du%20ciel%20%28Jean%206.41-59%29/index.html">
+        <span class="semaine__num">Semaine 18</span>
+        <span class="semaine__titre">Le pain descendu du ciel</span>
+        <span class="semaine__idee">Nul ne peut venir à Jésus si le Père ne l'attire; manger sa chair et boire son sang, c'est s'approprier par la foi son sacrifice qui donne la vie éternelle.</span>
+        <span class="semaine__ref">Jean 6.41-59<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../19%20-%20%C3%80%20qui%20irions-nous%20%28Jean%206.60-71%29/index.html">
+        <span class="semaine__num">Semaine 19</span>
+        <span class="semaine__titre">À qui irions-nous?</span>
+        <span class="semaine__idee">La foi authentique persévère et confesse que Christ seul a les paroles de la vie éternelle, tandis que les disciples superficiels se retirent.</span>
+        <span class="semaine__ref">Jean 6.60-71<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../20%20-%20Mon%20enseignement%20vient%20de%20Dieu%20%28Jean%207.1-24%29/index.html">
+        <span class="semaine__num">Semaine 20</span>
+        <span class="semaine__titre">Mon enseignement vient de Dieu</span>
+        <span class="semaine__idee">L'enseignement de Jésus vient du Père, et seul celui qui veut faire la volonté de Dieu reconnaît son autorité divine.</span>
+        <span class="semaine__ref">Jean 7.1-24<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../21%20-%20Des%20fleuves%20d%27eau%20vive%20%28Jean%207.25-53%29/index.html">
+        <span class="semaine__num">Semaine 21</span>
+        <span class="semaine__titre">Des fleuves d'eau vive</span>
+        <span class="semaine__idee">Jésus promet l'Esprit comme des fleuves d'eau vive à ceux qui croient, et la foule se divise sur son identité.</span>
+        <span class="semaine__ref">Jean 7.25-53<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../22%20-%20Va%2C%20et%20ne%20p%C3%A8che%20plus%20%28Jean%208.1-11%29/index.html">
+        <span class="semaine__num">Semaine 22</span>
+        <span class="semaine__titre">Va, et ne pèche plus</span>
+        <span class="semaine__idee">Devant la femme adultère, Jésus confond l'hypocrisie des accusateurs et offre une grâce qui ne tolère pas le péché mais en libère.</span>
+        <span class="semaine__ref">Jean 8.1-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../23%20-%20Je%20suis%20la%20lumi%C3%A8re%20du%20monde%20%28Jean%208.12-30%29/index.html">
+        <span class="semaine__num">Semaine 23</span>
+        <span class="semaine__titre">Je suis la lumière du monde</span>
+        <span class="semaine__idee">Jésus est la lumière du monde : le suivre, c'est sortir des ténèbres, mais le rejeter, c'est mourir dans ses péchés.</span>
+        <span class="semaine__ref">Jean 8.12-30<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../24%20-%20La%20v%C3%A9rit%C3%A9%20vous%20affranchira%20%28Jean%208.31-47%29/index.html">
+        <span class="semaine__num">Semaine 24</span>
+        <span class="semaine__titre">La vérité vous affranchira</span>
+        <span class="semaine__idee">La vraie liberté vient de demeurer dans la parole de Christ; l'esclave du péché qui rejette la vérité montre qu'il a le diable pour père.</span>
+        <span class="semaine__ref">Jean 8.31-47<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../25%20-%20Avant%20qu%27Abraham%20f%C3%BBt%2C%20je%20suis%20%28Jean%208.48-59%29/index.html">
+        <span class="semaine__num">Semaine 25</span>
+        <span class="semaine__titre">Avant qu'Abraham fût, je suis</span>
+        <span class="semaine__idee">Jésus s'attribue le nom divin « Je suis », affirmant son existence éternelle avant Abraham.</span>
+        <span class="semaine__ref">Jean 8.48-59<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../26%20-%20Le%20sixi%C3%A8me%20signe%20%20l%27aveugle-n%C3%A9%20%28Jean%209.1-12%29/index.html">
+        <span class="semaine__num">Semaine 26</span>
+        <span class="semaine__titre">Le sixième signe : l'aveugle-né</span>
+        <span class="semaine__idee">La cécité de l'homme sert à manifester les œuvres de Dieu, car Jésus est la lumière qui ouvre les yeux aveugles.</span>
+        <span class="semaine__ref">Jean 9.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../27%20-%20Maintenant%20je%20vois%20%28Jean%209.13-41%29/index.html">
+        <span class="semaine__num">Semaine 27</span>
+        <span class="semaine__titre">Maintenant je vois</span>
+        <span class="semaine__idee">L'aveugle guéri voit progressivement qui est Jésus et l'adore, tandis que les pharisiens voyants s'enfoncent dans leur aveuglement coupable.</span>
+        <span class="semaine__ref">Jean 9.13-41<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../28%20-%20Je%20suis%20le%20bon%20berger%20%28Jean%2010.1-21%29/index.html">
+        <span class="semaine__num">Semaine 28</span>
+        <span class="semaine__titre">Je suis le bon berger</span>
+        <span class="semaine__idee">Jésus est le bon berger qui donne sa vie pour ses brebis, les connaît et les garde, et nul ne les ravira de sa main.</span>
+        <span class="semaine__ref">Jean 10.1-21<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../29%20-%20Mon%20P%C3%A8re%20et%20moi%20nous%20sommes%20un%20%28Jean%2010.22-42%29/index.html">
+        <span class="semaine__num">Semaine 29</span>
+        <span class="semaine__titre">Mon Père et moi nous sommes un</span>
+        <span class="semaine__idee">Jésus déclare son unité essentielle avec le Père et garantit à ses brebis une vie éternelle que rien ne peut leur arracher.</span>
+        <span class="semaine__ref">Jean 10.22-42<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt4">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Mouvement IV · Jean 11.1-12.50</p>
+      <h2 class="sec-title mouvement-titre">La gloire et la mort qui donnent la vie</h2>
+      <p class="ref">Semaines 30 à 35</p>
+    </header>
+    <p class="lead">La résurrection de Lazare, signe suprême, et l'entrée triomphale ouvrent l'heure de la croix, où le grain de blé tombe en terre pour porter beaucoup de fruit.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../30%20-%20Je%20suis%20la%20r%C3%A9surrection%20et%20la%20vie%20%28Jean%2011.1-27%29/index.html">
+        <span class="semaine__num">Semaine 30</span>
+        <span class="semaine__titre">Je suis la résurrection et la vie</span>
+        <span class="semaine__idee">Jésus est lui-même la résurrection et la vie : croire en lui, c'est vivre même au-delà de la mort.</span>
+        <span class="semaine__ref">Jean 11.1-27<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../31%20-%20Lazare%2C%20sors%21%20%28Jean%2011.28-44%29/index.html">
+        <span class="semaine__num">Semaine 31</span>
+        <span class="semaine__titre">Lazare, sors!</span>
+        <span class="semaine__idee">Le septième signe, la résurrection de Lazare, manifeste la gloire de Dieu et la puissance du Fils sur la mort.</span>
+        <span class="semaine__ref">Jean 11.28-44<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../32%20-%20Mourir%20pour%20la%20nation%20%28Jean%2011.45-57%29/index.html">
+        <span class="semaine__num">Semaine 32</span>
+        <span class="semaine__titre">Mourir pour la nation</span>
+        <span class="semaine__idee">La prophétie involontaire de Caïphe annonce que Jésus mourra pour rassembler en un seul corps les enfants de Dieu dispersés.</span>
+        <span class="semaine__ref">Jean 11.45-57<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../33%20-%20L%27onction%20de%20B%C3%A9thanie%20%28Jean%2012.1-11%29/index.html">
+        <span class="semaine__num">Semaine 33</span>
+        <span class="semaine__titre">L'onction de Béthanie</span>
+        <span class="semaine__idee">L'adoration coûteuse de Marie honore d'avance l'ensevelissement du Christ, en contraste avec la cupidité de Judas.</span>
+        <span class="semaine__ref">Jean 12.1-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../34%20-%20L%27entr%C3%A9e%20%C3%A0%20J%C3%A9rusalem%20et%20le%20grain%20de%20bl%C3%A9%20%28Jean%2012.12-26%29/index.html">
+        <span class="semaine__num">Semaine 34</span>
+        <span class="semaine__titre">L'entrée à Jérusalem et le grain de blé</span>
+        <span class="semaine__idee">Le roi humble entre à Jérusalem, et le grain de blé qui meurt pour porter du fruit révèle la loi du discipulat.</span>
+        <span class="semaine__ref">Jean 12.12-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../35%20-%20La%20lumi%C3%A8re%20encore%20un%20peu%20de%20temps%20%28Jean%2012.27-50%29/index.html">
+        <span class="semaine__num">Semaine 35</span>
+        <span class="semaine__titre">La lumière encore un peu de temps</span>
+        <span class="semaine__idee">Jésus marche vers la croix pour glorifier le Père, et l'incrédulité d'Israël, prédite par Ésaïe, scelle le jugement de ceux qui rejettent la lumière.</span>
+        <span class="semaine__ref">Jean 12.27-50<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt5">
+    <header class="sec-head">
+      <div class="sec-num">V</div>
+      <p class="kicker">Mouvement V · Jean 13.1-17.26</p>
+      <h2 class="sec-title mouvement-titre">Le discours d'adieu : le cénacle</h2>
+      <p class="ref">Semaines 36 à 44</p>
+    </header>
+    <p class="lead">Au cénacle, le Fils lave les pieds des siens, promet le Consolateur, se révèle le vrai cep et intercède dans la prière sacerdotale pour l'unité et la garde de son Église.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../36%20-%20Le%20lavage%20des%20pieds%20%28Jean%2013.1-17%29/index.html">
+        <span class="semaine__num">Semaine 36</span>
+        <span class="semaine__titre">Le lavage des pieds</span>
+        <span class="semaine__idee">Ayant aimé les siens jusqu'au bout, Jésus lave les pieds de ses disciples et leur enseigne l'amour qui sert humblement.</span>
+        <span class="semaine__ref">Jean 13.1-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../37%20-%20Un%20commandement%20nouveau%20%28Jean%2013.18-38%29/index.html">
+        <span class="semaine__num">Semaine 37</span>
+        <span class="semaine__titre">Un commandement nouveau</span>
+        <span class="semaine__idee">Jésus dévoile le traître et donne le commandement nouveau : s'aimer les uns les autres comme il a aimé, marque distinctive de ses disciples.</span>
+        <span class="semaine__ref">Jean 13.18-38<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../38%20-%20Je%20suis%20le%20chemin%2C%20la%20v%C3%A9rit%C3%A9%20et%20la%20vie%20%28Jean%2014.1-14%29/index.html">
+        <span class="semaine__num">Semaine 38</span>
+        <span class="semaine__titre">Je suis le chemin, la vérité et la vie</span>
+        <span class="semaine__idee">Jésus est l'unique chemin vers le Père : le connaître, c'est connaître Dieu, et qui le voit a vu le Père.</span>
+        <span class="semaine__ref">Jean 14.1-14<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../39%20-%20Le%20don%20du%20Consolateur%20%28Jean%2014.15-31%29/index.html">
+        <span class="semaine__num">Semaine 39</span>
+        <span class="semaine__titre">Le don du Consolateur</span>
+        <span class="semaine__idee">Le Père et le Fils enverront l'Esprit de vérité pour demeurer à jamais dans les disciples obéissants et leur donner la paix de Christ.</span>
+        <span class="semaine__ref">Jean 14.15-31<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../40%20-%20Je%20suis%20le%20vrai%20cep%20%28Jean%2015.1-17%29/index.html">
+        <span class="semaine__num">Semaine 40</span>
+        <span class="semaine__titre">Je suis le vrai cep</span>
+        <span class="semaine__idee">Demeurer en Christ, le vrai cep, produit le fruit qui demeure; sans lui, on ne peut rien faire, et le sarment stérile est retranché.</span>
+        <span class="semaine__ref">Jean 15.1-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../41%20-%20La%20haine%20du%20monde%20%28Jean%2015.18-16.4%29/index.html">
+        <span class="semaine__num">Semaine 41</span>
+        <span class="semaine__titre">La haine du monde</span>
+        <span class="semaine__idee">Le monde qui a haï Christ haïra ses disciples, mais l'Esprit et eux rendront témoignage malgré la persécution.</span>
+        <span class="semaine__ref">Jean 15.18-16.4<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../42%20-%20Il%20vous%20conduira%20dans%20la%20v%C3%A9rit%C3%A9%20%28Jean%2016.5-15%29/index.html">
+        <span class="semaine__num">Semaine 42</span>
+        <span class="semaine__titre">Il vous conduira dans la vérité</span>
+        <span class="semaine__idee">Il est avantageux que Christ s'en aille, car l'Esprit convaincra le monde de péché, de justice et de jugement, et conduira les siens dans toute la vérité.</span>
+        <span class="semaine__ref">Jean 16.5-15<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../43%20-%20Votre%20tristesse%20chang%C3%A9e%20en%20joie%20%28Jean%2016.16-33%29/index.html">
+        <span class="semaine__num">Semaine 43</span>
+        <span class="semaine__titre">Votre tristesse changée en joie</span>
+        <span class="semaine__idee">La douleur de la séparation se muera en une joie que nul ne ravira, car Christ a vaincu le monde.</span>
+        <span class="semaine__ref">Jean 16.16-33<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../44%20-%20La%20pri%C3%A8re%20du%20grand%20pr%C3%AAtre%20%28Jean%2017.1-26%29/index.html">
+        <span class="semaine__num">Semaine 44</span>
+        <span class="semaine__titre">La prière du grand prêtre</span>
+        <span class="semaine__idee">Jésus intercède pour sa propre glorification, pour la préservation et la sanctification des siens, et pour leur unité dans la vérité.</span>
+        <span class="semaine__ref">Jean 17.1-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <article class="section reveal mouvement" id="mvt6">
+    <header class="sec-head">
+      <div class="sec-num">VI</div>
+      <p class="kicker">Mouvement VI · Jean 18.1-21.25</p>
+      <h2 class="sec-title mouvement-titre">La croix, le tombeau vide et l'envoi</h2>
+      <p class="ref">Semaines 45 à 53</p>
+    </header>
+    <p class="lead">Livré librement, jugé, crucifié et ressuscité, le Fils reçoit la confession de Thomas et envoie les siens; le récit s'achève par le rétablissement de Pierre.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../45%20-%20L%27arrestation%20au%20jardin%20%28Jean%2018.1-11%29/index.html">
+        <span class="semaine__num">Semaine 45</span>
+        <span class="semaine__titre">L'arrestation au jardin</span>
+        <span class="semaine__idee">Jésus se livre souverainement à ses ennemis, qui tombent à terre devant son « C'est moi », pour boire la coupe que le Père lui donne.</span>
+        <span class="semaine__ref">Jean 18.1-11<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../46%20-%20Le%20reniement%20de%20Pierre%20%28Jean%2018.12-27%29/index.html">
+        <span class="semaine__num">Semaine 46</span>
+        <span class="semaine__titre">Le reniement de Pierre</span>
+        <span class="semaine__idee">Pendant que Jésus confesse la vérité devant le grand prêtre, Pierre, par crainte, renie trois fois son Seigneur.</span>
+        <span class="semaine__ref">Jean 18.12-27<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../47%20-%20Voici%20l%27homme%20%28Jean%2018.28-19.16%29/index.html">
+        <span class="semaine__num">Semaine 47</span>
+        <span class="semaine__titre">Voici l'homme</span>
+        <span class="semaine__idee">Devant Pilate, Jésus témoigne de sa royauté qui n'est pas de ce monde, et son procès révèle l'innocence du Roi condamné.</span>
+        <span class="semaine__ref">Jean 18.28-19.16<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../48%20-%20Tout%20est%20accompli%20%28Jean%2019.17-37%29/index.html">
+        <span class="semaine__num">Semaine 48</span>
+        <span class="semaine__titre">Tout est accompli</span>
+        <span class="semaine__idee">À la croix, Jésus accomplit pleinement l'Écriture et l'œuvre de la rédemption en livrant son esprit, après avoir déclaré « Tout est accompli ».</span>
+        <span class="semaine__ref">Jean 19.17-37<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../49%20-%20Le%20tombeau%20vide%20%28Jean%2019.38-20.10%29/index.html">
+        <span class="semaine__num">Semaine 49</span>
+        <span class="semaine__titre">Le tombeau vide</span>
+        <span class="semaine__idee">Le corps de Jésus est enseveli avec soin, puis le tombeau vide et les linges laissés mènent le disciple bien-aimé à croire.</span>
+        <span class="semaine__ref">Jean 19.38-20.10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../50%20-%20J%27ai%20vu%20le%20Seigneur%20%28Jean%2020.11-18%29/index.html">
+        <span class="semaine__num">Semaine 50</span>
+        <span class="semaine__titre">J'ai vu le Seigneur</span>
+        <span class="semaine__idee">Le Ressuscité se révèle à Marie de Magdala et l'envoie annoncer son ascension vers le Père : « J'ai vu le Seigneur ».</span>
+        <span class="semaine__ref">Jean 20.11-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../51%20-%20Mon%20Seigneur%20et%20mon%20Dieu%20%28Jean%2020.19-31%29/index.html">
+        <span class="semaine__num">Semaine 51</span>
+        <span class="semaine__titre">Mon Seigneur et mon Dieu</span>
+        <span class="semaine__idee">Thomas confesse Jésus ressuscité comme « Mon Seigneur et mon Dieu », et Jean révèle le but de son livre : croire pour avoir la vie en son nom.</span>
+        <span class="semaine__ref">Jean 20.19-31<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../52%20-%20Le%20huiti%C3%A8me%20signe%20au%20bord%20du%20lac%20%28Jean%2021.1-14%29/index.html">
+        <span class="semaine__num">Semaine 52</span>
+        <span class="semaine__titre">Le huitième signe au bord du lac</span>
+        <span class="semaine__idee">Le huitième signe, la pêche miraculeuse, manifeste le Ressuscité comme Seigneur souverain qui pourvoit et se révèle aux siens.</span>
+        <span class="semaine__ref">Jean 21.1-14<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../53%20-%20Suis-moi%20%28Jean%2021.15-25%29/index.html">
+        <span class="semaine__num">Semaine 53</span>
+        <span class="semaine__titre">Suis-moi</span>
+        <span class="semaine__idee">Le Christ ressuscité restaure Pierre, lui confie son troupeau et l'appelle à le suivre jusqu'à la mort : « Suis-moi ».</span>
+        <span class="semaine__ref">Jean 21.15-25<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;Jean : le Verbe fait chair&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line">Recherche et série · AGB · EBC</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

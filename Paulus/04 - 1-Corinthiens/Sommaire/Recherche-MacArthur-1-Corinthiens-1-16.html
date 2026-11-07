@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Corinthiens 1-⁠16 · La sanctification de l&#x27;Église au cœur d&#x27;une métropole païenne · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Corinthiens 1-⁠16 dans la perspective de John MacArthur : La sanctification de l&#x27;Église au cœur d&#x27;une métropole païenne.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">1 Corinthiens 1-⁠16</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">1 Corinthiens 1-⁠16</span></p>
+    <h1 class="hero__title">La sanctification de l'Église au cœur d'une métropole païenne</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Or, c’est par lui que vous êtes en Jésus-Christ qui, par la volonté de Dieu, a été fait pour nous sagesse, justice, sanctification et rédemption,&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">1 Corinthiens 1.30 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 2 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">1 Corinthiens 1-⁠16</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Première épître canonique adressée à l'Église de Corinthe, cette lettre appartient au genre épistolaire apostolique de correction pastorale, d'instruction doctrinale et de casuistique ecclésiale. Paul la rédige depuis Éphèse vers le printemps de l'an 55 apr. J.-C. (16.8), vers la fin de son séjour de trois ans en Asie lors de son troisième voyage missionnaire (Ac 19.1-⁠20.1; 20.31). Avant cette épître, Paul avait déjà adressé aux Corinthiens une première lettre aujourd'hui perdue leur enjoignant de ne pas fréquenter les débauchés (5.9). Alerté d'abord par les « gens de Chloé » au sujet des factions qui déchirent l'assemblée (1.11), puis par des nouvelles alarmantes touchant l'inceste toléré (5.1), les procès entre frères devant les tribunaux païens (6.1) et les désordres lors du repas du Seigneur (11.18), l'apôtre reçoit également une délégation officielle composée de Stéphanas, Fortunatus et Achaïcus (16.17). Ceux-ci lui remettent une lettre de l'Église sollicitant ses directives sur une série de questions précises introduites par la formule récurrente <i>Peri de</i> (« Pour ce qui concerne ») : le mariage et le célibat (7.1), les viandes sacrifiées aux idoles (8.1), les dons spirituels (12.1) et la collecte pour les saints de Jérusalem (16.1).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">à l’Eglise de Dieu qui est à Corinthe, à ceux qui ont été sanctifiés en Jésus-Christ, saints par vocation, et à tous ceux qui invoquent en quelque lieu que ce soit le nom de notre Seigneur Jésus-Christ, leur Seigneur et le nôtre:</p><cite class="verse__ref">1 Corinthiens 1.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je vous exhorte, frères, par le nom de notre Seigneur Jésus-Christ, à tenir tous un même langage, et à ne point avoir de divisions parmi vous, mais à être parfaitement unis dans un même esprit et dans un même sentiment.</p><cite class="verse__ref">1 Corinthiens 1.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car la prédication de la croix est une folie pour ceux qui périssent; mais pour nous qui sommes sauvés elle est une puissance de Dieu.</p><cite class="verse__ref">1 Corinthiens 1.18 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car je n’ai pas eu la pensée de savoir parmi vous autre chose que Jésus-Christ, et Jésus-Christ crucifié.</p><cite class="verse__ref">1 Corinthiens 2.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais l’homme naturel n’accepte pas les choses de l’Esprit de Dieu, car elles sont une folie pour lui, et il ne peut les connaître, parce que c’est spirituellement qu’on en juge.</p><cite class="verse__ref">1 Corinthiens 2.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car personne ne peut poser un autre fondement que celui qui a été posé, savoir Jésus-Christ.</p><cite class="verse__ref">1 Corinthiens 3.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ne savez-vous pas que vous êtes le temple de Dieu, et que l’Esprit de Dieu habite en vous?</p><cite class="verse__ref">1 Corinthiens 3.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Faites disparaître le vieux levain, afin que vous soyez une pâte nouvelle, puisque vous êtes sans levain, car Christ, notre Pâque, a été immolé.</p><cite class="verse__ref">1 Corinthiens 5.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ne savez-vous pas que votre corps est le temple du Saint-Esprit qui est en vous, que vous avez reçu de Dieu, et que vous ne vous appartenez point à vous-mêmes? Car vous avez été rachetés à un grand prix. Glorifiez donc Dieu dans votre corps et dans votre esprit, qui appartiennent à Dieu.</p><cite class="verse__ref">1 Corinthiens 6.19-⁠20 · NEG</cite></figure><figure class="verse"><p class="verse__text">Aucune tentation ne vous est survenue qui n’ait été humaine, et Dieu, qui est fidèle, ne permettra pas que vous soyez tentés au-delà de vos forces; mais avec la tentation il préparera aussi le moyen d’en sortir, afin que vous puissiez la supporter.</p><cite class="verse__ref">1 Corinthiens 10.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Soit donc que vous mangiez, soit que vous buviez, soit que vous fassiez quelque autre chose, faites tout pour la gloire de Dieu.</p><cite class="verse__ref">1 Corinthiens 10.31 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car j’ai reçu du Seigneur ce que je vous ai enseigné; c’est que le Seigneur Jésus, dans la nuit où il fut livré, prit du pain, et, après avoir rendu grâces, le rompit, et dit: Ceci est mon corps, qui est rompu pour vous; faites ceci en mémoire de moi. De même, après avoir soupé, il prit la coupe, et dit: Cette coupe est la nouvelle alliance en mon sang; faites ceci en mémoire de moi toutes les fois que vous en boirez. Car toutes les fois que vous mangez ce pain et que vous buvez cette coupe, vous annoncez la mort du Seigneur, jusqu’à ce qu’il vienne.</p><cite class="verse__ref">1 Corinthiens 11.23-⁠26 · NEG</cite></figure><figure class="verse"><p class="verse__text">Car, comme le corps est un et a plusieurs membres, et comme tous les membres du corps, malgré leur nombre, ne forment qu’un seul corps, ainsi en est-il de Christ. Nous avons tous, en effet, été baptisés dans un seul Esprit, pour former un seul corps, soit Juifs, soit Grecs, soit esclaves, soit libres, et nous avons tous été abreuvés d’un seul Esprit.</p><cite class="verse__ref">1 Corinthiens 12.12-⁠13 · NEG</cite></figure><figure class="verse"><p class="verse__text">L’amour est patient, il est plein de bonté; l’amour n’est point envieux; l’amour ne se vante point, il ne s’enfle point d’orgueil, il ne fait rien de malhonnête, il ne cherche point son intérêt, il ne s’irrite point, il ne soupçonne point le mal, il ne se réjouit point de l’injustice, mais il se réjouit de la vérité; il excuse tout, il croit tout, il espère tout, il supporte tout. L’amour ne périt jamais. Les prophéties seront abolies, les langues cesseront, la connaissance sera abolie.</p><cite class="verse__ref">1 Corinthiens 13.4-⁠8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Maintenant donc ces trois choses demeurent: la foi, l’espérance, l’amour; mais la plus grande de ces choses, c’est l’amour.</p><cite class="verse__ref">1 Corinthiens 13.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais que tout se fasse avec bienséance et avec ordre.</p><cite class="verse__ref">1 Corinthiens 14.40 · NEG</cite></figure><figure class="verse"><p class="verse__text">Je vous ai enseigné avant tout, comme je l’avais aussi reçu, que Christ est mort pour nos péchés, selon les Ecritures; il a été enseveli, et il est ressuscité le troisième jour, selon les Ecritures;</p><cite class="verse__ref">1 Corinthiens 15.3-⁠4 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mais maintenant, Christ est ressuscité des morts, il est les prémices de ceux qui sont morts.</p><cite class="verse__ref">1 Corinthiens 15.20 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ainsi, mes frères bien-aimés, soyez fermes, inébranlables, travaillant de mieux en mieux à l’œuvre du Seigneur, sachant que votre travail ne sera pas vain dans le Seigneur.</p><cite class="verse__ref">1 Corinthiens 15.58 · NEG</cite></figure><figure class="verse"><p class="verse__text">Veillez, demeurez fermes dans la foi, soyez des hommes, fortifiez-vous. Que tout ce que vous faites se fasse avec amour!</p><cite class="verse__ref">1 Corinthiens 16.13-⁠14 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Dans l'argument global de la lettre, Paul refuse de traiter ces crises comme de simples dysfonctionnements administratifs; il les diagnostique comme les symptômes d'une même racine spirituelle : la mondanité et le comportement charnel (<i>sarkikos</i>, 3.1-⁠3), par lesquels des croyants pourtant régénérés et richement dotés (1.4-⁠7) continuent de penser et d'agir selon la sagesse orgueilleuse de ce siècle déchu. La structure de l'épître progresse méthodiquement des désordres rapportés oralement (chapitres 1 à 6) vers les questions écrites de l'assemblée (chapitres 7 à 16). Paul commence par démanteler l'esprit de parti en opposant la sagesse de Dieu manifestée dans la croix à la rhétorique humaine et en rappelant la vraie nature du ministère apostolique (1.10-⁠4.21). Il exige ensuite la purification morale et communautaire de l'assemblée face à l'inceste, aux litiges judiciaires et à la fornication (5.1-⁠6.20). Puis il répond successivement aux consultations sur le mariage et la vocation chrétienne (7.1-⁠40), sur l'équilibre entre liberté chrétienne, amour fraternel et fuite de l'idolâtrie (8.1-⁠11.1), sur l'ordre dans le culte public - tenue de l'homme et de la femme, sainte Cène, exercice des charismes gouverné par l'amour et la recherche de l'édification (11.2-⁠14.40) - avant de culminer dans une magistrale apologie de la résurrection corporelle de Christ et des saints (15.1-⁠58) et de conclure par les dispositions pratiques de la collecte et ses salutations fraternelles (16.1-⁠24).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">1 Corinthiens 1-⁠16</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">Située sur l'étroit isthme reliant le Péloponnèse à la Grèce continentale, Corinthe contrôlait deux ports stratégiques : Léchée à l'ouest sur le golfe de Corinthe (vers l'Italie) et Cenchrées à l'est sur le golfe Saronique (vers l'Asie). Grâce au <i>diolkos</i>, une voie pavée permettant de haler les navires ou leurs cargaisons d'une mer à l'autre pour éviter le périlleux contournement du cap Malée, la cité jouissait d'une prospérité commerciale exceptionnelle. Détruite par le consul romain Lucius Mummius en 146 av. J.-C., elle fut refondée en 44 av. J.-C. par Jules César sous le statut de colonie romaine (<i>Colonia Laus Julia Corinthiensis</i>) et devint la capitale administrative de la province sénatoriale d'Achaïe ainsi que le siège des célèbres Jeux isthmiques biennaux célébrés en l'honneur de Poséidon.</p><div class="body"><p>Cette richesse cosmopolite s'accompagnait d'une corruption morale proverbiale dans tout le monde gréco-romain : le verbe grec <i>korinthiazomai</i> (« vivre en Corinthien ») avait été forgé par les auteurs classiques pour désigner la débauche effrénée. Dominée par l'Acrocorinthe, acropole rocheuse culminant à près de 575 mètres où se dressait le temple d'Aphrodite autrefois servi par un millier de prostituées sacrées (hiérodules), la ville mêlait cultes à mystères, temples d'Asclépios et d'Apollon, synagogues juives et écoles de rhéteurs itinérants. Lorsque Paul y arriva vers l'an 50 apr. J.-C. après son passage à Athènes (Ac 18.1-⁠18), il travailla de ses mains avec Aquilas et Priscille, prêcha dans la synagogue où se convertirent les chefs Crispus et Sosthène, fut protégé par une décision du proconsul Gallion (51-⁠52 apr. J.-C., repère chronologique majeur du Nouveau Testament) et y fonda, en dix-huit mois de ministère, une Église composée majoritairement de païens d'origine modeste (1.26; 6.9-⁠11; 12.2), constamment tentés d'importer dans l'assemblée l'élitisme rhétorique, le laxisme sexuel et l'individualisme religieux de leur cité.</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Géographie commerciale et Jeux isthmiques.</b> Carrefour maritime entre Rome et l'Orient grâce à l'isthme et aux ports de Léchée et Cenchrées, Corinthe accueillait tous les deux ans les Jeux isthmiques, deuxième grand concours panhellénique après les Jeux olympiques. Paul puise directement dans cet environnement civique ses métaphores du stade, de la course, du pugilat, de la maîtrise de soi de l'athlète et de la couronne périssable de pin ou de céleri sauvage opposée à la couronne incorruptible (9.24-⁠27), ainsi que l'image de l'arène où les condamnés défilent en spectacle au monde (4.9).</li><li><b>Culture sophistique et factions d'éloquence.</b> La société corinthienne vouait un culte à la rhétorique d'apparat (<i>sophia logou</i>) : des orateurs itinérants rivalisaient sur l'agora pour attirer des disciples qui se glorifiaient du nom de leur maître. Après le départ de Paul et le ministère éloquent de l'Alexandrin Apollos (Ac 18.24-⁠28), les croyants corinthiens ont transposé cette mentalité mondaine de patronage et de rivalité philosophique au sein de l'Église, se divisant en coteries rivales sous les bannières de Paul, d'Apollos, de Céphas et de Christ (1.12; 3.4; 4.6).</li><li><b>Environnement idolâtre et débauche institutionnalisée.</b> À Corinthe, la religion païenne imprégnait toute la vie sociale : les banquets corporatifs et familiaux se tenaient dans les salles à manger des temples d'idoles (8.10), et la viande issue des sacrifices était revendue au marché public (<i>makellon</i>, 10.25). Parallèlement, la mentalité grecque dualiste - qui méprisait le corps matériel comme moralement indifférent ou destiné à la destruction (6.13; 15.12) - poussait certains Corinthiens soit au libertinage sexuel (5.1; 6.12-⁠20), soit par réaction à un ascétisme rigoriste jusque dans le mariage (7.1-⁠5).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">1 Corinthiens 1-⁠16</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">1 Corinthiens 2.1</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>katangellōn hymin to mystērion tou Theou</i> (« vous annonçant le mystère de Dieu », 𝔓46, א*, A, C, SBLGNT), ou <i>to martyrion tou Theou</i> (« le témoignage de Dieu », א2, B, D, G, Ψ, texte byzantin, Textus Receptus, Westcott et Hort).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« en vous annonçant le témoignage de Dieu » : la NEG79, la LSG, la S21 et la Darby suivent <i>martyrion</i>; la NBS rend « le mystère de Dieu ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Les deux leçons sont pleinement pauliniennes : le « témoignage de Dieu » (1.6) proclamé à Corinthe a pour contenu précis « la sagesse de Dieu en mystère » (2.7).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Corinthiens 6.20</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>doxasate dē ton Theon en tō sōmati hymōn</i> (𝔓46, א, A, B, C*, D*, SBLGNT, Nestle 1904, Westcott et Hort), ou ajout de <i>kai en tō pneumati hymōn, hatina estin tou Theou</i> (« et dans votre esprit, qui appartiennent à Dieu », C3, D2, Ψ, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>La NEG79 et la LSG traduisent la forme longue; la S21 met l'ajout entre crochets; la Darby et la NBS suivent la leçon courte.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">La leçon courte garde le projecteur braqué sur le corps physique (sujet de 6.12-⁠20), tandis que l'amplification byzantine explicite une vérité par ailleurs enseignée en 7.34.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Corinthiens 11.24</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>touto mou estin to sōma to hyper hymōn</i> (« ceci est mon corps, qui est pour vous », 𝔓46, א*, A, B, C*, SBLGNT, Westcott et Hort), ou <i>to hyper hymōn klōmenon</i> (« qui est rompu pour vous », א2, C3, D2, G, Ψ, texte byzantin, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« Ceci est mon corps, qui est rompu pour vous » : la NEG79 et la LSG suivent le Textus Receptus; la S21 met « [rompu] » entre crochets; la Darby et la NBS traduisent « qui est pour vous ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur souligne que la leçon courte évite toute contradiction apparente avec Jean 19.36 (aucun os de Christ ne fut brisé) tout en affirmant le don substitutif de son corps.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Corinthiens 13.3</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hina kauchēsōmai</i> (« pour que je me glorifie / tire fierté », 𝔓46, א, A, B, SBLGNT, Westcott et Hort), ou <i>hina kauthēsōmai / kauthēsomai</i> (« pour être brûlé », C, D, F, G, L, Ψ, texte byzantin, Textus Receptus, Nestle 1904).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« quand je livrerais même mon corps pour être brûlé » : la NEG79, la LSG, la S21 et la Darby suivent <i>kauthēsōmai</i>; la NBS traduit « pour en tirer fierté ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Dans les deux cas, l'argument culmine au même point : même le sacrifice suprême de son propre corps est spirituellement sans profit (<i>ouden ōpheloumai</i>) sans l'amour.</dd></div></dl></section><section class="variante"><h4 class="variante__ref">1 Corinthiens 15.49</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>Indicatif futur <i>phoresomen</i> (« nous porterons aussi l'image du céleste », א, B, Ψ, texte byzantin, Textus Receptus, SBLGNT, Westcott et Hort), ou subjonctif aoriste exhortatif <i>phoresōmen</i> (« portons aussi l'image du céleste », 𝔓46, A, C, D, F, G).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« nous porterons aussi l'image du céleste » : la NEG79, la LSG, la S21, la Darby et la NBS retiennent toutes l'indicatif futur.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">Le contexte de 15.42-⁠54 est eschatologique et déclaratif, non exhortatif : Paul affirme la certitude de la glorification future des croyants.</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT et son apparat critique (lus aux 437 versets du livre)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin RP 2005, Église orthodoxe grecque 1904, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub)</li><li>Septante (LXX) et texte massorétique hébreu pour les citations vétérotestamentaires</li><li>versions françaises : NEG79 (BibleGateway et bible.audio), LSG, S21, Darby et NBS, lues à tous les versets du livre</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>La numérotation des 437 versets de 1 Corinthiens est identique entre la NEG79, les éditions grecques et la numérotation anglaise suivie par John MacArthur. Seule la ponctuation de 7.33-⁠34 partage différemment le verbe <i>memeristai</i> (« il est partagé ») entre la fin du verset 33 et le début du verset 34 selon les éditions critiques.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">1 Corinthiens 1-⁠16</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>1 Corinthiens</span> <span>1.1-⁠9</span></p><div class="plan__corps"><p class="plan__titre">Salutation apostolique et action de grâces pour la position des Corinthiens en Christ : appelés à la sainteté, enrichis de tout don et affermis jusqu'au jour du Seigneur.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Adresse épistolaire (<i>Paulos klētos apostolos</i>, v. 1) et période eucharistique (<i>Eucharistō tō Theō mou pantote</i>, v. 4) établissant le fondement de la grâce avant toute réprimande.</p></div></li><li><p class="plan__ref"><span>1 Corinthiens</span> <span>1.10-⁠4.21</span></p><div class="plan__corps"><p class="plan__titre">Réponse au rapport de la maison de Chloé : condamnation des divisions partisanes par la folie de la croix, la révélation de l'Esprit et la véritable nature des serviteurs de Dieu.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Exhortation solennelle d'ouverture (<i>Parakalō de hymas, adelphoi</i>, 1.10) et inclusion paternelle finale (<i>Parakalō oun hymas, mimētai mou ginesthe</i>, 4.16).</p></div></li><li><p class="plan__ref"><span>1 Corinthiens</span> <span>5.1-⁠6.20</span></p><div class="plan__corps"><p class="plan__titre">Réponse aux rapports d'immoralité et d'injustice : discipline de l'incestueux, interdiction des procès devant les païens et sanctification du corps comme temple du Saint-Esprit.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Transition abrupte par le constat public (<i>Holōs akouetai en hymin porneia</i>, 5.1) et conclusion impérative à l'aoriste (<i>doxasate dē ton Theon en tō sōmati hymōn</i>, 6.20).</p></div></li><li><p class="plan__ref"><span>1 Corinthiens</span> <span>7.1-⁠40</span></p><div class="plan__corps"><p class="plan__titre">Première réponse aux questions écrites : principes bibliques régissant le mariage, le célibat, le divorce, le maintien dans l'état de son appel et le remariage des veuves.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Première formule de transition structurelle <i>Peri de hōn egrapsate</i> (« Pour ce qui concerne les choses au sujet desquelles vous m'avez écrit », 7.1; reprise en 7.25).</p></div></li><li><p class="plan__ref"><span>1 Corinthiens</span> <span>8.1-⁠11.1</span></p><div class="plan__corps"><p class="plan__titre">Deuxième réponse aux questions écrites : les viandes sacrifiées aux idoles, la subordination de la liberté chrétienne à l'édification du faible (illustrée par le renoncement de Paul) et l'avertissement contre l'idolâtrie.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Formule <i>Peri de tōn eidōlothytōn</i> (8.1) et conclusion récapitulative qui clôt tout le développement en 11.1 (<i>Mimētai mou ginesthe, kathōs kagō Christou</i>).</p></div></li><li><p class="plan__ref"><span>1 Corinthiens</span> <span>11.2-⁠14.40</span></p><div class="plan__corps"><p class="plan__titre">Rectification des désordres dans le culte public de l'assemblée : autorité et tenue lors de la prière, célébration digne de la Cène, unité du corps dans la diversité des dons, suprématie de l'amour et ordre prophétique.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Transition élogieuse sur les traditions (<i>Epainō de hymas</i>, 11.2), formule <i>Peri de tōn pneumatikōn</i> (12.1) et règle finale d'ordre ecclésial (<i>panta de euschēmonōs kai kata taxin ginesthō</i>, 14.40).</p></div></li><li><p class="plan__ref"><span>1 Corinthiens</span> <span>15.1-⁠58</span></p><div class="plan__corps"><p class="plan__titre">Apologie magistrale et exposition doctrinale de la résurrection corporelle : historicité du kérygme, nécessité théologique, ordre eschatologique, nature du corps glorifié et victoire finale sur la mort.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Introduction solennelle de rappel de l'Évangile (<i>Gnōrizō de hymin, adelphoi, to euangelion</i>, 15.1) et exhortation conclusive (<i>Hōste, adelphoi mou agapētoi, hedraioi ginesthe</i>, 15.58).</p></div></li><li><p class="plan__ref"><span>1 Corinthiens</span> <span>16.1-⁠24</span></p><div class="plan__corps"><p class="plan__titre">Dernières instructions pratiques sur la collecte pour les saints, projets d'itinéraire de Paul, recommandations ministérielles et salutations autographes finales.</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> Dernière formule <i>Peri de tēs logias tēs eis tous hagious</i> (16.1) et signature autographe de Paul avec anathème, <i>Maranatha</i> et bénédiction (16.21-⁠24).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>1 Corinthiens 1.2</dt><dd>Le participe parfait passif <i>hēgiasmenois en Christō Iēsou</i> (« ceux qui ont été sanctifiés en Jésus-Christ ») exprime un acte accompli dans le passé dont l'état résultant demeure permanent : avant même d'exposer les fautes morales des Corinthiens, Paul fonde toute son éthique sur leur sanctification positionnelle définitive acquise à la conversion.</dd></div><div><dt>1 Corinthiens 1.18</dt><dd>L'opposition entre les deux participes présents substantivés <i>tois apollymenois</i> (« ceux qui périssent ») et <i>tois sōzomenois</i> (« nous qui sommes sauvés ») divise l'humanité entière en deux trajectoires spirituelles actuelles et irréconciliables selon leur réponse à « la parole de la croix » (<i>ho logos ho tou staurou</i>).</dd></div><div><dt>1 Corinthiens 6.11</dt><dd>Le triple aoriste après l'imparfait <i>kai tauta tines ēte</i> (« et c'est là ce que vous étiez ») - <i>alla apelousasthe, alla hēgiasthēte, alla edikaiōthēte</i> (« mais vous avez été lavés, mais vous avez été sanctifiés, mais vous avez été justifiés ») - marque par l'anaphore du fort adversatif <i>alla</i> la rupture radicale et irréversible opérée par la grâce salvatrice.</dd></div><div><dt>1 Corinthiens 7.1; 8.1; 12.1; 16.1</dt><dd>La locution prépositionnelle <i>Peri de</i> (« Pour ce qui concerne... ») accompagnée du génitif fonctionne comme un marqueur macro-syntaxique épistolaire qui scande toute la seconde moitié du livre (7.1, 25; 8.1; 12.1; 16.1, 12), signalant chaque fois que Paul passe à un nouveau point soulevé dans la lettre envoyée par les Corinthiens.</dd></div><div><dt>1 Corinthiens 11.27-⁠29</dt><dd>L'adverbe modal <i>anaxiōs</i> (« indignement ») qualifie les verbes <i>esthiē</i> (« mange ») et <i>pinē</i> (« boive »), et non la dignité intrinsèque du croyant : Paul condamne la manière irrévérencieuse, égoïste et profane de participer au repas du Seigneur sans discerner (<i>mē diakrinōn</i>) l'unicité et la sainteté du corps de Christ.</dd></div><div><dt>1 Corinthiens 15.3-⁠4</dt><dd>Le contraste aspectuel entre les aoristes historiques <i>apethanen</i> (« il est mort ») et <i>etaphē</i> (« il a été enseveli ») et le parfait <i>egēgertai</i> (« il a été ressuscité et demeure vivant », repris sept fois aux v. 4, 12, 13, 14, 16, 17, 20) souligne que la mort et la sépulture furent des événements ponctuels clos, tandis que la résurrection de Christ inaugure un état permanent et indestructible.</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">divisions</a><a href="#mot-2">une folie</a><a href="#mot-3">charnels</a><a href="#mot-4">l'édification</a><a href="#mot-5">l'amour</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">divisions</h3><p class="mot__translit">schisma</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>déchirure, fente, division, dissension</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie indiquée par Thayer, le nom neutre <i>schisma</i> dérive du verbe <i>schizō</i> (fendre, déchirer). Au sens propre, il désigne la déchirure physique d'un vêtement neuf sur un vieux tissu (Mt 9.16; Mc 2.21). Au sens figuré dans le Nouveau Testament (Jn 7.43; 9.16; 10.19; 1 Co 1.10; 11.18; 12.25), il décrit une scission interne, une fracture relationnelle ou une faction partisane qui brise l'harmonie organique d'une communauté sans nécessairement avoir déjà provoqué une séparation géographique.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 1 Corinthiens 1.10, 11.18 et 12.25, Paul emploie <i>schisma</i> pour dénoncer l'absurdité spirituelle d'une Église qui déchire de l'intérieur la tunique sans couture du corps de Christ par l'orgueil partisan (chapitres 1 à 4), l'égoïsme social lors de la Cène (chapitre 11) et la jalousie autour des charismes (chapitre 12). Il y oppose le verbe médical et maritime <i>katartizō</i> (1.10, remettre un membre déboîté, repriser des filets déchirés), appelant les croyants à être « parfaitement unis dans un même esprit et dans un même sentiment ».</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> divisions parmi vous (1.10)</li><li><b>NEG79</b> divisions parmi vous (1.10)</li><li><b>Darby</b> divisions parmi vous (1.10)</li><li><b>LSG</b> divisions parmi vous (1.10)</li><li><b>NBS</b> divisions parmi vous (1.10)</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">une folie</h3><p class="mot__translit">mōria</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>folie, absurdité, sottise</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie relevée par Thayer, <i>mōria</i> provient de l'adjectif <i>mōros</i> (insensé, stupide, engourdi) et n'apparaît dans tout le Nouveau Testament que sous la plume de Paul dans cette seule épître (1 Co 1.18, 21, 23; 2.14; 3.19). Le terme désigne ce que l'intelligence humaine autonome juge intellectuellement absurde, dérisoire et dénué de sens.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Paul retourne avec une ironie souveraine le verdict hautain des philosophes grecs : « la parole de la croix » (un Messie humilié et supplicié sur un gibet romain) est taxée de <i>mōria</i> par ceux qui périssent (1.18, 23) et par l'homme naturel non régénéré (2.14). Mais dans le renversement opéré par Dieu, c'est par cette « folie de la prédication » (<i>dia tēs mōrias tou kērygmatos</i>, 1.21) que Dieu sauve efficacement les croyants, tandis que la prétendue sagesse de ce monde est démasquée comme la véritable <i>mōria</i> devant le tribunal divin (3.19).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> une folie pour ceux qui périssent (1.18)</li><li><b>NEG79</b> une folie pour ceux qui périssent (1.18)</li><li class="ecart"><b>Darby</b> folie pour ceux qui périssent (1.18)</li><li><b>LSG</b> une folie pour ceux qui périssent (1.18)</li><li class="ecart"><b>NBS</b> folie pour ceux qui vont à leur perte (1.18)</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">charnels</h3><p class="mot__translit">sarkikos</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>charnel, gouverné par la chair</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie précisée par Thayer, <i>sarkikos</i> (formé sur <i>sarx</i>, la chair, avec le suffixe caractéristique <i>-ikos</i>) se distingue finement de <i>sarkinos</i> (G4560, suffixe de matière <i>-inos</i> : « fait de chair », fragile et infantile, 3.1). Tandis que <i>psychikos</i> (2.14) désigne l'homme naturel inconverti totalement dépourvu de l'Esprit, <i>sarkikos</i> (3.1, 3) qualifie le croyant qui, bien qu'habité par l'Esprit, se laisse gouverner dans son comportement par les impulsions et les critères de sa nature déchue.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>En 1 Corinthiens 3.1-⁠4, Paul pose le diagnostic central de toute l'épître : les Corinthiens ne sont pas des inconvertis (<i>psychikoi</i>), mais des « petits enfants en Christ » (<i>nēpioi en Christō</i>) qui agissent encore de manière charnelle (<i>sarkikoi</i>). La preuve de cette carnalité n'est pas l'absence de dons spectaculaires, mais la présence de la jalousie, des querelles et des factions humaines. MacArthur souligne que la carnalité n'est jamais une « troisième catégorie » légitime ou permanente de chrétiens, mais un état anormal et coupable d'immaturité et de désobéissance qui exige la repentance.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> dirigés par votre nature propre (3.3)</li><li><b>NEG79</b> charnels (3.3)</li><li><b>Darby</b> charnels (3.3)</li><li><b>LSG</b> charnels (3.3)</li><li><b>NBS</b> charnels (3.3)</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">l'édification</h3><p class="mot__translit">oikodomē</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>construction d'une maison, édification</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Selon l'étymologie donnée par Thayer, le substantif féminin <i>oikodomē</i> (composé de <i>oikos</i>, maison, et de la racine de <i>demō</i>, bâtir) et le verbe apparenté <i>oikodomeō</i> (G3618) désignent au sens propre l'action d'ériger un édifice ou le bâtiment lui-même (1 Co 3.9). Au sens métaphorique paulinien, le terme exprime tout ce qui fait croître les croyants dans la vérité, la sainteté, l'unité et la maturité spirituelle (14.3, 4, 5, 12, 26).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>À travers toute l'épître, <i>oikodomē</i> constitue le critère régulateur par lequel Paul évalue la liberté chrétienne et l'exercice des dons spirituels. Là où la connaissance orgueilleuse « enfle » comme un soufflet (<i>physioi</i>), l'amour « édifie » (<i>oikodomei</i>, 8.1; cf. 10.23). Dans l'assemblée réunie (chapitre 14), la recherche d'expériences extatiques individuelles centrées sur l'auto-édification (14.4) doit céder la place à la proclamation intelligible de la Parole qui bâtit l'Église entière : « que tout se fasse pour l'édification » (<i>panta pros oikodomēn ginesthō</i>, 14.26).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> pour l'édification (14.26)</li><li><b>NEG79</b> pour l'édification (14.26)</li><li><b>Darby</b> pour l'édification (14.26)</li><li><b>LSG</b> pour l'édification (14.26)</li><li class="ecart"><b>NBS</b> que tout soit constructif (14.26)</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">l'amour</h3><p class="mot__translit">agapē</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>amour bienveillant et sacrificiel, charité</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Comme le note Thayer, le substantif <i>agapē</i> est pratiquement absent de la littérature grecque profane (qui privilégiait <i>erōs</i>, l'attrait passionnel, et <i>philia</i>, l'affection d'amitié) et a été élevé par la Septante et le Nouveau Testament pour désigner l'amour saint de Dieu et l'amour fraternel qu'il produit. Cet amour ne procède pas d'une simple impulsion émotionnelle ni de l'attrait de l'objet aimé, mais d'une détermination de la volonté qui cherche activement et sacrificiellement le bien d'autrui.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>Dans une Église de Corinthe fascinée par l'éloquence (chapitres 1 à 4), jalouse de ses prérogatives (chapitres 6 et 8) et enivrée par les charismes spectaculaires (chapitres 12 et 14), Paul érige l'<i>agapē</i> en « voie par excellence » (12.31). Au chapitre 13, il définit l'amour non par des abstractions sentimentales, mais par quinze formes verbales d'action patiente, humble et désintéressée (13.4-⁠7). Sans <i>agapē</i>, les dons les plus éclatants ne sont qu'un vacarme d'airain (13.1-⁠3); et lorsque les dons temporaires auront pris fin dans l'éternité, l'amour demeurera à jamais comme la plus grande des vertus chrétiennes (13.8-⁠13; 16.14).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> la foi, l'espérance, l'amour (13.13)</li><li><b>NEG79</b> la foi, l'espérance, l'amour (13.13)</li><li><b>Darby</b> la foi, l'espérance, l'amour (13.13)</li><li class="ecart"><b>LSG</b> la foi, l'espérance, la charité (13.13)</li><li><b>NBS</b> la foi, l'espérance, l'amour (13.13)</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">1 Corinthiens 1-⁠16</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Dans sa série monumentale de 81 prédications sur 1 Corinthiens (<i>1810</i> à <i>1890</i>) et son introduction à l'épître, John MacArthur met en évidence le paradoxe fondamental de cette assemblée : géographiquement, l'Église est à Corinthe, mais spirituellement, trop de Corinthe est demeuré dans l'Église. Dès les premiers versets (1.1-⁠9), Paul rappelle pourtant que ces croyants ont été appelés efficacement par Dieu, sanctifiés en Jésus-Christ, enrichis de toute parole et de toute connaissance, et qu'ils ne manquent d'aucun don dans l'attente de la révélation du Seigneur. Leur problème n'est donc ni un déficit de grâce salvatrice ni une carence de dons du Saint-Esprit, mais un refus d'aligner leur marche quotidienne (sanctification pratique) sur leur identité céleste (sanctification positionnelle). En important dans l'assemblée l'orgueil philosophique, l'esprit de rivalité, le relativisme sexuel et l'individualisme effréné de la culture corinthienne, ils se comportent comme des hommes charnels (<i>sarkikoi</i>), des nourrissons spirituels incapables de supporter la nourriture solide (3.1-⁠3).</p></div><aside class="grille__marge grille__marge--collante"><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : 81 sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : sermons Grace to You sur 1 Corinthiens 1.1 à 16.24 (1810 à 1890, série « 1 Corinthians », avril 1975 à décembre 1977) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">1810</span></th><td><a href="https://www.gty.org/sermons/1810" target="_blank" rel="noopener">Called to be Saints</a></td><td>1 Co 1.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">1811</span></th><td><a href="https://www.gty.org/sermons/1811" target="_blank" rel="noopener">The Benefits of Being a Saint</a></td><td>1 Co 1.4-⁠9</td></tr><tr><th scope="row"><span class="mot-fr">1812</span></th><td><a href="https://www.gty.org/sermons/1812" target="_blank" rel="noopener">Splits and Quarrels in the Church</a></td><td>1 Co 1.10-⁠17</td></tr><tr><th scope="row"><span class="mot-fr">1813</span></th><td><a href="https://www.gty.org/sermons/1813" target="_blank" rel="noopener">The Foolishness of God, Part 1</a></td><td>1 Co 1.18-⁠21</td></tr><tr><th scope="row"><span class="mot-fr">1814</span></th><td><a href="https://www.gty.org/sermons/1814" target="_blank" rel="noopener">The Foolishness of God, Part 2</a></td><td>1 Co 1.21-⁠28</td></tr><tr><th scope="row"><span class="mot-fr">1815</span></th><td><a href="https://www.gty.org/sermons/1815" target="_blank" rel="noopener">The Foolishness of God, Part 3</a></td><td>1 Co 1.29-⁠2.5</td></tr><tr><th scope="row"><span class="mot-fr">1816</span></th><td><a href="https://www.gty.org/sermons/1816" target="_blank" rel="noopener">Understanding the Wisdom of God</a></td><td>1 Co 2.6-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">1817</span></th><td><a href="https://www.gty.org/sermons/1817" target="_blank" rel="noopener">The Disease of Division</a></td><td>1 Co 3.1-⁠9</td></tr><tr><th scope="row"><span class="mot-fr">1818</span></th><td><a href="https://www.gty.org/sermons/1818" target="_blank" rel="noopener">The Judgment of the Believer's Works</a></td><td>1 Co 3.10-⁠17</td></tr><tr><th scope="row"><span class="mot-fr">1819</span></th><td><a href="https://www.gty.org/sermons/1819" target="_blank" rel="noopener">All Things are Yours</a></td><td>1 Co 3.18-⁠23</td></tr><tr><th scope="row"><span class="mot-fr">1820</span></th><td><a href="https://www.gty.org/sermons/1820" target="_blank" rel="noopener">Examining the Servants of Christ</a></td><td>1 Co 4.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">1821</span></th><td><a href="https://www.gty.org/sermons/1821" target="_blank" rel="noopener">Humility and Conceit</a></td><td>1 Co 4.6-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">1822</span></th><td><a href="https://www.gty.org/sermons/1822" target="_blank" rel="noopener">How to Be a Spiritual Father</a></td><td>1 Co 4.14-⁠21</td></tr><tr><th scope="row"><span class="mot-fr">1823</span></th><td><a href="https://www.gty.org/sermons/1823" target="_blank" rel="noopener">Immorality in the Church, Part 1: Delivering the Immoral to Satan</a></td><td>1 Co 5.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">1824</span></th><td><a href="https://www.gty.org/sermons/1824" target="_blank" rel="noopener">Immorality in the Church, Part 2: Disciplining Sin in the Church</a></td><td>1 Co 5.6-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">1825</span></th><td><a href="https://www.gty.org/sermons/1825" target="_blank" rel="noopener">Forbidden Lawsuits</a></td><td>1 Co 6.1-⁠8</td></tr><tr><th scope="row"><span class="mot-fr">1826</span></th><td><a href="https://www.gty.org/sermons/1826" target="_blank" rel="noopener">Forgive Because You're Forgiven</a></td><td>1 Co 6.9-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">1827</span></th><td><a href="https://www.gty.org/sermons/1827" target="_blank" rel="noopener">Christian Liberty and Sexual Freedom</a></td><td>1 Co 6.12-⁠20</td></tr><tr><th scope="row"><span class="mot-fr">1828</span></th><td><a href="https://www.gty.org/sermons/1828" target="_blank" rel="noopener">To Marry or Not to Marry</a></td><td>1 Co 7.1-⁠7</td></tr><tr><th scope="row"><span class="mot-fr">1829</span></th><td><a href="https://www.gty.org/sermons/1829" target="_blank" rel="noopener">Divine Guidelines for Marriage</a></td><td>1 Co 7.8-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">1830</span></th><td><a href="https://www.gty.org/sermons/1830" target="_blank" rel="noopener">Christians and Social Revolution</a></td><td>1 Co 7.17-⁠24</td></tr><tr><th scope="row"><span class="mot-fr">1831</span></th><td><a href="https://www.gty.org/sermons/1831" target="_blank" rel="noopener">Reasons for Remaining Single, Part 1: Because of the World</a></td><td>1 Co 7.25-⁠31</td></tr><tr><th scope="row"><span class="mot-fr">1832</span></th><td><a href="https://www.gty.org/sermons/1832" target="_blank" rel="noopener">Reasons for Remaining Single, Part 2</a></td><td>1 Co 7.32-⁠40</td></tr><tr><th scope="row"><span class="mot-fr">1833</span></th><td><a href="https://www.gty.org/sermons/1833" target="_blank" rel="noopener">The Limits of Our Liberty, Part 1</a></td><td>1 Co 8.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">1834</span></th><td><a href="https://www.gty.org/sermons/1834" target="_blank" rel="noopener">The Limits of Our Liberty, Part 2</a></td><td>1 Co 8.4-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">1835</span></th><td><a href="https://www.gty.org/sermons/1835" target="_blank" rel="noopener">Supporting the Man of God</a></td><td>1 Co 9.1-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">1836</span></th><td><a href="https://www.gty.org/sermons/1836" target="_blank" rel="noopener">Refusing to Use Your Liberty</a></td><td>1 Co 9.15-⁠18</td></tr><tr><th scope="row"><span class="mot-fr">1837</span></th><td><a href="https://www.gty.org/sermons/1837" target="_blank" rel="noopener">Giving Up to Gain</a></td><td>1 Co 9.19-⁠27</td></tr><tr><th scope="row"><span class="mot-fr">1838</span></th><td><a href="https://www.gty.org/sermons/1838" target="_blank" rel="noopener">The Danger of Overconfidence, Part 1</a></td><td>1 Co 10.1-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">1839</span></th><td><a href="https://www.gty.org/sermons/1839" target="_blank" rel="noopener">The Danger of Overconfidence, Part 2</a></td><td>1 Co 10.7-⁠12</td></tr><tr><th scope="row"><span class="mot-fr">1840</span></th><td><a href="https://www.gty.org/sermons/1840" target="_blank" rel="noopener">The Danger of Overconfidence, Part 3</a></td><td>1 Co 10.13</td></tr><tr><th scope="row"><span class="mot-fr">1841</span></th><td><a href="https://www.gty.org/sermons/1841" target="_blank" rel="noopener">The Truth About Idolatry</a></td><td>1 Co 10.14-⁠15</td></tr><tr><th scope="row"><span class="mot-fr">1842</span></th><td><a href="https://www.gty.org/sermons/1842" target="_blank" rel="noopener">The Outrage of Idolatry</a></td><td>1 Co 10.15-⁠22</td></tr><tr><th scope="row"><span class="mot-fr">1843</span></th><td><a href="https://www.gty.org/sermons/1843" target="_blank" rel="noopener">Principles of Christian Freedom</a></td><td>1 Co 10.23-⁠11.1</td></tr><tr><th scope="row"><span class="mot-fr">1844</span></th><td><a href="https://www.gty.org/sermons/1844" target="_blank" rel="noopener">The Subordination and Equality of Women</a></td><td>1 Co 11.2-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">1845</span></th><td><a href="https://www.gty.org/sermons/1845" target="_blank" rel="noopener">The Role of the Godly Woman</a></td><td>1 Co 11.7-⁠16</td></tr><tr><th scope="row"><span class="mot-fr">1846</span></th><td><a href="https://www.gty.org/sermons/1846" target="_blank" rel="noopener">The Celebration of the Lord's Supper, Part 1</a></td><td>1 Co 11.17-⁠22</td></tr><tr><th scope="row"><span class="mot-fr">1847</span></th><td><a href="https://www.gty.org/sermons/1847" target="_blank" rel="noopener">The Celebration of the Lord's Supper, Part 2</a></td><td>1 Co 11.23-⁠34</td></tr><tr><th scope="row"><span class="mot-fr">1848</span></th><td><a href="https://www.gty.org/sermons/1848" target="_blank" rel="noopener">Concerning Spiritual Gifts, Part 1</a></td><td>1 Co 12.1</td></tr><tr><th scope="row"><span class="mot-fr">1849</span></th><td><a href="https://www.gty.org/sermons/1849" target="_blank" rel="noopener">Concerning Spiritual Gifts, Part 2</a></td><td>1 Co 12.2-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">1850</span></th><td><a href="https://www.gty.org/sermons/1850" target="_blank" rel="noopener">Concerning Spiritual Gifts, Part 3</a></td><td>1 Co 12.4-⁠7, 11</td></tr><tr><th scope="row"><span class="mot-fr">1851</span></th><td><a href="https://www.gty.org/sermons/1851" target="_blank" rel="noopener">The Gifted Men, Part 1: Apostles and Prophets</a></td><td>1 Co 12.28</td></tr><tr><th scope="row"><span class="mot-fr">1852</span></th><td><a href="https://www.gty.org/sermons/1852" target="_blank" rel="noopener">The Gifted Men, Part 2: Evangelists, Pastors, Teachers</a></td><td>1 Co 12.28</td></tr><tr><th scope="row"><span class="mot-fr">1853</span></th><td><a href="https://www.gty.org/sermons/1853" target="_blank" rel="noopener">The Permanent Edifying Gifts, Part 1</a></td><td>1 Co 12.8-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">1854</span></th><td><a href="https://www.gty.org/sermons/1854" target="_blank" rel="noopener">The Permanent Edifying Gifts, Part 2</a></td><td>1 Co 12.8-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">1855</span></th><td><a href="https://www.gty.org/sermons/1855" target="_blank" rel="noopener">The Permanent Edifying Gifts, Part 3</a></td><td>1 Co 12.9-⁠10</td></tr><tr><th scope="row"><span class="mot-fr">1856</span></th><td><a href="https://www.gty.org/sermons/1856" target="_blank" rel="noopener">The Temporary Sign Gifts, Part 1</a></td><td>1 Co 12.10</td></tr><tr><th scope="row"><span class="mot-fr">1857</span></th><td><a href="https://www.gty.org/sermons/1857" target="_blank" rel="noopener">The Temporary Sign Gifts, Part 2</a></td><td>1 Co 12.9, 28, 30</td></tr><tr><th scope="row"><span class="mot-fr">1858</span></th><td><a href="https://www.gty.org/sermons/1858" target="_blank" rel="noopener">The Temporary Sign Gifts, Part 3</a></td><td>1 Co 12.9, 28, 30</td></tr><tr><th scope="row"><span class="mot-fr">1859</span></th><td><a href="https://www.gty.org/sermons/1859" target="_blank" rel="noopener">Spirit Baptism</a></td><td>1 Co 12.12-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">1860</span></th><td><a href="https://www.gty.org/sermons/1860" target="_blank" rel="noopener">One Body Many Gifts, Part 1</a></td><td>1 Co 12.12-⁠28</td></tr><tr><th scope="row"><span class="mot-fr">1861</span></th><td><a href="https://www.gty.org/sermons/1861" target="_blank" rel="noopener">One Body, Many Gifts, Part 2</a></td><td>1 Co 12.15-⁠31</td></tr><tr><th scope="row"><span class="mot-fr">1862</span></th><td><a href="https://www.gty.org/sermons/1862" target="_blank" rel="noopener">Languages Without Love</a></td><td>1 Co 13.1</td></tr><tr><th scope="row"><span class="mot-fr">1863</span></th><td><a href="https://www.gty.org/sermons/1863" target="_blank" rel="noopener">The Prominence of Love</a></td><td>1 Co 13.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">1864</span></th><td><a href="https://www.gty.org/sermons/1864" target="_blank" rel="noopener">The Qualities of True Love, Part 1</a></td><td>1 Co 13.4</td></tr><tr><th scope="row"><span class="mot-fr">1865</span></th><td><a href="https://www.gty.org/sermons/1865" target="_blank" rel="noopener">The Qualities of True Love, Part 2</a></td><td>1 Co 13.4</td></tr><tr><th scope="row"><span class="mot-fr">1866</span></th><td><a href="https://www.gty.org/sermons/1866" target="_blank" rel="noopener">The Qualities of True Love, Part 3</a></td><td>1 Co 13.5-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">1867</span></th><td><a href="https://www.gty.org/sermons/1867" target="_blank" rel="noopener">The Qualities of True Love, Part 4</a></td><td>1 Co 13.7</td></tr><tr><th scope="row"><span class="mot-fr">1868</span></th><td><a href="https://www.gty.org/sermons/1868" target="_blank" rel="noopener">The Permanence of Love, Part 1</a></td><td>1 Co 13.8</td></tr><tr><th scope="row"><span class="mot-fr">1869</span></th><td><a href="https://www.gty.org/sermons/1869" target="_blank" rel="noopener">The Permanence of Love, Part 2</a></td><td>1 Co 13.8</td></tr><tr><th scope="row"><span class="mot-fr">1870</span></th><td><a href="https://www.gty.org/sermons/1870" target="_blank" rel="noopener">The Permanence of Love, Part 3</a></td><td>1 Co 13.8-⁠13</td></tr><tr><th scope="row"><span class="mot-fr">1871</span></th><td><a href="https://www.gty.org/sermons/1871" target="_blank" rel="noopener">The Truth About Tongues, Part 1</a></td><td>1 Co 14.1-⁠5</td></tr><tr><th scope="row"><span class="mot-fr">1872</span></th><td><a href="https://www.gty.org/sermons/1872" target="_blank" rel="noopener">The Truth About Tongues, Part 2</a></td><td>1 Co 14.6-⁠19</td></tr><tr><th scope="row"><span class="mot-fr">1873</span></th><td><a href="https://www.gty.org/sermons/1873" target="_blank" rel="noopener">The Truth About Tongues, Part 3</a></td><td>1 Co 14.20-⁠25</td></tr><tr><th scope="row"><span class="mot-fr">1874</span></th><td><a href="https://www.gty.org/sermons/1874" target="_blank" rel="noopener">The Truth About Tongues, Part 4</a></td><td>1 Co 14.26-⁠40</td></tr><tr><th scope="row"><span class="mot-fr">1875</span></th><td><a href="https://www.gty.org/sermons/1875" target="_blank" rel="noopener">An Overview of Resurrection Truth</a></td><td>1 Co 15.1-⁠58</td></tr><tr><th scope="row"><span class="mot-fr">1876</span></th><td><a href="https://www.gty.org/sermons/1876" target="_blank" rel="noopener">The Evidence for Resurrection, Part 1</a></td><td>1 Co 15.1-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">1877</span></th><td><a href="https://www.gty.org/sermons/1877" target="_blank" rel="noopener">The Evidence for Resurrection, Part 2</a></td><td>1 Co 15.5-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">1878</span></th><td><a href="https://www.gty.org/sermons/1878" target="_blank" rel="noopener">The Results of Denying Bodily Resurrection</a></td><td>1 Co 15.12-⁠19</td></tr><tr><th scope="row"><span class="mot-fr">1879</span></th><td><a href="https://www.gty.org/sermons/1879" target="_blank" rel="noopener">The Resurrection Plan</a></td><td>1 Co 15.20-⁠28</td></tr><tr><th scope="row"><span class="mot-fr">1880</span></th><td><a href="https://www.gty.org/sermons/1880" target="_blank" rel="noopener">Resurrection Incentives</a></td><td>1 Co 15.29-⁠34</td></tr><tr><th scope="row"><span class="mot-fr">1881</span></th><td><a href="https://www.gty.org/sermons/1881" target="_blank" rel="noopener">Our Resurrection Bodies</a></td><td>1 Co 15.35-⁠49</td></tr><tr><th scope="row"><span class="mot-fr">1882</span></th><td><a href="https://www.gty.org/sermons/1882" target="_blank" rel="noopener">Victory over Death</a></td><td>1 Co 15.50-⁠58</td></tr><tr><th scope="row"><span class="mot-fr">1883</span></th><td><a href="https://www.gty.org/sermons/1883" target="_blank" rel="noopener">Concerning the Collection, Part 1</a></td><td>1 Co 16.1-⁠2</td></tr><tr><th scope="row"><span class="mot-fr">1884</span></th><td><a href="https://www.gty.org/sermons/1884" target="_blank" rel="noopener">Concerning the Collection, Part 2</a></td><td>1 Co 16.2</td></tr><tr><th scope="row"><span class="mot-fr">1885</span></th><td><a href="https://www.gty.org/sermons/1885" target="_blank" rel="noopener">Concerning the Collection, Part 3</a></td><td>1 Co 16.2-⁠4</td></tr><tr><th scope="row"><span class="mot-fr">1886</span></th><td><a href="https://www.gty.org/sermons/1886" target="_blank" rel="noopener">Doing the Lord's Work in the Lord's Way, Part 1</a></td><td>1 Co 16.5-⁠9</td></tr><tr><th scope="row"><span class="mot-fr">1887</span></th><td><a href="https://www.gty.org/sermons/1887" target="_blank" rel="noopener">Doing the Lord's Work in the Lord's Way, Part 2</a></td><td>1 Co 16.9-⁠12</td></tr><tr><th scope="row"><span class="mot-fr">1888</span></th><td><a href="https://www.gty.org/sermons/1888" target="_blank" rel="noopener">Principles for Powerful Living</a></td><td>1 Co 16.13-⁠14</td></tr><tr><th scope="row"><span class="mot-fr">1889</span></th><td><a href="https://www.gty.org/sermons/1889" target="_blank" rel="noopener">Love in the Fellowship, Part 1</a></td><td>1 Co 16.14-⁠18</td></tr><tr><th scope="row"><span class="mot-fr">1890</span></th><td><a href="https://www.gty.org/sermons/1890" target="_blank" rel="noopener">Love in the Fellowship, Part 2</a></td><td>1 Co 16.19-⁠24</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><p>Pour guérir cette mondanité, Paul ne propose jamais de techniques pragmatiques ni d'accommodements culturels; il ramène systématiquement chaque problème pratique à la doctrine de la croix et à la seigneurie de Jésus-Christ. Contre l'élitisme intellectuel et le culte des personnalités ministérielles (chapitres 1 à 4), il dresse « Jésus-Christ, et Jésus-Christ crucifié » (2.2) : Dieu a délibérément choisi un message jugé fou par le monde, un prédicateur sans artifice rhétorique et des croyants sans prestige social afin qu'aucune chair ne se glorifie devant lui (1.26-⁠31). Quant aux serviteurs de Dieu, ils ne sont ni des vedettes ni des maîtres d'école rivaux, mais de simples ouvriers agricoles, des bâtisseurs appelés à rendre compte devant le tribunal de Christ (<i>bēma</i>, 3.10-⁠15) et des « rameurs de fond de cale » (<i>hypēretai</i>) et intendants à qui l'on demande avant tout d'être trouvés fidèles (4.1-⁠2).</p><p>Sur le plan moral et communautaire (chapitres 5 à 10), MacArthur montre comment Paul restaure la sainteté et l'amour fraternel. Face à l'inceste toléré au nom d'une fausse largeur d'esprit (chapitre 5), l'apôtre ordonne une discipline ecclésiale immédiate et rédemptrice, car « Christ, notre Pâque, a été immolé » et le vieux levain du péché doit être ôté de la pâte nouvelle. Face aux procès devant les juges païens et à la fornication (chapitre 6), il rappelle que les saints jugeront le monde et les anges, que ceux qui pratiquent l'injustice sans repentance n'hériteront point le royaume de Dieu (6.9-⁠10), et que le corps même du croyant, racheté au prix du sang de Christ, est le sanctuaire du Saint-Esprit (6.19-⁠20). Dans la sphère du mariage et du célibat (chapitre 7), il enseigne le contentement souverain dans l'état où Dieu a appelé chacun. Et sur la question délicate des viandes sacrifiées aux idoles (chapitres 8 à 10), il pose le principe d'or de la liberté chrétienne : le droit légitime du fort doit toujours s'effacer volontairement par amour devant la conscience du frère faible (chapitre 8) et pour l'avancement de l'Évangile (chapitre 9), tout en prenant garde de ne jamais présumer de ses forces face à la tentation et aux démons qui se cachent derrière l'idolâtrie (chapitre 10).</p><p>Enfin, dans les chapitres 11 à 16, MacArthur souligne comment Paul rétablit l'ordre divin dans le culte public et l'espérance eschatologique de l'Église. Qu'il s'agisse de la complémentarité créationnelle de l'homme et de la femme dans l'assemblée (11.2-⁠16) ou de l'examen de soi requis avant la sainte Cène (11.17-⁠34), l'adoration doit honorer l'autorité et la sainteté du Seigneur. Dans les chapitres 12 à 14, qui constituent le traité néotestamentaire de référence sur les dons spirituels, Paul corrige les dérives extatiques et l'abus du parler en langues : le baptême du Saint-Esprit n'est pas une seconde expérience mystique réservée à une élite, mais l'acte souverain par lequel tout croyant est incorporé à Christ à sa conversion (12.13); les dons miraculeux de signes (langues, guérisons, miracles) avaient un rôle fondationnel et transitoire pour authentifier la révélation apostolique et avertir Israël incrédule (13.8-⁠10; 14.21-⁠22), tandis que l'amour <i>agapē</i> (chapitre 13) et la proclamation intelligible de la Parole pour l'édification ordonnée de l'Église (chapitre 14) doivent gouverner toute assemblée. Le sommet théologique du livre est atteint au chapitre 15 : sans la résurrection corporelle et historique de Christ, la foi est vaine; mais parce que Christ est ressuscité comme prémices, les croyants revêtiront l'incorruptibilité et peuvent dès aujourd'hui travailler de mieux en mieux à l'œuvre du Seigneur, sachant que leur labeur n'est jamais vain en lui (15.58).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>1 Corinthiens 1.2.</b> Le participe parfait passif <i>hēgiasmenois en Christō Iēsou</i> (« ceux qui ont été sanctifiés en Jésus-Christ »), suivi de l'apposé <i>klētois hagiois</i> (« saints par vocation »), atteste dans le texte même que les destinataires sont de véritables croyants régénérés malgré la gravité de leurs désordres pratiques.</li><li><b>1 Corinthiens 1.11-⁠12.</b> L'énoncé explicite <i>edēlōthē gar moi peri hymōn, adelphoi mou, hypo tōn Chloēs</i> (« car il m'a été déclaré à votre sujet, mes frères, par les gens de Chloé ») identifie la source orale précise qui a informé Paul à Éphèse des quatre slogans partisans (« Moi, je suis de Paul ! et moi, d'Apollos ! et moi, de Céphas ! et moi, de Christ ! »).</li><li><b>1 Corinthiens 5.9.</b> La mention <i>Egrapsa hymin en tē epistolē</i> (« Je vous ai écrit dans ma lettre de ne pas avoir de relations avec les débauchés ») prouve textuellement l'existence d'une correspondance antérieure de Paul avec Corinthe et montre que les Corinthiens avaient mal compris la portée de cette séparation.</li><li><b>1 Corinthiens 7.1.</b> La formule d'introduction <i>Peri de hōn egrapsate</i> (« Pour ce qui concerne les choses au sujet desquelles vous m'avez écrit »), reprise par <i>Peri de</i> en 7.25, 8.1, 12.1, 16.1 et 16.12, marque dans le corps du texte le passage des rapports oraux (chapitres 1 à 6) aux réponses écrites à la lettre des Corinthiens.</li><li><b>1 Corinthiens 15.3-⁠8.</b> Le couple technique de transmission <i>paredōka gar hymin en prōtois, ho kai parelabon</i> (« je vous ai enseigné avant tout, comme je l'avais aussi reçu ») suivi de la liste nominative des témoins oculaires du Ressuscité (Céphas, les douze, plus de cinq cents frères dont la plupart étaient encore vivants, Jacques, tous les apôtres, puis Paul) ancre l'Évangile dans un fait historique vérifiable.</li><li><b>1 Corinthiens 16.8, 21.</b> L'indication géographique et calendaire <i>Epimenō de en Ephesō heōs tēs Pentēkostēs</i> (« Je resterai néanmoins à Éphèse jusqu'à la Pentecôte », 16.8) et la signature autographe finale <i>Ho aspasmos tē emē cheiri Paulou</i> (16.21) fixent avec certitude le lieu de rédaction et l'authenticité paulinienne du document.</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Huit passages</p></header>
+<p class="lead">Huit passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Actes 18.1-⁠18</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Récit historique lucanien de la fondation de l'Église de Corinthe lors du deuxième voyage missionnaire de Paul : son arrivée depuis Athènes, son métier de fabricant de tentes avec Aquilas et Priscille, la conversion de Crispus, la vision nocturne du Seigneur (« j'ai un peuple nombreux dans cette ville ») et la comparution devant le proconsul Gallion.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 29.14</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Première citation formelle de l'Ancien Testament dans l'épître (1 Co 1.19), où Paul reproduit la Septante (LXX) à une nuance verbale près (<i>athetēsō</i> au lieu de <i>krypsō</i> pour rendre le texte massorétique hébreu) afin de démontrer que le jugement divin confondant la sagesse des sages accomplissait déjà le décret prophétique.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Jérémie 9.23-⁠24</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Fondement vétérotestamentaire condensé par Paul en 1 Corinthiens 1.31 (et repris en 2 Co 10.17) selon le texte grec de la Septante (LXX, Jér 9.22-⁠23) et l'hébreu : toute glorification dans la sagesse, la force ou la richesse humaines est exclue pour que le racheté se glorifie uniquement dans le Seigneur.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Exode 12.1-⁠20; Deutéronome 17.7</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Arrière-plan rédempteur et légal de la discipline ecclésiale au chapitre 5 : l'immolation de l'agneau pascal et l'exclusion de tout levain pendant sept jours (Ex 12; cf. 1 Co 5.6-⁠8) s'unissent à la formule judiciaire deutéronomique « Tu ôteras le mal du milieu de toi » (Dt 17.7; cf. 1 Co 5.13).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Exode 13.21; 14.22; 16.15; 17.6; Nombres 14.29-⁠30; 25.1-⁠9</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Fondement typologique d'Israël au désert développé en 1 Corinthiens 10.1-⁠11 : bien qu'ayant tous bénéficié des miracles de l'Exode (nuée, mer Rouge, manne, eau du rocher), la plupart périrent dans le désert à cause de la convoitise, de l'idolâtrie du veau d'or, de la débauche et du murmure, servant d'avertissement solennel à l'Église.</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Genèse 1.26-⁠27; 2.18-⁠24</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Fondement créationnel invoqué par Paul tant pour condamner l'union avec une prostituée qui profane le mystère d'une seule chair (1 Co 6.16) que pour établir l'ordre de création, l'autorité masculine et la complémentarité mutuelle de l'homme et de la femme dans le culte public (1 Co 11.7-⁠12).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 12.3-⁠13; 14.1-⁠15.3</span><span class="renvoi__tag">Lien thématique</span></div><p class="renvoi__desc">Parallèle paulinien direct rédigé depuis Corinthe quelques mois après 1 Corinthiens : Paul y reprend la doctrine de l'unité organique du corps de Christ dans la diversité des charismes (Rm 12.3-⁠8; cf. 1 Co 12) ainsi que le devoir d'amour du fort envers la conscience du faible concernant les aliments (Rm 14; cf. 1 Co 8-⁠10).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Ésaïe 25.8; Osée 13.14</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Double citation prophétique qui couronne l'hymne de la résurrection en 1 Corinthiens 15.54-⁠55 : Paul combine le texte hébreu d'Ésaïe 25.8 (« La mort a été engloutie dans la victoire ») et l'apostrophe triomphante d'Osée 13.14 selon la Septante grecque (« Où est, ô mort, ton aiguillon ? ») pour proclamer la défaite eschatologique finale du dernier ennemi.</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Cinq axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La sagesse de la croix face à la sagesse du monde</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>En 1 Corinthiens 1.18-⁠2.16, Paul oppose frontalement « la parole de la croix » aux spéculations philosophiques des Grecs et aux exigences de signes des Juifs. Ce que le monde juge faible et insensé est en réalité la puissance et la sagesse de Dieu, révélées par le Saint-Esprit et incarnées en Jésus-Christ, qui a été fait pour nous sagesse, justice, sanctification et rédemption (1.30).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Révélation spéciale, expiation pénale substitutive, dépravation totale de l'intelligence naturelle (effets noétiques du péché) et appel efficace : l'homme inconverti (<i>psychikos</i>) est spirituellement aveugle et hostile à l'Évangile jusqu'à ce que Dieu l'appelle souverainement et que l'Esprit l'illumine.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Annoncée par les prophètes qui prédisaient la confusion de la sagesse humaine (És 29.14) et la souffrance du Serviteur (És 53), accomplie au Calvaire où la justice et la grâce divines se rencontrent, cette sagesse crucifiée sera éternellement célébrée dans la gloire par le cantique de l'Agneau immolé (Ap 5.9-⁠12).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Tout ministère qui cherche à séduire le monde par l'artifice rhétorique, le divertissement ou la sagesse séculière vide la croix de Christ de sa puissance et fait reposer la foi des auditeurs sur la persuasion des hommes plutôt que sur la puissance de Dieu (2.4-⁠5).</p></div></div></section><section class="theme"><h3 class="theme__title">La sanctification pratique et la pureté de l'Église</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Tout au long des chapitres 1, 3, 5 et 6, Paul appelle ceux qui ont été « sanctifiés en Jésus-Christ » (1.2; 6.11) à purifier leur vie et leur assemblée de toute division (3.3), de tout levain d'immoralité (5.6-⁠8) et de toute souillure sexuelle, puisque l'Église collectivement (3.16-⁠17) et le corps de chaque croyant individuellement (6.19-⁠20) sont le sanctuaire saint où habite l'Esprit de Dieu.</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Union avec Christ, distinction et lien indissoluble entre sanctification positionnelle (définitive à la conversion) et sanctification progressive (œuvre continue de l'Esprit), et nécessité de la discipline ecclésiale rédemptrice.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Préfigurée par la sainteté exigée du camp d'Israël autour du tabernacle et par les pains sans levain de la Pâque (Ex 12; Lv 19.2), réalisée dans le temple spirituel de la nouvelle alliance habité par le Saint-Esprit, cette sainteté culminera dans l'Épouse sans tache ni ride présentée à Christ (Ép 5.27).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Tolérer le péché flagrant et impénitent au sein de l'assemblée sous couvert de tolérance n'est pas de l'amour, mais de l'orgueil charnel qui corrompt toute l'Église et déshonore le Seigneur qui l'a rachetée à grand prix.</p></div></div></section><section class="theme"><h3 class="theme__title">La liberté chrétienne gouvernée par l'amour et la gloire de Dieu</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Dans les chapitres 8 à 10, Paul établit que si l'idole n'est rien en elle-même et si « tout est permis », la liberté du croyant n'est jamais un droit absolu exercé au détriment d'autrui : elle est volontairement limitée par ce qui est utile (6.12; 10.23), par le refus de blesser la conscience du frère faible pour qui Christ est mort (8.9-⁠13), par le désir de gagner les âmes (9.19-⁠23) et par la recherche exclusive de la gloire de Dieu (10.31).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Éthique des choses indifférentes (<i>adiaphora</i>), seigneurie de Christ sur la conscience, abnégation fraternelle à l'imitation de l'incarnation et de la croix de Christ (11.1), et vigilance spirituelle contre l'idolâtrie et les démons (10.14-⁠22).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Enracinée dans la loi royale d'aimer son prochain comme soi-même (Lv 19.18) et accomplie par le Fils de l'homme venu non pour être servi mais pour servir et donner sa vie (Mc 10.45), cette éthique du renoncement volontaire caractérise toute la vie de l'Église du Nouveau Testament (Rm 14.1-⁠15.3; Ph 2.1-⁠8).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La maturité spirituelle ne se mesure pas à l'affirmation hautaine de ses droits ou de sa connaissance théologique, mais à la disposition joyeuse à renoncer à ses prérogatives légitimes pour ne créer aucun obstacle à l'Évangile ni aucune pierre d'achoppement pour un frère.</p></div></div></section><section class="theme"><h3 class="theme__title">L'unité organique du corps de Christ et l'édification dans le culte</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Aux chapitres 11 à 14, Paul enseigne que tous les croyants ont été baptisés dans un seul Esprit pour former un seul corps (12.12-⁠13), au sein duquel l'Esprit distribue souverainement ses dons pour l'utilité commune (12.7, 11). Ces dons, vains sans l'amour (13.1-⁠13), doivent être exercés non pour l'exaltation personnelle ou l'extase inintelligible, mais pour l'édification intelligible, la bienséance et l'ordre de l'assemblée (14.26, 40).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Ecclésiologie du corps de Christ, souveraineté trinitaire dans la distribution des charismes (12.4-⁠6), cessation des dons miraculeux de signes à l'achèvement de l'ère apostolique (les langues « cesseront » d'elles-mêmes, 13.8), abolition de toute connaissance partielle à la venue de « ce qui est parfait », l'état éternel (13.10-⁠12), et primauté de la proclamation intelligible de l'Écriture dans le culte.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Du peuple de l'ancienne alliance rassemblé dans l'ordre prescrit autour du sanctuaire de l'Éternel, Dieu a formé à la Pentecôte un organisme vivant uni à sa Tête céleste (Ac 2; 1 Co 12.13), appelé à croître jusqu'à la stature parfaite de Christ (Ép 4.11-⁠16).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Le culte chrétien n'est pas un théâtre d'expressions individuelles désordonnées où chacun cherche son propre ressenti, mais le rassemblement saint du corps de Christ où chaque membre sert les autres dans l'amour, l'intelligibilité doctrinale et le respect de l'ordre créationnel et apostolique.</p></div></div></section><section class="theme"><h3 class="theme__title">La résurrection corporelle de Christ et des saints</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Au chapitre 15, Paul démontre que la mort expiatoire et la résurrection corporelle de Jésus-Christ le troisième jour selon les Écritures constituent le cœur non négociable de l'Évangile (15.1-⁠11). Parce que Christ est ressuscité comme « prémices » et « dernier Adam », tous ceux qui lui appartiennent ressusciteront à son avènement avec un corps spirituel, glorieux et incorruptible, engloutissant définitivement la mort dans la victoire (15.20-⁠57).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>Historicité et nécessité sotériologique de la résurrection corporelle, fédéralisme représentatif des deux Adams (15.21-⁠22, 45-⁠49), enlèvement et transformation des croyants (15.51-⁠54), règne millénaire de Christ et soumission finale du royaume médiatorial au Père (15.24-⁠28).</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Espérée par les patriarches et prophètes de l'Ancien Testament (Jb 19.25-⁠27; És 25.8; 26.19; Dn 12.2; Os 13.14), inaugurée historiquement au matin de Pâques par le tombeau vide du Ressuscité, la résurrection de ceux qui appartiennent à Christ aura lieu à son avènement (l'Église à l'enlèvement, les saints de la tribulation à la fin de celle-ci), puis viendra la fin, au terme du règne millénaire, lorsque la mort sera détruite et le royaume remis au Père, avant les nouveaux cieux et la nouvelle terre (15.23-⁠28; Ap 20-⁠21; MacArthur, 1879).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>La certitude de la résurrection corporelle et du règne à venir de Christ délivre le chrétien du désespoir et de l'hédonisme (« mangeons et buvons, car demain nous mourrons », 15.32) pour l'ancrer dans une fidélité inébranlable, sachant qu'aucun sacrifice accompli dans le Seigneur n'est jamais perdu (15.58).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Six questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>En quoi la tentation des Corinthiens d'évaluer le ministère et le message de l'Évangile selon les critères d'éloquence, de prestige et de popularité de leur culture (chapitres 1 à 4) se manifeste-t-elle aujourd'hui dans nos assemblées ?</li><li>Pourquoi Paul fonde-t-il ses réprimandes les plus sévères non pas sur la remise en doute du salut des Corinthiens, mais sur le rappel constant de leur identité en Christ (« ne savez-vous pas que... », répété dix fois dans l'épître) ?</li><li>Comment concilier dans la vie d'une Église locale la compassion patiente envers des croyants immatures (3.1-⁠2; 4.14) et la fermeté sans compromis de la discipline ecclésiale face au péché impénitent (5.1-⁠13) ?</li><li>Sur quels critères concrets Paul nous enseigne-t-il à discerner quand l'exercice d'une liberté chrétienne légitime cesse d'honorer Dieu pour devenir une pierre d'achoppement pour un frère ou un obstacle à l'Évangile (chapitres 8 à 10) ?</li><li>Que révèle l'insertion du chapitre 13 au cœur même du développement sur les dons spirituels (chapitres 12 à 14) quant à la différence entre l'activité religieuse spectaculaire et la véritable maturité spirituelle ?</li><li>Comment la doctrine de la résurrection corporelle et l'assurance que « votre travail ne sera pas vain dans le Seigneur » (15.58) transforment-elles notre manière d'endurer les épreuves et de servir fidèlement au quotidien ?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · 1 Corinthiens 1-⁠16 · 2 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-1-Corinthiens-1-16.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

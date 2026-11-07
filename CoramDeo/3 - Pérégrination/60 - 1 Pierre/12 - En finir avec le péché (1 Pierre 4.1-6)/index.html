@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Pierre 4.1-6 · En finir avec le péché · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Pierre 4.1-6 : en finir avec le péché ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">1 Pierre 4.1-6</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 1 Pierre 4.1-6</p>
+    <h1 class="hero__title">En finir avec le péché</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Christ ayant souffert dans la chair, vous aussi armez-vous de la même pensée. Car celui qui a souffert dans la chair en a fini avec le péché.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">1 Pierre 4.1 · NEG</p>
+    <p class="hero__series">Série : <b>1 Pierre : vivre en étrangers, fortifiés par l'espérance</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">1 Pierre 4.1-6</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Ainsi donc, Christ ayant souffert dans la chair, vous aussi armez-vous de la même pensée. Car celui qui a souffert dans la chair en a fini avec le péché.</p>
+        <cite class="verse__ref">1 Pierre 4.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Ils rendront compte à celui qui est prêt à juger les vivants et les morts.</p>
+        <cite class="verse__ref">1 Pierre 4.5 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La pensée de Christ souffrant n'est pas une consolation passive&nbsp;: elle est une arme, un état d'esprit délibéré qui prépare le croyant à toute épreuve, jusqu'à la mort, parce que la mort elle-même signifie la fin complète du péché pour celui qui est en Christ.</p>
+    <div class="body">
+      <p>1 Pierre 4.1-6 referme la grande section centrale de l'épître consacrée au comportement modèle du croyant (2.11 à 4.6) et, plus précisément, le développement sur la vie qui honore Dieu au sein de la souffrance (3.13 à 4.6). Après avoir présenté un principe (souffrir pour la justice, 3.13-17) puis un modèle (Christ qui a souffert une fois pour les péchés, lui juste pour des injustes, 3.18-22), Pierre énonce maintenant l'objectif que cette souffrance doit viser. Le «&nbsp;Ainsi donc&nbsp;» du verset 1 noue explicitement la péricope à ce qui précède&nbsp;: à la lumière de la souffrance et de la mort triomphantes de Christ, élevé à la droite de Dieu après avoir souffert dans la chair, les lecteurs persécutés doivent eux aussi accepter de souffrir, sachant que cette souffrance peut entraîner la plus grande des victoires.</p>
+      <p>L'unité s'articule en deux mouvements. Les versets 1 à 4 commandent une rupture nette avec le péché du passé&nbsp;: armé de la même pensée que Christ, le croyant doit avoir «&nbsp;fini&nbsp;» avec le péché afin de vivre, non plus selon les convoitises des hommes, mais selon la volonté de Dieu, ce qui provoque inévitablement l'étonnement et la calomnie des anciens compagnons de débauche. Les versets 5 et 6 tournent les regards vers le jugement à venir&nbsp;: ces calomniateurs rendront compte à celui qui est prêt à juger les vivants et les morts, tandis que les croyants désormais décédés, à qui l'Évangile avait été annoncé de leur vivant, vivent triomphalement selon Dieu malgré leur mort physique.</p>
+      <p>Le passage tient donc ensemble deux pôles de tout l'enseignement de l'épître&nbsp;: d'une part la sainteté pratique qui rompt avec la vie ancienne (cf. 1.14-16; 2.1, 11), d'autre part l'espérance eschatologique qui relativise la souffrance présente et même la mort. La pensée de Christ souffrant n'est pas une consolation passive&nbsp;: elle est une arme, un état d'esprit délibéré qui prépare le croyant à toute épreuve, jusqu'à la mort, parce que la mort elle-même signifie la fin complète et totale du péché pour celui qui est en Christ.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">1 Pierre 4.3 · 4.4 · 4.5</p>
+    </header>
+    <p class="lead">Rompre avec les excès païens revenait, pour le converti d'Asie Mineure, à se retrancher d'un mode de vie collectif et festif&nbsp;: d'où la suspicion, l'incompréhension et la calomnie que reflète le verset 4.</p>
+    <div class="body">
+      <p>La lettre s'adresse à des chrétiens dispersés dans les provinces du nord de l'Asie Mineure (le Pont, la Galatie, la Cappadoce, l'Asie et la Bithynie, 1.1), très majoritairement issus du paganisme (1.14, 18; 2.9-10; 4.3). Pierre écrit probablement de Rome, désignée par le nom de code «&nbsp;Babylone&nbsp;» (5.13), juste avant ou peu après l'incendie de juillet 64 apr. J.-C., au moment où Néron, cherchant des boucs émissaires, déclenche contre les chrétiens une persécution féroce qui s'étend à l'Empire. Le verset 4.4, qui décrit l'hostilité et la calomnie des anciens compagnons, reflète précisément ce climat social où le refus chrétien de participer aux excès païens passait pour une rupture suspecte avec la culture commune.</p>
+    </div>
+    <p>Trois traits échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Le catalogue des vices.</b> La liste du verset 3 (dérèglement, convoitises, ivrognerie, orgies, idolâtries criminelles) puise dans la réalité concrète de la vie urbaine gréco-romaine. Le terme rendu par «&nbsp;orgies&nbsp;» désignait, dans la littérature extrabiblique, une bande d'ivrognes qui agissaient sauvagement, se pavanant et titubant dans les rues en causant des dégâts. Les «&nbsp;idolâtries criminelles&nbsp;» renvoient au tissu religieux païen, ces banquets cultuels et fêtes des divinités où la débauche sexuelle et l'ivrognerie étaient inséparables de l'adoration des idoles.</li>
+      <li><b>Le coût social de la rupture.</b> Pour le converti d'origine païenne, rompre avec ces pratiques signifiait se retrancher d'un mode de vie collectif et festif, et donc s'exposer à la suspicion, à l'incompréhension et à la dénonciation publique. La sainteté nouvelle du croyant devenait un reproche silencieux que ses anciens compagnons, surpris et amers, ne supportaient pas, d'où la calomnie décrite au verset 4.</li>
+      <li><b>Le vocabulaire de la dette.</b> Le verbe traduit par «&nbsp;rendront compte&nbsp;» (v. 5) appartient au vocabulaire du remboursement&nbsp;: dans un monde où le débiteur insolvable pouvait être livré à ses créanciers, l'image était parlante. Les calomniateurs accumulent envers Dieu une dette qu'ils passeront l'éternité à rembourser. L'expression «&nbsp;les vivants et les morts&nbsp;» désigne l'universalité du jugement et rejoint le grand trône blanc devant lequel comparaîtront tous les hommes non sauvés (Apocalypse 20.11-15).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de l'exhortation&nbsp;: de l'<i>hoplizō</i> qui arme le soldat à l'<i>ennoia</i> qui fixe sa résolution, jusqu'au verbe au parfait <i>pepautai</i> qui dit la rupture définitive avec l'<i>hamartia</i>, et à l'<i>apodidōmi logon</i> du jugement à venir.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">armez-vous</span><span class="mot-gr">hoplizō</span></th>
+            <td class="col-sens">se munir d'armes, revêtir l'équipement du soldat en vue du combat</td>
+            <td>Verbe de la sphère militaire&nbsp;: prendre les armes, s'équiper pour la bataille. L'image présente le croyant comme un soldat qui doit délibérément revêtir une cuirasse mentale avant l'affrontement. Pierre commande de s'armer de la même pensée que celle qui était manifeste dans les souffrances de Christ, à savoir que l'on peut triompher dans la souffrance, et même dans la mort. L'arme n'est pas une lame mais une résolution&nbsp;: accepter par avance l'éventualité de la mort comme part intégrante de la vie chrétienne. Ainsi équipé, le croyant désamorce la plus grande arme de l'adversaire, la menace de mort, qui se révèle inefficace contre celui qui a déjà accepté de mourir.</td>
+            <td><span class="trad"><span><b>S21</b> armez-vous</span><span><b>NEG79</b> armez-vous</span><span><b>Darby</b> armez-vous</span><span><b>LSG</b> armez-vous</span><span><b>KJF</b> armez-vous</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">pensée</span><span class="mot-gr">ennoia</span></th>
+            <td class="col-sens">manière de penser, disposition d'esprit, résolution intérieure, intention arrêtée</td>
+            <td>Le terme désigne non une idée passagère mais une orientation délibérée de l'esprit, une intention fixée. La «&nbsp;même pensée&nbsp;» est celle que Christ a manifestée dans ses souffrances&nbsp;: la conviction que l'on peut vaincre par la souffrance et que la mort elle-même n'est pas une défaite. Il s'agit d'une disposition que le croyant adopte volontairement, en armant son entendement, à la façon dont Pierre exhortait déjà à ceindre les reins de l'entendement (1.13). Cette résolution intérieure commande ensuite toute la conduite&nbsp;: elle est le ressort de la rupture avec le péché du verset suivant.</td>
+            <td><span class="trad"><span><b>S21</b> façon de penser</span><span><b>NEG79</b> pensée</span><span><b>Darby</b> pensée</span><span><b>LSG</b> pensée</span><span><b>KJF</b> pensée</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">en a fini avec le péché</span><span class="mot-gr">pepautai hamartias</span></th>
+            <td class="col-sens">a cessé d'avoir affaire au péché, s'est arrêté quant au péché, en a terminé</td>
+            <td>Le verbe «&nbsp;cesser, faire halte&nbsp;» est ici au parfait, temps grec qui souligne un état permanent résultant d'une action accomplie&nbsp;: une libération éternelle du péché. La note observe que le pire qui puisse arriver au croyant souffrant injustement, c'est de mourir, mais que c'est aussi le meilleur, car la mort signifie la fin complète et totale de tous les péchés. Celui qui a souffert dans la chair, c'est-à-dire qui est mort, en a donc fini pour toujours avec le péché. La formule ne promet pas la perfection sans péché dans cette vie&nbsp;: selon MacArthur, seule la mort fait cesser le péché, ce qui ôte à la menace de mort son pouvoir sur le croyant.</td>
+            <td><span class="trad"><span><b>S21</b> en a fini avec le péché</span><span><b>NEG79</b> en a fini avec le péché</span><span><b>Darby</b> s'est reposé du péché</span><span><b>LSG</b> en a fini avec le péché</span><span><b>KJF</b> a cessé du péché</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">convoitises</span><span class="mot-gr">epithymia</span></th>
+            <td class="col-sens">désir intense, appétit débordant, convoitise qui pousse vers ce qui est interdit</td>
+            <td>Le mot désigne le désir ardent, le plus souvent orienté vers le mal&nbsp;: l'appétit déréglé de la nature déchue. Pierre oppose les «&nbsp;convoitises des hommes&nbsp;» à la «&nbsp;volonté de Dieu&nbsp;» (v. 2)&nbsp;: la vie ancienne était gouvernée par les appétits charnels, la vie nouvelle l'est par le dessein saint de Dieu. Ces convoitises font la guerre à l'âme (2.11) et ne procurent aucun bonheur durable, car le péché est un fardeau qui accable le croyant et non un plaisir qui lui fait du bien. Le croyant régénéré ne se conforme plus aux convoitises qu'il avait autrefois, dans l'ignorance (1.14).</td>
+            <td><span class="trad"><span><b>S21</b> désirs</span><span><b>NEG79</b> convoitises</span><span><b>Darby</b> convoitises</span><span><b>LSG</b> convoitises</span><span><b>KJF</b> convoitises</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">rendront compte</span><span class="mot-gr">apodidōmi logon</span></th>
+            <td class="col-sens">remettre, restituer, rembourser; rendre compte, s'acquitter d'une dette</td>
+            <td>Le verbe signifie proprement rembourser, restituer ce qui est dû. Ceux qui marchent dans le dérèglement et calomnient les croyants accumulent envers Dieu une dette qu'ils passeront l'éternité à rembourser. L'expression «&nbsp;rendre compte&nbsp;» associe la racine du remboursement à celle du compte, du décompte des actes&nbsp;: devant le Juge prêt à juger les vivants et les morts, chaque parole vaine devra être justifiée. La formule sert d'avertissement solennel&nbsp;: la calomnie présente des persécuteurs n'aura pas le dernier mot, car ils comparaîtront devant le grand trône blanc pour être jugés.</td>
+            <td><span class="trad"><span><b>S21</b> rendront des comptes</span><span><b>NEG79</b> rendront compte</span><span><b>Darby</b> rendront compte</span><span><b>LSG</b> rendront compte</span><span><b>KJF</b> rendront compte</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">1 Pierre 4.1-6</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 1 Pierre 4.1-6 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 1 P 4.1, 4.2, 4.3, 4.4, 4.5, 4.6.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">60-39</span></th>
+            <td><a href="https://www.gty.org/sermons/60-39" target="_blank" rel="noopener">The Memory That Shuns Sin, Part 1</a></td>
+            <td>1 Pierre 4.1</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-107</span></th>
+            <td><a href="https://www.gty.org/sermons/80-107" target="_blank" rel="noopener">Breaking Sin's Grip</a></td>
+            <td>1 Pierre 4.1-5</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">60-40</span></th>
+            <td><a href="https://www.gty.org/sermons/60-40" target="_blank" rel="noopener">The Memory That Shuns Sin, Part 2</a></td>
+            <td>1 Pierre 4.2-6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">À la lumière de la souffrance et de la mort triomphantes de Christ, élevé à la droite de Dieu, le croyant persécuté doit lui aussi accepter de souffrir&nbsp;: la souffrance peut entraîner la plus grande des victoires.</p>
+    <div class="body">
+      <p>Le «&nbsp;Ainsi donc&nbsp;» du verset 1 rattache toute la péricope à la souffrance et à la mort triomphantes de Christ qui viennent d'être exposées (3.18-22). Christ a souffert une fois pour les péchés, lui juste pour des injustes, il a été mis à mort quant à la chair, puis élevé à la droite de Dieu, tous les êtres démoniaques qui étaient à l'origine de ses souffrances lui étant soumis pour toujours. C'est ce triomphe par la souffrance qui fonde l'exhortation&nbsp;: à la lumière de cette victoire, les lecteurs de Pierre doivent eux aussi accepter de souffrir dans la chair, sachant que la souffrance peut entraîner la plus grande des victoires. L'expression «&nbsp;ayant souffert dans la chair&nbsp;» au verset 1 fait d'abord allusion à la mort de Christ sur la croix, avant d'être transposée au croyant.</p>
+      <p>Le verbe «&nbsp;armez-vous&nbsp;» est emprunté au vocabulaire de la bataille. Le chrétien doit s'armer de la même pensée que celle qui était manifeste dans les souffrances de Christ&nbsp;: la conviction que l'on peut triompher dans les souffrances, même dans celles de la mort. En d'autres termes, le croyant doit accepter l'éventualité de la mort comme faisant partie intégrante de la vie chrétienne. Pierre lui-même aura l'occasion de vivre ce principe lors de son martyre. C'est une disposition délibérée&nbsp;: pour une vie qui sera un combat, dit MacArthur, cette pensée est l'arme ultime du croyant.</p>
+      <p>La proposition «&nbsp;celui qui a souffert dans la chair en a fini avec le péché&nbsp;» porte un verbe au parfait, qui souligne un état permanent, une libération éternelle du péché. MacArthur souligne qu'il ne s'agit pas ici de la perfection sans péché du croyant dans la vie présente, car seule la mort fait cesser le péché&nbsp;: le pire qui puisse arriver à un croyant souffrant injustement, c'est de mourir, mais c'est aussi le meilleur qui puisse lui arriver, car la mort signifie la fin complète et totale de tous les péchés. Si le chrétien s'arme de l'objectif d'être délivré du péché et que ce but est atteint par sa mort, alors la menace et l'expérience même de la mort lui deviennent précieuses. De plus, la plus grande arme que l'ennemi possède contre le chrétien, la menace de mort, se révèle ainsi totalement inefficace&nbsp;: on ne peut effrayer par la mort celui pour qui mourir, c'est en finir avec le péché.</p>
+      <p>Le verset 2 tire la conséquence pour la vie présente&nbsp;: si le croyant a pour but d'être libéré du péché, liberté qu'il obtiendra pleinement à la mort, alors il doit vivre le reste de son temps sur terre en recherchant la sainte volonté de Dieu plutôt que les convoitises impies de la chair. Pierre oppose deux gouvernances&nbsp;: «&nbsp;les convoitises des hommes&nbsp;» contre «&nbsp;la volonté de Dieu&nbsp;». La vie nouvelle n'est pas un simple ajustement moral mais un renversement de souveraineté. Le verset 3 justifie cette rupture&nbsp;: «&nbsp;C'est assez d'avoir dans le temps passé accompli la volonté des païens.&nbsp;» Le catalogue (dérèglement, convoitises, ivrognerie, orgies, idolâtries criminelles) décrit, dans la perspective de Dieu, des actes de méchanceté méprisables. Bien que les lecteurs aient commis de tels péchés avant leur conversion, ils ne devaient jamais plus agir ainsi&nbsp;: le péché est un fardeau qui affecte le croyant, non un plaisir qui lui ferait du bien.</p>
+      <p>Le verset 4 décrit la réaction hostile du monde. Les anciens amis du chrétien sont surpris, vexés et amers devant son manque d'intérêt pour les plaisirs impies. Le «&nbsp;débordement de débauche&nbsp;» désigne l'état d'une personne qui ne pense plus à rien d'autre qu'au mal, l'image d'une foule lancée dans une course folle et sauvage, une mêlée à la poursuite du péché. Le refus du croyant de se précipiter avec eux dans ce torrent suscite la calomnie&nbsp;: sa sainteté même devient un reproche silencieux que le monde ne supporte pas.</p>
+      <p>Les versets 5 et 6 placent la calomnie sous le regard du jugement. Ceux qui marchent dans le dérèglement et calomnient les croyants «&nbsp;rendront compte à celui qui est prêt à juger les vivants et les morts&nbsp;»&nbsp;: le verbe signifie rembourser, et ces hommes accumulent envers Dieu une dette qu'ils passeront l'éternité à acquitter. Tous les hommes non sauvés, qu'ils soient alors vivants ou morts, seront conduits devant le Juge, le Seigneur Jésus-Christ siégeant sur le grand trône blanc (Apocalypse 20.11-15). Quant au verset 6, «&nbsp;l'Évangile fut aussi annoncé aux morts&nbsp;», il vise les croyants qui avaient entendu et accepté l'Évangile de Christ de leur vivant mais qui étaient déjà morts au moment de la rédaction, certains peut-être martyrisés pour leur foi. Jugés quant à la chair selon les hommes, c'est-à-dire, selon MacArthur, mis à mort pour leur foi, ils vivent selon Dieu quant à l'esprit&nbsp;: comme pour Christ (3.18), on peut tuer leur corps, mais leur esprit demeure vivant, et la mort ne fait que les introduire dans la vie éternelle, en présence de Dieu. Le verset n'enseigne donc aucune seconde chance de salut après la mort, mais le triomphe définitif de ceux qui ont cru.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent l'exhortation, du modèle de Christ souffrant à la rupture avec la vie ancienne, jusqu'au jugement universel du Juge des vivants et des morts.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 3.18</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le modèle direct dont 4.1 tire sa conséquence&nbsp;: Christ a souffert une fois pour les péchés, lui juste pour des injustes; l'expression «&nbsp;ayant souffert dans la chair&nbsp;» (4.1) renvoie à cette mort sur la croix.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 1.14-16</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'appel à ne plus se conformer aux convoitises d'autrefois, dans l'ignorance, mais à être saint, prépare directement la rupture commandée en 4.2-3 (vivre selon la volonté de Dieu, non selon les convoitises des hommes).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 2.11</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les convoitises charnelles qui font la guerre à l'âme éclairent les «&nbsp;convoitises des hommes&nbsp;» de 4.2 et le statut d'étranger du croyant arraché à la vie païenne.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 6.6-7</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Celui qui est mort avec Christ est affranchi du péché&nbsp;: arrière-plan paulinien de «&nbsp;celui qui a souffert dans la chair en a fini avec le péché&nbsp;» (4.1).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Apocalypse 20.11-15</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le grand trône blanc devant lequel comparaissent tous les morts non sauvés concrétise le Juge «&nbsp;prêt à juger les vivants et les morts&nbsp;» à qui les calomniateurs rendront compte (4.5).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 12.36</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les hommes rendront compte de toute parole vaine au jour du jugement&nbsp;: appui direct du verbe «&nbsp;rendront compte&nbsp;» et de la dette accumulée par les calomniateurs (4.5).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 53.10-11</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le Serviteur souffrant dont la mort, voulue par Dieu, accomplit le salut&nbsp;: arrière-plan vétérotestamentaire de la souffrance de Christ qui fonde l'exhortation à s'armer de la même pensée (4.1).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 6.5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La méchanceté de l'homme dont toutes les pensées se portaient vers le mal préfigure le «&nbsp;débordement de débauche&nbsp;» et la course folle à la poursuite du péché décrits en 4.4.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La pensée de Christ souffrant comme arme du croyant</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Christ ayant souffert dans la chair, vous aussi armez-vous de la même pensée&nbsp;» (4.1)&nbsp;: le croyant revêt délibérément la résolution qui fut celle de Christ, à savoir que l'on triomphe par la souffrance et même par la mort.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La souffrance pour la foi n'est pas une anomalie à fuir mais un terrain de victoire à affronter avec un esprit préparé. Armer son entendement, c'est décider d'avance que rien, pas même la mort, ne pourra arracher le chrétien à son Seigneur, ce qui désarme la principale menace de l'adversaire.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La mort en Christ, rupture définitive avec le péché</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Celui qui a souffert dans la chair en a fini avec le péché&nbsp;» (4.1)&nbsp;: le parfait du verbe marque un état permanent, une libération éternelle, dont la pleine mesure est atteinte à la mort du croyant.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Ce thème situe l'espérance au-delà de la sanctification progressive&nbsp;: la mort du chrétien n'est pas une perte mais l'achèvement de sa délivrance du péché. Cela ne dispense d'aucune sainteté présente, mais relativise toute épreuve à la lumière de ce que la mort accomplira définitivement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La vie nouvelle gouvernée par la volonté de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Afin de vivre, non plus selon les convoitises des hommes, mais selon la volonté de Dieu&nbsp;» (4.2)&nbsp;: deux souverainetés opposées commandent la vie ancienne et la vie nouvelle.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La conversion est un changement de gouvernance, non un aménagement de comportement. Le temps qui reste à vivre dans la chair appartient désormais au dessein saint de Dieu; mesurer ses choix à cette aune, et non aux appétits du monde, est la marque concrète de la régénération.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La rupture nette avec le passé païen</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;C'est assez d'avoir dans le temps passé accompli la volonté des païens&nbsp;» (4.3)&nbsp;: le catalogue des vices décrit, du point de vue de Dieu, des actes méprisables auxquels le croyant ne doit plus jamais retourner.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La sainteté n'est pas négociable sur ce point&nbsp;: ce qui était permis dans l'ignorance est désormais clos. Le péché est un fardeau, non un plaisir; l'incompréhension et la calomnie du monde (4.4) sont le prix attendu d'une rupture authentique, et non le signe d'un excès de zèle.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le jugement universel du Juge des vivants et des morts</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Ils rendront compte à celui qui est prêt à juger les vivants et les morts&nbsp;» (4.5)&nbsp;: les calomniateurs accumulent une dette qu'ils acquitteront devant le Juge, tandis que les croyants morts vivent selon Dieu par l'esprit (4.6).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La certitude du jugement console le persécuté et avertit le persécuteur&nbsp;: aucune calomnie n'aura le dernier mot. Le verset 6 n'ouvre aucune seconde chance posthume, mais assure que ceux qui ont cru de leur vivant triomphent de la mort même; il appelle donc à répondre maintenant à l'Évangile, avant de comparaître.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Comment exposer «&nbsp;armez-vous de la même pensée&nbsp;» (4.1) comme une décision spirituelle concrète, et non comme un simple encouragement à la patience, pour une assemblée qui redoute la souffrance plutôt que de s'y préparer?</li>
+      <li>Le verbe «&nbsp;en a fini avec le péché&nbsp;» est au parfait et culmine dans la mort du croyant (4.1). Comment prêcher cette espérance sans glisser vers le perfectionnisme, ni vers une indifférence à la sainteté présente?</li>
+      <li>Pierre oppose «&nbsp;les convoitises des hommes&nbsp;» à «&nbsp;la volonté de Dieu&nbsp;» (4.2). Sur quels choix concrets de la semaine vos auditeurs peuvent-ils vérifier laquelle de ces deux souverainetés gouverne réellement leur vie?</li>
+      <li>«&nbsp;C'est assez&nbsp;» (4.3) suppose une rupture nette avec le passé. Y a-t-il dans la vie de vos auditeurs des pratiques héritées de l'ignorance qu'ils tolèrent encore comme négociables? Comment nommer cette frontière sans légalisme ni laxisme?</li>
+      <li>La calomnie du verset 4 naît de la sainteté même du croyant. Comment préparer une assemblée à recevoir l'incompréhension du monde comme une confirmation de sa fidélité, et non comme un échec de son témoignage?</li>
+      <li>Le Juge «&nbsp;prêt à juger les vivants et les morts&nbsp;» (4.5) console autant qu'il avertit. Comment tenir ensemble, dans la prédication, la consolation du persécuté et l'avertissement adressé au persécuteur?</li>
+      <li>Le verset 6 a souvent servi à défendre un salut posthume. Comment montrer, à partir du contexte de l'épître, qu'il vise au contraire le triomphe des croyants déjà morts, et urger ainsi vos auditeurs à répondre à l'Évangile dès maintenant?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 1 Pierre 4.1-6 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;1 Pierre : vivre en étrangers, fortifiés par l'espérance&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-1%20Pierre-4-1-6.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

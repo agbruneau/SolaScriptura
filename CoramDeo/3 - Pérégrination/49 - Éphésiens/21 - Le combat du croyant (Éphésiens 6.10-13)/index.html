@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Éphésiens 6.10-13 · Le combat du croyant · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique d'Éphésiens 6.10-13 : le combat du croyant ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Éphésiens 6.10-13</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Éphésiens 6.10-13</p>
+    <h1 class="hero__title">Le combat du croyant</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Car nous n'avons pas à lutter contre la chair et le sang, mais contre les dominations, contre les autorités, contre les princes de ce monde de ténèbres.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Éphésiens 6.12 · NEG</p>
+    <p class="hero__series">Série : <b>Éphésiens : De la mort à la gloire, par la seule grâce de Dieu</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Éphésiens 6.10-13</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Au reste, fortifiez-vous dans le Seigneur, et par sa force toute-puissante.</p>
+        <cite class="verse__ref">Éphésiens 6.10 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">C'est pourquoi, prenez toutes les armes de Dieu, afin de pouvoir résister dans le mauvais jour, et tenir ferme après avoir tout surmonté.</p>
+        <cite class="verse__ref">Éphésiens 6.13 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Éphésiens 6.10-13 ouvre la dernière grande section de l'épître, « Les ressources de Dieu pour le combat spirituel »&nbsp;: après trois chapitres de doctrine et trois d'exhortations, Paul avertit que les richesses reçues en Christ ne suppriment pas la lutte, elles la provoquent.</p>
+    <div class="body">
+      <p>Le passage commence par « Au reste », formule de conclusion qui signale le mouvement final de la lettre. Dans le plan que MacArthur reçoit de la Bible d'étude, cette section s'intitule « Les ressources de Dieu pour le combat spirituel » (6.10-17). Après trois chapitres de doctrine sur la position du croyant en Christ (chapitres 1 à 3) et trois chapitres d'exhortations pratiques sur la marche, le foyer et le travail (4.1 à 6.9), Paul referme son épître en avertissant les croyants qu'ils se trouvent au cœur d'un combat spirituel réel. La transition n'est pas accidentelle&nbsp;: MacArthur observe que le croyant authentique décrit dans les chapitres 1 à 3, celui qui place désormais sa vie sous le contrôle du Saint-Esprit (4.1 à 6.9), peut être certain d'être engagé dans la bataille décrite ici. Les grandes bénédictions accordées en Christ ne suppriment pas la lutte&nbsp;: elles la provoquent, car Satan cherche à neutraliser ceux qui jouissent de ces richesses.</p>
+      <p>La péricope forme une unité serrée. Les versets 10 à 13 exposent rapidement, selon MacArthur, les vérités fondamentales concernant l'indispensable préparation spirituelle du croyant, l'identité de l'ennemi et la nature du combat à mener&nbsp;; les versets 14 à 17 détailleront ensuite les six armes spirituelles nécessaires pour résister au diable et le vaincre. Notre passage est donc le portail de tout le développement sur l'armure&nbsp;: il pose les principes, se fortifier dans le Seigneur, se revêtir de toutes les armes, discerner le véritable adversaire, tenir ferme, avant que les versets suivants n'en déclinent les pièces. Trois impératifs en commandent la structure&nbsp;: « fortifiez-vous » (v. 10), « revêtez-vous » (v. 11) et « prenez » (v. 13), encadrés par la répétition du but, « tenir ferme ».</p>
+      <p>Les bornes de l'unité sont nettes. Le verset 10 s'ouvre par « Au reste » et le verset 13 referme la première moitié par la reprise du verbe « tenir ferme après avoir tout surmonté », avant que le verset 14 ne relance par « Tenez donc ferme » et n'énumère les pièces de l'armure. Le passage est donc l'introduction théologique au combat&nbsp;: il établit que la force du croyant n'est pas la sienne mais celle du Seigneur, que l'armure est tout entière fournie par Dieu, et que l'adversaire n'est pas humain mais spirituel et organisé.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Éphésiens 6.10 · 6.11 · 6.12</p>
+    </header>
+    <p class="lead">Paul écrit enchaîné à des soldats romains, dans une ville saturée de magie et de culte des démons&nbsp;: l'image de l'armure et la réalité des « princes de ce monde de ténèbres » étaient pour les Éphésiens un quotidien, non une abstraction.</p>
+    <div class="body">
+      <p>L'épître aux Éphésiens fut rédigée par Paul depuis une prison romaine, vers 60 à 62 apr. J.-C., durant la captivité qui produisit aussi Philippiens, Colossiens et Philémon. Au moment même où il écrit ces lignes sur le combat et l'armure, l'apôtre est lui-même enchaîné, gardé par des soldats romains (cf. Ac 28.16-31). Cette circonstance éclaire l'image qu'il choisit&nbsp;: pour parler de la défense spirituelle du croyant, MacArthur note que Paul emprunte l'armure communément portée par le soldat romain, qu'il avait probablement sous les yeux, puisqu'il écrivait sans doute enchaîné à l'un d'eux. La métaphore n'est donc vraisemblablement pas livresque, mais tirée du quotidien du prisonnier.</p>
+      <p>Éphèse elle-même fournit un arrière-plan saisissant. Capitale de la province romaine d'Asie, la ville était un centre majeur de magie, d'occultisme et de culte des démons. Elle abritait le temple d'Artémis, l'une des sept merveilles du monde antique, et l'on y pratiquait abondamment les arts magiques&nbsp;: le livre des Actes rapporte que des convertis y brûlèrent publiquement leurs livres de sorcellerie pour une somme considérable (Ac 19.18-19). Les chrétiens d'Éphèse savaient donc concrètement ce qu'étaient « les dominations », « les autorités » et « les princes de ce monde de ténèbres ». Pour eux, le combat contre les esprits méchants n'était pas une abstraction, mais l'arrière-fond religieux dont ils venaient d'être arrachés. Paul ne leur révèle pas l'existence d'un monde démoniaque&nbsp;; il leur enseigne que, désormais en Christ, ils l'affrontent avec une armure divine et non par les recettes des magiciens.</p>
+    </div>
+    <p>Trois traits échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Une hiérarchie démoniaque structurée.</b> Les quatre termes du verset 12, « dominations », « autorités », « princes de ce monde de ténèbres » et « esprits méchants dans les lieux célestes », correspondent, selon MacArthur, aux différents niveaux de hiérarchie et de grade que ces démons occupent dans l'empire surnaturel où ils opèrent. Les forces destructrices de Satan sont très structurées en vue de la plus grande efficacité. Cette terminologie rejoignait le vocabulaire juif traditionnel pour désigner les êtres angéliques de haut rang (cf. 1.21).</li>
+      <li><b>Le combat au corps à corps.</b> L'image de la lutte renvoie à la lutte antique, qui n'avait rien d'un simple jeu&nbsp;: le verbe traduit par « lutter » désigne le combat au corps à corps où l'on cherche à terrasser l'adversaire, un affrontement rapproché où, comme Satan et ses démons, on n'hésite pas à tromper et à tricher. D'où la nécessité de la vérité et de la justice pour résister à des assauts par nature mensongers.</li>
+      <li><b>« Les lieux célestes », sphère du combat.</b> L'expression, qui revient comme un fil dans l'épître (1.3&nbsp;; 3.10), désigne ici le domaine des êtres spirituels dans son entier, cette sphère surnaturelle où se côtoient anges saints et démons. Le combat ne se déroule donc pas seulement sur terre&nbsp;: il engage un théâtre invisible, où le croyant tient sa position par la puissance du Seigneur.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du passage&nbsp;: de l'<i>endynamoō</i> au passif, qui dit la force empruntée, à la <i>panoplia</i> complète de Dieu, en passant par les <i>methodeia</i> du diable, la <i>palē</i> au corps à corps et l'<i>histēmi</i> qui commande de tenir ferme.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">fortifiez-vous</span><span class="mot-gr">endynamoō</span></th>
+            <td class="col-sens">être rendu fort, recevoir de la puissance, être fortifié de l'intérieur par une force qui ne vient pas de soi</td>
+            <td>Le verbe est au passif&nbsp;: il ne s'agit pas de rassembler ses propres ressources mais d'être fortifié par un autre, « dans le Seigneur, et par sa force toute-puissante ». MacArthur souligne que la puissance de Satan sur les chrétiens a déjà été brisée et la grande guerre déjà gagnée par la crucifixion et la résurrection de Christ&nbsp;; néanmoins, la vie terrestre demeure marquée par de perpétuelles batailles contre la tentation, et la puissance du Seigneur, la force de son Esprit et celle des vérités bibliques sont indispensables à la victoire (cf. Ph 4.13&nbsp;; 2 Ti 2.1). La force du croyant est entièrement empruntée.</td>
+            <td><span class="trad"><span><b>S21</b> fortifiez-vous</span><span><b>NEG79</b> fortifiez-vous</span><span><b>Darby</b> fortifiez-vous</span><span><b>LSG</b> fortifiez-vous</span><span><b>KJF</b> soyez forts</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">armes</span><span class="mot-gr">panoplia</span></th>
+            <td class="col-sens">armure complète, équipement intégral du soldat lourdement armé, des pieds à la tête, défensif et offensif</td>
+            <td>Le mot grec désigne la totalité de l'équipement du légionnaire&nbsp;: casque, cuirasse, ceinture, chaussures, bouclier, épée. Paul réclame « toutes les armes de Dieu », non une pièce isolée. MacArthur observe que le verbe « revêtez-vous » implique une notion de permanence&nbsp;: le chrétien devrait rester sa vie durant revêtu de cette armure, indispensable pour défendre fermement ses positions contre les assauts ennemis. L'adjectif « de Dieu » est décisif&nbsp;: cette armure est fournie par Dieu et provient de lui, non de l'effort ou de l'ingéniosité humaine.</td>
+            <td><span class="trad"><span><b>S21</b> armes</span><span><b>NEG79</b> armes</span><span><b>Darby</b> armure</span><span><b>LSG</b> armes</span><span><b>KJF</b> armure</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ruses</span><span class="mot-gr">methodeia</span></th>
+            <td class="col-sens">poursuite par des voies détournées&nbsp;; procédé rusé, méthode trompeuse, manœuvre calculée</td>
+            <td>Le terme évoque, selon MacArthur, l'astuce, la fourberie, les manœuvres et les tromperies. Les plans de Satan se propagent au travers du système du monde mauvais sur lequel il règne et s'accomplissent au moyen des esprits démoniaques. « Ruses » est un terme exhaustif qui inclut tout péché, toute pratique immorale, toute fausse théologie ou religion, tous les attraits trompeurs du monde. Le diable n'attaque pas à découvert&nbsp;: il séduit, déguise et piège. C'est pourquoi l'armure réclamée est d'abord faite de vérité et de justice, contre des assauts par nature mensongers.</td>
+            <td><span class="trad"><span><b>S21</b> ruses</span><span><b>NEG79</b> ruses</span><span><b>Darby</b> artifices</span><span><b>LSG</b> ruses</span><span><b>KJF</b> embûches</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">lutter</span><span class="mot-gr">palē</span></th>
+            <td class="col-sens">lutte au corps à corps&nbsp;; le combat du lutteur qui cherche à terrasser et à immobiliser son adversaire</td>
+            <td>Le mot désigne, selon MacArthur, le combat au corps à corps. Les lutteurs utilisent des prises pour tromper leur adversaire et n'hésitent pas à tricher, comme le font Satan et ses démons lors de leurs attaques. Vérité et justice sont donc indispensables pour lutter contre des tentations trompeuses. L'image souligne la proximité et l'intensité du combat&nbsp;: il ne s'agit pas d'une escarmouche lointaine mais d'un affrontement rapproché, personnel et sans répit, qui exige la maîtrise de soi et la fermeté.</td>
+            <td><span class="trad"><span><b>S21</b> lutter</span><span><b>NEG79</b> lutter</span><span><b>Darby</b> lutte</span><span><b>LSG</b> lutter</span><span><b>KJF</b> lutter</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">tenir ferme</span><span class="mot-gr">histēmi</span></th>
+            <td class="col-sens">se tenir debout, rester en place, demeurer ferme et inébranlable sans céder de terrain</td>
+            <td>Le verbe revient comme un refrain dans la péricope (vv. 11, 13) et au verset 14. MacArthur relève que l'objectif à atteindre est de tenir ferme contre l'ennemi, sans relâche ni faiblesse. Le but n'est pas de conquérir un terrain nouveau mais de ne pas céder celui que Christ a déjà gagné&nbsp;: la victoire décisive est acquise, le croyant la défend. « Tenir ferme après avoir tout surmonté » décrit le soldat encore debout quand l'assaut a cessé, n'ayant pas lâché sa position.</td>
+            <td><span class="trad"><span><b>S21</b> tenir bon</span><span><b>NEG79</b> tenir ferme</span><span><b>Darby</b> tenir ferme</span><span><b>LSG</b> tenir ferme</span><span><b>KJF</b> tenir ferme</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Éphésiens 6.10-13</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Éphésiens 6.10-13 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ep 6.10-17, 6.10, 6.11, 6.12, 6.13.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">1952</span></th>
+            <td><a href="https://www.gty.org/sermons/1952" target="_blank" rel="noopener">Satan's Attack on the Spirit-Filled Church</a></td>
+            <td>Éphésiens 6.10</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">1953</span></th>
+            <td><a href="https://www.gty.org/sermons/1953" target="_blank" rel="noopener">The Believer's Warfare, Part 1</a></td>
+            <td>Éphésiens 6.10-13</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">1954</span></th>
+            <td><a href="https://www.gty.org/sermons/1954" target="_blank" rel="noopener">The Believer's Warfare, Part 2</a></td>
+            <td>Éphésiens 6.10-13</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">49-39</span></th>
+            <td><a href="https://www.gty.org/sermons/49-39" target="_blank" rel="noopener">How to Resist the Devil, Part 1 </a></td>
+            <td>Éphésiens 6.10-13</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">90-364</span></th>
+            <td><a href="https://www.gty.org/sermons/90-364" target="_blank" rel="noopener">The Armor of God</a></td>
+            <td>Éphésiens 6.10-13</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question qui commande le passage n'est pas « comment vaincre? » mais « comment tenir? »&nbsp;: la grande guerre est déjà gagnée par la croix, et le croyant combat à partir d'une victoire, dans une force qui n'est pas la sienne.</p>
+    <div class="body">
+      <p>Le passage commence par une certitude libératrice&nbsp;: la guerre est déjà gagnée. MacArthur insiste sur le fait que la puissance de Satan sur les chrétiens a déjà été brisée, et la grande guerre déjà remportée par la crucifixion et la résurrection de Christ&nbsp;: par elles, la victoire ultime a été acquise sur la puissance du péché et de la mort (cf. Ro 5.18-21&nbsp;; 1 Co 15.56-57&nbsp;; Hé 2.14). Le croyant ne combat donc pas pour obtenir la victoire, mais à partir d'une victoire déjà obtenue. Pour autant, la vie sur la terre demeure marquée par de perpétuelles batailles contre la tentation&nbsp;; c'est pourquoi Paul ne dit pas « réjouissez-vous », mais « fortifiez-vous ». Et cette force n'est pas la sienne&nbsp;: on est fortifié « dans le Seigneur, et par sa force toute-puissante », car le croyant, rappelle MacArthur, n'a pas cette force en lui-même et doit se reposer sur le Seigneur. La puissance du Seigneur, la force de son Esprit et celle des vérités bibliques sont indispensables à la victoire.</p>
+      <p>De cette force empruntée découle le premier ordre concret&nbsp;: « Revêtez-vous de toutes les armes de Dieu » (v. 11). MacArthur note que le verbe employé implique une notion de permanence&nbsp;: le chrétien devrait rester sa vie durant revêtu de cette armure. Pour décrire cette défense, Paul utilise l'armure communément portée par les soldats romains, et il affirme qu'elle est indispensable à qui veut défendre fermement ses positions contre les assauts ennemis. Le but assigné est précis&nbsp;: « pouvoir tenir ferme contre les ruses du diable ». Le mot « ruses » désigne, observe MacArthur, la poursuite par des voies détournées&nbsp;: l'astuce, la fourberie, les manœuvres et les tromperies du diable. Ses plans se propagent au travers du système du monde mauvais sur lequel il règne et s'accomplissent au moyen des esprits démoniaques&nbsp;; le terme englobe tout péché, toute pratique immorale, toute fausse théologie ou religion, tous les attraits trompeurs du monde. L'auteur de ces attaques est nommé&nbsp;: l'Écriture le dépeint comme s'opposant à l'œuvre de Dieu, pervertissant sa Parole, contrecarrant ses serviteurs, entravant la progression de l'Évangile, faisant tomber les justes dans ses pièges et tenant le monde sous sa coupe (1 Jn 5.19).</p>
+      <p>Le verset 12 redéfinit radicalement l'identité de l'adversaire&nbsp;: « nous n'avons pas à lutter contre la chair et le sang ». Le verbe « lutter », précise MacArthur, désigne le combat au corps à corps&nbsp;; les lutteurs trompent leur adversaire et n'hésitent pas à tricher, exactement comme Satan et ses démons. De là découle une conséquence pratique majeure&nbsp;: puisque l'ennemi combat par la ruse, vérité et justice sont indispensables pour résister. Le véritable adversaire n'est ni un voisin, ni un système politique, ni une institution humaine&nbsp;: il est spirituel. Les quatre expressions employées, « dominations », « autorités », « princes de ce monde de ténèbres » et « esprits méchants dans les lieux célestes », renvoient, selon MacArthur, aux différents niveaux de hiérarchie et de grade qu'occupent les démons dans l'empire surnaturel où ils opèrent&nbsp;: les forces destructrices de Satan sont très structurées en vue de la plus grande efficacité (cf. Col 2.15&nbsp;; 1 Pi 3.22). L'expression « les esprits méchants » fait peut-être allusion aux pratiques les plus abominables et répugnantes, dont l'occultisme et le culte de Satan&nbsp;; et « dans les lieux célestes » désigne, comme en 1.3 et 3.10, le domaine des êtres spirituels dans son entier, cette sphère surnaturelle où anges saints et démons s'affrontent.</p>
+      <p>Le verset 13 rassemble et conclut&nbsp;: « C'est pourquoi, prenez toutes les armes de Dieu ». MacArthur souligne que Paul rappelle ici la nécessité, pour le croyant, de s'approprier la pleine armure spirituelle de Dieu par son obéissance à la saisir ou à s'en revêtir (v. 11). L'armure est donnée par Dieu, mais elle doit être endossée&nbsp;: la grâce n'annule pas la responsabilité. Le but est de « résister dans le mauvais jour ». Or, observe MacArthur, depuis la chute de l'homme, chaque jour a été mauvais, et cet état persistera jusqu'au retour du Seigneur, lorsqu'il établira son royaume de justice sur la terre. La perspective est celle de ce règne à venir, établi sur la terre. Enfin, « tenir ferme après avoir tout surmonté » fixe l'objectif&nbsp;: tenir ferme contre l'ennemi, sans relâche ni faiblesse, encore debout quand l'assaut a cessé. La péricope ne promet pas l'absence de combat&nbsp;; elle promet une armure suffisante et une victoire déjà scellée pour qui se tient dans la force du Seigneur.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le combat du croyant, du triomphe de Christ sur les puissances à l'appel à résister au diable, jusqu'à l'arrière-plan vétérotestamentaire de l'armure de l'Éternel et de l'inimitié primordiale.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 1.21</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Christ a été élevé « au-dessus de toute domination, de toute autorité, de toute puissance », les mêmes termes désignant les êtres angéliques de haut rang&nbsp;: la hiérarchie démoniaque du verset 6.12 est tout entière sous les pieds du Christ ressuscité.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Éphésiens 2.2</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Satan y est nommé « le prince de la puissance de l'air, de l'esprit qui agit dans les fils de la rébellion »&nbsp;: c'est ce même adversaire, naguère maître du croyant, qui livre désormais combat à celui qu'il a perdu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 10.3-5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">« Les armes avec lesquelles nous combattons ne sont pas charnelles »&nbsp;: Paul y développe le même principe, le combat n'est pas charnel mais spirituel, et il se mène en renversant les forteresses idéologiques pour amener toute pensée captive à Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 5.8-9</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">« Votre adversaire, le diable, rôde comme un lion rugissant&nbsp;; résistez-lui avec une foi ferme »&nbsp;: même appel à résister et à tenir ferme contre un ennemi personnel et acharné.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Colossiens 2.15</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Christ « a dépouillé les dominations et les autorités, et les a livrées publiquement en spectacle, en triomphant d'elles par la croix »&nbsp;: fondement de la certitude que la grande guerre est déjà gagnée, contre les mêmes puissances que celles d'Éphésiens 6.12.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jacques 4.7</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">« Résistez au diable, et il fuira loin de vous »&nbsp;: confirme que le combat se gagne par la résistance ferme dans la soumission à Dieu, et non par la fuite ou la négociation.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 59.17</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">« Il se revêt de la justice comme d'une cuirasse, et met sur sa tête le casque du salut »&nbsp;: arrière-plan vétérotestamentaire de l'armure de Dieu, qui est d'abord l'armure même de l'Éternel guerrier, prêtée à son peuple.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 3.15</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La promesse de l'inimitié entre la postérité de la femme et le serpent annonce le combat de toute l'histoire du salut, dont la croix scelle l'issue et qu'Éphésiens 6 décrit dans sa phase présente.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent le combat du croyant. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La victoire est acquise, le combat demeure</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>« Fortifiez-vous dans le Seigneur, et par sa force toute-puissante » (6.10)&nbsp;: l'appel au combat repose sur une force déjà donnée, parce que la grande guerre a déjà été gagnée par la croix et la résurrection (cf. Col 2.15).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, le croyant ne lutte pas pour vaincre mais à partir d'une victoire déjà remportée par Christ. Cela écarte à la fois le découragement, qui oublie la victoire de la croix, et la présomption, qui oublie que la bataille quotidienne contre la tentation demeure réelle jusqu'au retour du Seigneur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Une force entièrement empruntée</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le verbe « fortifiez-vous » est passif (6.10)&nbsp;: la force vient « dans le Seigneur », et l'armure est « de Dieu » (6.11, 13), non du croyant. Toute la puissance du combat est fournie par un autre.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine de la sanctification, le croyant n'a aucune ressource propre contre Satan&nbsp;; il ne tient debout que par la puissance du Seigneur, la force de son Esprit et la vérité des Écritures. Pour votre assemblée, cela ruine toute confiance en la volonté, les techniques ou la spiritualité humaines, et renvoie sans cesse à la dépendance envers Dieu et sa Parole.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le véritable adversaire n'est pas humain</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>« Nous n'avons pas à lutter contre la chair et le sang, mais contre les dominations, contre les autorités, contre les princes de ce monde de ténèbres, contre les esprits méchants dans les lieux célestes » (6.12)&nbsp;: l'ennemi est spirituel, surnaturel et organisé.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, cela redéfinit tout conflit&nbsp;: la personne hostile, l'institution corrompue, l'idéologie séduisante ne sont pas l'ennemi de fond, mais les instruments d'un adversaire spirituel. Le chrétien ne combat donc pas la chair et le sang par la chair et le sang&nbsp;; il discerne les ruses derrière les hommes et répond par la vérité, la justice et la prière, non par l'amertume ou la vengeance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'armure complète et suffisante de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>« Revêtez-vous de toutes les armes de Dieu » (6.11) et « prenez toutes les armes de Dieu » (6.13)&nbsp;: il faut l'armure entière, qui doit être endossée de façon permanente et activement saisie par l'obéissance.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon la doctrine des moyens de grâce, Dieu fournit une protection complète et entièrement suffisante, mais le croyant doit s'en revêtir&nbsp;; la grâce n'annule pas la responsabilité de saisir ce qui est offert. Pour votre assemblée, négliger une seule pièce, la vérité, la justice, la foi, la Parole, expose un flanc à l'ennemi&nbsp;: on ne choisit pas son armure à la carte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Tenir ferme jusqu'au royaume à venir</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>« Afin de pouvoir résister dans le mauvais jour, et tenir ferme après avoir tout surmonté » (6.13)&nbsp;: l'objectif n'est pas la conquête mais la fermeté, dans un temps où chaque jour est mauvais jusqu'au retour du Seigneur.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon l'eschatologie de l'attente du royaume, le mauvais jour persiste depuis la chute et durera jusqu'à ce que Christ établisse son règne de justice sur la terre. Pour votre assemblée, la persévérance est donc la marque du vrai croyant&nbsp;: il ne s'agit pas de gagner un terrain nouveau mais de tenir, sans relâche ni faiblesse, la position que Christ a déjà conquise, dans l'espérance de son retour.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul commence par « fortifiez-vous dans le Seigneur » et non par une description de l'ennemi (6.10). Que change, pour la prédication, le fait d'ancrer le combat dans la force déjà donnée de Dieu avant même de nommer le diable?</li>
+      <li>Le verbe « fortifiez-vous » est passif&nbsp;: c'est Dieu qui fortifie. Comment exposer cette dépendance totale sans glisser vers une passivité qui dispenserait le croyant de tout effort de résistance?</li>
+      <li>Le verset 12 affirme que le combat n'est pas contre la chair et le sang. Comment aider votre assemblée à cesser de traiter les personnes hostiles comme l'ennemi de fond, sans pour autant nier la responsabilité humaine du péché?</li>
+      <li>Les « ruses du diable » (6.11) incluent la fausse théologie et les attraits trompeurs du monde. Quelles ruses, aujourd'hui, votre assemblée court-elle le risque de ne pas reconnaître comme telles?</li>
+      <li>MacArthur note que l'armure doit être portée en permanence et activement saisie. Quelle pièce de l'armure votre assemblée a-t-elle le plus tendance à laisser de côté, et avec quelles conséquences?</li>
+      <li>« Le mauvais jour » désigne tout le temps présent jusqu'au retour de Christ (6.13). Comment cette perspective eschatologique soutient-elle la persévérance du croyant éprouvé, plutôt que de l'épuiser?</li>
+      <li>Le but du combat est de « tenir ferme », non de conquérir un terrain nouveau (6.13). Qu'est-ce que cela révèle sur la nature de la victoire chrétienne, et comment cela corrige-t-il les attentes triomphalistes d'une certaine spiritualité?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Éphésiens 6.10-13 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Éphésiens : De la mort à la gloire, par la seule grâce de Dieu&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-%C3%89ph%C3%A9siens-6-10-13.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

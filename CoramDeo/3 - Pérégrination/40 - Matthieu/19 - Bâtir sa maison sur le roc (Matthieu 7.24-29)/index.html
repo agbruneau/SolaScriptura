@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthieu 7.24-29 · Bâtir sa maison sur le roc · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Matthieu 7.24-29 : la parabole des deux bâtisseurs ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Matthieu 7.24-29</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Matthieu 7.24-29</p>
+    <h1 class="hero__title">Bâtir sa maison sur le roc</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Quiconque entend ces paroles que je dis et les met en pratique sera semblable à un homme prudent qui a bâti sa maison sur le roc.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Matthieu 7.24 · NEG</p>
+    <p class="hero__series">Série : <b>Matthieu : le Roi-Messie d'Israël</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Matthieu 7.24-29</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">C'est pourquoi, quiconque entend ces paroles que je dis et les met en pratique, sera semblable à un homme prudent qui a bâti sa maison sur le roc.</p>
+        <cite class="verse__ref">Matthieu 7.24 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car il enseignait comme ayant autorité, et non pas comme leurs scribes.</p>
+        <cite class="verse__ref">Matthieu 7.29 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Ces six versets scellent le sermon sur la montagne : la parabole des deux bâtisseurs n'est pas un appendice illustratif, mais la conclusion logique et pressante de tout le discours, qui applique l'ensemble du sermon à la conscience.</p>
+    <div class="body">
+      <p>Ces six versets scellent le sermon sur la montagne, le premier des cinq grands discours autour desquels Matthieu bâtit son Évangile du Messie-Roi (5.1 à 7.29). Selon le plan de MacArthur, ils appartiennent à la section justice et salut (7.13-29), point culminant où le Roi, après avoir exposé la justice de son royaume, force chaque auditeur à choisir. Toute la fin du sermon procède par couples antithétiques : deux portes et deux chemins (7.13-14), deux sortes d'arbres et de fruits (7.16-20), deux confessions au jour du jugement (7.21-23), et enfin deux bâtisseurs sur deux fondations (7.24-27). La parabole des deux maisons n'est donc pas un appendice illustratif mais la conclusion logique et pressante de tout le discours : elle applique l'ensemble du sermon à la conscience.</p>
+      <p>La charnière est le mot d'ouverture du verset 24, «&nbsp;c'est pourquoi&nbsp;», qui rattache la parabole à l'avertissement terrifiant de 7.21-23. Là, le Roi vient de déclarer que tous ceux qui disent «&nbsp;Seigneur, Seigneur&nbsp;» n'entreront pas dans le royaume, et qu'au jour du jugement il dira à des religieux affairés : «&nbsp;je ne vous ai jamais connus&nbsp;». Le contraste décisif n'est pas entre ceux qui entendent et ceux qui n'entendent pas, car les deux bâtisseurs entendent «&nbsp;ces paroles que je dis&nbsp;». Le départ se fait entre celui qui met en pratique et celui qui ne les met pas en pratique. La pluie, les torrents et les vents qui s'abattent sur les deux maisons figurent, selon MacArthur, le jugement divin : la tempête éprouvante révèle la nature réelle de chaque fondation. Ce que l'œil ne distinguait pas par beau temps, l'orage le manifeste sans appel.</p>
+      <p>Les versets 28-29 ferment non seulement la parabole mais tout le discours, par la formule de transition propre à Matthieu, «&nbsp;après que Jésus eut achevé ces discours&nbsp;», qui revient cinq fois pour marquer le passage d'un grand discours au récit suivant (7.28; 11.1; 13.53; 19.1; 26.1). La réaction de la foule, frappée de sa doctrine, et la note sur l'autorité du Roi, qui enseignait comme ayant autorité et non comme les scribes, ouvrent la voie au premier récit de Matthieu, les miracles d'authentification (8.1 à 9.38). La parole souveraine du Roi étant démontrée dans le sermon, ses actes de puissance vont maintenant authentifier la même identité messianique.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Matthieu 7.24-27 · 7.29</p>
+    </header>
+    <p class="lead">L'image de la construction parlait directement à un auditoire galiléen : sous un ciel clément, les deux maisons se ressemblent ; seule la saison des orages sépare la maison qui tient de celle dont la ruine est grande.</p>
+    <div class="body">
+      <p>L'image de la construction parlait directement à un auditoire galiléen. Bâtir sur le roc évoque le substrat calcaire affleurant en maint endroit de Palestine, fondation stable où l'on creusait jusqu'à la pierre vive avant de poser les murs. Bâtir sur le sable évoque les ouadis, ces lits de torrents asséchés l'été, au sable lissé et invitant, mais que les pluies torrentielles d'automne et d'hiver transforment soudain en flots dévastateurs. Le bâtisseur insensé choisit la facilité d'un sol meuble et plat; le bâtisseur prudent paie le prix de l'effort pour atteindre le roc. Sous un ciel clément, les deux maisons se ressemblent. Seule la saison des orages, où les vents descendus des hauteurs fouettent la plaine, sépare la maison qui tient de celle dont la ruine est grande.</p>
+    </div>
+    <p>Trois réalités éclairent la portée du texte pour l'auditoire d'origine.</p>
+    <ul class="points">
+      <li><b>La manière d'enseigner des scribes.</b> Le mot d'autorité du verset 29 suppose de connaître la manière des scribes. Docteurs de la loi, le plus souvent pharisiens, ils ne parlaient jamais en leur nom propre : comme le note MacArthur, ils citaient d'autres rabbins, empilant des sources humaines faillibles pour établir l'autorité de leur enseignement. Jésus, lui, était sa propre autorité; il disait «&nbsp;moi je vous dis&nbsp;» (5.22, 28, 32, 34, 39, 44) sans jamais s'appuyer sur un maître humain, parce qu'il parlait en Fils, avec l'autorité même de Dieu (28.18). Cette prétention stupéfiait, car elle dépassait tout ce que l'on attendait d'un rabbin : la question de l'autorité deviendra l'un des grands lieux de conflit entre Jésus et les chefs juifs (21.23).</li>
+      <li><b>Le genre prophétique de l'Ancien Testament.</b> Il faut entendre la parabole dans le cadre du genre prophétique que l'auditoire juif connaissait. La métaphore de la tempête de jugement qui éprouve les fondations était familière (Ézéchiel 13.10-16, où le mur recouvert de plâtre s'écroule sous l'averse; Ésaïe 28.16-17, la pierre angulaire éprouvée et le refuge de mensonge emporté par les eaux). En se posant comme celui dont les paroles sont le roc qui tient au jugement, Jésus s'attribue une fonction qui, dans les Écritures, appartient à Dieu seul et à sa parole.</li>
+      <li><b>Une revendication messianique voilée.</b> La parabole n'est donc pas une simple leçon de morale sur la persévérance; c'est une revendication messianique voilée, où le Roi fait de l'obéissance à sa propre parole le critère du salut au dernier jour. La foule perçoit la différence sans la comprendre encore : elle est frappée, saisie, ébranlée par une parole qui ne ressemble à aucune autre.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope : du verbe «&nbsp;mettre en pratique&nbsp;» (<i>poieo</i>) qui sépare les deux bâtisseurs, au «&nbsp;roc&nbsp;» (<i>petra</i>) et à l'«&nbsp;insensé&nbsp;» (<i>moros</i>), jusqu'à l'«&nbsp;autorité&nbsp;» (<i>exousia</i>) du Roi et à la stupeur (<i>ekplesso</i>) de la foule.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">met en pratique</span><span class="mot-gr">poieo</span></th>
+            <td class="col-sens">faire, accomplir, produire, mettre en œuvre de façon effective</td>
+            <td>Le verbe revient comme un refrain dans la fin du sermon : faire la volonté du Père (7.21), faire de bons fruits (7.17-19), faire et mettre en pratique ces paroles (7.24, 26). MacArthur souligne que le partage entre les deux bâtisseurs ne tient pas à entendre mais à faire : les deux entendent les mêmes paroles du Roi, seul le premier les accomplit. Ce <i>poieo</i> n'enseigne nullement le salut par les œuvres; il décrit le fruit inévitable de la foi authentique, l'obéissance qui prouve la réalité de la soumission au Roi. La foi qui se contente d'entendre sans agir est la foi morte que dénonce aussi Jacques (1.22-25).</td>
+            <td><span class="trad"><span><b>S21</b> les met en pratique</span><span><b>NEG79</b> les met en pratique</span><span><b>Darby</b> les met en pratique</span><span><b>LSG</b> les met en pratique</span><span><b>KJF</b> les met en pratique</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">roc</span><span class="mot-gr">petra</span></th>
+            <td class="col-sens">roche, pierre vive, masse rocheuse, substrat stable et inébranlable</td>
+            <td>Désigne non un caillou mais le rocher de fondation, le banc rocheux affleurant. Dans la parabole, le roc figure l'obéissance à la Parole du Roi, fondation qui tient quand vient le jugement. MacArthur relie l'image à la solidité du salut véritable : la maison fondée sur le roc, c'est la vie spirituelle bâtie sur l'écoute pratiquée de la parole de Christ, laquelle suppose la repentance, le rejet du salut par les œuvres et la confiance en la grâce qui sauve. Le même terme sert ailleurs à désigner la confession de Christ comme fondement de l'Église (16.18) et Christ lui-même comme rocher (Romains 9.33; 1 Corinthiens 10.4).</td>
+            <td><span class="trad"><span><b>S21</b> le rocher</span><span><b>NEG79</b> le roc</span><span><b>Darby</b> le roc</span><span><b>LSG</b> le roc</span><span><b>KJF</b> un roc</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">insensé</span><span class="mot-gr">moros</span></th>
+            <td class="col-sens">sot, stupide, dépourvu de bon sens, déraisonnable au plan moral et spirituel</td>
+            <td>D'où vient notre mot moronique. Le terme ne vise pas un déficit intellectuel mais une folie morale et spirituelle, le refus volontaire d'agir selon ce que l'on sait. L'insensé de la parabole a entendu les mêmes paroles que le prudent; sa sottise est de les négliger. La Bible appelle insensé celui qui dit en son cœur «&nbsp;il n'y a point de Dieu&nbsp;» (Psaume 14.1) et qui vit comme si le jugement n'allait jamais venir. Pour MacArthur, cet homme représente le faux disciple de 7.21-23 : il professe, il s'active religieusement, mais il ne fait pas la volonté du Père, et sa ruine au jour du jugement sera totale.</td>
+            <td><span class="trad"><span><b>S21</b> fou</span><span><b>NEG79</b> insensé</span><span><b>Darby</b> insensé</span><span><b>LSG</b> insensé</span><span><b>KJF</b> insensé</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">autorité</span><span class="mot-gr">exousia</span></th>
+            <td class="col-sens">pouvoir légitime, droit d'agir, autorité conférée et souveraine</td>
+            <td>Désigne le pouvoir qui découle du droit, non la simple force. La foule est frappée parce que Jésus enseigne avec <i>exousia</i>, et non comme les scribes qui empruntaient leur autorité à des maîtres antérieurs. MacArthur insiste : Jésus était sa propre autorité, il parlait en Fils investi de toute autorité dans le ciel et sur la terre (28.18). Cette <i>exousia</i> n'est pas un style oratoire mais le rayonnement de sa déité et de sa royauté messianique. La même autorité qui marque sa parole va se manifester dans ses actes de puissance sur la maladie, les démons et la nature (chapitres 8 et 9), authentifiant son identité de Messie-Roi.</td>
+            <td><span class="trad"><span><b>S21</b> autorité</span><span><b>NEG79</b> autorité</span><span><b>Darby</b> autorité</span><span><b>LSG</b> autorité</span><span><b>KJF</b> autorité</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">frappée</span><span class="mot-gr">ekplesso</span></th>
+            <td class="col-sens">être frappé hors de soi, stupéfait, saisi d'étonnement, comme assommé par un coup</td>
+            <td>Verbe fort, littéralement être frappé au point d'être projeté hors de soi-même. Il décrit la réaction des foules devant l'enseignement de Jésus (7.28; 13.54; 22.33; Marc 1.22). Cet étonnement n'est pas encore la foi : la foule est saisie, ébranlée, mais le texte ne dit pas qu'elle croit. MacArthur distingue l'admiration de la soumission; beaucoup s'émerveillent du Roi sans se ranger sous sa seigneurie. Le verbe prépare le contraste de la parabole elle-même : entendre, même avec stupeur, ne suffit pas; il faut bâtir, c'est-à-dire mettre en pratique.</td>
+            <td><span class="trad"><span><b>S21</b> frappées</span><span><b>NEG79</b> frappée</span><span><b>Darby</b> frappées</span><span><b>LSG</b> frappée</span><span><b>KJF</b> étonnée</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Matthieu 7.24-29</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Matthieu 7.24-29 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mt 5.1-7.29, 7.13-29, 7.24-27, 7.29.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-312</span></th>
+            <td><a href="https://www.gty.org/sermons/80-312" target="_blank" rel="noopener">Two Paths, One Way</a></td>
+            <td>Matthieu 7.13-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-338</span></th>
+            <td><a href="https://www.gty.org/sermons/80-338" target="_blank" rel="noopener">Foundations of Grace, Part 2: The Lordship of Christ</a></td>
+            <td>Matthieu 7.13-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-409</span></th>
+            <td><a href="https://www.gty.org/sermons/80-409" target="_blank" rel="noopener">An Appeal to Charismatic Pretenders (John MacArthur)</a></td>
+            <td>Matthieu 7.13-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-139</span></th>
+            <td><a href="https://www.gty.org/sermons/81-139" target="_blank" rel="noopener">The Only Way to Heaven</a></td>
+            <td>Matthieu 7.13-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-46</span></th>
+            <td><a href="https://www.gty.org/sermons/81-46" target="_blank" rel="noopener">Finding the Narrow Way to Heaven</a></td>
+            <td>Matthieu 7.13-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-177</span></th>
+            <td><a href="https://www.gty.org/sermons/80-177" target="_blank" rel="noopener">Unmasking Christmas Hypocrites</a></td>
+            <td>Matthieu 7.21-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-326</span></th>
+            <td><a href="https://www.gty.org/sermons/80-326" target="_blank" rel="noopener">Saved or Self-Deceived, Part 1</a></td>
+            <td>Matthieu 7.21-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-327</span></th>
+            <td><a href="https://www.gty.org/sermons/80-327" target="_blank" rel="noopener">Saved or Self-Deceived, Part 2</a></td>
+            <td>Matthieu 7.21-27</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-74</span></th>
+            <td><a href="https://www.gty.org/sermons/81-74" target="_blank" rel="noopener">The Damning Deception of Empty Words and Empty Hearts</a></td>
+            <td>Matthieu 7.21-29</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">2256</span></th>
+            <td><a href="https://www.gty.org/sermons/2256" target="_blank" rel="noopener">Empty Hearts</a></td>
+            <td>Matthieu 7.24-29</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Pour MacArthur, la parabole des deux bâtisseurs est l'application finale et inévitable de tout le sermon sur la montagne, et l'une des illustrations les plus solennelles de tout l'Évangile sur la nature du vrai salut.</p>
+    <div class="body">
+      <p>Pour MacArthur, la parabole des deux bâtisseurs est l'application finale et inévitable de tout le sermon sur la montagne, et l'une des illustrations les plus solennelles de tout l'Évangile sur la nature du vrai salut. La clé interprétative est donnée par sa note : la maison représente la vie spirituelle, et la pluie figure le jugement divin. Tout l'enjeu se concentre sur la fondation invisible. Par temps clair, les deux maisons paraissent identiques; c'est l'orage du jugement qui révèle laquelle reposait sur le roc et laquelle sur le sable. MacArthur en tire que la profession religieuse, l'activité spirituelle et même l'émotion sincère ne prouvent rien tant que la tempête n'a pas éprouvé la fondation. Seule tiendra la maison bâtie sur l'obéissance à la Parole, obéissance qui s'accompagne de la repentance, du rejet du salut par les œuvres et de l'assurance en la grâce de Dieu qui sauve selon sa miséricorde.</p>
+      <p>Le point doctrinal décisif, sur lequel MacArthur revient sans relâche, est que la différence entre les deux bâtisseurs n'est pas l'audition mais la mise en pratique. Les deux entendent «&nbsp;ces paroles que je dis&nbsp;». Le faux disciple n'est pas l'athée déclaré ni l'ennemi de l'Évangile; c'est l'auditeur qui approuve, s'émeut, se dit chrétien, et ne fait pas la volonté du Père. C'est précisément le portrait de 7.21-23, ces gens qui crient «&nbsp;Seigneur, Seigneur&nbsp;» et se vantent de prophéties, d'exorcismes et de miracles, à qui le Roi répond «&nbsp;je ne vous ai jamais connus&nbsp;». MacArthur y voit la réfutation d'une foi facile : une foi qui se réduit à une profession verbale, à une décision sans repentance ni soumission à la seigneurie de Christ, est la maison sur le sable, vouée à la ruine au jugement. Les œuvres ne sauvent jamais, mais leur absence dénonce une foi qui n'a jamais été vivante. La même logique gouverne Jacques 1.22-25, que MacArthur cite en parallèle : être auditeur sans être praticien, c'est se tromper soi-même.</p>
+      <p>La parabole ne se laisse pas amollir en simple exhortation à la persévérance morale. Le roc n'est pas l'effort humain mais l'obéissance qui jaillit d'une foi régénérée et soumise au Roi. C'est ici que MacArthur situe la seigneurie de Christ au cœur du texte : on ne peut recevoir Jésus comme Sauveur sans le recevoir comme Seigneur, et la preuve de ce salut est une vie qui met en pratique sa Parole. La fondation, c'est Christ et sa parole reçue dans la foi obéissante; bâtir sur le sable, c'est entendre cette parole tout en menant sa vie selon sa propre volonté. La sécurité du croyant ne repose donc jamais sur une expérience passée ou une profession ancienne, mais sur une vie transformée qui tient au jour de l'épreuve. Cette lecture s'accorde pleinement avec la justification par la foi seule de Paul : la foi qui justifie n'est jamais une foi stérile, elle produit le fruit de l'obéissance.</p>
+      <p>Enfin, MacArthur lit la conclusion du sermon (7.28-29) comme une revendication messianique éclatante. En faisant de l'obéissance à ses propres paroles le critère du salut au dernier jour, Jésus s'attribue une autorité qui n'appartient qu'à Dieu. Les scribes citaient des sources; Jésus était sa propre source. La foule est frappée, <i>ekplesso</i>, saisie hors d'elle-même, parce qu'elle reconnaît une autorité sans précédent sans en saisir encore l'origine : il enseignait comme ayant autorité. Cette autorité de la parole va se prolonger immédiatement, note MacArthur, dans l'autorité des actes : les miracles d'authentification des chapitres 8 et 9 répondent à la question de savoir de quel droit il parle ainsi; ce ne sont pas des prodiges qui cautionneraient les guérisseurs d'aujourd'hui, mais les lettres de créance du Messie, la preuve de sa déité, car seul Dieu peut créer. La parole et les actes du Roi confessent d'une même voix qu'en lui le royaume des cieux s'est approché.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du contexte immédiat des faux disciples au parallèle synoptique de Luc, jusqu'à l'arrière-plan prophétique de la fondation éprouvée et à la fondation paulinienne qui ne tient qu'en Christ.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 7.21-23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Contexte immédiat : le «&nbsp;c'est pourquoi&nbsp;» du v. 24 enchaîne sur l'avertissement aux faux disciples qui disent «&nbsp;Seigneur, Seigneur&nbsp;» sans faire la volonté du Père; la maison sur le sable est l'image de ces religieux à qui le Roi dira «&nbsp;je ne vous ai jamais connus&nbsp;».</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 6.46-49</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Parabole parallèle des deux bâtisseurs dans le sermon en plaine; Luc précise que le prudent creusa profond et posa le fondement sur le roc, soulignant le prix de l'obéissance véritable.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jacques 1.22-25</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Même doctrine que MacArthur cite en parallèle : être auditeur de la Parole sans la mettre en pratique, c'est se tromper soi-même; le praticien obéissant est béni dans son œuvre.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 28.16-17</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La pierre angulaire éprouvée que Dieu pose en Sion, opposée au refuge de mensonge que l'averse et les eaux du jugement emportent; arrière-plan prophétique de la fondation qui tient au jugement.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ézéchiel 13.10-16</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le mur recouvert de plâtre des faux prophètes s'écroule sous la pluie battante et la tempête du jugement de Dieu; image vétérotestamentaire de la fausse sécurité ruinée par l'orage.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 14.1</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'insensé dit en son cœur «&nbsp;il n'y a point de Dieu&nbsp;»; éclaire le sens biblique de <i>moros</i>, la folie morale de celui qui vit comme si le jugement n'allait jamais venir.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 28.18</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Toute autorité m'a été donnée dans le ciel et sur la terre; fonde l'affirmation de 7.29 que Jésus enseignait comme ayant sa propre autorité, et non comme les scribes.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 3.11</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Nul ne peut poser un autre fondement que celui qui a été posé, Jésus-Christ; confirme que la seule fondation qui tient au jugement est Christ et sa parole reçue dans la foi obéissante.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi authentique se prouve par l'obéissance, contre l'easy-believism</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Les deux bâtisseurs entendent les mêmes paroles; seul celui qui les met en pratique tient au jugement (vv. 24, 26). La différence n'est pas l'audition mais l'action.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Une profession de foi sans obéissance est la maison sur le sable. MacArthur y voit la réfutation d'une foi sans obéissance : la foi qui sauve est inséparable de la repentance et de la soumission à Christ comme Seigneur. Les œuvres ne procurent jamais le salut, mais leur absence révèle une foi morte. À transmettre à l'assemblée : ne fondez pas votre assurance sur une décision passée, mais sur une vie qui met en pratique la Parole du Roi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le jugement éprouve la réalité de chaque fondation</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La pluie, les torrents et les vents s'abattent sur les deux maisons; l'une tient, l'autre tombe et sa ruine est grande (vv. 25, 27).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Selon MacArthur, la pluie figure le jugement divin. La tempête ne crée pas la faiblesse de la maison sur le sable, elle la révèle. Au jour du jugement, ce que le beau temps dissimulait apparaîtra : certains entendront «&nbsp;je ne vous ai jamais connus&nbsp;». L'enjeu n'est pas temporel mais éternel; la foi est éprouvée pour montrer si elle était vivante.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'autorité unique et la déité du Roi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Il enseignait comme ayant autorité, et non pas comme leurs scribes; la foule en fut frappée (vv. 28-29).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Jésus ne cite aucun maître : il est sa propre autorité (28.18). En faisant de l'obéissance à sa parole le critère du salut au dernier jour, il s'attribue une prérogative divine. Cette autorité de la parole authentifie son identité messianique et appelle non l'admiration seule, mais la soumission. L'autorité du Roi n'est pas un modèle à reproduire mais une revendication unique de déité.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Christ, fondement du salut, en harmonie avec Paul</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le roc sur lequel on bâtit est l'obéissance à la parole du Roi, fondation qui ne tombe point (vv. 24-25).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La parabole n'enseigne pas le salut par les œuvres; le roc est Christ et sa parole reçue dans la foi obéissante (cf. 1 Corinthiens 3.11). MacArthur l'accorde pleinement à la justification par la foi seule : la foi qui justifie produit nécessairement le fruit de l'obéissance. Bâtir sur le roc, c'est la <i>Lordship Salvation</i> en image : recevoir Jésus comme Sauveur, c'est le recevoir comme Seigneur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La parole du Roi prélude à ses actes de puissance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Après ce discours d'autorité (vv. 28-29), Matthieu enchaîne sur les miracles d'authentification (8.1 et suivants).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'autorité de la parole et l'autorité des actes confessent la même identité. Les miracles ne fondent pas un modèle charismatique pour l'Église; ils sont les sceaux messianiques par lesquels le Roi atteste qu'en lui le royaume des cieux s'est approché, accomplissant les prophéties de l'Ancien Testament. Pour l'assemblée : la même parole qui jugera les nations sauve aujourd'hui ceux qui la mettent en pratique.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Les deux bâtisseurs entendent exactement les mêmes paroles du Roi. Sur quoi, dans votre prédication, ferez-vous porter le contraste pour que l'auditoire comprenne que le danger n'est pas l'ignorance mais l'audition sans la pratique?</li>
+      <li>Comment présenter le roc comme l'obéissance à la Parole reçue dans la foi, sans glisser vers un salut par les œuvres que MacArthur réfute? Quelle formulation tient ensemble la grâce seule et le fruit nécessaire de l'obéissance?</li>
+      <li>La pluie figure le jugement divin selon MacArthur. Comment aider votre assemblée à voir que l'épreuve ne fabrique pas la faiblesse de la fausse foi, mais qu'elle la révèle, et que le verdict final est éternel?</li>
+      <li>Le faux disciple de 7.21-23 est religieusement actif, non athée. Comment appliquer cet avertissement à une assemblée évangélique où plusieurs reposent peut-être leur assurance sur une profession passée plutôt que sur une vie transformée?</li>
+      <li>En quoi la parabole, qui fait de l'obéissance aux paroles de Jésus le critère du dernier jugement, est-elle une revendication voilée de sa déité? Comment relier cet enjeu à l'autorité unique du v. 29?</li>
+      <li>La foule est frappée, <i>ekplesso</i>, saisie hors d'elle-même, mais le texte ne dit pas qu'elle croit. Comment distinguer, pour vos auditeurs, l'admiration émue du Roi et la soumission qui bâtit sur le roc?</li>
+      <li>Le sermon s'achève sur l'autorité de la parole, puis Matthieu passe aux miracles. Comment faire entendre que la même autorité authentifie le Messie par sa parole et par ses actes, sans en faire un modèle charismatique pour aujourd'hui?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Matthieu 7.24-29 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Matthieu : le Roi-Messie d'Israël&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Matthieu-7-24-29.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

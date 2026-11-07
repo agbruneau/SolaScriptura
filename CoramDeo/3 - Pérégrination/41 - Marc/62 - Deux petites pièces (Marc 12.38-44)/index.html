@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc 12.38-44 · Deux petites pièces · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Marc 12.38-44 : l'avertissement contre les scribes et l'offrande de la pauvre veuve ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Marc 12.38-44</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Marc 12.38-44</p>
+    <h1 class="hero__title">Deux petites pièces</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Cette pauvre veuve a donné plus qu'aucun de ceux qui ont mis dans le tronc.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Marc 12.43 · NEG</p>
+    <p class="hero__series">Série : <b>Marc : le Serviteur souffrant</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Marc 12.38-44</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Gardez-vous des scribes, qui aiment à se promener en robes longues, et à être salués dans les places publiques.</p>
+        <cite class="verse__ref">Marc 12.38 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car tous ont mis de leur superflu, mais elle a mis de son nécessaire, tout ce qu'elle possédait, tout ce qu'elle avait pour vivre.</p>
+        <cite class="verse__ref">Marc 12.44 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Marc 12.38-44 ferme le grand bloc d'enseignement public de Jésus dans le temple : un diptyque qui montre la religion qui prend, celle des scribes qui dévorent les maisons des veuves, puis sa victime, la pauvre veuve qui verse tout son avoir.</p>
+    <div class="body">
+      <p>Notre péricope ferme le grand bloc d'enseignement public de Jésus dans le temple (11.20 à 12.44), la dernière grande journée du Seigneur avant le discours sur le mont des Oliviers. Depuis l'entrée triomphale (11.1-11) et la purification du temple (11.15-19), Marc a aligné une série de confrontations où les chefs religieux, principaux sacrificateurs, scribes, anciens, pharisiens, hérodiens et sadducéens, sont venus tour à tour piéger Jésus : question sur son autorité (11.27-33), parabole des vignerons qui annonce leur jugement (12.1-12), impôt à César (12.13-17), résurrection (12.18-27), plus grand commandement (12.28-34), origine du Messie (12.35-37). Chaque round se solde par la déroute des adversaires et la mise à nu de leur incrédulité. Notre texte est l'épilogue de cette joute : après avoir réduit les chefs au silence, Jésus prononce maintenant un verdict sur eux, puis détourne le regard des disciples vers une figure que personne ne remarquait.</p>
+      <p>Le passage tient en deux scènes jointes par un contraste voulu. D'abord, l'avertissement contre les scribes (12.38-40) : Jésus démasque leur orgueil religieux, leur soif d'honneurs et leur cupidité qui dévore les maisons des veuves, et il annonce qu'ils seront jugés plus sévèrement. Ensuite, la scène du tronc du temple (12.41-44) : Jésus, assis vis-à-vis du trésor, observe les riches déposer beaucoup, puis une pauvre veuve glisser deux petites pièces, et il déclare qu'elle a donné plus que tous. Le mot crochet est veuve : les scribes dévorent les maisons des veuves au verset 40, et c'est précisément une veuve dépouillée qui donne tout au verset 44. Marc relie ainsi la religion qui prend à sa victime. La leçon n'est pas financière mais théologique : elle porte sur la religion corrompue, non sur la manière de donner.</p>
+      <p>Ce diptyque prépare directement le chapitre 13. La veuve qui donne tout son avoir au temple est le dernier acte du ministère public de Jésus dans ce sanctuaire; au verset suivant (13.1-2), les disciples admirent les pierres du temple et Jésus annonce qu'il n'en restera pas une seule sur l'autre. Selon la lecture de MacArthur, le lien est voulu : cette pauvre veuve est la victime du système qui dévore les maisons des veuves (12.40), et elle verse son nécessaire dans un temple corrompu et condamné, voué à la destruction de l'an 70, dirigé par des hommes qui exploitent les faibles. Le jugement annoncé sur les scribes (12.40) et la ruine du temple (13.2) encadrent l'offrande totale de la veuve. Le lecteur comprend que le texte ne célèbre pas ce don : il dénonce le système qui prend jusqu'aux dernières pièces d'une veuve.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Marc 12.38-40 · 12.41-44</p>
+    </header>
+    <p class="lead">Les scribes, experts professionnels de la loi, drapaient leur cupidité d'ostentation pieuse; la veuve, archétype du faible sans protecteur que la loi de Moïse plaçait sous la garde de Dieu, déposait dans le tronc l'équivalent d'une fraction infime d'une journée de salaire, mais qui était tout son avoir.</p>
+    <div class="body">
+      <p>Les scribes étaient les experts professionnels de la loi de l'Ancien Testament, copistes, interprètes et docteurs, pour la plupart rattachés au parti pharisien (voir 1.22; 2.16; 3.22). Leur autorité ne reposait pas sur le texte directement mais sur la tradition des rabbins qu'ils citaient. MacArthur décrit avec précision les marques d'ostentation que Jésus dénonce. Les robes longues étaient de longs manteaux flottants servant à proclamer la piété supérieure et la célébrité académique de celui qui les portait; les salutations sur les places publiques étaient les accolades déférentes réservées aux détenteurs de titres honorifiques; les premiers sièges dans les synagogues étaient les bancs les plus proches du coffre où l'on conservait les rouleaux sacrés, une aire d'honneur réservée aux notables; les premières places dans les festins consacraient le même appétit de prééminence. Tout, dans la mise en scène sociale du scribe, visait à se faire voir et admirer des hommes.</p>
+    </div>
+    <p>Trois réalités éclairent la scène.</p>
+    <ul class="points">
+      <li><b>La dévoration des maisons des veuves.</b> La charge la plus grave porte sur la cupidité : les scribes dévorent les maisons des veuves. MacArthur explique le mécanisme concret de cette exploitation. Hommes sans scrupules, les scribes servaient souvent de gestionnaires des biens des veuves, fonction qui leur ouvrait l'accès à leur patrimoine. Ils persuadaient ces femmes éplorées et vulnérables qu'elles serviraient Dieu en consacrant leur soutien financier au temple ou aux œuvres du scribe lui-même; dans les deux cas, le scribe en retirait un bénéfice personnel, dépouillant la veuve de l'héritage laissé par son mari. Les longues prières servaient de paravent religieux : les scribes priaient longuement non par dévotion mais pour faire étalage de leur sainteté et se faire admirer.</li>
+      <li><b>La veuve, archétype du faible protégé par Dieu.</b> La veuve, dans le monde antique, était l'archétype du faible sans protecteur ni revenu, que la loi de Moïse plaçait justement sous la garde particulière de Dieu (Exode 22.22-24; Deutéronome 10.18). Que les gardiens officiels de cette loi soient devenus les prédateurs de celles qu'elle protégeait rend leur condamnation d'autant plus lourde.</li>
+      <li><b>Le tronc, les leptons et le quart de sou.</b> La scène du tronc se déroule dans la cour des femmes, l'enceinte du temple où se trouvaient les treize réceptacles, ou troncs, destinés aux dons et aux offrandes. MacArthur précise que ces récipients en forme de trompette recueillaient les contributions des fidèles. Les deux petites pièces de la veuve, en grec <i>lepta</i>, étaient des pièces de cuivre, la plus petite unité monétaire en circulation chez les Juifs. Marc, écrivant pour un public romain, transpose leur valeur dans la monnaie de Rome : un quart de sou, le <i>kodrantes</i>, valait un soixante-quatrième de denier, et le denier représentait le salaire d'une journée de travail. La veuve a donc déposé l'équivalent d'une fraction infime d'une journée de salaire. Pourtant, comme le souligne MacArthur, ces deux piécettes constituaient tout son avoir, tout ce qu'elle possédait pour vivre : en les donnant, elle se privait littéralement de quoi manger jusqu'à sa prochaine rentrée d'argent. C'est ce qui fait d'elle la victime ultime du système qui dévore les maisons des veuves, là où les riches versaient de leur superflu.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope : de l'avertissement (<i>blepete apo</i>) contre les scribes qui dévorent (<i>katesthio</i>) les maisons des veuves, à la pauvre (<i>ptochos</i>) veuve qui donne deux leptons (<i>lepta duo</i>) prélevés sur son nécessaire (<i>husteresis</i>), sa privation même.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">Gardez-vous</span><span class="mot-gr">blepete apo</span></th>
+            <td class="col-sens">voyez, regardez, faites attention à; au sens d'un avertissement : prenez garde de</td>
+            <td>Le verbe <i>blepo</i> signifie d'abord voir, regarder, percevoir; à l'impératif suivi de la préposition <i>apo</i> (loin de), il prend la force d'une mise en garde : tenez-vous à distance de. MacArthur note qu'il s'agissait de se préserver de la mauvaise influence des scribes, non simplement de les observer mais de s'en garder activement. L'avertissement est solennel : ce ne sont pas des modèles à imiter mais un danger à fuir, car leur religion d'apparence séduit et corrompt.</td>
+            <td><span class="trad"><span><b>S21</b> Faites attention aux</span><span><b>NEG79</b> Gardez-vous des</span><span><b>Darby</b> Gardez-vous des</span><span><b>LSG</b> Gardez-vous des</span><span><b>KJF</b> Prenez garde aux</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">dévorent</span><span class="mot-gr">katesthio</span></th>
+            <td class="col-sens">manger entièrement, dévorer, consumer, engloutir</td>
+            <td>Verbe intensif (<i>kata</i>, à fond, plus <i>esthio</i>, manger) qui évoque l'action de tout engloutir comme une bête de proie. Appliqué aux maisons des veuves, il dépeint une prédation économique : les scribes ne grignotent pas, ils consument entièrement le patrimoine des plus faibles. MacArthur insiste sur le caractère sans scrupules de ces hommes cupides qui, sous couvert de gestion pieuse, dépouillaient les veuves de l'héritage de leur mari. Le lien est direct avec la veuve du verset 44, qui en est la victime.</td>
+            <td><span class="trad"><span><b>S21</b> dévorent</span><span><b>NEG79</b> dévorent</span><span><b>Darby</b> dévorent</span><span><b>LSG</b> dévorent</span><span><b>KJF</b> dévorent</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">pauvre</span><span class="mot-gr">ptochos</span></th>
+            <td class="col-sens">indigent, mendiant, dénué de tout, qui n'a absolument rien</td>
+            <td><i>Ptochos</i> désigne la pauvreté la plus extrême, celle du mendiant accroupi qui dépend entièrement de l'aumône, distincte de <i>penes</i> qui qualifie le travailleur pauvre mais qui subsiste. Marc emploie ce mot fort pour souligner que la veuve n'avait pas seulement peu : elle était dans l'indigence totale. C'est ce qui rend son geste si tragique, puisque tout ce qu'elle avait pour vivre tenait dans ces deux piécettes. MacArthur y voit l'une des veuves dévorées par le système.</td>
+            <td><span class="trad"><span><b>S21</b> pauvre</span><span><b>NEG79</b> pauvre</span><span><b>Darby</b> pauvre</span><span><b>LSG</b> pauvre</span><span><b>KJF</b> pauvre</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">deux petites pièces</span><span class="mot-gr">lepta duo</span></th>
+            <td class="col-sens">deux leptons; les plus petites monnaies de cuivre en circulation</td>
+            <td>Le <i>lepton</i> (de <i>leptos</i>, mince, menu, fin) était la plus petite pièce de monnaie juive, frappée dans le cuivre, d'une valeur dérisoire. MacArthur précise que Marc, pour son public romain, en convertit la valeur en un quart de sou (<i>kodrantes</i>), soit un soixante-quatrième de denier, le denier valant une journée de travail. La modicité absolue de la somme est le ressort du récit : aux yeux des hommes, ce don est négligeable; aux yeux de Jésus, il dépasse tous les autres, car il représente la totalité de la subsistance de la veuve.</td>
+            <td><span class="trad"><span><b>S21</b> deux petites pièces</span><span><b>NEG79</b> deux petites pièces</span><span><b>Darby</b> deux pites</span><span><b>LSG</b> deux petites pièces</span><span><b>KJF</b> deux pites</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">nécessaire</span><span class="mot-gr">husteresis</span></th>
+            <td class="col-sens">manque, indigence, privation, ce dont on est dépourvu</td>
+            <td>Le mot <i>husteresis</i> dénote le manque, la pénurie, l'état de celui qui est dans le besoin. La NEG rend bien l'opposition centrale du verset 44 : les riches ont donné de leur superflu (<i>perisseuma</i>, l'abondance, le trop-plein), mais la veuve a donné de son <i>husteresis</i>, c'est-à-dire prélevé sur sa privation même, sur ce qui lui manquait déjà. MacArthur souligne que ce don signifiait qu'elle ne pourrait pas manger avant sa prochaine rentrée d'argent : le texte ne fait pas d'elle un modèle de générosité, il montre ce que le système faisait aux veuves.</td>
+            <td><span class="trad"><span><b>S21</b> ce dont elle avait besoin pour vivre</span><span><b>NEG79</b> de son nécessaire</span><span><b>Darby</b> de son indigence</span><span><b>LSG</b> de son nécessaire</span><span><b>KJF</b> de son indigence</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Marc 12.38-44</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Marc 12.38-44 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mc 12.38, 12.39, 12.40, 12.41, 12.42, 12.43, 12.44.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">41-65</span></th>
+            <td><a href="https://www.gty.org/sermons/41-65" target="_blank" rel="noopener">Religion and Its Victims</a></td>
+            <td>Marc 12.38-44</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit ce passage comme la dernière dénonciation publique de la fausse religion par Jésus : la piété tournée vers l'homme des scribes, et la veuve que ce système dépouille jusqu'à ses deux dernières pièces.</p>
+    <div class="body">
+      <p>MacArthur lit ce passage comme la dernière dénonciation publique de la fausse religion par Jésus : ses derniers mots aux foules portent sur les chefs religieux d'Israël. Les scribes incarnent une piété tournée vers l'homme : tout, dans leur conduite, vise à se faire voir, saluer, honorer et asseoir aux premières places. Jésus leur reproche la corruption de leur cœur, qui transforme la religion en instrument d'orgueil et de profit, mais aussi leur fausse doctrine, qu'ils propagent : une vue corrompue de l'Écriture, du Christ et donc de l'Évangile. Le sommet de cette corruption est la dévoration des maisons des veuves : ceux qui devaient protéger les faibles selon la loi de Moïse les exploitent au contraire, drapant leur cupidité dans de longues prières destinées à impressionner. Le verdict tombe sans appel : ils seront jugés plus sévèrement. MacArthur souligne que cette sévérité accrue du jugement répond à la responsabilité accrue de ceux qui connaissent la loi et l'enseignent : le privilège de la connaissance aggrave la culpabilité de l'hypocrisie. Il y a donc des degrés dans le châtiment, proportionnés à la lumière reçue et trahie.</p>
+      <p>La transition vers le tronc n'est étrange qu'en apparence. Jésus s'assoit vis-à-vis du trésor et regarde, verbe que Marc choisit pour montrer une observation attentive et soutenue : le Seigneur observe le peuple verser son argent dans un système apostat et corrompu. Les riches déposent beaucoup dans les troncs en forme de trompette, comme le système l'exigeait. Puis vient la veuve, invisible aux hommes, qui glisse ses deux leptons. Jésus, par son omniscience divine, connaît à la fois le montant exact qu'elle donne et l'état exact de ses finances : il sait que ces deux piécettes sont tout ce qu'elle possède. Cette connaissance du cœur et des ressources cachées est une marque discrète de la déité du Fils, qui voit ce qu'aucun homme ne peut voir. Le Serviteur qui n'est pas venu pour être servi mais pour servir lit le secret des cœurs.</p>
+      <p>La déclaration de Jésus renverse l'arithmétique humaine : cette pauvre veuve a donné plus qu'aucun de ceux qui ont mis dans le tronc. MacArthur explique que, relativement parlant, son don était plus grand parce qu'il représentait tout son avoir, mais que Jésus n'en tire aucune leçon sur la manière de donner : il ne dit pas que les riches ont donné trop peu, ni que la veuve a donné le bon montant. Les riches ont donné de leur superflu, et Jésus ne les condamne pas; la veuve a donné de son nécessaire, tout son avoir, jusqu'à se priver de quoi manger. Le texte ne dit rien de son attitude ni de ses motifs, et ne dit même pas qu'elle connaissait le vrai Dieu : elle n'est pas une héroïne spirituelle, mais la victime d'un système qui enseignait qu'on achète sa rédemption par les aumônes. Elle verse ses deux dernières pièces dans ce système, sur la promesse qu'il en sortira une bénédiction.</p>
+      <p>Enfin, MacArthur replace la scène dans son cadre de jugement : jugement des scribes aux versets 38 à 40, jugement du temple dès le chapitre 13. Le récit ne célèbre pas naïvement le système du temple : la veuve verse tout dans une institution corrompue, dirigée par les scribes prédateurs que Jésus vient de condamner, et vouée à la destruction qu'il annonce dès le verset suivant (13.2). Le pathos de la scène est entier : les dernières pièces de cette femme se déversent dans un ordre religieux failli et déjà jugé. Son geste n'est donc pas un modèle pour le don chrétien : il atteste ce que ce système faisait aux veuves. Pour l'auditeur, la leçon est tranchante : gardez-vous des faux bergers qui prennent les dernières pièces de la veuve pour remplir leurs coffres, sous prétexte que ce don est le chemin de la bénédiction; tout système religieux qui défigure Dieu et dépouille les veuves sera renversé.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du mot crochet interne qui relie les deux scènes aux récits parallèles des autres évangiles, jusqu'à l'arrière-plan vétérotestamentaire du Dieu qui sonde le cœur et protège la veuve.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 12.40</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les scribes dévorent les maisons des veuves; au verset 44 c'est une veuve dépouillée qui donne tout. Marc relie les deux scènes par le même mot crochet pour montrer la religion qui prend et sa victime.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 10.45</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le Fils de l'homme est venu non pour être servi mais pour servir et donner sa vie en rançon. Contrepoint des scribes, qui se font servir, honorer et enrichir aux dépens des veuves.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 13.1-2</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Aussitôt après l'offrande de la veuve, Jésus annonce que le temple sera entièrement détruit. La veuve verse son nécessaire dans un sanctuaire corrompu et condamné : tout système religieux qui dépouille les veuves sera renversé.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 23.1-14</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le parallèle développé du même avertissement : Jésus dénonce longuement l'hypocrisie, l'ostentation et la cupidité des scribes et des pharisiens qui dévorent les maisons des veuves sous prétexte de longues prières.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 21.1-4</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le récit parallèle de l'offrande de la veuve : tous ont mis de leur superflu, mais elle a mis tout ce qu'elle avait pour vivre. Même constat : relativement parlant, la veuve a donné plus, parce qu'elle a tout donné.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Samuel 16.7</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">L'Éternel ne regarde pas à ce qui frappe les yeux mais au cœur. Fondement vétérotestamentaire du jugement que Jésus porte sur les scribes : l'apparence religieuse ne trompe pas Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Exode 22.22-24</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Dieu défend d'affliger la veuve et l'orphelin et menace de sa colère qui les opprime. Rend la dévoration des maisons des veuves par les scribes d'autant plus odieuse : ils violent la loi qu'ils enseignent.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 8.1-12</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul loue les Macédoniens qui ont donné au-delà de leurs moyens dans une profonde pauvreté, car Dieu agrée le don selon ce qu'on a, non selon ce qu'on n'a pas. Contrepoint : l'enseignement sur le don chrétien se trouve ici, non dans la scène du tronc, qui dénonce une religion corrompue.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Dieu sonde le cœur, non l'apparence</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus démasque la piété d'apparat des scribes, robes longues, salutations, premiers sièges et longues prières, qui cache la cupidité de ceux qui dévorent les maisons des veuves (12.38-40).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'apparence religieuse ne trompe pas Dieu. Pour votre assemblée : robes, titres et longues prières ne prouvent aucune sainteté; Christ voit ce que cache la façade, et ce que coûte à ses victimes une religion qui prend. Cela avertit l'orgueilleux et protège le faible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La déité du Serviteur qui lit les cœurs</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus assis vis-à-vis du tronc voit ce qu'aucun homme ne voit : que les deux piécettes sont tout l'avoir de la veuve, tout ce qu'elle a pour vivre (12.44). Cette connaissance des ressources cachées et du cœur est une marque de l'omniscience divine.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Marc montre le vrai Dieu et vrai homme : le Serviteur souffrant possède l'omniscience du Fils de Dieu. Pour votre assemblée : rien n'échappe au regard de Christ, ni le don secret du fidèle, ni l'hypocrisie cachée du religieux. Cette vérité console le croyant discret et avertit le faux dévot.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le jugement plus sévère de l'hypocrisie religieuse</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Jésus dénonce l'orgueil, l'ostentation et la cupidité des scribes qui dévorent les maisons des veuves sous couvert de longues prières, et annonce : ils seront jugés plus sévèrement (12.38-40).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La connaissance et l'enseignement de la loi aggravent la culpabilité de qui la trahit; il existe des degrés de châtiment proportionnés à la lumière reçue. Pour votre assemblée : la responsabilité du conducteur, de l'enseignant et de celui qui connaît l'Écriture est redoutable; la religion qui sert l'orgueil et le profit attire un jugement plus lourd, non une dispense.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La veuve, victime d'une religion d'œuvres</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La veuve donne tout ce qu'elle possède pour vivre, se privant de quoi manger (12.44); le texte ne dit rien de ses motifs, et Jésus ne la propose pas en exemple à ses disciples.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le don n'achète ni le salut ni la bénédiction de Dieu. Pour votre assemblée : la promesse de bénédiction en échange de l'argent des plus démunis est celle des faux docteurs, d'hier et d'aujourd'hui; ce passage n'appelle pas à tout donner, il appelle à protéger les veuves que ces systèmes dépouillent.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le temple condamné et la fin de l'ancienne alliance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le don de la veuve, dernier acte public de Jésus dans le temple, précède immédiatement l'annonce de sa destruction totale (13.2); le jugement des scribes (12.40) et la ruine du sanctuaire encadrent la scène.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le système religieux corrompu est jugé et voué à disparaître; la valeur du don ne tient pas au réceptacle. Pour votre assemblée : l'argent versé dans une institution faillie ne la sanctifie pas, et Dieu jugera ceux qui s'en enrichissent; et l'effondrement du temple annonce le passage de l'ombre à la réalité, vers l'unique sacrifice de Christ qui rend caducs les troncs du temple.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>La lecture courante fait de la veuve un modèle de don sacrificiel, alors que le texte ne dit rien de ses motifs. Comment prêcher 12.41-44 dans son contexte de jugement (12.38-40; 13.1-2) sans en faire une leçon sur la générosité?</li>
+      <li>Comment dénoncer l'orgueil religieux des scribes (12.38-40) sans permettre à votre auditoire de le projeter commodément sur les autres, alors que le texte vise d'abord le cœur de chacun, y compris du prédicateur?</li>
+      <li>Le don de la veuve est-il un appel à donner davantage, ou la preuve de ce qu'un système religieux corrompu faisait aux veuves? Risquez-vous de transformer ce texte en levier de collecte, à la manière même des scribes?</li>
+      <li>Jésus relève le don total de la veuve, puis annonce aussitôt la ruine du temple où elle le verse (13.1-2). Que dit cet enchaînement sur la corruption de l'institution et sur le sort de ses victimes?</li>
+      <li>En quoi l'omniscience de Jésus qui lit les ressources cachées de la veuve (12.44) atteste-t-elle sa déité, et comment cette vérité console-t-elle le croyant qui donne en secret?</li>
+      <li>Les scribes enseignaient qu'on achète sa rédemption par les aumônes, et la veuve verse ses dernières pièces sur cette promesse. Quels discours promettent encore aujourd'hui la bénédiction en échange de l'argent des plus démunis, et comment votre prédication s'en démarque-t-elle?</li>
+      <li>Quelle veuve, quel pauvre, quel faible votre communauté risque-t-elle de négliger ou d'exploiter, à la manière des scribes, tout en gardant l'apparence d'une piété irréprochable?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Marc 12.38-44 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Marc : le Serviteur souffrant&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'évangile</a>
+    <a href="Recherche-MacArthur-Marc-12-38-44.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

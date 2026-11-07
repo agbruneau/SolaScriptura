@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthieu 12.1-21 · Le Seigneur du sabbat · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Matthieu 12.1-21 : le Fils de l'homme, maître du sabbat ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Matthieu 12.1-21</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Matthieu 12.1-21</p>
+    <h1 class="hero__title">Le Seigneur du sabbat</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Car le Fils de l'homme est maître du sabbat.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Matthieu 12.8 · NEG</p>
+    <p class="hero__series">Série : <b>Matthieu : le Roi-Messie d'Israël</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Matthieu 12.1-21</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Or, je vous le dis, il y a ici quelque chose de plus grand que le temple.</p>
+        <cite class="verse__ref">Matthieu 12.6 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car le Fils de l'homme est maître du sabbat.</p>
+        <cite class="verse__ref">Matthieu 12.8 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Matthieu 12.1-21 est la charnière où l'opposition au Roi promis passe du murmure isolé au complot meurtrier : sur le terrain du sabbat se joue la question décisive de tout l'Évangile, qui est cet homme?</p>
+    <div class="body">
+      <p>Matthieu 12 ouvre un tournant décisif dans le premier Évangile. Jusqu'ici, l'opposition au Roi promis couvait sous des murmures et des objections isolées (9.3; 9.11; 9.34); ici elle se cristallise en hostilité organisée et meurtrière. Le verset 14 marque le seuil : les pharisiens sortent et se consultent sur les moyens de faire périr Jésus. Notre péricope, Matthieu 12.1-21, est précisément la charnière qui déclenche ce complot. Elle suit immédiatement la grande invitation de 11.28-30 («&nbsp;Venez à moi, vous tous qui êtes fatigués et chargés... vous trouverez le repos&nbsp;») : l'ironie est voulue par Matthieu. Le Roi qui vient d'offrir le vrai repos aux âmes accablées par le fardeau de l'auto-justification légaliste est aussitôt attaqué au nom du sabbat, le jour même du repos, par ceux qui ont transformé le repos de Dieu en joug insupportable.</p>
+      <p>La structure du passage est en trois mouvements qui convergent tous vers une même affirmation : l'identité divine et royale de Jésus. Premier mouvement, les épis arrachés dans les champs de blé (vv. 1-8) : à l'accusation pharisienne, Jésus oppose quatre arguments en gradation, l'exemple de David et des pains de proposition (vv. 3-4), le service des sacrificateurs au temple (vv. 5-6), la citation d'Osée sur la miséricorde (v. 7), et l'affirmation culminante : «&nbsp;Car le Fils de l'homme est maître du sabbat&nbsp;» (v. 8). Deuxième mouvement, la guérison de l'homme à la main sèche dans la synagogue (vv. 9-13) : un piège tendu («&nbsp;afin de pouvoir l'accuser&nbsp;», v. 10) que Jésus retourne en démontrant qu'il est toujours permis de faire le bien le jour du sabbat. Troisième mouvement (vv. 14-21) : le retrait de Jésus devant le complot, ses guérisons silencieuses, et l'accomplissement explicite d'Ésaïe 42.1-4, qui dévoile le portrait du Serviteur doux et humble, tout à l'opposé du conquérant militaire qu'attendaient les chefs.</p>
+      <p>Le fil conducteur, pour MacArthur, est la cristallisation du rejet du Messie : le sabbat, pièce maîtresse du système légaliste des pharisiens, en devient l'occasion, et Jésus y répond par des revendications de divinité. Chacun des arguments des versets 6, 8, et 18-21 est une affirmation de la personne du Roi : quelque chose de plus grand que le temple est ici, le Fils de l'homme est maître du sabbat, et le Serviteur élu d'Ésaïe est venu. Le sabbat est le terrain sur lequel se joue la question décisive de tout l'Évangile selon Matthieu : qui est cet homme? La réponse pharisienne, l'accusation et le complot, prépare directement le blasphème contre l'Esprit (vv. 22-32) qui suit immédiatement. Le passage doit donc être lu comme le point de bascule où le rejet du Messie-Roi par les chefs d'Israël passe de la critique à la résolution de le tuer.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Matthieu 12.1-8 · 12.9-13 · 12.18-21</p>
+    </header>
+    <p class="lead">Entre l'institution divine du sabbat et l'époque de Jésus, les rabbins avaient érigé autour du commandement une muraille de traditions casuistiques : ce que les disciples violaient, ce n'était pas la loi de Dieu mais la tradition des hommes.</p>
+    <div class="body">
+      <p>Le sabbat (hébreu <i>shabbat</i>, «&nbsp;cessation, repos&nbsp;») était au cœur de l'identité juive du premier siècle. Fondé sur le repos de Dieu au septième jour (Genèse 2.2-3) et inscrit au Décalogue (Exode 20.8-11), il distinguait Israël des nations. Mais entre l'institution divine et l'époque de Jésus, les rabbins avaient érigé autour du commandement une muraille de traditions casuistiques. La Mishna (traité <i>Shabbat</i>) recensera trente-neuf catégories majeures de travail interdit (les <i>melakhot</i>), chacune subdivisée en d'innombrables cas. Moissonner et battre le grain figuraient parmi ces interdits; or arracher quelques épis et les frotter dans les mains pour manger fut assimilé par les pharisiens à moissonner et à vanner. Comme le souligne MacArthur, aucune loi mosaïque n'interdisait ce geste : Deutéronome 23.25 autorisait expressément à cueillir des épis à la main dans le champ du prochain pour apaiser une faim immédiate. Ce qui était proscrit, c'était le travail entrepris en vue d'un profit, la moisson commerciale. Les disciples, qui avaient faim, ne violaient donc pas la loi de Dieu mais la tradition des hommes.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>Les pharisiens et la loi orale.</b> Les pharisiens (de l'araméen <i>perishaya</i>, «&nbsp;les séparés&nbsp;») formaient le parti religieux le plus influent auprès du peuple. Scrupuleux observateurs de la loi écrite et surtout de la loi orale, ils se voyaient en gardiens de la pureté nationale. Leur erreur, selon MacArthur, était d'avoir enseveli la loi de Dieu sous une montagne de traditions humaines et d'avoir fait de leur observance un moyen de mériter le royaume. Le sabbat, donné par Dieu comme une bénédiction et un repos (Marc 2.27, «&nbsp;le sabbat a été fait pour l'homme, et non l'homme pour le sabbat&nbsp;»), était devenu sous leur garde un fardeau écrasant et un instrument de jugement contre le prochain. La tradition rabbinique interdisait aussi la pratique de la médecine le jour du sabbat sauf en cas de danger de mort imminent; guérir une infirmité ancienne et non urgente comme la main sèche pouvait donc être présenté comme une violation, d'où le piège tendu à la synagogue (v. 10).</li>
+      <li><b>Les pains de proposition et le service du temple.</b> Les pains de proposition (hébreu <i>lehem happanim</i>, «&nbsp;les pains de la face&nbsp;») étaient douze pains placés chaque sabbat sur la table du sanctuaire, réservés aux seuls sacrificateurs (Lévitique 24.5-9); David et ses hommes affamés en mangèrent pourtant sans encourir la condamnation divine (1 Samuel 21.1-6), parce que la nécessité humaine primait sur la lettre cérémonielle. De même, les sacrificateurs eux-mêmes accomplissaient au temple, chaque sabbat, un travail considérable (offrandes, circoncisions, pains à cuire) en demeurant innocents, preuve que les restrictions sabbatiques relevaient de la dimension cérémonielle et non d'un absolu moral inviolable.</li>
+      <li><b>Le Serviteur d'Ésaïe contre l'attente d'un conquérant.</b> La citation finale, le portrait du Serviteur d'Ésaïe 42.1-4, écrit dans le contexte des chants du Serviteur souffrant, dévoilait un Messie venant non avec fanfare militaire et programme politique, mais avec douceur, justice et compassion envers les nations, à rebours absolu de l'attente rabbinique d'un libérateur conquérant. Ce contraste explique pourquoi Jésus recommande le silence sur ses miracles (v. 16) : il refuse d'entrer dans le moule du Messie politique fabriqué par les attentes du temps.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope. Tous convergent vers l'identité du Roi : le maître (<i>kurios</i>) du sabbat, le Fils de l'homme (<i>ho huios tou anthropou</i>) de Daniel, la miséricorde (<i>eleos</i>) qu'il place au-dessus du rite, et le Serviteur (<i>pais</i>) doux qui n'éteindra point (<i>ou sbesei</i>) le lumignon qui fume.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">maître</span><span class="mot-gr">kurios</span></th>
+            <td class="col-sens">seigneur, maître, celui qui a pleine autorité et possession sur une chose</td>
+            <td>Le terme grec <i>kurios</i> désigne celui qui exerce une souveraineté pleine et entière. Dans la Septante il rend régulièrement le nom divin YHWH; dans le Nouveau Testament il devient le titre confessionnel du Christ ressuscité (Romains 10.9). Quand Jésus se déclare <i>kurios</i> du sabbat (v. 8), MacArthur y voit une affirmation directe de divinité : seul l'Auteur du sabbat, celui qui l'a institué et qui en donne l'interprétation, peut en être le Seigneur souverain. Jésus ne se contente pas de corriger une interprétation, il revendique l'autorité même de Dieu sur l'institution divine. C'est cette prétention, et non un simple désaccord halakhique, qui déclenche la fureur meurtrière des pharisiens (v. 14).</td>
+            <td><span class="trad"><span><b>S21</b> Seigneur</span><span><b>NEG79</b> maître</span><span><b>Darby</b> seigneur</span><span><b>LSG</b> maître</span><span><b>KJF</b> Seigneur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Fils de l'homme</span><span class="mot-gr">ho huios tou anthropou</span></th>
+            <td class="col-sens">le Fils de l'homme, titre messianique tiré de Daniel 7.13-14</td>
+            <td>Titre messianique, l'expression renvoie selon MacArthur à Daniel 7.13-14 : elle fait allusion à l'humanité et à l'humilité du Christ, mais dénote aussi sa gloire éternelle, celle d'«&nbsp;un comme un fils d'homme&nbsp;» qui vient sur les nuées du ciel et reçoit du Vieillard la domination, la gloire et un règne éternel et universel. C'est le titre messianique privilégié de Jésus dans les Évangiles, qui unit en une seule personne la vraie humanité et la dignité divine du Roi à qui appartient le royaume. En l'employant au verset 8 pour revendiquer la seigneurie sur le sabbat, Jésus joint son titre royal souverain à une prérogative proprement divine : le Roi messianique annoncé par Daniel est le maître du jour du repos de Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> le Fils de l'homme</span><span><b>NEG79</b> le Fils de l'homme</span><span><b>Darby</b> le fils de l'homme</span><span><b>LSG</b> le Fils de l'homme</span><span><b>KJF</b> le Fils de l'homme</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">miséricorde</span><span class="mot-gr">eleos</span></th>
+            <td class="col-sens">compassion active, pitié qui se traduit en bonté envers le malheureux</td>
+            <td>Le mot <i>eleos</i> traduit l'hébreu <i>hesed</i> (amour fidèle de l'alliance) dans la citation d'Osée 6.6 que Jésus fait au verset 7 : «&nbsp;Je prends plaisir à la miséricorde, et non aux sacrifices.&nbsp;» MacArthur souligne que les pharisiens avaient inversé la hiérarchie divine : ils privilégiaient l'observance cérémonielle (le sacrifice, le rite, la règle) au détriment de la compassion concrète envers le prochain. Jésus, en citant deux fois ce texte dans Matthieu (ici et en 9.13), enseigne que Dieu n'a jamais voulu que le culte étouffe la miséricorde. La vraie obéissance n'oppose pas le rite et la bonté : elle place la miséricorde au cœur même de la piété. Condamner des innocents au nom du rituel, c'est ignorer ce que Dieu désire.</td>
+            <td><span class="trad"><span><b>S21</b> la bonté</span><span><b>NEG79</b> la miséricorde</span><span><b>Darby</b> la miséricorde</span><span><b>LSG</b> la miséricorde</span><span><b>KJF</b> la miséricorde</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">serviteur</span><span class="mot-gr">pais</span></th>
+            <td class="col-sens">serviteur, enfant, l'élu choisi pour accomplir l'œuvre de Dieu</td>
+            <td>Au verset 18, Matthieu cite Ésaïe 42.1 : «&nbsp;Voici mon serviteur (<i>pais</i>) que j'ai choisi.&nbsp;» Le mot grec porte le double sens de serviteur et d'enfant bien-aimé, captant la richesse de l'hébreu <i>ebed</i> des chants du Serviteur. Pour MacArthur, cette désignation dévoile le cœur du ministère messianique : le Roi promis vient d'abord comme le Serviteur élu et bien-aimé du Père, sur qui repose l'Esprit, qui annoncera la justice aux nations sans contestation ni clameur. Ce portrait, à l'opposé des attentes rabbiniques d'un héros conquérant, explique pourquoi Jésus recommande le silence sur ses miracles (v. 16) : il refuse d'entrer dans le moule du Messie politique. La douceur du Serviteur n'est pas faiblesse mais l'accomplissement exact de la prophétie.</td>
+            <td><span class="trad"><span><b>S21</b> serviteur</span><span><b>NEG79</b> serviteur</span><span><b>Darby</b> serviteur</span><span><b>LSG</b> serviteur</span><span><b>KJF</b> serviteur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">il n'éteindra point</span><span class="mot-gr">ou sbesei</span></th>
+            <td class="col-sens">il n'éteindra pas, il ne fera pas mourir la flamme vacillante</td>
+            <td>Le verbe <i>sbennumi</i> signifie éteindre un feu ou une lumière. Dans la citation d'Ésaïe au verset 20, «&nbsp;il n'éteindra point le lumignon qui fume&nbsp;», il décrit la tendresse du Serviteur envers les plus faibles. MacArthur explique que le roseau cassé et la mèche fumante représentent les êtres déclarés inutiles et rebutés par le monde : les meurtris, les démunis, les vaincus. L'œuvre du Messie n'est pas de briser ces vies déjà brisées ni d'éteindre ces flammes vacillantes, mais de les rétablir et de les ranimer. Cette compassion pour les faibles, citée par Matthieu en plein récit du complot meurtrier, oppose frontalement la douceur du Roi-Serviteur à la dureté impitoyable des pharisiens qui condamnent les innocents.</td>
+            <td><span class="trad"><span><b>S21</b> il n'éteindra pas</span><span><b>NEG79</b> il n'éteindra point</span><span><b>Darby</b> il n'éteindra pas</span><span><b>LSG</b> il n'éteindra point</span><span><b>KJF</b> il n'éteindra pas</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Matthieu 12.1-21</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Matthieu 12.1-21 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Mt 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.10, 12.15, 12.16, 12.18, 12.19, 12.20.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">2290</span></th>
+            <td><a href="https://www.gty.org/sermons/2290" target="_blank" rel="noopener">The Lord of the Sabbath</a></td>
+            <td>Matthieu 12.1-14</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">2291</span></th>
+            <td><a href="https://www.gty.org/sermons/2291" target="_blank" rel="noopener">God's Beloved Servant</a></td>
+            <td>Matthieu 12.14-21</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-101</span></th>
+            <td><a href="https://www.gty.org/sermons/80-101" target="_blank" rel="noopener">Christ: The Perfect Servant</a></td>
+            <td>Matthieu 12.14-21</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Pour MacArthur, cette péricope marque la cristallisation du rejet du Messie : aux versets 3 à 8, Jésus montre par trois principes que la loi du sabbat n'a jamais interdit les actes de nécessité, le service de Dieu ni les actes de miséricorde, et il y joint des revendications de divinité.</p>
+    <div class="body">
+      <p>Pour MacArthur, cette péricope marque la cristallisation du rejet du Messie. Aux versets 3 à 8, Jésus montre par trois principes que la loi du sabbat n'a jamais interdit les actes de nécessité, le service de Dieu ni les actes de miséricorde, et il y joint des revendications de divinité. L'exemple de David et des pains de proposition (vv. 3-4) établit que la nécessité humaine prime sur la lettre cérémonielle : Dieu ne fut pas offensé que David mangeât ce qui était réservé aux sacrificateurs. L'exemple des sacrificateurs au temple (v. 5) montre que le travail accompli au service de Dieu ne profane pas le sabbat. Mais c'est le verset 6 qui fait éclater la véritable portée : «&nbsp;Il y a ici quelque chose de plus grand que le temple.&nbsp;» MacArthur insiste : cette comparaison est une affirmation directe de divinité. Le temple était le lieu de la présence de Dieu sur terre; or Jésus déclare qu'une réalité plus grande que le temple est présente en sa personne, car il est Dieu incarné, Dieu demeurant dans la chair, bien supérieur à un bâtiment que Dieu ne faisait que visiter.</p>
+      <p>Le sommet de l'argument est le verset 8 : «&nbsp;Car le Fils de l'homme est maître du sabbat.&nbsp;» MacArthur explique que Christ revendique ici la prérogative de régner non seulement sur les règles sabbatiques inventées par les hommes, mais sur le sabbat lui-même, ce jour consacré à l'adoration de Dieu. Seul l'Auteur du sabbat peut en être le Seigneur. Cette nouvelle affirmation expresse de sa divinité déclencha chez les pharisiens une crise violente d'hostilité qui les conduisit au crime (v. 14). Entre les deux revendications, au verset 7, Jésus cite Osée 6.6 («&nbsp;Je prends plaisir à la miséricorde, et non aux sacrifices&nbsp;»), reprochant aux pharisiens d'avoir condamné des innocents faute de comprendre que Dieu place la compassion au-dessus du rite. La guérison de la main sèche (vv. 9-13) prolonge la démonstration : par l'argument de la brebis tombée dans une fosse, Jésus établit qu'il est toujours permis de faire du bien le jour du sabbat, et que la valeur d'un homme dépasse infiniment celle d'une bête. Le miracle lui-même, instantané et complet, atteste sa puissance messianique.</p>
+      <p>Les versets 14 à 21 dévoilent la réponse du Roi au complot. Plutôt que d'affronter ses adversaires, Jésus se retire, guérit tous les malades, et recommande sévèrement le silence. MacArthur voit plusieurs raisons à cette discrétion, dont le souci de ne pas attiser l'enthousiasme pour un libérateur politique, mais la principale est que ce n'était pas encore le temps de son exaltation : c'était celui de son humiliation, selon le calendrier du Père. Matthieu y voit l'accomplissement d'Ésaïe 42.1-4 (vv. 17-21), introduit par la formule caractéristique du premier Évangile : «&nbsp;afin que s'accomplisse ce qui avait été annoncé par Ésaïe, le prophète.&nbsp;» Cette citation, la plus longue de tout Matthieu, démontre que le Messie devait venir sans programme politique, sans campagne militaire, sans fanfare, mais avec douceur et humilité, proclamant la justice même aux nations. Le roseau cassé et le lumignon qui fume représentent, selon MacArthur, les êtres déclarés inutiles par le monde; l'œuvre de Christ est de les rétablir et de les ranimer, non de les briser. Voilà la tendre compassion du Roi-Serviteur envers les faibles et les démunis parmi les perdus (cf. 1 Corinthiens 1.26-29).</p>
+      <p>L'enjeu pastoral, dans la lentille de MacArthur, est de discerner que le légalisme pharisien et la grâce du Roi sont deux systèmes incompatibles. Le légalisme transforme un don de Dieu (le repos) en fardeau, oppose le rite à la miséricorde, et finit par condamner les innocents et comploter contre l'auteur même de la vie. La grâce du Roi, elle, libère le sabbat de la tradition humaine, place la compassion au cœur de l'obéissance, et révèle le visage d'un Dieu qui ne brise pas le roseau cassé. MacArthur précise pourtant que Jésus et ses disciples n'enfreignaient pas la loi de Dieu, mais seulement les traditions rabbiniques : le Fils de l'homme, auteur du sabbat, en donne le sens véritable, et il l'accomplira, si bien que l'Église n'a plus à garder ce signe cérémoniel donné à Israël. La distinction Israël et Église est ici en germe : le Roi promis à Israël, présenté comme le Serviteur d'Ésaïe qui annoncera la justice aux nations (vv. 18, 21), inaugure une espérance qui débordera vers les païens, sans pour autant que les promesses faites à Israël soient annulées ou spiritualisées. Matthieu ne cite pas Ésaïe 42 mot pour mot : sous l'inspiration de l'Esprit, il l'interprète en même temps qu'il en montre l'accomplissement, et chaque trait du portrait prophétique se vérifie dans la personne du Messie-Roi.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, des récits synoptiques parallèles à l'arrière-plan vétérotestamentaire des arguments de Jésus, jusqu'à l'invitation au repos qui précède immédiatement.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Marc 2.23-3.6</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le récit parallèle des épis arrachés et de la main sèche; Marc y conserve la maxime «&nbsp;le sabbat a été fait pour l'homme, et non l'homme pour le sabbat&nbsp;» (2.27) qui éclaire la logique de Jésus.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 6.1-11</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La version lucanienne des deux épisodes du sabbat; Luc note que les chefs furent remplis de fureur et se concertèrent contre Jésus, écho de Matthieu 12.14.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 42.1-4</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La prophétie du Serviteur élu, citée intégralement par Matthieu aux vv. 18-21; le portrait du Messie doux qui annonce la justice aux nations et ne brise pas le roseau cassé.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Osée 6.6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Je prends plaisir à la bonté, et non aux sacrifices&nbsp;», citée par Jésus au v. 7 pour démasquer le légalisme pharisien qui place le rite au-dessus de la miséricorde.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Samuel 21.1-6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">David et ses hommes affamés mangent les pains de proposition sans encourir la condamnation divine; précédent invoqué par Jésus aux vv. 3-4 sur la primauté de la nécessité.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Daniel 7.13-14</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La vision du Fils de l'homme qui reçoit un règne éternel et universel; arrière-plan du titre revendiqué au v. 8 pour fonder la seigneurie de Jésus sur le sabbat.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Genèse 2.2-3</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le repos de Dieu au septième jour de la création, jour qu'il bénit et sanctifia; arrière-plan du sabbat dont Jésus, qui en est l'auteur, se déclare le maître.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 11.28-30</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'invitation au repos offerte juste avant; le contraste voulu par Matthieu entre le vrai repos donné par le Roi et le faux repos transformé en fardeau par les pharisiens.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La pleine divinité du Messie-Roi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il y a ici quelque chose de plus grand que le temple&nbsp;» (v. 6) et «&nbsp;le Fils de l'homme est maître du sabbat&nbsp;» (v. 8) : deux affirmations directes de divinité qui culminent l'argument de Jésus.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le sabbat vient de Dieu, qui l'a donné à Israël; seul son Auteur peut s'en déclarer le Seigneur. En revendiquant cette prérogative, Jésus affirme être Dieu incarné, Emmanuel, Dieu avec nous (1.23). Pour l'assemblée : l'autorité de Christ sur les institutions divines n'est pas celle d'un grand maître parmi d'autres, mais celle du Créateur lui-même; le rejeter, c'est rejeter Dieu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'accomplissement littéral de la prophétie</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Afin que s'accomplisse ce qui avait été annoncé par Ésaïe, le prophète&nbsp;» (v. 17), introduisant la plus longue citation de l'Ancien Testament dans tout Matthieu (Ésaïe 42.1-4).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Chaque trait du portrait du Serviteur, sa douceur, son silence, sa justice aux nations, se vérifie à la lettre dans la personne de Jésus. Cela atteste l'inspiration verbale et plénière de l'Écriture et la fiabilité de la prophétie messianique. Pour l'assemblée : la Parole de Dieu s'accomplit avec une précision qui fonde notre confiance; l'herméneutique littérale et grammatico-historique n'est pas une option mais le respect dû au texte inspiré.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La miséricorde au cœur de l'obéissance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La citation d'Osée 6.6 au v. 7 («&nbsp;Je prends plaisir à la miséricorde, et non aux sacrifices&nbsp;») et la guérison compatissante de la main sèche (vv. 9-13).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le légalisme oppose le rite à la compassion et finit par condamner des innocents; la vraie piété place la miséricorde au cœur de l'obéissance, sans jamais abolir la loi de Dieu. Pour l'assemblée : une orthodoxie sans compassion est une contrefaçon de la piété; faire du bien au prochain n'est jamais une transgression mais l'accomplissement de l'intention divine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le Roi-Serviteur doux envers les faibles</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il ne brisera point le roseau cassé, et il n'éteindra point le lumignon qui fume&nbsp;» (v. 20) : le portrait du Serviteur d'Ésaïe en plein récit du complot meurtrier.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le Messie ne vient pas comme le conquérant militaire attendu par les rabbins, mais comme le Serviteur élu qui rétablit les vies brisées et ranime les flammes vacillantes. Pour l'assemblée : nul n'est trop brisé ou trop faible pour la compassion du Roi; le perdu, le meurtri, le vaincu trouvent en lui non un juge qui écrase mais un Sauveur qui restaure (cf. 1 Corinthiens 1.26-29).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'endurcissement et le rejet du Roi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Les pharisiens sortirent, et ils se consultèrent sur les moyens de le faire périr&nbsp;» (v. 14), réponse au faisceau de preuves de la divinité de Jésus.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Devant la révélation la plus claire de l'identité du Roi, les chefs choisissent non la foi mais le meurtre; leur opposition prépare le blasphème contre l'Esprit (vv. 22-32). Pour l'assemblée : la lumière reçue et rejetée endurcit le cœur; le rejet du Messie-Roi n'est jamais neutre, il est le sommet de la rébellion humaine et appelle un examen sérieux de notre propre réponse au Roi.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Les pharisiens avaient transformé le repos donné par Dieu en fardeau légaliste. Dans nos assemblées, par quelles traditions ou règles ajoutées risquons-nous de transformer la grâce de Dieu en système de mérite et le repos en joug?</li>
+      <li>Jésus fonde sa réponse non sur un assouplissement de la règle mais sur sa propre identité : maître du sabbat, plus grand que le temple. Comment cette revendication de divinité change-t-elle radicalement notre lecture du conflit sur le sabbat?</li>
+      <li>La citation d'Osée 6.6 («&nbsp;Je prends plaisir à la miséricorde, et non aux sacrifices&nbsp;») revient deux fois dans Matthieu. Où, dans notre vie communautaire, plaçons-nous le rite ou la correctitude doctrinale au-dessus de la compassion concrète envers le prochain?</li>
+      <li>Le portrait du Serviteur doux d'Ésaïe 42 contredisait l'attente d'un Messie conquérant. Quelles attentes erronées avons-nous parfois envers Christ, et comment l'Écriture corrige-t-elle nos faux portraits du Roi?</li>
+      <li>Le roseau cassé et le lumignon qui fume désignent les vies que le monde juge inutiles. Qui, dans notre entourage et notre assemblée, est traité comme un roseau cassé, et comment refléter envers eux la compassion restauratrice du Roi-Serviteur?</li>
+      <li>Devant le faisceau le plus clair de preuves de la divinité de Jésus, les pharisiens choisirent le complot. Comment la lumière reçue et rejetée endurcit-elle le cœur, et quelles mises en garde ce passage adresse-t-il à ceux qui connaissent la vérité sans s'y soumettre?</li>
+      <li>L'accomplissement littéral d'Ésaïe 42 dans la personne de Jésus atteste l'inspiration et la fiabilité de l'Écriture. En quoi cette précision prophétique fortifie-t-elle notre confiance dans toute la Parole de Dieu et notre engagement à l'interpréter selon son sens littéral?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Matthieu 12.1-21 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Matthieu : le Roi-Messie d'Israël&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Matthieu-12-1-21.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

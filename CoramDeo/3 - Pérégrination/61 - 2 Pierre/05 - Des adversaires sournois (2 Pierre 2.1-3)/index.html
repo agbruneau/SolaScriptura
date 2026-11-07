@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2 Pierre 2.1-3 · Des adversaires sournois · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 2 Pierre 2.1-3 : des adversaires sournois ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">2 Pierre 2.1-3</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 2 Pierre 2.1-3</p>
+    <h1 class="hero__title">Des adversaires sournois</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Eux que menace depuis longtemps la condamnation, et dont la ruine ne sommeille point.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">2 Pierre 2.3 · NEG</p>
+    <p class="hero__series">Série : <b>2 Pierre : la connaissance qui affermit</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">2 Pierre 2.1-3</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Il y a eu parmi le peuple de faux prophètes, et il y aura de même parmi vous de faux docteurs, qui introduiront sournoisement des sectes pernicieuses, et qui, reniant le maître qui les a rachetés, attireront sur eux une ruine soudaine.</p>
+        <cite class="verse__ref">2 Pierre 2.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Plusieurs les suivront dans leurs dérèglements, et la voie de la vérité sera calomniée à cause d'eux.</p>
+        <cite class="verse__ref">2 Pierre 2.2 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Par cupidité, ils vous exploiteront au moyen de paroles trompeuses, eux que menace depuis longtemps la condamnation, et dont la ruine ne sommeille point.</p>
+        <cite class="verse__ref">2 Pierre 2.3 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Avec 2 Pierre 2.1, l'apôtre franchit un seuil&nbsp;: après la lumière du salut reçu (1.3-11) et de la Parole inspirée (1.16-21), s'ouvre le rappel le plus sombre, celui des adversaires, l'exposé le plus vif de toute l'Écriture sur les faux docteurs.</p>
+    <div class="body">
+      <p>Les deux premiers rappels de la lettre tournaient vers la lumière&nbsp;: le salut tout entier reçu de la divine puissance de Christ (1.3-11), puis la certitude de la Parole prophétique inspirée, plus sûre que toute expérience humaine (1.16-21). Ici s'ouvre le troisième rappel, le plus sombre, celui des adversaires (2.1-22), dont le portrait constitue l'exposé le plus vif et le plus pénétrant sur les faux docteurs que renferme toute l'Écriture, seule l'épître de Jude pouvant lui être comparée. Le passage 2.1-3 forme la première sous-section, «&nbsp;Des adversaires sournois&nbsp;», et plante le cadre de tout le chapitre.</p>
+      <p>Le lien avec le chapitre précédent est intime. Puisque l'Écriture n'est pas d'origine humaine mais vient d'hommes poussés par le Saint-Esprit (1.21), il existe par contraste une parole qui se réclame de Dieu sans venir de lui&nbsp;: celle des faux prophètes d'hier et des faux docteurs de demain. Pierre établit d'abord une continuité historique&nbsp;: «&nbsp;Il y a eu parmi le peuple de faux prophètes, et il y aura de même parmi vous de faux docteurs.&nbsp;» Le terme «&nbsp;le peuple&nbsp;» désigne ici Israël&nbsp;; ce qui frappa l'ancienne alliance frappera l'Église, car Satan s'est toujours efforcé de s'infiltrer dans les groupes de croyants pour tromper au moyen de ses agents.</p>
+      <p>Les trois versets dessinent une progression resserrée. Le verset 1 expose la méthode (l'infiltration sournoise de sectes pernicieuses), le crime (renier le maître qui les a rachetés) et la sentence (une ruine soudaine). Le verset 2 montre le cortège&nbsp;: une foule qui suit ces hommes dans leurs dérèglements, de sorte que la voie de la vérité elle-même se trouve calomniée. Le verset 3 dévoile le ressort caché, la cupidité, et scelle le tout par une certitude judiciaire&nbsp;: la condamnation menace depuis longtemps et la ruine ne sommeille point. Pierre écrit ce testament depuis sa prison romaine, à la veille de son martyre (1.14), pour armer d'avance des assemblées d'Asie Mineure que l'infiltration des faux docteurs inquiétait déjà.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">2 Pierre 2.1 · 2.3</p>
+    </header>
+    <p class="lead">Pierre rédige ce testament depuis une prison romaine, vers 67-68, sous Néron, pour armer d'avance des assemblées d'Asie Mineure&nbsp;: la description des faux docteurs y est volontairement générique, valable pour tous les temps.</p>
+    <div class="body">
+      <p>Pierre rédige cette seconde lettre vers 67-68 apr. J.-C., probablement depuis une prison de Rome, sous la persécution déclenchée par Néron, et il s'attend à mourir bientôt (1.14). Sous la forme de dernières volontés et d'un testament (1.13-15), il met en garde des croyants d'Asie Mineure, pour la plupart d'origine païenne, les mêmes destinataires que sa première lettre (3.1&nbsp;; 1 Pierre 1.1). Depuis la rédaction de cette première épître, l'apôtre était de plus en plus préoccupé par les faux docteurs qui s'infiltraient dans les Églises de la région&nbsp;; ils avaient déjà semé le trouble, et leurs doctrines hérétiques jointes à leur vie immorale menaçaient de causer davantage de dommages.</p>
+    </div>
+    <p>Trois repères échappent au lecteur pressé.</p>
+    <ul class="points">
+      <li><b>Une description volontairement générique.</b> Pierre ne vise pas une fausse religion, un culte ou un système d'enseignement précis, mais brosse les traits communs à tous les faux ouvriers de tous les temps. Il était tout aussi soucieux de dévoiler leur caractère immoral que les erreurs de leur enseignement, et il décrit leur conduite avec plus de détails encore que leur doctrine.</li>
+      <li><b>Le maître et l'esclave acheté.</b> Le mot grec rendu par «&nbsp;maître&nbsp;» (<i>despotês</i>) n'est pas le terme courant pour «&nbsp;Seigneur&nbsp;» (<i>kurios</i>). Il désignait le chef d'une maison, le propriétaire qui achetait des esclaves sur le marché&nbsp;; ceux-ci lui devaient désormais fidélité et obéissance puisqu'il était devenu leur souverain. L'image suppose tout l'arrière-plan de l'esclavage antique&nbsp;: un homme acquis à prix d'argent appartient corps et biens à celui qui l'a payé.</li>
+      <li><b>Hérésies de perdition et soif de gain.</b> Le mot traduit par «&nbsp;secte&nbsp;» est celui qui a donné «&nbsp;hérésie&nbsp;», et celui rendu par «&nbsp;pernicieuses&nbsp;» signifie littéralement «&nbsp;de perdition&nbsp;»&nbsp;; employé six fois dans la lettre, il renvoie toujours à la ruine finale. La cupidité du verset 3 s'inscrit dans un contexte concret&nbsp;: les charlatans religieux exerçaient leur métier pour l'argent et le prestige, exploitant les âmes crédules. Pierre, accusé par eux d'avoir inventé des fables pour s'enrichir (1.16), retourne l'accusation&nbsp;: la véritable avidité est de leur côté.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids du passage&nbsp;: des <i>pseudodidaskaloi</i> infiltrés aux <i>haireseis apôleias</i> qu'ils colportent, jusqu'au <i>despotês</i> qu'ils renient bien qu'il les ait <i>agorasanta</i>, le tout mû par la <i>pleonexia</i>.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">faux docteurs</span><span class="mot-gr">pseudodidaskaloi</span></th>
+            <td class="col-sens">enseignants de mensonge, maîtres qui propagent l'erreur sous couvert de vérité</td>
+            <td>Mot composé de <i>pseudo</i>, le faux, et <i>didaskalos</i>, le maître ou l'enseignant. Le terme fait écho aux <i>pseudoprophetai</i>, les faux prophètes du même verset, et range les adversaires non parmi des marginaux extérieurs mais parmi des prédicateurs et enseignants installés au sein de la communauté. Ils peuvent s'afficher comme pasteurs, docteurs et évangélistes. La gravité tient à ce que celui qui prétend parler au nom de Dieu pour le salut des âmes parle en réalité au nom de Satan pour leur condamnation.</td>
+            <td><span class="trad"><span><b>S21</b> enseignants de mensonge</span><span><b>NEG79</b> faux docteurs</span><span><b>Darby</b> faux docteurs</span><span><b>LSG</b> faux docteurs</span><span><b>KJF</b> faux enseignants</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">sectes pernicieuses</span><span class="mot-gr">haireseis apôleias</span></th>
+            <td class="col-sens">hérésies de perdition, mensonges religieux entraînant division et damnation</td>
+            <td><i>Hairesis</i> a donné le mot français hérésie&nbsp;; il désigne un choix de pensée qui rompt l'unité et conduit à la rébellion. <i>Apôleia</i> signifie littéralement la perdition, la destruction, la ruine définitive&nbsp;; employé six fois dans la lettre, il renvoie toujours à la damnation finale. L'accolement des deux mots dit que ces opinions ne sont pas de simples écarts intellectuels mais des poisons qui mènent ceux qui les embrassent à la mort éternelle.</td>
+            <td><span class="trad"><span><b>S21</b> sectes de perdition</span><span><b>NEG79</b> sectes pernicieuses</span><span><b>Darby</b> sectes de perdition</span><span><b>LSG</b> sectes pernicieuses</span><span><b>KJF</b> hérésies damnables</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">maître</span><span class="mot-gr">despotês</span></th>
+            <td class="col-sens">souverain absolu, propriétaire d'esclaves, chef de maison détenant l'autorité suprême</td>
+            <td>Mot grec inhabituel pour «&nbsp;Seigneur&nbsp;», distinct du courant <i>kurios</i>&nbsp;; il apparaît dix fois dans le Nouveau Testament et désigne celui qui détient l'autorité suprême, humaine ou divine. Il évoquait l'homme responsable de sa maison, le maître qui achetait des esclaves devenus, dès lors, ses obligés. Appliqué au Christ, il souligne sa seigneurie totale sur ceux qui se réclament de lui&nbsp;; le crime des faux docteurs est précisément de renier cette autorité souveraine sur leur vie.</td>
+            <td><span class="trad"><span><b>S21</b> maître</span><span><b>NEG79</b> maître</span><span><b>Darby</b> maître</span><span><b>LSG</b> maître</span><span><b>KJF</b> Seigneur</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">rachetés</span><span class="mot-gr">agorasanta</span></th>
+            <td class="col-sens">ayant acheté au marché, acquis à prix d'argent comme on acquiert un esclave</td>
+            <td>Verbe <i>agorazô</i>, acheter sur la place publique (<i>agora</i>). Le terme appartient au registre de l'esclavage&nbsp;: le maître achète l'esclave, qui lui doit dès lors obéissance. Les mots de Pierre sont plus analogiques que théologiques. Le parallèle vétérotestamentaire de Deutéronome 32.5-6, où il est dit que Dieu a acheté Israël bien que ce peuple l'ait rejeté, éclaire l'image&nbsp;: «&nbsp;ton maître&nbsp;» peut s'y traduire «&nbsp;qui t'a racheté&nbsp;». L'analogie souligne le devoir de soumission au maître, devoir que les faux docteurs refusaient, tout en prétendant probablement avoir été personnellement rachetés par le Seigneur.</td>
+            <td><span class="trad"><span><b>S21</b> rachetés</span><span><b>NEG79</b> rachetés</span><span><b>Darby</b> achetés</span><span><b>LSG</b> rachetés</span><span><b>KJF</b> achetés</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">cupidité</span><span class="mot-gr">pleonexia</span></th>
+            <td class="col-sens">avidité, désir insatiable d'avoir toujours plus, convoitise du bien d'autrui</td>
+            <td><i>Pleonexia</i> décrit une avidité incontrôlée, le besoin de posséder davantage sans frein ni mesure. Pierre en fait la motivation profonde des faux docteurs&nbsp;: non l'amour de la vérité mais l'amour de l'argent (cf. v. 14). Le mot révèle que leur enseignement est un commerce&nbsp;; ils exploitent les gens au moyen de paroles trompeuses, transformant la religion en moyen d'enrichissement personnel. C'est le ressort caché qui explique l'infiltration et le mensonge.</td>
+            <td><span class="trad"><span><b>S21</b> soif de posséder</span><span><b>NEG79</b> cupidité</span><span><b>Darby</b> cupidité</span><span><b>LSG</b> cupidité</span><span><b>KJF</b> convoitise</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">2 Pierre 2.1-3</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 2 Pierre 2.1-3 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 2 P 2.1, 2.2, 2.3.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">61-16</span></th>
+            <td><a href="https://www.gty.org/sermons/61-16" target="_blank" rel="noopener">A Portrait of False Teachers, Part 1</a></td>
+            <td>2 Pierre 2.1-3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">61-17</span></th>
+            <td><a href="https://www.gty.org/sermons/61-17" target="_blank" rel="noopener">A Portrait of False Teachers, Part 2</a></td>
+            <td>2 Pierre 2.1-3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">61-18</span></th>
+            <td><a href="https://www.gty.org/sermons/61-18" target="_blank" rel="noopener">Divine Judgment on False Teachers, Part 1</a></td>
+            <td>2 Pierre 2.3-5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">La question qui commande le passage n'est pas accessoire&nbsp;: à quoi reconnaît-on un faux docteur? MacArthur répond par le diagnostic décisif, le refus habituel de la seigneurie du Maître qui les a rachetés.</p>
+    <div class="body">
+      <p>Le portrait que Pierre brosse ici constitue l'exposé le plus vif et le plus profond sur les faux docteurs de toute l'Écriture, et la première chose qu'il établit est leur permanence. «&nbsp;Il y a eu parmi le peuple de faux prophètes, et il y aura de même parmi vous de faux docteurs.&nbsp;» Le mot «&nbsp;le peuple&nbsp;» désigne Israël&nbsp;; l'apôtre rappelle que Satan s'est toujours efforcé de s'infiltrer dans les rangs des croyants pour tromper au moyen de ses agents, depuis Ève jusqu'à l'Église. La même stratégie qui ravagea l'ancienne alliance frappera la nouvelle&nbsp;: le danger le plus grand ne vient pas du dehors mais du dedans, logé au cœur même de la communauté.</p>
+      <p>Leur méthode est l'infiltration. Ils «&nbsp;introduiront sournoisement des sectes pernicieuses&nbsp;»&nbsp;: ils ne s'annoncent pas comme ennemis mais se glissent dans la place sous les habits du pasteur, du docteur chrétien, de l'évangéliste. Le mot rendu par «&nbsp;secte&nbsp;» est celui qui a donné «&nbsp;hérésie&nbsp;» et désigne des mensonges religieux conduisant à la division et à la rébellion&nbsp;; «&nbsp;pernicieuses&nbsp;» signifie littéralement «&nbsp;de perdition&nbsp;», terme qui, dans cette lettre, vise toujours la damnation finale. L'auteur en tire un avertissement qui demeure brûlant&nbsp;: il est tragique que des Églises, au nom de l'amour et de l'unité, se fassent un devoir de tolérer des enseignements et des idées non bibliques. La fausse charité qui ménage l'erreur est une trahison des âmes.</p>
+      <p>Le crime central est nommé sans détour&nbsp;: «&nbsp;reniant le maître qui les a rachetés.&nbsp;» Cette phrase révèle la gravité de leur faute et la profondeur de leur culpabilité. Le mot grec pour «&nbsp;maître&nbsp;», <i>despotês</i>, inhabituel, désigne celui qui détient l'autorité suprême. Pierre avertit que les faux prophètes renient la seigneurie de Jésus-Christ. Nier la naissance virginale, la divinité, la résurrection corporelle ou le retour du Christ serait aussi une hérésie, mais ces hommes n'iront probablement pas jusque-là&nbsp;: ils nomment le Christ et parlent en son nom, et leur hérésie suprême est de dire non à sa seigneurie, en refusant de soumettre leur vie à son autorité. Toutes les fausses religions ont une christologie erronée. Voilà le diagnostic décisif&nbsp;: la question est d'abord morale plus que théologique, car ce n'est pas leur théologie qui démasque ces hommes, c'est leur conduite, qui refuse la seigneurie du Maître.</p>
+      <p>La formule «&nbsp;qui les a rachetés&nbsp;» exige une lecture prudente. Les termes de Pierre sont plus analogiques que théologiques&nbsp;; ils empruntent au monde de l'esclavage, où le maître achetait ses esclaves, désormais tenus à la fidélité. Le parallèle de Deutéronome 32.5-6, où Dieu est dit avoir acheté un Israël qui pourtant le rejette, oriente le sens&nbsp;: l'analogie porte sur la responsabilité de se soumettre à Dieu, devoir que ces hommes refusaient. De plus, ils prétendaient probablement être chrétiens et avoir été personnellement rachetés par le Seigneur. Pierre raille une telle prétention en annonçant leur condamnation à venir. Le passage décrit donc le caractère pernicieux de docteurs qui proclament Christ mais renient sa seigneurie sur leur vie. Au-delà de l'analogie, MacArthur envisage en chaire deux façons de comprendre ce rachat&nbsp;: une provision universelle pour la rédemption des pécheurs, bien qu'ils la refusent et soient damnés, et un second sens qu'il juge nécessaire, celui d'hommes qui se sont identifiés extérieurement à la rédemption du Christ et le revendiquent comme celui qui les a rachetés.</p>
+      <p>Leur fin est scellée dès le verset 1&nbsp;: «&nbsp;ils attireront sur eux une ruine soudaine&nbsp;», qui renvoie soit à leur mort physique, soit à leur jugement lors du retour de Christ. Le verset 2 montre les dégâts collatéraux&nbsp;: «&nbsp;Plusieurs les suivront dans leurs dérèglements.&nbsp;» Bien des gens se diront chrétiens tout en niant la seigneurie de Christ sur leur vie&nbsp;; ils refuseront de vivre en serviteurs obéissants et suivront plutôt les désirs charnels, le monde et le diable. Fait tragique, le Seigneur inclura ces chrétiens de nom dans la condamnation des hypocrites au jour du jugement (Mt 7.21-23). Pire encore, «&nbsp;la voie de la vérité sera calomniée à cause d'eux&nbsp;»&nbsp;: le monde se moque de l'Évangile à cause de chrétiens de nom qui ne suivent pas le Seigneur qu'ils proclament et sont démasqués comme des hypocrites. L'infidélité de quelques-uns déshonore le nom du Christ aux yeux de tous.</p>
+      <p>Le verset 3 dévoile enfin le moteur secret&nbsp;: «&nbsp;Par cupidité, ils vous exploiteront au moyen de paroles trompeuses.&nbsp;» La motivation des faux docteurs n'était pas l'amour de la vérité mais l'amour de l'argent&nbsp;; ils exploitaient les gens par leurs mensonges. Et Pierre referme le portrait sur une certitude judiciaire absolue&nbsp;: ils sont «&nbsp;eux que menace depuis longtemps la condamnation, et dont la ruine ne sommeille point&nbsp;». Le principe de la condamnation des faux docteurs, enraciné dans la nature éternelle de Dieu, Dieu de vérité, a été mis en mouvement dès que le péché parut dans l'univers créé, puis répété dans l'Ancien Testament, et il «&nbsp;menace&nbsp;» au sens où il n'est ni dépassé ni devenu inefficace&nbsp;: il demeure valable et s'accomplira. Personnifiant la ruine comme un bourreau pleinement conscient et vigilant, prêt à agir, l'apôtre affirme que Dieu, par nature Dieu de vérité, jugera tous les menteurs et tous les trompeurs. L'idée maîtresse du passage tient en cette tension&nbsp;: sous le masque de la piété et de la liberté promise, les adversaires disent non, par leur vie, à leur souverain&nbsp;; mais la sentence prononcée depuis longtemps reste en vigueur, et leur bourreau ne dort pas.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent le portrait des adversaires, du jumeau de Jude aux loups annoncés par Paul, jusqu'à l'arrière-plan vétérotestamentaire du faux prophète et de l'Israël racheté qui rejette son Maître.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jude 4</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Le parallèle le plus serré&nbsp;: des hommes qui «&nbsp;se sont glissés parmi vous&nbsp;», transformant la grâce en dérèglement et reniant le seul Maître et Seigneur&nbsp;; même verbe d'infiltration, même crime de reniement de la seigneurie.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 7.15-23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Les faux prophètes en habits de brebis et le verdict «&nbsp;je ne vous ai jamais connus&nbsp;»&nbsp;: la fausse profession démasquée au jour du jugement, sort des «&nbsp;plusieurs&nbsp;» qui suivent les adversaires (2.2).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 11.13-15</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Les faux apôtres se déguisent en serviteurs de justice comme Satan en ange de lumière&nbsp;; éclaire la méthode de l'infiltration sournoise et la fin réservée à ces ouvriers trompeurs.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 20.29-30</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Paul annonce que des loups cruels entreront dans le troupeau et que d'entre les anciens eux-mêmes surgiront des hommes au langage tortueux&nbsp;: même prophétie d'une infiltration intérieure de l'Église.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Timothée 6.5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Des hommes corrompus regardant la piété comme une source de gain&nbsp;: confirme la cupidité (2.3) comme ressort des faux docteurs qui exploitent les âmes pour l'argent.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 32.5-6</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Dieu est dit avoir acheté et formé un Israël qui pourtant le rejette&nbsp;; «&nbsp;ton maître&nbsp;» peut s'y traduire «&nbsp;qui t'a racheté&nbsp;». Clé analogique de «&nbsp;le maître qui les a rachetés&nbsp;» (2.1).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jérémie 23.16-32</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Réquisitoire contre les prophètes qui prophétisent le mensonge en leur propre nom sans avoir été envoyés&nbsp;: l'arrière-plan vétérotestamentaire des faux prophètes «&nbsp;parmi le peuple&nbsp;» (2.1).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Deutéronome 13.1-5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">La loi sur le faux prophète qui détourne du vrai Dieu et la sentence de mort attachée à son crime&nbsp;: fondement vétérotestamentaire de la condamnation certaine annoncée en 2.3.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent le passage. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La permanence de l'infiltration satanique</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Il y a eu parmi le peuple de faux prophètes, et il y aura de même parmi vous de faux docteurs&nbsp;» (2.1)&nbsp;: ce qui frappa Israël frappera l'Église&nbsp;; le danger vient du dedans, par des hommes qui se glissent sous l'habit de l'enseignant chrétien.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la présence de faux docteurs n'est ni une anomalie ni un accident, mais une constante de l'histoire du salut. Cela commande la vigilance et le discernement&nbsp;: on n'évalue pas un prédicateur à son charisme ni à son succès, mais à sa fidélité à la saine doctrine. La fausse charité qui, au nom de l'unité, tolère l'enseignement non biblique trahit le troupeau.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le reniement de la seigneurie de Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Reniant le maître qui les a rachetés&nbsp;» (2.1)&nbsp;: le mot <i>despotês</i> dit l'autorité suprême. Le crime décisif des adversaires n'est pas d'abord une erreur ponctuelle, mais le refus de soumettre leur vie au Christ souverain&nbsp;; toutes les fausses religions ont une christologie erronée.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, la marque du vrai croyant n'est pas une profession verbale mais la soumission réelle à la seigneurie de Christ&nbsp;: foi et obéissance sont indissociables. Beaucoup diront «&nbsp;Seigneur, Seigneur&nbsp;» sans faire la volonté du Père (Mt 7.21-23). Prêcher Christ, c'est prêcher sa seigneurie totale, jamais un salut qui dispenserait de la repentance et de l'obéissance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le rachat analogique, non un salut acquis pour les réprouvés</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Le maître qui les a rachetés&nbsp;» (2.1) emploie des termes plus analogiques que théologiques, empruntés au marché aux esclaves&nbsp;; le parallèle de Deutéronome 32.5-6, où Dieu a acheté un Israël qui le rejette, oriente le sens vers le devoir de soumission, non vers une expiation effective de réprouvés.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, l'image souligne la culpabilité de qui se réclame du Maître tout en reniant son autorité. En chaire, MacArthur admet ici une provision universelle pour la rédemption des pécheurs, même de ceux qui la refusent et périssent (61-17); le verset établit surtout la pleine responsabilité de l'apostat qui prétendait appartenir au Seigneur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La contagion et le discrédit de la vérité</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Plusieurs les suivront dans leurs dérèglements, et la voie de la vérité sera calomniée à cause d'eux&nbsp;» (2.2)&nbsp;: l'erreur n'est jamais solitaire&nbsp;; elle entraîne une foule, et l'infidélité des chrétiens de nom fait blasphémer l'Évangile aux yeux du monde.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, le péché des conducteurs ne reste pas privé&nbsp;: il déshonore le nom du Christ devant les incroyants et entraîne les âmes mal affermies. Cela élève l'enjeu de la sainteté des dirigeants et de la solidité doctrinale de chacun&nbsp;; un troupeau enseigné et affermi est moins facilement amorcé par les séducteurs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La certitude du jugement de Dieu</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Eux que menace depuis longtemps la condamnation, et dont la ruine ne sommeille point&nbsp;» (2.3)&nbsp;: la sentence, enracinée dans la nature éternelle de Dieu et répétée dans l'Ancien Testament, n'est ni dépassée ni inefficace&nbsp;; la ruine est personnifiée en bourreau vigilant, prêt à agir.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Pour votre assemblée, l'apparente prospérité présente des faux docteurs ne dément pas leur condamnation à venir&nbsp;: Dieu, par nature Dieu de vérité, jugera tout menteur et tout trompeur. Cette certitude console les fidèles éprouvés par la séduction ambiante et avertit solennellement quiconque manie la Parole&nbsp;: le Juge ne dort pas, et l'impunité d'aujourd'hui n'est qu'un sursis.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Pierre place la racine du faux docteur dans le reniement de la seigneurie de Christ, non dans une simple erreur isolée (2.1). Comment exposer à votre assemblée que le test décisif d'un enseignement n'est pas seulement son exactitude apparente, mais la soumission réelle au Christ souverain qu'il manifeste ou non&nbsp;?</li>
+      <li>Le danger décrit est intérieur&nbsp;: ils s'introduisent «&nbsp;sournoisement&nbsp;», sous l'habit du pasteur et du docteur (2.1). Quels signes votre communauté apprend-elle à reconnaître pour ne pas confondre vigilance légitime et suspicion généralisée envers tout conducteur&nbsp;?</li>
+      <li>L'expression «&nbsp;le maître qui les a rachetés&nbsp;» (2.1) est lue de façon analogique, à la lumière de Deutéronome 32.5-6. Comment prêcher ce verset de manière à honorer la rédemption particulière sans y lire un salut effectivement acquis pour ceux qui périssent, et sans esquiver la responsabilité de l'apostat&nbsp;?</li>
+      <li>Pierre avertit que «&nbsp;plusieurs&nbsp;» suivront ces hommes (2.2). Qu'est-ce qui, dans une assemblée, rend des âmes vulnérables à la séduction des faux docteurs, et comment affermir concrètement les croyants pour qu'ils ne soient pas «&nbsp;amorcés&nbsp;»&nbsp;?</li>
+      <li>«&nbsp;La voie de la vérité sera calomniée à cause d'eux&nbsp;» (2.2)&nbsp;: l'infidélité des chrétiens de nom déshonore l'Évangile devant le monde. Comment cette vérité élève-t-elle l'enjeu de la sainteté des dirigeants et du témoignage public de l'Église&nbsp;?</li>
+      <li>La cupidité est nommée comme moteur caché (2.3). Comment discerner aujourd'hui, sans procès d'intention, quand un ministère se transforme en commerce des âmes, et quelles garanties une Église peut-elle mettre en place&nbsp;?</li>
+      <li>«&nbsp;La condamnation ne sommeille point&nbsp;» (2.3)&nbsp;: la prospérité présente des séducteurs ne dément pas leur ruine future. Comment cette certitude du jugement console-t-elle le fidèle éprouvé par la séduction ambiante, et comment avertit-elle solennellement quiconque enseigne la Parole&nbsp;?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 2 Pierre 2.1-3 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;2 Pierre : la connaissance qui affermit&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-2%20Pierre-2-1-3.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

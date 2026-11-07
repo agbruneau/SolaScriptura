@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jean 3.1-21 · Il faut naître de nouveau · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jean 3.1-21 : le dialogue avec Nicodème et la nouvelle naissance ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jean 3.1-21</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Jean 3.1-21</p>
+    <h1 class="hero__title">Il faut naître de nouveau</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jean 3.16 · NEG</p>
+    <p class="hero__series">Série : <b>Jean : le Verbe fait chair</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-19 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Jean 3.1-21</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">En vérité, en vérité, je te le dis, si un homme ne naît de nouveau, il ne peut voir le royaume de Dieu.</p>
+        <cite class="verse__ref">Jean 3.3 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Le vent souffle où il veut, et tu en entends le bruit; mais tu ne sais d'où il vient, ni où il va. Il en est ainsi de tout homme qui est né de l'Esprit.</p>
+        <cite class="verse__ref">Jean 3.8 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le dialogue avec Nicodème ouvre le grand mouvement du quatrième Évangile sur la nature du salut : nul ne peut voir le royaume s'il ne naît de l'Esprit.</p>
+    <div class="body">
+      <p>Le dialogue avec Nicodème ouvre le grand mouvement du quatrième Évangile sur la nature du salut. MacArthur souligne que Jean 2.23-24 sert d'introduction directe à l'épisode : à Jérusalem, à la Pâque, beaucoup avaient cru en voyant les signes, mais Jésus «&nbsp;ne se fiait point à eux&nbsp;» parce qu'il connaissait tous les hommes et lisait dans les cœurs. Cette foi superficielle, attirée par le miracle mais étrangère à la régénération, est la toile de fond de la péricope : Nicodème en est le représentant le plus élevé. Le chapitre apporte ainsi la preuve de la divinité de Jésus en démontrant sa capacité à sonder les cœurs, et il présente le plan du salut au plus grand docteur d'Israël. La place de ce passage dans l'exposition suivie est stratégique : après le prologue (1.1-18), les témoignages de Jean-Baptiste (1.19-34), l'appel des premiers disciples (1.35-51) et les deux signes encadrant (Cana, 2.1-12; le temple purifié, 2.13-22), Jean amène son lecteur au cœur doctrinal : nul ne peut voir le royaume s'il ne naît de l'Esprit.</p>
+      <p>La structure du passage est nette. MacArthur le divise en deux grands volets. Le premier (v. 1-10) est le dialogue proprement dit entre Jésus et Nicodème, que MacArthur suit en chaire en trois temps : l'inquiétude du pécheur (v. 1-2), la parole du Sauveur (à partir du v. 3) et l'œuvre de l'Esprit (v. 6-8), jusqu'au reproche adressé au docteur d'Israël (v. 9-10). Le second volet (v. 11-21) ne s'adresse plus seulement à Nicodème, puisque Jésus y parle au pluriel, et devient le discours de Jésus sur le sens véritable du salut, articulé autour du verbe «&nbsp;croire&nbsp;», employé sept fois : la confrontation de l'incrédulité (v. 11-12), l'éloge de la foi (v. 13-18) et la condamnation de l'incrédulité persistante (v. 19-20). Les v. 1-10 affirment que le salut procède de l'initiative souveraine de Dieu; les v. 11-21 soulignent la nécessité de la réponse de l'homme, la foi, à cette œuvre divine de régénération.</p>
+      <p>Les bornes de la péricope sont théologiques autant que littéraires. Elle s'ouvre sur la venue nocturne d'un chef des Juifs (v. 1) et culmine sur le contraste entre la lumière et les ténèbres, entre celui qui croit et celui qui demeure déjà jugé (v. 18-21). En son centre se trouve 3.16, le verset le plus familier de la Bible, dit MacArthur, celui que Luther appelait l'Évangile en miniature : l'amour rédempteur de Dieu qui donne son Fils unique pour que quiconque croit en lui ait la vie éternelle. Le passage tient ensemble les deux vérités que MacArthur appelle jumelles et parallèles, qu'aucun esprit humain ne peut harmoniser mais qu'il faut croire l'une et l'autre : la régénération est l'œuvre monergique de l'Esprit qui souffle où il veut (3.8), et l'homme est responsable de croire au Fils élevé sur la croix, car quiconque croit a la vie éternelle (3.14-15). La péricope suivante (3.22-36) prolongera le thème par le dernier témoignage de Jean-Baptiste, qui doit diminuer tandis que Christ doit croître.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Jean 3.1-2 · 3.5 · 3.10</p>
+    </header>
+    <p class="lead">Nicodème est présenté avec trois titres qui pèsent lourd dans le judaïsme du premier siècle : il est pharisien, un «&nbsp;chef des Juifs&nbsp;» et, selon le v. 10, «&nbsp;le docteur d'Israël&nbsp;». C'est ce sommet humain de la science et de la piété juives qui se révèle incapable de saisir la nécessité de la régénération.</p>
+    <div class="body">
+      <p>MacArthur note que le terme pharisien dérive probablement du verbe hébreu signifiant «&nbsp;séparer&nbsp;» : il désigne ceux qui étaient mis à part par un zèle hors du commun pour la pureté rituelle de la loi mosaïque et pour les traditions ajoutées à l'Écriture. Issus le plus souvent de la classe moyenne et majoritairement laïcs, les pharisiens formaient le noyau dur du judaïsme orthodoxe et exerçaient une influence prépondérante sur le peuple; selon Flavius Josèphe, ils étaient environ six mille au temps d'Hérode le Grand. Comme «&nbsp;chef des Juifs&nbsp;», Nicodème appartenait vraisemblablement au sanhédrin, le conseil suprême de la nation. L'article défini devant «&nbsp;docteur&nbsp;» (v. 10) signale qu'il était un enseignant renommé, une autorité religieuse reconnue de tout Israël. C'est précisément ce sommet humain de la science et de la piété juives qui se révèle incapable de saisir la nécessité de la régénération.</p>
+    </div>
+    <p>Trois réalités échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>La visite «&nbsp;de nuit&nbsp;».</b> La venue nocturne de Nicodème (v. 2) a fait couler beaucoup d'encre. MacArthur refuse d'y voir une métaphore des ténèbres de son âme ; en chaire, il avoue ignorer pourquoi Nicodème vint de nuit et place l'essentiel ailleurs : il est venu. Il concède qu'un homme de ce rang avait beaucoup à perdre à venir en plein jour, et que la nuit était peut-être le seul moment où il pouvait s'isoler de ses collègues pharisiens ; la note de sa Bible d'étude tient la crainte d'une association publique avec Jésus pour l'explication la plus probable. La suite de l'Évangile montre son cheminement : encore membre du sanhédrin et, selon MacArthur, pas encore croyant, il ose rappeler que la loi ne condamne personne sans l'entendre (7.50-51), puis, après la crucifixion, il vient avec Joseph d'Arimathée apporter environ cent livres de myrrhe et d'aloès pour l'ensevelissement (19.39), geste hardi par lequel il s'identifie enfin au Seigneur.</li>
+      <li><b>La nouvelle naissance, humiliante pour un pharisien.</b> Le vocabulaire de la nouvelle naissance résonnait fortement dans un cadre juif, mais d'une manière humiliante pour un pharisien. Un Juif pieux tenait sa filiation abrahamique et son observance de la loi pour les garanties de son appartenance au royaume; or Jésus lui déclare qu'il doit recommencer à zéro, naître de nouveau, comme s'il partait du néant spirituel d'un païen converti. La pratique extérieure de la religion avait émoussé en lui toute compréhension spirituelle.</li>
+      <li><b>L'eau et l'Esprit, un arrière-plan vétérotestamentaire.</b> MacArthur rappelle que l'image de l'eau associée à l'Esprit (v. 5) ne renvoie ni à la naissance physique ni au baptême chrétien, dont Nicodème ne pouvait rien savoir, mais aux promesses de l'Ancien Testament où l'eau figure la purification et le renouvellement spirituels, notamment Ézéchiel 36.25-27, où Dieu promet de répandre une eau pure, de donner un cœur nouveau et de mettre son Esprit au-dedans de son peuple. Le reproche du v. 10 prend là tout son sens : «&nbsp;le docteur d'Israël&nbsp;» aurait dû reconnaître cet enseignement, car il reposait clairement sur les Écritures qu'il était censé maîtriser.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids théologique de la péricope : de la naissance d'en haut (<i>gennaō anōthen</i>) opérée par l'Esprit souverain (<i>pneuma</i>), au Fils élevé sur la croix (<i>hupsoō</i>) que l'on reçoit en croyant (<i>pisteuō</i>) pour avoir la vie éternelle (<i>zōē aiōnios</i>).</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">naît de nouveau</span><span class="mot-gr">gennaō anōthen</span></th>
+            <td class="col-sens">engendrer, enfanter, donner naissance; avec <i>anōthen</i> : d'en haut, de nouveau</td>
+            <td>Le verbe <i>gennaō</i> signifie engendrer ou enfanter; au passif, naître. Couplé à l'adverbe <i>anōthen</i>, il peut se rendre «&nbsp;de nouveau&nbsp;» ou «&nbsp;d'en haut&nbsp;» : MacArthur tient les deux traductions pour justes, avec une préférence pour «&nbsp;d'en haut&nbsp;», sens que le mot a ailleurs chez Jean (3.31 et au chapitre 19). Nicodème, loin de se méprendre, reprend l'image pour dire l'impossibilité humaine d'un second enfantement (v. 4) : il a compris que Jésus parle d'une naissance à laquelle l'homme ne contribue en rien, qui vient d'en haut, de Dieu. Selon MacArthur, la nouvelle naissance est un acte divin par lequel la vie éternelle est accordée au croyant (2 Corinthiens 5.17; Tite 3.5; 1 Pierre 1.3; 1 Jean 2.29), en lien avec 1.12-13 où devenir enfant de Dieu se fait «&nbsp;non de la volonté de l'homme, mais de Dieu&nbsp;».</td>
+            <td><span class="trad"><span><b>S21</b> naît de nouveau</span><span><b>NEG79</b> naît de nouveau</span><span><b>Darby</b> naît de nouveau</span><span><b>LSG</b> naît de nouveau</span><span><b>KJF</b> naît de nouveau</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">Esprit</span><span class="mot-gr">pneuma</span></th>
+            <td class="col-sens">souffle, vent, esprit; le Saint-Esprit</td>
+            <td>Le mot <i>pneuma</i> désigne le souffle, le vent et l'esprit; au v. 8, Jésus exploite cette polyvalence par un jeu de mots intraduisible : le même terme grec sert pour «&nbsp;le vent souffle où il veut&nbsp;» et pour «&nbsp;tout homme qui est né de l'Esprit&nbsp;». MacArthur y voit l'affirmation de la souveraineté libre et insaisissable de l'Esprit dans la régénération : tout comme le vent ne peut être ni maîtrisé ni compris par l'homme, qui en ressent pourtant les effets, le Saint-Esprit ne peut être ni maîtrisé ni dirigé, mais son œuvre laisse des preuves indéniables. C'est le fondement textuel du monergisme : l'homme ne produit pas sa propre naissance spirituelle, il en reçoit l'effet.</td>
+            <td><span class="trad"><span><b>S21</b> Esprit</span><span><b>NEG79</b> Esprit</span><span><b>Darby</b> Esprit</span><span><b>LSG</b> Esprit</span><span><b>KJF</b> Esprit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">élevé</span><span class="mot-gr">hupsoō</span></th>
+            <td class="col-sens">élever, hausser, exalter, lever en hauteur</td>
+            <td>Le verbe <i>hupsoō</i> signifie lever physiquement en hauteur et, au sens figuré, exalter ou glorifier. Jean l'emploie de façon caractéristique pour la crucifixion (3.14; 8.28; 12.32-34), unissant en un seul mot l'élévation sur la croix et l'exaltation glorieuse. Au v. 14, MacArthur lit une prédiction voilée de la mort de Jésus, qui fait allusion à Nombres 21.4-9, où Moïse éleva le serpent d'airain : comme ceux qui regardaient le serpent élevé vivaient physiquement, ceux qui regardent au Christ élevé sur la croix vivront spirituellement et éternellement. L'analogie porte sur le «&nbsp;soit élevé&nbsp;» : le salut s'obtient en regardant avec foi à l'unique objet désigné par Dieu.</td>
+            <td><span class="trad"><span><b>S21</b> élevé</span><span><b>NEG79</b> élevé</span><span><b>Darby</b> élevé</span><span><b>LSG</b> élevé</span><span><b>KJF</b> élevé</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">croit</span><span class="mot-gr">pisteuō</span></th>
+            <td class="col-sens">croire, faire confiance, se fier à, s'en remettre à</td>
+            <td>Le verbe <i>pisteuō</i>, employé sept fois dans les v. 11-21, est le terme central du discours sur le salut. Pour MacArthur, croire au nom du Fils (v. 18) signifie bien plus qu'un assentiment intellectuel aux vérités de l'Évangile : c'est faire confiance à Jésus-Christ comme Seigneur et Sauveur et s'engager à ses côtés, de sorte qu'on reçoit une nouvelle nature qui produit un changement de cœur et l'obéissance. Le verbe est souvent suivi de la préposition <i>eis</i> («&nbsp;croire en, vers&nbsp;»), marquant un mouvement de la personne entière qui se livre à son objet. Cette foi authentique, distincte de la fausse foi des signes (2.23-24), est la réponse humaine à l'œuvre souveraine de la régénération, jamais sa cause.</td>
+            <td><span class="trad"><span><b>S21</b> croit</span><span><b>NEG79</b> croit</span><span><b>Darby</b> croit</span><span><b>LSG</b> croit</span><span><b>KJF</b> croit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">vie éternelle</span><span class="mot-gr">zōē aiōnios</span></th>
+            <td class="col-sens">vie de l'âge à venir, vie sans fin et de qualité divine</td>
+            <td>L'expression <i>zōē aiōnios</i> désigne, selon MacArthur, non seulement une vie d'une durée infinie mais aussi d'une qualité supérieure : littéralement «&nbsp;la vie de l'âge à venir&nbsp;». Elle renvoie à la résurrection et à l'existence céleste dans la gloire et la sainteté parfaites, mais les croyants en font déjà l'expérience ici-bas. Avoir la vie éternelle, c'est essentiellement partager la vie éternelle de la Parole vivante, Jésus-Christ : c'est la vie de Dieu dans chaque croyant, qui ne sera pleinement manifestée qu'à la résurrection des morts (Romains 8.19-23; Philippiens 3.20-21). Première de nombreuses occurrences de l'expression chez Jean (v. 15, 16), elle est le don que reçoit quiconque croit au Fils élevé.</td>
+            <td><span class="trad"><span><b>S21</b> vie éternelle</span><span><b>NEG79</b> vie éternelle</span><span><b>Darby</b> vie éternelle</span><span><b>LSG</b> vie éternelle</span><span><b>KJF</b> vie éternelle</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Jean 3.1-21</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Jean 3.1-21 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Jn 3.1-21, 3.1-10, 3.1, 3.2, 3.3, 3.4, 3.5, 3.8, 3.10, 3.11-21, 3.11-12, 3.11, 3.13, 3.14, 3.15, 3.16, 3.18.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-11</span></th>
+            <td><a href="https://www.gty.org/sermons/43-11" target="_blank" rel="noopener">Jesus Teaches the Teacher</a></td>
+            <td>Jean 3.1-3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-13</span></th>
+            <td><a href="https://www.gty.org/sermons/43-13" target="_blank" rel="noopener">God's Role in Regeneration</a></td>
+            <td>Jean 3.1-10</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-14</span></th>
+            <td><a href="https://www.gty.org/sermons/43-14" target="_blank" rel="noopener">The Divine Summons</a></td>
+            <td>Jean 3.1-10</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-97</span></th>
+            <td><a href="https://www.gty.org/sermons/81-97" target="_blank" rel="noopener">You Must Be Born Again</a></td>
+            <td>Jean 3.1-18</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-12</span></th>
+            <td><a href="https://www.gty.org/sermons/43-12" target="_blank" rel="noopener">The Blueprint for Being Born Again</a></td>
+            <td>Jean 3.3</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-15</span></th>
+            <td><a href="https://www.gty.org/sermons/43-15" target="_blank" rel="noopener">Twin Truths: God’s Sovereignty and Man’s Responsibility</a></td>
+            <td>Jean 3.11-21</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-16</span></th>
+            <td><a href="https://www.gty.org/sermons/43-16" target="_blank" rel="noopener">Simply Believe</a></td>
+            <td>Jean 3.11-14</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">43-17</span></th>
+            <td><a href="https://www.gty.org/sermons/43-17" target="_blank" rel="noopener">Belief, Judgment, and Eternal Life</a></td>
+            <td>Jean 3.15-21</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Le cœur de l'exposition de MacArthur tient en deux vérités parallèles : la nouvelle naissance est l'œuvre souveraine et monergique de Dieu, non le produit de la volonté de l'homme, et quiconque croit au Fils a la vie éternelle.</p>
+    <div class="body">
+      <p>Jésus répond à une question que Nicodème ne lui avait même pas posée, parce qu'il lisait dans son cœur et connaissait le nœud du problème : la nécessité d'une régénération spirituelle par le Saint-Esprit. Le «&nbsp;En vérité, en vérité&nbsp;» solennel introduit une déclaration absolue : sans la nouvelle naissance, il est impossible non seulement d'entrer dans le royaume de Dieu mais même de le voir, c'est-à-dire d'y avoir part. MacArthur insiste sur le caractère radical de cette parole adressée au plus grand docteur d'Israël : ni la filiation abrahamique, ni l'observance de la loi, ni le zèle pharisien ne donnent accès au royaume. Il faut une intervention d'en haut. Le v. 6 verrouille la logique : «&nbsp;ce qui est né de la chair est chair, et ce qui est né de l'Esprit est esprit&nbsp;»; la chair ne peut s'engendrer elle-même en esprit, la vie spirituelle ne peut procéder que de l'Esprit. C'est le fondement johannique du monergisme, en pleine cohérence avec 1.12-13 et avec 6.44 («&nbsp;nul ne peut venir à moi si le Père ne l'attire&nbsp;»).</p>
+      <p>Sur le v. 5, MacArthur prend une position ferme qui ferme la porte à la régénération baptismale. «&nbsp;Naître d'eau et d'Esprit&nbsp;» ne désigne ni la naissance physique, lecture qu'il écarte aussi, ni le baptême chrétien, encore inexistant. L'eau, dans l'Ancien Testament, habituellement et surtout lorsqu'elle est associée à l'Esprit, figure la purification et le renouvellement spirituels (Nombres 19.17-19; Psaume 51.11-12; Ésaïe 32.15; 44.3-5; Ézéchiel 36.25-27; Joël 2.28-29). Jésus fait allusion à la purification spirituelle de l'âme accomplie par le Saint-Esprit au moyen de la Parole de Dieu au moment du salut (cf. Éphésiens 5.26; Tite 3.5). Le reproche du v. 10 confirme cette lecture : «&nbsp;le docteur d'Israël&nbsp;» aurait dû reconnaître un enseignement enraciné dans ses propres Écritures. Nicodème, souligne MacArthur, ne pouvait rien savoir du baptême chrétien : l'indice que Jésus lui donne est tiré des Écritures qu'il connaissait, les promesses de la nouvelle alliance où Dieu dit «&nbsp;je vous purifierai&nbsp;» et «&nbsp;je mettrai mon esprit en vous&nbsp;».</p>
+      <p>Les v. 13-17 répondent à l'incrédulité par l'élévation du Fils. MacArthur souligne l'unicité absolue de Jésus comme révélateur des choses célestes : personne n'est monté au ciel pour en rapporter la vérité; seul le Fils de l'homme, qui est descendu du ciel et y avait sa résidence permanente avant l'incarnation, peut révéler la sagesse divine. Le v. 13 contredit ainsi les prétentions de toute religion à une révélation indépendante. L'analogie du serpent d'airain (v. 14-15) annonce voilément la croix : il faut que le Fils de l'homme soit élevé, afin que quiconque croit ait la vie éternelle. Puis vient 3.16, le verset le plus familier de la Bible, où MacArthur lit le motif du salut : la mission du Fils est entièrement motivée par l'amour suprême de Dieu pour un monde méchant et pécheur en rébellion contre lui. Le «&nbsp;tant&nbsp;» souligne l'intensité de cet amour, et «&nbsp;son Fils unique&nbsp;» (<i>monogenēs</i>) marque l'unicité absolue de la relation du Fils au Père, non un commencement : le Fils n'a pas été créé.</p>
+      <p>Les v. 18-21 livrent le verdict. MacArthur lit ici le double destin tranché par la foi : celui qui croit n'est point jugé, celui qui ne croit pas est déjà jugé. L'incrédulité n'attend pas le dernier jour pour être condamnée, elle est une condamnation présente, parce qu'elle refuse de croire au nom du Fils unique. Et croire au nom, précise MacArthur, c'est faire confiance à Christ comme Seigneur et Sauveur et s'engager à ses côtés, ce qui produit une nouvelle nature, un changement de cœur et l'obéissance : la foi qui sauve n'est jamais un simple assentiment. Il rappelle les trois composantes que les Réformateurs lui reconnaissaient, connaître, se fier et s'engager à suivre Christ, et met en garde contre les appels psychologiques (un sens à la vie, le bonheur) qui ne produisent que de faux convertis. Le jugement final tient à une préférence morale : les hommes ont préféré les ténèbres à la lumière parce que leurs œuvres étaient mauvaises. Celui qui fait le mal hait la lumière de peur d'être dévoilé; celui qui agit selon la vérité vient à la lumière. Loin d'enseigner un salut par les œuvres, ce contraste révèle que l'incrédulité a une racine morale et volontaire : on rejette la lumière parce qu'on aime les ténèbres.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, du fondement johannique du monergisme aux promesses vétérotestamentaires de l'eau et de l'Esprit, jusqu'au type du serpent d'airain élevé par Moïse.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 1.12-13</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La nouvelle naissance définie en amont : devenir enfant de Dieu se fait «&nbsp;non de la volonté de l'homme, mais de Dieu&nbsp;». Fondement johannique du monergisme que 3.3-8 développe.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 6.44</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Nul ne peut venir à moi si le Père qui m'a envoyé ne l'attire.&nbsp;» Confirme que la venue au Fils, comme la nouvelle naissance, procède de l'initiative souveraine de Dieu.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Tite 3.5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le salut accompli «&nbsp;par le bain de la régénération et le renouvellement du Saint-Esprit&nbsp;»; éclaire «&nbsp;naître d'eau et d'Esprit&nbsp;» comme purification spirituelle, non rite baptismal.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ézéchiel 36.25-27</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Promesse de l'eau pure, du cœur nouveau et de l'Esprit mis au-dedans; arrière-plan vétérotestamentaire que «&nbsp;le docteur d'Israël&nbsp;» aurait dû reconnaître en 3.5, 3.10.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Nombres 21.4-9</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le serpent d'airain élevé par Moïse, type de l'élévation du Fils de l'homme (3.14) : regarder avec foi à l'objet désigné par Dieu pour vivre.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">2 Corinthiens 5.17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Si quelqu'un est en Christ, il est une nouvelle créature&nbsp;»; définition paulinienne de la régénération comme acte divin créateur, parallèle à la nouvelle naissance johannique.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 1.3</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Dieu «&nbsp;nous a régénérés&nbsp;» par sa grande miséricorde; confirme que la nouvelle naissance est l'œuvre de Dieu accordant la vie au croyant.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Jean 2.23-24</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La fausse foi des signes, à laquelle Jésus «&nbsp;ne se fiait point&nbsp;» parce qu'il sondait les cœurs; introduction directe à Nicodème et contraste avec la foi authentique du v. 18.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">Le monergisme de la régénération</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La nouvelle naissance est l'œuvre souveraine de l'Esprit, qui souffle où il veut (3.8); ce qui est né de la chair est chair, ce qui est né de l'Esprit est esprit (3.6). L'homme ne peut ni produire ni maîtriser cette naissance, il en reçoit l'effet.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'assemblée doit comprendre que personne ne se sauve lui-même : ni l'effort religieux, ni la décision humaine, ni un rite ne régénèrent. La conversion authentique est précédée et causée par une œuvre divine. Cela tue tout orgueil spirituel et fonde l'humilité reconnaissante du croyant, qui doit tout à la grâce.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La nécessité absolue de la nouvelle naissance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Sans naître de nouveau, on ne peut ni voir (3.3) ni entrer dans (3.5) le royaume de Dieu. Cette parole vise le plus grand docteur d'Israël : ni la filiation, ni la loi, ni le zèle ne suffisent.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Aucun pedigree religieux ne remplace la régénération. Il faut avertir les fidèles que la fréquentation de l'Église, la moralité ou l'orthodoxie héritée ne sauvent personne. La question pastorale est directe : êtes-vous né de l'Esprit, ou seulement religieux comme Nicodème?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'amour rédempteur de Dieu et le don du Fils</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Dieu a tant aimé le monde qu'il a donné son Fils unique (3.16). Le «&nbsp;tant&nbsp;» souligne l'intensité de l'amour; «&nbsp;unique&nbsp;» (<i>monogenēs</i>) marque l'unicité absolue du Fils, non un commencement. La mission du Fils naît entièrement de cet amour pour un monde pécheur.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'amour de Dieu n'est pas une vague bienveillance mais un don coûteux : le Fils livré à la croix. L'assemblée est appelée à contempler cet amour souverain et à y répondre par la foi, sans jamais le confondre avec un universalisme qui sauverait tous les hommes indépendamment de la foi au Fils.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La foi salvatrice contre la fausse foi</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Croire au nom du Fils (3.18), c'est faire confiance à Christ comme Seigneur et Sauveur, ce qui produit une nouvelle nature et l'obéissance. Cette foi se distingue de la foi des signes à laquelle Jésus ne se fiait point (2.23-24).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Il faut prêcher une foi qui se livre à la seigneurie de Christ et porte du fruit, non une simple adhésion intellectuelle ou une prière récitée. L'<i>easy-believism</i> trompe les âmes; la vraie foi demeure et se prouve par la vie transformée, source de l'assurance du croyant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Le jugement présent de l'incrédulité</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Celui qui ne croit pas est déjà jugé (3.18); le jugement, c'est que les hommes ont préféré les ténèbres à la lumière parce que leurs œuvres étaient mauvaises (3.19-20).</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'incrédulité n'est pas neutre ni innocente : elle est une condamnation présente, enracinée dans l'amour du péché et le refus volontaire de la lumière. L'assemblée doit saisir l'urgence : hors de la foi au Fils, on demeure sous la colère, et le rejet de Christ a une racine morale, non purement intellectuelle.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire : non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Jésus déclare qu'il faut naître de nouveau pour seulement voir le royaume. En quoi cette vérité bouleverse-t-elle l'idée répandue qu'une bonne moralité ou un héritage religieux suffisent à plaire à Dieu?</li>
+      <li>Le vent souffle où il veut (3.8) : si la régénération est l'œuvre souveraine et insaisissable de l'Esprit, comment cela affecte-t-il notre manière de prier pour les perdus et d'évangéliser sans manipuler les décisions?</li>
+      <li>Nicodème, «&nbsp;le docteur d'Israël&nbsp;», ne comprend pas la nouvelle naissance. Quelles formes de savoir religieux peuvent aujourd'hui émousser, en nous, la véritable compréhension spirituelle?</li>
+      <li>MacArthur refuse de lire «&nbsp;naître d'eau et d'Esprit&nbsp;» comme une régénération baptismale. Pourquoi est-il vital de ne pas placer notre assurance dans un rite extérieur plutôt que dans l'œuvre intérieure de l'Esprit?</li>
+      <li>Comme le serpent fut élevé dans le désert, le Fils a été élevé sur la croix (3.14-15). Vers quoi, ou vers qui, votre cœur regarde-t-il réellement pour le salut?</li>
+      <li>Croire au nom du Fils (3.18), selon MacArthur, c'est se confier en Christ comme Seigneur et Sauveur. En quoi cela diffère-t-il d'un simple assentiment aux vérités de l'Évangile, comme celui des foules en 2.23-24?</li>
+      <li>Le jugement, c'est que les hommes ont préféré les ténèbres (3.19). Quels domaines de votre vie préfèrent encore l'obscurité à la lumière, de peur que vos œuvres ne soient dévoilées?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Jean 3.1-21 · 2026-06-19 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Jean : le Verbe fait chair&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'Évangile</a>
+    <a href="Recherche-MacArthur-Jean-3-1-21.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

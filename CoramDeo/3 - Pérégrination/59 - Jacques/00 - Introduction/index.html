@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'épître de Jacques · La foi qui agit</title>
+<meta name="description" content="Présentation de l'épître de Jacques pour une étude biblique : introduction, les cinq chapitres et la leçon centrale. Église Baptiste de Charlesbourg, pasteur Simon Ouellette.">
+<meta name="author" content="Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+
+  .pill{
+    display:inline-block;padding:.7rem 1.7rem;
+    border:1px solid var(--filet-fort);border-radius:999px;
+    color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    transition:border-color .3s,color .3s;
+  }
+  .pill:hover{border-color:var(--or);color:var(--feuille-vif);}
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Ajouts canoniques : byline hero + mouvements (conditionnels) ---- */
+  .hero__meta{
+    margin-top:1rem;font-size:.78rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .mouvement-titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.5rem,1.1rem + 1.4vw,2.05rem);line-height:1.15;
+    color:var(--or-clair);margin:3.2rem 0 .2rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;
+    padding-bottom:.55rem;border-bottom:1px solid var(--filet);
+  }
+  .mouvement-titre:first-of-type{margin-top:2.4rem;}
+  .mouvement-ref{
+    font-family:"EB Garamond",serif;font-weight:400;
+    font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Prédication : accès aux douze recherches ---- */
+  .semaines{
+    list-style:none;margin:2.4rem 0 0;padding:0;
+    display:grid;gap:1.1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));
+  }
+  .semaine{margin:0;}
+  .semaine a{
+    display:flex;flex-direction:column;gap:.55rem;height:100%;
+    padding:1.45rem 1.5rem 1.55rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;color:var(--encre);
+    transition:border-left-color .3s,transform .3s,background .3s,box-shadow .3s;
+  }
+  .semaine a:hover{
+    border-left-color:var(--or-clair);transform:translateX(3px);
+    background:linear-gradient(180deg,rgba(232,132,60,.13),rgba(232,132,60,.05));
+    box-shadow:0 8px 26px rgba(0,0,0,.32);
+  }
+  .semaine a:focus-visible{outline:2px solid var(--or);outline-offset:3px;}
+  .semaine__num{
+    font-family:"Cormorant Garamond",serif;font-size:.82rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .semaine__titre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.55rem;line-height:1.14;color:var(--encre);
+    transition:color .3s;
+  }
+  .semaine a:hover .semaine__titre{color:var(--or-clair);}
+  .semaine__ref{
+    margin-top:auto;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--encre-doux);
+  }
+  .semaine__go{
+    margin-left:auto;color:var(--or);font-size:1.05em;
+    transition:transform .3s;
+  }
+  .semaine a:hover .semaine__go{transform:translateX(4px);}
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Jacques</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#intro">Introduction</a>
+    <a href="#ch1">Ch. 1</a>
+    <a href="#ch2">Ch. 2</a>
+    <a href="#ch3">Ch. 3</a>
+    <a href="#ch4">Ch. 4</a>
+    <a href="#ch5">Ch. 5</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#predication">Prédication</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Épître de</p>
+    <h1 class="hero__title">Jacques</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Si quelqu'un croit être religieux, sans tenir sa langue en bride, mais en trompant son cœur, la religion de cet homme est vaine. La religion pure et sans tache, devant Dieu notre Père, consiste à visiter les orphelins et les veuves dans leurs afflictions, et à se préserver des souillures du monde.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Jacques 1.26-27 · NEG</p>
+    <p class="hero__series">Série : <b>La foi qui agit</b></p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <article class="section section--intro reveal" id="intro">
+    <header class="sec-head">
+      <p class="kicker">Introduction</p>
+      <h2 class="sec-title">Une lettre pour une foi qui agit</h2>
+      <p class="ref">Épitre de Jacques</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Jacques, serviteur de Dieu et du Seigneur Jésus-Christ, aux douze tribus qui sont dans la dispersion, salut !</p>
+        <cite class="verse__ref">Jacques 1.1 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">La religion pure et sans tache, devant Dieu notre Père, consiste à visiter les orphelins et les veuves dans leurs afflictions, et à se préserver des souillures du monde.</p>
+        <cite class="verse__ref">Jacques 1.27 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">L'épître de Jacques ; courte lettre du Nouveau Testament qui en quelques pages pose une  question fondamentale : votre foi se voit-elle dans votre vie ?</p>
+    <ul class="points">
+      <li><b>«&nbsp;L'épître de paille&nbsp;».</b> Peu de livres de la Bible ont été autant discutés que cette courte lettre. Martin Luther lui-même la jugeait avec méfiance, allant jusqu'à la traiter d'«&nbsp;épître de paille&nbsp;». Mais cette paille cache assez d'aiguilles pour piquer la conscience de tout croyant : Jacques est aussi exigeant qu'il est pratique.</li>
+      <li><b>L'auteur : Jacques le Juste.</b> L'auteur se présente lui-même : «&nbsp;Jacques, serviteur de Dieu et du Seigneur Jésus-Christ&nbsp;» (Jacques 1.1). Il s'agit de Jacques le Juste, le demi-frère du Seigneur, fils de Marie et de Joseph (Matthieu 13.55). Chose remarquable, il n'avait pas cru en Jésus durant le ministère terrestre du Seigneur (Jean 7.5), mais le Ressuscité lui apparut (1 Corinthiens 15.7), et il devint ensuite un conducteur reconnu de l'Église de Jérusalem (Actes 15.13).</li>
+      <li><b>Une «&nbsp;colonne&nbsp;» de l'Église.</b> Paul le compte parmi les «&nbsp;colonnes&nbsp;» de l'Église, aux côtés de Pierre et de Jean (Galates 2.9). Surnommé «&nbsp;le juste&nbsp;» pour sa piété, il mourut en martyr vers l'an 62, selon l'historien Flavius Josèphe.</li>
+      <li><b>Une date très ancienne (44-49 ap. J.-C.).</b> La lettre est très ancienne, écrite sans doute vers 44 à 49 après Jésus-Christ. Elle ne souffle pas un mot du grand concile de Jérusalem (Actes 15) ni du débat sur l'accueil des non-Juifs, ce qui invite à la dater avant ces événements. Elle est probablement le tout premier écrit du Nouveau Testament.</li>
+      <li><b>Des destinataires éprouvés.</b> Jacques s'adresse «&nbsp;aux douze tribus qui sont dans la dispersion&nbsp;» (Jacques 1.1), c'est-à-dire à des croyants d'origine juive éparpillés loin de chez eux et déjà éprouvés par la pauvreté et la persécution. Il les appelle quinze fois «&nbsp;frères&nbsp;», avec la chaleur d'un pasteur qui connaît leurs combats. Sa lettre veut affermir leur foi au milieu de l'épreuve.</li>
+      <li><b>Une épître générale, complément de Paul.</b> Avec les lettres de Pierre, Jean et Jude, Jacques fait partie des épîtres dites générales, qui complètent l'enseignement de Paul (2 Pierre 3.15-16). Là où Paul insiste sur la foi (Romains 1.17; Éphésiens 2.8-9), Jacques attire l'attention sur la conduite (Jacques 2.17-18), Pierre sur l'espérance (1 Pierre 1.3-5), Jean sur l'amour (1 Jean 4.7-11) et Jude sur la pureté (Jude 3-4, 24). Loin de se contredire, Paul et Jacques se complètent : Paul décrit la foi intérieure qui sauve (Romains 10.9-10), Jacques la foi extérieure qui sert (Jacques 2.18), et la vraie semence de l'une se reconnaît au fruit visible de l'autre (Matthieu 7.16-20; Galates 5.6).</li>
+      <li><b>«&nbsp;Les Proverbes du Nouveau Testament&nbsp;».</b> On a justement surnommé ce livre «&nbsp;les Proverbes du Nouveau Testament&nbsp;». Ce n'est pas un raisonnement serré comme l'épître aux Romains, mais un véritable sermon : <span class="surligne italique">54 appels à l'action en 108 versets,</span> soit en moyenne un ordre tous les 2 versets. Jacques y multiplie les images tirées de la nature, plus que toutes les épîtres de Paul réunies, dans le sillage du Sermon sur la montagne de Jésus (Matthieu 5 à 7).</li>
+      <li><b>Un fil très net : cinq attitudes.</b> Sous cette apparente liberté de proverbes, la lettre suit pourtant un fil très net. Elle décrit cinq attitudes d'une foi vivante : <span class="surligne">Chapitre 1 - Supporter les épreuves avec confiance, Chapitre 2 - Servir avec compassion, Chapitre 3 - Veiller sur ses paroles, Chapitre 4 - S'abaisser avec humilité et Chapitre 5 - Partager sans comptabiliser.</span> Les perles ne roulent pas en vrac : elles sont soigneusement enfilées pour former un seul collier.</li>
+      <li><b>Une seule conviction.</b> <span class="surligne">Une seule conviction traverse tout le livre : la foi authentique se prouve par ses fruits.</span> Jacques ne propose pas une autre voie de salut que l'apôtre Paul ; il met simplement à l'épreuve la réalité d'une foi qu'on dit posséder. Le verset 1.26-27 servira de fil conducteur à cette page : la vraie religion ne reste pas dans les idées, elle se voit dans une vie changée.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CHAPITRE 1 ============ -->
+  <article class="section reveal" id="ch1">
+    <header class="sec-head">
+      <div class="sec-num">I</div>
+      <p class="kicker">Chapitre 1</p>
+      <h2 class="sec-title">L'épreuve de la foi : recevoir et pratiquer la Parole</h2>
+      <p class="ref">Jacques 1</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Heureux l'homme qui supporte patiemment la tentation; car, après avoir été éprouvé, il recevra la couronne de vie, que le Seigneur a promise à ceux qui l'aiment.</p>
+        <cite class="verse__ref">Jacques 1.12 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Mettez en pratique la parole, et ne vous bornez pas à l'écouter, en vous trompant vous-mêmes par de faux raisonnements.</p>
+        <cite class="verse__ref">Jacques 1.22 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Dès les premiers mots, Jacques pose la thèse de toute sa lettre : la foi authentique se vérifie, et son premier banc d'essai est l'épreuve. Le chapitre 1 nous conduit de l'épreuve qui mûrit la foi jusqu'à la Parole qu'il faut non seulement écouter, mais pratiquer.</p>
+    <ul class="points">
+      <li><b>Une joie qui se décide.</b> Jacques commence par un commandement surprenant : «&nbsp;Mes frères, regardez comme un sujet de joie complète les diverses épreuves auxquelles vous pouvez être exposés&nbsp;» (Jacques 1.2, NEG). Cette joie n'est pas un sentiment que l'on se force à ressentir, mais une décision de la foi qui regarde au but de l'épreuve. Car «&nbsp;l'épreuve de votre foi produit la patience&nbsp;» (Jacques 1.3, NEG), et cette patience mène à la maturité.</li>
+      <li><b>L'or et l'orfèvre.</b> Comme l'orfèvre chauffe l'or non pour le détruire mais pour en révéler la pureté, Dieu ordonne l'épreuve dans sa providence pour prouver et affermir une foi véritable. Dans cette épreuve, à qui manque de sagesse, Jacques dit de la demander à Dieu avec foi, sans être «&nbsp;un homme irrésolu&nbsp;» (Jacques 1.8, NEG), au cœur partagé entre Dieu et le monde. Et à celui qui tient bon est promise «&nbsp;la couronne de vie&nbsp;» (Jacques 1.12, NEG), non comme un salaire mérité, mais comme un don de grâce.</li>
+      <li><b>Épreuve ou tentation ?</b> Il faut alors distinguer deux choses que l'on confond facilement. L'épreuve vient de Dieu, qui la permet pour notre bien, mais la tentation, elle, ne vient jamais de Dieu : «&nbsp;Dieu ne peut être tenté par le mal, et il ne tente lui-même personne&nbsp;» (Jacques 1.13, NEG). La sollicitation au péché ne descend pas d'en haut, elle monte de notre propre cœur : «&nbsp;chacun est tenté quand il est attiré et amorcé par sa propre convoitise&nbsp;» (Jacques 1.14, NEG).</li>
+      <li><b>Tout bon don vient d'en haut.</b> Au contraire, de Dieu ne descendent que des bienfaits : «&nbsp;toute grâce excellente et tout don parfait descendent d'en haut, du Père des lumières&nbsp;» (Jacques 1.17, NEG). C'est ce Père immuable qui «&nbsp;nous a engendrés selon sa volonté par la parole de vérité&nbsp;» (Jacques 1.18, NEG). Notre nouvelle naissance est son œuvre souveraine, pas le fruit de notre volonté : Dieu seul fait naître la vie, comme un nouveau-né ne se donne pas la vie à lui-même.</li>
+      <li><b>Écouter et pratiquer la Parole.</b> C'est pourquoi notre rapport à la Parole devient le test de cette vie reçue. Jacques exhorte à être «&nbsp;prompt à écouter, lent à parler, lent à se mettre en colère&nbsp;» (Jacques 1.19, NEG), puis à recevoir avec douceur la Parole et à la mettre en pratique. «&nbsp;Mettez en pratique la parole, et ne vous bornez pas à l'écouter, en vous trompant vous-mêmes par de faux raisonnements&nbsp;» (Jacques 1.22, NEG) : écouter sans agir, c'est se regarder dans un miroir puis oublier aussitôt son visage.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CHAPITRE 2 ============ -->
+  <article class="section reveal" id="ch2">
+    <header class="sec-head">
+      <div class="sec-num">II</div>
+      <p class="kicker">Chapitre 2</p>
+      <h2 class="sec-title">La foi qui agit : l'amour impartial et les œuvres</h2>
+      <p class="ref">Jacques 2</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Si vous accomplissez la loi royale, selon l'Écriture : Tu aimeras ton prochain comme toi-même, vous faites bien.</p>
+        <cite class="verse__ref">Jacques 2.8 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Il en est ainsi de la foi : si elle n'a pas les œuvres, elle est morte en elle-même.</p>
+        <cite class="verse__ref">Jacques 2.17 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Le chapitre 2 est le sommet de l'épître : il met la foi à l'épreuve, d'abord par la manière dont nous traitons le pauvre, puis par la grande question des œuvres. Jacques y répond à une seule interrogation : votre foi est-elle vivante ou morte ?</p>
+    <ul class="points">
+      <li><b>L'acception de personnes.</b> Imaginez l'assemblée qui accueille un homme riche, bagues d'or et bel habit, en lui offrant la meilleure place, tandis qu'un pauvre est laissé debout ou par terre (2.2-3). Jacques appelle cela l'acception de personnes, c'est-à-dire juger les gens d'après les apparences. Une telle partialité contredit en acte la foi que l'on professe au Christ de gloire, devant qui tout rang humain s'efface.</li>
+      <li><b>La loi royale : aimer son prochain.</b> Cette préférence pour le riche viole la loi royale, ce commandement souverain qui résume tous les autres : «&nbsp;Tu aimeras ton prochain comme toi-même&nbsp;» (Lévitique 19.18, cité en Jacques 2.8). Dieu lui-même ne fait pas acception de personnes ; il a même choisi les pauvres pour les rendre riches dans la foi (2.5). Et Jacques conclut sur une note d'espérance : «&nbsp;la miséricorde triomphe du jugement&nbsp;» (Jacques 2.13), car celui qui a reçu la grâce de Dieu en devient à son tour un canal.</li>
+      <li><b>Une foi sans œuvres est morte.</b> La seconde moitié du chapitre pose la grande question : une foi sans œuvres peut-elle sauver ? La réponse de Jacques est tranchante : «&nbsp;Il en est ainsi de la foi : si elle n'a pas les œuvres, elle est morte en elle-même&nbsp;» (Jacques 2.17). Pour le prouver, il rappelle que les démons aussi croient qu'il y a un seul Dieu, et ils tremblent (2.19) : la foi qui sauve n'est donc ni la simple exactitude doctrinale ni l'émotion religieuse.</li>
+      <li><b>Deux témoins : Abraham et Rahab.</b> Jacques produit deux témoins, le patriarche Abraham et la prostituée Rahab (2.21-25). Abraham fut déclaré juste par la foi bien avant l'offrande d'Isaac (Genèse 15.6) ; des décennies plus tard, cette œuvre n'a pas créé sa foi mais l'a démontrée et menée à maturité. Le choix d'un homme vénéré et d'une étrangère improbable dit que Dieu sauve tous les croyants sur un seul et même principe.</li>
+      <li><b>Paul et Jacques s'accordent.</b> Ce passage semble heurter l'apôtre Paul, qui écrit que «&nbsp;l'homme est justifié par la foi, sans les œuvres de la loi&nbsp;» (Romains 3.28 versus Jacques 2.17). En réalité ils s'accordent, car le même verbe «&nbsp;justifier&nbsp;» porte chez eux deux sens : Paul décrit comment le pécheur est déclaré juste devant Dieu, par la foi seule sans aucun mérite, tandis que Jacques décrit comment le croyant est démontré juste devant les hommes, par une foi vivante qui produit nécessairement des œuvres. La formule des Réformés le dit en une phrase : la foi seule sauve, mais la foi qui sauve n'est jamais seule. Jamais de salut gagné par les œuvres, jamais non plus de grâce à bon marché qui laisserait le cœur inchangé.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CHAPITRE 3 ============ -->
+  <article class="section reveal" id="ch3">
+    <header class="sec-head">
+      <div class="sec-num">III</div>
+      <p class="kicker">Chapitre 3</p>
+      <h2 class="sec-title">La foi qui parle : la langue et la sagesse d'en haut</h2>
+      <p class="ref">Jacques 3</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mais la langue, aucun homme ne peut la dompter ; c'est un mal qu'on ne peut réprimer ; elle est pleine d'un venin mortel.</p>
+        <cite class="verse__ref">Jacques 3.8 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">La sagesse d'en haut est premièrement pure, ensuite pacifique, modérée, conciliante, pleine de miséricorde et de bons fruits, exempte de duplicité, d'hypocrisie.</p>
+        <cite class="verse__ref">Jacques 3.17 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">La foi vivante se vérifie d'abord dans nos paroles. Jacques nous conduit de la bouche au cœur, puis du cœur à la vraie sagesse.</p>
+    <ul class="points">
+      <li><b>Un avertissement pour tous.</b> Jacques commence par avertir ceux qui veulent enseigner : ils seront jugés plus sévèrement (3.1). Puis il élargit aussitôt à tous : «&nbsp;nous bronchons tous de bien des manières&nbsp;» (Jacques 3.2). Personne n'échappe au pouvoir de sa propre langue.</li>
+      <li><b>Le mors, le gouvernail, le feu.</b> Pour le montrer, Jacques accumule des images frappantes. Comme le petit mors dirige le cheval et le petit gouvernail le navire, la langue, ce petit membre, décide du sort de tout l'être (3.3-5). Elle est aussi un feu, capable d'embraser toute une forêt d'une seule étincelle (3.6).</li>
+      <li><b>Une langue indomptable.</b> Surtout, Jacques affirme une chose troublante : la langue est «&nbsp;un mal qu'on ne peut réprimer&nbsp;», «&nbsp;pleine d'un venin mortel&nbsp;» (Jacques 3.8). Attention : ce passage n'est pas un cours pour mieux parler. Si l'homme dompte toutes les bêtes mais reste impuissant devant sa propre langue (Jacques 3.7-8), c'est que le problème n'est pas la bouche, mais le cœur.</li>
+      <li><b>Le déversoir du cœur.</b> Jésus l'a dit : «&nbsp;c'est de l'abondance du cœur que la bouche parle&nbsp;» (Matthieu 12.34). La langue n'est que le déversoir audible du cœur. On ne guérit pas une fièvre en cassant le thermomètre : il faut un cœur nouveau, que seul l'Esprit de Dieu peut donner en nous faisant naître de nouveau.</li>
+      <li><b>La fausse sagesse, d'en bas.</b> Cette racine du cœur, Jacques la nomme dans la seconde moitié du chapitre (3.13-18) : la sagesse. Il en oppose deux. La fausse sagesse est terrestre, animale, démoniaque, marquée par la jalousie et l'esprit de rivalité (3.14-16) ; elle peut être brillante et religieuse, mais elle vient d'en bas et produit le désordre.</li>
+      <li><b>La sagesse d'en haut.</b> La sagesse d'en haut, au contraire, est un don de Dieu (Jacques 1.5). Elle est «&nbsp;premièrement pure, ensuite pacifique&nbsp;» (Jacques 3.17), et cet ordre compte : il n'y a pas de vraie paix au prix d'un compromis avec le péché. Comme la foi du chapitre 2, cette sagesse se prouve par ses fruits, par la douceur d'une vie conforme à celle de Christ.</li>
+      <li><b>Une promesse pour les artisans de paix.</b> Jacques termine par une promesse : «&nbsp;le fruit de la justice est semé dans la paix par ceux qui recherchent la paix&nbsp;» (Jacques 3.18). Le travail patient de la paix n'est jamais perdu, car Dieu lui réserve une moisson.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CHAPITRE 4 ============ -->
+  <article class="section reveal" id="ch4">
+    <header class="sec-head">
+      <div class="sec-num">IV</div>
+      <p class="kicker">Chapitre 4</p>
+      <h2 class="sec-title">La foi humble : contre l'amitié du monde et l'orgueil</h2>
+      <p class="ref">Jacques 4</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Mais il accorde une grâce d'autant plus grande. C'est pourquoi l'Écriture dit : Dieu résiste aux orgueilleux, mais il fait grâce aux humbles.</p>
+        <cite class="verse__ref">Jacques 4.6 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">vous qui ne savez pas ce qui arrivera demain ! car, qu'est-ce que votre vie ? Vous êtes une vapeur qui paraît pour un peu de temps, et qui ensuite disparaît.</p>
+        <cite class="verse__ref">Jacques 4.14 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Au cœur le plus tranchant de l'épître, Jacques remonte des querelles visibles jusqu'à leur racine cachée : un cœur ami du monde et gonflé d'orgueil. Mais au centre de cet avertissement sévère jaillit l'évangile : Dieu fait grâce aux humbles.</p>
+    <ul class="points">
+      <li><b>D'où viennent les conflits ?</b> Le chapitre s'ouvre sur une question directe : d'où viennent les conflits et les luttes parmi vous (4.1) ? Jacques ne traite pas les querelles comme de simples malentendus à régler par la bonne méthode. Il les fait remonter aux désirs qui combattent dans le cœur, ce désir de plaisir et de possession qui n'obtient jamais assez. MacArthur y voit le portrait de l'homme non régénéré, esclave de ses convoitises, et appelle chacun à s'examiner : à qui mon cœur appartient-il vraiment ?</li>
+      <li><b>L'amitié du monde, une infidélité.</b> Au verset 4, le ton devient brûlant : «&nbsp;Adultères !&nbsp;» Ce n'est pas une accusation de péché sexuel, mais une image que les prophètes employaient sans cesse : courtiser le monde, c'est trahir Dieu comme une épouse infidèle trahit son mari. Le monde désigne ici le système humain organisé en révolte contre Dieu. Pour MacArthur, l'attachement persistant à ce monde prouve qu'on n'a pas été racheté (1 Jean 2.15-17) : se faire l'ami du monde, c'est par là même se constituer ennemi de Dieu.</li>
+      <li><b>Pas de double appartenance.</b> Voilà l'affirmation centrale du passage : on ne peut pas aimer le monde et aimer Dieu en même temps. Il n'existe pas de double appartenance du cœur, pas de compromis tranquille. Se faire l'ami du monde, c'est par là même se constituer ennemi de Dieu.</li>
+      <li><b>Dieu fait grâce aux humbles.</b> Mais le verset 6 fait tout basculer : «&nbsp;Dieu résiste aux orgueilleux, mais il fait grâce aux humbles.&nbsp;» Cet avertissement, le plus dur de l'épître, s'ouvre soudain sur la bonne nouvelle : la grâce de Dieu est toujours plus grande que le péché. Ce n'est pas l'énormité de la faute qui ferme la porte, mais l'orgueil. Les dix impératifs qui suivent, soumettez-vous à Dieu, résistez au diable, approchez-vous de Dieu, humiliez-vous (4.7-10), décrivent, selon MacArthur, l'humilité même de la foi qui sauve : un appel à la vraie conversion, à transférer sa loyauté du monde à Dieu, et non un programme d'auto-amélioration.</li>
+      <li><b>L'humilité : la langue et les projets.</b> La seconde moitié du chapitre décline cette humilité sur deux terrains où l'orgueil ressurgit aussitôt. D'abord la langue : ne dites pas de mal les uns des autres et ne jugez pas votre frère, car se faire juge à la place de Dieu, c'est usurper le trône de l'unique Législateur et Juge (4.11-12). Ensuite les projets : ne présumez pas de l'avenir, car notre vie n'est qu'une vapeur qui paraît pour un peu de temps, puis disparaît (4.14).</li>
+      <li><b>Planifier sous la volonté de Dieu.</b> Attention au contresens : planifier n'est pas un péché. Jacques ne condamne ni le travail, ni la prévoyance, ni le profit honnête. Ce qu'il vise, c'est l'homme qui dispose de demain comme si Dieu n'existait pas. Le remède n'est pas une formule magique à réciter, mais une vraie disposition du cœur : «&nbsp;si le Seigneur le veut, nous vivrons et nous ferons ceci ou cela&nbsp;» (4.15).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CHAPITRE 5 ============ -->
+  <article class="section reveal" id="ch5">
+    <header class="sec-head">
+      <div class="sec-num">V</div>
+      <p class="kicker">Chapitre 5</p>
+      <h2 class="sec-title">La foi qui persévère : patience, richesse et prière</h2>
+      <p class="ref">Jacques 5</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Soyez donc patients, frères, jusqu'à l'avènement du Seigneur. Voici, le laboureur attend le précieux fruit de la terre, prenant patience à son égard, jusqu'à ce qu'il ait reçu les pluies de la première et de l'arrière-saison.</p>
+        <cite class="verse__ref">Jacques 5.7 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Confessez donc vos péchés les uns aux autres, et priez les uns pour les autres, afin que vous soyez guéris. La prière agissante du juste a une grande efficacité.</p>
+        <cite class="verse__ref">Jacques 5.16 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Jacques referme sa lettre sur trois urgences du cœur croyant : un avertissement aux riches qui oppriment, un appel à la patience jusqu'au retour du Seigneur (Parousie), et un dernier mot sur la prière dans toutes les saisons de la vie.</p>
+    <ul class="points">
+      <li><b>Avertissement aux riches oppresseurs.</b> Le chapitre s'ouvre par un avertissement sévère, à la manière des prophètes, contre les riches oppresseurs (5.1-6). Ces hommes ont retenu le salaire des ouvriers qui ont moissonné leurs champs, et ce salaire volé crie vers Dieu. Selon MacArthur, ce ne sont pas de simples étrangers : ce sont des riches méchants qui se prétendent chrétiens et s'associent à l'assemblée (à la différence des vrais croyants riches de 1 Timothée 6.17-19), mais n'adorent que l'argent. Jacques ne les appelle pas «&nbsp;frères&nbsp;» et ne les invite pas à se repentir : leur jugement est annoncé.</li>
+      <li><b>La richesse ne sauve pas.</b> Le point fort est que leur richesse amassée ne les sauvera pas. L'or qui se rouille et les habits rongés par les mites témoigneront contre eux au jour du jugement. La richesse n'est pas condamnée en elle-même, mais le cœur qui s'y confie et qui écrase le faible pour l'accumuler.</li>
+      <li><b>Patienter comme le cultivateur.</b> À partir du verset 7, Jacques se tourne vers ses «&nbsp;frères&nbsp;» avec un «&nbsp;donc&nbsp;» décisif : puisque Dieu jugera l'injustice, l'opprimé n'a pas à se venger, il doit patienter. Comme le cultivateur attend la pluie qu'il ne peut commander, le croyant tient bon, «&nbsp;car l'avènement du Seigneur est proche&nbsp;» (5.8) et «&nbsp;le juge est à la porte&nbsp;» (5.9). Job, qui se plaignit mais ne lâcha jamais Dieu, en est l'exemple : la patience biblique n'est pas un calme surhumain, c'est le refus d'abandonner la foi.</li>
+      <li><b>Le retour du Seigneur .</b> Sur ce retour du Seigneur (Parousie), l'église EBC prêche un retour imminent lu dans un cadre dispensationaliste et prémillénariste, qui distingue Israël et l'Église et attend un règne terrestre à venir. Pour MacArthur, ce prémillénarisme n'est pas une option parmi d'autres, mais le fruit d'une herméneutique littérale tenue jusqu'au bout ; il y joint l'attente d'un enlèvement de l'Église avant la grande tribulation. </li>
+      <li><b>La prière dans chaque saison.</b> La dernière section (5.13-20) place la prière dans chaque saison : que celui qui souffre prie, que celui qui est joyeux chante, que le malade fasse venir les anciens. L'onction d'huile et «&nbsp;la prière de la foi&nbsp;» (5.15) ne sont ni une guérison miraculeuse garantie ni l'extrême-onction du mourant : MacArthur y voit avant tout le relèvement du croyant affligé et affaibli, épuisé et abattu par l'épreuve, que les anciens viennent fortifier par l'intercession ; l'huile elle-même tient moins du remède que du geste d'encouragement et de réconfort. C'est un soin pastoral remis à la volonté souveraine de Dieu, qui restaure les siens en son temps, sans promesse de guérison physique automatique. Élie, «&nbsp;homme de la même nature que nous&nbsp;» (5.17), pria et fut exaucé, preuve que Dieu écoute les siens, même ordinaires.</li>
+      <li><b>Ramener celui qui s'égare.</b> La lettre s'achève sans salutation, sur un envoi : aller rechercher celui qui s'égare de la vérité pour le ramener. Cette restauration fraternelle «&nbsp;sauvera une âme de la mort&nbsp;» (5.20). L'égaré est ici un croyant déclaré dont la foi se révèle morte (cf. 2.14-26) : en le ramenant à la vraie foi, l'assemblée le sauve de la mort éternelle. La persévérance des saints n'est pas contredite : celui qui s'éloigne définitivement démontre qu'il n'a jamais été sauvé.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ CONCLUSION ============ -->
+  <article class="section section--conclusion reveal" id="conclusion">
+    <header class="sec-head">
+      <p class="kicker">Conclusion</p>
+      <h2 class="sec-title">La leçon centrale de l'épître</h2>
+      <p class="ref">Jacques 1 à 5</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Il en est ainsi de la foi : si elle n'a pas les œuvres, elle est morte en elle-même.</p>
+        <cite class="verse__ref">Jacques 2.17 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">La religion pure et sans tache, devant Dieu notre Père, consiste à visiter les orphelins et les veuves dans leurs afflictions, et à se préserver des souillures du monde.</p>
+        <cite class="verse__ref">Jacques 1.27 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">D'un bout à l'autre, Jacques pose une seule question, et c'est aussi la nôtre : votre foi est-elle vivante ? Une foi vivante ne reste jamais les bras croisés ; elle se prouve par ses fruits, de l'épreuve jusqu'à la prière.</p>
+    <ul class="points">
+      <li><b>Le chemin parcouru.</b> Tout commence au banc d'épreuve du chapitre 1, où la foi est éprouvée avant d'être prouvée, puis s'élève vers le sommet du livre, la foi qui agit du chapitre 2, le cœur de toute l'épître.</li>
+      <li><b>La grâce au point le plus bas.</b> De là, Jacques redescend dans le concret de la vie : la langue qui révèle le cœur, les deux sagesses, l'argent, les conflits. Le point le plus bas est l'appel à s'abaisser devant Dieu, et c'est précisément là que jaillit la grâce : «&nbsp;Dieu résiste aux orgueilleux, mais il fait grâce aux humbles&nbsp;» (Jacques 4.6).</li>
+      <li><b>L'espérance du retour.</b> Le livre ne se termine pas sur un effort à fournir, mais sur l'espérance : «&nbsp;l'avènement du Seigneur est proche&nbsp;» et «&nbsp;le juge se tient à la porte&nbsp;» (Jacques 5.8-9). C'est une vérité biblique : Christ revient, et son retour appelle la patience et la sainteté.</li>
+      <li><b>Une foi qui n'est pas privée.</b> L'épître s'achève alors sur une communauté qui prie dans toutes les saisons et qui va rechercher celui qui s'égare (Jacques 5.16-20). La foi vivante n'est pas une affaire privée ; elle veille les uns sur les autres.</li>
+      <li><b>La leçon centrale.</b> Voilà la leçon centrale, et elle réconcilie Jacques avec l'apôtre Paul. Paul explique comment un pécheur est déclaré juste devant Dieu : par la foi seule, sans les œuvres. Jacques décrit la nature de cette foi qui sauve : une foi vivante produit toujours des œuvres, tandis qu'«&nbsp;une foi sans œuvres est morte&nbsp;» (Jacques 2.17).</li>
+      <li><b>Revenir à Christ.</b> L'appel final n'est donc pas de redoubler d'effort moral, mais de revenir à Christ. C'est son Esprit qui produit nécessairement le fruit chez ceux qui sont vraiment unis à lui ; la vraie religion se voit alors dans une vie changée (Jacques 1.27).</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PRÉDICATION ============ -->
+  <article class="section reveal" id="predication">
+    <header class="sec-head">
+      <p class="kicker">Prédication</p>
+      <h2 class="sec-title">Les douze recherches de la série</h2>
+      <p class="ref">Jacques 1 à 5 · 12 semaines</p>
+    </header>
+    <p class="lead">La série «&nbsp;La foi qui agit&nbsp;» se déploie sur douze semaines d'exposition suivie. Chaque passage dispose d'une recherche exégétique complète : choisissez une semaine pour ouvrir sa recherche et préparer la prédication.</p>
+    <ul class="semaines">
+      <li class="semaine"><a href="../01%20-%20La%20joie%20au%20creuset%20de%20l%27%C3%A9preuve%20%28Jacques%201.1-12%29/index.html">
+        <span class="semaine__num">Semaine 1</span>
+        <span class="semaine__titre">La joie au creuset de l'épreuve</span>
+        <span class="semaine__ref">Jacques 1.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../02%20-%20Le%20Dieu%20qui%20ne%20change%20pas%20%28Jacques%201.13-18%29/index.html">
+        <span class="semaine__num">Semaine 2</span>
+        <span class="semaine__titre">Le Dieu qui ne change pas</span>
+        <span class="semaine__ref">Jacques 1.13-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../03%20-%20Auditeurs%20ou%20praticiens%20%28Jacques%201.19-27%29/index.html">
+        <span class="semaine__num">Semaine 3</span>
+        <span class="semaine__titre">Auditeurs ou praticiens</span>
+        <span class="semaine__ref">Jacques 1.19-27<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../04%20-%20La%20foi%20sans%20partialit%C3%A9%20%28Jacques%202.1-13%29/index.html">
+        <span class="semaine__num">Semaine 4</span>
+        <span class="semaine__titre">La foi sans partialité</span>
+        <span class="semaine__ref">Jacques 2.1-13<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../05%20-%20La%20foi%20qui%20agit%20%28Jacques%202.14-26%29/index.html">
+        <span class="semaine__num">Semaine 5</span>
+        <span class="semaine__titre">La foi qui agit</span>
+        <span class="semaine__ref">Jacques 2.14-26<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../06%20-%20Le%20petit%20membre%2C%20le%20grand%20feu%20%28Jacques%203.1-12%29/index.html">
+        <span class="semaine__num">Semaine 6</span>
+        <span class="semaine__titre">Le petit membre, le grand feu</span>
+        <span class="semaine__ref">Jacques 3.1-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../07%20-%20Deux%20sagesses%20%28Jacques%203.13-18%29/index.html">
+        <span class="semaine__num">Semaine 7</span>
+        <span class="semaine__titre">Deux sagesses</span>
+        <span class="semaine__ref">Jacques 3.13-18<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../08%20-%20L%27amiti%C3%A9%20du%20monde%20%28Jacques%204.1-10%29/index.html">
+        <span class="semaine__num">Semaine 8</span>
+        <span class="semaine__titre">L'amitié du monde</span>
+        <span class="semaine__ref">Jacques 4.1-10<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../09%20-%20Si%20le%20Seigneur%20le%20veut%20%28Jacques%204.11-17%29/index.html">
+        <span class="semaine__num">Semaine 9</span>
+        <span class="semaine__titre">Si le Seigneur le veut</span>
+        <span class="semaine__ref">Jacques 4.11-17<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../10%20-%20Le%20cri%20des%20moissonneurs%20%28Jacques%205.1-6%29/index.html">
+        <span class="semaine__num">Semaine 10</span>
+        <span class="semaine__titre">Le cri des moissonneurs</span>
+        <span class="semaine__ref">Jacques 5.1-6<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../11%20-%20Patience%20jusqu%27%C3%A0%20son%20retour%20%28Jacques%205.7-12%29/index.html">
+        <span class="semaine__num">Semaine 11</span>
+        <span class="semaine__titre">Patience jusqu'à son retour</span>
+        <span class="semaine__ref">Jacques 5.7-12<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+      <li class="semaine"><a href="../12%20-%20La%20pri%C3%A8re%20qui%20agit%20%28Jacques%205.13-20%29/index.html">
+        <span class="semaine__num">Semaine 12</span>
+        <span class="semaine__titre">La prière qui agit</span>
+        <span class="semaine__ref">Jacques 5.13-20<span class="semaine__go" aria-hidden="true">&#8594;</span></span>
+      </a></li>
+    </ul>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Série «&nbsp;La foi qui agit&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../../../index.html" class="pill">&#8598;&nbsp;Exposition de l'Écriture</a>
+    <a href="Recherche.pdf" target="_blank" rel="noopener" class="pill">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

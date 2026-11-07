@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philippiens 3.17-4.1 · Citoyens des cieux · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Philippiens 3.17 à 4.1 : citoyens des cieux ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">Philippiens 3.17-4.1</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · Philippiens 3.17-4.1</p>
+    <h1 class="hero__title">Citoyens des cieux</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Nous sommes citoyens des cieux, d'où nous attendons aussi comme Sauveur le Seigneur Jésus-Christ.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">Philippiens 3.20 · NEG</p>
+    <p class="hero__series">Série : <b>Philippiens : la joie en Christ</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">Philippiens 3.17-4.1</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Soyez tous mes imitateurs, frères, et portez les regards sur ceux qui marchent selon le modèle que vous avez en nous.</p>
+        <cite class="verse__ref">Philippiens 3.17 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">C'est pourquoi, mes bien-aimés et très chers frères, vous qui êtes ma joie et ma couronne, demeurez ainsi fermes dans le Seigneur, mes bien-aimés!</p>
+        <cite class="verse__ref">Philippiens 4.1 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Philippiens 3.17 à 4.1 ferme la mise en garde contre l'anarchie, qui fait pendant à la mise en garde contre le légalisme&nbsp;: en une antithèse délibérée, Paul oppose deux marches, deux destinées et deux mondes, et place au centre l'identité véritable du croyant, citoyen des cieux qui attend de là un Sauveur.</p>
+    <div class="body">
+      <p>La péricope ferme la grande section des avertissements de Paul (3.1 à 4.1) et, plus précisément, la mise en garde contre l'anarchie (3.17 à 4.1) qui fait pendant à la mise en garde contre le légalisme (3.1-16). Après s'être présenté comme un coureur qui poursuit la conformité à Christ sans jamais croire l'avoir déjà saisie (3.12-16), l'apôtre tire la conséquence pratique de toute la course chrétienne&nbsp;: il oppose deux marches, deux destinées et deux mondes. D'un côté, ceux qui marchent selon le modèle qu'il offre lui-même; de l'autre, les ennemis de la croix dont la fin déclarée est la perdition. Au centre de cette opposition se dresse l'identité véritable du croyant&nbsp;: il est citoyen des cieux et il attend de là un Sauveur.</p>
+      <p>La péricope s'ouvre par un double impératif au verset 17, soyez mes imitateurs et portez les regards sur ceux qui marchent selon le modèle. Comme tous les croyants demeurent imparfaits, ils ont besoin de l'exemple de personnes moins imparfaites, qui savent réagir face à l'imperfection et fournissent un patron concret pour la marche de la sanctification. Paul était lui-même ce modèle privilégié (1 Corinthiens 11.1; 1 Thessaloniciens 1.6), et il invite les Philippiens à observer aussi Timothée et Epaphrodite, déjà présentés au chapitre 2 comme des serviteurs exemplaires (2.19-30).</p>
+      <p>Les versets 18-19 décrivent en larmes l'antimodèle&nbsp;: plusieurs marchent en ennemis de la croix de Christ, et leur fin sera la perdition. Le contraste éclate au verset 20 par le mais nous adversatif&nbsp;: par opposition à ceux qui ne pensent qu'aux choses terrestres, le croyant est citoyen des cieux, d'où il attend comme Sauveur le Seigneur Jésus-Christ, qui transformera le corps de notre humiliation. La péricope culmine au verset 4.1, c'est pourquoi qui sert de conclusion résolue, où Paul appelle ses bien-aimés, sa joie et sa couronne, à demeurer fermes dans le Seigneur. L'unité de sens est donc nette&nbsp;: une seule marche, une seule espérance et un ordre ferme de tenir bon.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">Philippiens 3.18 · 3.20 · 3.21</p>
+    </header>
+    <p class="lead">Philippes était une colonie romaine au plein sens du terme&nbsp;: ses habitants, fiers de leur citoyenneté de Rome tout en vivant loin de la capitale, comprenaient sans peine l'image d'une cité dont le registre des noms se trouve dans le ciel.</p>
+    <div class="body">
+      <p>Après la bataille de Philippes en 42 av. J.-C., la ville reçut le statut privilégié de colonie (cf. Actes 16.12), et de nombreux vétérans de l'armée romaine s'y installèrent. Grâce à ce statut, elle jouissait d'une autonomie relative et de droits réservés aux cités d'Italie&nbsp;: le recours à la loi romaine, l'exemption de certaines taxes et la citoyenneté romaine pour ses résidents. Les Philippiens tiraient un grand orgueil de leur appartenance à Rome; le latin était devenu langue officielle, et leurs coutumes comme leur gouvernement civil s'inspiraient du modèle italien. Que Paul décrive les chrétiens comme des citoyens des cieux (3.20) se justifie pleinement dans ce contexte&nbsp;: ces gens fiers d'être citoyens romains, vivant pourtant loin de Rome et réglant leur vie sur des lois venues d'ailleurs, comprenaient sans peine l'image d'une cité dont le registre des noms se trouve dans le ciel.</p>
+    </div>
+    <p>Trois traits échappent au lecteur moderne.</p>
+    <ul class="points">
+      <li><b>L'identité des ennemis de la croix.</b> Elle constitue, selon les notes, la seule question d'interprétation majeure du texte de l'épître. Ces hommes ne se déclaraient pas opposés à Christ, à son œuvre sur la croix ou au salut par grâce au moyen de la foi; ils se contentaient de se prétendre amis de Christ et assumaient peut-être même des responsabilités dans l'Église, mais ils ne poursuivaient pas la conformité à Christ dans leur conduite (3.18).</li>
+      <li><b>Judaïsants ou païens libertins.</b> Ces ennemis pouvaient être soit des Juifs, c'est-à-dire les judaïsants déjà visés au verset 2, soit des païens libertins, précurseurs du gnosticisme, qui adoptaient une philosophie dualiste virant à l'antinomisme, position consistant à rejeter toute loi morale. Paul avait déjà averti les Philippiens de ce danger à plusieurs reprises, comme il l'avait fait pour les anciens d'Éphèse, et avec la même réaction émue&nbsp;: en pleurant (cf. Actes 20.28-31).</li>
+      <li><b>L'attente eschatologique du corps transformé.</b> Le verbe rendu par nous attendons (3.20) est celui qu'emploient la plupart des passages évoquant la seconde venue de Christ&nbsp;: il dit une attente patiente, mais tenaillée par l'appétit que creusent de grandes espérances. La transformation promise du corps de notre humiliation (3.21) s'inscrit dans la doctrine de la résurrection corporelle qui accompagnera l'enlèvement de l'Église (1 Thessaloniciens 4.13-17; 1 Corinthiens 15.51-57)&nbsp;: les morts en Christ recevront un corps nouveau, et ceux qui seront encore vivants verront leur corps transformé sans passer par la mort.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de la péricope&nbsp;: du <i>summimētēs</i> qui imite un modèle vivant au <i>politeuma</i> céleste, jusqu'au verbe <i>metaschēmatizō</i> qui remodèle le corps de notre humiliation en corps de gloire.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">imitateurs</span><span class="mot-gr">summimētēs</span></th>
+            <td class="col-sens">co-imitateur, celui qui imite conjointement, qui prend modèle de concert avec d'autres</td>
+            <td>Au verset 17, Paul ordonne soyez tous mes imitateurs. Le terme dit l'imitation d'un modèle vivant, non la simple admiration. Comme tous les croyants demeurent imparfaits, ils ont besoin de l'exemple de personnes moins imparfaites, qui savent réagir face à l'imperfection et offrent un patron concret pour la recherche de la conformité à Christ. Paul se présentait lui-même comme ce modèle (1 Corinthiens 11.1; 1 Thessaloniciens 1.6), tout en renvoyant aussi les Philippiens à Timothée et Epaphrodite (2.19-20). L'imitation n'est donc pas un culte de la personnalité, mais l'observation attentive de la manière dont des chrétiens plus mûrs se comportent dans leur service pour Christ.</td>
+            <td><span class="trad"><span><b>S21</b> imitateurs</span><span><b>NEG79</b> imitateurs</span><span><b>Darby</b> imitateurs</span><span><b>LSG</b> imitateurs</span><span><b>KJF</b> ensemble suiveurs de moi</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">ennemis</span><span class="mot-gr">echthros</span></th>
+            <td class="col-sens">ennemi, adversaire, hostile; celui qui est en inimitié, opposé de fait</td>
+            <td>Au verset 18, Paul parle de ceux qui marchent en ennemis de la croix de Christ. Le mot désigne une hostilité réelle, mais le contexte précise sa portée&nbsp;: ces hommes ne se déclaraient pas opposés à Christ ni au salut par grâce au moyen de la foi. Leur inimitié se trahissait par leur conduite, car ils ne poursuivaient pas la conformité à Christ. Selon les notes, ils étaient soit des judaïsants comptant sur leurs propres œuvres pour gagner le salut, soit des païens libertins versant dans l'antinomisme. Dans les deux cas, leur marche démentait leur profession&nbsp;: on peut être ennemi de la croix sans la nier ouvertement, en y ajoutant des œuvres, comme les judaïsants, ou en vivant comme si elle n'exigeait aucune transformation, comme les libertins.</td>
+            <td><span class="trad"><span><b>S21</b> ennemis</span><span><b>NEG79</b> ennemis</span><span><b>Darby</b> ennemis</span><span><b>LSG</b> ennemis</span><span><b>KJF</b> ennemis</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">perdition</span><span class="mot-gr">apōleia</span></th>
+            <td class="col-sens">ruine, destruction, perte définitive; par extension, la damnation éternelle comme destinée ultime</td>
+            <td>Au verset 19, leur fin sera la perdition. Le mot grec rendu par fin renvoie à la destinée ultime d'une personne, et la perdition désigne ici la damnation éternelle. Les judaïsants y étaient promis parce qu'ils comptaient sur leurs propres bonnes œuvres pour gagner leur salut; il en allait de même des païens libertins, qui s'appuyaient sur l'intelligence humaine et niaient la puissance transformatrice de l'Évangile. Le terme tranche net&nbsp;: il n'y a pas de voie médiane entre la citoyenneté céleste et la ruine éternelle. La même racine sous-tend ailleurs l'opposition entre la perdition des ennemis de Dieu et le salut des croyants (cf. Philippiens 1.28).</td>
+            <td><span class="trad"><span><b>S21</b> perdition</span><span><b>NEG79</b> perdition</span><span><b>Darby</b> perdition</span><span><b>LSG</b> perdition</span><span><b>KJF</b> destruction</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">citoyens</span><span class="mot-gr">politeuma</span></th>
+            <td class="col-sens">communauté de citoyens, État, colonie; le corps civique auquel on appartient et dont on relève</td>
+            <td>Au verset 20, nous sommes citoyens des cieux traduit un mot qui désigne en grec une colonie d'étrangers, et qui, dans une source non chrétienne, peut indiquer une ville assez importante pour tenir des registres où figuraient les noms de tous ses citoyens. Pour des Philippiens fiers de leur citoyenneté romaine, l'image était immédiate&nbsp;: ils vivaient loin de la capitale, mais relevaient de ses lois et de son registre. Le croyant relève de même du royaume gouverné par son Père céleste&nbsp;: sa cité est le lieu où Dieu règne et où Christ est présent (Jean 14.2-3), son nom y est enregistré (Luc 10.20) et son héritage l'y attend (1 Pierre 1.4). Citoyen du ciel, il obéit aux lois célestes tout en demeurant pour un temps en terre étrangère (cf. 1 Pierre 2.11).</td>
+            <td><span class="trad"><span><b>S21</b> citoyens</span><span><b>NEG79</b> citoyens</span><span><b>Darby</b> bourgeoisie</span><span><b>LSG</b> cité</span><span><b>KJF</b> conversation</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">transformera</span><span class="mot-gr">metaschēmatizō</span></th>
+            <td class="col-sens">changer de forme extérieure, refaçonner, donner une nouvelle configuration; remodeler selon un autre schéma</td>
+            <td>Au verset 21, Christ transformera le corps de notre humiliation, en le rendant semblable au corps de sa gloire. Le verbe grec contient le mot qui a donné schéma&nbsp;: il dit le remodelage du corps selon une configuration nouvelle. Ceux qui sont morts en Christ mais vivent déjà avec lui en esprit (1.23; 2 Corinthiens 5.8) recevront un corps nouveau à la résurrection, lors de l'enlèvement de l'Église, tandis que ceux qui seront encore en vie verront leur corps transformé sans mourir (Romains 8.18-23; 1 Corinthiens 15.51-57; 1 Thessaloniciens 4.16). Le corps du croyant deviendra semblable à celui de Christ ressuscité, rendu compatible avec le ciel (1 Corinthiens 15.42-43; 1 Jean 3.2). La transformation est l'œuvre du pouvoir qu'a Christ de s'assujettir toutes choses&nbsp;: littéralement, de les ranger sous lui.</td>
+            <td><span class="trad"><span><b>S21</b> transformera</span><span><b>NEG79</b> transformera</span><span><b>Darby</b> transformera</span><span><b>LSG</b> transformera</span><span><b>KJF</b> changera</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">Philippiens 3.17-4.1</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur Philippiens 3.17-4.1 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur Ph 3.17, 3.18, 3.19, 3.20, 3.21, 4.1.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">50-34</span></th>
+            <td><a href="https://www.gty.org/sermons/50-34" target="_blank" rel="noopener">Following Godly Examples</a></td>
+            <td>Philippiens 3.17-21</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">50-35</span></th>
+            <td><a href="https://www.gty.org/sermons/50-35" target="_blank" rel="noopener">Fleeing from Enemies</a></td>
+            <td>Philippiens 3.18-19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">50-36</span></th>
+            <td><a href="https://www.gty.org/sermons/50-36" target="_blank" rel="noopener">Focusing on Expectations</a></td>
+            <td>Philippiens 3.20-21</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">1216</span></th>
+            <td><a href="https://www.gty.org/sermons/1216" target="_blank" rel="noopener">Leave Me Alone; I Can't Cope</a></td>
+            <td>Philippiens 4.1-9</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">50-37</span></th>
+            <td><a href="https://www.gty.org/sermons/50-37" target="_blank" rel="noopener">Spiritual Stability, Part 1: Introduction</a></td>
+            <td>Philippiens 4.1</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">80-263</span></th>
+            <td><a href="https://www.gty.org/sermons/80-263" target="_blank" rel="noopener">Contentment</a></td>
+            <td>Philippiens 4.1-19</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">81-124</span></th>
+            <td><a href="https://www.gty.org/sermons/81-124" target="_blank" rel="noopener">Defeating Discontentment</a></td>
+            <td>Philippiens 4.1-9</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">MacArthur lit la péricope comme la suite pratique de la poursuite du prix&nbsp;: pour tendre à la ressemblance à Christ, le croyant doit suivre des exemples, fuir les ennemis de la croix et fixer ses regards sur ce qu'il attend.</p>
+    <div class="body">
+      <p>Le verset 17 pose le modèle positif&nbsp;: soyez tous mes imitateurs, et portez les regards sur ceux qui marchent selon le modèle que vous avez en nous. Parce que tous les croyants demeurent imparfaits, ils ont besoin de l'exemple de personnes moins imparfaites, capables de montrer comment réagir face à l'imperfection et de fournir un patron pour la recherche de la conformité à Christ. Paul était lui-même ce modèle (1 Corinthiens 11.1; 1 Thessaloniciens 1.6), et il recommande aux Philippiens d'observer aussi des serviteurs comme Timothée et Epaphrodite (2.19-20). La sanctification n'est pas une abstraction&nbsp;: elle se transmet par des vies offertes en exemple.</p>
+      <p>Face à ce modèle se dresse l'antimodèle des versets 18-19. Plusieurs marchent en ennemis de la croix de Christ, et Paul en parle en pleurant, comme il avait averti en larmes les anciens d'Éphèse (Actes 20.31). MacArthur souligne la subtilité de ces ennemis&nbsp;: ces hommes ne se déclaraient pas opposés à Christ, à son œuvre sur la croix ou au salut par grâce au moyen de la foi. Ils se prétendaient amis de Christ et assumaient peut-être des responsabilités dans l'Église, mais ils ne poursuivaient pas la conformité à Christ dans leur conduite. On peut être ennemi de la croix sans la renier&nbsp;: les uns y ajoutent des œuvres, les autres en retranchent la puissance qui transforme la vie. Paul ne les nomme pas&nbsp;: ce peuvent être des judaïsants, ou des païens libertins précurseurs du gnosticisme; MacArthur laisse les deux possibilités ouvertes, en penchant pour les judaïsants (50-35), glissant vers l'antinomisme. Les uns et les autres se trahissent, comme toujours, par leur attitude.</p>
+      <p>Le verset 19 dresse leur portrait en quatre traits. Leur fin sera la perdition&nbsp;: le mot rendu par fin désigne la destinée ultime, et la perdition est la damnation éternelle, car les judaïsants comptaient sur leurs propres œuvres et les libertins niaient la puissance transformatrice de l'Évangile. Ils ont pour dieu leur ventre&nbsp;: selon qu'on vise les judaïsants ou les libertins, cela renvoie aux devoirs religieux et aux lois alimentaires tenus pour indispensables au salut, ou bien aux désirs sensuels et aux appétits charnels. Ils mettent leur gloire dans ce qui fait leur honte&nbsp;: les judaïsants se targuaient d'efforts qui n'avaient pas plus de valeur que des chiffons souillés (cf. Ésaïe 64.5), les libertins se vantaient de leurs péchés en abusant de la liberté chrétienne. Ils ne pensent qu'aux choses de la terre&nbsp;: les uns absorbés par les cérémonies matérielles, les autres préoccupés par le monde et ses attraits (cf. Jacques 4.4; 1 Jean 2.15).</p>
+      <p>Le mais nous du verset 20 renverse la perspective. Par opposition à ceux qui ne pensent qu'aux choses de la terre, nous sommes citoyens des cieux. MacArthur explique que le terme grec désigne une colonie d'étrangers et évoque le registre où sont consignés les noms des citoyens. Le ciel est l'endroit où Dieu règne et où Christ est présent; c'est la cité des croyants, car leur nom y est inscrit (Luc 10.20), leur héritage les y attend (1 Pierre 1.4) et d'autres croyants les y rejoindront (Hébreux 12.23). Pour des Philippiens fiers de leur citoyenneté romaine, l'image portait&nbsp;: ils appartenaient à un royaume gouverné par leur Père céleste et réglaient leur vie sur des lois célestes, tout en habitant pour un temps une terre étrangère. De cette cité, ils attendent comme Sauveur le Seigneur Jésus-Christ; et le verbe attendre est celui qu'emploient la plupart des textes sur la seconde venue, une attente patiente mais avide, aiguisée par l'espérance.</p>
+      <p>Le verset 21 précise ce que le Sauveur accomplira&nbsp;: il transformera le corps de notre humiliation, en le rendant semblable au corps de sa gloire. Le verbe, bâti sur le mot qui a donné schéma, dit le remodelage du corps selon une configuration nouvelle. MacArthur rattache cette transformation à la résurrection qui accompagnera l'enlèvement de l'Église&nbsp;: les morts en Christ, dont l'esprit vit déjà avec lui (1.23; 2 Corinthiens 5.8), recevront un corps nouveau, et ceux qui seront encore vivants verront leur corps transformé sans connaître la mort (Romains 8.18-23; 1 Corinthiens 15.51-57; 1 Thessaloniciens 4.16). Le corps du croyant deviendra semblable à celui de Christ ressuscité, rendu compatible avec le ciel (1 Jean 3.2). Et cette transformation découle du pouvoir qu'a Christ de s'assujettir toutes choses&nbsp;: dans sa divine providence, celui qui a créé les lois naturelles a aussi le pouvoir de les dépasser miraculeusement (1 Corinthiens 15.23-27).</p>
+      <p>Le c'est pourquoi de 4.1 noue la conclusion. Paul appelle les Philippiens ses bien-aimés et très chers frères, sa joie et sa couronne&nbsp;: sa joie ne tenait pas aux circonstances mais à ces frères et sœurs; et la couronne, celle des lauriers décernés à l'athlète victorieux (1 Corinthiens 9.25), faisait des Philippiens la preuve vivante que ses efforts d'évangélisation avaient porté du fruit. Sur cette base, l'apôtre commande&nbsp;: demeurez ainsi fermes dans le Seigneur. Le verbe sert d'ordinaire à décrire la sentinelle à son poste; c'est un commandement militaire. La logique est limpide&nbsp;: puisque vous êtes citoyens des cieux et que vous attendez un Sauveur qui transformera votre corps, tenez bon là où vous êtes postés, sans céder aux ennemis de la croix dont la fin est la ruine définitive.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent la péricope, de l'appel à l'imitation de Christ et de l'avertissement contre les faux docteurs jusqu'à l'enlèvement de l'Église et au corps de gloire promis au croyant.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 11.1</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Soyez mes imitateurs, comme je le suis moi-même de Christ&nbsp;»&nbsp;: fonde l'appel de Paul à l'imiter (3.17), car le modèle n'est légitime que parce qu'il imite lui-même Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 1.28</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">La même opposition perdition des adversaires contre salut des croyants éclaire la fin des ennemis de la croix (3.19) et la citoyenneté céleste de ceux qui sont sauvés.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Actes 20.28-31</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Paul met en garde en pleurant les anciens d'Éphèse contre des hommes pervertis surgis du milieu de l'Église&nbsp;: même larmes et même avertissement qu'en 3.18 contre les ennemis de la croix.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Thessaloniciens 4.13-17</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'enlèvement de l'Église et la résurrection des morts en Christ explicitent la transformation du corps de notre humiliation (3.21), les morts ressuscités et les vivants enlevés ensemble.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Corinthiens 15.51-57</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Nous serons tous transformés&nbsp;», le corruptible revêtant l'incorruptibilité&nbsp;: détaille le corps de gloire promis en 3.21, semblable au corps de Christ ressuscité.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Jean 3.2</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Lorsqu'il paraîtra, nous serons semblables à lui&nbsp;»&nbsp;: confirme que le corps transformé du croyant (3.21) sera rendu conforme au corps glorieux de Christ.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Luc 10.20</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">«&nbsp;Réjouissez-vous de ce que vos noms sont écrits dans les cieux&nbsp;»&nbsp;: appuie l'image du registre céleste que porte le mot citoyens des cieux (3.20).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Ésaïe 64.5</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Toute notre justice est comme un vêtement souillé&nbsp;»&nbsp;: éclaire le reproche aux judaïsants dont la gloire est leur honte (3.19), leurs œuvres n'ayant pas plus de valeur que des chiffons souillés.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent la péricope. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">La sanctification par l'imitation de modèles vivants</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Soyez tous mes imitateurs, frères, et portez les regards sur ceux qui marchent selon le modèle que vous avez en nous&nbsp;» (3.17). Parce que tout croyant demeure imparfait, il a besoin de l'exemple concret de chrétiens plus avancés, comme Paul lui-même, Timothée et Epaphrodite, pour apprendre à marcher vers la conformité à Christ.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La croissance spirituelle ne se transmet pas seulement par des principes, mais par des vies offertes en exemple. Cela appelle les plus mûrs à se rendre imitables et les plus jeunes à choisir leurs modèles avec discernement, car un modèle n'est sûr que dans la mesure où il imite lui-même Christ (1 Corinthiens 11.1).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'épreuve diagnostique : la marche révèle la destinée</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Plusieurs marchent en ennemis de la croix de Christ, leur fin sera la perdition&nbsp;» (3.18-19). Ces hommes ne reniaient pas ouvertement Christ; ils se prétendaient ses amis, mais leur conduite, dieu leur ventre, gloire dans leur honte, pensées tout entières tournées vers la terre, démentait leur profession.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>La profession de foi ne suffit pas&nbsp;: la marche révèle le cœur. On peut occuper une place dans l'Église et demeurer ennemi de la croix si sa vie ne poursuit pas la conformité à Christ. Cet avertissement appelle à l'examen de soi, non à l'inquiétude des vrais croyants, mais au démasquage du christianisme de nom qui se contente des choses de la terre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La citoyenneté céleste du croyant</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Mais nous, nous sommes citoyens des cieux&nbsp;» (3.20). Le terme désigne une colonie d'étrangers dont les noms figurent au registre de la cité. Le croyant relève du royaume gouverné par son Père céleste et obéit aux lois célestes, alors même qu'il habite pour un temps une terre étrangère.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'identité première du chrétien n'est pas terrestre mais céleste. Comme les Philippiens vivaient en colons romains loin de Rome, le croyant vit en colon du ciel au milieu du monde&nbsp;: il ne tire ni sa loi ni son espérance de la cité où il réside. Cette identité fonde à la fois sa distinction d'avec le monde et son détachement des choses de la terre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'attente du Sauveur et la résurrection corporelle</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;D'où nous attendons aussi comme Sauveur le Seigneur Jésus-Christ, qui transformera le corps de notre humiliation, en le rendant semblable au corps de sa gloire&nbsp;» (3.20-21). Le verbe attendre est celui de la seconde venue, et la transformation du corps s'accomplira à la résurrection qui accompagne l'enlèvement de l'Église.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'espérance chrétienne est corporelle et future, non un simple au-delà désincarné. Le retour de Christ enlèvera l'Église et transformera le corps des croyants, morts comme vivants, en un corps de gloire semblable au sien (1 Thessaloniciens 4.13-17). Cette attente vive, patiente mais avide, oriente la vie présente vers l'âge à venir plutôt que vers les choses de la terre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La fermeté du croyant posté dans le Seigneur</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;C'est pourquoi, mes bien-aimés et très chers frères, vous qui êtes ma joie et ma couronne, demeurez ainsi fermes dans le Seigneur&nbsp;» (4.1). Le verbe demeurer ferme décrit ordinairement la sentinelle à son poste; c'est un commandement militaire tiré de la citoyenneté céleste et de l'espérance qui précèdent.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>L'espérance ne dispense pas de la vigilance&nbsp;: elle la fonde. Parce que le croyant est citoyen des cieux et attend un Sauveur, il doit tenir bon là où Dieu l'a posté, sans céder ni au légalisme ni à l'anarchie. La fermeté n'est pas un raidissement de la volonté, mais la persévérance de celui qui demeure dans le Seigneur, sûr de sa cité et de son Sauveur.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Paul ose dire soyez mes imitateurs (3.17). Quelle vie de modèle votre assemblée peut-elle observer aujourd'hui, et qu'est-ce qui rend un croyant assez mûr pour être imité sans devenir un culte de la personnalité&nbsp;?</li>
+      <li>Les ennemis de la croix ne reniaient pas Christ ouvertement (3.18)&nbsp;: ils se prétendaient ses amis. Comment prêcher cet avertissement sans semer le doute chez les vrais croyants, mais en démasquant le christianisme de nom qui ne poursuit pas la conformité à Christ&nbsp;?</li>
+      <li>Paul parle de ces ennemis en pleurant (3.18). Que dit cette larme sur la juste manière d'avertir contre l'erreur et l'apostasie, à l'opposé d'une polémique froide ou triomphante&nbsp;?</li>
+      <li>Avoir pour dieu son ventre et mettre sa gloire dans sa honte (3.19) prend des formes propres à chaque époque. Quels appétits et quelles fiertés trahissent aujourd'hui, dans votre milieu, une vie tournée vers les seules choses de la terre&nbsp;?</li>
+      <li>Que change concrètement, pour la vie quotidienne d'un membre de votre assemblée, le fait de se savoir citoyen des cieux (3.20) plutôt que d'abord citoyen de son pays, de sa ville ou de sa réussite&nbsp;?</li>
+      <li>L'espérance de 3.21 est corporelle et future&nbsp;: un corps transformé à la venue du Sauveur. Comment prêcher cette résurrection du corps à une culture qui réduit l'au-delà à une survie vague de l'âme&nbsp;?</li>
+      <li>Le c'est pourquoi de 4.1 fait de la fermeté la conséquence de l'espérance, non une simple exhortation morale. Comment relier explicitement, dans la prédication, l'ordre de demeurer ferme à la certitude d'une cité céleste et d'un Sauveur qui revient&nbsp;?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · Philippiens 3.17-4.1 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;Philippiens : la joie en Christ&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-Philippiens-3-17-4-1.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

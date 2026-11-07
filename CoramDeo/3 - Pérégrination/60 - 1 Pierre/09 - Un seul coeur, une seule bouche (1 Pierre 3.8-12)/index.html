@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 Pierre 3.8-12 · Un seul cœur, une seule bouche · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de 1 Pierre 3.8-12 : un seul cœur, une seule bouche ; contexte, arrière-plan, mots grecs, lecture de John MacArthur, renvois bibliques, thèmes théologiques et pistes de réflexion. Église Baptiste de Charlesbourg.">
+<meta name="author" content="André-Guy Bruneau · Église Baptiste de Charlesbourg">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ---- */
+  .lead,.body p,.points li{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+  .logos{
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(1.2rem,4vw,2.8rem);flex-wrap:wrap;
+    margin:0 auto 1.7rem;
+  }
+  .logos img{margin:0;}
+  .logos__fts{
+    display:block;width:auto;
+    height:clamp(2.8rem,6.6vw,4.2rem);
+  }
+  /* Impression : noir sur blanc, décor et navigation masqués, adresses des liens externes en clair */
+  @media print{
+    :root{--nuit:#fff;--nuit-1:#fff;--nuit-2:#fff;--encre:#000;--encre-doux:#222;--or:#000;--or-clair:#000;
+      --feuille:#000;--feuille-vif:#000;--filet:#999;--filet-fort:#555;--max:100%;}
+    html,body{background:#fff !important;color:#000 !important;}
+    body{font-size:12pt;line-height:1.5;}
+    .grain,.vignette,.progress,.nav,.scrollcue,.divider,.footer__retour{display:none !important;}
+    *,*::before,*::after{animation:none !important;transition:none !important;box-shadow:none !important;text-shadow:none !important;}
+    .reveal,.reveal > *{opacity:1 !important;transform:none !important;}
+    .hero{min-height:0 !important;}
+    main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;}
+    h1,h2,h3{break-after:avoid;}
+    tr,figure,.theme,.renvoi{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__logo" href="#hero" aria-label="Église Baptiste de Charlesbourg, haut de page">
+    <img src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async">
+  </a>
+  <span class="nav__brand">1 Pierre 3.8-12</span>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#contexte">Contexte</a>
+    <a href="#arriere-plan">Arrière-plan</a>
+    <a href="#mots-cles">Mots-clés</a>
+    <a href="#commentateurs">Commentateurs</a>
+    <a href="#renvois">Parallèles</a>
+    <a href="#themes">Thèmes</a>
+    <a href="#reflexion">Réflexion</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE-TITRE ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · 1 Pierre 3.8-12</p>
+    <h1 class="hero__title">Un seul cœur, une seule bouche</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse">
+      <span class="q">«</span>&nbsp;Ne rendez point mal pour mal, ou injure pour injure; bénissez, au contraire, car c'est à cela que vous avez été appelés, afin d'hériter la bénédiction.&nbsp;<span class="q">»</span>
+    </p>
+    <p class="hero__ref">1 Pierre 3.9 · NEG</p>
+    <p class="hero__series">Série : <b>1 Pierre : l'espérance vivante dans l'épreuve</b></p>
+    <p class="hero__meta">Recherche exégétique · 2026-06-15 · AGB · EBC</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ============ CONTEXTE DU PASSAGE ============ -->
+  <article class="section section--intro reveal" id="contexte">
+    <header class="sec-head">
+      <p class="kicker">Le passage</p>
+      <h2 class="sec-title">Contexte du passage</h2>
+      <p class="ref">1 Pierre 3.8-12</p>
+    </header>
+    <div class="verses">
+      <figure class="verse">
+        <p class="verse__text">Enfin, soyez tous animés des mêmes pensées et des mêmes sentiments, pleins d'amour fraternel, de compassion, d'humilité.</p>
+        <cite class="verse__ref">1 Pierre 3.8 · NEG</cite>
+      </figure>
+      <figure class="verse">
+        <p class="verse__text">Car les yeux du Seigneur sont sur les justes et ses oreilles sont attentives à leur prière, mais la face du Seigneur est contre ceux qui font le mal.</p>
+        <cite class="verse__ref">1 Pierre 3.12 · NEG</cite>
+      </figure>
+    </div>
+    <p class="lead">Notre péricope forme une unité brève mais nettement délimitée&nbsp;: après avoir réglé la vie du chrétien devant la société, le travail et la famille, Pierre récapitule par un «&nbsp;Enfin&nbsp;» adressé à tous et commande l'unité du cœur et le refus de la vengeance, dans l'Église locale d'abord, puis envers chacun.</p>
+    <div class="body">
+      <p>Notre péricope (3.8-12) forme une unité brève mais nettement délimitée dans le plan de l'épître. Après avoir exposé comment le chrétien doit honorer Dieu devant les non-croyants (2.11 à 3.7), en se soumettant aux autorités civiles (2.13-17), aux maîtres (2.18-25) et dans la cellule familiale (3.1-7), Pierre récapitule maintenant l'ensemble et s'adresse à tous, à commencer par les relations à l'intérieur même de la communauté des croyants. La section précédente s'achevait sur la vie conjugale&nbsp;; ces cinq versets passent du particulier au général&nbsp;: l'attitude qu'ils commandent se vit d'abord dans l'Église locale, puis envers tous.</p>
+      <p>MacArthur situe ce mouvement avec précision&nbsp;: «&nbsp;Enfin&nbsp;» ne clôt pas la lettre, mais la discussion ouverte en 2.11 sur la conduite du chrétien dans trois sphères sociales, le gouvernement, le travail et le mariage&nbsp;; au verset 8, le mot «&nbsp;tous&nbsp;» fait passer de ces directives particulières à une exhortation générale, et la bonne attitude qu'elle réclame vaut envers chacun, croyant ou non. L'adverbe d'ouverture signale donc une récapitulation&nbsp;: ce qui valait pour les sphères particulières vaut désormais pour tous, et envers tous. Le titre de la prédication, un seul cœur et une seule bouche, recueille les deux pôles du passage, l'unité intérieure du verset 8 et la langue maîtrisée du verset 10.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ARRIÈRE-PLAN HISTORIQUE ET CULTUREL ============ -->
+  <article class="section reveal" id="arriere-plan">
+    <header class="sec-head">
+      <p class="kicker">Monde du premier siècle</p>
+      <h2 class="sec-title">Arrière-plan historique et culturel</h2>
+      <p class="ref">1 Pierre 3.8 · 3.9 · 3.10-12</p>
+    </header>
+    <p class="lead">Sous la persécution de Néron, l'unité intérieure de l'Église et le refus de la vengeance n'étaient pas un luxe sentimental, mais une arme apologétique&nbsp;: une vie sainte et harmonieuse réduit au silence les accusateurs.</p>
+    <div class="body">
+      <p>L'épître a très probablement été écrite depuis Rome, désignée par le nom de code «&nbsp;Babylone&nbsp;» (5.13), vers 64-65 apr. J.-C., juste avant ou peu après l'incendie qui ravagea la ville en juillet 64. Néron fit des chrétiens les boucs émissaires de ce désastre, déclenchant une persécution féroce qui s'étendit jusqu'aux provinces du nord de l'Asie Mineure, le Pont, la Galatie, la Cappadoce, l'Asie et la Bithynie (1.1), où vivaient les destinataires de la lettre. Probablement d'origine païenne pour la plupart, ces croyants avaient besoin d'être fortifiés spirituellement au milieu de l'hostilité grandissante. Dans un tel climat, l'exhortation à répondre au mal par la bénédiction n'était nullement théorique&nbsp;: les chrétiens essuyaient injures et calomnies, accusés à tort de rébellion, d'athéisme et de crimes infamants.</p>
+    </div>
+    <p>Trois traits ancrent le passage dans son moment historique.</p>
+    <ul class="points">
+      <li><b>L'unité comme bouclier sous la pression.</b> La pression extérieure rendait d'autant plus vitale l'unité intérieure de l'Église. Une communauté divisée, amère et vindicative aurait donné raison aux accusateurs et discrédité l'Évangile devant un monde déjà soupçonneux. MacArthur rappelle, dans l'introduction de l'épître, que les puissances du mal cherchent des chrétiens dont la vie n'est pas conforme à la Parole de Dieu pour les faire parader devant les non-croyants et démontrer combien l'Église serait hypocrite.</li>
+      <li><b>La bénédiction comme témoignage.</b> La cohésion fraternelle et le refus de la vengeance n'étaient donc pas un attendrissement&nbsp;: c'était une arme apologétique. Une vie sainte et harmonieuse réduit au silence les critiques et rend le témoignage crédible devant des accusateurs déjà prompts à soupçonner les croyants de tous les vices.</li>
+      <li><b>L'appui de l'Écriture sainte.</b> Le verset 9 enracine cette éthique dans une promesse, et les versets 10-12 la confirment par une longue citation du Psaume 34.13-17. Pierre, en bon prédicateur juif, appuie son exhortation sur l'autorité de l'Écriture&nbsp;: le Psaume, attribué à David fuyant ses ennemis, montrait déjà que la langue maîtrisée, la poursuite de la paix et la crainte du Seigneur ouvrent à une vie pleine sous le regard attentif de Dieu.</li>
+    </ul>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ ÉTUDE DES MOTS-CLÉS ============ -->
+  <article class="section reveal" id="mots-cles">
+    <header class="sec-head">
+      <p class="kicker">Vocabulaire</p>
+      <h2 class="sec-title">Étude des mots-clés</h2>
+      <p class="ref">Cinq termes grecs</p>
+    </header>
+    <p class="lead">Cinq mots portent le poids de l'exhortation&nbsp;: de l'<i>homophrōn</i> qui dit l'unité du cœur à l'<i>eulogeō</i> qui déverse le bien sur l'offenseur, jusqu'au <i>kaleō</i> qui rattache toute la conduite à l'appel efficace au salut.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr>
+            <th scope="col">Français · translit.</th>
+            <th scope="col">Sens littéral</th>
+            <th scope="col">Champ sémantique</th>
+            <th scope="col">Traductions comparées</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">mêmes pensées</span><span class="mot-gr">homophrōn</span></th>
+            <td class="col-sens">qui pense la même chose, d'un même esprit, du même avis; littéralement uni dans la pensée</td>
+            <td>Mot composé grec (de <i>homos</i>, même, et <i>phrēn</i>, l'esprit ou la disposition intérieure) que MacArthur glose par «&nbsp;penser la même chose, être du même avis&nbsp;». L'idée, précise-t-il, est de conserver l'unité intérieure du cœur. Négativement, ajoute-t-il en chaire, c'est ne pas être en conflit, ni les uns avec les autres ni avec ceux qui ne partagent pas la foi. Tous les chrétiens doivent être des exemples et des ouvriers de paix et d'unité, et non des éléments de trouble et de discorde (Jn 13.35; Ro 12.16; 15.5; 1 Co 1.10; Ph 2.1-2).</td>
+            <td><span class="trad"><span><b>S21</b> vivez en parfaite harmonie</span><span><b>NEG79</b> animés des mêmes pensées</span><span><b>Darby</b> tous d'un même sentiment</span><span><b>LSG</b> ayez tous les mêmes pensées</span><span><b>KJF</b> soyez tous d'un même esprit</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">amour fraternel</span><span class="mot-gr">philadelphos</span></th>
+            <td class="col-sens">qui aime ses frères, affectionné envers les frères; l'amour propre à des membres d'une même famille</td>
+            <td>L'adjectif décrit la tendresse réciproque qui unit des frères de sang, transposée ici à la famille de Dieu. MacArthur relève que l'amour fraternel est un thème qui revient souvent dans l'épître (1.22; 2.17; 4.8; 5.14). Cet amour n'est pas un simple sentiment, mais une affection agissante qui va à la rencontre des autres dans leurs besoins (note sur 1.22). Il découle de la nouvelle naissance&nbsp;: seuls ceux dont l'âme a été purifiée, c'est-à-dire sauvée, ont la capacité d'aimer ainsi.</td>
+            <td><span class="trad"><span><b>S21</b> pleins d'amour fraternel</span><span><b>NEG79</b> pleins d'amour fraternel</span><span><b>Darby</b> fraternels</span><span><b>LSG</b> pleins d'amour fraternel</span><span><b>KJF</b> aimez comme des frères</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">compassion</span><span class="mot-gr">eusplagchnos</span></th>
+            <td class="col-sens">qui a de bonnes entrailles, miséricordieux, tendre de cœur; ému jusqu'au fond des entrailles</td>
+            <td>Le terme grec s'enracine dans le mot désignant les entrailles, siège des émotions profondes dans la pensée hébraïque et grecque. Il décrit une sympathie viscérale, une tendresse qui ressent la douleur d'autrui comme la sienne. Joint à l'amour fraternel et à l'humilité, il complète le portrait d'un cœur réellement tourné vers le frère. Ce trait rejoint l'enseignement de l'épître&nbsp;: celui qui a reçu miséricorde devient à son tour un canal de miséricorde envers les membres du corps.</td>
+            <td><span class="trad"><span><b>S21</b> de compassion</span><span><b>NEG79</b> de compassion</span><span><b>Darby</b> compatissants</span><span><b>LSG</b> de compassion</span><span><b>KJF</b> ayez de la compassion les uns des autres</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">bénissez</span><span class="mot-gr">eulogeō</span></th>
+            <td class="col-sens">dire du bien de, faire l'éloge de, prononcer une parole favorable; appeler le bien sur quelqu'un</td>
+            <td>MacArthur explique que «&nbsp;bénir&nbsp;» signifie «&nbsp;dire du bien de, faire l'éloge de&nbsp;». Un chrétien peut bénir celui qui l'injurie en trouvant des moyens de le servir, en priant pour son salut et son développement spirituel, en exprimant de la reconnaissance pour lui, en disant du bien de lui et en désirant son bien-être (2.23; cf. Lé 19.18; Pr 20.22; Lu 6.38). Le verbe est l'exact opposé de «&nbsp;rendre injure pour injure&nbsp;»&nbsp;: il ne se contente pas de retenir la riposte, il déverse activement le bien sur l'offenseur. C'est l'attitude même de Christ qui, injurié, ne rendait point d'injures (2.23).</td>
+            <td><span class="trad"><span><b>S21</b> bénissez</span><span><b>NEG79</b> bénissez</span><span><b>Darby</b> bénissez</span><span><b>LSG</b> bénissez</span><span><b>KJF</b> bénissez</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">appelés</span><span class="mot-gr">kaleō</span></th>
+            <td class="col-sens">appeler, convoquer, inviter par un appel; au sens théologique, l'appel efficace au salut</td>
+            <td>Dans les épîtres du Nouveau Testament, comme le note MacArthur à propos de 2.21, l'«&nbsp;appel&nbsp;» désigne toujours l'appel efficace au salut (cf. 2.9; 5.10; Ro 8.30). En 3.9, l'apôtre rattache à cet appel une double finalité&nbsp;: les croyants ont été appelés à bénir, et appelés afin d'hériter la bénédiction. Puisque Dieu nous a accordé des bénédictions au lieu du jugement que nous méritions, nous devrions rechercher la bénédiction qu'apporte le fait de pardonner gratuitement à celui qui nous a causé du tort (note sur 3.9; cf. Mt 18.21-35). L'appel qui sauve est donc aussi un appel à reproduire envers autrui la grâce reçue.</td>
+            <td><span class="trad"><span><b>S21</b> vous avez été appelés</span><span><b>NEG79</b> vous avez été appelés</span><span><b>Darby</b> vous avez été appelés</span><span><b>LSG</b> vous avez été appelés</span><span><b>KJF</b> vous êtes appelés</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ APPORTS DES COMMENTATEURS ============ -->
+  <article class="section reveal" id="commentateurs">
+    <header class="sec-head">
+      <p class="kicker">Lecture de John MacArthur</p>
+      <h2 class="sec-title">Apports des commentateurs</h2>
+      <p class="ref">1 Pierre 3.8-12</p>
+    </header>
+    <p class="lead"><b>Niveau de source :</b> Niveau 1, sermons Grace to You sur 1 Pierre 3.8-12 (tableau ci-dessous) ; notes de <i>La Bible d'étude MacArthur</i> sur 1 P 3.8, 3.9, 3.10.</p>
+    <div class="table-wrap">
+      <table class="mots">
+        <thead>
+          <tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="mot-fr">60-32</span></th>
+            <td><a href="https://www.gty.org/sermons/60-32" target="_blank" rel="noopener">Living and Loving the Good Life, Part 1</a></td>
+            <td>1 Pierre 3.8</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">60-33</span></th>
+            <td><a href="https://www.gty.org/sermons/60-33" target="_blank" rel="noopener">Living and Loving the Good Life, Part 2</a></td>
+            <td>1 Pierre 3.9</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="mot-fr">60-34</span></th>
+            <td><a href="https://www.gty.org/sermons/60-34" target="_blank" rel="noopener">Living and Loving the Good Life, Part 3</a></td>
+            <td>1 Pierre 3.10-12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Du «&nbsp;Enfin&nbsp;» qui récapitule au regard providentiel du verset 12, Pierre commande à l'Église une unité de cœur et une bénédiction active en réponse au mal, à l'imitation du Sauveur souffrant.</p>
+    <div class="body">
+      <p>Le passage s'ouvre par un adverbe de récapitulation, «&nbsp;Enfin&nbsp;», qui clôt la discussion ouverte en 2.11 et étend désormais à tous les exhortations particulières qui précèdent. MacArthur situe ce mouvement avec précision&nbsp;: après le gouvernement (2.13-17), le travail (2.18-25) et le mariage (3.1-7), les trois sphères sociales où le chrétien doit vivre d'une manière irréprochable, le mot «&nbsp;tous&nbsp;» fait passer au verset 8 du particulier au général&nbsp;; la bonne attitude qu'il commande vaut envers chacun, elle commence dans l'Église mais doit s'étendre au-delà. Le verset 8 dresse cinq traits qui doivent caractériser la communauté des rachetés&nbsp;: les mêmes pensées, les mêmes sentiments, l'amour fraternel, la compassion et l'humilité. Le premier de ces traits, «&nbsp;animés des mêmes pensées&nbsp;», traduit un mot composé grec dont MacArthur dit qu'il signifie penser la même chose, être du même avis, l'idée étant de conserver l'unité intérieure du cœur. Tous les chrétiens, insiste-t-il, doivent être des exemples et des ouvriers de paix et d'unité, et non des éléments de trouble et de discorde. Cette unité n'est pas une simple cordialité de surface&nbsp;: MacArthur y voit l'unité de l'Esprit, une harmonie que le monde doit pouvoir constater, et il rattache l'amour fraternel, thème qui revient souvent dans l'épître (1.22; 2.17; 4.8; 5.14), au salut qui a purifié les âmes (1.22).</p>
+      <p>Le verset 9 fait passer de l'attitude intérieure à la réaction concrète devant l'offense&nbsp;: «&nbsp;Ne rendez point mal pour mal, ou injure pour injure; bénissez, au contraire.&nbsp;» L'enchaînement est délibéré. Il ne suffit pas de retenir la vengeance&nbsp;; le chrétien doit y substituer la bénédiction active. MacArthur définit le verbe «&nbsp;bénir&nbsp;» comme «&nbsp;dire du bien de, faire l'éloge de&nbsp;», et il en décline cinq formes concrètes&nbsp;: trouver des moyens de servir celui qui nous injurie, prier pour son salut et son développement spirituel, exprimer de la reconnaissance pour lui, dire du bien de lui et désirer son bien-être. Le modèle de cette conduite a déjà été posé au chapitre 2&nbsp;: Christ, injurié, ne rendait point d'injures, maltraité, ne faisait point de menaces, mais s'en remettait à celui qui juge justement (2.23). La bénédiction est donc l'imitation directe du Sauveur souffrant&nbsp;: si Christ, qui n'a commis aucun péché, a pu agir ainsi, combien plus des pécheurs indignes le doivent-ils.</p>
+      <p>La raison de cette éthique se trouve dans la clause finale du verset 9&nbsp;: «&nbsp;car c'est à cela que vous avez été appelés, afin d'hériter la bénédiction&nbsp;». MacArthur lie cet appel à la logique même de la grâce&nbsp;: puisque Dieu nous a accordé des bénédictions au lieu du jugement que nous méritions, nous devrions rechercher la bénédiction qu'apporte le fait de pardonner gratuitement à celui qui nous a causé du tort (cf. Mt 18.21-35). L'observation de l'auteur prolonge ce point&nbsp;: le verbe «&nbsp;appeler&nbsp;» désigne, dans les épîtres, l'appel efficace au salut (cf. note sur 2.21), de sorte que la vie de bénédiction n'est pas un supplément facultatif greffé sur le salut, mais la conséquence inscrite dans l'appel qui sauve. Le croyant pardonné est appelé à pardonner&nbsp;; le béni est appelé à bénir. Il n'y a pas ici de marchandage des œuvres&nbsp;: hériter la bénédiction n'est pas le salaire de la conduite, mais le fruit assuré d'un appel qui transforme.</p>
+      <p>Aux versets 10-12, Pierre scelle son exhortation par une citation du Psaume 34.13-17. MacArthur observe que l'apôtre utilise là une confirmation scripturaire appropriée pour son exhortation du verset 9. Le passage entier explique comment goûter une vie pleine et heureuse même au milieu d'un environnement hostile, et MacArthur en dégage les conditions&nbsp;: une attitude humble et aimante envers chacun (v. 8), une réaction non vindicative envers les calomniateurs (v. 9), des paroles pures et honnêtes (v. 10), un mépris du péché, une recherche de la paix (v. 11) et une juste motivation, c'est-à-dire le désir d'agir avec la justice qui plaît au Seigneur omniscient (v. 12). En chaire, il les ramène à quatre&nbsp;: la bonne attitude (v. 8), la bonne réponse (v. 9), la bonne norme, c'est-à-dire l'autorité de l'Écriture que Pierre cite (vv. 10-11), et le bon mobile (v. 12). Le croyant, rappelle-t-il, a reçu le droit de jouir de sa vie (Jn 10.10)&nbsp;: «&nbsp;aimer la vie et voir des jours heureux&nbsp;» n'est pas une promesse de prospérité matérielle, mais l'expérience d'une plénitude intérieure accessible même sous la persécution. La maîtrise de la langue tient une place centrale&nbsp;: «&nbsp;qu'il préserve sa langue du mal et ses lèvres des paroles trompeuses&nbsp;» (v. 10) reprend, sur le terrain de la parole, le refus de rendre injure pour injure du verset 9. Le titre de la péricope, un seul cœur et une seule bouche, se trouve ainsi justifié par le texte lui-même&nbsp;: le cœur uni (v. 8) et la langue maîtrisée (v. 10) sont les deux faces d'une même obéissance.</p>
+      <p>Le verset 12 fonde finalement le tout sur la providence&nbsp;: «&nbsp;Car les yeux du Seigneur sont sur les justes et ses oreilles sont attentives à leur prière, mais la face du Seigneur est contre ceux qui font le mal.&nbsp;» Le regard de Dieu, à la fois protecteur envers les siens et opposé aux méchants, donne au chrétien la liberté de ne pas se venger. L'observation de l'auteur, cohérente avec l'enseignement de l'épître sur Christ qui «&nbsp;s'en remettait à celui qui juge justement&nbsp;» (2.23), est que la non-vengeance repose sur la confiance dans la justice souveraine de Dieu&nbsp;: celui qui sait que le Seigneur voit, entend et jugera peut renoncer à se faire justice et répondre au mal par la bénédiction.</p>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ RENVOIS ET PASSAGES PARALLÈLES ============ -->
+  <article class="section reveal" id="renvois">
+    <header class="sec-head">
+      <p class="kicker">Échos bibliques</p>
+      <h2 class="sec-title">Renvois et passages parallèles</h2>
+      <p class="ref">Huit passages</p>
+    </header>
+    <p class="lead">Huit passages éclairent l'exhortation, du modèle de Christ qui ne rendait point d'injures au Psaume 34 cité intégralement, en passant par la sagesse vétérotestamentaire de la non-vengeance.</p>
+    <div class="renvois">
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">1 Pierre 2.23</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">Christ, injurié, ne rendait point d'injures, mais s'en remettait à celui qui juge justement&nbsp;: le modèle parfait du refus de rendre injure pour injure (3.9) et de la non-vengeance confiée au Dieu juste.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Romains 12.14-19</span><span class="renvoi__tag">Parallèle direct</span></div>
+        <p class="renvoi__desc">«&nbsp;Bénissez ceux qui vous persécutent... ne rendez à personne le mal pour le mal... ne vous vengez point&nbsp;»&nbsp;: le parallèle paulinien le plus proche, même vocabulaire de la bénédiction et de la non-rétribution.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 5.38-48</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">Le Sermon sur la montagne ordonne d'aimer ses ennemis et de prier pour ses persécuteurs, source dominicale de l'éthique de bénédiction&nbsp;; MacArthur y renvoie pour expliquer la vie abondante du croyant (note sur 3.10).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Matthieu 18.21-35</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">La parabole du serviteur impitoyable&nbsp;: ayant reçu un pardon immense, le racheté est appelé à pardonner à son tour. MacArthur la cite pour fonder le «&nbsp;c'est à cela que vous avez été appelés&nbsp;» du verset 9.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Philippiens 2.1-5</span><span class="renvoi__tag">Lien thématique</span></div>
+        <p class="renvoi__desc">L'appel à être «&nbsp;d'un même sentiment&nbsp;» dans l'humilité, regardant à l'intérêt d'autrui&nbsp;: arrière-plan paulinien de l'unité intérieure (<i>homophrōn</i>) du verset 8.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Psaume 34.13-17</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">Le texte que Pierre cite intégralement aux versets 10-12&nbsp;: maîtriser sa langue, fuir le mal, rechercher la paix, sous le regard attentif du Seigneur sur les justes&nbsp;; confirmation scripturaire de l'exhortation du verset 9.</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Lévitique 19.18</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Tu ne te vengeras point, et tu ne garderas point de rancune... tu aimeras ton prochain comme toi-même&nbsp;»&nbsp;: racine vétérotestamentaire du refus de la vengeance, à laquelle MacArthur rattache le verbe «&nbsp;bénir&nbsp;» (note sur 3.9).</p>
+      </article>
+      <article class="renvoi">
+        <div class="renvoi__head"><span class="renvoi__ref">Proverbes 20.22</span><span class="renvoi__tag">Arrière-plan AT</span></div>
+        <p class="renvoi__desc">«&nbsp;Ne dis pas&nbsp;: Je rendrai le mal; espère en l'Éternel, et il te délivrera&nbsp;»&nbsp;: sagesse vétérotestamentaire de la non-rétribution, citée par MacArthur à l'appui de la bénédiction du verset 9.</p>
+      </article>
+    </div>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ THÈMES THÉOLOGIQUES ============ -->
+  <article class="section reveal" id="themes">
+    <header class="sec-head">
+      <p class="kicker">Doctrine</p>
+      <h2 class="sec-title">Thèmes théologiques</h2>
+      <p class="ref">Cinq axes</p>
+    </header>
+    <p class="lead">Cinq axes dogmatiques traversent l'exhortation. Pour chacun, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p>
+
+    <section class="theme">
+      <h3 class="theme__title">L'unité de l'Église enracinée dans la régénération commune</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>Le verset 8 commande d'être «&nbsp;tous animés des mêmes pensées et des mêmes sentiments, pleins d'amour fraternel, de compassion, d'humilité&nbsp;». MacArthur lit le premier terme comme l'unité intérieure du cœur, où chaque chrétien est un ouvrier de paix et non un élément de discorde.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Cette unité n'est pas une diplomatie ni un consensus de façade&nbsp;; elle découle de ce que les croyants partagent une même nouvelle naissance et un même Seigneur. Pour votre assemblée, la cohésion fraternelle est une obligation spirituelle, non une affinité naturelle&nbsp;: là où le monde voit des querelles, l'Église doit offrir le spectacle d'un seul cœur, car c'est à cela que tend l'amour fraternel qui traverse toute l'épître (1.22; 2.17; 4.8; 5.14).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">Répondre au mal par la bénédiction, à l'imitation de Christ</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Ne rendez point mal pour mal, ou injure pour injure; bénissez, au contraire&nbsp;» (v. 9). Bénir, selon MacArthur, c'est dire du bien de l'offenseur, le servir, prier pour son salut et désirer son bien-être, à l'exact opposé de la riposte.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le modèle est Christ lui-même qui, injurié, ne rendait point d'injures (2.23). Pour votre assemblée, cela interdit toute culture de la rancune et de la revanche entre frères et envers les persécuteurs du dehors. La bénédiction active n'est pas une faiblesse mais la marque du disciple qui a été lui-même béni au lieu d'être jugé, et qui déverse à son tour la grâce reçue.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">L'appel efficace au salut commande la conduite</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Car c'est à cela que vous avez été appelés, afin d'hériter la bénédiction&nbsp;» (v. 9). L'«&nbsp;appel&nbsp;», dans les épîtres, désigne l'appel efficace au salut (cf. note sur 2.21)&nbsp;; il fonde et l'exigence de bénir et la promesse d'hériter.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Hériter la bénédiction n'est pas un salaire mérité par la conduite, mais le fruit assuré d'un appel qui transforme&nbsp;; le racheté pardonné devient un pardonnant (Mt 18.21-35). Pour votre assemblée, cela coupe court à tout légalisme&nbsp;: on ne bénit pas pour gagner le salut, on bénit parce qu'on a été sauvé. La grâce reçue est la source et la mesure de la grâce donnée.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La langue maîtrisée, signe d'un cœur sanctifié</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>La citation du Psaume 34 place au centre la parole&nbsp;: «&nbsp;Qu'il préserve sa langue du mal et ses lèvres des paroles trompeuses&nbsp;» (v. 10). MacArthur range les paroles pures et honnêtes parmi les conditions d'une vie abondante même en milieu hostile.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Le refus de rendre injure pour injure (v. 9) se vérifie d'abord sur le terrain de la bouche. Pour votre assemblée, la sainteté n'est pas abstraite&nbsp;: elle se mesure à la médisance retenue, au mensonge écarté, à la parole qui édifie. Un seul cœur (v. 8) et une seule bouche (v. 10) sont les deux faces d'une même obéissance&nbsp;; une communauté qui maîtrise sa langue protège son unité.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme">
+      <h3 class="theme__title">La providence du Seigneur, fondement de la non-vengeance</h3>
+      <div class="theme__grid">
+        <div class="theme__part">
+          <p class="theme__label">Dans le texte</p>
+          <p>«&nbsp;Les yeux du Seigneur sont sur les justes et ses oreilles sont attentives à leur prière, mais la face du Seigneur est contre ceux qui font le mal&nbsp;» (v. 12). Le regard de Dieu protège les siens et s'oppose aux méchants.</p>
+        </div>
+        <div class="theme__part theme__part--app">
+          <p class="theme__label">Pour votre assemblée</p>
+          <p>Parce que Dieu voit, entend et jugera justement, le croyant peut renoncer à se faire justice, comme Christ qui s'en remettait à celui qui juge justement (2.23). Pour votre assemblée, la certitude du regard providentiel de Dieu libère de l'amertume&nbsp;: ni la calomnie ni l'injustice n'échappent à son attention, et la prière des justes est entendue. C'est cette confiance qui rend possible la bénédiction en réponse au mal.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <div class="divider" aria-hidden="true"><span>◆</span></div>
+
+  <!-- ============ PISTES DE RÉFLEXION ============ -->
+  <article class="section section--conclusion reveal" id="reflexion">
+    <header class="sec-head">
+      <p class="kicker">Vers la chaire</p>
+      <h2 class="sec-title">Pistes de réflexion</h2>
+      <p class="ref">Sept questions pour la prédication</p>
+    </header>
+    <p class="lead">Sept questions pour conduire du texte à la chaire&nbsp;: non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p>
+    <ol class="questions">
+      <li>Par son «&nbsp;Enfin&nbsp;» adressé à tous (v. 8), Pierre récapitule ce qu'il a exigé devant l'État, au travail et dans le couple. Comment exposer ce passage du particulier au général pour que l'assemblée comprenne que l'unité du cœur se vit d'abord entre frères, mais doit rejoindre aussi ceux du dehors&nbsp;?</li>
+      <li>Le verset 8 énumère cinq traits&nbsp;: mêmes pensées, mêmes sentiments, amour fraternel, compassion, humilité. Lequel manque le plus à votre communauté, et comment prêcher l'unité intérieure du cœur sans la confondre avec une uniformité d'opinions imposée&nbsp;?</li>
+      <li>Bénir, selon MacArthur, c'est servir l'offenseur, prier pour son salut et désirer son bien-être (v. 9). Comment conduire des auditeurs blessés à passer de la simple retenue de la vengeance à la bénédiction active, sans minimiser le tort subi&nbsp;?</li>
+      <li>La clause «&nbsp;c'est à cela que vous avez été appelés&nbsp;» (v. 9) rattache la conduite à l'appel efficace au salut. Comment prêcher que l'on bénit parce qu'on a été sauvé, et non pour être sauvé, afin d'écarter tout glissement légaliste de l'héritage de la bénédiction&nbsp;?</li>
+      <li>Christ injurié ne rendait point d'injures (2.23). En quoi rattacher explicitement la péricope au modèle du Sauveur souffrant change-t-il la manière dont l'assemblée entend l'ordre de bénir ses ennemis&nbsp;?</li>
+      <li>La citation du Psaume 34 fait de la maîtrise de la langue le test concret de l'obéissance (v. 10). Quels usages précis de la parole, dans la vie de votre Église, trahissent ou manifestent ce «&nbsp;un seul cœur, une seule bouche&nbsp;»&nbsp;?</li>
+      <li>Le verset 12 fonde la non-vengeance sur le regard providentiel de Dieu. Comment cette vérité console-t-elle le croyant calomnié aujourd'hui, et comment réfute-t-elle l'idée qu'il faudrait se faire justice soi-même pour que le mal soit puni&nbsp;?</li>
+    </ol>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="logos">
+    <a href="https://www.ebcharlesbourg.com/" target="_blank" rel="noopener" aria-label="Site de l’Église Baptiste de Charlesbourg"><img class="footer__logo" src="../00%20-%20Introduction/LogoEBC.avif" width="80" height="250" alt="" decoding="async" loading="lazy"></a>
+    <a href="https://ftscriptura.com/" target="_blank" rel="noopener" aria-label="Faculté de Théologie Scriptura"><img class="logos__fts" src="../00%20-%20Introduction/LogoScriptura.webp" width="600" height="216" alt="" decoding="async" loading="lazy"></a>
+  </div>
+  <p class="footer__church">Église Baptiste de Charlesbourg</p>
+  <p class="footer__line">Pasteur Simon Ouellette · Charlesbourg, Québec</p>
+  <p class="footer__line">Recherche exégétique · 1 Pierre 3.8-12 · 2026-06-15 · AGB</p>
+  <p class="footer__line">Série «&nbsp;1 Pierre : l'espérance vivante dans l'épreuve&nbsp;» · Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line footer__ia">Texte produit avec l'assistance de l'IA générative (Claude, Anthropic) sous la direction d'André-Guy Bruneau · méthode : README du dépôt · Attribution à John MacArthur vérifiée le 2026-09-15</p>
+  <p class="footer__retour" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin:2rem 0 .3rem;">
+    <a href="../00%20-%20Introduction/index.html" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">&#8592;&nbsp;Vue d'ensemble de l'épître</a>
+    <a href="Recherche-MacArthur-1%20Pierre-3-8-12.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--filet-fort);border-radius:999px;color:var(--or-clair);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;">Version PDF&nbsp;&#8599;</a>
+  </p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
