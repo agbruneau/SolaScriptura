@@ -10,7 +10,7 @@ Auteur : André-Guy Bruneau
 
 La page suit la synthèse, à quelques ajustements près. Les citations bibliques y sont alignées sur la NEG79 (Phœbé « diaconesse », Alexandre « le forgeron »). Évodie et Syntyche y sont rattachées à Philippiens 4.2-3, et non à Romains 16. Le grand-prêtre de 36 n'y est plus nommé Ananias, qui ne l'était pas encore. Enfin, le sens de la croix y est formulé d'après Galates 3.13.
 
-La page est autonome comme les portails (CSS et JS en ligne, aucune ressource externe) et se maintient à la main : un nouveau livre, ou un titre de série modifié, doit y être reporté.
+La page est autonome comme les portails (CSS et JS en ligne, aucune ressource externe) et se maintient à la main : un nouveau livre, ou un titre de série modifié, doit y être reporté. En retour, chaque portail de livre y renvoie par un lien « Accueil · Paulus » en tête et en pied de page, que `etude_livre.py portal` produit par défaut (option `--accueil`).
 
 ## Ressources générales sur l'apôtre Paul
 

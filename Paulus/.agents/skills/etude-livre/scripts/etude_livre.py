@@ -534,6 +534,29 @@ RESEARCH_SECTIONS = [
     ("reflexion", "Pistes de réflexion"),
 ]
 
+# Lien de retour du portail vers la page d'accueil de la collection (Paulus/index.html).
+ACCUEIL_CSS = """  /* ---- Lien de retour vers l'accueil de la collection ---- */
+  .fil{margin:0 0 .5rem;}
+  .fil a{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;font-size:var(--etiq);letter-spacing:.2em;text-transform:uppercase;color:var(--feuille);text-decoration:none;}
+  .fil a:hover{color:var(--feuille-vif);text-decoration:underline;text-underline-offset:.2em;}
+  .pied__retour a{display:inline-flex;align-items:center;min-height:2.75rem;}
+  @media print{.fil,.pied__retour{display:none;}}
+"""
+
+
+def accueil_blocs(href: str, libelle: str) -> tuple[str, str, str]:
+    """Renvoie (CSS, lien d'en-tête, ligne du pied) du lien de retour; trois chaînes vides si href est vide."""
+    if not href:
+        return "", "", ""
+    h = html.escape(href, quote=True)
+    lib = html.escape(libelle)
+    nav = (
+        f'  <nav class="fil" aria-label="Retour à l\'accueil">'
+        f'<a href="{h}"><span aria-hidden="true">←</span> Accueil<span aria-hidden="true"> ·</span> {lib}</a></nav>\n'
+    )
+    pied = f'  <p class="pied__retour"><a href="{h}">Retour à l\'accueil · {lib}</a></p>\n'
+    return ACCUEIL_CSS, nav, pied
+
 
 def cmd_portal(args: argparse.Namespace) -> None:
     """Génère le portail autonome index.html à partir d'une spécification JSON."""
@@ -548,6 +571,9 @@ def cmd_portal(args: argparse.Namespace) -> None:
     date_fr = spec["date_fr"]
     series_title = spec["series_title"]
     series_phrase = spec["series_phrase"]
+    accueil_css, accueil_nav, accueil_pied = accueil_blocs(
+        getattr(args, "accueil", "../index.html"), getattr(args, "accueil_libelle", "Paulus")
+    )
 
     blocks = spec["blocks"]
     n_blocks = len(blocks)
@@ -941,7 +967,7 @@ def cmd_portal(args: argparse.Namespace) -> None:
     .sermon{{break-inside:avoid;}}
     a{{color:#000;}}
   }}
-</style>
+{accueil_css}</style>
 </head>
 <body>
 <a class="evitement" href="#contenu">Aller au contenu</a>
@@ -960,7 +986,7 @@ def cmd_portal(args: argparse.Namespace) -> None:
 </nav>
 
 <header class="tete" id="haut" data-nav="">
-  <div class="tete__cadre">
+{accueil_nav}  <div class="tete__cadre">
     <p class="tete__kicker">Étude · <span class="nw">{range_label}</span></p>
     <h1>{series_title}</h1>
     <div class="ornement" aria-hidden="true"><span>◆</span></div>
@@ -1056,7 +1082,7 @@ def cmd_portal(args: argparse.Namespace) -> None:
   <p class="pied__nom">André-Guy Bruneau</p>
   <p>Étude de <span class="nw">{range_label}</span> · Recherches exégétiques et plan de série du <span class="nw">{date_fr}</span></p>
   <p>Citations bibliques\u00a0: Nouvelle Édition de Genève <span class="nw">1979 (NEG79)</span></p>
-  <p class="pied__sdg" lang="la">Soli Deo Gloria</p>
+{accueil_pied}  <p class="pied__sdg" lang="la">Soli Deo Gloria</p>
 </footer>
 <script>
 (function(){{
@@ -1237,6 +1263,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_por = sub.add_parser("portal", help="Générer le portail index.html à partir d'une spécification JSON.")
     p_por.add_argument("--spec", required=True, help="Chemin du fichier JSON de spécification du portail.")
     p_por.add_argument("--output", required=True, help="Chemin du fichier index.html de sortie.")
+    p_por.add_argument(
+        "--accueil",
+        default="../index.html",
+        help="Lien relatif vers la page d'accueil de la collection, placé en tête et en pied du portail "
+        "(défaut : ../index.html; chaîne vide pour l'omettre).",
+    )
+    p_por.add_argument("--accueil-libelle", default="Paulus", help="Nom de la collection dans le lien de retour.")
     p_por.set_defaults(func=cmd_portal)
 
     p_ver = sub.add_parser("verify", help="Vérifier l'intégrité des 4*N+7 fichiers d'un dossier de livre.")
