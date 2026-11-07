@@ -4,7 +4,7 @@
 
 > « Mais, lorsque la bonté de Dieu notre Sauveur et son amour pour les hommes ont été manifestés, il nous a sauvés, non à cause des œuvres de justice que nous aurions faites, mais selon sa miséricorde, par le bain de la régénération et le renouvellement du Saint-Esprit. Il l’a répandu sur nous avec abondance par Jésus-Christ notre Sauveur, afin que, justifiés par sa grâce, nous devenions héritiers dans l’espérance de la vie éternelle. » (Tite 3.4-7, NEG)
 
-11 avril 2026 · André-Guy Bruneau
+5 novembre 2026 · André-Guy Bruneau
 
 ---
 

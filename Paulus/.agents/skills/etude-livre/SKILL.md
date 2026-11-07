@@ -20,7 +20,7 @@ Pour un livre comptant `N` chapitres (`<Plage>` vaut `1-<N>`, ou `1` pour un liv
 
 ## Dépendances et compétences liées
 
-- **`sermon-research`** (`C:\Users\agbru\.gemini\config\skills\sermon-research\SKILL.md`) : définit le schéma JSON à 9 sections des fichiers `Recherche-MacArthur-*.json`, l'échelle de couverture MacArthur (niveaux 1 à 5 et `∅`), l'encadré méthodologique sur les variantes textuelles et le générateur `generate.py`. Lire ses instructions avant de rédiger les fichiers `.json`.
+- **`sermon-research`** (`%USERPROFILE%\.gemini\config\skills\sermon-research\SKILL.md`, hors dépôt : ni cette skill, ni son générateur `generate.py`, ni ses modules partagés de `%USERPROFILE%\.gemini\config\shared\` ne sont versionnés; à ne pas confondre avec `CoramDeo/.claude/skills/sermon-research/`, d'un autre schéma) : définit le schéma JSON à 9 sections des fichiers `Recherche-MacArthur-*.json`, l'échelle de couverture MacArthur (niveaux 1 à 5 et `∅`), l'encadré méthodologique sur les variantes textuelles et le générateur `generate.py`. Lire ses instructions avant de rédiger les fichiers `.json`. Écart connu (7 novembre 2026) : la version actuelle de `generate.py` tire le nom de fichier attendu du champ `passage`, accents compris (`Recherche-MacArthur-Éphésiens-1.json`), et refuse donc les fichiers nommés d'après le slug sans accents de ce dépôt (Éphésiens, Philémon, 1 et 2 Timothée, Hébreux) ; pour ces livres, régénérer dans une copie renommée, puis reprendre les dérivés sous le nom du slug.
 - **`uv`** : utilisé pour exécuter `generate.py` avec `reportlab` (`uv run --with reportlab python ...`).
 - **`pandoc` et Chrome/Edge headless** : pilotés par la sous-commande `render` de `scripts/etude_livre.py` pour produire `Plan-Serie-<Livre>-<Plage>.pdf`.
 
@@ -42,7 +42,7 @@ uv run python .agents/skills/etude-livre/scripts/etude_livre.py lexicon `
   --output "$env:APPDATA\..\Local\Temp\collect_phm\lexicon.json"
 
 # 3. Générer .md, .html et .pdf pour chaque fichier Recherche-MacArthur-*.json
-uv run --with reportlab python "C:\Users\agbru\.gemini\config\skills\sermon-research\assets\generate.py" `
+uv run --with reportlab python "$env:USERPROFILE\.gemini\config\skills\sermon-research\assets\generate.py" `
   Philémon/Sommaire/Recherche-MacArthur-Philemon-1.json
 
 # 4. Rendre le PDF du plan de série à partir du Markdown

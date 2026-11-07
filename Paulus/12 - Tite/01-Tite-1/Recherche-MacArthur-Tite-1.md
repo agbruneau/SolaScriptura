@@ -4,7 +4,7 @@
 
 > « attaché à la vraie parole telle qu’elle a été enseignée, afin d’être capable d’exhorter selon la saine doctrine et de réfuter les contradicteurs. » (Tite 1.9, NEG)
 
-11 avril 2026 · André-Guy Bruneau
+5 novembre 2026 · André-Guy Bruneau
 
 ---
 

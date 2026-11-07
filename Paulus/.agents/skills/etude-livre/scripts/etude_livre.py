@@ -23,6 +23,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -102,6 +103,12 @@ BOOKS_TABLE: list[dict[str, Any]] = [
     {"num": 65, "name": "Jude", "slug": "Jude", "usfm": "JUD", "bh": "jude", "sbl": "Jude", "mob": "jud", "chapters": 1},
     {"num": 66, "name": "Apocalypse", "slug": "Apocalypse", "usfm": "REV", "bh": "revelation", "sbl": "Rev", "mob": "rev", "chapters": 22},
 ]
+
+
+def preposition_de(nom: str) -> str:
+    """« de » élidé devant une voyelle ou un h muet : « d'Éphésiens », « d'Hébreux », mais « de Tite »."""
+    initiale = unicodedata.normalize("NFD", nom)[:1].lower()
+    return "d'" if initiale in "aeiouyh" else "de "
 
 
 def resolve_book(identifier: str) -> dict[str, Any]:
@@ -631,6 +638,12 @@ def cmd_portal(args: argparse.Namespace) -> None:
     pad = 3 if n_chapters >= 100 else 2
     range_suffix = f"1-{n_chapters}" if n_chapters > 1 else "1"
     range_label = f"{bname} {range_suffix}"
+    de_livre = preposition_de(bname)
+    meta_description = spec.get(
+        "meta_description",
+        f"Accueil de l'étude {de_livre}{range_label} dans la perspective de John MacArthur.",
+    )
+    duree = spec.get("duree_html", "environ 45 minutes par sermon, plus la lecture publique du chapitre")
     date_fr = spec["date_fr"]
     series_title = spec["series_title"]
     series_phrase = spec["series_phrase"]
@@ -778,8 +791,8 @@ def cmd_portal(args: argparse.Namespace) -> None:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Étude de {range_label}</title>
-<meta name="description" content="{html.escape(spec.get('meta_description', f'Accueil de l étude de {range_label} dans la perspective de John MacArthur.'))}">
+<title>Étude {de_livre}{range_label}</title>
+<meta name="description" content="{html.escape(meta_description)}">
 <meta name="author" content="André-Guy Bruneau">
 <meta name="color-scheme" content="dark">
 <style>
@@ -1087,7 +1100,7 @@ def cmd_portal(args: argparse.Namespace) -> None:
         <p class="etiquette">Plan de série<span class="carte__sep"> · </span><span class="carte__date nw">{date_fr}</span></p>
         <h3 id="carte-plan">{spec["plan_card"]["heading"]}</h3>
         <p class="carte__texte">{spec["plan_card"]["summary_html"]}</p>
-        <p class="carte__duree"><span class="etiquette">Durée visée</span><span class="vh">\u00a0: </span>environ 45 minutes par sermon, plus la lecture publique du chapitre</p>
+        <p class="carte__duree"><span class="etiquette">Durée visée</span><span class="vh">\u00a0: </span>{duree}</p>
         <p class="etiquette">Pour chaque sermon</p>
         <ul class="rubriques" role="list"><li>Sermons <abbr lang="en" title="Grace to You">GTY</abbr></li><li>Textes d'appui</li><li>Idée centrale</li><li>Phrase à faire retenir</li><li>But</li><li>Étapes</li></ul>
         <div class="actions">
@@ -1144,7 +1157,7 @@ def cmd_portal(args: argparse.Namespace) -> None:
 <footer class="pied">
   <div class="ornement" aria-hidden="true"><span>◆</span></div>
   <p class="pied__nom">André-Guy Bruneau</p>
-  <p>Étude de <span class="nw">{range_label}</span> · Recherches exégétiques et plan de série du <span class="nw">{date_fr}</span></p>
+  <p>Étude {de_livre}<span class="nw">{range_label}</span> · Recherches exégétiques et plan de série du <span class="nw">{date_fr}</span></p>
   <p>Citations bibliques\u00a0: Nouvelle Édition de Genève <span class="nw">1979 (NEG79)</span></p>
 {accueil_pied}  <p class="pied__sdg" lang="la">Soli Deo Gloria</p>
 </footer>
@@ -1244,7 +1257,7 @@ def cmd_verify(args: argparse.Namespace) -> None:
         idx_txt = idx_path.read_text(encoding="utf-8")
         idx_ids = set(re.findall(r'id="([^"]+)"', idx_txt))
         for href in re.findall(r'href="([^"]+)"', idx_txt):
-            if href.startswith(("http://", "https://")):
+            if href.startswith(("http://", "https://", "mailto:")):
                 continue
             if href.startswith("#"):
                 aid = href[1:]
@@ -1252,7 +1265,7 @@ def cmd_verify(args: argparse.Namespace) -> None:
                     errors.append(f"Ancre interne introuvable dans index.html : {href}")
             else:
                 parts = href.split("#", 1)
-                target_file = book_dir / parts[0]
+                target_file = book_dir / urllib.parse.unquote(parts[0])
                 if not target_file.exists():
                     errors.append(f"Lien relatif brisé dans index.html : {href}")
                 elif len(parts) == 2 and target_file.suffix == ".html":
@@ -1264,10 +1277,13 @@ def cmd_verify(args: argparse.Namespace) -> None:
     md_path = book_dir / f"Plan-Serie-{slug}-{range_suffix}.md"
     if md_path.exists():
         md_txt = md_path.read_text(encoding="utf-8")
-        for m in re.findall(r"\]\(([^)]+)\)", md_txt):
-            if m.startswith(("http://", "https://")):
+        # Liens [texte](cible) et [texte](<cible avec espaces>); l'ancre éventuelle est ignorée.
+        for m_chevrons, m_simple in re.findall(r"\]\(<([^>]+)>\)|\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)", md_txt):
+            m = m_chevrons or m_simple
+            if m.startswith(("http://", "https://", "mailto:")):
                 continue
-            if not (book_dir / m).exists():
+            cible = urllib.parse.unquote(m.split("#", 1)[0])
+            if cible and not (book_dir / cible).exists():
                 errors.append(f"Lien brisé dans {md_path.name} : {m}")
 
     report = {

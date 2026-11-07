@@ -5,6 +5,10 @@
 > entier** (27 livres), complété par des **séries de l'Ancien Testament** (Genèse 1-11, Psaume 19,
 > Psaume 119), le tout dans un cadre baptiste réformé conforme à la théologie de John MacArthur.
 
+Ce dossier fait partie du dépôt [SolaScriptura](../README.md) depuis le 7 novembre 2026. Dans ce
+README, « le dépôt » désigne `CoramDeo/` : les chemins sont relatifs à ce dossier, et les commandes
+de `tools/` s'y lancent.
+
 Le dépôt est organisé en **trois volets**, qui vont du fondement doctrinal à la vie de l'homme
 racheté, puis à l'exposition suivie des Écritures :
 

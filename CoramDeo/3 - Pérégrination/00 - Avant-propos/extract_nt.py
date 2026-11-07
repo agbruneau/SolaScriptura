@@ -3,7 +3,7 @@
 Extraction du Nouveau Testament depuis « NEG - MacArthur.pdf ».
 
 Pour chaque livre du NT, produit deux fichiers dans son dossier :
-  - NEG - <Livre>.md : texte biblique NEG (chapitres, peri­copes, versets numerotes)
+  - NEG - <Livre>.md : texte biblique NEG (chapitres, pericopes, versets numerotes)
   - JMA - <Livre>.md : notes d'etude MacArthur (intro, plan, notes verset par verset)
 
 Sources protegees, hors depot (licence d'usage personnel, non redistribuees) :
@@ -13,7 +13,7 @@ le PDF et les fichiers produits vivent dans CORAMDEO_SOURCES
 Separation par police + taille + region (haut texte / bas commentaire) :
   Utopia-Regular 8.5 / capitale 24      -> texte biblique NEG
   Humanist BoldCond ~7.1 (region haut)  -> numero de verset (NEG)
-  Utopia-Semibold 8.0-8.9 inline        -> en-tete de peri­cope (NEG)
+  Utopia-Semibold 8.0-8.9 inline        -> en-tete de pericope (NEG)
   Humanist Light ~6.7 (bande etroite)   -> renvois marginaux (exclus par defaut)
   Humanist Light ~7.8 (region bas)      -> commentaire MacArthur (JMA)
   Humanist BoldCond ~7.4 (region bas)   -> amorce de note c:v + lemme (JMA)
@@ -222,8 +222,8 @@ MARKER = re.compile(r'^(\d{1,2}\.|[A-Z]\.|[IVXLC]+\.)\s')
 
 def render_neg(name, neg):
     out = [f'# NEG - {name}', '',
-           f'> Texte biblique - Nouvelle Edition de Geneve 1979.  '
-           f'Source : *La Sainte Bible avec commentaires de John MacArthur* (Societe Biblique de Geneve).',
+           '> Texte biblique - Nouvelle Edition de Geneve 1979.  '
+           'Source : *La Sainte Bible avec commentaires de John MacArthur* (Societe Biblique de Geneve).',
            '']
     verse = None
     buf = ''
@@ -275,8 +275,8 @@ def render_neg(name, neg):
 
 def render_jma(name, intro, notes, apparatus):
     out = [f'# JMA - {name}', '',
-           f'> Notes d\'etude de *La Sainte Bible avec commentaires de John MacArthur* '
-           f'(Societe Biblique de Geneve), texte NEG 1979.', '', '## Introduction', '']
+           '> Notes d\'etude de *La Sainte Bible avec commentaires de John MacArthur* '
+           '(Societe Biblique de Geneve), texte NEG 1979.', '', '## Introduction', '']
 
     def finish(parts):
         return re.sub(r'[ \t]+', ' ', clean(smart_reduce(parts))).strip()

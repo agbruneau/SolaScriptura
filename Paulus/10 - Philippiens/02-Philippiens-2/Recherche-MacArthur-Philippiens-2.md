@@ -4,7 +4,7 @@
 
 > « C’est pourquoi aussi Dieu l’a souverainement élevé, et lui a donné le nom qui est au-dessus de tout nom, afin qu’au nom de Jésus tout genou fléchisse dans les cieux, sur la terre et sous la terre, et que toute langue confesse que Jésus-Christ est Seigneur, à la gloire de Dieu le Père. » (Philippiens 2.9-11, NEG)
 
-11 avril 2026 · André-Guy Bruneau
+5 novembre 2026 · André-Guy Bruneau
 
 ---
 

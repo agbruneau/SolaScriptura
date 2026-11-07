@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Contrôle du dépôt, en local et en intégration continue (stdlib seulement).
+"""Contrôle de CoramDeo, en local (stdlib seulement ; le dépôt n'a pas d'intégration continue).
 
     python tools/check.py            erreurs -> code de retour 1
     python tools/check.py --strict   les avertissements comptent aussi comme erreurs

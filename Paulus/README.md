@@ -1,4 +1,4 @@
-# Prospection
+# Paulus
 
 Préparation de prédications expositives : recherches exégétiques dans la perspective de John MacArthur et plans de série, sur le texte de la NEG79.
 
@@ -14,7 +14,7 @@ La page est autonome comme les portails (CSS et JS en ligne, aucune ressource ex
 
 ## Ressources générales sur l'apôtre Paul
 
-Deux documents de synthèse à la racine du dépôt fournissent le contexte biographique, chronologique et historique en appui à l'ensemble du corpus paulinien :
+Deux documents de synthèse à la racine du dossier fournissent le contexte biographique, chronologique et historique en appui à l'ensemble du corpus paulinien :
 
 - [`Apôtre Paul - Histoire.pdf`](<Apôtre Paul - Histoire.pdf>) : Synthèse exhaustive (11 pages) sur la vie, le ministère, le contexte socio-culturel, les voyages missionnaires, les captivités et l'héritage de l'apôtre Paul (notamment d'après les travaux d'Alfred Kuen).
 - [`Apôtre Paul - Présentation.pdf`](<Apôtre Paul - Présentation.pdf>) : Support visuel de présentation (diaporama de 30 diapositives) retraçant la chronologie, le parcours et le ministère de Paul.
@@ -28,25 +28,25 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | Rang | Épître | Date (apr. J.-C.) | Lieu de rédaction | État dans le dépôt | Source |
 |---:|---|---|---|---|---|
 | 1 | Galates | probablement vers 49-50 | non précisé par MacArthur | étudiée : [Galates](<01 - Galates/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/gal) |
-| 2 | 1 Thessaloniciens | vers 51 | Corinthe | étudiée : [1 Thessaloniciens](<02 - 1-Thessaloniciens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1th) |
-| 3 | 2 Thessaloniciens | fin 51 ou début 52 | Corinthe | étudiée : [2 Thessaloniciens](<03 - 2-Thessaloniciens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2th) |
-| 4 | 1 Corinthiens | très probablement dans la première moitié de 55 | Éphèse | étudiée : [1 Corinthiens](<04 - 1-Corinthiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1co) |
-| 5 | 2 Corinthiens | très probablement fin 55 ou tout début 56 | peut-être Philippes, en Macédoine | étudiée : [2 Corinthiens](<05 - 2 - Corinthiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2co) |
+| 2 | 1 Thessaloniciens | vers 51 | Corinthe | étudiée : [1 Thessaloniciens](<02 - 1 Thessaloniciens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1th) |
+| 3 | 2 Thessaloniciens | fin 51 ou début 52 | Corinthe | étudiée : [2 Thessaloniciens](<03 - 2 Thessaloniciens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2th) |
+| 4 | 1 Corinthiens | très probablement dans la première moitié de 55 | Éphèse | étudiée : [1 Corinthiens](<04 - 1 Corinthiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1co) |
+| 5 | 2 Corinthiens | très probablement fin 55 ou tout début 56 | peut-être Philippes, en Macédoine | étudiée : [2 Corinthiens](<05 - 2 Corinthiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2co) |
 | 6 | Romains | très probablement en 56 | Corinthe | étudiée : [Romains](<06 - Romains/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/rom) |
-| 7 | Éphésiens | entre 60 et 62 | Rome, première captivité | étudiée : [Éphésiens](<07 - Éphesiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/eph) |
+| 7 | Éphésiens | entre 60 et 62 | Rome, première captivité | étudiée : [Éphésiens](<07 - Éphésiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/eph) |
 | 8 | Colossiens | vers 60-62 | Rome, première captivité | étudiée : [Colossiens](<08 - Colossiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/col) |
-| 9 | Philémon | vers 60-62 | Rome, première captivité | étudiée : [Philémon](<09 - Philemon/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |
+| 9 | Philémon | vers 60-62 | Rome, première captivité | étudiée : [Philémon](<09 - Philémon/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/phm) |
 | 10 | Philippiens | vers 61, sur la fin des deux ans de captivité | Rome, première captivité | étudiée : [Philippiens](<10 - Philippiens/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/phi) |
-| 11 | 1 Timothée | vers 62-64 | Macédoine | étudiée : [1 Timothée](<11 - 1 - Timothée/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
+| 11 | 1 Timothée | vers 62-64 | Macédoine | étudiée : [1 Timothée](<11 - 1 Timothée/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/1ti) |
 | 12 | Tite | entre 62 et 64 | Corinthe ou Nicopolis | étudiée : [Tite](<12 - Tite/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/tit) |
-| 13 | 2 Timothée | vers 67 | Rome, seconde captivité | étudiée : [2 Timothée](<13 - 2 - Timothée/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
+| 13 | 2 Timothée | vers 67 | Rome, seconde captivité | étudiée : [2 Timothée](<13 - 2 Timothée/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
 | 14 | Hébreux | entre 67 et 69 (avant 70) | non précisé (salutations de ceux d'Italie, 13.24) | étudiée : [Hébreux](<14 - Hébreux/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/heb) |
 
 Les dates, approximatives, et les lieux sont ceux des introductions de MacArthur, et l'ordre les suit. Quand ces introductions ne tranchent pas entre des lettres d'une même période (rangs 7 à 9, puis 11 et 12), l'ordre canonique les départage. Philippiens (rang 10) suit les trois autres lettres de la captivité parce que MacArthur la date de la fin de celle-ci, sans la situer par rapport à elles. Hébreux (rang 14), dont l'auteur humain anonyme appartient au cercle apostolique entourant Paul et Timothée (13.23), prolonge la série à la veille de la destruction du temple de Jérusalem en 70.
 
 ## Dossier d'une épître
 
-Chaque épître a son dossier à la racine du dépôt, préfixé de son rang dans la table chronologique ci-dessus (`01 - Galates/` à `14 - Hébreux/`); à l'intérieur, les noms de fichiers gardent le nom court du livre (`Plan-Serie-Galates-1-6.md`). Modèle, `01 - Galates/` :
+Chaque épître a son dossier à la racine de `Paulus/`, préfixé de son rang dans la table chronologique ci-dessus (`01 - Galates/` à `14 - Hébreux/`); à l'intérieur, les noms de fichiers gardent le nom court du livre (`Plan-Serie-Galates-1-6.md`). Modèle, `01 - Galates/` :
 
 - [`index.html`](<01 - Galates/index.html>) : page d'accueil de l'étude.
 - [`Plan-Serie-Galates-1-6.md`](<01 - Galates/Plan-Serie-Galates-1-6.md>) ([PDF](<01 - Galates/Plan-Serie-Galates-1-6.pdf>)) : plan de série en six sermons, un par chapitre, regroupés selon les trois blocs de MacArthur (1-2, 3-4, 5-6). Pour chaque sermon : idée centrale, phrase à faire retenir, but, étapes, appuis exégétiques, application, puis transition vers le sermon suivant ou, au sixième, conclusion de la série.

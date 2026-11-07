@@ -62,6 +62,19 @@ python tools/pages.py --selftest
 python tools/check.py
 ```
 
+Ceux de Paulus se lancent depuis `Paulus/`, un dossier de livre à la fois : `verify` contrôle les
+`4 × N + 7` fichiers attendus, l'absence de tiret cadratin et les liens et ancres du portail et du
+plan de série.
+
+```bash
+python .agents/skills/etude-livre/scripts/etude_livre.py verify --book "Galates" --book-dir "01 - Galates" --output "$TEMP/verify-galates.json"
+```
+
+Les dérivés `.md`, `.html` et `.pdf` des recherches de Paulus sont produits depuis leur `.json` par
+le générateur `generate.py` de la skill `sermon-research` de l'auteur, qui vit hors dépôt
+(`%USERPROFILE%\.gemini\config\skills\sermon-research\`) : le dépôt seul ne suffit pas à les
+régénérer (voir `Paulus/.agents/skills/etude-livre/SKILL.md`).
+
 ## Origine
 
 Les deux dossiers ont été intégrés en entier le 7 novembre 2026, à partir des dépôts
@@ -69,7 +82,8 @@ Les deux dossiers ont été intégrés en entier le 7 novembre 2026, à partir d
 [agbruneau/Paulus](https://github.com/agbruneau/Paulus), où leur historique antérieur est conservé.
 Ils sont désormais maintenus ici.
 
-Les `.gitignore` de chaque dossier continuent de s'appliquer. Les sources protégées de CoramDeo
+Le `.gitignore` de CoramDeo continue de s'appliquer; Paulus n'en a pas, et le `.gitignore` racine
+couvre ses caches Python. Les sources protégées de CoramDeo
 (textes sous licence d'usage personnel) restent hors dépôt.
 
 ## Licence

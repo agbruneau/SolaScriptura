@@ -4,7 +4,7 @@
 
 > « Ne vous inquiétez de rien; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications, avec des actions de grâces. Et la paix de Dieu, qui surpasse toute intelligence, gardera vos cœurs et vos pensées en Jésus-Christ. » (Philippiens 4.6-7, NEG)
 
-11 avril 2026 · André-Guy Bruneau
+5 novembre 2026 · André-Guy Bruneau
 
 ---
 

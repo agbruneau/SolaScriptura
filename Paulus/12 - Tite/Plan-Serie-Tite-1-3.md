@@ -1,8 +1,8 @@
 # Orner la doctrine de Dieu notre Sauveur : anciens qualifiés, Église sainte et témoignage rempli de grâce dans un monde païen
 
-**Plan de série** · 11 avril 2026 · André-Guy Bruneau
+**Plan de série** · 5 novembre 2026 · André-Guy Bruneau
 
-**Texte :** Tite 1-3, un sermon par chapitre · **Citations :** NEG79, recoupées au texte de BibleGateway le 11 avril 2026.
+**Texte :** Tite 1-3, un sermon par chapitre · **Citations :** NEG79, recoupées au texte de BibleGateway le 5 novembre 2026.
 
 **Source :** [Recherche-MacArthur-Tite-1-3](Sommaire/Recherche-MacArthur-Tite-1-3.md), niveau 1 : sermons Grace to You 56-1 à 56-26, commentaire *MacArthur New Testament Commentary : Titus* et introduction de la *MacArthur Study Bible*. Les codes entre parenthèses renvoient à ces sermons; « Recherche » renvoie aux sections du document (État du texte, grammaire, mots-clés, thèmes, pistes). *Texte seul* marque une observation tirée du texte sans appui dans la Recherche.
 
@@ -188,6 +188,6 @@ Rédigée par l'apôtre Paul entre 62 et 64 apr. J.-C. (depuis Corinthe ou les a
 
 ## Sources
 
-- **Synthèse du livre entier :** [Recherche-MacArthur-Tite-1-3](Sommaire/Recherche-MacArthur-Tite-1-3.md) (11 avril 2026) : contexte, arrière-plan, État du texte, structure, grammaire, mots-clés (Thayer), exposition MacArthur, renvois, thèmes doctrinaux, pistes de réflexion et liens vers les 26 sermons Grace to You ([56-1](https://www.gty.org/sermons/56-1) à [56-26](https://www.gty.org/sermons/56-26)).
+- **Synthèse du livre entier :** [Recherche-MacArthur-Tite-1-3](Sommaire/Recherche-MacArthur-Tite-1-3.md) (5 novembre 2026) : contexte, arrière-plan, État du texte, structure, grammaire, mots-clés (Thayer), exposition MacArthur, renvois, thèmes doctrinaux, pistes de réflexion et liens vers les 26 sermons Grace to You ([56-1](https://www.gty.org/sermons/56-1) à [56-26](https://www.gty.org/sermons/56-26)).
 - **Recherches par chapitre :** [Chapitre 1](01-Tite-1/Recherche-MacArthur-Tite-1.md) · [Chapitre 2](02-Tite-2/Recherche-MacArthur-Tite-2.md) · [Chapitre 3](03-Tite-3/Recherche-MacArthur-Tite-3.md).
-- **Texte biblique NEG79 de Tite 1-3 :** BibleGateway, consulté le 11 avril 2026 : [ch. 1](https://www.biblegateway.com/passage/?search=Tite+1&version=NEG1979), [ch. 2](https://www.biblegateway.com/passage/?search=Tite+2&version=NEG1979), [ch. 3](https://www.biblegateway.com/passage/?search=Tite+3&version=NEG1979).
+- **Texte biblique NEG79 de Tite 1-3 :** BibleGateway, consulté le 5 novembre 2026 : [ch. 1](https://www.biblegateway.com/passage/?search=Tite+1&version=NEG1979), [ch. 2](https://www.biblegateway.com/passage/?search=Tite+2&version=NEG1979), [ch. 3](https://www.biblegateway.com/passage/?search=Tite+3&version=NEG1979).

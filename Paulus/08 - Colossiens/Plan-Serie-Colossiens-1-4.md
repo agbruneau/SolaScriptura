@@ -3,7 +3,7 @@
 ## La prééminence et la suffisance absolue de Jésus-Christ : la Tête divine de l'Église et la vie ressuscitée de l'homme nouveau
 
 **Texte de référence :** Nouvelle Édition de Genève (NEG79)  
-**Date :** 2026-11-05  
+**Date :** 5 novembre 2026  
 **Niveau de source MacArthur :** Niveau 1 - couverture intégrale par les 23 sermons *Grace to You* sur Colossiens (`2130` à `2152`, séries *Colossians, Vol. 01* et *Colossians, Vol. 02*, prêchés de février à décembre 1976) et l'introduction de la *MacArthur Study Bible*  
 **Format de la série :** 4 prédications (un sermon par chapitre, articulés selon les deux grands mouvements doctrinaux et pratiques de l'épître)
 

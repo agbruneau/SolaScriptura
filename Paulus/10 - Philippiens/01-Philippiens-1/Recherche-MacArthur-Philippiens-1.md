@@ -4,7 +4,7 @@
 
 > « car Christ est ma vie, et mourir m’est un gain. » (Philippiens 1.21, NEG)
 
-11 avril 2026 · André-Guy Bruneau
+5 novembre 2026 · André-Guy Bruneau
 
 ---
 

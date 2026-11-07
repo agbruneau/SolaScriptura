@@ -4,7 +4,7 @@
 
 > « Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée. Elle nous enseigne à renoncer à l’impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété, en attendant la bienheureuse espérance, et la manifestation de la gloire de notre grand Dieu et Sauveur Jésus-Christ. Il s’est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres. » (Tite 2.11-14, NEG)
 
-11 avril 2026 · André-Guy Bruneau
+5 novembre 2026 · André-Guy Bruneau
 
 ---
 

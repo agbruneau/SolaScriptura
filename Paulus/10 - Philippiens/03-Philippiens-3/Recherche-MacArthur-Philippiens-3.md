@@ -4,7 +4,7 @@
 
 > « Et même je regarde toutes choses comme une perte, à cause de l’excellence de la connaissance de Jésus-Christ mon Seigneur, pour lequel j’ai renoncé à tout; je les regarde comme de la boue, afin de gagner Christ, et d’être trouvé en lui, non avec ma justice, celle qui vient de la loi, mais avec celle qui s’obtient par la foi en Christ, la justice qui vient de Dieu par la foi. » (Philippiens 3.8-9, NEG)
 
-11 avril 2026 · André-Guy Bruneau
+5 novembre 2026 · André-Guy Bruneau
 
 ---
 

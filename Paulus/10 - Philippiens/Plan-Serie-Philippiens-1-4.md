@@ -4,7 +4,7 @@
 **Texte biblique :** Philippiens 1.1 à 4.23 (4 chapitres, 104 versets - Nouvelle Édition de Genève 1979, NEG79)  
 **Perspective théologique et homilétique :** John MacArthur (46 sermons *Grace to You*, codes `50-1` à `50-46`, 1988-1989 ; *MacArthur New Testament Commentary: Philippians*, 2001 ; *MacArthur Study Bible*)  
 **Auteur :** André-Guy Bruneau  
-**Date :** 11 avril 2026  
+**Date :** 5 novembre 2026  
 
 ---
 

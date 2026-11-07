@@ -103,8 +103,9 @@ Les champs « HTML » acceptent du balisage en ligne (`<strong>`, `<em>`, `<abbr
 | Champ | Contenu | Emplacement dans le portail |
 |---|---|---|
 | `book` | nom du livre, résolu par la table canonique (`"Tite"`, `"1 Timothée"`) | titres, liens et noms de fichiers |
-| `date_fr` | date du plan de série (`"11 avril 2026"`) | carte du plan et pied de page |
+| `date_fr` | date réelle du plan de série, à ne pas reprendre de l'exemple (`"5 novembre 2026"`) | carte du plan et pied de page |
 | `meta_description` | *facultatif*; texte | `<meta name="description">` (sinon, phrase générique) |
+| `duree_html` | *facultatif*; HTML (défaut : `environ 45 minutes par sermon, plus la lecture publique du chapitre`) | carte « Plan de série », « Durée visée » : à reprendre du plan |
 | `series_title` | HTML | `<h1>` |
 | `series_phrase` | HTML | phrase de la série, en tête et en conclusion |
 | `header_verse` | `{"text", "ref"}` : verset NEG79 sans guillemets, référence | verset de l'en-tête |

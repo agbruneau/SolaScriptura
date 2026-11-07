@@ -19,7 +19,7 @@ _here = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(_here, "..", "..", "..", "shared"))
 
 from pdf_utils import (
-    NAVY, GOLD, RULE_GRAY, CONTENT_WIDTH, SMALL_CAPS,
+    NAVY, RULE_GRAY, CONTENT_WIDTH,
     build_styles, section_header, add_section, add_title_banner,
     make_page_footer, create_doc,
 )
