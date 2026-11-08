@@ -75,17 +75,6 @@ le générateur `generate.py` de la skill `sermon-research` de l'auteur, qui vit
 (`%USERPROFILE%\.gemini\config\skills\sermon-research\`) : le dépôt seul ne suffit pas à les
 régénérer (voir `Paulus/.agents/skills/etude-livre/SKILL.md`).
 
-## Origine
-
-Les deux dossiers ont été intégrés en entier le 7 novembre 2026, à partir des dépôts
-[agbruneau/CoramDeo](https://github.com/agbruneau/CoramDeo) et
-[agbruneau/Paulus](https://github.com/agbruneau/Paulus), où leur historique antérieur est conservé.
-Ils sont désormais maintenus ici.
-
-Le `.gitignore` de CoramDeo continue de s'appliquer; Paulus n'en a pas, et le `.gitignore` racine
-couvre ses caches Python. Les sources protégées de CoramDeo
-(textes sous licence d'usage personnel) restent hors dépôt.
-
 ## Licence
 
 Une licence unique couvre tout le dépôt, CoramDeo et Paulus compris : texte complet dans
