@@ -94,7 +94,7 @@ BOOKS_TABLE: list[dict[str, Any]] = [
     {"num": 56, "name": "Tite", "slug": "Tite", "usfm": "TIT", "bh": "titus", "sbl": "Titus", "mob": "tit", "chapters": 3},
     {"num": 57, "name": "Philémon", "slug": "Philemon", "usfm": "PHM", "bh": "philemon", "sbl": "Phlm", "mob": "phm", "chapters": 1},
     {"num": 58, "name": "Hébreux", "slug": "Hebreux", "usfm": "HEB", "bh": "hebrews", "sbl": "Heb", "mob": "heb", "chapters": 13},
-    {"num": 59, "name": "Jacques", "slug": "Jacques", "usfm": "JAS", "bh": "james", "sbl": "Jas", "mob": "jam", "chapters": 5},
+    {"num": 59, "name": "Jacques", "slug": "Jacques", "usfm": "JAS", "bh": "james", "sbl": "Jas", "mob": "jas", "chapters": 5},
     {"num": 60, "name": "1 Pierre", "slug": "1-Pierre", "usfm": "1PE", "bh": "1_peter", "sbl": "1Pet", "mob": "1pe", "chapters": 5},
     {"num": 61, "name": "2 Pierre", "slug": "2-Pierre", "usfm": "2PE", "bh": "2_peter", "sbl": "2Pet", "mob": "2pe", "chapters": 3},
     {"num": 62, "name": "1 Jean", "slug": "1-Jean", "usfm": "1JN", "bh": "1_john", "sbl": "1John", "mob": "1jo", "chapters": 5},

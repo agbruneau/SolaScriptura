@@ -6,7 +6,7 @@ Auteur : André-Guy Bruneau
 
 ## Point d'entrée
 
-[`index.html`](index.html), à ouvrir dans un navigateur, est la page d'accueil du dossier. Elle reprend la synthèse [`Apôtre Paul - Histoire.pdf`](<Apôtre Paul - Histoire.pdf>) : cinq constats, chronologie de 33 à 67/68, vie et ministère, épîtres de la captivité, portrait. Elle mène aussi aux portails des quatorze études, de Galates à Hébreux, rangés selon les périodes de la vie de Paul et datés d'après MacArthur.
+[`index.html`](index.html), à ouvrir dans un navigateur, est la page d'accueil du dossier. Elle reprend la synthèse [`Apôtre Paul - Histoire.pdf`](<Apôtre Paul - Histoire.pdf>) : cinq constats, chronologie de 33 à 67/68, vie et ministère, épîtres de la captivité, portrait. Elle mène aussi aux portails des quinze études, de Galates à Jacques, rangés selon les périodes de la vie de Paul (puis ses proches et collègues apostoliques) et datés d'après MacArthur.
 
 La page suit la synthèse, à quelques ajustements près. Les citations bibliques y sont alignées sur la NEG79 (Phœbé « diaconesse », Alexandre « le forgeron »). Évodie et Syntyche y sont rattachées à Philippiens 4.2-3, et non à Romains 16. Le grand-prêtre de 36 n'y est plus nommé Ananias, qui ne l'était pas encore. Enfin, le sens de la croix y est formulé d'après Galates 3.13.
 
@@ -41,12 +41,13 @@ Galates ouvre la série parce que MacArthur la tient pour la première lettre de
 | 12 | Tite | entre 62 et 64 | Corinthe ou Nicopolis | étudiée : [Tite](<12 - Tite/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/tit) |
 | 13 | 2 Timothée | vers 67 | Rome, seconde captivité | étudiée : [2 Timothée](<13 - 2 Timothée/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/2ti) |
 | 14 | Hébreux | entre 67 et 69 (avant 70) | non précisé (salutations de ceux d'Italie, 13.24) | étudiée : [Hébreux](<14 - Hébreux/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/heb) |
+| 15 | Jacques | vers 44-49 (avant le concile d'Actes 15) | Jérusalem | étudiée : [Jacques](<15 - Jacques/index.html>) | [introduction](https://www.myopenbible.com/bible/intro/gty/jas) |
 
-Les dates, approximatives, et les lieux sont ceux des introductions de MacArthur, et l'ordre les suit. Quand ces introductions ne tranchent pas entre des lettres d'une même période (rangs 7 à 9, puis 11 et 12), l'ordre canonique les départage. Philippiens (rang 10) suit les trois autres lettres de la captivité parce que MacArthur la date de la fin de celle-ci, sans la situer par rapport à elles. Hébreux (rang 14), dont l'auteur humain anonyme appartient au cercle apostolique entourant Paul et Timothée (13.23), prolonge la série à la veille de la destruction du temple de Jérusalem en 70.
+Les dates, approximatives, et les lieux sont ceux des introductions de MacArthur, et l'ordre des treize lettres pauliniennes les suit. Quand ces introductions ne tranchent pas entre des lettres d'une même période (rangs 7 à 9, puis 11 et 12), l'ordre canonique les départage. Philippiens (rang 10) suit les trois autres lettres de la captivité parce que MacArthur la date de la fin de celle-ci, sans la situer par rapport à elles. Hébreux (rang 14), dont l'auteur humain anonyme appartient au cercle apostolique entourant Paul et Timothée (13.23), prolonge le corpus paulinien à la veille de la destruction du temple de Jérusalem en 70. Jacques (rang 15), rédigée dès 44-49 depuis Jérusalem par Jacques le Juste, frère du Seigneur et « colonne » qui tendit la main d'association à Paul (Galates 1.19; 2.9; Actes 15.13), ouvre les épîtres générales à la suite d'Hébreux et complète directement l'enseignement paulinien de la justification par la foi seule en exposant les fruits d'une foi vivante.
 
 ## Dossier d'une épître
 
-Chaque épître a son dossier à la racine de `Paulus/`, préfixé de son rang dans la table chronologique ci-dessus (`01 - Galates/` à `14 - Hébreux/`); à l'intérieur, les noms de fichiers gardent le nom court du livre (`Plan-Serie-Galates-1-6.md`). Modèle, `01 - Galates/` :
+Chaque épître a son dossier à la racine de `Paulus/`, préfixé de son rang dans la table ci-dessus (`01 - Galates/` à `15 - Jacques/`); à l'intérieur, les noms de fichiers gardent le nom court du livre (`Plan-Serie-Galates-1-6.md`). Modèle, `01 - Galates/` :
 
 - [`index.html`](<01 - Galates/index.html>) : page d'accueil de l'étude.
 - [`Plan-Serie-Galates-1-6.md`](<01 - Galates/Plan-Serie-Galates-1-6.md>) ([PDF](<01 - Galates/Plan-Serie-Galates-1-6.pdf>)) : plan de série en six sermons, un par chapitre, regroupés selon les trois blocs de MacArthur (1-2, 3-4, 5-6). Pour chaque sermon : idée centrale, phrase à faire retenir, but, étapes, appuis exégétiques, application, puis transition vers le sermon suivant ou, au sixième, conclusion de la série.

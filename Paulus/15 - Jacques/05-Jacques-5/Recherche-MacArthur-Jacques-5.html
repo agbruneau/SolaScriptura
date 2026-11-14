@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacques 5 · La foi persévérante face à l&#x27;injustice : attente du Seigneur, intégrité, prière et rachat des égarés · Recherche exégétique</title>
+<meta name="description" content="Recherche exégétique de Jacques 5 dans la perspective de John MacArthur : La foi persévérante face à l&#x27;injustice : attente du Seigneur, intégrité, prière et rachat des égarés.">
+<meta name="author" content="André-Guy Bruneau">
+<style>
+  :root{
+    /* ---- Palette Noir + orange ---- */
+    --nuit:#0a0a0a;        /* fond noir profond */
+    --nuit-1:#121212;
+    --nuit-2:#1b1b1b;      /* panneaux */
+    --encre:#f3f0ec;       /* texte principal, contraste élevé */
+    --encre-doux:#c9c2ba;  /* texte secondaire, demeure lisible */
+    --or:#e8843c;          /* orange chaud (accent principal) */
+    --or-clair:#f6a85c;
+    --feuille:#f0b659;     /* ambre lumineux (accent secondaire) */
+    --feuille-vif:#f7c97a;
+    --filet:rgba(232,132,60,.28);
+    --filet-fort:rgba(232,132,60,.52);
+    /* Largeur de contenu proportionnelle : ~80% de l'écran sur grand écran,
+       plancher 58rem pour que mobile/tablette gardent une lecture confortable */
+    --max:max(58rem,80vw);
+  }
+
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;-webkit-text-size-adjust:100%;
+    scrollbar-color:var(--or) var(--nuit);scrollbar-width:thin;
+  }
+
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+    /* Lecture confortable pour personnes aînées : grands caractères, interligne aéré */
+    font-size:clamp(1.2rem,.95rem + .85vw,1.45rem);
+    line-height:1.85;
+    color:var(--encre);
+    background:var(--nuit);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(240,182,89,.10), transparent 55%),
+      radial-gradient(90% 60% at 85% 8%, rgba(232,132,60,.06), transparent 60%),
+      radial-gradient(100% 70% at 12% 35%, rgba(232,132,60,.05), transparent 58%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* Grain de parchemin, très discret pour ne pas gêner la lecture */
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;
+    opacity:.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Voile sombre sur les bords, pour la profondeur */
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 35%, transparent 56%, rgba(0,0,0,.42) 100%);
+  }
+
+  a{color:var(--feuille);text-decoration:none;}
+  a:focus-visible,.nav__links a:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:3px;}
+
+  ::selection{background:rgba(232,132,60,.34);color:#fff;}
+  ::-webkit-scrollbar{width:12px;}
+  ::-webkit-scrollbar-track{background:var(--nuit);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--or),#7a4218);border:3px solid var(--nuit);border-radius:10px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--or-clair);}
+
+  /* ---- Barre de progression ---- */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 12px rgba(232,132,60,.6);
+    transition:width .1s linear;
+  }
+
+  /* ---- Navigation ---- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;gap:1.5rem;
+    padding:.85rem clamp(1rem,4vw,2.5rem);
+    background:rgba(10,10,10,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--filet);
+    transform:translateY(-110%);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.show{transform:translateY(0);}
+  /* Barre de progression de lecture, intégrée au bas de la navigation */
+  .nav__progress{
+    position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:linear-gradient(90deg,var(--or),var(--or-clair),var(--feuille));
+    box-shadow:0 0 10px rgba(232,132,60,.55);
+    transition:width .1s linear;
+  }
+  .nav__logo{
+    flex:none;display:block;
+  }
+  .nav__logo img{height:clamp(2.2rem,2rem + 1vw,2.9rem);width:auto;display:block;}
+  .nav__brand{
+    font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair);
+    white-space:nowrap;
+  }
+  .nav__links{
+    display:flex;gap:.15rem;margin-left:auto;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .nav__links::-webkit-scrollbar{display:none;}
+  .nav__links a{
+    position:relative;
+    font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--encre-doux);padding:.5rem .8rem;border-radius:2px;
+    white-space:nowrap;transition:color .25s;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:.8rem;right:.8rem;bottom:.18rem;height:1px;
+    background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .nav__links a:hover{color:var(--or-clair);}
+  .nav__links a:hover::after{transform:scaleX(1);}
+
+  /* ---- Hero / page-titre ---- */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6rem 1.4rem 4rem;
+  }
+  .hero__frame{
+    position:absolute;inset:clamp(.9rem,3.5vw,2.4rem);
+    border:1px solid var(--filet);pointer-events:none;
+    opacity:0;animation:frameIn 1.5s ease .15s forwards;
+  }
+  .hero__frame::before,.hero__frame::after{
+    content:"";position:absolute;width:16px;height:16px;
+  }
+  .hero__frame::before{top:-1px;left:-1px;border-top:2px solid var(--or);border-left:2px solid var(--or);}
+  .hero__frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);}
+
+  .hero__kicker{
+    font-size:clamp(.85rem,.65rem + .6vw,1rem);
+    letter-spacing:.42em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .2em .42em;
+  }
+  .hero__title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(3.8rem,8vw + 1rem,9rem);
+    line-height:1;letter-spacing:.04em;margin:0;
+    /* Espace bas/côtés pour que les jambages du J et du q ne soient pas rognés par background-clip:text */
+    padding:.06em .08em .2em;
+    background:linear-gradient(176deg,#f9e1bb 0%,var(--or-clair) 45%,var(--or) 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 34px rgba(240,182,89,.30)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    margin:1.7rem 0;color:var(--or);width:min(22rem,80%);
+  }
+  .ornament::before,.ornament::after{
+    content:"";height:1px;flex:1;
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .ornament span{font-size:.8rem;}
+
+  .hero__verse{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);
+    line-height:1.55;color:var(--encre);
+    max-width:max(46rem,72vw);margin:0 auto;
+    text-wrap:balance;
+  }
+  .hero__verse .q{color:var(--or);font-style:normal;}
+  .hero__ref{
+    margin-top:1.7rem;font-size:.95rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--or);
+  }
+  .hero__series{
+    margin-top:2.6rem;font-size:.88rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+  .hero__series b{color:var(--feuille);font-weight:600;}
+  .scrollcue{
+    position:absolute;bottom:1.7rem;left:50%;transform:translateX(-50%);
+    color:var(--or);font-size:1.3rem;opacity:.75;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+
+  /* Entrée orchestrée du hero (douce) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes frameIn{from{opacity:0;}to{opacity:1;}}
+  .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta{
+    opacity:0;animation:riseIn .95s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero__kicker{animation-delay:.15s;}
+  .hero__title{animation-delay:.3s;}
+  .ornament{animation-delay:.6s;}
+  .hero__verse{animation-delay:.75s;}
+  .hero__ref{animation-delay:1s;}
+  .hero__series{animation-delay:1.15s;}
+  .hero__meta{animation-delay:1.3s;}
+
+  /* ---- Sections ---- */
+  main{position:relative;z-index:2;}
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(3.5rem,9vw,7rem) clamp(1.4rem,5vw,2rem);
+    scroll-margin-top:5rem;
+  }
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-num{
+    display:flex;align-items:center;justify-content:center;gap:1rem;
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:clamp(2.8rem,2rem + 3vw,4.2rem);line-height:1;
+    color:var(--or);letter-spacing:.05em;margin-bottom:.4rem;
+    filter:drop-shadow(0 0 22px rgba(232,132,60,.28));
+  }
+  .sec-num::before,.sec-num::after{
+    content:"";width:clamp(1.6rem,6vw,3rem);height:1px;
+    background:linear-gradient(90deg,transparent,var(--filet-fort));
+  }
+  .sec-num::after{background:linear-gradient(90deg,var(--filet-fort),transparent);}
+  .kicker{
+    font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--or);margin:0 0 .65rem;
+  }
+  .sec-title{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(2.1rem,1.4rem + 2.6vw,3.2rem);line-height:1.12;
+    color:var(--encre);margin:0;text-wrap:balance;
+  }
+  .sec-head .sec-title::after{
+    content:"";display:block;width:2.6rem;height:1px;
+    background:var(--filet-fort);margin:1.2rem auto 0;
+  }
+  .ref{
+    margin:1rem 0 0;font-size:.92rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  .lead{
+    font-size:1.22em;line-height:1.72;color:#faf3ec;
+    font-weight:500;
+    border-left:3px solid var(--or);
+    padding-left:1.3rem;margin:0 0 2.2rem;
+    text-wrap:pretty;
+  }
+  .section p{margin:0 0 1.45rem;text-wrap:pretty;}
+  .section .body p:first-of-type::first-letter{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    float:left;font-size:3.6em;line-height:.66;
+    padding:.06em .14em 0 0;margin-top:.04em;
+    color:var(--or-clair);
+    text-shadow:0 0 22px rgba(232,132,60,.32);
+  }
+
+  /* ---- Points de forme structurés (repérage rapide) ---- */
+  .points{list-style:none;margin:0 0 2.2rem;padding:0;}
+  .points li{
+    position:relative;margin:0 0 1.5rem;padding-left:2rem;
+    text-wrap:pretty;
+  }
+  .points li:last-child{margin-bottom:0;}
+  .points li::before{
+    content:"\25C6";position:absolute;left:.2rem;top:.55em;
+    font-size:.6em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .points b{color:var(--or-clair);font-weight:600;}
+
+  /* ---- Texte souligné (mise en évidence) ; ajouter .italique pour l'italique ---- */
+  .surligne{
+    text-decoration:underline;
+    text-decoration-color:var(--or);
+    text-decoration-thickness:.08em;
+    text-underline-offset:.18em;
+  }
+  .surligne.italique{font-style:italic;}
+
+  /* ---- Texte justifié (lecture confortable, gauche et droite) ----
+     `.section > p` et `.section .body p` visent le corps du texte sans
+     toucher aux titres : les <p> de .sec-head sont des petits-enfants
+     de .section et restent donc centrés. */
+  .lead,.points li,.section > p,.section .body p{
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+
+  /* ---- Versets ---- */
+  .verses{margin:2.4rem 0;}
+  .verse{
+    position:relative;margin:0 0 1.1rem;
+    padding:1.3rem 1.4rem 1.3rem 1.6rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),rgba(232,132,60,.03));
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 5px 5px 0;
+    transition:border-left-color .3s,transform .3s,background .3s;
+  }
+  .verse:hover{border-left-color:var(--or-clair);transform:translateX(3px);}
+  .verse__text{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.25em;line-height:1.55;color:var(--encre);margin:0;
+  }
+  .verse__text::before{content:"\201C";color:var(--or);font-size:1.1em;}
+  .verse__text::after{content:"\201D";color:var(--or);font-size:1.1em;}
+  .verse__ref{
+    display:block;margin-top:.8rem;
+    font-family:"EB Garamond",serif;font-style:normal;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--or);
+  }
+
+  /* ---- Séparateur ---- */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:1.4rem;
+    max-width:var(--max);margin:0 auto;
+    padding:0 2rem;color:var(--or);
+  }
+  .divider::before,.divider::after{
+    content:"";height:1px;width:min(7rem,22%);
+    background:linear-gradient(90deg,transparent,var(--filet-fort),transparent);
+  }
+  .divider span{font-size:.8rem;}
+
+  /* Variantes intro / conclusion */
+  .section--intro .sec-title,.section--conclusion .sec-title{color:var(--or-clair);}
+
+  /* ---- Pied de page ---- */
+  .footer{
+    position:relative;z-index:2;text-align:center;
+    border-top:1px solid var(--filet);
+    margin-top:2rem;padding:3.6rem 1.4rem 3.2rem;
+    background:linear-gradient(180deg,transparent,rgba(16,16,16,.7));
+  }
+  .footer__logo{
+    display:block;width:auto;
+    height:clamp(5rem,12vw,7rem);
+    margin:0 auto 1.6rem;
+  }
+  .footer__church{
+    font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;
+    letter-spacing:.04em;color:var(--encre);margin:0 0 .3rem;
+  }
+  .footer__line{font-size:1rem;color:var(--encre-doux);margin:.2rem 0;}
+  .footer__sdg{
+    margin-top:1.8rem;font-size:.86rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* ---- Révélation au défilement (groupes de contenu en cascade douce) ---- */
+  .reveal > *{
+    opacity:0;transform:translateY(16px);
+    transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in > *{opacity:1;transform:none;}
+  .reveal.in > *:nth-child(1){transition-delay:.04s;}
+  .reveal.in > *:nth-child(2){transition-delay:.13s;}
+  .reveal.in > *:nth-child(3){transition-delay:.22s;}
+  .reveal.in > *:nth-child(4){transition-delay:.31s;}
+  .reveal.in > *:nth-child(5){transition-delay:.40s;}
+  .reveal.in > *:nth-child(6){transition-delay:.49s;}
+
+  @media (max-width:560px){
+    .nav__brand{font-size:1.3rem;}
+    .lead{padding-left:1rem;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal > *{opacity:1;transform:none;transition:none;}
+    .scrollcue{animation:none;}
+    .hero__kicker,.hero__title,.ornament,.hero__verse,.hero__ref,.hero__series,.hero__meta,.hero__frame{
+      opacity:1;animation:none;
+    }
+  }
+
+  /* ============================================================
+     COMPOSANTS PROPRES À LA PAGE DE RECHERCHE
+     (s'ajoutent au gabarit, dans le même langage visuel)
+     ============================================================ */
+
+  /* Titre-héros thématique (plus long) + marque de nav (référence) */
+  .hero__title{font-size:clamp(3rem,5vw + 1.4rem,6rem);text-wrap:balance;}
+  .nav__brand{font-size:clamp(1.05rem,.9rem + .55vw,1.4rem);letter-spacing:.08em;}
+  .hero__meta{
+    margin-top:1.4rem;font-size:.8rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--encre-doux);
+  }
+
+  /* ---- Tableau des mots-clés ---- */
+  .table-wrap{
+    margin:2.4rem 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--filet);border-radius:6px;
+  }
+  .mots{border-collapse:collapse;width:100%;min-width:52rem;}
+  .mots th,.mots td{
+    padding:1rem 1.15rem;text-align:left;vertical-align:top;
+    border-bottom:1px solid var(--filet);
+  }
+  .mots thead th{
+    background:var(--nuit-2);
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--or);border-bottom:1px solid var(--filet-fort);
+    white-space:nowrap;
+  }
+  .mots tbody tr:last-child td{border-bottom:none;}
+  .mots tbody tr:hover{background:rgba(232,132,60,.045);}
+  .mots td{font-size:.98rem;line-height:1.6;color:var(--encre-doux);}
+  .mot-fr{display:block;font-weight:600;color:var(--encre);}
+  .mot-gr{
+    display:block;margin-top:.25rem;
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.12em;color:var(--or-clair);
+  }
+  .col-sens{min-width:12rem;color:var(--encre);}
+  .trad{display:flex;flex-direction:column;gap:.3rem;font-size:.84rem;white-space:nowrap;}
+  .trad b{color:var(--or-clair);font-weight:600;letter-spacing:.03em;}
+
+  /* ---- Renvois / passages parallèles ---- */
+  .renvois{display:grid;gap:1.1rem;margin:2.4rem 0 0;grid-template-columns:1fr;}
+  @media (min-width:48rem){.renvois{grid-template-columns:1fr 1fr;}}
+  .renvoi{
+    border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 6px 6px 0;padding:1.1rem 1.3rem;
+    background:linear-gradient(180deg,rgba(232,132,60,.06),rgba(232,132,60,.015));
+  }
+  .renvoi__head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;
+  }
+  .renvoi__ref{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.2rem;color:var(--or-clair);letter-spacing:.02em;
+  }
+  .renvoi__tag{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--or);border:1px solid var(--filet-fort);
+    border-radius:999px;padding:.22rem .65rem;white-space:nowrap;
+  }
+  .renvoi__desc{margin:0;font-size:.95rem;line-height:1.6;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+
+  /* ---- Thèmes théologiques (deux volets : texte / assemblée) ---- */
+  .theme{
+    margin:0;padding:1.6rem 1.7rem 1.5rem;
+    border:1px solid var(--filet);border-radius:9px;
+    background:linear-gradient(180deg,rgba(27,27,27,.55),rgba(18,18,18,.35));
+  }
+  .theme + .theme{margin-top:1.6rem;}
+  .theme__title{
+    display:flex;align-items:center;gap:.75rem;margin:0 0 1.2rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.4rem,1.1rem + .9vw,1.8rem);color:var(--or-clair);
+  }
+  .theme__title::before{
+    content:"\25C6";font-size:.52em;color:var(--or);
+    filter:drop-shadow(0 0 8px rgba(232,132,60,.4));
+  }
+  .theme__grid{display:grid;gap:1.2rem;}
+  @media (min-width:47rem){.theme__grid{grid-template-columns:1fr 1fr;align-items:start;}}
+  .theme__label{
+    display:flex;align-items:center;gap:.6rem;margin:0 0 .55rem;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);
+  }
+  .theme__label::after{content:"";flex:1;height:1px;background:var(--filet);}
+  .theme__part p{margin:0;font-size:.95rem;line-height:1.64;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .theme__part--app{
+    padding:1.05rem 1.15rem;border:1px solid var(--filet);border-radius:6px;
+    background:linear-gradient(180deg,rgba(232,132,60,.07),transparent);
+  }
+
+  /* ---- Pistes de réflexion (questions numérotées) ---- */
+  .questions{list-style:none;counter-reset:q;margin:2.4rem 0 0;padding:0;display:grid;gap:1.5rem;}
+  .questions li{
+    position:relative;counter-increment:q;padding-left:3.6rem;
+    text-align:justify;-webkit-hyphens:auto;hyphens:auto;
+  }
+  .questions li::before{
+    content:counter(q);position:absolute;left:0;top:-.15rem;
+    width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.35rem;
+    color:var(--or);border:1px solid var(--filet-fort);border-radius:50%;
+    background:rgba(232,132,60,.06);
+    filter:drop-shadow(0 0 10px rgba(232,132,60,.18));
+  }
+
+  /* ============================================================
+     PAGE DE RECHERCHE : ERGONOMIE DE LECTURE (body.recherche)
+     Mêmes grands caractères, mais une colonne de texte d'environ
+     70 caractères; cartes, grilles et tableaux gardent plus de
+     largeur. Sans effet sur les autres pages du gabarit.
+     ============================================================ */
+  .recherche{--max:66rem;--colonne:44rem;}
+  .recherche .section > .lead,.recherche .section > .body,.recherche .section > p,
+  .recherche .verses,.recherche .points,.recherche .questions,
+  .recherche .sommaire,.recherche .sources,.recherche .mots-index,.recherche .mots-legende{
+    max-width:var(--colonne);margin-left:auto;margin-right:auto;
+  }
+  .recherche .lead{font-size:1.12em;}
+  .recherche .verse__text::before{content:"\00AB\00A0";}
+  .recherche .verse__text::after{content:"\00A0\00BB";}
+  .recherche .renvoi__desc,.recherche .theme__part p{font-size:1.04rem;line-height:1.7;}
+  .recherche .nav__links a.actif{color:var(--or-clair);}
+  .recherche .nav__links a.actif::after{transform:scaleX(1);}
+
+  /* Intertitres du corps (un par texte étudié) */
+  .intertitre{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(1.55rem,1.2rem + 1vw,2rem);line-height:1.15;color:var(--or-clair);
+    margin:3.4rem 0 1.2rem;padding-top:1.6rem;border-top:1px solid var(--filet);
+    scroll-margin-top:5.5rem;text-wrap:balance;
+  }
+  .intertitre__ref{
+    display:block;margin-bottom:.45rem;
+    font-family:"EB Garamond",serif;font-weight:500;font-size:.46em;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--or);
+  }
+  .recherche .body p.p-cle{margin-top:2.2rem;}
+  .recherche .body p.p-cle > b:first-child{color:var(--or-clair);}
+
+  /* Sommaire local d'une section */
+  .sommaire{margin-bottom:2.2rem;padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .sommaire__titre{margin:0 0 .8rem !important;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);text-align:left !important;}
+  .sommaire ol{list-style:none;margin:0;padding:0;counter-reset:s;
+    display:grid;gap:.55rem;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));}
+  .sommaire li{counter-increment:s;}
+  .sommaire a{position:relative;display:flex;flex-direction:column;height:100%;
+    padding:.55rem .8rem .6rem 2.3rem;border:1px solid var(--filet);border-radius:6px;
+    color:var(--encre);line-height:1.3;transition:border-color .25s,background .25s;}
+  .sommaire a::before{content:counter(s);position:absolute;left:.8rem;top:.5rem;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.15rem;color:var(--or);}
+  .sommaire a:hover{border-color:var(--or);background:rgba(232,132,60,.07);}
+  .sommaire__ref{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
+  .sommaire__lib{font-size:1.02rem;}
+
+  /* Sources repliables : le niveau reste visible */
+  .sources{margin-bottom:2.6rem;border:1px solid var(--filet);border-radius:8px;background:rgba(18,18,18,.35);}
+  .sources > summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;
+    padding:.85rem 1.2rem;font-size:1rem;color:var(--encre-doux);
+  }
+  .sources > summary::-webkit-details-marker{display:none;}
+  .sources > summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--or);}
+  .sources[open] > summary::after{content:"\2212";}
+  .sources > summary:hover{color:var(--encre);}
+  .sources__niveau{
+    flex:none;padding:.18rem .7rem;border-radius:999px;background:var(--or);color:var(--nuit);
+    font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .sources__corps{padding:0 1.2rem 1.2rem;}
+  .sources__corps p{font-size:1rem;line-height:1.65;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .sources .table-wrap{margin-top:1rem;}
+  .sources .mots{min-width:0;}
+
+  /* Mots-clés : une carte par mot (fiche de dictionnaire) */
+  .mots-index{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1rem;}
+  .mots-index a{padding:.3rem .9rem;border:1px solid var(--filet-fort);border-radius:999px;
+    font-size:.95rem;color:var(--encre);transition:border-color .25s,color .25s;}
+  .mots-index a:hover{border-color:var(--or);color:var(--or-clair);}
+  .mots-legende{margin-bottom:2rem !important;font-size:.92rem;font-style:italic;color:var(--encre-doux);text-align:center !important;}
+  .mots-cartes{display:grid;gap:1.4rem;}
+  .mot{
+    display:grid;gap:1rem 2.2rem;align-content:start;padding:1.5rem 1.6rem;
+    border:1px solid var(--filet);border-left:3px solid var(--or);border-radius:0 8px 8px 0;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));scroll-margin-top:5.5rem;
+  }
+  @media (min-width:56rem){
+    .mot{grid-template-columns:15rem 1fr;grid-template-rows:auto auto 1fr;}
+    .mot__champ{grid-column:2;grid-row:1 / span 3;}
+  }
+  .mot__fr{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--or-clair);}
+  .mot__translit{margin:.25rem 0 0 !important;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;color:var(--feuille);}
+  .mot__sens{margin:0 !important;font-size:1rem;line-height:1.5;color:var(--encre);}
+  .mot__label{display:block;margin-bottom:.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);}
+  .mot__champ{margin:0 !important;font-size:1.04rem;line-height:1.72;color:var(--encre-doux);text-align:justify;hyphens:auto;}
+  .mot__trad{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;align-self:start;}
+  .mot__trad li{padding:.15rem .55rem;border:1px solid var(--filet);border-radius:4px;font-size:.86rem;color:var(--encre-doux);}
+  .mot__trad b{margin-right:.3rem;font-size:.86em;font-weight:600;letter-spacing:.04em;color:var(--or);}
+  .mot__trad li.ecart{border-color:var(--or);background:rgba(232,132,60,.12);color:var(--encre);}
+  @media (max-width:560px){.mot{padding:1.2rem 1.1rem;}}
+
+  /* Texte et marge : une colonne sur petit écran (ordre de lecture du balisage);
+     sur grand écran, texte à gauche (~75 caractères), marge à droite
+     (versets, détails, sommaire), collante quand elle accompagne un long texte. */
+  .recherche .grille{max-width:var(--colonne);margin:0 auto;}
+  .sommaire a.actif{border-color:var(--or);background:rgba(232,132,60,.13);}
+  .marge__titre{
+    margin:0 0 1.2rem !important;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--or);
+  }
+
+  /* État du texte, Structure et grammaire : variantes en fiches (comme .mot), témoins
+     et observations entre filets, plan à gouttière de références. Ces blocs, chargés
+     de translittérations, sont alignés à gauche : pas de rivières. */
+  h3.marge__titre{font-family:inherit;font-weight:500;line-height:1.4;}
+  h3.marge__titre:not(:first-child){margin-top:2.6rem !important;}
+  .critique{max-width:var(--colonne,46rem);margin:0 auto;}  /* sermon-series : section sans grille */
+  .grille--apparat > .grille__texte + .grille__marge{margin-top:2.6rem;}  /* une colonne : la marge suit le texte */
+  .grille--apparat > .grille__texte{padding-top:1.2rem;}
+  .grille--apparat .lead,.critique .lead{text-align:left;}
+  .rangs dd,.temoins li,.encadre p,.section .plan p,.observations dd{
+    margin:0;text-align:left;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;text-wrap:pretty;
+  }
+  .variante{padding:1.2rem 1.5rem .5rem;border:1px solid var(--filet);border-left:3px solid var(--or);
+    border-radius:0 8px 8px 0;background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.35));}
+  .variante + .variante{margin-top:1.3rem;}
+  .variante__ref,.observations dt{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.2;color:var(--or-clair);}
+  .variante__ref{margin:0 0 .6rem;font-size:1.45rem;}
+  .rangs{margin:0;}
+  .rangs > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.2rem;padding:.75rem 0;border-top:1px solid var(--filet);}
+  .rangs dt{padding-top:.3rem;}
+  .rangs dd{font-size:.9em;line-height:1.7;color:var(--encre-doux);}
+  .rangs .rangs__portee{color:var(--encre);}
+  .temoins{list-style:none;margin:0 0 2.2rem;padding:0;border-bottom:1px solid var(--filet);}
+  .temoins li{padding:.75rem 0;border-top:1px solid var(--filet);font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .encadre{padding:1.15rem 1.3rem 1.3rem;border:1px solid var(--filet);border-radius:8px;
+    background:linear-gradient(180deg,rgba(27,27,27,.6),rgba(18,18,18,.3));}
+  .encadre .marge__titre{margin-bottom:.7rem !important;}
+  .encadre p{font-size:.9em;line-height:1.65;color:var(--encre-doux);}
+  /* Plan : références en gouttière, un filet et un losange par mouvement, le marqueur sous son titre */
+  .plan{--gouttiere:9.6rem;--ecart:1.3rem;list-style:none;margin:0;padding:0;}
+  .plan li{position:relative;display:grid;grid-template-columns:var(--gouttiere) minmax(0,1fr);column-gap:var(--ecart);}
+  .plan li::before{content:"";position:absolute;left:calc(var(--gouttiere) + var(--ecart) - .22rem);top:.62rem;
+    width:.45rem;height:.45rem;background:var(--or);transform:rotate(45deg);}
+  .section .plan .plan__ref{padding-top:.05rem;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.25rem;line-height:1.2;color:var(--or-clair);}
+  .plan__ref span{white-space:nowrap;}
+  .plan__corps{padding:0 0 1.6rem 1.5rem;border-left:1px solid var(--filet-fort);}
+  .plan li:last-child .plan__corps{padding-bottom:.2rem;}
+  .plan li:first-child,.plan li:first-child .plan__corps{border-image:linear-gradient(transparent .7rem,var(--filet-fort) 0) 1;}
+  .section .plan .plan__titre{margin-bottom:.55rem;font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:1.3rem;line-height:1.3;color:var(--encre);text-wrap:balance;}
+  .section .plan .plan__marqueur{font-size:.9em;line-height:1.62;color:var(--encre-doux);}
+  .rangs dt,.plan__marqueur .mot__label{font-size:.8rem;}
+  .observations{margin:0;}
+  .observations > div + div{margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid var(--filet);}
+  .observations dt{margin-bottom:.4rem;font-size:1.25rem;}
+  .observations dd{font-size:.9em;line-height:1.72;color:var(--encre-doux);}
+  @media (max-width:35rem){
+    .rangs > div{grid-template-columns:1fr;}
+    .rangs dt{padding-top:0;}
+    .variante{padding:1rem 1.1rem .4rem;}
+    .plan li{display:block;padding:0 0 1.4rem 1.3rem;border-left:1px solid var(--filet-fort);}
+    .plan li:last-child{padding-bottom:.2rem;}
+    .plan li::before{left:-.25rem;top:.45rem;}
+    .section .plan .plan__ref{margin-bottom:.25rem;text-align:left;}
+    .plan__corps,.plan li:last-child .plan__corps{padding:0;border:0;}
+  }
+  @media (min-width:72rem){
+    .recherche{--max:min(96vw,100rem);--large:96rem;}
+    /* Sections à grille : l'exergue, l'index et la légende s'alignent sur la grille */
+    .recherche .section > .lead,.recherche .mots-index,.recherche .mots-legende{max-width:var(--large);}
+    .recherche .mots-index{justify-content:flex-start;}
+    .recherche .mots-legende{text-align:left !important;}
+    .recherche .grille{
+      max-width:var(--large);display:grid;align-items:start;
+      grid-template-columns:minmax(0,48rem) minmax(18rem,1fr);
+      grid-template-rows:auto 1fr;grid-template-areas:"tete marge" "texte marge";
+      column-gap:clamp(2.5rem,4vw,4.5rem);
+    }
+    .recherche .grille--apparat{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+    .grille--apparat > .grille__texte + .grille__marge{margin-top:0;}
+    .grille__tete{grid-area:tete;}
+    .grille__texte{grid-area:texte;}
+    .grille__marge{grid-area:marge;}
+    .grille__marge > :first-child{margin-top:0;}
+    .grille__marge--collante{
+      position:sticky;top:5.5rem;max-height:calc(100vh - 7rem);
+      overflow-y:auto;scrollbar-width:thin;
+    }
+    .grille__marge .sommaire ol{grid-template-columns:1fr;}
+    .recherche .mots-cartes{max-width:var(--large);margin:0 auto;grid-template-columns:1fr 1fr;}
+    .recherche .mot{grid-template-columns:1fr;grid-template-rows:none;}
+    .recherche .mot__champ{grid-column:auto;grid-row:auto;}
+    .recherche .renvois{max-width:var(--large);margin-left:auto;margin-right:auto;grid-template-columns:repeat(3,1fr);}
+    /* Thèmes : trois fiches par rangée, volets empilés (lignes d'environ 60 caractères) */
+    .recherche .themes{max-width:var(--large);margin:0 auto;display:grid;gap:1.6rem;grid-template-columns:repeat(3,1fr);}
+    .recherche .themes .theme + .theme{margin-top:0;}
+    .recherche .themes .theme__grid{grid-template-columns:1fr;}
+    .recherche .themes .theme__title{align-items:baseline;line-height:1.25;}
+    .recherche .questions{max-width:var(--large);grid-template-columns:1fr 1fr;column-gap:3.5rem;}
+  }
+</style>
+</head>
+<body class="recherche">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  <a class="nav__brand" href="#hero">Jacques 5</a>
+  <nav class="nav__links" aria-label="Sections"><a href="#contexte">Contexte</a><a href="#arriere-plan">Arrière-plan</a><a href="#texte">Texte</a><a href="#structure">Structure</a><a href="#mots-cles">Mots-clés</a><a href="#commentateurs">Commentateurs</a><a href="#renvois">Parallèles</a><a href="#themes">Thèmes</a><a href="#reflexion">Réflexion</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero__frame" aria-hidden="true"></div>
+    <p class="hero__kicker">Recherche · <span style="white-space:nowrap">Jacques 5</span></p>
+    <h1 class="hero__title">La foi persévérante face à l'injustice : attente du Seigneur, intégrité, prière et rachat des égarés</h1>
+    <div class="ornament" aria-hidden="true"><span>◆</span></div>
+    <p class="hero__verse"><span class="q">«</span>&nbsp;Mes frères, si quelqu’un parmi vous s’est égaré loin de la vérité, et qu’un autre l’y ramène, qu’il sache que celui qui ramènera un pécheur de la voie où il s’était égaré sauvera une âme de la mort et couvrira une multitude de péchés.&nbsp;<span class="q">»</span></p>
+    <p class="hero__ref">Jacques 5.19-⁠20 · NEG</p>
+    <p class="hero__meta">Recherche exégétique · 14 novembre 2026 · André-Guy Bruneau</p>
+    <div class="scrollcue" aria-hidden="true">↓</div>
+  </section>
+
+<article class="section section--intro reveal" id="contexte">
+<header class="sec-head"><p class="kicker">Le passage</p><h2 class="sec-title">Contexte du passage</h2><p class="ref">Jacques 5</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">Le cinquième et dernier chapitre referme magistralement l'épître de Jacques en ramenant à leur point culminant tous les thèmes ouverts dès le chapitre 1 : le renversement eschatologique entre l'opulence passagère du riche et l'espérance du croyant éprouvé (5.1-⁠6; cf. 1.9-⁠11), l'endurance joyeuse dans l'affliction (5.7-⁠11; cf. 1.2-⁠4, 12), la maîtrise absolue d'une bouche véridique (5.12; cf. 1.26; 3.1-⁠12), la prière fervente de la foi (5.13-⁠18; cf. 1.5-⁠8) et l'urgence vitale d'une foi authentique qui sauve l'âme de la mort (5.19-⁠20; cf. 1.21; 2.14) (59-⁠29, 59-⁠31, 59-⁠34). Du point de vue du genre littéraire, le chapitre s'ouvre par un oracle de malheur digne d'Amos ou d'Ésaïe (5.1-⁠6) avant de retrouver la chaleur pastorale d'une exhortation fraternelle (« frères », répété en 5.7, 9, 10, 12, 19) qui s'achève brusquement sans formule épistolaire de salutation, laissant résonner dans la conscience de chaque lecteur l'appel pressant au sauvetage des âmes (5.19-⁠20).</p></div><aside class="grille__marge"><div class="verses"><figure class="verse"><p class="verse__text">A vous maintenant, riches! Pleurez et gémissez, à cause des malheurs qui viendront sur vous.</p><cite class="verse__ref">Jacques 5.1 · NEG</cite></figure><figure class="verse"><p class="verse__text">Vos richesses sont pourries, et vos vêtements sont rongés par les teignes.</p><cite class="verse__ref">Jacques 5.2 · NEG</cite></figure><figure class="verse"><p class="verse__text">Votre or et votre argent sont rouillés; et leur rouille s’élèvera en témoignage contre vous, et dévorera vos chairs comme un feu. Vous avez amassé des trésors dans les derniers jours!</p><cite class="verse__ref">Jacques 5.3 · NEG</cite></figure><figure class="verse"><p class="verse__text">Voici, le salaire des ouvriers qui ont moissonné vos champs, et dont vous les avez frustrés, crie, et les cris des moissonneurs sont parvenus jusqu’aux oreilles du Seigneur des armées.</p><cite class="verse__ref">Jacques 5.4 · NEG</cite></figure><figure class="verse"><p class="verse__text">Vous avez vécu sur la terre dans les voluptés et dans les délices, vous avez rassasié vos cœurs au jour du carnage.</p><cite class="verse__ref">Jacques 5.5 · NEG</cite></figure><figure class="verse"><p class="verse__text">Vous avez condamné, vous avez tué le juste, qui ne vous a pas résisté.</p><cite class="verse__ref">Jacques 5.6 · NEG</cite></figure><figure class="verse"><p class="verse__text">Soyez donc patients, frères, jusqu’à l’avènement du Seigneur. Voici, le laboureur attend le précieux fruit de la terre, prenant patience à son égard, jusqu’à ce qu’il ait reçu les pluies de la première et de l’arrière-saison.</p><cite class="verse__ref">Jacques 5.7 · NEG</cite></figure><figure class="verse"><p class="verse__text">Vous aussi, soyez patients, affermissez vos cœurs, car l’avènement du Seigneur est proche.</p><cite class="verse__ref">Jacques 5.8 · NEG</cite></figure><figure class="verse"><p class="verse__text">Ne vous plaignez pas les uns des autres, frères, afin que vous ne soyez pas jugés: voici, le juge est à la porte.</p><cite class="verse__ref">Jacques 5.9 · NEG</cite></figure><figure class="verse"><p class="verse__text">Prenez, mes frères, pour modèles de souffrance et de patience les prophètes qui ont parlé au nom du Seigneur.</p><cite class="verse__ref">Jacques 5.10 · NEG</cite></figure><figure class="verse"><p class="verse__text">Voici, nous disons bienheureux ceux qui ont souffert patiemment. Vous avez entendu parler de la patience de Job, et vous avez vu la fin que le Seigneur lui accorda, car le Seigneur est plein de miséricorde et de compassion.</p><cite class="verse__ref">Jacques 5.11 · NEG</cite></figure><figure class="verse"><p class="verse__text">Avant toutes choses, mes frères, ne jurez ni par le ciel, ni par la terre, ni par aucun autre serment. Mais que votre oui soit oui, et que votre non soit non, afin que vous ne tombiez pas sous le jugement.</p><cite class="verse__ref">Jacques 5.12 · NEG</cite></figure><figure class="verse"><p class="verse__text">Quelqu’un parmi vous est-il dans la souffrance? Qu’il prie. Quelqu’un est-il dans la joie? Qu’il chante des cantiques.</p><cite class="verse__ref">Jacques 5.13 · NEG</cite></figure><figure class="verse"><p class="verse__text">Quelqu’un parmi vous est-il malade? Qu’il appelle les anciens de l’Eglise, et que les anciens prient pour lui, en l’oignant d’huile au nom du Seigneur;</p><cite class="verse__ref">Jacques 5.14 · NEG</cite></figure><figure class="verse"><p class="verse__text">la prière de la foi sauvera le malade, et le Seigneur le relèvera; et s’il a commis des péchés, il lui sera pardonné.</p><cite class="verse__ref">Jacques 5.15 · NEG</cite></figure><figure class="verse"><p class="verse__text">Confessez donc vos péchés les uns aux autres, et priez les uns pour les autres, afin que vous soyez guéris. La prière agissante du juste a une grande efficacité.</p><cite class="verse__ref">Jacques 5.16 · NEG</cite></figure><figure class="verse"><p class="verse__text">Elie était un homme de la même nature que nous: il pria avec instance pour qu’il ne pleuve point, et il ne tomba point de pluie sur la terre pendant trois ans et six mois.</p><cite class="verse__ref">Jacques 5.17 · NEG</cite></figure><figure class="verse"><p class="verse__text">Puis il pria de nouveau, et le ciel donna de la pluie, et la terre produisit son fruit.</p><cite class="verse__ref">Jacques 5.18 · NEG</cite></figure><figure class="verse"><p class="verse__text">Mes frères, si quelqu’un parmi vous s’est égaré loin de la vérité, et qu’un autre l’y ramène,</p><cite class="verse__ref">Jacques 5.19 · NEG</cite></figure><figure class="verse"><p class="verse__text">qu’il sache que celui qui ramènera un pécheur de la voie où il s’était égaré sauvera une âme de la mort et couvrira une multitude de péchés.</p><cite class="verse__ref">Jacques 5.20 · NEG</cite></figure></div></aside><div class="grille__texte"><div class="body"><p>Le fil conducteur pastoral qui relie les cinq péricopes du chapitre 5 est la réponse de la foi vivante à la souffrance, à l'oppression et à l'épuisement spirituel dans les « derniers jours » (59-⁠29 à 59-⁠34). Face aux grands propriétaires impies qui affament et persécutent les croyants pauvres, Jacques commence par proclamer le jugement terrible que l'Éternel des armées prépare contre les oppresseurs afin que les fidèles ne leur portent ni envie ni haine vengeresse (5.1-⁠6; onzième test envers l'argent). Il exhorte ensuite les opprimés à user de longanimité jusqu'à la venue imminente du Seigneur (5.7-⁠11), sans laisser la pression de l'épreuve corrompre leur intégrité verbale par des serments trompeurs (5.12; douzième test), mais en transformant toute peine en prière individuelle, pastorale et communautaire (5.13-⁠18), et en veillant avec amour au rachat évangélique de quiconque s'égare loin de la vérité (5.19-⁠20).</p><p>Comme le souligne John MacArthur, cette finale scelle la vocation profondément pastorale et évangélique de toute l'épître : loin d'abandonner ses brebis meurtries par la persécution ou de tolérer avec indifférence l'apostasie des faux professeurs au milieu de l'assemblée, l'Église fidèle vit les yeux fixés sur le Juge qui se tient à la porte (5.8-⁠9), à genoux devant le Dieu d'Élie qui exauce la prière fervente du juste (5.16-⁠18), et les bras tendus pour arracher les pécheurs à la mort éternelle (5.19-⁠20) (59-⁠31, 59-⁠33, 59-⁠34).</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="arriere-plan">
+<header class="sec-head"><p class="kicker">Monde du texte</p><h2 class="sec-title">Arrière-plan historique et culturel</h2><p class="ref">Jacques 5</p></header>
+<div class="grille"><div class="grille__texte"><p class="lead">La dénonciation foudroyante de Jacques 5.1-⁠6 s'enracine dans la crise socio-économique aiguë de la Judée et des provinces orientales au milieu du premier siècle (vers 44-⁠49 apr. J.-C.), aggravée par la grande famine survenue sous l'empereur Claude (Actes 11.28) (59-⁠29, 59-⁠30). Une aristocratie foncière restreinte - dominée en Palestine par les grandes familles sadducéennes et sacerdotales alliées au pouvoir romain - accaparait les terres agricoles au détriment des petits paysans endettés, réduits au statut précaire d'ouvriers journaliers (<i>ergatai</i>, 5.4). Or le journalier agricole ne possédait aucune réserve : il dépendait littéralement du paiement de ses quelques deniers au coucher du soleil pour acheter le pain du soir de sa famille, raison pour laquelle la Loi mosaïque interdisait sous peine de péché criant à l'Éternel de retenir son salaire jusqu'au lendemain matin (Lévitique 19.13; Deutéronome 24.14-⁠15) (59-⁠30). Non contents de frauder leurs moissonneurs, ces riches maîtres d'œuvre utilisaient les tribunaux locaux (cf. déjà 2.6) pour faire condamner et dépouiller - jusqu'à la mort par dénuement ou exécution judiciaire - les humbles croyants sans défense (5.6) (59-⁠30).</p><div class="body"><p>Dans l'Orient ancien, la richesse visible se conservait sous trois formes principales exactement énumérées par Jacques en 5.2-⁠3 : les réserves alimentaires de blé, d'huile et de figues (sujettes à la pourriture, <i>sesēpen</i>), les garde-robes somptueuses de manteaux brodés servant de monnaie d'échange et de prestige (proie favorite de la teigne des vêtements, <i>sētobrōta</i>; cf. Genèse 45.22; Josué 7.21; Matthieu 6.19; Actes 20.33), et les coffres de pièces d'or et d'argent souvent alliées de cuivre ou de fer qui noircissaient et s'oxydaient dans les cachettes humides creusées en terre (<i>katiōtai</i>) (59-⁠29).</p><p>En 5.7, l'image agricole de la « pluie de la première et de l'arrière-saison » (<i>proimon kai opsimon</i>) appartient au calendrier climatique propre à la terre d'Israël (Deutéronome 11.14; Jérémie 5.24; Joël 2.23) (59-⁠31). Le cultivateur palestinien attendait d'abord avec confiance les pluies précoces d'octobre-novembre (<i>yôreh</i>), indispensables pour ameublir le sol calcaire durci par cinq mois d'été aride et faire germer les semences, puis les pluies tardives de mars-avril (<i>malqôsh</i>), nécessaires pour gonfler les épis d'orge et de blé juste avant la moisson printanière : sans pouvoir hâter d'un seul jour les nuages, le laboureur continuait fidèlement son labeur dans l'attente certaine du temps fixé par Dieu (59-⁠31).</p></div></div><aside class="grille__marge"><p class="marge__titre">Trois détails échappent au lecteur moderne.</p><ul class="points"><li><b>Le titre majestueux d'Éternel des armées (Kyrios Sabaōth) en 5.4.</b> Seuls Paul (citant Ésaïe 1.9 en Romains 9.29) et Jacques (en 5.4) conservent dans le grec du Nouveau Testament la translittération directe de l'hébreu <i>Yahweh Tsebâ'ôth</i> : <i>Kyrios Sabaōth</i>, « le Seigneur des armées » (59-⁠30). Ce nom redoutable désigne le Dieu tout-puissant qui commande les légions innombrables des anges du ciel et tous les astres de l'univers : si les ouvriers agricoles pauvres n'ont aucun avocat sur la terre contre leurs patrons frauduleux, le cri de leur salaire retenu pénètre directement dans les oreilles du Commandant suprême des armées célestes (59-⁠30).</li><li><b>La casuistique rabbinique des serments contournant le Nom divin (5.12).</b> Tandis que l'Ancien Testament autorisait le serment solennel prêté en vérité par le nom de l'Éternel devant un tribunal ou dans une alliance grave (Deutéronome 6.13; 10.20; pratique confirmée par Dieu lui-même en Hébreux 6.13-⁠17, par Jésus sous adjuration en Matthieu 26.63-⁠64 et par Paul en Romains 1.9; 2 Corinthiens 1.23), la tradition pharisienne avait développé toute une casuistique évasive (dénoncée par Jésus en Matthieu 5.33-⁠37 et 23.16-⁠22) : en jurant dans la conversation courante « par le ciel », « par la terre », « par Jérusalem » ou « par sa tête » sans prononcer le Tétragramme sacré, on prétendait impressionner son interlocuteur tout en se réservant le droit de mentir sans parjure formel (59-⁠32).</li><li><b>L'huile d'olive courante (aleiphō) face à l'extrême-onction et aux guérisseurs (5.14).</b> En 5.14, Jacques n'emploie pas le verbe sacré et cérémoniel <i>chriō</i> (« oindre d'une consécration rituelle », d'où dérive <i>Christos</i>), mais le verbe séculier et domestique <i>aleiphō</i> (« frotter, frictionner, enduire d'huile d'olive » pour les soins corporels, l'apaisement des plaies ou le rafraîchissement cordial d'un hôte fatigué, Luc 7.46; cf. Ésaïe 1.6; Luc 10.34) (59-⁠33). Comme le démontre MacArthur, ce texte fait voler en éclats le dogme catholique romain de l'« extrême-onction » administrée par un prêtre pour préparer à la mort (puisqu'ici une pluralité d'anciens locaux intervient pour le relèvement immédiat du frère et non pour son trépas), tout autant que les mises en scène théâtrales des guérisseurs charismatiques modernes (59-⁠33).</li></ul></aside></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="texte">
+<header class="sec-head"><p class="kicker">Établir le texte</p><h2 class="sec-title">État du texte</h2><p class="ref">Jacques 5</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Les variantes qui touchent le sens, la leçon que suit la NEG79 et leur portée, puis les témoins consultés et la numérotation.</p></div><div class="grille__texte"><h3 class="marge__titre">Variantes</h3><section class="variante"><h4 class="variante__ref">Jacques 5.3-⁠4</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 5.3, les manuscrits anciens n'ayant pas de ponctuation, SBLGNT et Westcott et Hort ponctuent <i>phagetai tas sarkas hymōn· hōs pyr ethēsaurisate en eschatais hēmerais</i> (« dévorera vos chairs. Comme un feu vous avez amassé dans les derniers jours »), tandis que NA28, le Texte Majoritaire et le Textus Receptus rattachent <i>hōs pyr</i> au verbe précédent : <i>phagetai tas sarkas hymōn hōs pyr. Ethēsaurisate...</i> (« dévorera vos chairs comme un feu. Vous avez amassé... »). En 5.4, <i>aphysterēmenos</i> (א, B*, P74, SBLGNT, Westcott et Hort) ou <i>apesterēmenos</i> (A, P, Ψ, NA28, Texte Majoritaire, Textus Receptus), tous deux signifiant « retenu par fraude, frustré ».</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 5.3, les cinq versions françaises rattachent « comme un feu » à « dévorera vos chairs » (la NBS ajoutant « c'est comme un feu que vous avez amassé un trésor »); en 5.4, toutes traduisent « dont ils ont été frustrés » (ou « privé » en NBS).</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur suit en 5.3 la ponctuation rattachant « comme un feu » à « dévorera vos chairs », image saisissante du tourment éternel de la géhenne provoqué par leur avarice accumulée dans les derniers jours messianiques (59-⁠29).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Jacques 5.7, 11</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 5.7, forme elliptique <i>proimon kai opsimon</i> sans substantif exprimé (א, B*, P74, SBLGNT, Westcott et Hort, NA28) contre l'ajout explicite de <i>hyeton</i>, « la pluie précoce et tardive » (A, P, Texte Majoritaire, Textus Receptus). En 5.11, participe aoriste <i>tous hypomeinantas</i>, « ceux qui ont enduré jusqu'au bout » (א, A, B, P, SBLGNT, Westcott et Hort, NA28), contre le participe présent <i>tous hypomenontas</i>, « ceux qui endurent » (Ψ, Texte Majoritaire, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 5.7, la NEG79, la LSG, la S21 et la Darby suppléent légitimement « les pluies de la première et de l'arrière-saison » (tandis que la NBS traduit « les produits précoces et tardifs »). En 5.11, la NEG79, la LSG (« ceux qui ont souffert patiemment ») et la NBS (« ceux qui ont enduré ») suivent l'aoriste critique, alors que la S21 (« ceux qui persévèrent ») et la Darby (« ceux qui endurent ») rendent le présent.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">En 5.7, MacArthur note que dans la formule elliptique hébraïque, « la pluie » (<i>hyeton</i>, confirmé par le v. 18) est clairement sous-entendue par les adjectifs masculins <i>proimon kai opsimon</i>; en 5.11, l'aoriste récapitulatif <i>hypomeinantas</i> regarde l'épreuve traversée victorieusement jusqu'à son terme, à l'image de Job (59-⁠31).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Jacques 5.12</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd><i>hina mē hypo krisin pesēte</i>, « afin que vous ne tombiez pas sous le jugement » (א, A, B, P74, SBLGNT, Westcott et Hort, NA28, Textus Receptus de Scrivener), contre la variante d'iotacisme <i>eis hypokrisin</i>, « dans l'hypocrisie » (P, Ψ, Texte Majoritaire de Robinson-Pierpont, Stephanus 1550).</dd></div><div><dt class="mot__label">NEG79</dt><dd>« afin que vous ne tombiez pas sous le jugement » : les cinq versions françaises traduisent unanimement la leçon ancienne <i>hypo krisin</i>.</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">MacArthur suit sans hésiter <i>hypo krisin</i> (« sous la condamnation judiciaire de Dieu ») : une bouche habituellement mensongère et parjure trahit un cœur inconverti qui court à la condamnation finale (59-⁠32).</dd></div></dl></section><section class="variante"><h4 class="variante__ref">Jacques 5.16, 20</h4><dl class="rangs"><div><dt class="mot__label">Leçons</dt><dd>En 5.16, <i>tas hamartias</i>, « les péchés » (א, A, B, P74, SBLGNT, Westcott et Hort, NA28), contre <i>ta paraptōmata</i>, « les fautes / offenses » (P, Ψ, Texte Majoritaire, Textus Receptus). En 5.20, impératif de troisième personne <i>ginōsketō</i> (« qu'il sache! », א, A, P, P74, SBLGNT, NA28, Texte Majoritaire, Textus Receptus) contre <i>ginōskete</i> (« sachez! », B, Westcott et Hort), et <i>psychēn autou</i> (« son âme », א, A, P, P74, SBLGNT, Westcott et Hort, NA28) contre <i>psychēn</i> sans pronom (B, Texte Majoritaire, Textus Receptus).</dd></div><div><dt class="mot__label">NEG79</dt><dd>En 5.16, la NEG79, la LSG et la NBS lisent « vos péchés » (<i>hamartias</i>), la S21 et la Darby « vos fautes » (<i>paraptōmata</i>). En 5.20, seule la S21 lit « sachez » (2e pl.) contre « qu'il sache » dans les quatre autres versions; la NBS traduit <i>psychēn autou</i> (« sa vie ») tandis que la NEG79, la LSG, la S21 et la Darby lisent « une âme ».</dd></div><div><dt class="mot__label">Portée</dt><dd class="rangs__portee">En 5.16, <i>tas hamartias</i> reprend directement le terme même du verset 15 (<i>kan hamartias ē pepoiēkōs</i>); en 5.20, ainsi que le précise MacArthur, le génitif <i>psychēn autou</i> désigne sans ambiguïté l'âme immortelle du pécheur ramené à la vérité (et non celle du sauveteur!) arrachée à la mort éternelle (59-⁠33, 59-⁠34).</dd></div></dl></section></div><div class="grille__marge"><h3 class="marge__titre">Témoins consultés</h3><ul class="temoins" role="list"><li>grec : SBLGNT (bible.audio) et son apparat critique (sblgntapp de Jacques 5, LogosBible)</li><li>grec : Nestle 1904, Westcott et Hort 1881, texte byzantin de Robinson-Pierpont 2005, Église orthodoxe grecque 1904, Tischendorf 8e édition, Textus Receptus de Scrivener 1894 et de Stephanus 1550 (Bible Hub)</li><li>interlinéaire morphologique de Bible Hub</li><li>versions françaises : NEG79, LSG, S21, Darby et NBS</li></ul><div class="encadre"><h3 class="marge__titre">Numérotation</h3><p>Vingt versets dans toutes les éditions grecques et versions françaises consultées. Aucun écart de numérotation avec les six sermons de MacArthur.</p></div></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="structure">
+<header class="sec-head"><p class="kicker">Lire le texte</p><h2 class="sec-title">Structure et grammaire</h2><p class="ref">Jacques 5</p></header>
+<div class="grille grille--apparat"><div class="grille__tete"><p class="lead">Le plan de la péricope, appuyé sur les marqueurs du texte, puis les observations grammaticales qui portent le sens.</p></div><div class="grille__texte"><h3 class="marge__titre">Plan de la péricope</h3><ol class="plan" role="list"><li><p class="plan__ref"><span>Jacques</span> <span>5.1-⁠6</span></p><div class="plan__corps"><p class="plan__titre">Onzième test de la foi vivante - le rapport aux richesses : oracle prophétique de malheur sur les riches oppresseurs qui thésaurisent, fraudent, jouissent et tuent le juste</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Age nyn hoi plousioi, klausate ololyzontes epi tais talaipōriais hymōn tais erchomenais</i> (5.1), <i>eis ta ōta Kyriou Sabaōth eiselēlythasin</i> (5.4), <i>katekritate, ephoneusate ton dikaion</i> (5.6).</p></div></li><li><p class="plan__ref"><span>Jacques</span> <span>5.7-⁠11</span></p><div class="plan__corps"><p class="plan__titre">Exhortation à la longanimité dans la souffrance : attendre la parousie du Seigneur sans murmurer entre frères, à l'exemple des prophètes et de l'endurance de Job</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Makrothymēsate oun, adelphoi, heōs tēs parousias tou kyriou</i> (5.7), <i>mē stenazete kat' allēlōn ... ho kritēs pro tōn thyrōn hestēken</i> (5.9), <i>tēn hypomonēn Iōb ēkousate, kai to telos kyriou eidete</i> (5.11).</p></div></li><li><p class="plan__ref"><span>Jacques</span> <span>5.12</span></p><div class="plan__corps"><p class="plan__titre">Douzième test de la foi vivante - l'intégrité absolue de la parole : bannir tout serment évasif pour s'en tenir à un « oui » et un « non » limpides devant le Juge</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Pro pantōn de, adelphoi mou, mē omnyete ...ētō de hymōn to Nai nai kai to Ou ou, hina mē hypo krisin pesēte</i> (5.12).</p></div></li><li><p class="plan__ref"><span>Jacques</span> <span>5.13-⁠18</span></p><div class="plan__corps"><p class="plan__titre">La puissance de la prière fervente dans l'assemblée : prière et chant personnels, intercession des anciens pour relever les faibles, confession mutuelle et modèle d'Élie</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Kakopathei tis en hymin; proseuchesthō ... asthenei tis en hymin; proskalesasthō tous presbyterous tēs ekklēsias</i> (5.13-⁠14), <i>exomologeisthe oun allēlois ... poly ischyei deēsis dikaiou energoumenē</i> (5.16).</p></div></li><li><p class="plan__ref"><span>Jacques</span> <span>5.19-⁠20</span></p><div class="plan__corps"><p class="plan__titre">Conclusion évangélique de l'épître : poursuivre avec amour celui qui s'égare loin de la vérité afin de sauver son âme de la mort éternelle et de couvrir une multitude de péchés</p><p class="plan__marqueur"><span class="mot__label">Marqueur</span> <i>Adelphoi mou, ean tis en hymin planēthē apo tēs alētheias kai epistrepsē tis auton, ginōsketō hoti ho epistrepsas hamartōlon ... sōsei psychēn autou ek thanatou</i> (5.19-⁠20).</p></div></li></ol></div><div class="grille__marge"><h3 class="marge__titre">Observations grammaticales</h3><dl class="observations"><div><dt>Jacques 5.2-⁠3</dt><dd>Alors que les misères du jugement sont encore imminentes en 5.1 (<i>tais erchomenais</i>), Jacques enchaîne trois parfaits prophétiques saisissants - <i>sesēpen</i> (« votre richesse est déjà pourrie »), <i>sētobrōta gegonen</i> (« vos vêtements sont devenus rongés des vers ») et <i>katiōtai</i> (« votre or et votre argent se sont rouillés ») - décrivant la ruine eschatologique future des trésors terrestres comme un fait d'ores et déjà accompli devant le regard éternel de Dieu (59-⁠29).</dd></div><div><dt>Jacques 5.7-⁠9</dt><dd>L'impératif aoriste <i>makrothymēsate</i> (« usez de longanimité » envers les personnes qui vous oppriment, repris en 5.8) s'appuie sur deux parfaits d'imminence eschatologique : <i>hē parousia tou kyriou ēngiken</i> (« l'avènement du Seigneur s'est approché et demeure tout proche », 5.8) et <i>ho kritēs pro tōn thyrōn hestēken</i> (« le Juge s'est placé et se tient debout juste devant les portes », 5.9), motivant l'impératif aoriste <i>stērixate tas kardias hymōn</i> (« affermissez solidement vos cœurs ») et la prohibition au présent <i>mē stenazete kat' allēlōn</i> (« cessez de gémir les uns contre les autres ») (59-⁠31).</dd></div><div><dt>Jacques 5.12</dt><dd>La prohibition au présent <i>mē omnyete</i> (« Cessez de prêter serment ») suivie de la triple disjonction <i>mēte ton ouranon mēte tēn gēn mēte allon tina horkon</i> (avec l'accusatif de l'objet pris à témoin, construction classique des formules de serment) et de l'impératif présent de troisième personne <i>ētō de hymōn to Nai nai kai to Ou ou</i> exige une transparence habituelle où le « Oui » prononcé est réellement oui et le « Non » prononcé est réellement non (59-⁠32).</dd></div><div><dt>Jacques 5.14-⁠15</dt><dd>L'initiative repose sur le membre abattu lui-même par l'impératif aoriste moyen <i>proskalesasthō</i> (« qu'il fasse appeler auprès de lui les anciens de l'assemblée »); les anciens « prient sur lui » (<i>proseuxasthōsan ep' auton</i>, verbe principal) après le participe aoriste circonstanciel <i>aleipsantes auton elaiō</i>; puis le verset 15 ajoute une conditionnelle éventuelle de troisième classe introduite par <i>kan</i> (= <i>kai ean</i>) avec le périphrase du parfait <i>ē pepoiēkōs</i> (« et même s'il se trouve dans l'état d'avoir commis des péchés, il lui sera pardonné »), prouvant que la faiblesse visée n'est pas toujours causée par un péché personnel précis (59-⁠33).</dd></div><div><dt>Jacques 5.16-⁠17</dt><dd>En 5.16b, le participe présent moyen/passif <i>energoumenē</i> rejeté en fin de proposition pour l'emphase (<i>poly ischyei deēsis dikaiou energoumenē</i> : « elle a une grande puissance, la supplication du juste lorsqu'elle est énergiquement à l'œuvre / fervente ») est illustré en 5.17 par le datif cognate sémitique d'intensité <i>proseuchē prosēuxato</i> (littéralement « Élie pria d'une prière », hébraïsme marquant l'ardeur persévérante d'une vraie intercession par opposition à la récitation mécanique) (59-⁠33).</dd></div></dl></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="mots-cles">
+<header class="sec-head"><p class="kicker">Vocabulaire</p><h2 class="sec-title">Étude des mots-clés</h2><p class="ref">Cinq mots-clés</p></header>
+<p class="lead">Cinq mots portent le poids théologique du passage. Le sens vient du lexique; les versions montrent des rendus, non le sens.</p><nav class="mots-index" aria-label="Mots étudiés"><a href="#mot-1">gémissez / hurlez</a><a href="#mot-2">soyez patients / usez de patience</a><a href="#mot-3">plein de miséricorde / tendresse</a><a href="#mot-4">oindre / appliquer (de l'huile)</a><a href="#mot-5">le malade / celui qui est las et épuisé</a></nav><p class="mots-legende">Traductions comparées : en relief, les versions qui s'écartent de la NEG79.</p><div class="mots-cartes"><article class="mot" id="mot-1"><header class="mot__tete"><h3 class="mot__fr">gémissez / hurlez</h3><p class="mot__translit">ololyzō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>pousser des hurlements perçants de terreur et de désespoir</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en signale l'étymologie onomatopéique (formé sur le cri aigu <i>ololu</i>, traduisant régulièrement dans la Septante l'hébreu prophétique <i>hêlîl</i> dans les oracles du Jour de l'Éternel en Ésaïe 13.6; 14.31; Jérémie 25.34; Amos 8.3), hapax du Nouveau Testament en Jacques 5.1 : hurler à grands cris, pousser des lamentations d'épouvante.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur souligne le contraste saisissant entre les pleurs pénitentiels salutaires commandés en 4.9 et ce hurlement d'horreur (<i>klausate ololyzontes</i>) en 5.1 : sans aucun appel fraternel ici, Jacques fait retentir par avance aux oreilles des riches impies les cris déchirants des damnés de l'enfer (« là où il y aura des pleurs et des grincements de dents ») face aux misères éternelles qui fondent sur eux, afin de réveiller quiconque peut encore se repentir et de consoler les saints opprimés (59-⁠29). Sa lecture rejoint exactement Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> gémissez</li><li><b>NEG79</b> gémissez</li><li class="ecart"><b>Darby</b> en poussant des cris</li><li><b>LSG</b> gémissez</li><li class="ecart"><b>NBS</b> hurlez</li></ul></article><article class="mot" id="mot-2"><header class="mot__tete"><h3 class="mot__fr">soyez patients / usez de patience</h3><p class="mot__translit">makrothymeō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>avoir le souffle long, tarder à s'irriter contre les personnes qui nous offensent</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en détaille l'étymologie (de <i>makrothymos</i>, composé de <i>makros</i>, long, et <i>thymos</i>, bouillonnement passionnel ou courroux; traduisant l'hébreu <i>'erek 'appayim</i>, lent à la colère), employé dix fois dans le Nouveau Testament (Matthieu 18.26, 29; 1 Corinthiens 13.4; 1 Thessaloniciens 5.14; Hébreux 6.15; Jacques 5.7, 8; 2 Pierre 3.9) : supporter patiemment et sans représailles les torts infligés par autrui et attendre avec constance le moment fixé par Dieu.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur met en lumière la distinction lexicale classique (Trench) que pratique Jacques dans ce passage entre <i>makrothymia</i> (5.7, 8, 10 : la longanimité maîtrisée envers les <i>personnes</i> injustes sans chercher à se venger) et <i>hypomonē</i> (1.3-⁠4; 5.11 : l'endurance persévérante qui demeure ferme sous le poids des <i>circonstances</i> douloureuses, illustrée par Job) : le croyant a besoin des deux vertus conjuguées jusqu'au retour du Seigneur (59-⁠31). Sa lecture s'accorde pleinement avec Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> Soyez ... patients</li><li><b>NEG79</b> Soyez ... patients</li><li class="ecart"><b>Darby</b> Usez ... de patience</li><li><b>LSG</b> Soyez ... patients</li><li class="ecart"><b>NBS</b> Prenez ... patience</li></ul></article><article class="mot" id="mot-3"><header class="mot__tete"><h3 class="mot__fr">plein de miséricorde / tendresse</h3><p class="mot__translit">polysplanchnos</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>aux entrailles immenses, débordant d'une tendre compassion viscérale</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en donne l'étymologie transparente (composé intensif de <i>polys</i>, beaucoup, abondant, et <i>splanchnon</i>, les organes internes - cœur, poumons, foie - siège des affections les plus profondes chez les Hébreux et les Grecs, correspondant à l'hébreu <i>rahamîm</i>), hapax du Nouveau Testament forgé selon toute vraisemblance par Jacques lui-même en 5.11 : rempli d'une immense pitié tendre.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur s'émerveille de ce néologisme inspiré que Jacques réserve à Dieu seul au terme de l'épreuve de Job : même lorsque le croyant souffrant ne discerne pas encore pourquoi le Seigneur permet la fournaise, il peut s'abandonner sans crainte entre les mains d'un Père « au grand cœur » (<i>polysplanchnos</i>) et compatissant (<i>oiktirmōn</i>, Exode 34.6), incapable de la moindre cruauté envers ses enfants (59-⁠31). Sa lecture épouse exactement Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> plein de tendresse</li><li><b>NEG79</b> plein de miséricorde</li><li class="ecart"><b>Darby</b> plein de compassion</li><li><b>LSG</b> plein de miséricorde</li><li class="ecart"><b>NBS</b> plein de tendresse</li></ul></article><article class="mot" id="mot-4"><header class="mot__tete"><h3 class="mot__fr">oindre / appliquer (de l'huile)</h3><p class="mot__translit">aleiphō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>enduire, frotter ou masser le corps avec de l'huile d'olive courante</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer en précise l'étymologie (apparenté à <i>lipos</i>, graisse ou huile) et cite la distinction fondamentale de Trench (§ 38) confirmée par les neuf emplois néotestamentaires (Matthieu 6.17; Marc 6.13; 16.1; Luc 7.38, 46; Jean 11.2; 12.3; Jacques 5.14) : <i>aleiphō</i> est le mot séculier, domestique et médicinal (frictionner d'huile pour l'hygiène, l'hospitalité ou le soin des blessures), par opposition à <i>chriō</i>, réservé dans le Nouveau Testament à l'onction sacrée et spirituelle conférée par Dieu.<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>MacArthur montre qu'en choisissant délibérément <i>aleiphō</i> en 5.14, Jacques écarte tout rite sacramentel ou magique : qu'on y voie le soin physique bienveillant par lequel les anciens rafraîchissent et soulagent concrètement les courbatures ou meurtrissures d'un croyant épuisé par la persécution (comme le bon Samaritain en Luc 10.34), ou une métaphore chaleureuse de consolation, de réconfort et d'encouragement pastoral affectueux (cf. Psaume 23.5; Hébreux 1.9), ce n'est jamais l'huile mais « la prière de la foi » et le Seigneur lui-même qui relèvent l'abattu (59-⁠33). Sa lecture s'appuie directement sur Thayer.</p><ul class="mot__trad" aria-label="Traductions comparées"><li class="ecart"><b>S21</b> en lui appliquant</li><li><b>NEG79</b> en l'oignant</li><li><b>Darby</b> en l'oignant</li><li><b>LSG</b> en l'oignant</li><li class="ecart"><b>NBS</b> en faisant sur lui une application</li></ul></article><article class="mot" id="mot-5"><header class="mot__tete"><h3 class="mot__fr">le malade / celui qui est las et épuisé</h3><p class="mot__translit">kamnō</p></header><p class="mot__sens"><span class="mot__label">Sens littéral</span>être harassé de fatigue, s'épuiser dans la lutte, défaillir (ou être souffrant)</p><p class="mot__champ"><span class="mot__label">Lexique · Thayer</span>Thayer distingue deux acceptions attestées depuis Homère jusqu'à l'époque hellénistique : 1. se fatiguer à force d'effort, être moralement épuisé et découragé au combat (Hébreux 12.3 : « afin que vous ne vous lassiez pas, l'âme découragée »; cf. Apocalypse 2.3 TR); 2. être souffrant ou malade physiquement (sens retenu par Thayer pour Jacques 5.15 d'après l'usage grec classique).<span class="mot__label" style="margin-top:.9rem">Lecture retenue</span>C'est ici que MacArthur pose une importante <i>décision d'interprétation</i> exégétique (59-⁠33) : tout en reconnaissant que de nombreux commentateurs entendent 5.14-⁠15 de la maladie corporelle (sens possible mais qui se heurterait, s'il s'agissait d'une promesse inconditionnelle de guérison physique, aux cas apostoliques de Trophime laissé malade en 2 Timothée 4.20 ou de l'écharde de Paul en 2 Corinthiens 12.7-⁠9), il privilégie résolument pour <i>ton kamnonta</i> en 5.15 le sens premier qu'a ce même verbe dans sa seule autre occurrence canonique en Hébreux 12.3 - le croyant spirituellement harassé, abattu et vaincu sous le feu de l'épreuve - en parfaite cohérence avec l'usage épistolaire d'<i>astheneō</i> (« être spirituellement faible », 5.14; cf. Romains 14.1-⁠2; 2 Corinthiens 12.10; 1 Thessaloniciens 5.14) et avec le pardon des péchés en 5.15-⁠16 (59-⁠33).</p><ul class="mot__trad" aria-label="Traductions comparées"><li><b>S21</b> le malade</li><li><b>NEG79</b> le malade</li><li><b>Darby</b> le malade</li><li><b>LSG</b> le malade</li><li><b>NBS</b> le malade</li></ul></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="commentateurs">
+<header class="sec-head"><p class="kicker">Perspective MacArthur</p><h2 class="sec-title">Apports des commentateurs</h2><p class="ref">Jacques 5</p></header>
+<div class="grille"><div class="grille__tete"><p class="lead">À travers ses six prédications finales sur Jacques 5 (59-⁠29 à 59-⁠34), John MacArthur fait ressortir la puissance eschatologique et pastorale de cette conclusion : devant l'injustice criante des oppresseurs, la tentation du découragement, le relâchement du langage, la défaillance spirituelle et le péril de l'apostasie, Jacques équipe l'assemblée des saints pour tenir ferme jusqu'au retour imminent de Jésus-Christ.</p></div><aside class="grille__marge grille__marge--collante"><nav class="sommaire" aria-label="Dans cette section"><p class="sommaire__titre">Dans cette section</p><ol><li><a href="#t1-jacques-5-1-6-le-requisitoire-prophetique-contre-les-riches-impies"><span class="sommaire__ref">Jacques 5.1-⁠6</span><span class="sommaire__lib">Le réquisitoire prophétique contre les riches impies</span></a></li><li><a href="#t2-jacques-5-7-11-l-endurance-patiente-dans-l-attente-de-la-parousie"><span class="sommaire__ref">Jacques 5.7-⁠11</span><span class="sommaire__lib">L'endurance patiente dans l'attente de la parousie</span></a></li><li><a href="#t3-jacques-5-12-l-integrite-d-une-parole-veridique-sans-serments"><span class="sommaire__ref">Jacques 5.12</span><span class="sommaire__lib">L'intégrité d'une parole véridique sans serments</span></a></li><li><a href="#t4-jacques-5-13-20-la-priere-des-anciens-et-le-sauvetage-des-egares"><span class="sommaire__ref">Jacques 5.13-⁠20</span><span class="sommaire__lib">La prière des anciens et le sauvetage des égarés</span></a></li></ol></nav><details class="sources"><summary><span class="sources__niveau">Niveau 1</span>Sources de l'exposition : six sermons Grace to You</summary><div class="sources__corps"><p>Niveau 1 : six sermons Grace to You sur Jacques 5.1 à 5.20 (59-⁠29 à 59-⁠34, du 31 mai au 13 septembre 1987) et introduction de la MacArthur Study Bible</p><div class="table-wrap"><table class="mots"><thead><tr><th scope="col">Code</th><th scope="col">Sermon</th><th scope="col">Passage</th></tr></thead><tbody><tr><th scope="row"><span class="mot-fr">59-29</span></th><td><a href="https://www.gty.org/sermons/59-29" target="_blank" rel="noopener">Judgment on the Wicked Rich, Part 1</a></td><td>Jc 5.1-⁠3</td></tr><tr><th scope="row"><span class="mot-fr">59-30</span></th><td><a href="https://www.gty.org/sermons/59-30" target="_blank" rel="noopener">Judgment on the Wicked Rich, Part 2</a></td><td>Jc 5.4-⁠6</td></tr><tr><th scope="row"><span class="mot-fr">59-31</span></th><td><a href="https://www.gty.org/sermons/59-31" target="_blank" rel="noopener">How to Face Trials Patiently</a></td><td>Jc 5.7-⁠11</td></tr><tr><th scope="row"><span class="mot-fr">59-32</span></th><td><a href="https://www.gty.org/sermons/59-32" target="_blank" rel="noopener">Stop Swearing</a></td><td>Jc 5.12</td></tr><tr><th scope="row"><span class="mot-fr">59-33</span></th><td><a href="https://www.gty.org/sermons/59-33" target="_blank" rel="noopener">The Power of Righteous Praying</a></td><td>Jc 5.13-⁠18</td></tr><tr><th scope="row"><span class="mot-fr">59-34</span></th><td><a href="https://www.gty.org/sermons/59-34" target="_blank" rel="noopener">Saving a Soul from Death</a></td><td>Jc 5.19-⁠20</td></tr></tbody></table></div></div></details></aside><div class="grille__texte"><div class="body"><h3 class="intertitre" id="t1-jacques-5-1-6-le-requisitoire-prophetique-contre-les-riches-impies"><span class="intertitre__ref">Jacques 5.1-⁠6</span>Le réquisitoire prophétique contre les riches impies</h3><p>Ouvrant par la même formule d'interpellation brusque qu'en 4.13 (<i>Age nyn</i>, sans le mot « frères »), Jacques prononce en 5.1-⁠6 (59-⁠29, 59-⁠30) une sentence de jugement contre les riches inconvertis (y compris les matérialistes hypocrites fréquentant l'assemblée) qui placent leur confiance dans Mammon. Rappelant que l'Écriture ne condamne pas la possession honnête de biens mais l'amour cupide et injuste de l'argent (1 Timothée 6.9-⁠10, 17-⁠19), MacArthur détaille les quatre chefs d'accusation qui appellent leurs hurlements d'effroi (<i>ololyzontes</i>) devant l'enfer qui vient. Le premier est une <i>richesse inutilement thésaurisée</i> (5.2-⁠3; 59-⁠29) : au lieu de secourir les indigents (Matthieu 6.19-⁠21), ils ont entassé jusqu'à la pourriture des vivres, des vêtements mangés des mites et des métaux précieux oxydés, dans les « derniers jours » (l'ère messianique inaugurée par Christ, Hébreux 1.2; 1 Jean 2.18); au jugement dernier, la « rouille » même de cet argent immobilisé témoignera contre leur cœur sans amour et dévorera leurs chairs ressuscitées (<i>sarkas</i> au pluriel) comme le feu inextinguible de la géhenne. Le deuxième est une <i>richesse injustement extorquée</i> (5.4; 59-⁠30) : le salaire frauduleusement retenu aux moissonneurs crie vengeance, et les clameurs des journaliers affamés sont déjà entrées dans les oreilles de l'Éternel des armées (<i>Kyrios Sabaōth</i>). Le troisième est une <i>richesse égoïstement dilapidée</i> (5.5; 59-⁠30) : ayant vécu sur la terre dans la mollesse voluptueuse (<i>etryphēsate</i>, hapax néotestamentaire) et la prodigalité effrénée (<i>espatalēsate</i>; cf. 1 Timothée 5.6), ils n'ont fait qu'engraisser inconsciemment leurs propres cœurs comme du bétail de boucherie pour le « jour du carnage » eschatologique de la colère divine (Ésaïe 34.5-⁠8; Jérémie 12.3; 25.34). Le quatrième est une <i>richesse impitoyablement acquise</i> (5.6; 59-⁠30) : manipulant les tribunaux corrompus, ils ont condamné et assassiné « le juste » (singulier collectif désignant les croyants pieux innocents, à l'image suprême de Jésus le Juste, Actes 3.14; 7.52), qui « ne leur résiste pas » (<i>ouk antitassetai</i>, refusant toute représaille violente à l'exemple de l'Agneau, Matthieu 5.39; 1 Pierre 2.23), abandonnant sa vengeance à Dieu seul (Romains 12.19).</p><h3 class="intertitre" id="t2-jacques-5-7-11-l-endurance-patiente-dans-l-attente-de-la-parousie"><span class="intertitre__ref">Jacques 5.7-⁠11</span>L'endurance patiente dans l'attente de la parousie</h3><p>Se tournant avec tendresse vers les victimes croyantes (« Soyez donc patients, frères! », 5.7), MacArthur dégage en 5.7-⁠11 six motifs puissants pour endurer l'injustice avec longanimité (59-⁠31). Premièrement, <i>anticiper l'avènement imminent du Seigneur</i> (5.7-⁠8) : comme le laboureur palestinien qui travaille et attend patiemment les pluies d'automne et de printemps sans pouvoir forcer le ciel, le chrétien affermit son cœur (<i>stērixate tas kardias</i>) parce que la <i>parousia</i> glorieuse de Christ s'est approchée (<i>ēngiken</i>). Deuxièmement, <i>reconnaître l'imminence du tribunal du Seigneur</i> (5.9) : sous la pression extérieure des persécuteurs, le grand piège consiste à décharger sa frustration en soupirs amers et grognements intérieurs contre ses propres frères et sœurs d'assemblée (<i>mē stenazete kat' allēlōn</i>); or le Juge divin se tient déjà derrière la porte, prêt à entrer pour évaluer ses serviteurs (1 Corinthiens 4.5; 2 Corinthiens 5.10). Troisièmement, <i>suivre l'exemple des prophètes</i> (5.10) : Moïse, Élie, Jérémie, Daniel ou Jean-Baptiste ont parlé fidèlement au nom du Seigneur en plein feu de l'affliction (<i>kakopatheia</i>, cf. Hébreux 11.32-⁠38), prouvant que la souffrance n'est pas une anomalie mais la voie royale des serviteurs de Dieu. Quatrièmement, <i>comprendre la bénédiction accordée aux persévérants</i> (5.11a : « nous disons bienheureux ceux qui ont souffert patiemment », écho direct de 1.12). Cinquièmement, <i>discerner le dessein souverain du Seigneur</i> (5.11b) : dans l'endurance de Job (<i>hypomonēn Iōb</i>) et « la fin que le Seigneur lui accorda » (<i>to telos kyriou</i>), Dieu ne poursuivait pas seulement la double restauration matérielle de Job 42.10-⁠17, mais surtout son but spirituel profond - confondre les calomnies de Satan, éprouver l'or de sa foi et amener Job à contempler Dieu d'une connaissance infiniment plus intime et humble (« Mon oreille avait entendu parler de toi; mais maintenant mon œil t'a vu », Job 42.5-⁠6). Sixièmement, <i>se reposer sur le caractère même du Seigneur</i> (5.11c), « plein d'une compassion viscérale et miséricordieux » (<i>polysplanchnos kai oiktirmōn</i>) (59-⁠31).</p><h3 class="intertitre" id="t3-jacques-5-12-l-integrite-d-une-parole-veridique-sans-serments"><span class="intertitre__ref">Jacques 5.12</span>L'intégrité d'une parole véridique sans serments</h3><p>Par la formule solennelle « Avant toutes choses, mes frères » (<i>Pro pantōn de</i>, 5.12), Jacques place une dernière fois l'intégrité du langage au sommet des preuves visibles d'un cœur régénéré (59-⁠32). Sous le stress de la persécution ou dans les transactions quotidiennes, le croyant ne doit jamais céder à l'habitude juive des serments évasifs (« par le ciel », « par la terre » ou tout autre serment casuistique calqué sur Matthieu 5.34-⁠37) destinés à masquer un mensonge ou à pallier un manque habituel de crédibilité : loin d'exclure les serments civils ou solennels légitimes pris devant Dieu (Deutéronome 6.13; Matthieu 26.63-⁠64; 2 Corinthiens 1.23; Hébreux 6.16), ce commandement exige du disciple de la vérité une honnêteté si constante que son simple « Oui » vaille oui et son simple « Non » vaille non, de peur qu'une duplicité verbale invétérée ne trahisse un faux croyant promis au jugement final (<i>hypo krisin</i>, Apocalypse 21.8) (59-⁠32).</p><h3 class="intertitre" id="t4-jacques-5-13-20-la-priere-des-anciens-et-le-sauvetage-des-egares"><span class="intertitre__ref">Jacques 5.13-⁠20</span>La prière des anciens et le sauvetage des égarés</h3><p>Dans les deux dernières péricopes (5.13-⁠18 et 5.19-⁠20; 59-⁠33, 59-⁠34), Jacques mobilise toute la communauté autour de la prière et de la vigilance fraternelle. En 5.13-⁠18 (59-⁠33), MacArthur expose quatre volets de la prière fervente : (1) la <i>prière individuelle constante</i> (5.13 : celui qui subit les mauvais traitements de l'épreuve, <i>kakopathei</i> - même mot que pour les prophètes en 5.10 - prie sans amertume; celui qui a le cœur joyeux, <i>euthumei</i>, chante des cantiques à Dieu, <i>psalletō</i>); (2) l'<i>intercession pastorale des anciens pour les brebis spirituellement abattues</i> (5.14-⁠15 : suivant sa <i>décision d'interprétation</i> appuyée sur le contexte de persécution en 5.13 et de pardon des péchés en 5.15-⁠16 ainsi que sur le sens épistolaire d'<i>astheneō</i> [« être spirituellement faible », Romains 14.1; 1 Thessaloniciens 5.14] et d'Hébreux 12.3 pour <i>kamnō</i> [« être las et découragé dans le combat »], MacArthur explique que le croyant spirituellement terrassé, vidé de ses forces au point de ne plus pouvoir prier efficacement seul, appelle à son chevet les bergers spirituellement forts de l'Église, <i>tous presbyterous</i>; ceux-ci prient littéralement « sur lui » tout en lui prodiguant les soins apaisants et l'encouragement chaleureux figurés ou accompagnés par l'application d'huile [<i>aleipsantes</i>] au nom du Seigneur; alors « la prière de la foi » prononcée par les anciens délivre et restaure [<i>sōsei</i>] le frère épuisé, le Seigneur réveille son courage et le remet debout [<i>egerei</i>], et s'il a de surcroît commis des péchés ayant provoqué sa chute, ceux-ci lui sont pleinement pardonnés; MacArthur ajoute que même lorsqu'une maladie physique s'y mêle parfois sous la discipline divine comme en 1 Corinthiens 11.30, l'accent central demeure la restauration spirituelle de la brebis); (3) la <i>confession mutuelle et l'intercession réciproque</i> de toute l'assemblée (5.16a : se confesser honnêtement ses péchés les uns aux autres et prier les uns pour les autres afin d'être spirituellement guéris, <i>hopōs iathēte</i>, cf. Hébreux 12.13; 1 Pierre 2.24, prévenant ainsi l'isolement qui mène à l'effondrement); et (4) l'<i>efficacité prodigieuse de la supplication fervente du juste</i> (5.16b-18 : illustrée par Élie, homme de la même nature fragile que nous, <i>homoiopathēs hēmin</i> - comme le montre sa dépression en 1 Rois 19 - dont la prière ardente alignée sur la Parole de Dieu ferma le ciel pendant exactement trois ans et six mois [durée précise révélée par Jésus en Luc 4.25 et ici par Jacques au-delà de 1 Rois 17-⁠18], puis fit descendre la pluie vivifiante sur une terre desséchée) (59-⁠33).</p><p>Enfin, en 5.19-⁠20 (59-⁠34), Jacques conclut son épître sur le cas le plus tragique qui puisse survenir « parmi vous » : non plus le vrai croyant affligé (5.13) ou spirituellement épuisé (5.14), mais le membre professant qui « s'égare loin de la vérité » (<i>planēthē apo tēs alētheias</i>, déviation doctrinale et abandon de l'Évangile, 5.19) pour s'enfoncer dans « l'égarement de sa voie » morale (5.20), se révélant ainsi être un « pécheur » non régénéré (<i>hamartōlon</i>, sens technique identique à 4.8; cf. 1 Jean 2.19) en route vers la perdition. Loin d'être réservée aux seuls anciens, la mission de le poursuivre avec amour pour le ramener à la repentance (<i>epistrepsē</i>) incombe à tout croyant fidèle (<i>tis</i>) : celui qui devient ainsi l'instrument de sa conversion « sauvera son âme de la mort » éternelle (<i>ek thanatou</i>) et amènera le pardon divin qui « couvrira une multitude de péchés » (Psaume 32.1; 85.3) (59-⁠34).</p></div><p class="marge__titre">Indices du texte</p><ul class="points"><li><b>Jacques 4.13 et 5.1; 4.6 et 5.6.</b> Les deux seules occurrences dans tout le Nouveau Testament de la formule d'interpellation <i>Age nyn</i> (« À vous maintenant! », 4.13 et 5.1, toutes deux sans le vocatif « frères »), jointes au renversement ironique du verbe militaire <i>antitassomai</i> - Dieu « se range en bataille » contre les orgueilleux en 4.6 tandis que le juste assassiné « ne résiste pas » à ses meurtriers riches en 5.6 - soudent étroitement la fin du chapitre 4 et l'ouverture du chapitre 5 (59-⁠28, 59-⁠29, 59-⁠30).</li><li><b>Jacques 1.2-⁠12, 21-⁠26 et 5.7-⁠20.</b> Le chapitre 5 forme une grande inclusion structurelle avec le chapitre 1 en reprenant chacun de ses termes clés : la déclaration de béatitude sur l'endurance (<i>makarizomen tous hypomeinantas</i> en 5.11 répondant à <i>makarios anēr hos hypomenei peirasmon</i> en 1.12), la garde de la langue (5.12 et 1.26), la prière de la foi sans douter (<i>hē euchē tēs pisteōs</i> en 5.15 et <i>aiteitō en pistei</i> en 1.6) et le salut de l'âme par la parole de vérité (<i>alētheia ... sōsei psychēn</i> en 5.19-⁠20 et 1.18, 21) (59-⁠31, 59-⁠33, 59-⁠34).</li><li><b>Jacques 5.10, 13-⁠16.</b> La reprise du radical de <i>kakopatheia</i> entre l'exemple des prophètes maltraités en 5.10 et la question <i>Kakopathei tis en hymin;</i> en 5.13, suivie immédiatement d'<i>asthenei</i> (5.14), de <i>ton kamnonta</i> (5.15) et de la confession mutuelle des péchés (5.16), appuie dans la trame même du texte la lecture pastorale de MacArthur voyant en 5.14-⁠15 le relèvement des croyants terrassés dans le combat de l'épreuve et du péché (59-⁠33).</li><li><b>Jacques 4.8 et 5.19-⁠20.</b> L'emploi cohérent du terme <i>hamartōlos</i> (« pécheur ») en 4.8 et en 5.20, associé en 5.20 à la délivrance « de l'âme hors de la mort » (<i>sōsei psychēn autou ek thanatou</i>) et à la couverture d'une « multitude de péchés », confirme que la finale de l'épître vise le salut éternel d'un faux croyant égaré loin de l'Évangile de la vérité (1.18) (59-⁠34).</li></ul></div></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="renvois">
+<header class="sec-head"><p class="kicker">Échos bibliques</p><h2 class="sec-title">Renvois et passages parallèles</h2><p class="ref">Sept passages</p></header>
+<p class="lead">Sept passages éclairent le texte.</p><div class="renvois"><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Lévitique 19.13; Deutéronome 24.14-⁠15; Ésaïe 5.8-⁠9</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">Jacques 5.4 fait directement allusion à la loi mosaïque de Lévitique 19.13 et de Deutéronome 24.14-⁠15 (où le grec de la Septante et l'hébreu massorétique avertissent déjà que le mercenaire pauvre « crierait contre toi à l'Éternel, et tu te chargerais d'un péché »), amplifiée par l'oracle d'Ésaïe 5.9 LXX où ces injustices parviennent « aux oreilles de l'Éternel des armées » (<i>ēkousthē gar eis ta ōta Kyriou Sabaōth</i>, repris presque mot pour mot en Jacques 5.4) (59-⁠30).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 6.19-⁠21; Jérémie 12.3; 25.34</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Jacques 5.2-⁠3 applique la mise en garde de Jésus contre les trésors amassés sur la terre où la teigne (<i>sēs</i>) et la rouille (<i>brōsis</i>) détruisent (Matthieu 6.19-⁠20), tandis que l'image terrible des cœurs engraissés « au jour du carnage » (<i>en hēmera sphagēs</i>, 5.5) reprend l'expression prophétique de Jérémie 12.3 et 25.34 annonçant l'abattage judiciaire des oppresseurs impies (59-⁠29, 59-⁠30).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Deutéronome 11.14; Job 1.20-⁠22; 42.5-⁠12; Exode 34.6</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">En Jacques 5.7-⁠11, la métaphore des pluies de la première et de l'arrière-saison provient de Deutéronome 11.14; l'endurance et le dénouement de Job renvoient à l'encadrement canonique du livre de Job (Job 1-⁠2 et 42); et le portrait final du Seigneur « plein de miséricorde et compatissant » transpose la grande autoproclamation de l'Éternel devant Moïse en Exode 34.6 (Psaume 103.8) (59-⁠31).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Matthieu 5.33-⁠37; 23.16-⁠22</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">De tous les parallèles entre Jacques et le Sermon sur la montagne, Jacques 5.12 est le plus étroit : l'interdiction de jurer « ni par le ciel, ni par la terre, ni par quelque autre serment » et l'ordre d'avoir un simple « Oui, oui » et « Non, non » reprennent presque verbalement l'enseignement du Seigneur Jésus en Matthieu 5.34-⁠37 (59-⁠32).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Romains 14.1; 1 Thessaloniciens 5.14; Hébreux 12.3, 12-⁠13</span><span class="renvoi__tag">Parallèle direct</span></div><p class="renvoi__desc">Ces textes épistolaires éclairent le vocabulaire pastoral de Jacques 5.14-⁠16 selon l'analyse de MacArthur : soutenir les « faibles » dans la foi (<i>asthenountas</i> / <i>asthenōn</i>, Romains 14.1; 1 Thessaloniciens 5.14), ne pas « se lasser » l'âme découragée (<i>kamēte</i>, Hébreux 12.3, seul autre emploi néotestamentaire du verbe de Jacques 5.15) et fortifier les genoux affaiblis afin que ce qui boite ne se démette pas mais « soit plutôt guéri » (<i>iathē</i>, Hébreux 12.13, même verbe passif qu'en Jacques 5.16) (59-⁠33).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">1 Rois 17.1; 18.1, 41-⁠45; Luc 4.25</span><span class="renvoi__tag">Arrière-plan AT</span></div><p class="renvoi__desc">Jacques 5.17-⁠18 s'appuie sur le cycle historique d'Élie annonçant la sécheresse devant Achab (1 Rois 17.1) puis priant sept fois prosterné au sommet du Carmel jusqu'à l'averse torrentielle (1 Rois 18.41-⁠45), tout en précisant - en accord exact avec la parole de Jésus à Nazareth en Luc 4.25 - la durée totale de trois ans et six mois (quarante-deux mois) que le récit des Rois ne mentionnait que globalement (« la troisième année », 1 Rois 18.1) (59-⁠33).</p></article><article class="renvoi"><div class="renvoi__head"><span class="renvoi__ref">Psaume 32.1; Proverbes 10.12; 1 Pierre 4.8; Jude 22-⁠23</span><span class="renvoi__tag">Citation ou allusion</span></div><p class="renvoi__desc">La promesse finale « couvrira une multitude de péchés » en Jacques 5.20 fait allusion à l'hébreu massorétique de Proverbes 10.12 (« l'amour couvre toutes les fautes », <i>'al kol-pesha'îm tekhasseh 'ahabhâh</i>, repris aussi en 1 Pierre 4.8 là où la Septante diverge) et à la béatitude du pardon divin du Psaume 32.1 (« Heureux celui dont le péché est couvert! », <i>epikalyhthēsan hai hamartiai</i> LXX), en parallèle étroit avec l'appel de Jude 22-⁠23 à sauver des âmes « en les arrachant du feu » (59-⁠34).</p></article></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section reveal" id="themes">
+<header class="sec-head"><p class="kicker">Doctrine</p><h2 class="sec-title">Thèmes théologiques</h2><p class="ref">Quatre axes</p></header>
+<p class="lead">Pour chaque thème, ce que le texte affirme, puis ce qu'il demande à l'assemblée.</p><div class="themes"><section class="theme"><h3 class="theme__title">La justice vengeresse de l'Éternel des armées contre l'oppression et le matérialisme</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Les richesses entassées égoïstement dans les derniers jours, les salaires retenus par fraude aux ouvriers, le luxe voluptueux et la condamnation meurtrière du juste sans défense crient jusqu'aux oreilles du Seigneur des armées et attirent sur les oppresseurs le feu et le jour du carnage (5.1-⁠6).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur enseigne que la manière dont un homme acquiert, conserve et dépense son argent révèle infailliblement son dieu véritable : l'avarice thésaurisatrice et l'exploitation des vulnérables démontrent un cœur incrédule promis à la colère eschatologique, tandis que l'omniscience et la justice parfaite de Dieu garantissent qu'aucun cri d'opprimé ne restera impuni au grand jour du jugement (59-⁠29, 59-⁠30). Rattachement : théologie propre (justice et omniscience de Dieu) et eschatologie (jugement des impies) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>La Loi et les Prophètes prennent invariablement la défense du journalier, de la veuve et de l'orphelin contre les rapaces (Deutéronome 24.14-⁠15; Amos 2.6-⁠7; 8.4-⁠7; Malachie 3.5); Jésus avertit qu'il est impossible de servir Dieu et Mammon et illustre le revers éternel du mauvais riche face à Lazare (Luc 16.13, 19-⁠31); l'Apocalypse dépeint la ruine finale de Babylone et des marchands gorgés de luxe (Apocalypse 18.3-⁠19; Jacques 5.1-⁠6) (59-⁠29, 59-⁠30).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Gérer chaque dollar comme un intendant qui rendra compte au Seigneur, payer avec ponctualité et générosité quiconque travaille pour nous, mettre nos biens en circulation pour l'Évangile et les nécessiteux, et ne jamais envier la prospérité éphémère des impies (59-⁠29, 59-⁠30).</p></div></div></section><section class="theme"><h3 class="theme__title">L'espérance imminente de la parousie comme ancre de la patience fraternelle</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Les croyants éprouvés doivent user de longanimité, affermir leurs cœurs et ne point gémir les uns contre les autres, parce que l'avènement du Seigneur est proche, que le Juge se tient à la porte et que le Seigneur, comme envers Job, accomplit une fin pleine de compassion et de miséricorde (5.7-⁠11).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur souligne que l'attente de l'enlèvement et du retour imminent du Seigneur Jésus-Christ (<i>parousia</i>) n'est jamais dans le Nouveau Testament une spéculation oisive, mais le ressort pratique majeur de l'endurance dans l'affliction, du refus de la vengeance personnelle et de la paix au sein de l'Église locale, soutenu par la certitude de la providence bienveillante et souveraine de Dieu (Romains 8.28) (59-⁠31). Rattachement : eschatologie (imminence du retour de Christ et tribunal des récompenses) et théologie propre (bonté et compassion de Dieu) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Job traverse le creuset incompréhensible de la souffrance jusqu'à la révélation glorieuse de la sagesse et de la tendresse de l'Éternel (Job 42.1-⁠12); Jésus exhorte ses disciples à posséder leurs âmes par leur persévérance dans l'attente du Fils de l'homme aux portes (Luc 21.19; Matthieu 24.33); les apôtres relient constamment la douceur fraternelle et la sainteté à la proximité du retour du Seigneur (Romains 13.11-⁠12; Philippiens 4.5; Hébreux 10.36-⁠37; Jacques 5.7-⁠11) (59-⁠31).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Au cœur d'une épreuve prolongée qui tend nos nerfs, veiller à ne jamais faire payer notre douleur à notre conjoint ou à nos frères par des murmures irrités, mais fixer nos regards sur le Seigneur qui se tient à la porte et sur son cœur rempli de tendresse (59-⁠31).</p></div></div></section><section class="theme"><h3 class="theme__title">La puissance de l'intercession communautaire et du ministère pastoral des anciens</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Dans la souffrance comme dans la joie, le croyant prie et chante; celui qui est faible et abattu fait appeler les anciens de l'Église qui prient sur lui en l'oignant d'huile au nom du Seigneur, toute l'assemblée confesse mutuellement ses péchés et intercède, car la prière fervente d'un juste ordinaire - tel Élie - possède une grande efficace auprès de Dieu (5.13-⁠18).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur montre que Dieu a institué au sein de l'Église locale la solidarité spirituelle du corps de Christ et le ministère de bergers spirituellement mûrs (pluralité d'anciens, <i>presbyteroi</i>) pour soutenir, relever et purifier les brebis blessées, et qu'il a souverainement ordonné la prière fervente d'hommes ordinaires justifiés en Christ et marchant dans l'obéissance comme le moyen efficace d'accomplir ses desseins (59-⁠33). Rattachement : ecclésiologie (gouvernement par les anciens et communion des saints) et vie chrétienne (la prière) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>Moïse, Samuel et Élie intercèdent puissamment pour Israël en s'appuyant sur les promesses de l'alliance (Exode 32.11-⁠14; 1 Samuel 12.23; 1 Rois 18.36-⁠45); Jésus promet d'exaucer ce qui est demandé en son nom (Jean 14.13-⁠14; 15.7); l'Église apostolique établit dans chaque ville un collège d'anciens appelés à paître le troupeau et exhorte les forts à porter les faiblesses des faibles dans la transparence et la prière (Actes 14.23; 20.28; Romains 15.1; Galates 6.1-⁠2; Jacques 5.14-⁠18) (59-⁠33).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Refuser l'orgueil solitaire qui cache ses défaites derrière un masque du dimanche : appeler humblement à l'aide les anciens et des frères de confiance, pratiquer la transparence mutuelle et prier avec la ferveur persévérante d'Élie sachant qu'il n'avait pas une autre nature que la nôtre (59-⁠33).</p></div></div></section><section class="theme"><h3 class="theme__title">La responsabilité évangélique envers les professeurs égarés au sein de l'assemblée</h3><div class="theme__grid"><div class="theme__part"><p class="theme__label">Dans le texte</p><p>Si quelqu'un au milieu de l'assemblée s'égare loin de la vérité dans l'erreur de sa voie et qu'un croyant le ramène, celui qui ramène ainsi un pécheur sauvera son âme de la mort et couvrira une multitude de péchés (5.19-⁠20).</p></div><div class="theme__part"><p class="theme__label">Ancrage doctrinal</p><p>MacArthur enseigne que si les vrais élus régénérés persévèrent infailliblement jusqu'à la fin par la garde souveraine de Dieu, l'Église visible renferme toujours des membres purement nominaux qui finissent par dévier de la vérité doctrinale et morale (1 Jean 2.19) : Dieu se sert alors de l'intervention aimante et courageuse des fidèles pour arracher ces pécheurs à la mort seconde et les conduire au vrai salut qui efface tous leurs péchés (59-⁠34). Rattachement : sotériologie (persévérance des saints, apostasie des faux croyants et pardon) et ecclésiologie (évangélisation et restauration) dans <i>Biblical Doctrine</i>.</p></div><div class="theme__part"><p class="theme__label">Révélation progressive</p><p>L'Éternel établit Ézéchiel sentinelle chargée d'avertir le méchant pour qu'il se détourne de sa mauvaise voie et vive (Ézéchiel 3.17-⁠21; 33.8-⁠9); Jésus raconte le berger qui laisse les quatre-vingt-dix-neuf brebis pour aller chercher celle qui s'est égarée (Matthieu 18.12-⁠14); Paul, Jude et Jacques pressent chaque croyant de reprendre avec douceur et urgence ceux qui s'égarent afin de les arracher au feu éternel (2 Timothée 2.25-⁠26; Jude 22-⁠23; Jacques 5.19-⁠20) (59-⁠34).</p></div><div class="theme__part theme__part--app"><p class="theme__label">Pour votre assemblée</p><p>Ne jamais regarder avec fatalisme ou froideur s'éloigner une personne qui fréquentait autrefois l'assemblée et qui dérive dans l'erreur ou le péché : aller la chercher personnellement dans la prière, les larmes et la vérité de l'Évangile pour le salut éternel de son âme (59-⁠34).</p></div></div></section></div>
+</article>
+<div class="divider" aria-hidden="true"><span>◆</span></div>
+<article class="section section--conclusion reveal" id="reflexion">
+<header class="sec-head"><p class="kicker">Vers la chaire</p><h2 class="sec-title">Pistes de réflexion</h2><p class="ref">Six questions</p></header>
+<p class="lead">Non des réponses toutes faites, mais les tensions que la prédication devra tenir.</p><ol class="questions"><li>Que diraient aujourd'hui nos relevés bancaires, notre garde-robe et nos épargnes au tribunal de Christ : témoignent-ils d'un trésor immobilisé pour notre seule sécurité terrestre (5.2-⁠3) ou d'une intendance généreuse investie pour le Royaume éternel (59-⁠29, 59-⁠30)?</li><li>Lorsque nous subissons une injustice prolongée au travail, dans la société ou même parmi nos proches, quelle place occupe concrètement la promesse « l'avènement du Seigneur est proche; le Juge est à la porte » (5.8-⁠9) pour apaiser nos murmures et soutenir notre patience (59-⁠31)?</li><li>En méditant « la fin que le Seigneur accorda à Job » et le portrait de Dieu comme <i>polysplanchnos</i> (« plein d'une tendre compassion viscérale », 5.11), quelle accusation secrète d'indifférence divine devons-nous abandonner dans notre épreuve actuelle (59-⁠31)?</li><li>Notre réputation d'honnêteté au foyer, dans l'Église et dans nos engagements professionnels est-elle si limpide que nous n'avons jamais besoin d'exagérations ni de formules solennelles pour qu'on croie notre simple « oui » et notre simple « non » (5.12; 59-⁠32)?</li><li>Sommes-nous prêts à briser notre orgueil spirituel pour appeler les anciens quand nous sommes spirituellement épuisés (5.14) et pour pratiquer la confession mutuelle des péchés et l'intercession fervente à l'exemple d'Élie, « homme de la même nature que nous » (5.16-⁠17; 59-⁠33)?</li><li>Quel visage précis nous vient à l'esprit en lisant Jacques 5.19-⁠20 - un ami, un membre de notre famille ou un ancien habitué de l'Église qui s'est égaré loin de la vérité - et quelle démarche aimante entreprendrons-nous dès cette semaine pour chercher à sauver son âme de la mort (59-⁠34)?</li></ol>
+</article>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__church">André-Guy Bruneau</p>
+  <p class="footer__line">Recherche exégétique · Jacques 5 · 14 novembre 2026</p>
+  <p class="footer__line">Citations bibliques : Nouvelle Édition de Genève 1979 (NEG)</p>
+  <p class="footer__line"><a href="Recherche-MacArthur-Jacques-5.pdf" target="_blank" rel="noopener">Version PDF&nbsp;↗</a></p>
+  <p class="footer__sdg">Soli Deo Gloria</p>
+</footer>
+
+<script>
+  // Barre de progression de lecture
+  var progress = document.getElementById('progress');
+  var navProgress = document.getElementById('navProgress');
+  var nav = document.getElementById('nav');
+  var hero = document.getElementById('hero');
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    progress.style.width = pct + '%';
+    if (navProgress) navProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Apparition de la navigation après le hero
+  if ('IntersectionObserver' in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) nav.classList.remove('show');
+        else nav.classList.add('show');
+      });
+    }, {rootMargin:'-70px 0px 0px 0px'});
+    navObs.observe(hero);
+
+    // Révélation au défilement
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px'}); // pas de threshold : une section plus haute que 8 écrans n'atteindrait jamais 12 %
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    // Section en cours : lien de navigation marqué (classe « actif », mise en forme par la page)
+    var liens = {};
+    document.querySelectorAll('.nav__links a').forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var a = liens[e.target.id];
+        if (!e.isIntersecting || !a) return;
+        Object.keys(liens).forEach(function(k){ liens[k].classList.remove('actif'); liens[k].removeAttribute('aria-current'); });
+        a.classList.add('actif'); a.setAttribute('aria-current', 'location');
+        var barre = a.parentNode;
+        barre.scrollLeft = a.offsetLeft - (barre.clientWidth - a.offsetWidth) / 2;
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main > article[id]').forEach(function(s){ secObs.observe(s); });
+
+    // Intertitre en cours : entrée du sommaire local marquée (classe « actif »)
+    var entrees = {};
+    document.querySelectorAll('.sommaire a').forEach(function(a){ entrees[a.getAttribute('href').slice(1)] = a; });
+    var titObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Object.keys(entrees).forEach(function(k){ entrees[k].classList.remove('actif'); });
+        entrees[e.target.id].classList.add('actif');
+      });
+    }, {rootMargin:'0px 0px -70% 0px'});
+    document.querySelectorAll('.intertitre[id]').forEach(function(t){ if (entrees[t.id]) titObs.observe(t); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

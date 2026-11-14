@@ -1,6 +1,6 @@
 # Paulus
 
-Ce dossier réunit les études des treize épîtres de Paul, puis d'Hébreux, dans l'ordre chronologique de leur rédaction selon John MacArthur (table et conventions générales dans `README.md`). Les dossiers `01 - Galates/`, `02 - 1 Thessaloniciens/` et `03 - 2 Thessaloniciens/` servent d'implémentations de référence.
+Ce dossier réunit les études des treize épîtres de Paul, puis d'Hébreux et de Jacques, selon la chronologie et l'exégèse de John MacArthur (table et conventions générales dans `README.md`). Les dossiers `01 - Galates/`, `02 - 1 Thessaloniciens/` et `03 - 2 Thessaloniciens/` servent d'implémentations de référence.
 
 ## Conventions du dossier
 
